@@ -1,13 +1,29 @@
 Package: OpenLand
-Title: What the Package Does (One Line, Title Case)
+Title: Tool for Quantitative Analysis and Visualization of Land Use and Land Cover Change
 Version: 0.0.0.9000
-Authors@R: 
-    person(given = "First",
-           family = "Last",
+Authors@R: c(
+    person(given = "Réginal",
+           family = "Exavier",
            role = c("aut", "cre"),
-           email = "first.last@example.com",
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
-License: What license it uses
+           email = "reginalexavier@rocketmail.com",
+           comment = c(ORCID = "YOUR-ORCID-ID")),
+    person(given = "Peter",
+           family = "Zeilhofer",
+           role = "aut",
+           email = "zeilhoferpeter@gmail.com",
+           comment = c(ORCID = "YOUR-ORCID-ID")))
+Description: OpenLand is an open-source R package for the analysis of land use
+    and land cover  time series. It includes support for loading multitemporal
+    gridded datasets; extraction of LULC transition matrices; determination of
+    net and loss changes; performing a complete LULCC intensity analysis; and 
+    visualization of LULCC and outcomes of intensity analysis using various 2D plots.
+License: GPL-3
 Encoding: UTF-8
 LazyData: true
+RoxygenNote: 6.1.1
+Imports: 
+    raster (>= 3.0.7),
+    dplyr (>= 0.8.3),
+    tibble (>= 2.1.3),
+    tidyr (>= 1.0.0),
+    magrittr

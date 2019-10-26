@@ -1,4 +1,5 @@
-
+#' @include utils-pipe.R
+NULL
 # creating a raster serie with some setup like the layer name and the sample value for the lulc
 #' Title
 #'
@@ -13,7 +14,6 @@
 #' @param crs the coordinate referencing system
 #' @param class the raster classes
 #' @param prob the probability of occorence for the class list
-#'
 #' @return
 #' @export
 #'

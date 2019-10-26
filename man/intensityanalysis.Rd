@@ -2,8 +2,7 @@
 % Please edit documentation in R/intensity.R
 \name{intensityanalysis}
 \alias{intensityanalysis}
-\title{intensityanalysis
-It's a function that perform the intensity test analysis from a table contingency}
+\title{It's a function that perform the intensity test analysis from a table contingency}
 \usage{
 intensityanalysis(dataset, class_n, class_m)
 }
@@ -18,6 +17,5 @@ intensityanalysis(dataset, class_n, class_m)
 Intensity objects including the levels tables and strationarity test tables
 }
 \description{
-intensityanalysis
 It's a function that perform the intensity test analysis from a table contingency
 }

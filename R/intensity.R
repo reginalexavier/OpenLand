@@ -1,7 +1,7 @@
 #' @include intensityClass.R
 NULL
 
-#' intensityanalysis
+
 #' It's a function that perform the intensity test analysis from a table contingency
 #'
 #' @param dataset The list of object from \code{contingencyTable}
@@ -10,11 +10,11 @@ NULL
 #' @return Intensity objects including the levels tables and strationarity test tables
 #' @export
 #'
-#' @examples
+#'
 
 intensityanalysis <- function(dataset, class_n, class_m) {
   # seting the data
-  AE <- dataset[[3]][[1, 2]] #study area
+  AE <- dataset[[3]] #study area
 
   allinterval <-
     dataset[[length(dataset)]] #whole interval in year
@@ -35,6 +35,9 @@ intensityanalysis <- function(dataset, class_n, class_m) {
 
   names(lookupcolor) <- class_fillColor$className
 
+  From <- To <- Period <- km2 <- interval <- QtPixel <- intch_km2 <- num02 <- STt <- U <- Gtj <-
+    gain <- N <- Lti <- loss <- Rtin <- Wtn <- Qtmj <- Vtm  <- NULL
+
   #____________Interval-------
   #EQ1 - St ----
 
@@ -49,7 +52,7 @@ intensityanalysis <- function(dataset, class_n, class_m) {
     dplyr::mutate(U = (num02 / (allinterval * AE)) * 100)
 
   level01 <-
-    eq1 %>% dplyr::mutate(U = eq2[[2]], tipo = if_else(STt > U, "Faster", "Slow"))
+    eq1 %>% dplyr::mutate(U = eq2[[2]], tipo = ifelse(STt > U, "Faster", "Slow"))
 
   #____________Categorical ----
   #EQ3 - Gtj ----
@@ -203,10 +206,10 @@ intensityanalysis <- function(dataset, class_n, class_m) {
     list(
       lulc_table = lulc,
       lv1_tbl = intensity(level01),
-      lv2_gain = intensity(eq3),
-      lv2_loss = intensity(eq4),
-      gain_n = intensity(plot03ganho_n),
-      loss_m = intensity(plot03perda_m),
+      lv2_gain = intensity(eq3, lookupcolor),
+      lv2_loss = intensity(eq4, lookupcolor),
+      gain_n = intensity(plot03ganho_n, lookupcolor),
+      loss_m = intensity(plot03perda_m, lookupcolor),
       st_lv2_gain = st_lv2_gain,
       st_lv2_loss = st_lv2_loss,
       st_gain_n = st_gain_n,

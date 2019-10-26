@@ -1,14 +1,14 @@
 
 #' A S4 super class for the objects from the intensity analysis
-#'
+#' @name Intensity
 #' @slot tabela tbl_df.
 #'
 #' @return virtual class
 #' @export
 #'
-#' @examples
+#' @import methods
 
-methods::setClass(
+setClass(
   Class = "Intensity", slots = c(tabela = "tbl_df"),
   prototype = methods::prototype(tabela = tibble::tibble()),
   validity = function(object) {
@@ -34,14 +34,14 @@ methods::setClass(
 
 
 #' An S4 class for the intensity level 1 analysis
-#'
+#' @name IntensityL01
 #' @slot level character.
 #'
 #' @return an intensity level 1 object
 #' @export
 #'
-#' @examples
-methods::setClass(
+
+setClass(
   Class = "IntensityL01", slots = c(level = "character"),
   prototype = methods::prototype(level = "Interval"),
   validity = function(object) {
@@ -55,17 +55,17 @@ methods::setClass(
 )
 
 #' A class for the intensity level 2 analysis
-#'
+#' @name IntensityL02
 #' @slot level character.
 #' @slot color character.
 #'
 #' @return an intensity level 2 object
 #' @export
 #'
-#' @examples
-methods::setClass(
+
+setClass(
   Class = "IntensityL02", slots = c(level = "character", color = "character"),
-  prototype = methods::prototype(level = "Category"),
+  prototype = prototype(level = "Category"),
   validity = function(object) {
     if (!(ncol(object@tabela) == 8))
     {
@@ -77,15 +77,15 @@ methods::setClass(
 )
 
 #' An S4 class for the intensity level 2 analysis
-#'
+#' @name IntensityL03
 #' @slot level character.
 #' @slot color character.
 #'
 #' @return an intensity level 3 object
 #' @export
 #'
-#' @examples
-methods::setClass(
+
+setClass(
   Class = "IntensityL03", slots = c(level = "character", color = "character"),
   prototype = methods::prototype(level = "Transition"),
   validity = function(object) {
@@ -114,37 +114,41 @@ methods::setClass(
 #              )
 
 
-#'An replacement method for the intensity super class
+
+#' replace parts of Intensity
 #'
-#' @param Intensity
-#'
-#' @return
-#' @export
-#'
-#' @examples
-methods::setMethod("$", signature = "Intensity",
+#' @name $
+#' @aliases $,Intensity-method
+#' @docType methods
+#' @rdname replacement-methods
+#' @param x tibble
+#' @param name character
+
+setMethod("$", signature = "Intensity",
           function(x, name) {
-            if (name %in% methods::slotNames(x)) {
-              methods::slot(x, name)
+            if (name %in% slotNames(x)) {
+              slot(x, name)
             }})
 
 
-# helper or constructor for the 3 classes
+
 #' This is a helper funtion for create the intensities sub classes
 #'
 #' @param data tibble
+#' @param color list
 #'
 #' @return an object with the correspondate class
 #' @export
 #'
-#' @examples
-intensity <- function(data) {
+
+intensity <- function(data, color) {
+  #color <- NULL
   if (ncol(data) == 5) {
-    methods::new("IntensityL01", tabela = data)
+    new("IntensityL01", tabela = data)
   } else if (ncol(data) == 8) {
-    methods::new("IntensityL02", tabela = data, color = lookupcolor)
+    new("IntensityL02", tabela = data, color = color)
   } else if (ncol(data) == 10) {
-    methods::new("IntensityL03", tabela = data, color = lookupcolor)
+    new("IntensityL03", tabela = data, color = color)
   } else {
     cat("The intensity table as to have 5, 8 or 10 columns for level 1, 2 or 3 respectively")
   }

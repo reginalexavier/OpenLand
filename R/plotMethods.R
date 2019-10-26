@@ -1,20 +1,36 @@
 #' @include intensity.R
 NULL
 
-#' Title: setting a method in the generic plot for the openland class IntensityL01
+#' A method in the generic plot for the openland class IntensityL01
+#' @name plot01
+#' @aliases plot,IntensityL01-method
+#' @rdname intensityL01-plot
+#' @docType methods
 #'
 #' @param x IntensityL01.
 #' @param y missing.
 #'
-#' @return
-#' @export
+#' @param labels character
+#' @param leftlabel character
+#' @param rightlabel character
+#' @param title character
+#' @param labs character
+#' @param type character
+#' @param ur character
+#' @param marginplot character
+#' @param leg_curv character
+#' @param color_bar character
+#' @param \dots additional arguments
 #'
-#' @examples
+#' @return intensity graph
+#' @exportMethod plot
+#' @import ggplot2
+#' @importFrom forcats fct_rev
+
 setMethod(
   f = "plot",
   signature = c(x = "IntensityL01", y = "missing"),
-  definition = function(x,
-                        y = "missing",
+  definition = function(x, y,
                         labels = c(
                           leftlabel = bquote("Mudancas de area" ~ "(" ~ Km ^ 2 ~ ")"),
                           rightlabel = "Taxa de mudança (%)",
@@ -28,6 +44,8 @@ setMethod(
                                       area = "gray40"),
                         ...) {
     dataset <- x$tabela
+
+    tipo <- NULL
 
     GL01_taxa <-
       dataset %>% ggplot(aes(fct_rev(dataset[[1]]), dataset[[3]])) +
@@ -160,18 +178,35 @@ setMethod(
 
 #' Title: setting a method in the generic plot for the openland class IntensityL02
 #'
+#' @name plot02
+#' @aliases plot,IntensityL02-method
+#' @rdname intensityL02-plot
+#' @docType methods
+#'
 #' @param x IntensityL02.
 #' @param y missing.
 #'
-#' @return
+#' @param labels character
+#' @param rightlabel character
+#' @param leftlabel character
+#' @param title character
+#' @param labs character
+#' @param type character
+#' @param ur character
+#' @param marginplot character
+#' @param lh character
+#' @param rh character
+#' @param leg_curv character
+#' @param \dots additional arguments
+#'
+#' @return intensity graph
 #' @export
 #'
-#' @examples
+
 setMethod(
   "plot",
   signature(x = "IntensityL02", y = "missing"),
-  definition = function(x,
-                        y = "missing",
+  definition = function(x, y,
                         labels = c(
                           leftlabel =  bquote("Ganho de area (" ~ Km ^ 2 ~ ")"),
                           rightlabel = "Intensidade de ganho (%)",
@@ -320,18 +355,36 @@ setMethod(
 
 #' Title: setting a method in the generic plot for the openland class IntensityL03
 #'
+#' @name plot03
+#' @aliases plot,IntensityL03-method
+#' @rdname intensityL03-plot
+#' @docType methods
+#'
 #' @param x IntensityL03.
 #' @param y missing.
 #'
-#' @return
+#' @param labels character
+#' @param rightlabel character
+#' @param leftlabel character
+#' @param title character
+#' @param labs character
+#' @param type character
+#' @param ur character
+#' @param marginplot character
+#' @param lh character
+#' @param rh character
+#' @param leg_curv character
+#' @param \dots additional arguments
+#'
+#'
+#' @return intensity graph
 #' @export
 #'
-#' @examples
+
 setMethod(
   f = "plot",
   signature = c(x = "IntensityL03", y = "missing"),
-  definition = function(x,
-                        y,
+  definition = function(x, y,
                         labels = c(
                           rightlabel = bquote("Intensidade de ganho da classe" ~ .(as.character(dataset[[7]][[1]])) ~ "(%)"),
                           leftlabel = bquote("Ganho da classe" ~ .(as.character(dataset[[7]][[1]])) ~ "(" ~ Km ^ 2 ~ ")"),

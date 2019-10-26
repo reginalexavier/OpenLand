@@ -1,5 +1,3 @@
-#' @include utils-pipe.R
-NULL
 # creating a raster serie with some setup like the layer name and the sample value for the lulc
 #' Title
 #'
@@ -14,7 +12,9 @@ NULL
 #' @param crs the coordinate referencing system
 #' @param class the raster classes
 #' @param prob the probability of occorence for the class list
-#' @return
+#' @importFrom dplyr %>%
+#' @importFrom grDevices hcl.colors
+#' @return list
 #' @export
 #'
 #' @examples
@@ -109,6 +109,8 @@ contingenceTable <-
         rList[2:length(rList)]
       ))
 
+    Year_from<-Year_to<-strings01<-strings02<-yearTo<-yearFrom<-QtPixel<-Period<-From<-To<-km2<-interval<-NULL
+
     if (!extent_test) {
       stop("The rasters have differents nrow, ncol and/or src, please edit the files and retry!")
     } else {
@@ -153,8 +155,11 @@ contingenceTable <-
     tb_legend <-
       lulctable[[2]] %>% dplyr::distinct(From) %>% dplyr::rename(classValue = From)
 
-    tb_legend$className <- NA_character_
-    tb_legend$color <- NA_character_
+    genclass <- function() {paste(sample(LETTERS, size = 3, replace = FALSE), collapse = "")}
+
+    tb_legend$className <- as.factor(vapply(seq_len(nrow(tb_legend)), function(x) genclass(), character(1)))
+    tb_legend$color <- hcl.colors(nrow(tb_legend), palette = "Blue-Red 3",
+                                  alpha = NULL, rev = FALSE, fixup = TRUE)
 
     areaTotal <-
       lulctable[[2]] %>% dplyr::group_by(Period) %>% dplyr::summarise(area_km2 = sum(km2), QtPixel = sum(QtPixel))
@@ -167,4 +172,5 @@ contingenceTable <-
         lulc_Onstep = tibble::as_tibble(lulctable[[1]]),
         totalInterval = allinterval
       )
+    return(contengenceTable)
   }

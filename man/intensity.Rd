@@ -4,10 +4,12 @@
 \alias{intensity}
 \title{This is a helper funtion for create the intensities sub classes}
 \usage{
-intensity(data)
+intensity(data, color)
 }
 \arguments{
 \item{data}{tibble}
+
+\item{color}{list}
 }
 \value{
 an object with the correspondate class

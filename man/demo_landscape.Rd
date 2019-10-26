@@ -31,6 +31,9 @@ demo_landscape(year, nrows = 100, ncols = 100, res = 1, xmn = 0,
 
 \item{prob}{the probability of occorence for the class list}
 }
+\value{
+list
+}
 \description{
 Title
 }

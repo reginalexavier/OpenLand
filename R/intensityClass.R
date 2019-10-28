@@ -1,16 +1,19 @@
 
-#' A S4 super class for the objects from the intensity analysis
-#' @name Intensity
+#' Class Intensity
+#'
+#' An S4 super class for the objects from the intensity analysis
+#'
 #' @slot tabela tbl_df.
 #'
-#' @return virtual class
 #' @export
+#' @exportClass Intensity
+#' @rdname Intensity-class
 #'
 #' @import methods
 
 setClass(
   Class = "Intensity", slots = c(tabela = "tbl_df"),
-  prototype = methods::prototype(tabela = tibble::tibble()),
+  prototype = prototype(tabela = tibble::tibble()),
   validity = function(object) {
     if (!tibble::is_tibble(object@tabela))
     {
@@ -33,17 +36,21 @@ setClass(
 #                })
 
 
+#' Class Intensity Level 1
+#'
 #' An S4 class for the intensity level 1 analysis
-#' @name IntensityL01
-#' @slot level character.
 #'
-#' @return an intensity level 1 object
+#' @slot level character
+#'
 #' @export
+#' @exportClass Intensity
+#' @rdname IntensityL01-class
 #'
+
 
 setClass(
   Class = "IntensityL01", slots = c(level = "character"),
-  prototype = methods::prototype(level = "Interval"),
+  prototype = prototype(level = "Interval"),
   validity = function(object) {
     if (!(ncol(object@tabela) == 5))
     {
@@ -54,13 +61,16 @@ setClass(
   contains = c("Intensity")
 )
 
-#' A class for the intensity level 2 analysis
-#' @name IntensityL02
-#' @slot level character.
-#' @slot color character.
+#' Class Intensity Level 2
 #'
-#' @return an intensity level 2 object
+#' A class for the intensity level 2 analysis
+#'
+#' @slot level character
+#' @slot color character
+#'
 #' @export
+#' @exportClass IntensityL02
+#' @rdname IntensityL02-class
 #'
 
 setClass(
@@ -76,13 +86,16 @@ setClass(
   contains = c("Intensity")
 )
 
-#' An S4 class for the intensity level 2 analysis
-#' @name IntensityL03
-#' @slot level character.
-#' @slot color character.
+#' Class Intensity Level 3
 #'
-#' @return an intensity level 3 object
+#' An S4 class for the intensity level 2 analysis
+#'
+#' @slot level character
+#' @slot color character
+#'
 #' @export
+#' @exportClass IntensityL03
+#' @rdname IntensityL03-class
 #'
 
 setClass(
@@ -135,7 +148,7 @@ setMethod("$", signature = "Intensity",
 #' This is a helper funtion for create the intensities sub classes
 #'
 #' @param data tibble
-#' @param color list
+#' @param color list of color
 #'
 #' @return an object with the correspondate class
 #' @export

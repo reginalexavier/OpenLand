@@ -38,5 +38,5 @@ list
 Title
 }
 \examples{
-demo_landscape(2000:2006)
+demo_landscape(2000:2005, res = 1, prob = c(0.05, 0.3, 0.05, 0.4, 0.2))
 }

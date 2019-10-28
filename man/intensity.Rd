@@ -9,7 +9,7 @@ intensity(data, color)
 \arguments{
 \item{data}{tibble}
 
-\item{color}{list}
+\item{color}{list of color}
 }
 \value{
 an object with the correspondate class

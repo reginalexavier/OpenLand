@@ -2,7 +2,7 @@
 % Please edit documentation in R/contingencyTable.R
 \name{demo_landscape}
 \alias{demo_landscape}
-\title{Title}
+\title{Create Raster with Random pixel Value}
 \usage{
 demo_landscape(year, nrows = 100, ncols = 100, res = 1, xmn = 0,
   xmx = 100, ymn = 0, ymx = 100, crs = NA, class = 1:5,
@@ -35,7 +35,8 @@ demo_landscape(year, nrows = 100, ncols = 100, res = 1, xmn = 0,
 list
 }
 \description{
-Title
+This function create a raster serie with some setup like the layer name and
+the sample value for the lulc
 }
 \examples{
 demo_landscape(2000:2005, res = 1, prob = c(0.05, 0.3, 0.05, 0.4, 0.2))

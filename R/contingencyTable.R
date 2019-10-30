@@ -1,5 +1,7 @@
-# creating a raster serie with some setup like the layer name and the sample value for the lulc
-#' Title
+#' Create Raster with Random pixel Value
+#'
+#' This function create a raster serie with some setup like the layer name and
+#' the sample value for the lulc
 #'
 #' @param year A list of year, first and last
 #' @param nrows nrows of the raster
@@ -111,7 +113,9 @@ contingenceTable <-
         rList[2:length(rList)]
       ))
 
-    Year_from<-Year_to<-strings01<-strings02<-yearTo<-yearFrom<-QtPixel<-Period<-From<-To<-km2<-interval<-NULL
+    Year_from <- Year_to <- strings01 <- strings02 <-
+      yearTo <- yearFrom <-
+      QtPixel <- Period <- From <- To <- km2 <- interval <- NULL
 
     if (!extent_test) {
       stop("The rasters have differents nrow, ncol and/or src, please edit the files and retry!")
@@ -132,7 +136,6 @@ contingenceTable <-
       if (length(rList) > 2) {
         lulc[[1]] <- table_cross(rList[[1]], rList[[length(rList)]])
       }
-      #rList <- raster_list
       #compute a serie of contengency table iteratively over the whole list of raster
       lulc[[2]] <-
         Reduce(rbind,

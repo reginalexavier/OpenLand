@@ -36,7 +36,10 @@ Imports:
     networkD3 (>= 0.4)
 Collate: 
     'contingencyTable.R'
+    'generalfunctions.R'
     'intensityClass.R'
     'intensity.R'
     'plotMethods.R'
     'otherplots.R'
+Suggests: 
+    tmap (>= 2.3.1)

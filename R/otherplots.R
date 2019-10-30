@@ -72,7 +72,11 @@ circlizeplot <-
            legposition = c(x = 1.8, y = 1.5),
            legtitle = "Classes",
            sectorcol = "gray80") {
-    From <- To <- target <- km2 <- yearFrom <- yearTo <- colorFrom <- colorTo <- NULL
+
+    From <-
+      To <-
+      target <- km2 <- yearFrom <- yearTo <- colorFrom <- colorTo <- NULL
+
     circle_data <- dataset %>%
       left_join(legendtable, by = c("From" = "classValue")) %>%
       left_join(legendtable, by = c("To" = "classValue")) %>%

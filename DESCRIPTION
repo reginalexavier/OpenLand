@@ -33,8 +33,10 @@ Imports:
     grid (>= 3.6.1),
     ComplexHeatmap (>= 2.1.0),
     circlize (>= 0.4.8),
-    networkD3 (>= 0.4)
+    networkD3 (>= 0.4),
+    gstat (>= 2.0.3)
 Collate: 
+    'demolandscape.R'
     'contingencyTable.R'
     'generalfunctions.R'
     'intensityClass.R'

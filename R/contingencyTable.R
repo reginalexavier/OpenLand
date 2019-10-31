@@ -1,68 +1,13 @@
-#' Create Raster with Random pixel Value
-#'
-#' This function create a raster serie with some setup like the layer name and
-#' the sample value for the lulc
-#'
-#' @param year A list of year, first and last
-#' @param nrows nrows of the raster
-#' @param ncols ncols of the raster
-#' @param res the resolution of the raster to be created
-#' @param xmn x minimun extent
-#' @param xmx x maximum extent
-#' @param ymn y minimum extent
-#' @param ymx y maximum extent
-#' @param crs the coordinate referencing system
-#' @param class the raster classes
-#' @param prob the probability of occorence for the class list
-#'
-#' @import dplyr
-#' @importFrom grDevices hcl.colors
-#' @return list
-#' @export
-#'
-#' @examples
-#' demo_landscape(2000:2005, res = 1, prob = c(0.05, 0.3, 0.05, 0.4, 0.2))
-demo_landscape <- function(year,
-                           nrows = 100,
-                           ncols = 100,
-                           res = 1,
-                           xmn = 0,
-                           xmx = 100,
-                           ymn = 0,
-                           ymx = 100,
-                           crs = NA,
-                           class = 1:5,
-                           prob = NULL) {
-  mapdemo <- function(year01) {
-    landscape <- raster::raster(
-      nrows = nrows,
-      ncols = ncols,
-      xmn = xmn,
-      xmx = xmx,
-      ymn = ymn,
-      ymx = ymx,
-      resolution = res,
-      crs = crs
-    )
-    raster::values(landscape) <-
-      base::sample(class,
-                   raster::ncell(landscape),
-                   replace = T,
-                   prob = prob)
-    names(landscape) <- paste0("landscape_", year01)
-    landscape
-  }
-  raster_list <- lapply(year, function(x)
-    mapdemo(year01 = x))
-
-  return(raster_list)
-}
-
+#' @include demolandscape.R
+NULL
 
 #' Contingence Table
 #'
 #' @param input_raster a raster list
 #' @param pixelresolution the pixel resolution in meter
+#'
+#' @import dplyr
+#' @importFrom grDevices hcl.colors
 #'
 #' @return a list of table contengency
 #' @export

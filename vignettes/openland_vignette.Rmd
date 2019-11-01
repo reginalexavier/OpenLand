@@ -1,0 +1,19 @@
+---
+title: "Quick Intro for OpenLand Package"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Quick Intro for OpenLand Package}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(OpenLand)
+```

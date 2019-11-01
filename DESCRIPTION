@@ -2,7 +2,7 @@ Package: OpenLand
 Title: Quantitative Analysis and Visualization of Land Use and Land Cover Change
 Version: 0.0.0.9000
 Authors@R: c(
-    person(given = "Réginal",
+    person(given = "Reginal",
            family = "Exavier",
            role = c("aut", "cre"),
            email = "reginalexavier@rocketmail.com",
@@ -49,5 +49,8 @@ Collate:
     'plotMethods.R'
     'otherplots.R'
 Suggests: 
-    tmap (>= 2.3.1)
-
+    tmap (>= 2.3.1),
+    knitr,
+    rmarkdown,
+    qpdf
+VignetteBuilder: knitr

@@ -54,3 +54,4 @@ Suggests:
     rmarkdown,
     qpdf
 VignetteBuilder: knitr
+biocViews:

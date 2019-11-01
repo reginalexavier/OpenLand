@@ -5,6 +5,8 @@
 
 <!-- badges: start -->
 
+[![Travis build
+status](https://travis-ci.org/tredgi/OpenLand.svg?branch=master)](https://travis-ci.org/tredgi/OpenLand)
 <!-- badges: end -->
 
 OpenLand is an open-source R package for the analysis of Land Use and

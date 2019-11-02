@@ -26,6 +26,7 @@ BugReports: https://github.com/tredgi/OpenLand/issues
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.1.1
+Depends: R (>= 2.10)
 Imports: 
     raster (>= 3.0.7),
     dplyr (>= 0.8.3),
@@ -43,6 +44,7 @@ Imports:
 Collate: 
     'demolandscape.R'
     'contingencyTable.R'
+    'data.R'
     'generalfunctions.R'
     'intensityClass.R'
     'intensity.R'

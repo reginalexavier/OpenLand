@@ -1,0 +1,28 @@
+#' Land Use and Land Cover of the Sao Lourenco Bassin 2002 - 2014.
+#'
+#' A list containing five objects: `lulc_Mulstistep` a tibble of contingency between
+#' all step of time analysed, `tb_legend` a table of the pixel value his name
+#' and color, `totalArea` the area total of the study area, `lulc_Onstep` a tibble
+#' of contingensy of the first and last year analysed and `totalInterval` the whole
+#' interval of time analysed.
+#'
+#'
+#' @format A data list with 5 objects:
+#' \describe{
+#'   \item{Period}{period between the years analyzed}
+#'   \item{From}{The pixel value from}
+#'   \item{To}{The pixel value to}
+#'   \item{km2}{The area of change in squared kilometer}
+#'   \item{interval}{The interval in years between the period analyzed}
+#'   \item{QtPixel}{The change in quatity of pixel}
+#'   \item{yearFrom}{The year that the change come from}
+#'   \item{yearTo}{The year that the change go for}
+#'   \item{ClassValue}{The pixel value}
+#'   \item{className}{The name or legend associate with a given pixel value}
+#'   \item{color}{The color associate with a given pixel value and legend}
+#'   \item{totalArea}{The total area in squared kilometer and quantity of pixel}
+#'   \item{totalInterval}{The whole interval between the first and last year in year}
+#'   }
+#'
+#' @source \url{https://www.embrapa.br/pantanal/bacia-do-alto-paraguai}
+"SL_2002_2014"

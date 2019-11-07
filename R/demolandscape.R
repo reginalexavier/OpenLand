@@ -3,9 +3,9 @@
 #' This function create a raster serie with some setup like the layer name and
 #' the sample value for the lulc
 #'
-#' @param year A list of year, first and last
-#' @param nrows nrows of the raster
-#' @param ncols ncols of the raster
+#' @param year A list of year, first and last included
+#' @param nrows nrows of the raster to be created
+#' @param ncols ncols of the raster to be created
 #' @param res the resolution of the raster to be created
 #' @param xmn x minimun extent
 #' @param xmx x maximum extent
@@ -109,7 +109,7 @@ demo_landscape <- function(year,
         nmax = 20
       )
 
-    # make four simulations based on the stat object
+    # make n simulations based on the stat object
     simulations <- stats::predict(g.dummy, newdata = xy, nsim = length(year))
 
     simulations <-  as_tibble(simulations)[, -(1:2)]

@@ -11,11 +11,11 @@ demo_landscape(year, nrows = 100, ncols = 100, res = 1, xmn = 0,
   variance = c("identity", "mu", "mu(1-mu)")[1])
 }
 \arguments{
-\item{year}{A list of year, first and last}
+\item{year}{A list of year, first and last included}
 
-\item{nrows}{nrows of the raster}
+\item{nrows}{nrows of the raster to be created}
 
-\item{ncols}{ncols of the raster}
+\item{ncols}{ncols of the raster to be created}
 
 \item{res}{the resolution of the raster to be created}
 

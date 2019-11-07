@@ -6,8 +6,9 @@
 \usage{
 netgrossplot(dataset, legendtable,
   title = "General Changes (2002 - 2014)", xlab = "Land Use Classes",
-  changes = c(GC = "Gross chages", NG = "Net Gain", NL = "Net Loss"),
-  color = c(GC = "gray70", NG = "#006400", NL = "#EE2C2C"))
+  ylab = expression(paste("Area ", Km^{     2 })), changes = c(GC =
+  "Gross chages", NG = "Net Gain", NL = "Net Loss"), color = c(GC =
+  "gray70", NG = "#006400", NL = "#EE2C2C"), area_km2 = TRUE)
 }
 \arguments{
 \item{dataset}{A table of the multi step transition}
@@ -16,11 +17,15 @@ netgrossplot(dataset, legendtable,
 
 \item{title}{The title of the plot}
 
-\item{xlab}{Label for the x axe}
+\item{xlab}{character Label for the x axe}
+
+\item{ylab}{character Label for the y axe}
 
 \item{changes}{a character list for the changes labels, the default is c(GC = "Gross chages", NG = "Net Gain", NL = "Net Loss")}
 
 \item{color}{a color list for the three types of chages}
+
+\item{area_km2}{boolean TRUE for km2 unit, FALSE for pixel unit}
 }
 \value{
 A bar plot

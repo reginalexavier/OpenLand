@@ -7,6 +7,10 @@ NULL
 #' @param legendtable A table contains the legend of the land use classes and his respective color
 #' @param title The title of the plot
 #' @param color A color list for the three types of chages
+#' @param fill Legend
+#' @param xlab character Label for the x axe
+#' @param ylab character Label for the y axe
+#' @param area_km2 boolean TRUE for km2 unit, FALSE for pixel unit
 #'
 #' @return a barplot
 #' @export
@@ -18,8 +22,12 @@ anualplot <-
   function(dataset,
            legendtable,
            title = "General Area in the interval (2002 - 2014)",
-           color = c(GC = "gray70", NG = "#006400", NL = "#EE2C2C")) {
-    From <- To <- yearTo <- km2 <- yearFrom <- Year <- lulc <- NULL
+           color = c(GC = "gray70", NG = "#006400", NL = "#EE2C2C"),
+           fill = "LULC Classes",
+           xlab = "Year",
+           ylab = expression(paste("Area ", Km ^ {2})),
+           area_km2 = TRUE) {
+    From <- To <- yearTo <- km2 <- yearFrom <- Year <- lulc <- area <- NULL
     datachange <- dataset %>%
       left_join(legendtable, by = c("From" = "classValue")) %>%
       left_join(legendtable, by = c("To" = "classValue")) %>%
@@ -31,20 +39,25 @@ anualplot <-
         "colorTo" = "color.y"
       )
 
-    datanual <-
-      datachange %>% group_by(yearTo, To) %>% summarise(km2 = sum(km2)) %>% rename("Year" = "yearTo", "lulc" = "To") %>% rbind(
-        datachange[datachange$yearFrom == first(datachange$yearFrom),] %>% group_by(yearFrom, From) %>% # capturing the first year change
-          summarise(km2 = sum(km2)) %>% rename("Year" = "yearFrom", "lulc" = "From")
-      )
+    # datanual %>% group_by(Year) %>% summarise(sum(area))
 
-    ggplot(data = datanual, aes(Year, km2)) +
+    areaif <- ifelse(isTRUE(area_km2), "km2", "QtPixel")
+
+    datanual <-
+      datachange %>% group_by(yearTo, To) %>%
+      summarise(area = sum(!!as.name(areaif))) %>%
+      rename("Year" = "yearTo", "lulc" = "To") %>% rbind(
+        datachange[datachange$yearFrom == first(datachange$yearFrom),] %>%
+          group_by(yearFrom, From) %>% # capturing the first year change
+          summarise(area = sum(!!as.name(areaif))) %>%
+          rename("Year" = "yearFrom", "lulc" = "From"))
+
+    ggplot(data = datanual, aes(Year, area)) +
       geom_bar(aes(fill = lulc), stat = "identity", position = "dodge") +
       scale_fill_manual(values = legendtable$color[order(legendtable$className)]) +
-      labs(fill = "LULC Classes") +
-      xlab("Year") +
-      ylab(expression(paste("Area ", Km ^ {
-        2
-      }))) +
+      labs(fill = fill) +
+      xlab(xlab) +
+      ylab(ylab) +
       ggtitle(title) +
       theme(plot.title = element_text(hjust = .5))
 
@@ -60,6 +73,7 @@ anualplot <-
 #' @param legposition A list of `x` and `y` parameter position for the legend
 #' @param legtitle The title of the legen
 #' @param sectorcol The color of the extern sector containing the years
+#' @param area_km2 boolean TRUE for km2 unit, FALSE for pixel unit
 #'
 #' @return A circlize plot
 #' @export
@@ -71,11 +85,12 @@ circlizeplot <-
            legendtable,
            legposition = c(x = 1.8, y = 1.5),
            legtitle = "Classes",
-           sectorcol = "gray80") {
+           sectorcol = "gray80",
+           area_km2 = TRUE) {
 
     From <-
       To <-
-      target <- km2 <- yearFrom <- yearTo <- colorFrom <- colorTo <- NULL
+      target <- km2 <- yearFrom <- yearTo <- colorFrom <- colorTo <- QtPixel <- NULL
 
     circle_data <- dataset %>%
       left_join(legendtable, by = c("From" = "classValue")) %>%
@@ -99,6 +114,7 @@ circlizeplot <-
                     From,
                     To,
                     km2,
+                    QtPixel,
                     yearFrom,
                     yearTo,
                     colorFrom,
@@ -106,7 +122,7 @@ circlizeplot <-
 
     # input for the circlize function
     onestepcircle <-
-      circle_data[order(circle_data$From), ][, c("source", "target", "km2")]
+      circle_data[order(circle_data$From), ][, c("source", "target", "km2", "QtPixel")]
 
     # seting the grid.color parameter automatic
     grid_a <- unique(circle_data$colorFrom[order(circle_data$From)])
@@ -123,6 +139,12 @@ circlizeplot <-
 
     ano01 <- unique(onestepcircle$source)
     ano02 <- unique(onestepcircle$target)
+
+    #
+    if (isTRUE(area_km2)) {
+    onestepcircle <- onestepcircle[c(1,2,3)]} else {
+      onestepcircle <- onestepcircle[c(1,2,4)]
+    }
 
     # the legend
     legenda <- ComplexHeatmap::Legend(
@@ -226,9 +248,11 @@ circlizeplot <-
 #' @param dataset A table of the multi step transition
 #' @param legendtable A table contains the legend of the land use classes and his respective color
 #' @param title The title of the plot
-#' @param xlab Label for the x axe
+#' @param xlab character Label for the x axe
+#' @param ylab character Label for the y axe
 #' @param changes a character list for the changes labels, the default is c(GC = "Gross chages", NG = "Net Gain", NL = "Net Loss")
 #' @param color a color list for the three types of chages
+#' @param area_km2 boolean TRUE for km2 unit, FALSE for pixel unit
 #'
 #' @return A bar plot
 #' @export
@@ -239,40 +263,47 @@ netgrossplot <-
            legendtable,
            title = "General Changes (2002 - 2014)",
            xlab = "Land Use Classes",
+           ylab = expression(paste("Area ", Km ^ {2})),
            changes = c(GC = "Gross chages", NG = "Net Gain", NL = "Net Loss"),
-           color = c(GC = "gray70", NG = "#006400", NL = "#EE2C2C")) {
-    From <- To <- km2 <- NULL
-    datachange <- dataset %>%
+           color = c(GC = "gray70", NG = "#006400", NL = "#EE2C2C"),
+           area_km2 = TRUE) {
+    From <- To <- km2 <- QtPixel <- area <- NULL
+    datachange <- (dataset %>%
       left_join(legendtable, by = c("From" = "classValue")) %>%
       left_join(legendtable, by = c("To" = "classValue")) %>%
       dplyr::select(-c(From, To)) %>%
       rename(
         "From" = "className.x",
-        "To" = "className.y",
-        "colorFrom" = "color.x",
-        "colorTo" = "color.y"
-      )
+        "To" = "className.y"))[c(1, 2, 4, 7, 9)]
+
+    areaif <- ifelse(isTRUE(area_km2), "km2", "QtPixel")
 
 
     lulc_gain <- datachange %>% dplyr::filter(From != To)
 
-    lulc_loss <-
-      lulc_gain %>% rename("To" = "From", "From" = "To") %>% mutate(km2 = -1 *
-                                                                      km2)
+    lulc_loss <- lulc_gain %>% rename("To" = "From", "From" = "To") %>%
+      mutate(km2 = -1 * km2, QtPixel = -1 * QtPixel)
 
-    lulc_gainloss_gross <-
-      rbind(lulc_gain, lulc_loss) %>% mutate(changes = ifelse(km2 > 0, "Gain", "Loss"))
+
+    lulc_gainloss_gross <- rbind(lulc_gain, lulc_loss) %>%
+      mutate(changes = ifelse(QtPixel > 0, "Gain", "Loss"))
 
 
     lulc_gainLoss_net <-
-      lulc_gainloss_gross %>% group_by(To) %>% summarise(km2 = sum(km2)) %>%
-      mutate(changes = ifelse(km2 > 0, changes[[2]], changes[[3]]))
+      lulc_gainloss_gross %>% group_by(To) %>% summarise(area = sum(!!as.name(areaif))) %>%
+      mutate(changes = ifelse(area > 0, changes[[2]], changes[[3]]))
+
+    if (isTRUE(area_km2)) {
+      lulc_gainloss_gross <- lulc_gainloss_gross[c(1, 2, 4, 5, 6)]
+    } else {
+      lulc_gainloss_gross <- lulc_gainloss_gross[c(1, 3, 4, 5, 6)]
+    }
 
 
-    ggplot(data = lulc_gainloss_gross, aes(To, km2)) +
+    ggplot(data = lulc_gainloss_gross, aes(To, lulc_gainloss_gross[[2]])) +
       geom_bar(stat = "identity", width = 0.5, aes(fill = changes[[1]])) +
       geom_bar(
-        aes(To, km2, fill = changes),
+        aes(x = To, y = area, fill = changes),
         data = lulc_gainLoss_net,
         stat = "identity",
         width = 0.4,
@@ -281,17 +312,15 @@ netgrossplot <-
       geom_segment(data = lulc_gainLoss_net,
                    aes(
                      x = as.numeric(To) - 0.3,
-                     y = km2,
+                     y = area,
                      xend = as.numeric(To) + 0.3,
-                     yend = km2
+                     yend = area
                    )) +
       scale_fill_manual(values = c(color[[1]], color[[2]], color[[3]])) +
       labs(fill = "Changes") +
       geom_hline(yintercept = 0, size = .3) +
       xlab(xlab) +
-      ylab(expression(paste("Area ", Km ^ {
-        2
-      }))) +
+      ylab(ylab) +
       ggtitle(title) +
       theme(plot.title = element_text(hjust = .5))
   }

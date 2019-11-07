@@ -4,7 +4,7 @@
 \alias{intensityanalysis}
 \title{It's a function that perform the intensity test analysis from a table contingency}
 \usage{
-intensityanalysis(dataset, class_n, class_m)
+intensityanalysis(dataset, class_n, class_m, area_km2 = TRUE)
 }
 \arguments{
 \item{dataset}{The list of object from \code{contingencyTable}}
@@ -12,6 +12,8 @@ intensityanalysis(dataset, class_n, class_m)
 \item{class_n}{A natural class of land use}
 
 \item{class_m}{A antropic class of land use}
+
+\item{area_km2}{Whether the change would be computed in km2 or quantity of pixel}
 }
 \value{
 Intensity objects including the levels tables and strationarity test tables

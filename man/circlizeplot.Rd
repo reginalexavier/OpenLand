@@ -5,7 +5,7 @@
 \title{A circlize plot for the transition between two times point, one step.}
 \usage{
 circlizeplot(dataset, legendtable, legposition = c(x = 1.8, y = 1.5),
-  legtitle = "Classes", sectorcol = "gray80")
+  legtitle = "Classes", sectorcol = "gray80", area_km2 = TRUE)
 }
 \arguments{
 \item{dataset}{A table of the one step transition}
@@ -17,6 +17,8 @@ circlizeplot(dataset, legendtable, legposition = c(x = 1.8, y = 1.5),
 \item{legtitle}{The title of the legen}
 
 \item{sectorcol}{The color of the extern sector containing the years}
+
+\item{area_km2}{boolean TRUE for km2 unit, FALSE for pixel unit}
 }
 \value{
 A circlize plot

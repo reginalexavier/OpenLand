@@ -6,7 +6,9 @@
 \usage{
 anualplot(dataset, legendtable,
   title = "General Area in the interval (2002 - 2014)", color = c(GC =
-  "gray70", NG = "#006400", NL = "#EE2C2C"))
+  "gray70", NG = "#006400", NL = "#EE2C2C"), fill = "LULC Classes",
+  xlab = "Year", ylab = expression(paste("Area ", Km^{     2 })),
+  area_km2 = TRUE)
 }
 \arguments{
 \item{dataset}{A table of the multi step transition}
@@ -16,6 +18,14 @@ anualplot(dataset, legendtable,
 \item{title}{The title of the plot}
 
 \item{color}{A color list for the three types of chages}
+
+\item{fill}{Legend}
+
+\item{xlab}{character Label for the x axe}
+
+\item{ylab}{character Label for the y axe}
+
+\item{area_km2}{boolean TRUE for km2 unit, FALSE for pixel unit}
 }
 \value{
 a barplot

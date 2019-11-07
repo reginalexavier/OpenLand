@@ -155,7 +155,6 @@ setMethod("$", signature = "Intensity",
 #'
 
 intensity <- function(data, color) {
-  #color <- NULL
   if (ncol(data) == 5) {
     new("IntensityL01", tabela = data)
   } else if (ncol(data) == 8) {

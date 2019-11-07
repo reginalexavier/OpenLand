@@ -20,8 +20,14 @@ NULL
 contingenceTable <-
   function(input_raster, pixelresolution = 30) {
     #importing the rasters
-    if ((c(class(input_raster[[1]]))) == "RasterLayer") {
-      rList <- input_raster
+    if (c(class(input_raster)) %in% c("RasterStack", "RasterBrick")) {
+
+      rList  <- raster::unstack(input_raster)
+
+    } else if ((c(class(input_raster[[1]]))) == "RasterLayer") {
+
+        rList <- input_raster
+
     } else if (class(input_raster) == "character") {
       raster_files <-
         list.files(input_raster,
@@ -34,9 +40,10 @@ contingenceTable <-
       for (i in seq_along(raster_files)) {
         rList[[i]] <- raster::raster(raster_files[i])
       }
-    } #else {
-    #stop("The input have to be a folder of '.tif' forder or a list of 'Raster Layer'")
-    #}
+    } else {
+    stop("The input can only be a `RasterStack`, `RasterBrick`, a list of `RasterLayer` or
+         a path directory of rasters `.tif` ")
+    }
     #testing if the raster are similar in nrow, ncol and crs
     extent_test <-
       all(mapply(
@@ -118,7 +125,7 @@ contingenceTable <-
       list(
         lulc_Mulstistep = tibble::as_tibble(lulctable[[2]]),
         tb_legend = tibble::as_tibble(tb_legend),
-        totalArea = areaTotal[[1, 2]],
+        totalArea = areaTotal[1, c(2,3)],
         lulc_Onstep = tibble::as_tibble(lulctable[[1]]),
         totalInterval = allinterval
       )

@@ -3,34 +3,44 @@
 \docType{data}
 \name{SL_2002_2014}
 \alias{SL_2002_2014}
-\title{Land Use and Land Cover of the Sao Lourenco Bassin 2002 - 2014.}
+\title{Tables of Land Use and Land Cover of the São Lourenço River Basin (2002 - 2014)}
 \format{A data list with 5 objects:
 \describe{
-  \item{Period}{period between the years analyzed}
-  \item{From}{The pixel value from}
-  \item{To}{The pixel value to}
-  \item{km2}{The area of change in squared kilometer}
-  \item{interval}{The interval in years between the period analyzed}
-  \item{QtPixel}{The change in quatity of pixel}
-  \item{yearFrom}{The year that the change come from}
-  \item{yearTo}{The year that the change go for}
-  \item{ClassValue}{The pixel value}
-  \item{className}{The name or legend associate with a given pixel value}
-  \item{color}{The color associate with a given pixel value and legend}
-  \item{totalArea}{The total area in squared kilometer and quantity of pixel}
-  \item{totalInterval}{The whole interval between the first and last year in year}
+  \item{lulc_Mulstistep}{A \code{tibble} of contingency between all step of time analysed, contains 8 columns:
+  \enumerate{
+  \item Period: period between the years analyzed
+  \item From: The pixel value from
+  \item To: The pixel value to
+  \item km2: The area of change in squared kilometer
+  \item interval: The interval in years between the period analyzed
+  \item QtPixel: The change in quatity of pixel
+  \item yearFrom: The year that the change come from
+  \item yearTo: The year that the change go for
+  }}
+  \item{tb_legend}{A \code{tibble} of the pixel value his name and color, contains 3 columns:
+  \enumerate{
+  \item classValue: \code{numeric} the pixel value of the classes of land use
+  \item className: \code{factor} The name or legend associate with a given pixel value, here as factor with a specific level for blablabla
+  \item color: The color associate with the given pixel value
+  }}
+  \item{totalArea}{A \code{tibble} of two columns with the total area of study, contains 2 columns:
+  \enumerate{
+  \item area_km2: \code{numeric} The total area of study in km2
+  \item QtPixel: \code{numeric} The total area of study in quantity of pixel
+  }}
+  \item{lulc_Onstep}{A \code{tibble} of contingensy of the first and last year analysed with the same columns
+  like \code{lulc_Mulstistep} \code{tibble}}
+  \item{totalInterval}{A \code{numeric} represinting the whole interval of time analysed}
   }}
 \source{
 \url{https://www.embrapa.br/pantanal/bacia-do-alto-paraguai}
 }
 \usage{
-SL_2002_2014
+data(SL_2002_2014)
 }
 \description{
-A list containing five objects: `lulc_Mulstistep` a tibble of contingency between
-all step of time analysed, `tb_legend` a table of the pixel value his name
-and color, `totalArea` the area total of the study area, `lulc_Onstep` a tibble
-of contingensy of the first and last year analysed and `totalInterval` the whole
-interval of time analysed.
+A list containing five objects from \code{\link{contingenceTable}} funtion
+with the \code{\link{SaoLourencoBasin}} as input
+(\code{SL_2002_2014 <- contingenceTable(input_raster = SaoLourencoBasin, pixelresolution = 30)}).
 }
 \keyword{datasets}

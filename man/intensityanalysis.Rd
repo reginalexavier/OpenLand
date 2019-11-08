@@ -2,22 +2,78 @@
 % Please edit documentation in R/intensity.R
 \name{intensityanalysis}
 \alias{intensityanalysis}
-\title{It's a function that perform the intensity test analysis from a table contingency}
+\title{Perform the intensity analysis from a cross-tabulation matrices}
 \usage{
 intensityanalysis(dataset, class_n, class_m, area_km2 = TRUE)
 }
 \arguments{
-\item{dataset}{The list of object from \code{contingencyTable}}
+\item{dataset}{The list of object from \code{\link{contingenceTable}}}
 
-\item{class_n}{A natural class of land use}
+\item{class_n}{character. A natural class of land use}
 
-\item{class_m}{A antropic class of land use}
+\item{class_m}{character. A antropic class of land use}
 
-\item{area_km2}{Whether the change would be computed in km2 or quantity of pixel}
+\item{area_km2}{logical. Whether the change would be computed in km2 or quantity of pixel unit}
 }
 \value{
 Intensity objects including the levels tables and strationarity test tables
 }
 \description{
-It's a function that perform the intensity test analysis from a table contingency
+This function inplement the Intensity Analysis, a quantitative method to analyze
+maps of land categories from several points in time for a single site by
+considering cross-tabulation matrices, where one matrix summarizes the change
+in each time interval.
+}
+\details{
+There are three levels of analysis, starting from general to more detailed levels, where each level
+exposes different types of information given the previous level of analysis
+\cite{(Aldwaik and Pontius, 2012, 2013)}.
+
+\enumerate{
+ \item The \emph{interval level} examines how the size and speed of change vary
+across time intervals.
+ \item The \emph{category level} examines how the size and intensity of gross losses
+and gross gains in each category vary across categories for each time interval.
+ \item The \emph{transition level} examines how the size and intensity of a category’s
+transitions vary across the other categories that are available for that transition.
+  }
+
+At each level, the method tests for stationarity of patterns across time intervals.
+
+\bold{The function return a list with 10 objects:}
+\itemize{
+ \item lulc_table: A \code{tibble} of contingency between all step of time analysed, contains 8 columns:
+   \enumerate{
+   \item Period
+   \item From
+   \item To
+   \item km2
+   \item interval
+   \item QtPixel
+   }
+ \item lv1_tbl: An IntensityL01 object \code{"\linkS4class{IntensityL01}"}
+ \item lv2_gain: An IntensityL02 object \code{"\linkS4class{IntensityL02}"}
+ \item lv2_loss: An IntensityL02 object \code{"\linkS4class{IntensityL02}"}
+ \item gain_n: An IntensityL03 object \code{"\linkS4class{IntensityL03}"}
+ \item loss_m: An IntensityL03 object \code{"\linkS4class{IntensityL03}"}
+ \item st_lv2_gain: A \code{tibble} of stationarity test in level 02 gain
+ \item st_lv2_loss: A \code{tibble} of stationarity test in level 02 loss
+ \item st_gain_n: A \code{tibble} of stationarity test in level 03 gain on class n
+ \item st_loss_m: A \code{tibble} of stationarity test in level 03 loss on class m
+  }
+}
+\examples{
+intensityanalysis(dataset = SL_2002_2014, class_n = "Ap", class_m = "SG", area_km2 = TRUE)
+
+
+}
+\references{
+Aldwaik, S. Z. and Pontius, R. G. (2012) ‘Intensity analysis to unify
+measurements of size and stationarity of land changes by interval, category, and
+transition’, Landscape and Urban Planning. Elsevier B.V., 106(1), pp. 103–114.
+\doi{10.1016/j.landurbplan.2012.02.010}.
+
+Aldwaik, S. Z. and Pontius, R. G. (2013) ‘Map errors that could account for deviations
+from a uniform intensity of land change’, International Journal of Geographical
+Information Science. Taylor & Francis, 27(9), pp. 1717–1739. \doi{10.1080/13658816.2013.787618}.
 }

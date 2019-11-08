@@ -38,7 +38,7 @@ setClass(
 
 #' Class Intensity Level 1
 #'
-#' An S4 class for the intensity level 1 analysis
+#' An S4 class for the intensity level 1 analysis result
 #'
 #' @slot level character
 #'
@@ -63,7 +63,7 @@ setClass(
 
 #' Class Intensity Level 2
 #'
-#' A class for the intensity level 2 analysis
+#' A class for the intensity level 2 analysis result
 #'
 #' @slot level character
 #' @slot color character
@@ -88,7 +88,7 @@ setClass(
 
 #' Class Intensity Level 3
 #'
-#' An S4 class for the intensity level 2 analysis
+#' An S4 class for the intensity level 3 analysis  result
 #'
 #' @slot level character
 #' @slot color character

@@ -1,6 +1,6 @@
 #' Rasters of Land Use and Land Cover of the São Lourenço River Basin (2002 - 2014)
 #'
-#' A multi-layer raster (RasterBrick) with five (5) RasterLayer objects
+#' A multi-layer raster (RasterStack) with five (5) RasterLayer objects
 #' represinting the years 2002, 2008, 2010, 2012 and 2014 respectively.
 #' These Raster* have everyone 11 classes of use, these classes are:
 #' \tabular{cclll}{
@@ -87,6 +87,7 @@
 #'   like \code{lulc_Mulstistep} \code{tibble}}
 #'   \item{totalInterval}{A \code{numeric} represinting the whole interval of time analysed}
 #'   }
+#'
 #' @keywords datasets
 #'
 #'

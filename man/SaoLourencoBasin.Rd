@@ -19,7 +19,7 @@
 data(SaoLourencoBasin)
 }
 \description{
-A multi-layer raster (RasterBrick) with five (5) RasterLayer objects
+A multi-layer raster (RasterStack) with five (5) RasterLayer objects
 represinting the years 2002, 2008, 2010, 2012 and 2014 respectively.
 These Raster* have everyone 11 classes of use, these classes are:
 \tabular{cclll}{

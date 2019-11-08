@@ -5,7 +5,7 @@
 \alias{IntensityL01-class}
 \title{Class Intensity Level 1}
 \description{
-An S4 class for the intensity level 1 analysis
+An S4 class for the intensity level 1 analysis result
 }
 \section{Slots}{
 

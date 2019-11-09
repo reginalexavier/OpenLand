@@ -27,24 +27,115 @@ NULL
 #'
 #' \bold{The function return a list with 10 objects:}
 #' \itemize{
-#'  \item lulc_table: A \code{tibble} of contingency between all step of time analysed, contains 8 columns:
+#'  \item lulc_table: A \code{tibble} of contingency between all step of time analysed, contains 6 columns:
 #'    \enumerate{
-#'    \item Period
-#'    \item From
-#'    \item To
-#'    \item km2
-#'    \item interval
-#'    \item QtPixel
+#'    \item Period:  \code{<fct>}. The period of change in the format \code{first year - last year}.
+#'    \item From: \code{<fct>}. The class in the first year.
+#'    \item To: \code{<fct>}. The class in the last year.
+#'    \item km2: \code{dbl}. The quantity in kilometer that transit from the classes \code{From}
+#'    to \code{To} in the period.
+#'    \item interval: \code{dbl}. The number of time point between the first and the last year of the period.
+#'    \item QtPixel: \code{int}. The quantity in number of pixel that transits from
+#'    the classes \code{From} to \code{To} in the period.
 #'    }
-#'  \item lv1_tbl: An IntensityL01 object \code{"\linkS4class{IntensityL01}"}
-#'  \item lv2_gain: An IntensityL02 object \code{"\linkS4class{IntensityL02}"}
-#'  \item lv2_loss: An IntensityL02 object \code{"\linkS4class{IntensityL02}"}
-#'  \item gain_n: An IntensityL03 object \code{"\linkS4class{IntensityL03}"}
-#'  \item loss_m: An IntensityL03 object \code{"\linkS4class{IntensityL03}"}
+#'  \item lv1_tbl: An \code{"\linkS4class{IntensityL01}"} object containing
+#'  1 table with 4 columns:
+#'    \enumerate{
+#'    \item Period: \code{<fct>}.
+#'    \item PercentChange: \code{<dbl>}. Interval Change Area (percent of map).
+#'    \item St: \code{<dbl>}. annual intensity of change for time interval [Yt, Yt+1].
+#'    \item U: \code{<dbl>}. value of uniform line for time intensity analysis.
+#'    }
+#'  \item lv2_gain: An \code{"\linkS4class{IntensityL02}"} object containing
+#'  a slot with lookup table af the colors associate with the land classes and a
+#'  table with 6 columns:
+#'  \enumerate{
+#'    \item Period: \code{<fct>}. The interval [Yt, Yt+1].
+#'    \item To: \code{<fct>}. a category j.
+#'    \item interval: \code{<dbl>}. duration of [Yt, Yt+1].
+#'    \item GG_km2/GG_pixel: \code{<dbl>/<int>}. area of gross gain of category j during [Yt, Yt+1].
+#'    \item Gtj: \code{<dbl>}. annual intensity of gross gain of category j for time interval [Yt, Yt+1].
+#'    \item St: \code{<dbl>}. annual intensity of change for time interval [Yt, Yt+1].
+#'    }
+#'  \item lv2_loss: An \code{"\linkS4class{IntensityL02}"} object containing
+#'  a slot with lookup table af the colors associate with the land classes and a
+#'  table with 6 columns:
+#'  \enumerate{
+#'    \item Period: \code{<fct>}. The interval [Yt, Yt+1].
+#'    \item From: \code{<fct>}. a category i.
+#'    \item interval: \code{<dbl>}.
+#'    \item num04: \code{<dbl>}.
+#'    \item denom04: \code{<dbl>}.
+#'    \item Lti: \code{<dbl>}.
+#'    \item intch_km2 or QtPixel: \code{<dbl> or <int>}.
+#'    \item STt: \code{<dbl>}.
+#'    }
+#'  \item gain_n: An \code{"\linkS4class{IntensityL03}"} object containing
+#'  a slot with lookup table af the colors associate with the land classes and a
+#'  table with 10 columns:
+#'  \enumerate{
+#'    \item Period: \code{<fct>}.
+#'    \item From: \code{<fct>}.
+#'    \item interval: \code{<dbl>}.
+#'    \item num05: \code{<dbl>}.
+#'    \item denom05: \code{<dbl>}.
+#'    \item Rtin: \code{<dbl>}.
+#'    \item To: \code{<fct>}.
+#'    \item num06: \code{<dbl>}.
+#'    \item denom06: \code{<dbl>}.
+#'    \item Wtn: \code{<dbl>}.
+#'    }
+#'  \item loss_m: An \code{"\linkS4class{IntensityL03}"} object containing
+#'  a slot with lookup table af the colors associate with the land classes and a
+#'  table with 10 columns:
+#'  \enumerate{
+#'    \item Period: \code{<fct>}.
+#'    \item To: \code{<fct>}.
+#'    \item interval: \code{<dbl>}.
+#'    \item num07: \code{<dbl>}.
+#'    \item denom07: \code{<dbl>}.
+#'    \item Qtmj: \code{<dbl>}.
+#'    \item From: \code{<fct>}.
+#'    \item num08: \code{<dbl>}.
+#'    \item denom08: \code{<dbl>}.
+#'    \item Vtn: \code{<dbl>}.
+#'    }
 #'  \item st_lv2_gain: A \code{tibble} of stationarity test in level 02 gain
+#'  containing 5 columns:
+#'  \enumerate{
+#'    \item To: \code{<fct>}.
+#'    \item gain: \code{<int>}.
+#'    \item N: \code{<int>}.
+#'    \item Stationarity: \code{<chr>}.
+#'    \item Test: \code{<chr>}.
+#'    }
 #'  \item st_lv2_loss: A \code{tibble} of stationarity test in level 02 loss
+#'  containing 5 columns:
+#'  \enumerate{
+#'    \item From: \code{<fct>}.
+#'    \item loss: \code{<int>}.
+#'    \item N: \code{<int>}.
+#'    \item Stationarity: \code{<chr>}.
+#'    \item Test: \code{<chr>}.
+#'    }
 #'  \item st_gain_n: A \code{tibble} of stationarity test in level 03 gain on class n
+#'  containing 5 columns:
+#'  \enumerate{
+#'    \item From: \code{<fct>}.
+#'    \item loss: \code{<int>}.
+#'    \item N: \code{<int>}.
+#'    \item Stationarity: \code{<chr>}.
+#'    \item Test: \code{<chr>}.
+#'    }
 #'  \item st_loss_m: A \code{tibble} of stationarity test in level 03 loss on class m
+#'  containing 5 columns:
+#'  \enumerate{
+#'    \item To: \code{<fct>}. The classes gaining from the m class.
+#'    \item gain: \code{<int>}. Number of time the class gain from the m class.
+#'    \item N: \code{(<int>)}. Number total of time of trasition to be considered as stationary.
+#'    \item Stationarity: \code{<chr>}. \emph{targeted} or \emph{avoided} by the \code{m} class.
+#'    \item Test: \code{<chr>}. \emph{Y} for stationarity detected and \emph{N} when not.
+#'    }
 #'   }
 #'
 #'
@@ -70,7 +161,7 @@ NULL
 #'
 #'
 #' @examples
-#'intensityanalysis(dataset = SL_2002_2014, class_n = "Ap", class_m = "SG", area_km2 = TRUE)
+#' intensityanalysis(dataset = SL_2002_2014, class_n = "Ap", class_m = "SG", area_km2 = TRUE)
 #'
 #'
 
@@ -102,7 +193,7 @@ intensityanalysis <-
       To <-
       Period <-
       km2 <-
-      interval <- QtPixel <- intch_km2 <- num02 <- STt <- U <- Gtj <-
+      interval <- QtPixel <- intch_km2 <- num02 <- St <- U <- Gtj <-
       gain <- N <- Lti <- loss <- Rtin <- Wtn <- Qtmj <- Vtm  <- intch_QtPixel <- NULL
 
     if (isTRUE(area_km2)) {
@@ -111,8 +202,8 @@ intensityanalysis <-
 
       eq1 <- lulc %>% dplyr::filter(From != To) %>%
         dplyr::group_by(Period, interval) %>% dplyr::summarise(intch_km2 = sum(km2)) %>% #interval change:intch_km2
-        dplyr::mutate(STt = (intch_km2 / (interval * AE[[1, 1]])) * 100) %>%
-        dplyr::select(1, 3, 4)
+        dplyr::mutate(PercentChange = (intch_km2 / AE[[1, 1]]) * 100, St = (intch_km2 / (interval * AE[[1, 1]])) * 100) %>%
+        dplyr::select(1, 4, 5)
 
       #EQ2 - U ----
       eq2 <- lulc %>% dplyr::filter(From != To) %>%
@@ -120,7 +211,7 @@ intensityanalysis <-
         dplyr::mutate(U = (num02 / (allinterval * AE[[1, 1]])) * 100)
 
       level01 <-
-        eq1 %>% dplyr::mutate(U = eq2[[2]], tipo = ifelse(STt > U, "Faster", "Slow"))
+        eq1 %>% dplyr::mutate(U = eq2[[2]]) # Type = ifelse(St > U, "Fast", "Slow"))
 
       #____________Categorical ----
       #EQ3 - Gtj ----
@@ -132,7 +223,9 @@ intensityanalysis <-
 
       eq3 <-
         num03 %>% dplyr::left_join(denom03, by = c("Period", "To")) %>%
-        dplyr::mutate(Gtj = (num03 / (denom03 * interval)) * 100) %>% dplyr::left_join(eq1, by = "Period")
+        dplyr::mutate(Gtj = (num03 / (denom03 * interval)) * 100) %>%
+        dplyr::left_join(eq1[c(1,3)], by = "Period") %>% dplyr::select(1,2,3,4,6,7) %>%
+        rename("GG_km2" = "num03")
 
       #EQ4 -   Lti ---------
       num04 <- lulc %>% dplyr::filter(From != To) %>%
@@ -143,7 +236,9 @@ intensityanalysis <-
 
       eq4 <-
         num04 %>% dplyr::left_join(denom04, by = c("Period", "From")) %>%
-        dplyr::mutate(Lti = (num04 / (denom04 * interval)) * 100) %>% dplyr::left_join(eq1, by = "Period")
+        dplyr::mutate(Lti = (num04 / (denom04 * interval)) * 100) %>%
+        dplyr::left_join(eq1[c(1,3)], by = "Period") %>% dplyr::select(1,2,3,4,6,7) %>%
+        rename("GL_km2" = "num04")
 
       #____________Transition ----
       #meu n é agropecuario como a classe que ganhou mais durante esse perriodo
@@ -172,7 +267,8 @@ intensityanalysis <-
         dplyr::mutate(Wtn = (num06 / (interval * denom06)) * 100)
 
       plot03ganho_n <-
-        eq5 %>% dplyr::left_join(eq6, by = c("Period", "interval"))
+        eq5 %>% dplyr::left_join(eq6, by = c("Period", "interval")) %>%
+        dplyr::select(1,2,7,3,4,6,10) %>% rename("T_i2n_km2" = "num05")
 
       #EQ7 - Qtmj----
       num07 <- lulc %>% dplyr::filter(From != To, From == class_m) %>%
@@ -197,15 +293,16 @@ intensityanalysis <-
         dplyr::mutate(Vtm = (num08 / (interval * denom08)) * 100)
 
       plot03perda_m <-
-        eq7 %>% dplyr::left_join(eq8, by = c("Period", "interval"))
+        eq7 %>% dplyr::left_join(eq8, by = c("Period", "interval")) %>%
+        dplyr::select(1,2,7,3,4,6,10) %>% rename("T_m2j_km2" = "num07")
     } else {
       #____________Interval-------
       #EQ1 - St ----
 
       eq1 <- lulc %>% dplyr::filter(From != To) %>%
         dplyr::group_by(Period, interval) %>% dplyr::summarise(intch_QtPixel = sum(QtPixel)) %>% #interval change:intch_km2
-        dplyr::mutate(STt = (intch_QtPixel / (interval * AE[[1, 2]])) * 100) %>%
-        dplyr::select(1, 3, 4)
+        dplyr::mutate(PercentChange = (intch_QtPixel / AE[[1, 2]]) * 100, St = (intch_QtPixel / (interval * AE[[1, 2]])) * 100) %>%
+        dplyr::select(1, 4, 5)
 
       #EQ2 - U ----
       eq2 <- lulc %>% dplyr::filter(From != To) %>%
@@ -213,7 +310,7 @@ intensityanalysis <-
         dplyr::mutate(U = (num02 / (allinterval * AE[[1, 2]])) * 100)
 
       level01 <-
-        eq1 %>% dplyr::mutate(U = eq2[[2]], tipo = ifelse(STt > U, "Faster", "Slow"))
+        eq1 %>% dplyr::mutate(U = eq2[[2]]) # Type = ifelse(St > U, "Fast", "Slow"))
 
       #____________Categorical ----
       #EQ3 - Gtj ----
@@ -225,7 +322,9 @@ intensityanalysis <-
 
       eq3 <-
         num03 %>% dplyr::left_join(denom03, by = c("Period", "To")) %>%
-        dplyr::mutate(Gtj = (num03 / (denom03 * interval)) * 100) %>% dplyr::left_join(eq1, by = "Period")
+        dplyr::mutate(Gtj = (num03 / (denom03 * interval)) * 100) %>%
+        dplyr::left_join(eq1[c(1,3)], by = "Period") %>% dplyr::select(1,2,3,4,6,7) %>%
+        rename("GG_pixel" = "num03")
 
       #EQ4 -   Lti ---------
       num04 <- lulc %>% dplyr::filter(From != To) %>%
@@ -236,7 +335,9 @@ intensityanalysis <-
 
       eq4 <-
         num04 %>% dplyr::left_join(denom04, by = c("Period", "From")) %>%
-        dplyr::mutate(Lti = (num04 / (denom04 * interval)) * 100) %>% dplyr::left_join(eq1, by = "Period")
+        dplyr::mutate(Lti = (num04 / (denom04 * interval)) * 100) %>%
+        dplyr::left_join(eq1[c(1,3)], by = "Period") %>% dplyr::select(1,2,3,4,6,7) %>%
+        rename("GL_pixel" = "num04")
 
       #____________Transition ----
       #meu n é agropecuario como a classe que ganhou mais durante esse perriodo
@@ -265,7 +366,9 @@ intensityanalysis <-
         dplyr::mutate(Wtn = (num06 / (interval * denom06)) * 100)
 
       plot03ganho_n <-
-        eq5 %>% dplyr::left_join(eq6, by = c("Period", "interval"))
+        eq5 %>% dplyr::left_join(eq6, by = c("Period", "interval")) %>%
+        dplyr::select(1,2,7,3,4,6,10) %>% rename("T_i2n_pixel" = "num05")
+
 
       #EQ7 - Qtmj----
       num07 <- lulc %>% dplyr::filter(From != To, From == class_m) %>%
@@ -290,7 +393,8 @@ intensityanalysis <-
         dplyr::mutate(Vtm = (num08 / (interval * denom08)) * 100)
 
       plot03perda_m <-
-        eq7 %>% dplyr::left_join(eq8, by = c("Period", "interval"))
+        eq7 %>% dplyr::left_join(eq8, by = c("Period", "interval")) %>%
+        dplyr::select(1,2,7,3,4,6,10) %>% rename("T_m2j_pixel" = "num07")
     }
 
     #___Stationarity test------
@@ -298,14 +402,14 @@ intensityanalysis <-
     #Level02 ----
     #gain
     st_lv2_gain <-
-      eq3 %>% dplyr::filter(Gtj > STt) %>% dplyr::group_by(To) %>%
+      eq3 %>% dplyr::filter(Gtj > St) %>% dplyr::group_by(To) %>%
       dplyr::summarise(
         gain = dplyr::n(),
         N = length(unique(eq3$Period)),
         Stationarity = "Active Gain",
         Test = ifelse(gain == N, "Y", "N")
       ) %>% rbind(
-        eq3 %>% dplyr::filter(Gtj < STt) %>% dplyr::group_by(To) %>%
+        eq3 %>% dplyr::filter(Gtj < St) %>% dplyr::group_by(To) %>%
           dplyr::summarise(
             gain = dplyr::n(),
             N = length(unique(eq3$Period)),
@@ -316,14 +420,14 @@ intensityanalysis <-
 
     #loss
     st_lv2_loss <-
-      eq4 %>% dplyr::filter(Lti > STt) %>% dplyr::group_by(From) %>%
+      eq4 %>% dplyr::filter(Lti > St) %>% dplyr::group_by(From) %>%
       dplyr::summarise(
         loss = dplyr::n(),
         N = length(unique(eq4$Period)),
         Stationarity = "Active Loss",
         Test = ifelse(loss == N, "Y", "N")
       ) %>% rbind(
-        eq4 %>% dplyr::filter(Lti < STt) %>% dplyr::group_by(From) %>%
+        eq4 %>% dplyr::filter(Lti < St) %>% dplyr::group_by(From) %>%
           dplyr::summarise(
             loss = dplyr::n(),
             N = length(unique(eq4$Period)),
@@ -381,5 +485,6 @@ intensityanalysis <-
         st_gain_n = st_gain_n,
         st_loss_m = st_loss_m
       )
+    return(intensity_tables)
 
   }

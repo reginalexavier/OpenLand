@@ -39,8 +39,8 @@ NULL
 
 plot.IntensityL01 <- function(x,
                               y,
-                              labels = c(leftlabel = bquote("Area changes" ~ "(" ~ Km ^ 2 ~ ")"),
-                                         rightlabel = "Change rate (%)",
+                              labels = c(leftlabel = "Interval Change Area (percent of map)",
+                                         rightlabel = "Annual Change Area (percent of map)",
                                          title = "Level 01 Mudancas todo o Periodo"),
                               labs = c(type = "Changes", ur = "Uniform Rate"),
                               marginplot = c(lh = -10, rh = 0),
@@ -49,14 +49,15 @@ plot.IntensityL01 <- function(x,
                                             slower = "#006400",
                                             area = "gray40"),
                               ...) {
-  dataset <- x$tabela
+  Type <- NULL
 
-  tipo <- NULL
+  dataset <- x$tabela %>% dplyr::mutate(Type = ifelse(St > U, "Fast", "Slow"))
+
 
   GL01_taxa <-
     dataset %>% ggplot(aes(fct_rev(dataset[[1]]), dataset[[3]])) +
     geom_bar(
-      aes(fill = tipo),
+      aes(fill = Type),
       stat = "identity",
       position = "dodge",
       width = .5
@@ -197,7 +198,7 @@ plot.IntensityL02 <- function(x, y,
   lookupcolor <- x$color
 
   GL02_ganho_taxa <-
-    dataset %>% ggplot(aes(fct_rev(dataset[[2]]), dataset[[6]])) +
+    dataset %>% ggplot(aes(fct_rev(dataset[[2]]), dataset[[5]])) +
     geom_bar(aes(fill = dataset[[2]]), stat = "identity", position = "dodge") +
     facet_wrap( ~ dataset[[1]], ncol = 1) +
     scale_fill_manual(values =  unname(lookupcolor[as.character(unique(dataset[[2]]))
@@ -206,7 +207,7 @@ plot.IntensityL02 <- function(x, y,
     xlab(NULL) +
     ylab(NULL) +
     geom_hline(aes(yintercept = 0), size = .3) +
-    geom_hline(aes(yintercept = dataset[[8]], color = names(dataset)[[8]]),
+    geom_hline(aes(yintercept = dataset[[6]], color = names(dataset)[[6]]),
                linetype = 5,
                size = .3) +
     scale_color_manual(values = "black") +
@@ -219,9 +220,9 @@ plot.IntensityL02 <- function(x, y,
     geom_curve(
       aes(
         x = length(unique(dataset[[2]])) / 2,
-        y = dataset[[8]],
+        y = dataset[[6]],
         xend = (length(unique(dataset[[2]])) / 2) + leg_curv[[1]],
-        yend = dataset[[8]] + leg_curv[[2]]
+        yend = dataset[[6]] + leg_curv[[2]]
       ),
       curvature = .1,
       arrow = arrow(length = unit(2, "mm"), ends = "first")
@@ -231,8 +232,8 @@ plot.IntensityL02 <- function(x, y,
       aes(x = (length(unique(
         dataset[[2]]
       )) / 2) + leg_curv[[1]],
-      y = dataset[[8]] + leg_curv[[2]]),
-      label = paste(round(dataset[[8]], 2), "%"),
+      y = dataset[[6]] + leg_curv[[2]]),
+      label = paste(round(dataset[[6]], 2), "%"),
       colour = "black",
       fontface = "bold",
       nudge_y = 1 / 100,
@@ -331,8 +332,8 @@ plot.IntensityL02 <- function(x, y,
 
 plot.IntensityL03 <- function(x, y,
                               labels = c(
-                                rightlabel = bquote("Intensity Gain/Loss of" ~ .(as.character(dataset[[7]][[1]])) ~ "(%)"),
-                                leftlabel = bquote("Gain/Loss of " ~ .(as.character(dataset[[7]][[1]])) ~ "(" ~ Km ^ 2 ~ ")"),
+                                rightlabel = bquote("Intensity Gain/Loss of" ~ .(as.character(dataset[[3]][[1]])) ~ "(%)"),
+                                leftlabel = bquote("Gain/Loss of " ~ .(as.character(dataset[[3]][[1]])) ~ "(" ~ Km ^ 2 ~ ")"),
                                 title = "Level 03 Ganho da classe m/n"
                               ),
                               labs = c(type = "Classes", ur = "Uniform Rate"),
@@ -352,7 +353,7 @@ plot.IntensityL03 <- function(x, y,
     xlab(NULL) +
     ylab(NULL) +
     geom_hline(aes(yintercept = 0), size = .01) +
-    geom_hline(aes(yintercept = dataset[[10]], color = names(dataset)[[10]]),
+    geom_hline(aes(yintercept = dataset[[7]], color = names(dataset)[[7]]),
                linetype = 5,
                size = .3) +
     scale_color_manual(values = "black") +
@@ -364,9 +365,9 @@ plot.IntensityL03 <- function(x, y,
     geom_curve(
       aes(
         x = length(unique(dataset[[2]])) / 2,
-        y = dataset[[10]],
+        y = dataset[[7]],
         xend = (length(unique(dataset[[2]])) / 2) + leg_curv[[1]],
-        yend = dataset[[10]] + leg_curv[[2]]
+        yend = dataset[[7]] + leg_curv[[2]]
       ),
       curvature = .1,
       arrow = arrow(length = unit(2, "mm"), ends = "first")
@@ -376,8 +377,8 @@ plot.IntensityL03 <- function(x, y,
       aes(x = (length(unique(
         dataset[[2]]
       )) / 2) + leg_curv[[1]],
-      y = dataset[[10]] + leg_curv[[2]]),
-      label = paste(round(dataset[[10]], 2), "%"),
+      y = dataset[[7]] + leg_curv[[2]]),
+      label = paste(round(dataset[[7]], 2), "%"),
       colour = "black",
       fontface = "bold",
       nudge_y = 1 / 100,
@@ -400,7 +401,7 @@ plot.IntensityL03 <- function(x, y,
   #Area ----
   #ganho da classe n from as classes i
   GL03_ganho_area <- dataset %>%
-    ggplot(aes(fct_rev(dataset[[2]]), dataset[[4]])) +
+    ggplot(aes(fct_rev(dataset[[2]]), dataset[[5]])) +
     geom_bar(aes(fill = dataset[[2]]), stat = "identity", position = "dodge") +
     facet_wrap( ~ dataset[[1]], ncol = 1) +
     scale_fill_manual(values = unname(lookupcolor[as.character(unique(dataset[[2]]))

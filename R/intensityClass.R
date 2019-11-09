@@ -52,9 +52,9 @@ setClass(
   Class = "IntensityL01", slots = c(level = "character"),
   prototype = prototype(level = "Interval"),
   validity = function(object) {
-    if (!(ncol(object@tabela) == 5))
+    if (!(ncol(object@tabela) == 4))
     {
-      stop("The data have to be a `tibble` and have 5 columns")
+      stop("The data have to be a `tibble` and have 4 columns")
     }
     return(TRUE)
   },
@@ -77,9 +77,9 @@ setClass(
   Class = "IntensityL02", slots = c(level = "character", color = "character"),
   prototype = prototype(level = "Category"),
   validity = function(object) {
-    if (!(ncol(object@tabela) == 8))
+    if (!(ncol(object@tabela) == 6))
     {
-      stop("The data have to be a `tibble` and have 8 columns")
+      stop("The data have to be a `tibble` and have 5 columns")
     }
     return(TRUE)
   },
@@ -102,9 +102,9 @@ setClass(
   Class = "IntensityL03", slots = c(level = "character", color = "character"),
   prototype = methods::prototype(level = "Transition"),
   validity = function(object) {
-    if (!(ncol(object@tabela) == 10))
+    if (!(ncol(object@tabela) == 7))
     {
-      stop("The data have to be a `tibble` and have 10 columns")
+      stop("The data have to be a `tibble` and have 6 columns")
     }
     return(TRUE)
   },
@@ -155,14 +155,14 @@ setMethod("$", signature = "Intensity",
 #'
 
 intensity <- function(data, color) {
-  if (ncol(data) == 5) {
+  if (ncol(data) == 4) {
     new("IntensityL01", tabela = data)
-  } else if (ncol(data) == 8) {
+  } else if (ncol(data) == 6) {
     new("IntensityL02", tabela = data, color = color)
-  } else if (ncol(data) == 10) {
+  } else if (ncol(data) == 7) {
     new("IntensityL03", tabela = data, color = color)
   } else {
-    cat("The intensity table as to have 5, 8 or 10 columns for level 1, 2 or 3 respectively")
+    cat("The intensity table as to have 4, 6 or 7 columns for level 1, 2 or 3 respectively")
   }
 }
 

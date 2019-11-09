@@ -15,11 +15,12 @@
 \title{Plot method for intensity objects}
 \usage{
 \method{plot}{IntensityL01}(x, y, labels = c(leftlabel =
-  bquote("Area changes" ~ "(" ~ Km^2 ~ ")"), rightlabel =
-  "Change rate (\%)", title = "Level 01 Mudancas todo o Periodo"),
-  labs = c(type = "Changes", ur = "Uniform Rate"), marginplot = c(lh =
-  -10, rh = 0), leg_curv = c(x = 1/10, y = 1/10), color_bar = c(faster
-  = "#B22222", slower = "#006400", area = "gray40"), ...)
+  "Interval Change Area (percent of map)", rightlabel =
+  "Annual Change Area (percent of map)", title =
+  "Level 01 Mudancas todo o Periodo"), labs = c(type = "Changes", ur =
+  "Uniform Rate"), marginplot = c(lh = -10, rh = 0), leg_curv = c(x =
+  1/10, y = 1/10), color_bar = c(faster = "#B22222", slower = "#006400",
+  area = "gray40"), ...)
 
 \method{plot}{IntensityL02}(x, y, labels = c(leftlabel =
   bquote("Gain/Loss area (" ~ Km^2 ~ ")"), rightlabel =
@@ -28,19 +29,20 @@
   0.5, rh = 0.5), leg_curv = c(x = 1/10, y = 1/10), ...)
 
 \method{plot}{IntensityL03}(x, y, labels = c(rightlabel =
-  bquote("Intensity Gain/Loss of" ~ .(as.character(dataset[[7]][[1]])) ~
+  bquote("Intensity Gain/Loss of" ~ .(as.character(dataset[[3]][[1]])) ~
   "(\%)"), leftlabel = bquote("Gain/Loss of " ~
-  .(as.character(dataset[[7]][[1]])) ~ "(" ~ Km^2 ~ ")"), title =
+  .(as.character(dataset[[3]][[1]])) ~ "(" ~ Km^2 ~ ")"), title =
   "Level 03 Ganho da classe m/n"), labs = c(type = "Classes", ur =
   "Uniform Rate"), marginplot = c(lh = 0.5, rh = 0.5), leg_curv = c(x =
   1/10, y = 1/10), ...)
 
 \S4method{plot}{IntensityL01,ANY}(x, y, labels = c(leftlabel =
-  bquote("Area changes" ~ "(" ~ Km^2 ~ ")"), rightlabel =
-  "Change rate (\%)", title = "Level 01 Mudancas todo o Periodo"),
-  labs = c(type = "Changes", ur = "Uniform Rate"), marginplot = c(lh =
-  -10, rh = 0), leg_curv = c(x = 1/10, y = 1/10), color_bar = c(faster
-  = "#B22222", slower = "#006400", area = "gray40"), ...)
+  "Interval Change Area (percent of map)", rightlabel =
+  "Annual Change Area (percent of map)", title =
+  "Level 01 Mudancas todo o Periodo"), labs = c(type = "Changes", ur =
+  "Uniform Rate"), marginplot = c(lh = -10, rh = 0), leg_curv = c(x =
+  1/10, y = 1/10), color_bar = c(faster = "#B22222", slower = "#006400",
+  area = "gray40"), ...)
 
 \S4method{plot}{IntensityL02,ANY}(x, y, labels = c(leftlabel =
   bquote("Gain/Loss area (" ~ Km^2 ~ ")"), rightlabel =
@@ -49,9 +51,9 @@
   0.5, rh = 0.5), leg_curv = c(x = 1/10, y = 1/10), ...)
 
 \S4method{plot}{IntensityL03,ANY}(x, y, labels = c(rightlabel =
-  bquote("Intensity Gain/Loss of" ~ .(as.character(dataset[[7]][[1]])) ~
+  bquote("Intensity Gain/Loss of" ~ .(as.character(dataset[[3]][[1]])) ~
   "(\%)"), leftlabel = bquote("Gain/Loss of " ~
-  .(as.character(dataset[[7]][[1]])) ~ "(" ~ Km^2 ~ ")"), title =
+  .(as.character(dataset[[3]][[1]])) ~ "(" ~ Km^2 ~ ")"), title =
   "Level 03 Ganho da classe m/n"), labs = c(type = "Classes", ur =
   "Uniform Rate"), marginplot = c(lh = 0.5, rh = 0.5), leg_curv = c(x =
   1/10, y = 1/10), ...)

@@ -11,3 +11,8 @@ r:
   - oldrel
   - release
   - devel
+
+addons:
+  apt:
+    packages:
+      - libudunits2-dev

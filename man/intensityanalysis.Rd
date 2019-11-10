@@ -42,7 +42,7 @@ At each level, the method tests for stationarity of patterns across time interva
 
 \bold{The function return a list with 10 objects:}
 \itemize{
- \item lulc_table: A \code{tibble} of contingency between all step of time analysed, contains 8 columns:
+ \item lulc_table: A \code{tibble} of contingency between all step of time analysed, contains 6 columns:
    \enumerate{
    \item Period:  \code{<fct>}. The period of change in the format \code{first year - last year}.
    \item From: \code{<fct>}. The class in the first year.
@@ -54,103 +54,98 @@ At each level, the method tests for stationarity of patterns across time interva
    the classes \code{From} to \code{To} in the period.
    }
  \item lv1_tbl: An \code{"\linkS4class{IntensityL01}"} object containing
- 1 table with 5 columns:
+ 1 table with 4 columns:
    \enumerate{
    \item Period: \code{<fct>}.
-   \item intch_km2: \code{<dbl>}. Change in kilometer or quantity of pixel in the period.
+   \item PercentChange: \code{<dbl>}. Interval Change Area (percent of map).
    \item St: \code{<dbl>}. annual intensity of change for time interval [Yt, Yt+1].
    \item U: \code{<dbl>}. value of uniform line for time intensity analysis.
-   \item tipo: \code{<chr>}. The type of change Fast when St > U and Slow when St < U.
    }
  \item lv2_gain: An \code{"\linkS4class{IntensityL02}"} object containing
  a slot with lookup table af the colors associate with the land classes and a
- table with 8 columns:
+ table with 6 columns:
  \enumerate{
-   \item Period: \code{<fct>}.
+   \item Period: \code{<fct>}. The period [Yt, Yt+1].
    \item To: \code{<fct>}. a category j.
-   \item interval: \code{<dbl>}. duration of [Yt, Yt+1].
-   \item num03: \code{<dbl>}. area of gross gain of category j during [Yt, Yt+1]/duration of [Yt, Yt+1].
-   \item denom03: \code{<dbl>}. area of category j at time Yt+1.
+   \item interval: \code{<dbl>}. duration of the period [Yt, Yt+1].
+   \item GG_km2/GG_pixel: \code{<dbl>/<int>}. area of gross gain of category j during [Yt, Yt+1].
    \item Gtj: \code{<dbl>}. annual intensity of gross gain of category j for time interval [Yt, Yt+1].
-   \item intch_km2 or QtPixel: \code{<dbl> or <int>}.
    \item St: \code{<dbl>}. annual intensity of change for time interval [Yt, Yt+1].
    }
  \item lv2_loss: An \code{"\linkS4class{IntensityL02}"} object containing
  a slot with lookup table af the colors associate with the land classes and a
- table with 8 columns:
+ table with 6 columns:
  \enumerate{
-   \item Period: \code{<fct>}.
-   \item From: \code{<fct>}.
-   \item interval: \code{<dbl>}.
-   \item num04: \code{<dbl>}.
-   \item denom04: \code{<dbl>}.
-   \item Lti: \code{<dbl>}.
-   \item intch_km2 or QtPixel: \code{<dbl> or <int>}.
-   \item STt: \code{<dbl>}.
+   \item Period: \code{<fct>}. The period [Yt, Yt+1].
+   \item From: \code{<fct>}. a category i.
+   \item interval: \code{<dbl>}. duration of the period [Yt, Yt+1].
+   \item GG_km2/GG_pixel: \code{<dbl>/<int>}. area of gross loss of category j during [Yt, Yt+1].
+   \item Lti: \code{<dbl>}. annual intensity of gross loss of category i for time interval [Yt, Yt+1].
+   \item STt: \code{<dbl>}. annual intensity of change for time interval [Yt, Yt+1].
    }
  \item gain_n: An \code{"\linkS4class{IntensityL03}"} object containing
  a slot with lookup table af the colors associate with the land classes and a
- table with 10 columns:
+ table with 7 columns:
  \enumerate{
-   \item Period: \code{<fct>}.
-   \item From: \code{<fct>}.
-   \item interval: \code{<dbl>}.
-   \item num05: \code{<dbl>}.
-   \item denom05: \code{<dbl>}.
-   \item Rtin: \code{<dbl>}.
-   \item To: \code{<fct>}.
-   \item num06: \code{<dbl>}.
-   \item denom06: \code{<dbl>}.
-   \item Wtn: \code{<dbl>}.
+   \item Period: \code{<fct>}. The period [Yt, Yt+1].
+   \item From: \code{<fct>}. a category i.
+   \item To: \code{<fct>}. the gaining category in the transition of interest (n).
+   \item interval: \code{<dbl>}. duration of the period [Yt, Yt+1].
+   \item T_i2n_km2/T_i2n_pixel: \code{<dbl>}. transition from category i to category n
+   during time interval [Yt, Yt+1] where i =/= n.
+   \item Rtin: \code{<dbl>}. annual intensity of transition from category i to category n
+   during time interval [Yt, Yt+1] where i =/= n.
+   \item Wtn: \code{<dbl>}. value of uniform intensity of transition to category
+   n from all non-n categories at time Yt during time interval [Yt, Yt+1].
    }
  \item loss_m: An \code{"\linkS4class{IntensityL03}"} object containing
  a slot with lookup table af the colors associate with the land classes and a
- table with 10 columns:
+ table with 7 columns:
  \enumerate{
-   \item Period: \code{<fct>}.
-   \item To: \code{<fct>}.
-   \item interval: \code{<dbl>}.
-   \item num07: \code{<dbl>}.
-   \item denom07: \code{<dbl>}.
-   \item Qtmj: \code{<dbl>}.
-   \item From: \code{<fct>}.
-   \item num08: \code{<dbl>}.
-   \item denom08: \code{<dbl>}.
-   \item Vtn: \code{<dbl>}.
+   \item Period: \code{<fct>}. The period [Yt, Yt+1].
+   \item To: \code{<fct>}. a category j.
+   \item From: \code{<fct>}. the losing category in the transition of interest (m).
+   \item interval: \code{<dbl>}. duration of the period [Yt, Yt+1].
+   \item T_m2j_km2/T_m2j_pixel: \code{<dbl>}. a transition from category m to
+   category j during time interval [Yt, Yt+1] where j =/= m.
+   \item Qtmj: \code{<dbl>}. annual intensity of transition from category m to
+   category j during time interval [Yt, Yt+1] where j =/= m.
+   \item Vtm: \code{<dbl>}. value of uniform intensity of transition from
+   category m to all non-m categories at time Yt+1 during time interval [Yt, Yt+1].
    }
  \item st_lv2_gain: A \code{tibble} of stationarity test in level 02 gain
  containing 5 columns:
  \enumerate{
-   \item To: \code{<fct>}.
-   \item gain: \code{<int>}.
-   \item N: \code{<int>}.
-   \item Stationarity: \code{<chr>}.
-   \item Test: \code{<chr>}.
+   \item To: \code{<fct>}. acategory j.
+   \item gain: \code{<int>}. Number of time the class loss during time interval [Yt, Yt+1].
+   \item N: \code{<int>}. Number total of time of trasition to be considered as stationary (T).
+   \item Stationarity: \code{<chr>}. \emph{Active Gain} or \emph{Dormant Gain}.
+   \item Test: \code{<chr>}. \emph{Y} for stationarity detected and \emph{N} when not.
    }
  \item st_lv2_loss: A \code{tibble} of stationarity test in level 02 loss
  containing 5 columns:
  \enumerate{
-   \item From: \code{<fct>}.
-   \item loss: \code{<int>}.
-   \item N: \code{<int>}.
-   \item Stationarity: \code{<chr>}.
-   \item Test: \code{<chr>}.
+   \item From: \code{<fct>}. acategory i.
+   \item loss: \code{<int>}.  Number of time the class loss during time interval [Yt, Yt+1].
+   \item N: \code{<int>}. Number total of time of trasition to be considered as stationary (T).
+   \item Stationarity: \code{<chr>}. \emph{Active Loss} or \emph{Dormant Loss}.
+   \item Test: \code{<chr>}. \emph{Y} for stationarity detected and \emph{N} when not.
    }
  \item st_gain_n: A \code{tibble} of stationarity test in level 03 gain on class n
  containing 5 columns:
  \enumerate{
-   \item From: \code{<fct>}.
-   \item loss: \code{<int>}.
-   \item N: \code{<int>}.
-   \item Stationarity: \code{<chr>}.
-   \item Test: \code{<chr>}.
+   \item From: \code{<fct>}. the losing category in the transition of interest to the n category.
+   \item loss: \code{<int>}. Number of time the class loss to the n class.
+   \item N: \code{<int>}. Number total of time of trasition to be considered as stationary (T).
+   \item Stationarity: \code{<chr>}. \emph{targeted by} or \emph{avoided by} by the \code{n} class.
+   \item Test: \code{<chr>}. \emph{Y} for stationarity detected and \emph{N} when not.
    }
  \item st_loss_m: A \code{tibble} of stationarity test in level 03 loss on class m
  containing 5 columns:
  \enumerate{
-   \item To: \code{<fct>}. The classes gaining from the m class.
+   \item To: \code{<fct>}. the gaining category in the transition of interest from the m category.
    \item gain: \code{<int>}. Number of time the class gain from the m class.
-   \item N: \code{(<int>)}. Number total of time of trasition to be considered as stationary.
+   \item N: \code{(<int>)}. Number total of time of trasition to be considered as stationary (T).
    \item Stationarity: \code{<chr>}. \emph{targeted} or \emph{avoided} by the \code{m} class.
    \item Test: \code{<chr>}. \emph{Y} for stationarity detected and \emph{N} when not.
    }

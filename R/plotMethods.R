@@ -49,7 +49,7 @@ plot.IntensityL01 <- function(x,
                                             slower = "#006400",
                                             area = "gray40"),
                               ...) {
-  Type <- NULL
+  Type <- St <-  U <-  NULL
 
   dataset <- x$tabela %>% dplyr::mutate(Type = ifelse(St > U, "Fast", "Slow"))
 

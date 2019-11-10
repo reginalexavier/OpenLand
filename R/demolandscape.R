@@ -26,7 +26,6 @@
 #'     (Poisson) and "mu(1-mu)" (binomial)
 #'
 #' @import dplyr
-#' @importFrom grDevices hcl.colors
 #' @return list
 #' @export
 #'

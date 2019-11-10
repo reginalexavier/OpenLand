@@ -7,7 +7,6 @@ NULL
 #' @param pixelresolution the pixel resolution in meter
 #'
 #' @import dplyr
-#' @importFrom grDevices hcl.colors
 #'
 #' @return a list of table contengency
 #' @export

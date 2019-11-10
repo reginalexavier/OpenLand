@@ -36,7 +36,7 @@ Imports:
     ggplot2 (>= 3.2.1),
     forcats (>= 0.4.0),
     gridExtra (>= 2.3),
-    grid (>= 3.6.1),
+    grid,
     ComplexHeatmap,
     circlize (>= 0.4.8),
     networkD3 (>= 0.4),

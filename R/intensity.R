@@ -41,9 +41,10 @@ NULL
 #'  \item lv1_tbl: An \code{"\linkS4class{IntensityL01}"} object containing
 #'  1 table with 4 columns:
 #'    \enumerate{
-#'    \item Period: \code{<fct>}.
+#'    \item Period: \code{<fct>}. The period [Yt, Yt+1].
 #'    \item PercentChange: \code{<dbl>}. Interval Change Area (percent of map).
-#'    \item St: \code{<dbl>}. annual intensity of change for time interval [Yt, Yt+1].
+#'    \item St: \code{<dbl>}. annual intensity of change for time
+#'    interval [Yt, Yt+1].
 #'    \item U: \code{<dbl>}. value of uniform line for time intensity analysis.
 #'    }
 #'  \item lv2_gain: An \code{"\linkS4class{IntensityL02}"} object containing

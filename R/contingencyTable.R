@@ -115,7 +115,7 @@ contingenceTable <-
     genclass <- function() {paste(sample(LETTERS, size = 3, replace = FALSE), collapse = "")}
 
     tb_legend$className <- as.factor(vapply(seq_len(nrow(tb_legend)), function(x) genclass(), character(1)))
-    tb_legend$color <- hcl.colors(nrow(tb_legend), palette = "Blue-Red 3",
+    tb_legend$color <- grDevices::hcl.colors(nrow(tb_legend), palette = "Blue-Red 3",
                                   alpha = NULL, rev = FALSE, fixup = TRUE)
 
     areaTotal <-

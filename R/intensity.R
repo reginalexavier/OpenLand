@@ -41,7 +41,7 @@ NULL
 #'  \item lv1_tbl: An \code{"\linkS4class{IntensityL01}"} object containing
 #'  1 table with 4 columns:
 #'    \enumerate{
-#'    \item Period: \code{<fct>}. The period [Yt, Yt+1].
+#'    \item Period: \code{<fct>}. The period \out{[Y<sub>t</sub>, Y<sub>t+1</sub>]}.
 #'    \item PercentChange: \code{<dbl>}. Interval Change Area (percent of map).
 #'    \item St: \code{<dbl>}. annual intensity of change for time
 #'    interval [Yt, Yt+1].
@@ -51,59 +51,59 @@ NULL
 #'  a slot with lookup table af the colors associate with the land classes and a
 #'  table with 6 columns:
 #'  \enumerate{
-#'    \item Period: \code{<fct>}. The period [Yt, Yt+1].
-#'    \item To: \code{<fct>}. a category j.
-#'    \item interval: \code{<dbl>}. duration of the period [Yt, Yt+1].
-#'    \item GG_km2/GG_pixel: \code{<dbl>/<int>}. area of gross gain of category j during [Yt, Yt+1].
-#'    \item Gtj: \code{<dbl>}. annual intensity of gross gain of category j for time interval [Yt, Yt+1].
-#'    \item St: \code{<dbl>}. annual intensity of change for time interval [Yt, Yt+1].
+#'    \item Period: \code{<fct>}. The period \out{[Y<sub>t</sub>, Y<sub>t+1</sub>]}.
+#'    \item To: \code{<fct>}. a category \emph{j}.
+#'    \item interval: \code{<dbl>}. duration of the period \out{[Y<sub>t</sub>, Y<sub>t+1</sub>]}.
+#'    \item GG_km2/GG_pixel: \code{<dbl>/<int>}. area of gross gain of category j during \out{[Y<sub>t</sub>, Y<sub>t+1</sub>]}.
+#'    \item Gtj: \code{<dbl>}. annual intensity of gross gain of category j for time interval \out{[Y<sub>t</sub>, Y<sub>t+1</sub>]}.
+#'    \item St: \code{<dbl>}. annual intensity of change for time interval \out{[Y<sub>t</sub>, Y<sub>t+1</sub>]}.
 #'    }
 #'  \item lv2_loss: An \code{"\linkS4class{IntensityL02}"} object containing
 #'  a slot with lookup table af the colors associate with the land classes and a
 #'  table with 6 columns:
 #'  \enumerate{
-#'    \item Period: \code{<fct>}. The period [Yt, Yt+1].
-#'    \item From: \code{<fct>}. a category i.
-#'    \item interval: \code{<dbl>}. duration of the period [Yt, Yt+1].
-#'    \item GG_km2/GG_pixel: \code{<dbl>/<int>}. area of gross loss of category j during [Yt, Yt+1].
-#'    \item Lti: \code{<dbl>}. annual intensity of gross loss of category i for time interval [Yt, Yt+1].
-#'    \item STt: \code{<dbl>}. annual intensity of change for time interval [Yt, Yt+1].
+#'    \item Period: \code{<fct>}. The period \out{[Y<sub>t</sub>, Y<sub>t+1</sub>]}.
+#'    \item From: \code{<fct>}. a category \emph{i}.
+#'    \item interval: \code{<dbl>}. duration of the period \out{[Y<sub>t</sub>, Y<sub>t+1</sub>]}.
+#'    \item GG_km2/GG_pixel: \code{<dbl>/<int>}. area of gross loss of category j during \out{[Y<sub>t</sub>, Y<sub>t+1</sub>]}.
+#'    \item Lti: \code{<dbl>}. annual intensity of gross loss of category i for time interval \out{[Y<sub>t</sub>, Y<sub>t+1</sub>]}.
+#'    \item STt: \code{<dbl>}. annual intensity of change for time interval \out{[Y<sub>t</sub>, Y<sub>t+1</sub>]}.
 #'    }
 #'  \item gain_n: An \code{"\linkS4class{IntensityL03}"} object containing
 #'  a slot with lookup table af the colors associate with the land classes and a
 #'  table with 7 columns:
 #'  \enumerate{
-#'    \item Period: \code{<fct>}. The period [Yt, Yt+1].
+#'    \item Period: \code{<fct>}. The period \out{[Y<sub>t</sub>, Y<sub>t+1</sub>]}.
 #'    \item From: \code{<fct>}. a category i.
-#'    \item To: \code{<fct>}. the gaining category in the transition of interest (n).
-#'    \item interval: \code{<dbl>}. duration of the period [Yt, Yt+1].
+#'    \item To: \code{<fct>}. the gaining category in the transition of interest \emph{(n)}.
+#'    \item interval: \code{<dbl>}. duration of the period \out{[Y<sub>t</sub>, Y<sub>t+1</sub>]}.
 #'    \item T_i2n_km2/T_i2n_pixel: \code{<dbl>}. transition from category i to category n
-#'    during time interval [Yt, Yt+1] where i =/= n.
+#'    during time interval \out{[Y<sub>t</sub>, Y<sub>t+1</sub>]} where \emph{i ≠ n}.
 #'    \item Rtin: \code{<dbl>}. annual intensity of transition from category i to category n
-#'    during time interval [Yt, Yt+1] where i =/= n.
+#'    during time interval \out{[Y<sub>t</sub>, Y<sub>t+1</sub>]} where \emph{i ≠ n}.
 #'    \item Wtn: \code{<dbl>}. value of uniform intensity of transition to category
-#'    n from all non-n categories at time Yt during time interval [Yt, Yt+1].
+#'    n from all non-n categories at time Yt during time interval \out{[Y<sub>t</sub>, Y<sub>t+1</sub>]}.
 #'    }
 #'  \item loss_m: An \code{"\linkS4class{IntensityL03}"} object containing
 #'  a slot with lookup table af the colors associate with the land classes and a
 #'  table with 7 columns:
 #'  \enumerate{
-#'    \item Period: \code{<fct>}. The period [Yt, Yt+1].
+#'    \item Period: \code{<fct>}. The period \out{[Y<sub>t</sub>, Y<sub>t+1</sub>]}.
 #'    \item To: \code{<fct>}. a category j.
 #'    \item From: \code{<fct>}. the losing category in the transition of interest (m).
-#'    \item interval: \code{<dbl>}. duration of the period [Yt, Yt+1].
+#'    \item interval: \code{<dbl>}. duration of the period \out{[Y<sub>t</sub>, Y<sub>t+1</sub>]}.
 #'    \item T_m2j_km2/T_m2j_pixel: \code{<dbl>}. a transition from category m to
-#'    category j during time interval [Yt, Yt+1] where j =/= m.
+#'    category j during time interval \out{[Y<sub>t</sub>, Y<sub>t+1</sub>]} where \emph{j ≠ m}.
 #'    \item Qtmj: \code{<dbl>}. annual intensity of transition from category m to
-#'    category j during time interval [Yt, Yt+1] where j =/= m.
+#'    category j during time interval \out{[Y<sub>t</sub>, Y<sub>t+1</sub>]} where \emph{j ≠ m}.
 #'    \item Vtm: \code{<dbl>}. value of uniform intensity of transition from
-#'    category m to all non-m categories at time Yt+1 during time interval [Yt, Yt+1].
+#'    category m to all non-m categories at time Yt+1 during time interval \out{[Y<sub>t</sub>, Y<sub>t+1</sub>]}.
 #'    }
 #'  \item st_lv2_gain: A \code{tibble} of stationarity test in level 02 gain
 #'  containing 5 columns:
 #'  \enumerate{
-#'    \item To: \code{<fct>}. acategory j.
-#'    \item gain: \code{<int>}. Number of time the class loss during time interval [Yt, Yt+1].
+#'    \item To: \code{<fct>}. acategory \emph{j}.
+#'    \item gain: \code{<int>}. Number of time the class loss during time interval \out{[Y<sub>t</sub>, Y<sub>t+1</sub>]}.
 #'    \item N: \code{<int>}. Number total of time of trasition to be considered as stationary (T).
 #'    \item Stationarity: \code{<chr>}. \emph{Active Gain} or \emph{Dormant Gain}.
 #'    \item Test: \code{<chr>}. \emph{Y} for stationarity detected and \emph{N} when not.
@@ -111,13 +111,13 @@ NULL
 #'  \item st_lv2_loss: A \code{tibble} of stationarity test in level 02 loss
 #'  containing 5 columns:
 #'  \enumerate{
-#'    \item From: \code{<fct>}. acategory i.
-#'    \item loss: \code{<int>}.  Number of time the class loss during time interval [Yt, Yt+1].
+#'    \item From: \code{<fct>}. acategory \emph{i}.
+#'    \item loss: \code{<int>}.  Number of time the class loss during time interval \out{[Y<sub>t</sub>, Y<sub>t+1</sub>]}.
 #'    \item N: \code{<int>}. Number total of time of trasition to be considered as stationary (T).
 #'    \item Stationarity: \code{<chr>}. \emph{Active Loss} or \emph{Dormant Loss}.
 #'    \item Test: \code{<chr>}. \emph{Y} for stationarity detected and \emph{N} when not.
 #'    }
-#'  \item st_gain_n: A \code{tibble} of stationarity test in level 03 gain on class n
+#'  \item st_gain_n: A \code{tibble} of stationarity test in level 03 gain on class \emph{n}
 #'  containing 5 columns:
 #'  \enumerate{
 #'    \item From: \code{<fct>}. the losing category in the transition of interest to the n category.
@@ -140,10 +140,10 @@ NULL
 #'
 #'
 #'
-#' @param dataset The list of object from \code{\link{contingenceTable}}
-#' @param class_n character. A natural class of land use
-#' @param class_m character. A antropic class of land use
-#' @param area_km2 logical. Whether the change would be computed in km2 or quantity of pixel unit
+#' @param dataset The list of object from \code{\link{contingenceTable}}.
+#' @param class_n character. the gaining category in the transition of interest \emph{n}.
+#' @param class_m character. the losing category in the transition of interest \emph{m}.
+#' @param area_km2 logical. Whether the change would be computed in \out{km<sup>2</sup>} or quantity of pixel unit.
 #' @return Intensity objects including the levels tables and strationarity test tables
 #' @export
 #'

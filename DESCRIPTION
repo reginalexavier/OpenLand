@@ -26,7 +26,7 @@ BugReports: https://github.com/tredgi/OpenLand/issues
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.1.1
-Depends: R (>= 2.10)
+Depends: R (>= 3.4.0)
 Imports: 
     raster (>= 3.0.7),
     dplyr (>= 0.8.3),

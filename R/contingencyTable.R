@@ -3,12 +3,61 @@ NULL
 
 #' Contingence Table
 #'
-#' @param input_raster a raster list
+#' @param input_raster list (of filenames or Raster* objects), RasterStack(\code{\link[raster]{brick}}) or
+#' RasterStack(\code{\link[raster]{stack}})
 #' @param pixelresolution the pixel resolution in meter
+#'
+#'
+#'
 #'
 #' @import dplyr
 #'
-#' @return a list of table contengency
+#' @return A list that contains 5 objects.
+#' \itemize{
+#'   \item \code{lulc_Mulstistep}: \code{<tibble>}  The table of contingency between all step of time analysed, contains 8 columns:
+#'   \enumerate{
+#'   \item Period: \code{<chr>} The period \out{[Y<sub>t</sub>, Y<sub>t+1</sub>]}.
+#'   \item From: \code{<dbl>} a category \emph{i}.
+#'   \item To: \code{<dbl>} a category \emph{j}.
+#'   \item km2: \code{<dbl>} The quantity in kilometer that transit from the classes category \emph{i}
+#'    to category \emph{j} in the period \out{[Y<sub>t</sub>, Y<sub>t+1</sub>]}.
+#'   \item interval: \code{<dbl>} The number of time point between the first and
+#'    the last year of the period \out{[Y<sub>t</sub>, Y<sub>t+1</sub>]}.
+#'   \item QtPixel: \code{<int>} The quantity of pixel that transit from the classes category \emph{i}
+#'    to category \emph{j} in the period \out{[Y<sub>t</sub>, Y<sub>t+1</sub>]}.
+#'   \item yearFrom: \code{<chr>} The year that the change come from \out{[Y<sub>t</sub>]}
+#'   \item yearTo: \code{<chr>} The year that the change go for \out{[Y<sub>t+1</sub>]}
+#'   }
+#'   \item \code{tb_legend}: \code{<tibble>} A table of the pixel value his name and color, contains 3 columns:
+#'   \enumerate{
+#'   \item classValue: \code{<dbl>} the pixel value of the classes of land use
+#'   \item className: \code{factor} The name or legend associate with a given pixel value, here as factor with a specific level for blablabla
+#'   \item color: The color associate with the given pixel value
+#'     \itemize{Befor others step of analysis, one would want to change the
+#'      \code{className} and \code{color} values. Some details:
+#'   \item the class name have to be  in the same order
+#'   of the \code{classValue} column, the \code{levels} the order that the graphs legend
+#'   will have to be printed. Like: \code{myobject$tb_legend$className <- factor(c("name1", "name2", "name3", "name4"),
+#'                                           levels = c("name3", "name2", "name1", "name4"))}.
+#'   \item the color by the same order of the \code{classValue} comuln, it can be a
+#'   colour name (eg. "black") or an HEX value (eg. #FFFFFF). Like:
+#'                                      \code{myobject$tb_legend$color <-
+#'                                           c("#CDB79E", "red", "#66CD00", "yellow")})}
+#'   }
+#'   \item \code{totalArea}: A \code{tibble} of two columns with the total area of study, contains 2 columns:
+#'   \enumerate{
+#'   \item area_km2: \code{<numeric>} The total area of study in \out{km<sup>2</sup>}
+#'   \item QtPixel: \code{<numeric>} The total area of study in quantity of pixel
+#'   }
+#'   \item \code{lulc_Onstep}:\code{<tibble>} The table of contingency between the
+#'   first and the last year analysed \out{[Y<sub>t</sub>, Y<sub>T</sub>]}, contains
+#'   8 columns like \code{lulc_Mulstistep}.
+#'   \item \code{totalInterval}: \code{<numeric>} The value represinting the whole time points
+#'   interval of time analysed \out{[Y<sub>t</sub>, Y<sub>t+1</sub>]}, in years.
+#'   }
+#'
+#'
+#'
 #' @export
 #'
 #' @examples

@@ -1,4 +1,4 @@
-#' @include intensity.R
+#' @include intensityFunction.R
 NULL
 
 #' Plot method for intensity objects

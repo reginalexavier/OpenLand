@@ -33,18 +33,20 @@ A list that contains 5 objects.
   \enumerate{
   \item classValue: \code{<dbl>} the pixel value of the classes of land use
   \item className: \code{factor} The name or legend associate with a given pixel value, here as factor with a specific level for blablabla
-  \item color: The color associate with the given pixel value
-    \itemize{Befor others step of analysis, one would want to change the
-     \code{className} and \code{color} values. Some details:
-  \item the class name have to be  in the same order
-  of the \code{classValue} column, the \code{levels} the order that the graphs legend
-  will have to be printed. Like: \code{myobject$tb_legend$className <- factor(c("name1", "name2", "name3", "name4"),
-                                          levels = c("name3", "name2", "name1", "name4"))}.
-  \item the color by the same order of the \code{classValue} comuln, it can be a
-  colour name (eg. "black") or an HEX value (eg. #FFFFFF). Like:
-                                     \code{myobject$tb_legend$color <-
-                                          c("#CDB79E", "red", "#66CD00", "yellow")})}
-  }
+  \item color: The color associate with the given pixel value.
+  Befor others step of analysis, one would want to change the \code{className} and \code{color} values. Some details.
+    \itemize{
+        \item the class name have to be  in the same order of the \code{classValue}
+        column, the \code{levels} the order that the graphs legend will have to be printed. Like:
+        \preformatted{
+
+        myobject$tb_legend$className <- factor(c("name1", "name2", "name3", "name4"),
+                                               levels = c("name3", "name2", "name1", "name4"))}
+        \item the color by the same order of the \code{classValue} comuln, it can be a
+       colour name (eg. "black") or an HEX value (eg. #FFFFFF). Like:
+       \preformatted{
+
+       myobject$tb_legend$color <- c("#CDB79E", "red", "#66CD00", "yellow")}}}
   \item \code{totalArea}: A \code{tibble} of two columns with the total area of study, contains 2 columns:
   \enumerate{
   \item area_km2: \code{<numeric>} The total area of study in \out{km<sup>2</sup>}

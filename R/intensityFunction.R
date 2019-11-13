@@ -54,8 +54,8 @@ NULL
 #'    \item Period: \code{<fct>}. The period \out{[Y<sub>t</sub>, Y<sub>t+1</sub>]}.
 #'    \item To: \code{<fct>}. a category \emph{j}.
 #'    \item interval: \code{<dbl>}. duration of the period \out{[Y<sub>t</sub>, Y<sub>t+1</sub>]}.
-#'    \item GG_km2/GG_pixel: \code{<dbl>/<int>}. area of gross gain of category j during \out{[Y<sub>t</sub>, Y<sub>t+1</sub>]}.
-#'    \item Gtj: \code{<dbl>}. annual intensity of gross gain of category j for time interval \out{[Y<sub>t</sub>, Y<sub>t+1</sub>]}.
+#'    \item GG_km2/GG_pixel: \code{<dbl>/<int>}. area of gross gain of category \emph{j} during \out{[Y<sub>t</sub>, Y<sub>t+1</sub>]}.
+#'    \item Gtj: \code{<dbl>}. annual intensity of gross gain of category \emph{j} for time interval \out{[Y<sub>t</sub>, Y<sub>t+1</sub>]}.
 #'    \item St: \code{<dbl>}. annual intensity of change for time interval \out{[Y<sub>t</sub>, Y<sub>t+1</sub>]}.
 #'    }
 #'  \item lv2_loss: An \code{"\linkS4class{IntensityL02}"} object containing
@@ -78,9 +78,9 @@ NULL
 #'    \item To: \code{<fct>}. the gaining category in the transition of interest \emph{(n)}.
 #'    \item interval: \code{<dbl>}. duration of the period \out{[Y<sub>t</sub>, Y<sub>t+1</sub>]}.
 #'    \item T_i2n_km2/T_i2n_pixel: \code{<dbl>}. transition from category i to category n
-#'    during time interval \out{[Y<sub>t</sub>, Y<sub>t+1</sub>]} where \emph{i ≠ n}.
+#'    during time interval \out{[Y<sub>t</sub>, Y<sub>t+1</sub>]} where \emph{i}  \code{is not equal to} \emph{n}.
 #'    \item Rtin: \code{<dbl>}. annual intensity of transition from category i to category n
-#'    during time interval \out{[Y<sub>t</sub>, Y<sub>t+1</sub>]} where \emph{i ≠ n}.
+#'    during time interval \out{[Y<sub>t</sub>, Y<sub>t+1</sub>]} where \emph{i}  \code{is not equal to} \emph{n}.
 #'    \item Wtn: \code{<dbl>}. value of uniform intensity of transition to category
 #'    n from all non-n categories at time Yt during time interval \out{[Y<sub>t</sub>, Y<sub>t+1</sub>]}.
 #'    }
@@ -89,15 +89,18 @@ NULL
 #'  table with 7 columns:
 #'  \enumerate{
 #'    \item Period: \code{<fct>}. The period \out{[Y<sub>t</sub>, Y<sub>t+1</sub>]}.
-#'    \item To: \code{<fct>}. a category j.
+#'    \item To: \code{<fct>}. a category \emph{j}.
 #'    \item From: \code{<fct>}. the losing category in the transition of interest (m).
 #'    \item interval: \code{<dbl>}. duration of the period \out{[Y<sub>t</sub>, Y<sub>t+1</sub>]}.
-#'    \item T_m2j_km2/T_m2j_pixel: \code{<dbl>}. a transition from category m to
-#'    category j during time interval \out{[Y<sub>t</sub>, Y<sub>t+1</sub>]} where \emph{j ≠ m}.
-#'    \item Qtmj: \code{<dbl>}. annual intensity of transition from category m to
-#'    category j during time interval \out{[Y<sub>t</sub>, Y<sub>t+1</sub>]} where \emph{j ≠ m}.
+#'    \item T_m2j_km2/T_m2j_pixel: \code{<dbl>}. a transition from category \emph{m} to
+#'    category \emph{j} during time interval \out{[Y<sub>t</sub>, Y<sub>t+1</sub>]}
+#'    where \emph{j}  \code{is not equal to} \emph{m}.
+#'    \item Qtmj: \code{<dbl>}. annual intensity of transition from category \emph{m} to
+#'    category \emph{j} during time interval \out{[Y<sub>t</sub>, Y<sub>t+1</sub>]}
+#'    where \emph{j}  \code{is not equal to} \emph{m}.
 #'    \item Vtm: \code{<dbl>}. value of uniform intensity of transition from
-#'    category m to all non-m categories at time Yt+1 during time interval \out{[Y<sub>t</sub>, Y<sub>t+1</sub>]}.
+#'    category \emph{m} to all \emph{non-m} categories at time \out{Y<sub>t+1</sub>}
+#'    during time interval \out{[Y<sub>t</sub>, Y<sub>t+1</sub>]}.
 #'    }
 #'  \item st_lv2_gain: A \code{tibble} of stationarity test in level 02 gain
 #'  containing 5 columns:

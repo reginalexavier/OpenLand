@@ -165,8 +165,9 @@ contingenceTable <-
     genclass <- function() {paste(sample(LETTERS, size = 3, replace = FALSE), collapse = "")}
 
     tb_legend$className <- as.factor(vapply(seq_len(nrow(tb_legend)), function(x) genclass(), character(1)))
-    tb_legend$color <- grDevices::hcl.colors(nrow(tb_legend), palette = "Blue-Red 3",
-                                  alpha = NULL, rev = FALSE, fixup = TRUE)
+    tb_legend$color <- base::sample(grDevices::colors(), nrow(tb_legend), replace = F)
+     
+    #grDevices::hcl.colors(nrow(tb_legend), palette = "Blue-Red 3", alpha = NULL, rev = FALSE, fixup = TRUE)
 
     areaTotal <-
       lulctable[[2]] %>% dplyr::group_by(Period) %>% dplyr::summarise(area_km2 = sum(km2), QtPixel = sum(QtPixel))

@@ -7,15 +7,20 @@
 sankeyLand(dataset, legendtable, iterations = 0)
 }
 \arguments{
-\item{dataset}{table of one step transition or multi step transition for a onestep or multistep sankey plot}
+\item{dataset}{Table of one step transition for a onestep sankey plot or a table multi step
+transition for a multistep sankey plot.}
 
 \item{legendtable}{A table contains the legend of the land use classes and his respective color}
 
-\item{iterations}{see networkD3 link sankeyNetwork}
+\item{iterations}{numeric. Number of iterations in the diagramm layout for computation
+of the depth (y-position) of each node.}
 }
 \value{
 A land use land cover transition sankey plot for the period analysed
 }
 \description{
 A sandkey plot for the land use land cover transition for the period analysed
+}
+\seealso{
+\code{\link[networkD3]{sankeyNetwork}}
 }

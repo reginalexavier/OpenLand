@@ -93,29 +93,41 @@ summary_map <- function(path) {
 #' has change). These maps can be plotted  with the plot function method of the
 #' raster package or with the `tmap` package.
 #'
-#' @param path The path of the raster to be analysed
+#' @param path list (of filenames or Raster* objects), RasterStack(\code{\link[raster]{brick}}) or
+#' RasterStack(\code{\link[raster]{stack}})
 #'
 #' @return Two maps, the first containing the sequence of change as pixel value and second
 #'     the quantity time of change as pixel value.
 #' @export
 #'
 #' @examples
-#' acc_changes(demo_landscape(2000:2005, res = 1, prob = c(0.05, 0.3, 0.05, 0.4, 0.2)))
+#' test <- demo_landscape(2000:2005, res = 1, prob = c(0.05, 0.3, 0.05, 0.4, 0.2))
+#' acc_changes(test)
+#' acc_changes(raster::stack(test))
+#' acc_changes(raster::brick(test))
 #'
 acc_changes <- function(path) {
 
-  if ((class(path) == "list") &
-      (c(class(path[[1]])) == "RasterLayer")) {
+  #importing the rasters
+  if (c(class(path)) %in% c("RasterStack", "RasterBrick")) {
+
+    rList  <- raster::unstack(path)
+
+  } else if ((c(class(path[[1]]))) == "RasterLayer") {
+
     rList <- path
+
   } else if (class(path) == "character") {
+    raster_files <- list.files(path, pattern = ".tif$", full.names = T)
 
-    raster_files <-
-      list.files(path,
-                 pattern = ".tif$",
-                 full.names = T)
+    rList <- vector("list", length = length(raster_files))
 
-    rList <- lapply(raster_files, function(x)
-      raster::raster(x))
+    for (i in seq_along(raster_files)) {
+      rList[[i]] <- raster::raster(raster_files[i])
+    }
+  } else {
+    stop("The input can only be a `RasterStack`, `RasterBrick`, a list of `RasterLayer` or
+         a path directory of rasters `.tif` ")
   }
 
   difflist <- mapply(

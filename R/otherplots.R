@@ -245,25 +245,32 @@ circlizeplot <-
 
 #' A barplot for the Net Gain/Loss and Gross Changes between land use classes for the period analysed
 #'
-#' @param dataset A table of the multi step transition
+#' @param dataset A table of multi step transition
 #' @param legendtable A table contains the legend of the land use classes and his respective color
-#' @param title The title of the plot
-#' @param xlab character Label for the x axe
-#' @param ylab character Label for the y axe
-#' @param changes a character list for the changes labels, the default is c(GC = "Gross chages", NG = "Net Gain", NL = "Net Loss")
-#' @param color a color list for the three types of chages
-#' @param area_km2 boolean TRUE for km2 unit, FALSE for pixel unit
+#' @param title character. The title of the plot (optional), use \code{NULL} for no title.
+#' @param xlab character. Label for the x axe
+#' @param ylab character. Label for the y axe
+#' @param changes list. Labels for the three types of chages, the default is c(GC = "Gross chages", NG = "Net Gain", NL = "Net Loss")
+#' @param color list. Colors for the three types of chages
+#' @param area_km2 boolean. TRUE for km2 unit, FALSE for pixel unit
+#'
+#'
 #'
 #' @return A bar plot
 #' @export
+#'
+#' @examples
+#' test1 <- demo_landscape(2000:2005)
+#' test2 <- contingenceTable(input_raster = test1, pixelresolution = 1)
+#' netgrossplot(dataset = test2$lulc_Mulstistep, legendtable = test2$tb_legend, area_km2 = FALSE)
 #'
 #'
 netgrossplot <-
   function(dataset,
            legendtable,
-           title = "General Changes (2002 - 2014)",
+           title = "General Changes (First year - Last year)",
            xlab = "Land Use Classes",
-           ylab = expression(paste("Area ", Km ^ {2})),
+           ylab = "Area (Kilometer)",
            changes = c(GC = "Gross chages", NG = "Net Gain", NL = "Net Loss"),
            color = c(GC = "gray70", NG = "#006400", NL = "#EE2C2C"),
            area_km2 = TRUE) {
@@ -329,9 +336,14 @@ netgrossplot <-
 
 #' A sandkey plot for the land use land cover transition for the period analysed
 #'
-#' @param dataset table of one step transition or multi step transition for a onestep or multistep sankey plot
+#' @param dataset Table of one step transition for a onestep sankey plot or a table multi step
+#' transition for a multistep sankey plot.
 #' @param legendtable A table contains the legend of the land use classes and his respective color
-#' @param iterations see networkD3 link sankeyNetwork
+#' @param iterations numeric. Number of iterations in the diagramm layout for computation
+#' of the depth (y-position) of each node.
+#'
+#' @seealso \code{\link[networkD3]{sankeyNetwork}}
+#'
 #'
 #' @return A land use land cover transition sankey plot for the period analysed
 #' @export

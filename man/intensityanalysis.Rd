@@ -56,7 +56,7 @@ At each level, the method tests for stationarity of patterns across time interva
  \item lv1_tbl: An \code{"\linkS4class{IntensityL01}"} object containing
  1 table with 4 columns:
    \enumerate{
-   \item Period: \code{<fct>}. The period \out{[Y<sub>t</sub>, Y<sub>t+1</sub>]}.
+   \item Period: \code{<fct>}. The period \emph{[Yt, Yt+1]}.
    \item PercentChange: \code{<dbl>}. Interval Change Area (percent of map).
    \item St: \code{<dbl>}. annual intensity of change for time
    interval [Yt, Yt+1].
@@ -66,62 +66,62 @@ At each level, the method tests for stationarity of patterns across time interva
  a slot with lookup table af the colors associate with the land classes and a
  table with 6 columns:
  \enumerate{
-   \item Period: \code{<fct>}. The period \out{[Y<sub>t</sub>, Y<sub>t+1</sub>]}.
+   \item Period: \code{<fct>}. The period \emph{[Yt, Yt+1]}.
    \item To: \code{<fct>}. a category \emph{j}.
-   \item interval: \code{<dbl>}. duration of the period \out{[Y<sub>t</sub>, Y<sub>t+1</sub>]}.
-   \item GG_km2/GG_pixel: \code{<dbl>/<int>}. area of gross gain of category \emph{j} during \out{[Y<sub>t</sub>, Y<sub>t+1</sub>]}.
-   \item Gtj: \code{<dbl>}. annual intensity of gross gain of category \emph{j} for time interval \out{[Y<sub>t</sub>, Y<sub>t+1</sub>]}.
-   \item St: \code{<dbl>}. annual intensity of change for time interval \out{[Y<sub>t</sub>, Y<sub>t+1</sub>]}.
+   \item interval: \code{<dbl>}. duration of the period \emph{[Yt, Yt+1]}.
+   \item GG_km2/GG_pixel: \code{<dbl>/<int>}. area of gross gain of category \emph{j} during \emph{[Yt, Yt+1]}.
+   \item Gtj: \code{<dbl>}. annual intensity of gross gain of category \emph{j} for time interval \emph{[Yt, Yt+1]}.
+   \item St: \code{<dbl>}. annual intensity of change for time interval \emph{[Yt, Yt+1]}.
    }
  \item lv2_loss: An \code{"\linkS4class{IntensityL02}"} object containing
  a slot with lookup table af the colors associate with the land classes and a
  table with 6 columns:
  \enumerate{
-   \item Period: \code{<fct>}. The period \out{[Y<sub>t</sub>, Y<sub>t+1</sub>]}.
+   \item Period: \code{<fct>}. The period \emph{[Yt, Yt+1]}.
    \item From: \code{<fct>}. a category \emph{i}.
-   \item interval: \code{<dbl>}. duration of the period \out{[Y<sub>t</sub>, Y<sub>t+1</sub>]}.
-   \item GG_km2/GG_pixel: \code{<dbl>/<int>}. area of gross loss of category j during \out{[Y<sub>t</sub>, Y<sub>t+1</sub>]}.
-   \item Lti: \code{<dbl>}. annual intensity of gross loss of category i for time interval \out{[Y<sub>t</sub>, Y<sub>t+1</sub>]}.
-   \item STt: \code{<dbl>}. annual intensity of change for time interval \out{[Y<sub>t</sub>, Y<sub>t+1</sub>]}.
+   \item interval: \code{<dbl>}. duration of the period \emph{[Yt, Yt+1]}.
+   \item GG_km2/GG_pixel: \code{<dbl>/<int>}. area of gross loss of category j during \emph{[Yt, Yt+1]}.
+   \item Lti: \code{<dbl>}. annual intensity of gross loss of category i for time interval \emph{[Yt, Yt+1]}.
+   \item STt: \code{<dbl>}. annual intensity of change for time interval \emph{[Yt, Yt+1]}.
    }
  \item gain_n: An \code{"\linkS4class{IntensityL03}"} object containing
  a slot with lookup table af the colors associate with the land classes and a
  table with 7 columns:
  \enumerate{
-   \item Period: \code{<fct>}. The period \out{[Y<sub>t</sub>, Y<sub>t+1</sub>]}.
+   \item Period: \code{<fct>}. The period \emph{[Yt, Yt+1]}.
    \item From: \code{<fct>}. a category i.
    \item To: \code{<fct>}. the gaining category in the transition of interest \emph{(n)}.
-   \item interval: \code{<dbl>}. duration of the period \out{[Y<sub>t</sub>, Y<sub>t+1</sub>]}.
+   \item interval: \code{<dbl>}. duration of the period \emph{[Yt, Yt+1]}.
    \item T_i2n_km2/T_i2n_pixel: \code{<dbl>}. transition from category i to category n
-   during time interval \out{[Y<sub>t</sub>, Y<sub>t+1</sub>]} where \emph{i}  \code{is not equal to} \emph{n}.
+   during time interval \emph{[Yt, Yt+1]} where \emph{i}  \code{is not equal to} \emph{n}.
    \item Rtin: \code{<dbl>}. annual intensity of transition from category i to category n
-   during time interval \out{[Y<sub>t</sub>, Y<sub>t+1</sub>]} where \emph{i}  \code{is not equal to} \emph{n}.
+   during time interval \emph{[Yt, Yt+1]} where \emph{i}  \code{is not equal to} \emph{n}.
    \item Wtn: \code{<dbl>}. value of uniform intensity of transition to category
-   n from all non-n categories at time Yt during time interval \out{[Y<sub>t</sub>, Y<sub>t+1</sub>]}.
+   n from all non-n categories at time Yt during time interval \emph{[Yt, Yt+1]}.
    }
  \item loss_m: An \code{"\linkS4class{IntensityL03}"} object containing
  a slot with lookup table af the colors associate with the land classes and a
  table with 7 columns:
  \enumerate{
-   \item Period: \code{<fct>}. The period \out{[Y<sub>t</sub>, Y<sub>t+1</sub>]}.
+   \item Period: \code{<fct>}. The period \emph{[Yt, Yt+1]}.
    \item To: \code{<fct>}. a category \emph{j}.
    \item From: \code{<fct>}. the losing category in the transition of interest (m).
-   \item interval: \code{<dbl>}. duration of the period \out{[Y<sub>t</sub>, Y<sub>t+1</sub>]}.
+   \item interval: \code{<dbl>}. duration of the period \emph{[Yt, Yt+1]}.
    \item T_m2j_km2/T_m2j_pixel: \code{<dbl>}. a transition from category \emph{m} to
-   category \emph{j} during time interval \out{[Y<sub>t</sub>, Y<sub>t+1</sub>]}
+   category \emph{j} during time interval \emph{[Yt, Yt+1]}
    where \emph{j}  \code{is not equal to} \emph{m}.
    \item Qtmj: \code{<dbl>}. annual intensity of transition from category \emph{m} to
-   category \emph{j} during time interval \out{[Y<sub>t</sub>, Y<sub>t+1</sub>]}
+   category \emph{j} during time interval \emph{[Yt, Yt+1]}
    where \emph{j}  \code{is not equal to} \emph{m}.
    \item Vtm: \code{<dbl>}. value of uniform intensity of transition from
    category \emph{m} to all \emph{non-m} categories at time \out{Y<sub>t+1</sub>}
-   during time interval \out{[Y<sub>t</sub>, Y<sub>t+1</sub>]}.
+   during time interval \emph{[Yt, Yt+1]}.
    }
  \item st_lv2_gain: A \code{tibble} of stationarity test in level 02 gain
  containing 5 columns:
  \enumerate{
    \item To: \code{<fct>}. acategory \emph{j}.
-   \item gain: \code{<int>}. Number of time the class loss during time interval \out{[Y<sub>t</sub>, Y<sub>t+1</sub>]}.
+   \item gain: \code{<int>}. Number of time the class loss during time interval \emph{[Yt, Yt+1]}.
    \item N: \code{<int>}. Number total of time of trasition to be considered as stationary (T).
    \item Stationarity: \code{<chr>}. \emph{Active Gain} or \emph{Dormant Gain}.
    \item Test: \code{<chr>}. \emph{Y} for stationarity detected and \emph{N} when not.
@@ -130,7 +130,7 @@ At each level, the method tests for stationarity of patterns across time interva
  containing 5 columns:
  \enumerate{
    \item From: \code{<fct>}. acategory \emph{i}.
-   \item loss: \code{<int>}.  Number of time the class loss during time interval \out{[Y<sub>t</sub>, Y<sub>t+1</sub>]}.
+   \item loss: \code{<int>}.  Number of time the class loss during time interval \emph{[Yt, Yt+1]}.
    \item N: \code{<int>}. Number total of time of trasition to be considered as stationary (T).
    \item Stationarity: \code{<chr>}. \emph{Active Loss} or \emph{Dormant Loss}.
    \item Test: \code{<chr>}. \emph{Y} for stationarity detected and \emph{N} when not.
@@ -149,7 +149,7 @@ At each level, the method tests for stationarity of patterns across time interva
  \enumerate{
    \item To: \code{<fct>}. the gaining category in the transition of interest from the m category.
    \item gain: \code{<int>}. Number of time the class gain from the m class.
-   \item N: \code{(<int>)}. Number total of time of trasition to be considered as stationary (T).
+   \item N: \code{<int>}. Number total of time of trasition to be considered as stationary (T).
    \item Stationarity: \code{<chr>}. \emph{targeted} or \emph{avoided} by the \code{m} class.
    \item Test: \code{<chr>}. \emph{Y} for stationarity detected and \emph{N} when not.
    }

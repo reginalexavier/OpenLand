@@ -1,6 +1,7 @@
 ---
 title: "Quick Intro for OpenLand Package"
 output: rmarkdown::html_vignette
+bibliography: papers_OpenLand.bib
 vignette: >
   %\VignetteIndexEntry{Quick Intro for OpenLand Package}
   %\VignetteEngine{knitr::rmarkdown}
@@ -19,20 +20,37 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r setup}
-library(OpenLand)
-```
+**This is a Vignette on how to use the OpenLand package into Land Use and Land Cover (LULC)
+data manipulation and producing visualisations.**
 
-# Description of the tools
+## Description of the tools
 
 OpenLand is an open-source R package for the analysis of land use and land cover
 time series. It includes support for loading spatiotemporal data `raster map`; 
 simulating landscapes with some degree of spatial correlation; extraction of
 land use transition matrices; computing of net change and gross changes in a given 
-interval; performing a complete intensity analysis based on Pontius [@Pontius20011] . It provides
+interval; performing a complete intensity analysis based on [@Aldwaik2012]. It provides
 methods for visualizations of land use and land cover change like 
 the outcomes of intensity analysis, as other graphs like sankey diagram 
 (onestep or multistep) and chord diagram displaying the inter-relationships 
 between the land uses.
 
 
+## Data source
+The datasets we are going to use for this experiment is from the SOSPantanal...
+
+This is the steps in using OpenLand for LULCC data Analysis
+
+We first need to load these package programs firs:
+
+```{r setup}
+library(OpenLand)
+```
+
+
+
+
+
+
+
+# References

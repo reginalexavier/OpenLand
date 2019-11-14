@@ -5,31 +5,39 @@
 \title{A barplot for the Net Gain/Loss and Gross Changes between land use classes for the period analysed}
 \usage{
 netgrossplot(dataset, legendtable,
-  title = "General Changes (2002 - 2014)", xlab = "Land Use Classes",
-  ylab = expression(paste("Area ", Km^{     2 })), changes = c(GC =
-  "Gross chages", NG = "Net Gain", NL = "Net Loss"), color = c(GC =
-  "gray70", NG = "#006400", NL = "#EE2C2C"), area_km2 = TRUE)
+  title = "General Changes (First year - Last year)",
+  xlab = "Land Use Classes", ylab = "Area (Kilometer)",
+  changes = c(GC = "Gross chages", NG = "Net Gain", NL = "Net Loss"),
+  color = c(GC = "gray70", NG = "#006400", NL = "#EE2C2C"),
+  area_km2 = TRUE)
 }
 \arguments{
-\item{dataset}{A table of the multi step transition}
+\item{dataset}{A table of multi step transition}
 
 \item{legendtable}{A table contains the legend of the land use classes and his respective color}
 
-\item{title}{The title of the plot}
+\item{title}{character. The title of the plot (optional), use \code{NULL} for no title.}
 
-\item{xlab}{character Label for the x axe}
+\item{xlab}{character. Label for the x axe}
 
-\item{ylab}{character Label for the y axe}
+\item{ylab}{character. Label for the y axe}
 
-\item{changes}{a character list for the changes labels, the default is c(GC = "Gross chages", NG = "Net Gain", NL = "Net Loss")}
+\item{changes}{list. Labels for the three types of chages, the default is c(GC = "Gross chages", NG = "Net Gain", NL = "Net Loss")}
 
-\item{color}{a color list for the three types of chages}
+\item{color}{list. Colors for the three types of chages}
 
-\item{area_km2}{boolean TRUE for km2 unit, FALSE for pixel unit}
+\item{area_km2}{boolean. TRUE for km2 unit, FALSE for pixel unit}
 }
 \value{
 A bar plot
 }
 \description{
 A barplot for the Net Gain/Loss and Gross Changes between land use classes for the period analysed
+}
+\examples{
+test1 <- demo_landscape(2000:2005)
+test2 <- contingenceTable(input_raster = test1, pixelresolution = 1)
+netgrossplot(dataset = test2$lulc_Mulstistep, legendtable = test2$tb_legend, area_km2 = FALSE)
+
+
 }

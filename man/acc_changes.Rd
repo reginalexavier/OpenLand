@@ -7,7 +7,8 @@
 acc_changes(path)
 }
 \arguments{
-\item{path}{The path of the raster to be analysed}
+\item{path}{list (of filenames or Raster* objects), RasterStack(\code{\link[raster]{brick}}) or
+RasterStack(\code{\link[raster]{stack}})}
 }
 \value{
 Two maps, the first containing the sequence of change as pixel value and second
@@ -21,6 +22,9 @@ has change). These maps can be plotted  with the plot function method of the
 raster package or with the `tmap` package.
 }
 \examples{
-acc_changes(demo_landscape(2000:2005, res = 1, prob = c(0.05, 0.3, 0.05, 0.4, 0.2)))
+test <- demo_landscape(2000:2005, res = 1, prob = c(0.05, 0.3, 0.05, 0.4, 0.2))
+acc_changes(test)
+acc_changes(raster::stack(test))
+acc_changes(raster::brick(test))
 
 }

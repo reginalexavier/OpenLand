@@ -7,27 +7,27 @@
 contingenceTable(input_raster, pixelresolution = 30)
 }
 \arguments{
-\item{input_raster}{list (of filenames or Raster* objects), RasterStack(\code{\link[raster]{brick}}) or
-RasterStack(\code{\link[raster]{stack}})}
+\item{input_raster}{list (of filenames or Raster* objects),
+RasterStack(\code{\link[raster]{brick}}) or RasterStack(\code{\link[raster]{stack}})}
 
-\item{pixelresolution}{the pixel resolution in meter}
+\item{pixelresolution}{numeric. The pixel resolution in meter.}
 }
 \value{
 A list that contains 5 objects.
 \itemize{
   \item \code{lulc_Mulstistep}: \code{<tibble>}  The table of contingency between all step of time analysed, contains 8 columns:
   \enumerate{
-  \item Period: \code{<chr>} The period \out{[Y<sub>t</sub>, Y<sub>t+1</sub>]}.
+  \item Period: \code{<chr>} The period \emph{[Yt, Yt+1]}.
   \item From: \code{<dbl>} a category \emph{i}.
   \item To: \code{<dbl>} a category \emph{j}.
   \item km2: \code{<dbl>} The quantity in kilometer that transit from the classes category \emph{i}
-   to category \emph{j} in the period \out{[Y<sub>t</sub>, Y<sub>t+1</sub>]}.
+   to category \emph{j} in the period \emph{[Yt, Yt+1]}.
   \item interval: \code{<dbl>} The number of time point between the first and
-   the last year of the period \out{[Y<sub>t</sub>, Y<sub>t+1</sub>]}.
+   the last year of the period \emph{[Yt, Yt+1]}.
   \item QtPixel: \code{<int>} The quantity of pixel that transit from the classes category \emph{i}
-   to category \emph{j} in the period \out{[Y<sub>t</sub>, Y<sub>t+1</sub>]}.
-  \item yearFrom: \code{<chr>} The year that the change come from \out{[Y<sub>t</sub>]}
-  \item yearTo: \code{<chr>} The year that the change go for \out{[Y<sub>t+1</sub>]}
+   to category \emph{j} in the period \emph{[Yt, Yt+1]}.
+  \item yearFrom: \code{<chr>} The year that the change come from \emph{[Yt]}
+  \item yearTo: \code{<chr>} The year that the change go for \emph{[Yt+1]}
   }
   \item \code{tb_legend}: \code{<tibble>} A table of the pixel value his name and color, contains 3 columns:
   \enumerate{
@@ -47,16 +47,16 @@ A list that contains 5 objects.
        \preformatted{
 
        myobject$tb_legend$color <- c("#CDB79E", "red", "#66CD00", "yellow")}}}
-  \item \code{totalArea}: A \code{tibble} of two columns with the total area of study, contains 2 columns:
+  \item \code{totalArea}: \code{<tibble>}  A table of two columns with the total area of study, contains 2 columns:
   \enumerate{
-  \item area_km2: \code{<numeric>} The total area of study in \out{km<sup>2</sup>}
+  \item area_km2: \code{<numeric>} The total area of study in square meter.
   \item QtPixel: \code{<numeric>} The total area of study in quantity of pixel
   }
   \item \code{lulc_Onstep}:\code{<tibble>} The table of contingency between the
-  first and the last year analysed \out{[Y<sub>t</sub>, Y<sub>T</sub>]}, contains
+  first and the last year analysed \emph{[Yt, Yt+1]}, contains
   8 columns like \code{lulc_Mulstistep}.
   \item \code{totalInterval}: \code{<numeric>} The value represinting the whole time points
-  interval of time analysed \out{[Y<sub>t</sub>, Y<sub>t+1</sub>]}, in years.
+  interval of time analysed \emph{[Yt, Yt+1]}, in years.
   }
 }
 \description{

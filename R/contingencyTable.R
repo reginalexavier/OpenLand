@@ -31,8 +31,8 @@ NULL
 #'   \item \code{tb_legend}: \code{<tibble>} A table of the pixel value his name and color, contains 3 columns:
 #'   \enumerate{
 #'   \item classValue: \code{<dbl>} the pixel value of the classes of land use
-#'   \item className: \code{factor} The name or legend associate with a given pixel value, here as factor with a specific level for blablabla
-#'   \item color: The color associate with the given pixel value.
+#'   \item className: \code{<factor>} The name or legend associate with a given pixel value, here as factor with a specific level for blablabla
+#'   \item color: \code{<chr>} The color associate with the given pixel value.
 #'   Befor others step of analysis, one would want to change the \code{className} and \code{color} values. Some details.
 #'     \itemize{
 #'         \item the class name have to be  in the same order of the \code{classValue}
@@ -166,7 +166,7 @@ contingenceTable <-
 
     tb_legend$className <- as.factor(vapply(seq_len(nrow(tb_legend)), function(x) genclass(), character(1)))
     tb_legend$color <- base::sample(grDevices::colors(), nrow(tb_legend), replace = F)
-     
+
     #grDevices::hcl.colors(nrow(tb_legend), palette = "Blue-Red 3", alpha = NULL, rev = FALSE, fixup = TRUE)
 
     areaTotal <-

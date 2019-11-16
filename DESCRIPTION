@@ -55,6 +55,7 @@ Suggests:
     tmap (>= 2.3.1),
     knitr,
     rmarkdown,
-    qpdf
+    qpdf,
+    covr
 VignetteBuilder: knitr
 biocViews:

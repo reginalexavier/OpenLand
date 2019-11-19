@@ -51,7 +51,7 @@ NULL
 #'   \item area_km2: \code{<numeric>} The total area of study in square meter.
 #'   \item QtPixel: \code{<numeric>} The total area of study in quantity of pixel
 #'   }
-#'   \item \code{lulc_Onstep}:\code{<tibble>} The table of contingency between the
+#'   \item \code{lulc_Onestep}:\code{<tibble>} The table of contingency between the
 #'   first and the last year analysed \emph{[Yt, Yt+1]}, contains
 #'   8 columns like \code{lulc_Mulstistep}.
 #'   \item \code{totalInterval}: \code{<numeric>} The value represinting the whole time points
@@ -177,7 +177,7 @@ contingenceTable <-
         lulc_Mulstistep = tibble::as_tibble(lulctable[[2]]),
         tb_legend = tibble::as_tibble(tb_legend),
         totalArea = areaTotal[1, c(2,3)],
-        lulc_Onstep = tibble::as_tibble(lulctable[[1]]),
+        lulc_Onestep = tibble::as_tibble(lulctable[[1]]),
         totalInterval = allinterval
       )
     return(contengenceTable)

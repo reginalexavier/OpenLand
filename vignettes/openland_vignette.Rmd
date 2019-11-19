@@ -55,25 +55,56 @@ this interval of time.
 
 A prototype of this table is as following:
 
-|Y~_t_~ | Y~_t+1_~ | Category~_i_~ | Category~_j_~ |C~_ti_~|C~_tj_~|C~_tij_~ |
-|:----:|:---------:|:------------:|:------------:|:---------:|:---------:|:---------:|
-|Year at time point _t_|Year at time point _t+1_|A category at an interval’s initial time point|A category at an interval’s final time point|Number of elements of category _i_ at the time point _t_|Number of elements of category _j_ at the time point _t+1_|Number of elements ($C_{tij}$) that transits from category _i_ to category _j_|
+|[Y~_t_~, Y~_t+1_~] | Category~_i_~ | Category~_j_~ |C~_tij_~(km^2^)|Y~_t+1_~ - Y~_t_~|C~_tij_~(pixel)|Y~_t_~|Y~_t+1_~|
+|:-----------:|:----------:|:----------:|:--------------:|:-----------:|:--------------:|:----:|:----:|
+|Period of analysis from time point _t_ to time point _t+1_|A category at interval’s initial time point|A category at  interval’s final time point|Number of elements in km^2^ that transits from category _i_ to category _j_|Interval in years between time point _t_ and time point _t+1_|Number of elements in pixel that transits from category _i_ to category _j_|Initial Year of the interval| Final Year of the interval|
+|Period|From|To|km2|interval|QtPixel|yearFrom|yearTo|
 
 
 For our study with the function `contingenceTable(input_raster = SaoLourencoBasin, pixelresolution = 30)` area gives this contingency table:
 
 ```{r}
 
-SL_2002_2014
+SL_2002_2014$lulc_Mulstistep
 
 ```
 
-
-```{r echo=FALSE}
+```{r eval=FALSE, include=FALSE}
 knitr::kable(
 SL_2002_2014$lulc_Mulstistep[1:10, ]
 )
 ```
+
+The second object returned from this function is a table containing the class name asociate with every pixel value and a color to be associate (important for the plots).
+
+```{r}
+SL_2002_2014$tb_legend
+
+```
+
+The third object returned from this function is a table containing the total area of study in km^2^ and in pixel unit.
+
+```{r}
+SL_2002_2014$totalArea
+
+```
+
+The fourth object is a contingency table, with the unique difference is the interval the firt year is Y~t~ and the final year is Y~T~.
+
+```{r}
+
+SL_2002_2014$lulc_Onstep
+
+```
+The last object is the total interval between the first year (Y~t~) and the last year(Y~T~) in year unit.
+
+```{r}
+
+SL_2002_2014$totalInterval
+
+```
+
+
 
 ## Intensity Analysis
 

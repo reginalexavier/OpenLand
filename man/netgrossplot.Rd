@@ -4,12 +4,16 @@
 \alias{netgrossplot}
 \title{A barplot for the Net Gain/Loss and Gross Changes between land use classes for the period analysed}
 \usage{
-netgrossplot(dataset, legendtable,
+netgrossplot(
+  dataset,
+  legendtable,
   title = "General Changes (First year - Last year)",
-  xlab = "Land Use Classes", ylab = "Area (Kilometer)",
+  xlab = "Land Use Classes",
+  ylab = "Area (Kilometer)",
   changes = c(GC = "Gross chages", NG = "Net Gain", NL = "Net Loss"),
   color = c(GC = "gray70", NG = "#006400", NL = "#EE2C2C"),
-  area_km2 = TRUE)
+  area_km2 = TRUE
+)
 }
 \arguments{
 \item{dataset}{A table of multi step transition}

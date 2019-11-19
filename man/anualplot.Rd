@@ -4,11 +4,16 @@
 \alias{anualplot}
 \title{A barplot for the area of every point in time of the analysed period}
 \usage{
-anualplot(dataset, legendtable,
-  title = "General Area in the interval (2002 - 2014)", color = c(GC =
-  "gray70", NG = "#006400", NL = "#EE2C2C"), fill = "LULC Classes",
-  xlab = "Year", ylab = expression(paste("Area ", Km^{     2 })),
-  area_km2 = TRUE)
+anualplot(
+  dataset,
+  legendtable,
+  title = "General Area in the interval (2002 - 2014)",
+  color = c(GC = "gray70", NG = "#006400", NL = "#EE2C2C"),
+  fill = "LULC Classes",
+  xlab = "Year",
+  ylab = expression(paste("Area ", Km^{     2 })),
+  area_km2 = TRUE
+)
 }
 \arguments{
 \item{dataset}{A table of the multi step transition}

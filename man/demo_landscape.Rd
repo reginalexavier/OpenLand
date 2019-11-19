@@ -4,11 +4,25 @@
 \alias{demo_landscape}
 \title{Create Raster with Random pixel Value}
 \usage{
-demo_landscape(year, nrows = 100, ncols = 100, res = 1, xmn = 0,
-  xmx = 100, ymn = 0, ymx = 100, crs = NA, class = 1:5,
-  prob = NULL, sim.autocorrelate = FALSE, bin.interval = TRUE,
-  psill = 0.025, model = "Exp", range = 1000,
-  variance = c("identity", "mu", "mu(1-mu)")[1])
+demo_landscape(
+  year,
+  nrows = 100,
+  ncols = 100,
+  res = 1,
+  xmn = 0,
+  xmx = 100,
+  ymn = 0,
+  ymx = 100,
+  crs = NA,
+  class = 1:5,
+  prob = NULL,
+  sim.autocorrelate = FALSE,
+  bin.interval = TRUE,
+  psill = 0.025,
+  model = "Exp",
+  range = 1000,
+  variance = c("identity", "mu", "mu(1-mu)")[1]
+)
 }
 \arguments{
 \item{year}{A list of year, first and last included}

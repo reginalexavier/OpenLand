@@ -4,8 +4,14 @@
 \alias{circlizeplot}
 \title{A circlize plot for the transition between two times point, one step.}
 \usage{
-circlizeplot(dataset, legendtable, legposition = c(x = 1.8, y = 1.5),
-  legtitle = "Classes", sectorcol = "gray80", area_km2 = TRUE)
+circlizeplot(
+  dataset,
+  legendtable,
+  legposition = c(x = 1.8, y = 1.5),
+  legtitle = "Classes",
+  sectorcol = "gray80",
+  area_km2 = TRUE
+)
 }
 \arguments{
 \item{dataset}{A table of the one step transition}

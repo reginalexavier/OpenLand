@@ -38,6 +38,7 @@ and gross gains in each category vary across categories for each time interval.
 transitions vary across the other categories that are available for that transition.
   }
 
+
 At each level, the method tests for stationarity of patterns across time intervals.
 
 \bold{The function return a list with 10 objects:}

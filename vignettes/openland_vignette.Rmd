@@ -1,5 +1,5 @@
 ---
-title: "Quick Intro for OpenLand Package"
+title: "Quick intro for OpenLand Package"
 output: rmarkdown::html_vignette
 bibliography: papers_OpenLand.bib
 vignette: >
@@ -19,7 +19,7 @@ knitr::opts_chunk$set(
   comment = "#>"
 )
 ```
-
+----
 **This is a Vignette on how to use the OpenLand package into Land Use and Land Cover (LULC)
 data manipulation and producing visualisations.**
 
@@ -36,7 +36,7 @@ the outcomes of intensity analysis, as other graphs like sankey diagram
 between the land uses.
 
 
-## Data source
+## Exemple with (Data source)
 The datasets we are going to use for this experiment is from the SOSPantanal...
 
 This is the steps in using OpenLand for LULCC data Analysis
@@ -63,6 +63,8 @@ A prototype of this table is as following:
 
 For our study with the function `contingenceTable(input_raster = SaoLourencoBasin, pixelresolution = 30)` area gives this contingency table:
 
+(@) The first object (``r names(SL_2002_2014[1])``) returned from this function is a contingency table with all the points of time analysed.
+
 ```{r}
 
 SL_2002_2014$lulc_Mulstistep
@@ -75,28 +77,47 @@ SL_2002_2014$lulc_Mulstistep[1:10, ]
 )
 ```
 
-The second object returned from this function is a table containing the class name asociate with every pixel value and a color to be associate (important for the plots).
+(@) The second object (``r names(SL_2002_2014[2])``) returned from this function is a table containing the class name 
+asociate with every pixel value and a color to be associate (important for the plots).
 
 ```{r}
 SL_2002_2014$tb_legend
 
 ```
+> This object come with aleatory values in the ``r names(SL_2002_2014$tb_legend[2])`` 
+and the ``r names(SL_2002_2014$tb_legend[3])`` columns. These values must be edited 
+to the real values corresponding the data to be analysed. `SL_2002_2014$tb_legend$className <- factor(c("Ap", "FF", "SA", "SG", "aa", "SF", "Agua", "Iu", "Ac", "R", "Im"), levels = c("FF", "SF", "SA", "SG", "aa", "Ap", "Ac", "Im", "Iu", "Agua", "R"))`
 
-The third object returned from this function is a table containing the total area of study in km^2^ and in pixel unit.
+```{r}
+# This first command edit the `className` column with the values that represents the dataset
+# SL_2002_2014$tb_legend$className <- factor(c("Ap", "FF", "SA", "SG", "aa", "SF",
+#                                               "Agua", "Iu", "Ac", "R", "Im"),
+#                                  levels = c("FF", "SF", "SA", "SG", "aa", "Ap",
+#                                              "Ac", "Im", "Iu", "Agua", "R"))
+
+# this command edit the `color` column with the colors apropriate with the dataset
+# SL_2002_2014$tb_legend$color <- c("#CDB79E", "#006400", "#66CD00","#7FFF00",
+#                                   "#EE2C2C", "#458B00", "#0000CD", "#6B6B6B",
+#                                   "#CD950C", "#6B8E23", "#CD00CD")
+                                  
+```
+
+
+(@) The third object (``r names(SL_2002_2014[3])``) returned from this function is a table containing the total area of study in km^2^ and in pixel unit.
 
 ```{r}
 SL_2002_2014$totalArea
 
 ```
 
-The fourth object is a contingency table, with the unique difference is the interval the firt year is Y~t~ and the final year is Y~T~.
+(@) The fourth object (``r names(SL_2002_2014[4])``) is a contingency table, with the unique difference is the interval the firt year is Y~t~ and the final year is Y~T~.
 
 ```{r}
 
 SL_2002_2014$lulc_Onstep
 
 ```
-The last object is the total interval between the first year (Y~t~) and the last year(Y~T~) in year unit.
+(@) The last object (``r names(SL_2002_2014[5])``) is the total interval between the first year (Y~t~) and the last year(Y~T~) in year unit.
 
 ```{r}
 
@@ -112,15 +133,101 @@ SL_2002_2014$totalInterval
 testSL <- intensityanalysis(SL_2002_2014, class_n = "Ap", class_m = "SG")
 
 # it's returns a list with 10 objects
-
-testSL
-
+names(testSL)
 ```
 
 ## The graphics
 
-```{r}
+
+### Interval Level
+
+```{r, fig.width=7, fig.height=4}
+
 plot(testSL$lv1_tbl)
+
+```
+
+### Category Level
+
+* Gain
+
+```{r, fig.width=7, fig.height=4}
+
+plot(testSL$lv2_gain)
+
+```
+
+* Loss
+```{r, fig.width=7, fig.height=4}
+
+plot(testSL$lv2_loss)
+
+```
+
+### Transition Level
+
+* Gain
+```{r, fig.width=7, fig.height=4}
+
+plot(testSL$gain_n)
+
+```
+
+* Loss
+```{r, fig.width=7, fig.height=4}
+
+plot(testSL$loss_m)
+
+```
+
+## Net and Gross gain and loss
+
+```{r fig.width=7, fig.height=4}
+
+netgrossplot(dataset = SL_2002_2014$lulc_Mulstistep, # gross gain and loss
+             legendtable = SL_2002_2014$tb_legend,
+             title = NULL)
+
+```
+
+
+## Chord Diagram (2002 - 2014)
+
+```{r fig.width=8, fig.height=7}
+
+circlizeplot(dataset = SL_2002_2014$lulc_Onstep,
+             legend = SL_2002_2014$tb_legend,
+             legtitle = "Classes", 
+             legposition = c(x = 2, y = 2),
+             sectorcol = "gray80")
+
+```
+
+## Sankey Multi Step
+
+```{r, fig.width=8, fig.height=4}
+
+sankeyLand(dataset = SL_2002_2014$lulc_Mulstistep,
+           legendtable = SL_2002_2014$tb_legend)
+
+```
+
+## Sankey One Step
+
+```{r, fig.width=8, fig.height=4}
+
+sankeyLand(dataset = SL_2002_2014$lulc_Onstep,
+           legendtable = SL_2002_2014$tb_legend)
+
+```
+
+
+## An Evolution Bar Plot
+
+```{r, fig.width=7, fig.height=4}
+anualplot(dataset = SL_2002_2014$lulc_Mulstistep, 
+          legendtable = SL_2002_2014$tb_legend,
+          area_km2 = T)
 ```
 
 

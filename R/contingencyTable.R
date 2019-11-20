@@ -174,7 +174,7 @@ contingenceTable <-
 
     contengenceTable <-
       list(
-        lulc_Mulstistep = tibble::as_tibble(lulctable[[2]]),
+        lulc_Multistep = tibble::as_tibble(lulctable[[2]]),
         tb_legend = tibble::as_tibble(tb_legend),
         totalArea = areaTotal[1, c(2,3)],
         lulc_Onestep = tibble::as_tibble(lulctable[[1]]),

@@ -262,7 +262,7 @@ circlizeplot <-
 #' @examples
 #' test1 <- demo_landscape(2000:2005)
 #' test2 <- contingenceTable(input_raster = test1, pixelresolution = 1)
-#' netgrossplot(dataset = test2$lulc_Mulstistep, legendtable = test2$tb_legend, area_km2 = FALSE)
+#' netgrossplot(dataset = test2$lulc_Multistep, legendtable = test2$tb_legend, area_km2 = FALSE)
 #'
 #'
 netgrossplot <-

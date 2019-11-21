@@ -52,7 +52,7 @@ A list that contains 5 objects.
   \item area_km2: \code{<numeric>} The total area of study in square meter.
   \item QtPixel: \code{<numeric>} The total area of study in quantity of pixel
   }
-  \item \code{lulc_Onstep}:\code{<tibble>} The table of contingency between the
+  \item \code{lulc_Onestep}:\code{<tibble>} The table of contingency between the
   first and the last year analysed \emph{[Yt, Yt+1]}, contains
   8 columns like \code{lulc_Mulstistep}.
   \item \code{totalInterval}: \code{<numeric>} The value represinting the whole time points

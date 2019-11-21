@@ -36,8 +36,8 @@ the outcomes of intensity analysis, as other graphs like sankey diagram
 between the land uses.
 
 
-## Exemple with (Data source)
-The datasets we are going to use for this experiment is from the SOSPantanal...
+## Example with (Data source)
+The data sets we are going to use for this experiment is from the SOSPantanal...
 
 This is the steps in using OpenLand for LULCC data Analysis
 
@@ -47,9 +47,9 @@ We first need to load these package programs firs:
 library(OpenLand)
 ```
 
-## The conteingency table in a long format
+## The contingency table in a long format
 
-This function calculate a contingency table between a serie of points in time, Time$_{t}$ and Time$_{t+1}$
+This function calculate a contingency table between a series of points in time, Time$_{t}$ and Time$_{t+1}$
 and give the number of elements (C~_tij_~) that transits from category _i_ to category _j_ during interval
 this interval of time.
 
@@ -78,7 +78,7 @@ SL_2002_2014$lulc_Mulstistep[1:10, ]
 ```
 
 (@) The second object (``r names(SL_2002_2014[2])``) returned from this function is a table containing the class name 
-asociate with every pixel value and a color to be associate (important for the plots).
+associate with every pixel value and a color to be associate (important for the plots).
 
 ```{r}
 SL_2002_2014$tb_legend
@@ -110,14 +110,14 @@ SL_2002_2014$totalArea
 
 ```
 
-(@) The fourth object (``r names(SL_2002_2014[4])``) is a contingency table, with the unique difference is the interval the firt year is Y~t~ and the final year is Y~T~.
+(@) The fourth object (``r names(SL_2002_2014[4])``) is a contingency table, with the unique difference is the interval the first year is Y~t~ and the final year is Y~T~.
 
 ```{r}
 
 SL_2002_2014$lulc_Onstep
 
 ```
-(@) The last object (``r names(SL_2002_2014[5])``) is the total interval between the first year (Y~t~) and the last year(Y~T~) in year unit.
+(@) The fifth object (``r names(SL_2002_2014[5])``) is the total interval between the first year (Y~t~) and the last year(Y~T~) in year unit.
 
 ```{r}
 
@@ -130,7 +130,8 @@ SL_2002_2014$totalInterval
 ## Intensity Analysis
 
 ```{r}
-testSL <- intensityanalysis(SL_2002_2014, class_n = "Ap", class_m = "SG")
+testSL <- intensityanalysis(dataset = SL_2002_2014,
+                            class_n = "Ap", class_m = "SG")
 
 # it's returns a list with 10 objects
 names(testSL)
@@ -196,7 +197,7 @@ netgrossplot(dataset = SL_2002_2014$lulc_Mulstistep, # gross gain and loss
 ```{r fig.width=8, fig.height=7}
 
 circlizeplot(dataset = SL_2002_2014$lulc_Onstep,
-             legend = SL_2002_2014$tb_legend,
+             legendtable = SL_2002_2014$tb_legend,
              legtitle = "Classes", 
              legposition = c(x = 2, y = 2),
              sectorcol = "gray80")

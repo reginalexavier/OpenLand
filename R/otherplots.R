@@ -250,8 +250,8 @@ circlizeplot <-
 #' @param title character. The title of the plot (optional), use \code{NULL} for no title.
 #' @param xlab character. Label for the x axe
 #' @param ylab character. Label for the y axe
-#' @param changes list. Labels for the three types of chages, the default is c(GC = "Gross chages", NG = "Net Gain", NL = "Net Loss")
-#' @param color list. Colors for the three types of chages
+#' @param changesLabel character. Labels for the three types of chages, the default is c(GC = "Gross chages", NG = "Net Gain", NL = "Net Loss")
+#' @param color character. Colors for the three types of chages
 #' @param area_km2 boolean. TRUE for km2 unit, FALSE for pixel unit
 #'
 #'
@@ -271,7 +271,7 @@ netgrossplot <-
            title = "General Changes (First year - Last year)",
            xlab = "Land Use Classes",
            ylab = "Area (Kilometer)",
-           changes = c(GC = "Gross chages", NG = "Net Gain", NL = "Net Loss"),
+           changesLabel = c(GC = "Gross changes", NG = "Net Gain", NL = "Net Loss"),
            color = c(GC = "gray70", NG = "#006400", NL = "#EE2C2C"),
            area_km2 = TRUE) {
     From <- To <- km2 <- QtPixel <- area <- NULL
@@ -298,7 +298,7 @@ netgrossplot <-
 
     lulc_gainLoss_net <-
       lulc_gainloss_gross %>% group_by(To) %>% summarise(area = sum(!!as.name(areaif))) %>%
-      mutate(changes = ifelse(area > 0, changes[[2]], changes[[3]]))
+      mutate(changes = ifelse(area > 0, changesLabel[[2]], changesLabel[[3]]))
 
     if (isTRUE(area_km2)) {
       lulc_gainloss_gross <- lulc_gainloss_gross[c(1, 2, 4, 5, 6)]
@@ -308,7 +308,7 @@ netgrossplot <-
 
 
     ggplot(data = lulc_gainloss_gross, aes(To, lulc_gainloss_gross[[2]])) +
-      geom_bar(stat = "identity", width = 0.5, aes(fill = changes[[1]])) +
+      geom_bar(stat = "identity", width = 0.5, aes(fill = changesLabel[[1]])) +
       geom_bar(
         aes(x = To, y = area, fill = changes),
         data = lulc_gainLoss_net,

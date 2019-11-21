@@ -10,7 +10,7 @@ netgrossplot(
   title = "General Changes (First year - Last year)",
   xlab = "Land Use Classes",
   ylab = "Area (Kilometer)",
-  changes = c(GC = "Gross chages", NG = "Net Gain", NL = "Net Loss"),
+  changesLabel = c(GC = "Gross changes", NG = "Net Gain", NL = "Net Loss"),
   color = c(GC = "gray70", NG = "#006400", NL = "#EE2C2C"),
   area_km2 = TRUE
 )
@@ -26,9 +26,9 @@ netgrossplot(
 
 \item{ylab}{character. Label for the y axe}
 
-\item{changes}{list. Labels for the three types of chages, the default is c(GC = "Gross chages", NG = "Net Gain", NL = "Net Loss")}
+\item{changesLabel}{character. Labels for the three types of chages, the default is c(GC = "Gross chages", NG = "Net Gain", NL = "Net Loss")}
 
-\item{color}{list. Colors for the three types of chages}
+\item{color}{character. Colors for the three types of chages}
 
 \item{area_km2}{boolean. TRUE for km2 unit, FALSE for pixel unit}
 }

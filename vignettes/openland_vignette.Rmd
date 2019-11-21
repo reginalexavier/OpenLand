@@ -197,10 +197,7 @@ netgrossplot(dataset = SL_2002_2014$lulc_Mulstistep, # gross gain and loss
 ```{r fig.width=8, fig.height=7}
 
 circlizeplot(dataset = SL_2002_2014$lulc_Onstep,
-             legendtable = SL_2002_2014$tb_legend,
-             legtitle = "Classes", 
-             legposition = c(x = 2, y = 2),
-             sectorcol = "gray80")
+             legendtable = SL_2002_2014$tb_legend)
 
 ```
 

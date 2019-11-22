@@ -24,7 +24,7 @@ knitr::opts_chunk$set(
 library(OpenLand)
 ```
 
-```{r echo=TRUE}
+```{r include=FALSE}
 
 caseStudy <- SL_2002_2014
 
@@ -88,7 +88,7 @@ For our study with the function `contingenceTable(input_raster = SaoLourencoBasi
 
 ```{r}
 
-caseStudy$lulc_Mulstistep
+caseStudy$lulc_Multistep
 
 ```
 
@@ -103,7 +103,7 @@ associate with every pixel value and a color to be associate (important for the 
 
 ```{r}
 
-caseStudy$tb_legend
+caseStudy$lulc_Onestep
 
 ```
 > This object come with aleatory values in the ``r names(caseStudy$tb_legend[2])`` 
@@ -128,7 +128,7 @@ to the real values corresponding the data to be analysed. `caseStudy$tb_legend$c
 (@) The third object (``r names(caseStudy[3])``) returned from this function is a table containing the total area of study in km^2^ and in pixel unit.
 
 ```{r}
-caseStudy$totalArea
+caseStudy$tb_legend
 
 ```
 
@@ -136,7 +136,7 @@ caseStudy$totalArea
 
 ```{r}
 
-caseStudy$lulc_Onstep
+caseStudy$totalArea
 
 ```
 (@) The fifth object (``r names(caseStudy[5])``) is the total interval between the first year (Y~t~) and the last year(Y~T~) in year unit.

@@ -52,7 +52,7 @@ anualplot <-
           summarise(area = sum(!!as.name(areaif))) %>%
           rename("Year" = "yearFrom", "lulc" = "From"))
 
-    ggplot(data = datanual, aes(Year, area)) +
+    ggplot(data = datanual, aes(as.character(Year), area)) +
       geom_bar(aes(fill = lulc), stat = "identity", position = "dodge") +
       scale_fill_manual(values = legendtable$color[order(legendtable$className)]) +
       labs(fill = fill) +

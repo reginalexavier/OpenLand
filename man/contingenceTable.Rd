@@ -64,5 +64,5 @@ Contingence Table
 }
 \examples{
 
-contingenceTable(demo_landscape(year = 2000:2005, res = 1)), pixelresolution = 1)
+contingenceTable(demo_landscape(year = 2000:2005, res = 1), pixelresolution = 1)
 }

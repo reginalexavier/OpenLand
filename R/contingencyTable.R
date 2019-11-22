@@ -64,7 +64,7 @@ NULL
 #'
 #' @examples
 #'
-#'contingenceTable(demo_landscape(year = 2000:2005, res = 1)), pixelresolution = 1)
+#'contingenceTable(demo_landscape(year = 2000:2005, res = 1), pixelresolution = 1)
 
 contingenceTable <-
   function(input_raster, pixelresolution = 30) {

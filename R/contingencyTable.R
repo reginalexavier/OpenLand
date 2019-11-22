@@ -21,7 +21,7 @@ NULL
 #'   \item To: \code{<dbl>} a category \emph{j}.
 #'   \item km2: \code{<dbl>} The quantity in kilometer that transit from the classes category \emph{i}
 #'    to category \emph{j} in the period \emph{[Yt, Yt+1]}.
-#'   \item interval: \code{<dbl>} The number of time point between the first and
+#'   \item Interval: \code{<dbl>} The number of time point between the first and
 #'    the last year of the period \emph{[Yt, Yt+1]}.
 #'   \item QtPixel: \code{<int>} The quantity of pixel that transit from the classes category \emph{i}
 #'    to category \emph{j} in the period \emph{[Yt, Yt+1]}.
@@ -64,8 +64,7 @@ NULL
 #'
 #' @examples
 #'
-#'contingenceTable(demo_landscape(year = 2000:2005, res = 1,
-#'prob = c(0.05, 0.3, 0.05, 0.4, 0.2)), pixelresolution = 1)
+#'contingenceTable(demo_landscape(year = 2000:2005, res = 1)), pixelresolution = 1)
 
 contingenceTable <-
   function(input_raster, pixelresolution = 30) {
@@ -117,7 +116,7 @@ contingenceTable <-
 
     Year_from <- Year_to <- strings01 <- strings02 <-
       yearTo <- yearFrom <-
-      QtPixel <- Period <- From <- To <- km2 <- interval <- NULL
+      QtPixel <- Period <- From <- To <- km2 <- Interval <- NULL
 
     if (!extent_test) {
       stop("The rasters have differents nrow, ncol and/or src, please edit the files and retry!")
@@ -133,7 +132,7 @@ contingenceTable <-
             From = colnames(contengency)[1],
             To = colnames(contengency)[2],
             QtPixel = colnames(contengency)[3]
-          )
+          ) %>% dplyr::mutate(From = as.integer(From), To = as.integer(To))
       }
       if (length(rList) > 2) {
         lulc[[1]] <- table_cross(rList[[1]], rList[[length(rList)]])
@@ -150,10 +149,11 @@ contingenceTable <-
           tidyr::separate(Year_from, c("strings01", "yearFrom"), sep = "_") %>%
           tidyr::separate(Year_to, c("strings02", "yearTo"), sep = "_") %>%
           dplyr::select(-strings01, -strings02) %>%
-          dplyr::mutate(interval = as.numeric(yearTo) - as.numeric(yearFrom)) %>%
+          dplyr::mutate(yearFrom = as.integer(yearFrom), yearTo = as.integer(yearTo),
+                        Interval = yearTo - yearFrom) %>%
           dplyr::mutate(km2 = QtPixel * (pixelresolution ^ 2) / 1000000) %>%
           tidyr::unite("Period", c("yearFrom", "yearTo"), sep = "-", remove = FALSE) %>%
-          dplyr::select(Period, From, To, km2, interval, QtPixel, yearFrom, yearTo))
+          dplyr::select(Period, From, To, km2, QtPixel, Interval, yearFrom, yearTo))
 
     #calculating the total interval and the pixelValue
     allinterval <-
@@ -165,20 +165,27 @@ contingenceTable <-
     genclass <- function() {paste(sample(LETTERS, size = 3, replace = FALSE), collapse = "")}
 
     tb_legend$className <- as.factor(vapply(seq_len(nrow(tb_legend)), function(x) genclass(), character(1)))
-    tb_legend$color <- base::sample(grDevices::colors(), nrow(tb_legend), replace = F)
 
-    #grDevices::hcl.colors(nrow(tb_legend), palette = "Blue-Red 3", alpha = NULL, rev = FALSE, fixup = TRUE)
+    if (version$major <= 3 & version$minor < 6.0) {
+
+      tb_legend$color <- base::sample(grDevices::colors(), nrow(tb_legend), replace = F)
+
+    } else {
+
+      tb_legend$color <- grDevices::hcl.colors(nrow(tb_legend), palette = "Blue-Red 3", alpha = NULL, rev = FALSE, fixup = TRUE)
+
+    }
 
     areaTotal <-
       lulctable[[2]] %>% dplyr::group_by(Period) %>% dplyr::summarise(area_km2 = sum(km2), QtPixel = sum(QtPixel))
 
-    contengenceTable <-
+    contingenceTable <-
       list(
         lulc_Multistep = tibble::as_tibble(lulctable[[2]]),
+        lulc_Onestep = tibble::as_tibble(lulctable[[1]]),
         tb_legend = tibble::as_tibble(tb_legend),
         totalArea = areaTotal[1, c(2,3)],
-        lulc_Onestep = tibble::as_tibble(lulctable[[1]]),
         totalInterval = allinterval
       )
-    return(contengenceTable)
+    return(contingenceTable)
   }

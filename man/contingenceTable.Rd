@@ -22,7 +22,7 @@ A list that contains 5 objects.
   \item To: \code{<dbl>} a category \emph{j}.
   \item km2: \code{<dbl>} The quantity in kilometer that transit from the classes category \emph{i}
    to category \emph{j} in the period \emph{[Yt, Yt+1]}.
-  \item interval: \code{<dbl>} The number of time point between the first and
+  \item Interval: \code{<dbl>} The number of time point between the first and
    the last year of the period \emph{[Yt, Yt+1]}.
   \item QtPixel: \code{<int>} The quantity of pixel that transit from the classes category \emph{i}
    to category \emph{j} in the period \emph{[Yt, Yt+1]}.
@@ -64,6 +64,5 @@ Contingence Table
 }
 \examples{
 
-contingenceTable(demo_landscape(year = 2000:2005, res = 1,
-prob = c(0.05, 0.3, 0.05, 0.4, 0.2)), pixelresolution = 1)
+contingenceTable(demo_landscape(year = 2000:2005, res = 1)), pixelresolution = 1)
 }

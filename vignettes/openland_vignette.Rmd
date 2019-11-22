@@ -19,6 +19,29 @@ knitr::opts_chunk$set(
   comment = "#>"
 )
 ```
+
+```{r setup}
+library(OpenLand)
+```
+
+```{r echo=TRUE}
+
+caseStudy <- SL_2002_2014
+
+caseStudy$tb_legend$className <- factor(c("Ap", "FF", "SA", "SG", "aa", "SF", 
+                                          "Agua", "Iu", "Ac", "R", "Im"),
+                              levels = c("FF", "SF", "SA", "SG", "aa", "Ap", 
+                                         "Ac", "Im", "Iu", "Agua", "R")
+  )
+# add the color by the same order of the legend,
+# it can be the colour name (eg. "white") or the HEX value (eg. #FFFFFF)
+caseStudy$tb_legend$color <- c("#CDB79E", "#006400", "#66CD00", "#7FFF00",
+                               "#EE2C2C", "#458B00", "#0000CD", "#6B6B6B",
+                               "#CD950C", "#6B8E23", "#CD00CD")
+
+```
+
+
 ----
 **This is a Vignette on how to use the OpenLand package into Land Use and Land Cover (LULC)
 data manipulation and producing visualisations.**
@@ -43,9 +66,7 @@ This is the steps in using OpenLand for LULCC data Analysis
 
 We first need to load these package programs firs:
 
-```{r setup}
-library(OpenLand)
-```
+
 
 ## The contingency table in a long format
 
@@ -63,65 +84,66 @@ A prototype of this table is as following:
 
 For our study with the function `contingenceTable(input_raster = SaoLourencoBasin, pixelresolution = 30)` area gives this contingency table:
 
-(@) The first object (``r names(SL_2002_2014[1])``) returned from this function is a contingency table with all the points of time analysed.
+(@) The first object (``r names(caseStudy[1])``) returned from this function is a contingency table with all the points of time analysed.
 
 ```{r}
 
-SL_2002_2014$lulc_Mulstistep
+caseStudy$lulc_Mulstistep
 
 ```
 
 ```{r eval=FALSE, include=FALSE}
 knitr::kable(
-SL_2002_2014$lulc_Mulstistep[1:10, ]
+caseStudy$lulc_Mulstistep[1:10, ]
 )
 ```
 
-(@) The second object (``r names(SL_2002_2014[2])``) returned from this function is a table containing the class name 
+(@) The second object (``r names(caseStudy[2])``) returned from this function is a table containing the class name 
 associate with every pixel value and a color to be associate (important for the plots).
 
 ```{r}
-SL_2002_2014$tb_legend
+
+caseStudy$tb_legend
 
 ```
-> This object come with aleatory values in the ``r names(SL_2002_2014$tb_legend[2])`` 
-and the ``r names(SL_2002_2014$tb_legend[3])`` columns. These values must be edited 
-to the real values corresponding the data to be analysed. `SL_2002_2014$tb_legend$className <- factor(c("Ap", "FF", "SA", "SG", "aa", "SF", "Agua", "Iu", "Ac", "R", "Im"), levels = c("FF", "SF", "SA", "SG", "aa", "Ap", "Ac", "Im", "Iu", "Agua", "R"))`
+> This object come with aleatory values in the ``r names(caseStudy$tb_legend[2])`` 
+and the ``r names(caseStudy$tb_legend[3])`` columns. These values must be edited 
+to the real values corresponding the data to be analysed. `caseStudy$tb_legend$className <- factor(c("Ap", "FF", "SA", "SG", "aa", "SF", "Agua", "Iu", "Ac", "R", "Im"), levels = c("FF", "SF", "SA", "SG", "aa", "Ap", "Ac", "Im", "Iu", "Agua", "R"))`
 
 ```{r}
 # This first command edit the `className` column with the values that represents the dataset
-# SL_2002_2014$tb_legend$className <- factor(c("Ap", "FF", "SA", "SG", "aa", "SF",
+# caseStudy$tb_legend$className <- factor(c("Ap", "FF", "SA", "SG", "aa", "SF",
 #                                               "Agua", "Iu", "Ac", "R", "Im"),
 #                                  levels = c("FF", "SF", "SA", "SG", "aa", "Ap",
 #                                              "Ac", "Im", "Iu", "Agua", "R"))
 
 # this command edit the `color` column with the colors apropriate with the dataset
-# SL_2002_2014$tb_legend$color <- c("#CDB79E", "#006400", "#66CD00","#7FFF00",
+# caseStudy$tb_legend$color <- c("#CDB79E", "#006400", "#66CD00","#7FFF00",
 #                                   "#EE2C2C", "#458B00", "#0000CD", "#6B6B6B",
 #                                   "#CD950C", "#6B8E23", "#CD00CD")
                                   
 ```
 
 
-(@) The third object (``r names(SL_2002_2014[3])``) returned from this function is a table containing the total area of study in km^2^ and in pixel unit.
+(@) The third object (``r names(caseStudy[3])``) returned from this function is a table containing the total area of study in km^2^ and in pixel unit.
 
 ```{r}
-SL_2002_2014$totalArea
+caseStudy$totalArea
 
 ```
 
-(@) The fourth object (``r names(SL_2002_2014[4])``) is a contingency table, with the unique difference is the interval the first year is Y~t~ and the final year is Y~T~.
+(@) The fourth object (``r names(caseStudy[4])``) is a contingency table, with the unique difference is the interval the first year is Y~t~ and the final year is Y~T~.
 
 ```{r}
 
-SL_2002_2014$lulc_Onstep
+caseStudy$lulc_Onstep
 
 ```
-(@) The fifth object (``r names(SL_2002_2014[5])``) is the total interval between the first year (Y~t~) and the last year(Y~T~) in year unit.
+(@) The fifth object (``r names(caseStudy[5])``) is the total interval between the first year (Y~t~) and the last year(Y~T~) in year unit.
 
 ```{r}
 
-SL_2002_2014$totalInterval
+caseStudy$totalInterval
 
 ```
 
@@ -130,7 +152,7 @@ SL_2002_2014$totalInterval
 ## Intensity Analysis
 
 ```{r}
-testSL <- intensityanalysis(dataset = SL_2002_2014,
+testSL <- intensityanalysis(dataset = caseStudy,
                             class_n = "Ap", class_m = "SG")
 
 # it's returns a list with 10 objects
@@ -144,7 +166,7 @@ names(testSL)
 
 ```{r, fig.width=7, fig.height=4}
 
-plot(testSL$lv1_tbl)
+plot(testSL$interval_lvl)
 
 ```
 
@@ -154,14 +176,14 @@ plot(testSL$lv1_tbl)
 
 ```{r, fig.width=7, fig.height=4}
 
-plot(testSL$lv2_gain)
+plot(testSL$category_lvlGain)
 
 ```
 
 * Loss
 ```{r, fig.width=7, fig.height=4}
 
-plot(testSL$lv2_loss)
+plot(testSL$category_lvlLoss)
 
 ```
 
@@ -170,14 +192,14 @@ plot(testSL$lv2_loss)
 * Gain
 ```{r, fig.width=7, fig.height=4}
 
-plot(testSL$gain_n)
+plot(testSL$transition_lvlGain_n)
 
 ```
 
 * Loss
 ```{r, fig.width=7, fig.height=4}
 
-plot(testSL$loss_m)
+plot(testSL$transition_lvlLoss_m)
 
 ```
 
@@ -185,8 +207,8 @@ plot(testSL$loss_m)
 
 ```{r fig.width=7, fig.height=4}
 
-netgrossplot(dataset = SL_2002_2014$lulc_Mulstistep, # gross gain and loss
-             legendtable = SL_2002_2014$tb_legend,
+netgrossplot(dataset = caseStudy$lulc_Multistep, # gross gain and loss
+             legendtable = caseStudy$tb_legend,
              title = NULL)
 
 ```
@@ -196,8 +218,8 @@ netgrossplot(dataset = SL_2002_2014$lulc_Mulstistep, # gross gain and loss
 
 ```{r fig.width=8, fig.height=7}
 
-circlizeplot(dataset = SL_2002_2014$lulc_Onstep,
-             legendtable = SL_2002_2014$tb_legend)
+circlizeplot(dataset = caseStudy$lulc_Onestep,
+             legendtable = caseStudy$tb_legend)
 
 ```
 
@@ -205,8 +227,8 @@ circlizeplot(dataset = SL_2002_2014$lulc_Onstep,
 
 ```{r, fig.width=8, fig.height=4}
 
-sankeyLand(dataset = SL_2002_2014$lulc_Mulstistep,
-           legendtable = SL_2002_2014$tb_legend)
+sankeyLand(dataset = caseStudy$lulc_Multistep,
+           legendtable = caseStudy$tb_legend)
 
 
 ```
@@ -220,8 +242,8 @@ sankeyLand(dataset = SL_2002_2014$lulc_Mulstistep,
 
 ```{r, fig.width=8, fig.height=4}
 
-sankeyLand(dataset = SL_2002_2014$lulc_Onstep,
-           legendtable = SL_2002_2014$tb_legend)
+sankeyLand(dataset = caseStudy$lulc_Onestep,
+           legendtable = caseStudy$tb_legend)
 
 ```
 ```
@@ -231,8 +253,9 @@ sankeyLand(dataset = SL_2002_2014$lulc_Onstep,
 ## An Evolution Bar Plot
 
 ```{r, fig.width=7, fig.height=4}
-anualplot(dataset = SL_2002_2014$lulc_Mulstistep, 
-          legendtable = SL_2002_2014$tb_legend,
+
+anualplot(dataset = caseStudy$lulc_Multistep, 
+          legendtable = caseStudy$tb_legend,
           area_km2 = T)
 ```
 

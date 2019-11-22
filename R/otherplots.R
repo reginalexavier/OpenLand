@@ -153,7 +153,7 @@ circlizeplot <-
       grid_height = unit(6, "mm"),
       grid_width = unit(3, "mm"),
       gap = unit(1, "mm"),
-      labels_gp = grid::gpar(fontsize = 18),
+      labels_gp = grid::gpar(fontsize = 12),
       labels_rot = 0,
       legend_gp = grid::gpar(fill = legendtable$color[order(legendtable$className)]),
       direction = c("vertical", "horizontal")[2],
@@ -281,7 +281,7 @@ netgrossplot <-
       dplyr::select(-c(From, To)) %>%
       rename(
         "From" = "className.x",
-        "To" = "className.y"))[c(1, 2, 4, 7, 9)]
+        "To" = "className.y"))[c(1, 2, 3, 7, 9)] #Period, km2, QtPixel, From, To
 
     areaif <- ifelse(isTRUE(area_km2), "km2", "QtPixel")
 

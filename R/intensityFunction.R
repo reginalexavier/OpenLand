@@ -34,7 +34,7 @@ NULL
 #'    \item To: \code{<fct>}. The class in the last year.
 #'    \item km2: \code{dbl}. The quantity in kilometer that transit from the classes \code{From}
 #'    to \code{To} in the period.
-#'    \item interval: \code{dbl}. The number of time point between the first and the last year of the period.
+#'    \item Interval: \code{dbl}. The number of time point between the first and the last year of the period.
 #'    \item QtPixel: \code{int}. The quantity in number of pixel that transits from
 #'    the classes \code{From} to \code{To} in the period.
 #'    }
@@ -53,7 +53,7 @@ NULL
 #'  \enumerate{
 #'    \item Period: \code{<fct>}. The period \emph{[Yt, Yt+1]}.
 #'    \item To: \code{<fct>}. a category \emph{j}.
-#'    \item interval: \code{<dbl>}. duration of the period \emph{[Yt, Yt+1]}.
+#'    \item Interval: \code{<dbl>}. duration of the period \emph{[Yt, Yt+1]}.
 #'    \item GG_km2/GG_pixel: \code{<dbl>/<int>}. area of gross gain of category \emph{j} during \emph{[Yt, Yt+1]}.
 #'    \item Gtj: \code{<dbl>}. annual intensity of gross gain of category \emph{j} for time interval \emph{[Yt, Yt+1]}.
 #'    \item St: \code{<dbl>}. annual intensity of change for time interval \emph{[Yt, Yt+1]}.
@@ -64,7 +64,7 @@ NULL
 #'  \enumerate{
 #'    \item Period: \code{<fct>}. The period \emph{[Yt, Yt+1]}.
 #'    \item From: \code{<fct>}. a category \emph{i}.
-#'    \item interval: \code{<dbl>}. duration of the period \emph{[Yt, Yt+1]}.
+#'    \item Interval: \code{<dbl>}. duration of the period \emph{[Yt, Yt+1]}.
 #'    \item GG_km2/GG_pixel: \code{<dbl>/<int>}. area of gross loss of category j during \emph{[Yt, Yt+1]}.
 #'    \item Lti: \code{<dbl>}. annual intensity of gross loss of category i for time interval \emph{[Yt, Yt+1]}.
 #'    \item STt: \code{<dbl>}. annual intensity of change for time interval \emph{[Yt, Yt+1]}.
@@ -76,7 +76,7 @@ NULL
 #'    \item Period: \code{<fct>}. The period \emph{[Yt, Yt+1]}.
 #'    \item From: \code{<fct>}. a category i.
 #'    \item To: \code{<fct>}. the gaining category in the transition of interest \emph{(n)}.
-#'    \item interval: \code{<dbl>}. duration of the period \emph{[Yt, Yt+1]}.
+#'    \item Interval: \code{<dbl>}. duration of the period \emph{[Yt, Yt+1]}.
 #'    \item T_i2n_km2/T_i2n_pixel: \code{<dbl>}. transition from category i to category n
 #'    during time interval \emph{[Yt, Yt+1]} where \emph{i}  \code{is not equal to} \emph{n}.
 #'    \item Rtin: \code{<dbl>}. annual intensity of transition from category i to category n
@@ -91,7 +91,7 @@ NULL
 #'    \item Period: \code{<fct>}. The period \emph{[Yt, Yt+1]}.
 #'    \item To: \code{<fct>}. a category \emph{j}.
 #'    \item From: \code{<fct>}. the losing category in the transition of interest (m).
-#'    \item interval: \code{<dbl>}. duration of the period \emph{[Yt, Yt+1]}.
+#'    \item Interval: \code{<dbl>}. duration of the period \emph{[Yt, Yt+1]}.
 #'    \item T_m2j_km2/T_m2j_pixel: \code{<dbl>}. a transition from category \emph{m} to
 #'    category \emph{j} during time interval \emph{[Yt, Yt+1]}
 #'    where \emph{j}  \code{is not equal to} \emph{m}.
@@ -170,22 +170,22 @@ NULL
 intensityanalysis <-
   function(dataset, class_n, class_m, area_km2 = TRUE) {
     # seting the data
-    AE <- dataset[[3]] #study area
+    AE <- dataset[[4]] #study area
 
     allinterval <-
       dataset[[length(dataset)]] #whole interval in year
 
     lulc <-
-      dplyr::left_join(dataset[[1]], dataset[[2]][, c(1, 2)], by = c("From" = "classValue")) %>%
-      dplyr::left_join(dataset[[2]][, c(1, 2)], by = c("To" = "classValue")) %>% dplyr::select(-c(From, To)) %>%
+      dplyr::left_join(dataset[[1]], dataset[[3]][, c(1, 2)], by = c("From" = "classValue")) %>%
+      dplyr::left_join(dataset[[3]][, c(1, 2)], by = c("To" = "classValue")) %>% dplyr::select(-c(From, To)) %>%
       dplyr::rename("From" = "className.x", "To" = "className.y") %>%
-      dplyr::select(Period, From, To, km2, interval, QtPixel)
+      dplyr::select(Period, From, To, km2, QtPixel, Interval)
 
 
     lulc$Period <-
       factor(as.factor(lulc$Period), levels = rev(levels(as.factor(lulc$Period)))) #turning Period a factor
 
-    class_fillColor <- dataset[[2]][c(2, 3)]
+    class_fillColor <- dataset[[3]][c(2, 3)]
 
     lookupcolor <- class_fillColor$color
 
@@ -195,7 +195,7 @@ intensityanalysis <-
       To <-
       Period <-
       km2 <-
-      interval <- QtPixel <- intch_km2 <- num02 <- St <- U <- Gtj <-
+      Interval <- QtPixel <- intch_km2 <- num02 <- St <- U <- Gtj <-
       Gain <- N <- Lti <- Loss <- Rtin <- Wtn <- Qtmj <- Vtm  <- intch_QtPixel <- NULL
 
     if (isTRUE(area_km2)) {
@@ -203,8 +203,8 @@ intensityanalysis <-
       #EQ1 - St ----
 
       eq1 <- lulc %>% dplyr::filter(From != To) %>%
-        dplyr::group_by(Period, interval) %>% dplyr::summarise(intch_km2 = sum(km2)) %>% #interval change:intch_km2
-        dplyr::mutate(PercentChange = (intch_km2 / AE[[1, 1]]) * 100, St = (intch_km2 / (interval * AE[[1, 1]])) * 100) %>%
+        dplyr::group_by(Period, Interval) %>% dplyr::summarise(intch_km2 = sum(km2)) %>% #interval change:intch_km2
+        dplyr::mutate(PercentChange = (intch_km2 / AE[[1, 1]]) * 100, St = (intch_km2 / (Interval * AE[[1, 1]])) * 100) %>%
         dplyr::select(1, 4, 5)
 
       #EQ2 - U ----
@@ -218,27 +218,27 @@ intensityanalysis <-
       #____________Categorical ----
       #EQ3 - Gtj ----
       num03 <- lulc %>% dplyr::filter(From != To) %>%
-        dplyr::group_by(Period, To, interval) %>% dplyr::summarise(num03 = sum(km2)) #ganho bruto da classe no tempo Yt+1
+        dplyr::group_by(Period, To, Interval) %>% dplyr::summarise(num03 = sum(km2)) #ganho bruto da classe no tempo Yt+1
 
       denom03 <-
         lulc %>% dplyr::group_by(Period, To) %>% dplyr::summarise(denom03 = sum(km2)) #area total da classe no tempo Yt+1
 
       eq3 <-
         num03 %>% dplyr::left_join(denom03, by = c("Period", "To")) %>%
-        dplyr::mutate(Gtj = (num03 / (denom03 * interval)) * 100) %>%
+        dplyr::mutate(Gtj = (num03 / (denom03 * Interval)) * 100) %>%
         dplyr::left_join(eq1[c(1,3)], by = "Period") %>% dplyr::select(1,2,3,4,6,7) %>%
         rename("GG_km2" = "num03")
 
       #EQ4 -   Lti ---------
       num04 <- lulc %>% dplyr::filter(From != To) %>%
-        dplyr::group_by(Period, From, interval) %>% dplyr::summarise(num04 = sum(km2)) #perda bruto da classe i no tempo Yt
+        dplyr::group_by(Period, From, Interval) %>% dplyr::summarise(num04 = sum(km2)) #perda bruto da classe i no tempo Yt
 
       denom04 <-
         lulc %>% dplyr::group_by(Period, From) %>% dplyr::summarise(denom04 = sum(km2)) #area total da classe no tempo Yt
 
       eq4 <-
         num04 %>% dplyr::left_join(denom04, by = c("Period", "From")) %>%
-        dplyr::mutate(Lti = (num04 / (denom04 * interval)) * 100) %>%
+        dplyr::mutate(Lti = (num04 / (denom04 * Interval)) * 100) %>%
         dplyr::left_join(eq1[c(1,3)], by = "Period") %>% dplyr::select(1,2,3,4,6,7) %>%
         rename("GL_km2" = "num04")
 
@@ -248,7 +248,7 @@ intensityanalysis <-
       #EQ5 - Rtin----
       num05 <-
         lulc %>% dplyr::filter(From != To, To == class_n) %>% #no caso tudo que vai para a pastagem
-        dplyr::group_by(Period, From, interval) %>% dplyr::summarise(num05 = sum(km2)) #area de transição de cada i para n
+        dplyr::group_by(Period, From, Interval) %>% dplyr::summarise(num05 = sum(km2)) #area de transição de cada i para n
 
       denom05 <-
         lulc %>% dplyr::filter(From != class_n) %>%  #filtro de todas as outras classes que nao sao da classe n
@@ -256,54 +256,54 @@ intensityanalysis <-
 
       eq5 <-
         num05 %>% dplyr::left_join(denom05, by = c("Period", "From")) %>%
-        dplyr::mutate(Rtin = (num05 / (interval * denom05)) * 100)
+        dplyr::mutate(Rtin = (num05 / (Interval * denom05)) * 100)
 
       #EQ6 - Wtn ----
       num06 <- lulc %>% dplyr::filter(From != To, To == class_n) %>%
-        dplyr::group_by(Period, To, interval) %>% dplyr::summarise(num06 = sum(km2)) #ganho bruto da classe n durante a transição
+        dplyr::group_by(Period, To, Interval) %>% dplyr::summarise(num06 = sum(km2)) #ganho bruto da classe n durante a transição
 
       denom06 <- lulc  %>% dplyr::filter(From != class_n) %>%
         dplyr::group_by(Period) %>% dplyr::summarise(denom06 = sum(km2)) #Area que não é da classe n no tempo Yt ????
 
       eq6 <- num06 %>% dplyr::left_join(denom06, by = "Period") %>%
-        dplyr::mutate(Wtn = (num06 / (interval * denom06)) * 100)
+        dplyr::mutate(Wtn = (num06 / (Interval * denom06)) * 100)
 
       plot03ganho_n <-
-        eq5 %>% dplyr::left_join(eq6, by = c("Period", "interval")) %>%
+        eq5 %>% dplyr::left_join(eq6, by = c("Period", "Interval")) %>%
         dplyr::select(1,2,7,3,4,6,10) %>% rename("T_i2n_km2" = "num05")
 
       #EQ7 - Qtmj----
       num07 <- lulc %>% dplyr::filter(From != To, From == class_m) %>%
-        dplyr::group_by(Period, To, interval) %>% dplyr::summarise(num07 = sum(km2)) #area de transição de m para cada j
+        dplyr::group_by(Period, To, Interval) %>% dplyr::summarise(num07 = sum(km2)) #area de transição de m para cada j
 
       denom07 <- lulc %>% dplyr::filter(To != class_m) %>%
         dplyr::group_by(Period, To) %>% dplyr::summarise(denom07 = sum(km2)) #area total de cada classe j no tempo (Yt+1)
 
       eq7 <-
         num07 %>% dplyr::left_join(denom07, by = c("Period", "To")) %>%
-        dplyr::mutate(Qtmj = (num07 / (interval * denom07)) * 100)
+        dplyr::mutate(Qtmj = (num07 / (Interval * denom07)) * 100)
 
       #EQ8 - Vtm----
       num08 <- lulc %>% dplyr::filter(From != To, From == class_m) %>%
-        dplyr::group_by(Period, From, interval) %>% dplyr::summarise(num08 = sum(km2)) #perda bruta da classe m durante a transição
+        dplyr::group_by(Period, From, Interval) %>% dplyr::summarise(num08 = sum(km2)) #perda bruta da classe m durante a transição
 
       denom08 <- lulc %>% dplyr::filter(To != class_m) %>%
         dplyr::group_by(Period) %>% dplyr::summarise(denom08 = sum(km2)) #Area que não é da classe m no tempo Y(t+1)
 
 
       eq8 <- num08 %>% dplyr::left_join(denom08, by = "Period") %>%
-        dplyr::mutate(Vtm = (num08 / (interval * denom08)) * 100)
+        dplyr::mutate(Vtm = (num08 / (Interval * denom08)) * 100)
 
       plot03perda_m <-
-        eq7 %>% dplyr::left_join(eq8, by = c("Period", "interval")) %>%
+        eq7 %>% dplyr::left_join(eq8, by = c("Period", "Interval")) %>%
         dplyr::select(1,2,7,3,4,6,10) %>% rename("T_m2j_km2" = "num07")
     } else {
       #____________Interval-------
       #EQ1 - St ----
 
       eq1 <- lulc %>% dplyr::filter(From != To) %>%
-        dplyr::group_by(Period, interval) %>% dplyr::summarise(intch_QtPixel = sum(QtPixel)) %>% #interval change:intch_km2
-        dplyr::mutate(PercentChange = (intch_QtPixel / AE[[1, 2]]) * 100, St = (intch_QtPixel / (interval * AE[[1, 2]])) * 100) %>%
+        dplyr::group_by(Period, Interval) %>% dplyr::summarise(intch_QtPixel = sum(QtPixel)) %>% #interval change:intch_km2
+        dplyr::mutate(PercentChange = (intch_QtPixel / AE[[1, 2]]) * 100, St = (intch_QtPixel / (Interval * AE[[1, 2]])) * 100) %>%
         dplyr::select(1, 4, 5)
 
       #EQ2 - U ----
@@ -317,27 +317,27 @@ intensityanalysis <-
       #____________Categorical ----
       #EQ3 - Gtj ----
       num03 <- lulc %>% dplyr::filter(From != To) %>%
-        dplyr::group_by(Period, To, interval) %>% dplyr::summarise(num03 = sum(QtPixel)) #ganho bruto da classe no tempo Yt+1
+        dplyr::group_by(Period, To, Interval) %>% dplyr::summarise(num03 = sum(QtPixel)) #ganho bruto da classe no tempo Yt+1
 
       denom03 <-
         lulc %>% dplyr::group_by(Period, To) %>% dplyr::summarise(denom03 = sum(QtPixel)) #area total da classe no tempo Yt+1
 
       eq3 <-
         num03 %>% dplyr::left_join(denom03, by = c("Period", "To")) %>%
-        dplyr::mutate(Gtj = (num03 / (denom03 * interval)) * 100) %>%
+        dplyr::mutate(Gtj = (num03 / (denom03 * Interval)) * 100) %>%
         dplyr::left_join(eq1[c(1,3)], by = "Period") %>% dplyr::select(1,2,3,4,6,7) %>%
         rename("GG_pixel" = "num03")
 
       #EQ4 -   Lti ---------
       num04 <- lulc %>% dplyr::filter(From != To) %>%
-        dplyr::group_by(Period, From, interval) %>% dplyr::summarise(num04 = sum(QtPixel)) #perda bruto da classe i no tempo Yt
+        dplyr::group_by(Period, From, Interval) %>% dplyr::summarise(num04 = sum(QtPixel)) #perda bruto da classe i no tempo Yt
 
       denom04 <-
         lulc %>% dplyr::group_by(Period, From) %>% dplyr::summarise(denom04 = sum(QtPixel)) #area total da classe no tempo Yt
 
       eq4 <-
         num04 %>% dplyr::left_join(denom04, by = c("Period", "From")) %>%
-        dplyr::mutate(Lti = (num04 / (denom04 * interval)) * 100) %>%
+        dplyr::mutate(Lti = (num04 / (denom04 * Interval)) * 100) %>%
         dplyr::left_join(eq1[c(1,3)], by = "Period") %>% dplyr::select(1,2,3,4,6,7) %>%
         rename("GL_pixel" = "num04")
 
@@ -347,7 +347,7 @@ intensityanalysis <-
       #EQ5 - Rtin----
       num05 <-
         lulc %>% dplyr::filter(From != To, To == class_n) %>% #no caso tudo que vai para a pastagem
-        dplyr::group_by(Period, From, interval) %>% dplyr::summarise(num05 = sum(QtPixel)) #area de transição de cada i para n
+        dplyr::group_by(Period, From, Interval) %>% dplyr::summarise(num05 = sum(QtPixel)) #area de transição de cada i para n
 
       denom05 <-
         lulc %>% dplyr::filter(From != class_n) %>%  #filtro de todas as outras classes que nao sao da classe n
@@ -355,47 +355,47 @@ intensityanalysis <-
 
       eq5 <-
         num05 %>% dplyr::left_join(denom05, by = c("Period", "From")) %>%
-        dplyr::mutate(Rtin = (num05 / (interval * denom05)) * 100)
+        dplyr::mutate(Rtin = (num05 / (Interval * denom05)) * 100)
 
       #EQ6 - Wtn ----
       num06 <- lulc %>% dplyr::filter(From != To, To == class_n) %>%
-        dplyr::group_by(Period, To, interval) %>% dplyr::summarise(num06 = sum(QtPixel)) #ganho bruto da classe n durante a transição
+        dplyr::group_by(Period, To, Interval) %>% dplyr::summarise(num06 = sum(QtPixel)) #ganho bruto da classe n durante a transição
 
       denom06 <- lulc  %>% dplyr::filter(From != class_n) %>%
         dplyr::group_by(Period) %>% dplyr::summarise(denom06 = sum(QtPixel)) #Area que não é da classe n no tempo Yt ????
 
       eq6 <- num06 %>% dplyr::left_join(denom06, by = "Period") %>%
-        dplyr::mutate(Wtn = (num06 / (interval * denom06)) * 100)
+        dplyr::mutate(Wtn = (num06 / (Interval * denom06)) * 100)
 
       plot03ganho_n <-
-        eq5 %>% dplyr::left_join(eq6, by = c("Period", "interval")) %>%
+        eq5 %>% dplyr::left_join(eq6, by = c("Period", "Interval")) %>%
         dplyr::select(1,2,7,3,4,6,10) %>% rename("T_i2n_pixel" = "num05")
 
 
       #EQ7 - Qtmj----
       num07 <- lulc %>% dplyr::filter(From != To, From == class_m) %>%
-        dplyr::group_by(Period, To, interval) %>% dplyr::summarise(num07 = sum(QtPixel)) #area de transição de m para cada j
+        dplyr::group_by(Period, To, Interval) %>% dplyr::summarise(num07 = sum(QtPixel)) #area de transição de m para cada j
 
       denom07 <- lulc %>% dplyr::filter(To != class_m) %>%
         dplyr::group_by(Period, To) %>% dplyr::summarise(denom07 = sum(QtPixel)) #area total de cada classe j no tempo (Yt+1)
 
       eq7 <-
         num07 %>% dplyr::left_join(denom07, by = c("Period", "To")) %>%
-        dplyr::mutate(Qtmj = (num07 / (interval * denom07)) * 100)
+        dplyr::mutate(Qtmj = (num07 / (Interval * denom07)) * 100)
 
       #EQ8 - Vtm----
       num08 <- lulc %>% dplyr::filter(From != To, From == class_m) %>%
-        dplyr::group_by(Period, From, interval) %>% dplyr::summarise(num08 = sum(QtPixel)) #perda bruta da classe m durante a transição
+        dplyr::group_by(Period, From, Interval) %>% dplyr::summarise(num08 = sum(QtPixel)) #perda bruta da classe m durante a transição
 
       denom08 <- lulc %>% dplyr::filter(To != class_m) %>%
         dplyr::group_by(Period) %>% dplyr::summarise(denom08 = sum(QtPixel)) #Area que não é da classe m no tempo Y(t+1)
 
 
       eq8 <- num08 %>% dplyr::left_join(denom08, by = "Period") %>%
-        dplyr::mutate(Vtm = (num08 / (interval * denom08)) * 100)
+        dplyr::mutate(Vtm = (num08 / (Interval * denom08)) * 100)
 
       plot03perda_m <-
-        eq7 %>% dplyr::left_join(eq8, by = c("Period", "interval")) %>%
+        eq7 %>% dplyr::left_join(eq8, by = c("Period", "Interval")) %>%
         dplyr::select(1,2,7,3,4,6,10) %>% rename("T_m2j_pixel" = "num07")
     }
 
@@ -477,15 +477,15 @@ intensityanalysis <-
     intensity_tables <-
       list(
         lulc_table = lulc,
-        lv1_tbl = intensity(level01),
-        lv2_gain = intensity(eq3, lookupcolor),
-        lv2_loss = intensity(eq4, lookupcolor),
-        gain_n = intensity(plot03ganho_n, lookupcolor),
-        loss_m = intensity(plot03perda_m, lookupcolor),
-        st_lv2_gain = st_lv2_gain,
-        st_lv2_loss = st_lv2_loss,
-        st_gain_n = st_gain_n,
-        st_loss_m = st_loss_m
+        interval_lvl = intensity(level01, NULL),
+        category_lvlGain = intensity(eq3, lookupcolor),
+        category_lvlLoss = intensity(eq4, lookupcolor),
+        transition_lvlGain_n = intensity(plot03ganho_n, lookupcolor),
+        transition_lvlLoss_m = intensity(plot03perda_m, lookupcolor),
+        stCategory_gain = st_lv2_gain,
+        stCategory_loss = st_lv2_loss,
+        stTransition_gain_n = st_gain_n,
+        stTransition_loss_m = st_loss_m
       )
     return(intensity_tables)
 

@@ -50,7 +50,7 @@ At each level, the method tests for stationarity of patterns across time interva
    \item To: \code{<fct>}. The class in the last year.
    \item km2: \code{dbl}. The quantity in kilometer that transit from the classes \code{From}
    to \code{To} in the period.
-   \item interval: \code{dbl}. The number of time point between the first and the last year of the period.
+   \item Interval: \code{dbl}. The number of time point between the first and the last year of the period.
    \item QtPixel: \code{int}. The quantity in number of pixel that transits from
    the classes \code{From} to \code{To} in the period.
    }
@@ -69,7 +69,7 @@ At each level, the method tests for stationarity of patterns across time interva
  \enumerate{
    \item Period: \code{<fct>}. The period \emph{[Yt, Yt+1]}.
    \item To: \code{<fct>}. a category \emph{j}.
-   \item interval: \code{<dbl>}. duration of the period \emph{[Yt, Yt+1]}.
+   \item Interval: \code{<dbl>}. duration of the period \emph{[Yt, Yt+1]}.
    \item GG_km2/GG_pixel: \code{<dbl>/<int>}. area of gross gain of category \emph{j} during \emph{[Yt, Yt+1]}.
    \item Gtj: \code{<dbl>}. annual intensity of gross gain of category \emph{j} for time interval \emph{[Yt, Yt+1]}.
    \item St: \code{<dbl>}. annual intensity of change for time interval \emph{[Yt, Yt+1]}.
@@ -80,7 +80,7 @@ At each level, the method tests for stationarity of patterns across time interva
  \enumerate{
    \item Period: \code{<fct>}. The period \emph{[Yt, Yt+1]}.
    \item From: \code{<fct>}. a category \emph{i}.
-   \item interval: \code{<dbl>}. duration of the period \emph{[Yt, Yt+1]}.
+   \item Interval: \code{<dbl>}. duration of the period \emph{[Yt, Yt+1]}.
    \item GG_km2/GG_pixel: \code{<dbl>/<int>}. area of gross loss of category j during \emph{[Yt, Yt+1]}.
    \item Lti: \code{<dbl>}. annual intensity of gross loss of category i for time interval \emph{[Yt, Yt+1]}.
    \item STt: \code{<dbl>}. annual intensity of change for time interval \emph{[Yt, Yt+1]}.
@@ -92,7 +92,7 @@ At each level, the method tests for stationarity of patterns across time interva
    \item Period: \code{<fct>}. The period \emph{[Yt, Yt+1]}.
    \item From: \code{<fct>}. a category i.
    \item To: \code{<fct>}. the gaining category in the transition of interest \emph{(n)}.
-   \item interval: \code{<dbl>}. duration of the period \emph{[Yt, Yt+1]}.
+   \item Interval: \code{<dbl>}. duration of the period \emph{[Yt, Yt+1]}.
    \item T_i2n_km2/T_i2n_pixel: \code{<dbl>}. transition from category i to category n
    during time interval \emph{[Yt, Yt+1]} where \emph{i}  \code{is not equal to} \emph{n}.
    \item Rtin: \code{<dbl>}. annual intensity of transition from category i to category n
@@ -107,7 +107,7 @@ At each level, the method tests for stationarity of patterns across time interva
    \item Period: \code{<fct>}. The period \emph{[Yt, Yt+1]}.
    \item To: \code{<fct>}. a category \emph{j}.
    \item From: \code{<fct>}. the losing category in the transition of interest (m).
-   \item interval: \code{<dbl>}. duration of the period \emph{[Yt, Yt+1]}.
+   \item Interval: \code{<dbl>}. duration of the period \emph{[Yt, Yt+1]}.
    \item T_m2j_km2/T_m2j_pixel: \code{<dbl>}. a transition from category \emph{m} to
    category \emph{j} during time interval \emph{[Yt, Yt+1]}
    where \emph{j}  \code{is not equal to} \emph{m}.

@@ -11,6 +11,10 @@ NULL
 #' @param xlab character Label for the x axe
 #' @param ylab character Label for the y axe
 #' @param area_km2 boolean TRUE for km2 unit, FALSE for pixel unit
+#' @param \dots themes parameters \code{\link[ggplot2]{theme}}
+#'
+#'
+#' @seealso \code{ggplot2::\link[ggplot2]{theme}}
 #'
 #' @return a barplot
 #' @export
@@ -26,7 +30,7 @@ anualplot <-
            fill = "LULC Classes",
            xlab = "Year",
            ylab = expression(paste("Area ", Km ^ {2})),
-           area_km2 = TRUE) {
+           area_km2 = TRUE, ...) {
     From <- To <- yearTo <- km2 <- yearFrom <- Year <- lulc <- area <- NULL
     datachange <- dataset %>%
       left_join(legendtable, by = c("From" = "classValue")) %>%
@@ -59,7 +63,8 @@ anualplot <-
       xlab(xlab) +
       ylab(ylab) +
       ggtitle(title) +
-      theme(plot.title = element_text(hjust = .5))
+      theme(plot.title = element_text(hjust = .5),
+            ...)
 
   }
 

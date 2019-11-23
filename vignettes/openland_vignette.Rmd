@@ -279,7 +279,10 @@ sankeyLand(dataset = SL_2002_2014$lulc_Onestep,
 
 anualplot(dataset = SL_2002_2014$lulc_Multistep, 
           legendtable = SL_2002_2014$tb_legend,
-          area_km2 = T)
+          area_km2 = T,
+          panel.background = ggplot2::element_rect(fill = "grey85"),
+          panel.grid.major = ggplot2::element_line(colour = "grey50"))
+
 ```
 
 

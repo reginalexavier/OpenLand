@@ -12,7 +12,8 @@ anualplot(
   fill = "LULC Classes",
   xlab = "Year",
   ylab = expression(paste("Area ", Km^{     2 })),
-  area_km2 = TRUE
+  area_km2 = TRUE,
+  ...
 )
 }
 \arguments{
@@ -31,10 +32,15 @@ anualplot(
 \item{ylab}{character Label for the y axe}
 
 \item{area_km2}{boolean TRUE for km2 unit, FALSE for pixel unit}
+
+\item{\dots}{themes parameters \code{\link[ggplot2]{theme}}}
 }
 \value{
 a barplot
 }
 \description{
 A barplot for the area of every point in time of the analysed period
+}
+\seealso{
+\code{ggplot2::\link[ggplot2]{theme}}
 }

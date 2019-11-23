@@ -154,7 +154,7 @@ circlizeplot <-
       grid_width = unit(3, "mm"),
       gap = unit(1, "mm"),
       labels_gp = grid::gpar(fontsize = 12),
-      labels_rot = 0,
+      #labels_rot = 0,
       legend_gp = grid::gpar(fill = legendtable$color[order(legendtable$className)]),
       direction = c("vertical", "horizontal")[2],
       background = "#EEEEEE",
@@ -166,8 +166,8 @@ circlizeplot <-
         "leftcenter-rot",
         "lefttop-rot"
       )[1],
-      title = legtitle,
-      title_gap = unit(2, "mm")
+      title = legtitle #,
+      #title_gap = unit(2, "mm")
     )
 
 

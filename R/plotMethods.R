@@ -1,34 +1,33 @@
 #' @include intensityFunction.R
 NULL
 
-#' Plot method for intensity objects
-#' @name plot
-#' @rdname plot
-#' @docType methods
+#' Plot method for objects from Intensity Analysis
+#'
+#' Plot \code{Intensity} objects based on Intensity Analysis tables
 #'
 #' @param x tibble. An object from the intensity analysis data
 #' @param y not used
-#' @param labels character
-#' @param leftlabel character
-#' @param rightlabel character
-#' @param title character
+#' @param labels character. left right and title
 #' @param labs character
-#' @param type character
-#' @param ur character
 #' @param marginplot character
 #' @param leg_curv character
 #' @param color_bar character
-#' @param lh character
-#' @param rh character
 #' @param \dots additional arguments
+#'
+#'
 #' @return An intensity graph
+#'
 #' @export
+#' @name plot
+#' @rdname plot
 #'
 #' @importFrom ggplot2 ggplot aes geom_bar geom_hline scale_y_continuous scale_x_continuous
 #'    ylab xlab labs scale_color_manual coord_flip guides guide_legend scale_fill_manual geom_curve
 #'    theme facet_wrap scale_y_reverse scale_x_discrete expand_scale arrow unit geom_text geom_bar
 #'    geom_segment ggtitle element_text element_blank margin
 #' @importFrom forcats fct_rev
+#'
+#'
 
 
 

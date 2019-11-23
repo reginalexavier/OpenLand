@@ -87,7 +87,7 @@
 )
 }
 \arguments{
-\item{x}{an object from the intensity analysis data}
+\item{x}{tibble. An object from the intensity analysis data}
 
 \item{y}{not used}
 

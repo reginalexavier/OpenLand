@@ -6,9 +6,8 @@ NULL
 #' @rdname plot
 #' @docType methods
 #'
-#' @param x an object from the intensity analysis data
+#' @param x tibble. An object from the intensity analysis data
 #' @param y not used
-#'
 #' @param labels character
 #' @param leftlabel character
 #' @param rightlabel character
@@ -21,14 +20,18 @@ NULL
 #' @param color_bar character
 #' @param lh character
 #' @param rh character
-#'
 #' @param \dots additional arguments
-#'
 #' @return An intensity graph
 #' @export
 #'
-#' @import ggplot2
+#' @importFrom ggplot2 ggplot aes geom_bar geom_hline scale_y_continuous scale_x_continuous
+#'    ylab xlab labs scale_color_manual coord_flip guides guide_legend scale_fill_manual geom_curve
+#'    theme facet_wrap scale_y_reverse scale_x_discrete expand_scale arrow unit geom_text geom_bar
+#'    geom_segment ggtitle element_text element_blank margin
 #' @importFrom forcats fct_rev
+
+
+
 
 
 

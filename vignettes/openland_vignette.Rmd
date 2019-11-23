@@ -70,7 +70,7 @@ SaoLourencoBasin
 
 ```
 ```{r fig.height=5, fig.width=7}
-sp::spplot(SaoLourencoBasin)
+#sp::spplot(SaoLourencoBasin)
 ```
 
 

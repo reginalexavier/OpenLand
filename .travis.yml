@@ -6,10 +6,12 @@ warnins_are_errors: true
 
 sudo: false
 
-
+os:
+  - linux
+  - osx
 
 r:
-  - oldrel
+  - 3.5
   - release
   - devel
 

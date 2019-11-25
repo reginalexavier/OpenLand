@@ -37,7 +37,7 @@ Imports:
     forcats (>= 0.4.0),
     gridExtra (>= 2.3),
     grid,
-    ComplexHeatmap (>= 2.1.0),
+    ComplexHeatmap,
     circlize (>= 0.4.8),
     networkD3 (>= 0.4),
     gstat (>= 2.0.3),

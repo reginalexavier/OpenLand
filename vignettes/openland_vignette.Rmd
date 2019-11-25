@@ -189,7 +189,11 @@ names(testSL)
 
 ```{r, fig.width=7, fig.height=4}
 
-plot(testSL$interval_lvl)
+plot(testSL$interval_lvl,
+     labels = c(leftlabel = "Interval Change Area (%)",
+                rightlabel = "Annual Change Area (%)",
+                title = NA),
+     marginplot = c(-8, 0), labs = c("Changes", "Uniform Rate"))
 
 ```
 
@@ -199,14 +203,20 @@ plot(testSL$interval_lvl)
 
 ```{r, fig.width=7, fig.height=4}
 
-plot(testSL$category_lvlGain)
+plot(testSL$category_lvlGain,
+     labels = c(leftlabel = bquote("Gain Area (" ~ Km ^ 2 ~ ")"),
+                rightlabel = "Intensity Gain (%)", title = NA),
+     marginplot = c(.3, .3), labs = c("Classes", "Uniform Rate"))
 
 ```
 
 * Loss
 ```{r, fig.width=7, fig.height=4}
 
-plot(testSL$category_lvlLoss)
+plot(testSL$category_lvlLoss,
+     labels = c(leftlabel = bquote("Loss Area (" ~ Km ^ 2 ~ ")"),
+                rightlabel = "Loss Intensity (%)", title = NA),
+     marginplot = c(.3, .3), labs = c("Classes", "Uniform Rate"))
 
 ```
 
@@ -215,14 +225,22 @@ plot(testSL$category_lvlLoss)
 * Gain
 ```{r, fig.width=7, fig.height=4}
 
-plot(testSL$transition_lvlGain_n)
+plot(testSL$transition_lvlGain_n,
+     labels = c(rightlabel = "Intensity Gain of Ap (%)",
+                leftlabel = bquote("Gain of Ap (" ~ Km ^ 2 ~ ")"),
+                title = NA),
+     marginplot = c(.3, .3), labs = c("Classes", "Uniform Rate"))
 
 ```
 
 * Loss
 ```{r, fig.width=7, fig.height=4}
 
-plot(testSL$transition_lvlLoss_m)
+plot(testSL$transition_lvlLoss_m,
+     labels = c(rightlabel = "Intensity Loss of SG (%)",
+                leftlabel = bquote("Loss of SG (" ~ Km ^ 2 ~ ")"),
+                title = NA),
+     marginplot = c(.3, .3), labs = c("Classes", "Uniform Rate"))
 
 ```
 
@@ -232,7 +250,12 @@ plot(testSL$transition_lvlLoss_m)
 
 netgrossplot(dataset = SL_2002_2014$lulc_Multistep, # gross gain and loss
              legendtable = SL_2002_2014$tb_legend,
-             title = NULL)
+             title = NULL,
+             xlab = "Classes de UCT",
+             changes = c(GC = "Mudanças líquidas", NG = "Ganho Bruto", NL = "Perda Bruta"),
+             #color = c(GC = "gray70", NG = "#006400", NL = "#EE2C2C")
+             color = c(GC = "gray70", NG = "blue", NL = "red")
+             )
 
 ```
 
@@ -281,7 +304,8 @@ anualplot(dataset = SL_2002_2014$lulc_Multistep,
           legendtable = SL_2002_2014$tb_legend,
           area_km2 = T,
           panel.background = ggplot2::element_rect(fill = "grey85"),
-          panel.grid.major = ggplot2::element_line(colour = "grey50"))
+          panel.grid.major = ggplot2::element_line(colour = "red"),
+          axis.text = ggplot2::element_text(family = "serif", face = c("plain", "italic", "bold", "bold.italic")[3], colour = "red"))
 
 ```
 

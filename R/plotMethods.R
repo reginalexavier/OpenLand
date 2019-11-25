@@ -21,7 +21,12 @@ NULL
 #' @name plot
 #' @rdname plot
 #'
-#' @import ggplot2
+#' @importFrom ggplot2 ggplot aes geom_bar geom_hline scale_y_continuous scale_x_continuous
+#'    ylab xlab labs scale_color_manual coord_flip guides guide_legend scale_fill_manual geom_curve
+#'    theme facet_wrap scale_y_reverse scale_x_discrete expand_scale arrow unit geom_text geom_bar
+#'    geom_segment ggtitle element_text element_blank margin
+#'    theme_gray theme_bw theme_linedraw theme_light theme_dark theme_minimal
+#'    theme_classic theme_void
 #'
 #' @importFrom forcats fct_rev
 #'

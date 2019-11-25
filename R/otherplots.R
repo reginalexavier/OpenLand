@@ -328,7 +328,7 @@ netgrossplot <-
                      xend = as.numeric(To) + 0.3,
                      yend = area
                    )) +
-      scale_fill_manual(values = c(color[[1]], color[[2]], color[[3]])) +
+      scale_fill_manual(values = c(color[[2]], color[[1]], color[[3]])) +
       labs(fill = "Changes") +
       geom_hline(yintercept = 0, size = .3) +
       xlab(xlab) +

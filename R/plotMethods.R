@@ -56,7 +56,7 @@ plot.IntensityL01 <- function(x,
                               ...) {
   Type <- St <-  U <-  NULL
 
-  dataset <- x$tabela %>% dplyr::mutate(Type = ifelse(St > U, "Fast", "Slow"))
+  dataset <- x@intervalData %>% dplyr::mutate(Type = ifelse(St > U, "Fast", "Slow"))
 
 
   GL01_taxa <-
@@ -199,8 +199,8 @@ plot.IntensityL02 <- function(x, y,
                               marginplot = c(lh = 0.5, rh = 0.5),
                               leg_curv = c(x = 1 / 10, y = 1 / 10),
                               ...) {
-  dataset <- x$tabela
-  lookupcolor <- x$color
+  dataset <- x@categoryData
+  lookupcolor <- x@lookupcolor
 
   GL02_ganho_taxa <-
     dataset %>% ggplot(aes(fct_rev(dataset[[2]]), dataset[[5]])) +
@@ -345,8 +345,8 @@ plot.IntensityL03 <- function(x, y,
                               marginplot = c(lh = 0.5, rh = 0.5),
                               leg_curv = c(x = 1 / 10, y = 1 / 10),
                               ...) {
-  dataset <- x$tabela
-  lookupcolor <- x$color
+  dataset <- x@transitionData
+  lookupcolor <- x@lookupcolor
 
   GL03_ganho_taxa <-
     dataset %>% ggplot(aes(fct_rev(dataset[[2]]), dataset[[6]])) +

@@ -12,6 +12,10 @@ An S4 class for the intensity level 3 analysis  result
 \describe{
 \item{\code{level}}{character}
 
-\item{\code{color}}{character}
+\item{\code{lookupcolor}}{character}
+
+\item{\code{transitionData}}{a tibble}
+
+\item{\code{transitionStationarity}}{a tibble}
 }}
 

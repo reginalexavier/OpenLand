@@ -12,10 +12,7 @@ knitr::opts_chunk$set(
   out.width = "100%"
 )
 ```
-<style>
-body {
-text-align: justify}
-</style>
+
 
 # OpenLand
 

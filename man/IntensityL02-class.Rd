@@ -12,6 +12,10 @@ A class for the intensity level 2 analysis result
 \describe{
 \item{\code{level}}{character}
 
-\item{\code{color}}{character}
+\item{\code{lookupcolor}}{character}
+
+\item{\code{categoryData}}{a tibble}
+
+\item{\code{categoryStationarity}}{a tibble}
 }}
 

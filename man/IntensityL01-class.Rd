@@ -11,5 +11,7 @@ An S4 class for the intensity level 1 analysis result
 
 \describe{
 \item{\code{level}}{character}
+
+\item{\code{intervalData}}{a tibble}
 }}
 

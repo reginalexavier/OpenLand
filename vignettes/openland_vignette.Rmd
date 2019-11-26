@@ -38,11 +38,13 @@ the outcomes of intensity analysis, as other graphs like sankey diagram
 (onestep or multistep) and chord diagram displaying the inter-relationships 
 between the land uses.
 
-## Case Study (São Lourenço river Basin)
-For this work, we used the map (shapefile) from the 4th edition of the [Monitoring 
-of Changes in Land cover and Land Use in the Upper Paraguay River 
-Basin - Brazilian portion - Review Period: 2012 to 2014](https://www.embrapa.br/pantanal/bacia-do-alto-paraguai) [@Embrapapantanalsite2015], which covers the specifically the years (2002, 2008, 2010, 2012 and 2014).
+## São Lourenço river Basin Case Study
 
+São Lourenço river Basin
+
+For the illustrative case study, we're going to use the map (shapefile) from the 4th edition of the [Monitoring 
+of Changes in Land cover and Land Use in the Upper Paraguay River 
+Basin - Brazilian portion - Review Period: 2012 to 2014](https://www.embrapa.br/pantanal/bacia-do-alto-paraguai) [@Embrapapantanalsite2015], which covers specifically the years (2002, 2008, 2010, 2012 and 2014).
 
 The study area of this research is the São Lourenço river basin, it is located in 
 the southeast of Mato Grosso State, extending over an area of approximately 22,418 km^2^ 
@@ -82,28 +84,28 @@ sp::spplot(SaoLourencoBasin)
 ### Step two
 
 In this step we have to  extract the values from our rasters and save them for 
-further use. The function in `OpenLand` that compute this is the `contingencyTable()`.
+next steps of analysis. The function in `OpenLand` that compute that is the `contingencyTable()`.
 This function returns `r length(SL_2002_2014)` objects: `r names(SL_2002_2014)`.
 
-The two first objects are tables of contingency, the first one takes into account all
-the points in time and the second only the first year and the last of the series.
-The third object is a table containing the class name associate with every pixel
-value and a color to be associate (important for the plots). The values in classe
+The two first objects are tables of contingency, the first one (**`r names(SL_2002_2014)[1]`**) takes into account all
+the points in time and the second (**`r names(SL_2002_2014)[2]`**) only the first year and the last year of the series.
+The third object (**`r names(SL_2002_2014)[3]`**) is a table containing the class name associate with every pixel
+value and a color to be associate with (important for the plots). The values in classe
 and color are been created aleatory by `contingencyTable()` function. These values
 must be edited to the real values corresponding the data to be analysed.
-The fourth object is a table containing the total area of study in km^2^ and in pixel unit and 
-the fifth is the total interval between the first year (Y~t~) and the last year(Y~T~) in year unit.
+The fourth object (**`r names(SL_2002_2014)[4]`**) is a table containing the total area of study in km^2^ and in pixel unit and 
+the fifth (**`r names(SL_2002_2014)[5]`**) is the total interval between the first year (Y~t~) and the last year(Y~T~) in year unit.
 
 
-A prototype of these tables is as following:
+A prototype of the contengency table created by the `contingencyTable` function:
 
 |[Y~_t_~, Y~_t+1_~] | Category~_i_~ | Category~_j_~ |C~_tij_~(km^2^)|C~_tij_~(pixel)|Y~_t+1_~ - Y~_t_~|Y~_t_~|Y~_t+1_~|
 |:------------:|:----------:|:----------:|:--------------:|:--------------:|:------------:|:----:|:----:|
 |`chr`|`int`|`int`|`dbl`|`int`|`int`|`int`|`int`|
 |Period of analysis from time point _t_ to time point _t+1_|A category at interval’s initial time point|A category at  interval’s final time point|Number of elements in km^2^ that transits from category _i_ to category _j_|Number of elements in pixel that transits from category _i_ to category _j_|Interval in years between time point _t_ and time point _t+1_|Initial Year of the interval| Final Year of the interval|
-|Period|From|To|km2|QtPixel|Interval|yearFrom|yearTo|
+|**Period**|**From**|**To**|**km2**|**QtPixel**|**Interval**|**yearFrom**|**yearTo**|
 
-> For the second table,  the difference Y~_t+1_~ terms are repced by Y~_T_~, where T 
+> For the second table,  the Y~_t+1_~ terms are repced by Y~_T_~, where T 
 is the number of time points, i.e., Y~_T_~ is the last year of the series.
 
 
@@ -120,24 +122,24 @@ SL_2002_2014
 
 ```
 
-#### Step 3.1
-Like mentioned before, the `r names(SL_2002_2014[3])` object must be edit with the real
+#### Editing the values in ``r names(SL_2002_2014$tb_legend[2])`` and ``r names(SL_2002_2014$tb_legend[3])`` columns
+Like mentioned before, the **`r names(SL_2002_2014[3])`** object must be edited with the real
 classe name and colors associate with everyone of the classe value. In our case the
-classes names and colors are based on @sospantanal2015.
+classes names and colors are based on @sospantanal2015 [(acces document here, page 17)](https://www.embrapa.br/documents/1354999/1529097/BAP+-+Mapeamento+da+Bacia+do+Alto+Paraguai+-+estudo+completo/e66e3afb-2334-4511-96a0-af5642a56283).
 
-|Pixel Value|Legend|Class|Use|Details|
-|:---|:-----:|:-----------------|:-------------------|:------------------------------|
-|2        | Ap     | Anthropic | Anthropic Use | Pastagem    |
-|3        | FF     | Natural   | NA            | Formações Florestais |
-|4        | SA     | Natural   | NA            | Savana Arborizada (SA - Cerrado)  |
-|5        | SG     | Natural   | NA            | Savana Gramínea (SG - Campo) |
-|7        | aa     | Anthropic | NA            | Alteração Antrópica |
-|8        | SF     | Natural   | NA            | Savana Florestada (SF - Cerradão) |
-|9        | Agua   | Natural   | NA            | Rios, córregos, corixos, vazantes, baías e salinas  
-|10       | Iu     | Anthropic | Anthropic Use | Influencia Urbana   |
-|11       | Ac     | Anthropic | Anthropic Use | Agricultura           |
-|12       | R      | Anthropic | Anthropic Use | Reflorestamento   |
-|13       | Im     | Anthropic | Anthropic Use | Degradação por Mineração|
+|Pixel Value|Legend|Class|Use|Details|color|
+|:---|:-----:|:-----------------|:-------------------|:------------------------------|:------|
+|2        | Ap     | Anthropic | Anthropic Use | Pastagem                            |#FFE4B5|
+|3        | FF     | Natural   | NA            | Formações Florestais                |#228B22|
+|4        | SA     | Natural   | NA            | Savana Arborizada (SA - Cerrado)    |#00FF00|
+|5        | SG     | Natural   | NA            | Savana Gramínea (SG - Campo)        |#CAFF70|
+|7        | aa     | Anthropic | NA            | Alteração Antrópica                 |#EE6363|
+|8        | SF     | Natural   | NA            | Savana Florestada (SF - Cerradão)   |#00CD00|
+|9        | Agua   | Natural   | NA            | Rios, córregos, corixos, vazantes, baías e salinas|#436EEE|
+|10       | Iu     | Anthropic | Anthropic Use | Influencia Urbana                   |#FFAEB9|
+|11       | Ac     | Anthropic | Anthropic Use | Agricultura                         |#FFA54F|
+|12       | R      | Anthropic | Anthropic Use | Reflorestamento                     |#68228B|
+|13       | Im     | Anthropic | Anthropic Use | Degradação por Mineração            |#636363|
 
 
 
@@ -168,19 +170,51 @@ caseStudy$lulc_Mulstistep[1:10, ]
 ```
 
 
-At this point one can choose to run theIntensity Analysis or creating a sankey, 
-chord diagram and bar plot that not depends on the returns of the intensity function.
+At this point one can choose to run the Intensity Analysis or creating some representations
+provided by the `OpenLand` package like sankey diagram with `sankeyLand()` function, a chord 
+diagram with `circlizeplot()` or a bar plot showing the evolution trought the years analysed
+with `anualplot()` since they don't depend on the intensity function returns.
 
 
 ## Intensity Analysis
+The intensity analysis is a quantitative method to analyze maps of land categories 
+from several points in time for a single site by considering cross-tabulation 
+matrices, where one matrix summarizes the change in each time interval. There are
+three levels of analysis, starting from general to more detailed levels, where 
+each level exposes different types of information given the previous level of 
+analysis. First, the **interval level** examines how the size and speed of change 
+vary across time intervals. Second, the **category level** examines how the size and
+intensity of gross losses and gross gains in each category vary across categories
+for each time interval. Third, the **transition level** examines how the size and 
+intensity of a category’s transitions vary across the other categories that are 
+available for that transition. At each level, the method tests for stationarity 
+of patterns across time intervals [@Aldwaik2012].
+
+Within the OpenLand package we have created a funtion `intensityanalysis()` that
+compute the three levels of analysis. It's requires the object returned by the 
+`contingenceTable()` function, and the categories n and m choose by the user.
 
 ```{r}
 testSL <- intensityanalysis(dataset = SL_2002_2014,
                             class_n = "Ap", class_m = "SG")
 
-# it's returns a list with 10 objects
+# it's returns a list with 6 objects
 names(testSL)
+
+testSL
 ```
+
+The function returns `r length(testSL)` objects: `r names(testSL)`.
+On this part we adopted an object-oriented approach that allows us to setting specifics
+methods for ploting the intensity objects created by the `intensityanalysis()` function. 
+The system we use is the S4 class which requires classes and methods to be 
+formally define [@Chambers2008].
+The first obeject is a contingency table like the `r names(SL_2002_2014)[1]` object
+with the unique difference that is, the column `From` and `To` values have has been replaced
+by their appropriate legend.
+
+
+
 
 ## The graphics
 

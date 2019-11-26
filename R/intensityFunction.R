@@ -477,15 +477,35 @@ intensityanalysis <-
     intensity_tables <-
       list(
         lulc_table = lulc,
-        interval_lvl = intensity(level01, NULL),
-        category_lvlGain = intensity(eq3, lookupcolor),
-        category_lvlLoss = intensity(eq4, lookupcolor),
-        transition_lvlGain_n = intensity(plot03ganho_n, lookupcolor),
-        transition_lvlLoss_m = intensity(plot03perda_m, lookupcolor),
-        stCategory_gain = st_lv2_gain,
-        stCategory_loss = st_lv2_loss,
-        stTransition_gain_n = st_gain_n,
-        stTransition_loss_m = st_loss_m
+        interval_lvl = new("IntensityL01", level = "Interval", intervalData = level01),
+        category_lvlGain = new(
+          "IntensityL02",
+          level = "Category",
+          categoryData = eq3,
+          lookupcolor = lookupcolor,
+          categoryStationarity = st_lv2_gain
+        ),
+        category_lvlLoss = new(
+          "IntensityL02",
+          level = "Category",
+          categoryData = eq4,
+          lookupcolor = lookupcolor,
+          categoryStationarity = st_lv2_loss
+        ),
+        transition_lvlGain_n = new(
+          "IntensityL03",
+          level = "Transition",
+          transitionData = plot03ganho_n,
+          lookupcolor = lookupcolor,
+          transitionStationarity = st_gain_n
+        ),
+        transition_lvlLoss_m = new(
+          "IntensityL03",
+          level = "Transition",
+          transitionData = plot03perda_m,
+          lookupcolor = lookupcolor,
+          transitionStationarity = st_loss_m
+        )
       )
     return(intensity_tables)
 

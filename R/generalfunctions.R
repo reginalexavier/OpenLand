@@ -157,7 +157,7 @@ acc_changes <- function(path) {
   qt_change <- raster::overlay(
     seq_change,
     fun = function(x)
-      value <- nchar(x)
+      value <- ifelse(x == 0, 0, nchar(x))
   )
 
   return(list(seq_change, qt_change))

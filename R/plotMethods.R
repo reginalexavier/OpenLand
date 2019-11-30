@@ -111,7 +111,7 @@ setMethod(
           r = 0,
           b = 0,
           l = -(marginplot[[2]])
-        ), "pt")
+        ), "pt"), ...
       )
 
     #Area---------------
@@ -138,7 +138,7 @@ setMethod(
           r = -(marginplot[[1]]),
           b = 0,
           l = 0
-        ), "pt")
+        ), "pt"), ...
       )
 
 
@@ -258,7 +258,7 @@ setMethod(
           r = 0,
           b = 0,
           l = -(marginplot[[2]])
-        ), "pt")
+        ), "pt"), ...
       )
 
     #Area ----
@@ -287,7 +287,7 @@ setMethod(
           r = -(marginplot[[1]]),
           b = 0,
           l = 0
-        ), "pt")
+        ), "pt"), ...
 
       )
 
@@ -412,7 +412,7 @@ setMethod(
           r = 0,
           b = 0,
           l = -(marginplot[[2]])
-        ), "pt")
+        ), "pt"), ...
       )
 
     #Area ----
@@ -441,7 +441,7 @@ setMethod(
           r = -(marginplot[[1]]),
           b = 0,
           l = 0
-        ), "pt")
+        ), "pt"), ...
       )
 
 

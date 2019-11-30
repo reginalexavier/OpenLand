@@ -230,20 +230,22 @@ intervals reside on one side of the uniform intensity.
 
 
 ```{r}
-# showing the object from the intensity analysis for our illustrative case
+# showing the objects from the intensity analysis for our illustrative case
 testSL
 
 ```
 
 
 
-## The Graphs
+## The Graphs 
+
+### Outcomes of intensity analysis
 
 Visualizations of the intensity analysis result is obtaining from the plot(intensityObject) 
 function, for a more detailed over the parameters see function's documentation.
 
 
-### Interval Level
+#### Interval Level
 
 ```{r, fig.width=7, fig.height=4}
 
@@ -255,7 +257,7 @@ plot(testSL$interval_lvl,
 
 ```
 
-### Category Level
+#### Category Level
 
 * Gain
 
@@ -265,6 +267,7 @@ plot(testSL$category_lvlGain,
      labels = c(leftlabel = bquote("Gain Area (" ~ Km ^ 2 ~ ")"),
                 rightlabel = "Intensity Gain (%)", title = NA),
      marginplot = c(.3, .3), labs = c("Classes", "Uniform Rate"))
+
 
 ```
 
@@ -278,7 +281,7 @@ plot(testSL$category_lvlLoss,
 
 ```
 
-### Transition Level
+#### Transition Level
 
 * Gain
 ```{r, fig.width=7, fig.height=4}
@@ -302,7 +305,9 @@ plot(testSL$transition_lvlLoss_m,
 
 ```
 
-## Net and Gross gain and loss
+### Other graphs
+
+#### Net and Gross gain and loss
 
 ```{r fig.width=7, fig.height=4}
 
@@ -310,15 +315,15 @@ netgrossplot(dataset = SL_2002_2014$lulc_Multistep, # gross gain and loss
              legendtable = SL_2002_2014$tb_legend,
              title = NULL,
              xlab = "Classes de UCT",
-             changes = c(GC = "Mudanças líquidas", NG = "Ganho Bruto", NL = "Perda Bruta"),
-             #color = c(GC = "gray70", NG = "#006400", NL = "#EE2C2C")
-             color = c(GC = "gray70", NG = "blue", NL = "red")
+             changes = c(GC = "Gross changes", NG = "Net Gain", NL = "Net Loss"),
+             color = c(GC = "gray70", NG = "#006400", NL = "#EE2C2C")
+             #color = c(GC = "gray70", NG = "green", NL = "red")
              )
 
 ```
 
 
-## Chord Diagram (2002 - 2014)
+#### Chord Diagram (2002 - 2014)
 
 ```{r fig.width=7, fig.height=6}
 
@@ -327,7 +332,7 @@ circlizeplot(dataset = SL_2002_2014$lulc_Onestep,
 
 ```
 
-## Sankey Multi Step
+#### Sankey Multi Step
 
 ```{r, fig.width=8, fig.height=4}
 
@@ -342,7 +347,7 @@ sankeyLand(dataset = SL_2002_2014$lulc_Multistep,
            2002                 2008                2010                  2012                  2014
 ```
 
-## Sankey One Step
+#### Sankey One Step
 
 ```{r, fig.width=8, fig.height=4}
 
@@ -354,16 +359,19 @@ sankeyLand(dataset = SL_2002_2014$lulc_Onestep,
                           2002                                                  2014
 ```
 
-## An Evolution Bar Plot
+#### An Evolution Bar Plot
 
 ```{r, fig.width=7, fig.height=4}
 
-anualplot(dataset = SL_2002_2014$lulc_Multistep, 
+barplotLand(dataset = SL_2002_2014$lulc_Multistep, 
           legendtable = SL_2002_2014$tb_legend,
           area_km2 = T,
-          panel.background = ggplot2::element_rect(fill = "grey85"),
-          panel.grid.major = ggplot2::element_line(colour = "red"),
-          axis.text = ggplot2::element_text(family = "serif", face = c("plain", "italic", "bold", "bold.italic")[3], colour = "red"))
+          #panel.background = ggplot2::element_rect(fill = "grey85"),
+          #panel.grid.major = ggplot2::element_line(colour = "red"),
+          #axis.text = ggplot2::element_text(family = "serif",
+                  #                          face = c("plain", "italic", "bold",
+                                    #                 "bold.italic")[3], colour = "red")
+                                                     )
 
 ```
 

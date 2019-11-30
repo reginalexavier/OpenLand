@@ -93,7 +93,7 @@ the sample value for the lulc" />
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/openland_vignette.html">Quick Intro for OpenLand Package</a>
+      <a href="../articles/openland_vignette.html">Quick intro for OpenLand Package</a>
     </li>
   </ul>
 </li>
@@ -128,11 +128,25 @@ the sample value for the lulc" />
 the sample value for the lulc</p>
     </div>
 
-    <pre class="usage"><span class='fu'>demo_landscape</span>(<span class='no'>year</span>, <span class='kw'>nrows</span> <span class='kw'>=</span> <span class='fl'>100</span>, <span class='kw'>ncols</span> <span class='kw'>=</span> <span class='fl'>100</span>, <span class='kw'>res</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>xmn</span> <span class='kw'>=</span> <span class='fl'>0</span>,
-  <span class='kw'>xmx</span> <span class='kw'>=</span> <span class='fl'>100</span>, <span class='kw'>ymn</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>ymx</span> <span class='kw'>=</span> <span class='fl'>100</span>, <span class='kw'>crs</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>class</span> <span class='kw'>=</span> <span class='fl'>1</span>:<span class='fl'>5</span>,
-  <span class='kw'>prob</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>sim.autocorrelate</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>bin.interval</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>psill</span> <span class='kw'>=</span> <span class='fl'>0.025</span>, <span class='kw'>model</span> <span class='kw'>=</span> <span class='st'>"Exp"</span>, <span class='kw'>range</span> <span class='kw'>=</span> <span class='fl'>1000</span>,
-  <span class='kw'>variance</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"identity"</span>, <span class='st'>"mu"</span>, <span class='st'>"mu(1-mu)"</span>)[<span class='fl'>1</span>])</pre>
+    <pre class="usage"><span class='fu'>demo_landscape</span>(
+  <span class='no'>year</span>,
+  <span class='kw'>nrows</span> <span class='kw'>=</span> <span class='fl'>100</span>,
+  <span class='kw'>ncols</span> <span class='kw'>=</span> <span class='fl'>100</span>,
+  <span class='kw'>res</span> <span class='kw'>=</span> <span class='fl'>1</span>,
+  <span class='kw'>xmn</span> <span class='kw'>=</span> <span class='fl'>0</span>,
+  <span class='kw'>xmx</span> <span class='kw'>=</span> <span class='fl'>100</span>,
+  <span class='kw'>ymn</span> <span class='kw'>=</span> <span class='fl'>0</span>,
+  <span class='kw'>ymx</span> <span class='kw'>=</span> <span class='fl'>100</span>,
+  <span class='kw'>crs</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
+  <span class='kw'>class</span> <span class='kw'>=</span> <span class='fl'>1</span>:<span class='fl'>5</span>,
+  <span class='kw'>prob</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>sim.autocorrelate</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>bin.interval</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>psill</span> <span class='kw'>=</span> <span class='fl'>0.025</span>,
+  <span class='kw'>model</span> <span class='kw'>=</span> <span class='st'>"Exp"</span>,
+  <span class='kw'>range</span> <span class='kw'>=</span> <span class='fl'>1000</span>,
+  <span class='kw'>variance</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"identity"</span>, <span class='st'>"mu"</span>, <span class='st'>"mu(1-mu)"</span>)[<span class='fl'>1</span>]
+)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">

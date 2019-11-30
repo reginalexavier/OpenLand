@@ -24,7 +24,7 @@ knitr::opts_chunk$set(
 
 ----
 **This is a Vignette on how to use the OpenLand package into Land Use and Land Cover (LULC)
-data manipulation and producing visualisations.**
+data manipulation and producing visualizations.**
 
 ## Description of the tools
 
@@ -35,14 +35,12 @@ land use transition matrices; computing of net change and gross changes in a giv
 interval; performing a complete intensity analysis based on [@Aldwaik2012]. It provides
 methods for visualizations of land use and land cover change like 
 the outcomes of intensity analysis, as other graphs like sankey diagram 
-(onestep or multistep) and chord diagram displaying the inter-relationships 
+(one-step or multistep) and chord diagram displaying the inter-relationships 
 between the land uses.
 
 ## São Lourenço river Basin Case Study
 
-São Lourenço river Basin
-
-For the illustrative case study, we're going to use the map (shapefile) from the 4th edition of the [Monitoring 
+For the illustrative case study, we're going to use the map (shape file) from the 4th edition of the [Monitoring 
 of Changes in Land cover and Land Use in the Upper Paraguay River 
 Basin - Brazilian portion - Review Period: 2012 to 2014](https://www.embrapa.br/pantanal/bacia-do-alto-paraguai) [@Embrapapantanalsite2015], which covers specifically the years (2002, 2008, 2010, 2012 and 2014).
 
@@ -51,19 +49,19 @@ the southeast of Mato Grosso State, extending over an area of approximately 22,4
 and has experienced significant changes in the LULC during the last decades, including 
 deforestation and intensification of existing agricultural uses.
 
-The shapefile was transformed into rasters and then saved as 5-layer `RasterStack`, 
-included as data in the OpenLand package as `SaoLourencoBasin` (for detail over this object, run `help("SaoLourencoBasin")` or `?SaoLourencoBasin` in the console).
+The shapefile was transformed into rasters and then saved as a 5-layers `RasterStack`, 
+included as data in the OpenLand package as `SaoLourencoBasin` (for  further details over this object, run `help("SaoLourencoBasin")` or `?SaoLourencoBasin` in the console).
 
 ### Step One
 The first function is the `contingencyTable()`, this function take a list of raster
-layer (`RasterBrick`, `RasterStack` or a path to folder conataining the rasters). The name
-of the rasters must be in the format ("sometext" `+` "underscore" `+` "the-year") like "landscape_2019".
+layer (`RasterBrick`, `RasterStack` or a path to folder containing the rasters). The name
+of the rasters must be in the format ("some-text" `+` "underscore" `+` "the-year") like "landscape_2019".
 
 In our example we have the `SaoLourencoBasin` RasterStack, that can be seeing from
 running `data(SaoLourencoBasin)` as following:
 
 ```{r setup}
-# First we load the OpenLand package
+## First we load the OpenLand package
 library(OpenLand)
 
 data(SaoLourencoBasin)
@@ -90,14 +88,14 @@ This function returns `r length(SL_2002_2014)` objects: `r names(SL_2002_2014)`.
 The two first objects are tables of contingency, the first one (**`r names(SL_2002_2014)[1]`**) takes into account all
 the points in time and the second (**`r names(SL_2002_2014)[2]`**) only the first year and the last year of the series.
 The third object (**`r names(SL_2002_2014)[3]`**) is a table containing the class name associate with every pixel
-value and a color to be associate with (important for the plots). The values in classe
+value and a color to be associate with (important for the plots). The values in class
 and color are been created aleatory by `contingencyTable()` function. These values
 must be edited to the real values corresponding the data to be analysed.
 The fourth object (**`r names(SL_2002_2014)[4]`**) is a table containing the total area of study in km^2^ and in pixel unit and 
 the fifth (**`r names(SL_2002_2014)[5]`**) is the total interval between the first year (Y~t~) and the last year(Y~T~) in year unit.
 
 
-A prototype of the contengency table created by the `contingencyTable` function:
+Here a prototype of the contingency table created by the `contingencyTable` function:
 
 |[Y~_t_~, Y~_t+1_~] | Category~_i_~ | Category~_j_~ |C~_tij_~(km^2^)|C~_tij_~(pixel)|Y~_t+1_~ - Y~_t_~|Y~_t_~|Y~_t+1_~|
 |:------------:|:----------:|:----------:|:--------------:|:--------------:|:------------:|:----:|:----:|
@@ -124,7 +122,7 @@ SL_2002_2014
 
 #### Editing the values in ``r names(SL_2002_2014$tb_legend[2])`` and ``r names(SL_2002_2014$tb_legend[3])`` columns
 Like mentioned before, the **`r names(SL_2002_2014[3])`** object must be edited with the real
-classe name and colors associate with everyone of the classe value. In our case the
+class name and colors associate with everyone of the class value. In our case the
 classes names and colors are based on @sospantanal2015 [(acces document here, page 17)](https://www.embrapa.br/documents/1354999/1529097/BAP+-+Mapeamento+da+Bacia+do+Alto+Paraguai+-+estudo+completo/e66e3afb-2334-4511-96a0-af5642a56283).
 
 |Pixel Value|Legend|Class|Use|Details|color|
@@ -144,19 +142,19 @@ classes names and colors are based on @sospantanal2015 [(acces document here, pa
 
 
 ```{r echo=TRUE}
-# editing the classe name
+## editing the classe name
 SL_2002_2014$tb_legend$className <- factor(c("Ap", "FF", "SA", "SG", "aa", "SF", 
                                           "Agua", "Iu", "Ac", "R", "Im"),
                                   levels = c("FF", "SF", "SA", "SG", "aa", "Ap", 
                                          "Ac", "Im", "Iu", "Agua", "R"))
 
-# add the color by the same order of the legend,
-# it can be the colour name (eg. "black") or the HEX value (eg. #000000)
+## add the color by the same order of the legend,
+## it can be the colour name (eg. "black") or the HEX value (eg. #000000)
 SL_2002_2014$tb_legend$color <- c("#FFE4B5", "#228B22", "#00FF00", "#CAFF70", 
                                   "#EE6363", "#00CD00", "#436EEE", "#FFAEB9", 
                                   "#FFA54F", "#68228B", "#636363")
 
-# now we have
+## now we have
 SL_2002_2014$tb_legend
 
 ```
@@ -170,9 +168,9 @@ caseStudy$lulc_Mulstistep[1:10, ]
 ```
 
 
-At this point one can choose to run the Intensity Analysis or creating some representations
+> At this point one can choose to run the Intensity Analysis or creating some representations
 provided by the `OpenLand` package like sankey diagram with `sankeyLand()` function, a chord 
-diagram with `circlizeplot()` or a bar plot showing the evolution trought the years analysed
+diagram with `circlizeplot()` or a bar plot showing the evolution trough the years analysed
 with `anualplot()` since they don't depend on the intensity function returns.
 
 
@@ -190,9 +188,9 @@ intensity of a category’s transitions vary across the other categories that ar
 available for that transition. At each level, the method tests for stationarity 
 of patterns across time intervals [@Aldwaik2012].
 
-Within the OpenLand package we have created a funtion `intensityanalysis()` that
-compute the three levels of analysis. It's requires the object returned by the 
-`contingenceTable()` function, and the categories n and m choose by the user.
+Within the OpenLand package we have created a function `intensityanalysis()` that
+compute the three levels of analysis. It requires the object returned by the 
+`contingenceTable()` function, and the categories `n` and `m` chosen by the user.
 
 ```{r}
 testSL <- intensityanalysis(dataset = SL_2002_2014,
@@ -201,22 +199,48 @@ testSL <- intensityanalysis(dataset = SL_2002_2014,
 # it's returns a list with 6 objects
 names(testSL)
 
-testSL
 ```
 
 The function returns `r length(testSL)` objects: `r names(testSL)`.
 On this part we adopted an object-oriented approach that allows us to setting specifics
-methods for ploting the intensity objects created by the `intensityanalysis()` function. 
+methods for plotting the intensity objects created by the `intensityanalysis()` function. 
 The system we use is the S4 class which requires classes and methods to be 
 formally define [@Chambers2008].
-The first obeject is a contingency table like the `r names(SL_2002_2014)[1]` object
+The first object is a contingency table like the `r names(SL_2002_2014)[1]` object
 with the unique difference that is, the column `From` and `To` values have has been replaced
 by their appropriate legend.
 
+The second object _**`r names(testSL[2])`**_ is an ``r class(testSL[[2]])`` object
+the third _**`r names(testSL[3])`**_ and the fourth _**`r names(testSL[4])`**_ are ``r class(testSL[[4]])``
+objects,  the fifth _**`r names(testSL[5])`**_ and the sixth _**`r names(testSL[6])`**_ are 
+``r class(testSL[[6]])`` objects.
+An ``r class(testSL[[2]])`` object contains two slots: the first one with the analysed level and the
+second a table of interval result.
+An ``r class(testSL[[4]])`` object contains four slots: the first with the analysed level, the
+second the colors associate with the data with the legends as name's attribute, the third slot contain
+a table of the category level result _(gain or loss)_  and the fourth slot contain a table 
+saving a stationarity test.
+An ``r class(testSL[[6]])`` object contains four slots: the first with the analysed level, the
+second the colors associate with the data with the legends as name's attribute, the third slot contain
+a table of the transition level result _(gain n or loss m)_ and the fourth slot contains a table 
+saving a stationarity test.
+
+> @Aldwaik2012 considers a stationary case only whether the intensities for all time 
+intervals reside on one side of the uniform intensity.
+
+
+```{r}
+# showing the object from the intensity analysis for our illustrative case
+testSL
+
+```
 
 
 
-## The graphics
+## The Graphs
+
+Visualizations of the intensity analysis result is obtaining from the plot(intensityObject) 
+function, for a more detailed over the parameters see function's documentation.
 
 
 ### Interval Level

@@ -92,7 +92,7 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/openland_vignette.html">Quick Intro for OpenLand Package</a>
+      <a href="../articles/openland_vignette.html">Quick intro for OpenLand Package</a>
     </li>
   </ul>
 </li>
@@ -126,12 +126,16 @@
     <p>A barplot for the Net Gain/Loss and Gross Changes between land use classes for the period analysed</p>
     </div>
 
-    <pre class="usage"><span class='fu'>netgrossplot</span>(<span class='no'>dataset</span>, <span class='no'>legendtable</span>,
+    <pre class="usage"><span class='fu'>netgrossplot</span>(
+  <span class='no'>dataset</span>,
+  <span class='no'>legendtable</span>,
   <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"General Changes (First year - Last year)"</span>,
-  <span class='kw'>xlab</span> <span class='kw'>=</span> <span class='st'>"Land Use Classes"</span>, <span class='kw'>ylab</span> <span class='kw'>=</span> <span class='st'>"Area (Kilometer)"</span>,
-  <span class='kw'>changes</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>GC</span> <span class='kw'>=</span> <span class='st'>"Gross chages"</span>, <span class='kw'>NG</span> <span class='kw'>=</span> <span class='st'>"Net Gain"</span>, <span class='kw'>NL</span> <span class='kw'>=</span> <span class='st'>"Net Loss"</span>),
+  <span class='kw'>xlab</span> <span class='kw'>=</span> <span class='st'>"Land Use Classes"</span>,
+  <span class='kw'>ylab</span> <span class='kw'>=</span> <span class='st'>"Area (Kilometer)"</span>,
+  <span class='kw'>changesLabel</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>GC</span> <span class='kw'>=</span> <span class='st'>"Gross changes"</span>, <span class='kw'>NG</span> <span class='kw'>=</span> <span class='st'>"Net Gain"</span>, <span class='kw'>NL</span> <span class='kw'>=</span> <span class='st'>"Net Loss"</span>),
   <span class='kw'>color</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>GC</span> <span class='kw'>=</span> <span class='st'>"gray70"</span>, <span class='kw'>NG</span> <span class='kw'>=</span> <span class='st'>"#006400"</span>, <span class='kw'>NL</span> <span class='kw'>=</span> <span class='st'>"#EE2C2C"</span>),
-  <span class='kw'>area_km2</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+  <span class='kw'>area_km2</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
+)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -157,12 +161,12 @@
       <td><p>character. Label for the y axe</p></td>
     </tr>
     <tr>
-      <th>changes</th>
-      <td><p>list. Labels for the three types of chages, the default is c(GC = "Gross chages", NG = "Net Gain", NL = "Net Loss")</p></td>
+      <th>changesLabel</th>
+      <td><p>character. Labels for the three types of chages, the default is c(GC = "Gross chages", NG = "Net Gain", NL = "Net Loss")</p></td>
     </tr>
     <tr>
       <th>color</th>
-      <td><p>list. Colors for the three types of chages</p></td>
+      <td><p>character. Colors for the three types of chages</p></td>
     </tr>
     <tr>
       <th>area_km2</th>
@@ -177,7 +181,7 @@
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='no'>test1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='demo_landscape.html'>demo_landscape</a></span>(<span class='fl'>2000</span>:<span class='fl'>2005</span>)
 <span class='no'>test2</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='contingenceTable.html'>contingenceTable</a></span>(<span class='kw'>input_raster</span> <span class='kw'>=</span> <span class='no'>test1</span>, <span class='kw'>pixelresolution</span> <span class='kw'>=</span> <span class='fl'>1</span>)
-<span class='fu'>netgrossplot</span>(<span class='kw'>dataset</span> <span class='kw'>=</span> <span class='no'>test2</span>$<span class='no'>lulc_Mulstistep</span>, <span class='kw'>legendtable</span> <span class='kw'>=</span> <span class='no'>test2</span>$<span class='no'>tb_legend</span>, <span class='kw'>area_km2</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='img'><img src='netgrossplot-1.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='fu'>netgrossplot</span>(<span class='kw'>dataset</span> <span class='kw'>=</span> <span class='no'>test2</span>$<span class='no'>lulc_Multistep</span>, <span class='kw'>legendtable</span> <span class='kw'>=</span> <span class='no'>test2</span>$<span class='no'>tb_legend</span>, <span class='kw'>area_km2</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='img'><img src='netgrossplot-1.png' alt='' width='700' height='433' /></div><div class='input'>
 
 </div></pre>
   </div>

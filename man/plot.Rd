@@ -2,53 +2,11 @@
 % Please edit documentation in R/plotMethods.R
 \name{plot}
 \alias{plot}
-\alias{plot.IntensityL01}
-\alias{plot.IntensityL02}
-\alias{plot.IntensityL03}
 \alias{plot,IntensityL01,ANY-method}
-\alias{plot,plot.IntensityL01,ANY-method}
 \alias{plot,IntensityL02,ANY-method}
-\alias{plot,plot.IntensityL02,ANY-method}
 \alias{plot,IntensityL03,ANY-method}
-\alias{plot,plot.IntensityL03,ANY-method}
 \title{Plot method for objects from Intensity Analysis}
 \usage{
-\method{plot}{IntensityL01}(
-  x,
-  y,
-  labels = c(leftlabel = "Interval Change Area (percent of map)", rightlabel =
-    "Annual Change Area (percent of map)", title = "Level 01 Mudancas todo o Periodo"),
-  labs = c(type = "Changes", ur = "Uniform Rate"),
-  marginplot = c(lh = -10, rh = 0),
-  leg_curv = c(x = 1/10, y = 1/10),
-  color_bar = c(faster = "#B22222", slower = "#006400", area = "gray40"),
-  ...
-)
-
-\method{plot}{IntensityL02}(
-  x,
-  y,
-  labels = c(leftlabel = bquote("Gain/Loss area (" ~ Km^2 ~ ")"), rightlabel =
-    "Intensity Gain/Loss (\%)", title = "Level 02 Ganho/Perda Anual"),
-  labs = c(type = "Classes", ur = "Uniform Rate"),
-  marginplot = c(lh = 0.5, rh = 0.5),
-  leg_curv = c(x = 1/10, y = 1/10),
-  ...
-)
-
-\method{plot}{IntensityL03}(
-  x,
-  y,
-  labels = c(rightlabel = bquote("Intensity Gain/Loss of" ~
-    .(as.character(dataset[[3]][[1]])) ~ "(\%)"), leftlabel = bquote("Gain/Loss of " ~
-    .(as.character(dataset[[3]][[1]])) ~ "(" ~ Km^2 ~ ")"), title =
-    "Level 03 Ganho da classe m/n"),
-  labs = c(type = "Classes", ur = "Uniform Rate"),
-  marginplot = c(lh = 0.5, rh = 0.5),
-  leg_curv = c(x = 1/10, y = 1/10),
-  ...
-)
-
 \S4method{plot}{IntensityL01,ANY}(
   x,
   y,
@@ -100,7 +58,13 @@
 
 \item{color_bar}{character}
 
-\item{\dots}{additional arguments}
+\item{...}{additional arguments}
+
+\item{IntensityL01}{the class}
+
+\item{IntensityL02}{the class}
+
+\item{IntensityL03}{the class}
 }
 \value{
 An intensity graph

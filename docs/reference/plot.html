@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Plot method for intensity objects — plot • OpenLand</title>
+<title>Plot method for objects from Intensity Analysis — plot • OpenLand</title>
 
 
 <!-- jquery -->
@@ -35,8 +35,8 @@
 
 
 
-<meta property="og:title" content="Plot method for intensity objects — plot" />
-<meta property="og:description" content="Plot method for intensity objects" />
+<meta property="og:title" content="Plot method for objects from Intensity Analysis — plot" />
+<meta property="og:description" content="Plot Intensity objects based on Intensity Analysis tables" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -92,7 +92,7 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/openland_vignette.html">Quick Intro for OpenLand Package</a>
+      <a href="../articles/openland_vignette.html">Quick intro for OpenLand Package</a>
     </li>
   </ul>
 </li>
@@ -117,71 +117,99 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Plot method for intensity objects</h1>
+    <h1>Plot method for objects from Intensity Analysis</h1>
     <small class="dont-index">Source: <a href='https://github.com/tredgi/OpenLand/blob/master/R/plotMethods.R'><code>R/plotMethods.R</code></a></small>
     <div class="hidden name"><code>plot.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Plot method for intensity objects</p>
+    <p>Plot <code>Intensity</code> objects based on Intensity Analysis tables</p>
     </div>
 
     <pre class="usage"><span class='co'># S3 method for IntensityL01</span>
-<span class='fu'>plot</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>leftlabel</span> <span class='kw'>=</span>
-  <span class='st'>"Interval Change Area (percent of map)"</span>, <span class='kw'>rightlabel</span> <span class='kw'>=</span>
-  <span class='st'>"Annual Change Area (percent of map)"</span>, <span class='kw'>title</span> <span class='kw'>=</span>
-  <span class='st'>"Level 01 Mudancas todo o Periodo"</span>), <span class='kw'>labs</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"Changes"</span>, <span class='kw'>ur</span> <span class='kw'>=</span>
-  <span class='st'>"Uniform Rate"</span>), <span class='kw'>marginplot</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>lh</span> <span class='kw'>=</span> -<span class='fl'>10</span>, <span class='kw'>rh</span> <span class='kw'>=</span> <span class='fl'>0</span>), <span class='kw'>leg_curv</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>x</span> <span class='kw'>=</span>
-  <span class='fl'>1</span>/<span class='fl'>10</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='fl'>1</span>/<span class='fl'>10</span>), <span class='kw'>color_bar</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>faster</span> <span class='kw'>=</span> <span class='st'>"#B22222"</span>, <span class='kw'>slower</span> <span class='kw'>=</span> <span class='st'>"#006400"</span>,
-  <span class='kw'>area</span> <span class='kw'>=</span> <span class='st'>"gray40"</span>), <span class='no'>...</span>)
+<span class='fu'>plot</span>(
+  <span class='no'>x</span>,
+  <span class='no'>y</span>,
+  <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>leftlabel</span> <span class='kw'>=</span> <span class='st'>"Interval Change Area (percent of map)"</span>, <span class='kw'>rightlabel</span> <span class='kw'>=</span>
+    <span class='st'>"Annual Change Area (percent of map)"</span>, <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"Level 01 Mudancas todo o Periodo"</span>),
+  <span class='kw'>labs</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"Changes"</span>, <span class='kw'>ur</span> <span class='kw'>=</span> <span class='st'>"Uniform Rate"</span>),
+  <span class='kw'>marginplot</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>lh</span> <span class='kw'>=</span> -<span class='fl'>10</span>, <span class='kw'>rh</span> <span class='kw'>=</span> <span class='fl'>0</span>),
+  <span class='kw'>leg_curv</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='fl'>1</span>/<span class='fl'>10</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='fl'>1</span>/<span class='fl'>10</span>),
+  <span class='kw'>color_bar</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>faster</span> <span class='kw'>=</span> <span class='st'>"#B22222"</span>, <span class='kw'>slower</span> <span class='kw'>=</span> <span class='st'>"#006400"</span>, <span class='kw'>area</span> <span class='kw'>=</span> <span class='st'>"gray40"</span>),
+  <span class='no'>...</span>
+)
 
 <span class='co'># S3 method for IntensityL02</span>
-<span class='fu'>plot</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>leftlabel</span> <span class='kw'>=</span>
-  <span class='fu'><a href='https://rdrr.io/r/base/bquote.html'>bquote</a></span>(<span class='st'>"Gain/Loss area ("</span> ~ <span class='no'>Km</span>^<span class='fl'>2</span> ~ <span class='st'>")"</span>), <span class='kw'>rightlabel</span> <span class='kw'>=</span>
-  <span class='st'>"Intensity Gain/Loss (%)"</span>, <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"Level 02 Ganho/Perda Anual"</span>),
-  <span class='kw'>labs</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"Classes"</span>, <span class='kw'>ur</span> <span class='kw'>=</span> <span class='st'>"Uniform Rate"</span>), <span class='kw'>marginplot</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>lh</span> <span class='kw'>=</span>
-  <span class='fl'>0.5</span>, <span class='kw'>rh</span> <span class='kw'>=</span> <span class='fl'>0.5</span>), <span class='kw'>leg_curv</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='fl'>1</span>/<span class='fl'>10</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='fl'>1</span>/<span class='fl'>10</span>), <span class='no'>...</span>)
+<span class='fu'>plot</span>(
+  <span class='no'>x</span>,
+  <span class='no'>y</span>,
+  <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>leftlabel</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/bquote.html'>bquote</a></span>(<span class='st'>"Gain/Loss area ("</span> ~ <span class='no'>Km</span>^<span class='fl'>2</span> ~ <span class='st'>")"</span>), <span class='kw'>rightlabel</span> <span class='kw'>=</span>
+    <span class='st'>"Intensity Gain/Loss (%)"</span>, <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"Level 02 Ganho/Perda Anual"</span>),
+  <span class='kw'>labs</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"Classes"</span>, <span class='kw'>ur</span> <span class='kw'>=</span> <span class='st'>"Uniform Rate"</span>),
+  <span class='kw'>marginplot</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>lh</span> <span class='kw'>=</span> <span class='fl'>0.5</span>, <span class='kw'>rh</span> <span class='kw'>=</span> <span class='fl'>0.5</span>),
+  <span class='kw'>leg_curv</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='fl'>1</span>/<span class='fl'>10</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='fl'>1</span>/<span class='fl'>10</span>),
+  <span class='no'>...</span>
+)
 
 <span class='co'># S3 method for IntensityL03</span>
-<span class='fu'>plot</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>rightlabel</span> <span class='kw'>=</span>
-  <span class='fu'><a href='https://rdrr.io/r/base/bquote.html'>bquote</a></span>(<span class='st'>"Intensity Gain/Loss of"</span> ~ <span class='fu'>.</span>(<span class='fu'><a href='https://rdrr.io/r/base/character.html'>as.character</a></span>(<span class='no'>dataset</span><span class='kw'>[[</span><span class='fl'>3</span>]]<span class='kw'>[[</span><span class='fl'>1</span>]])) ~
-  <span class='st'>"(%)"</span>), <span class='kw'>leftlabel</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/bquote.html'>bquote</a></span>(<span class='st'>"Gain/Loss of "</span> ~
-  <span class='fu'>.</span>(<span class='fu'><a href='https://rdrr.io/r/base/character.html'>as.character</a></span>(<span class='no'>dataset</span><span class='kw'>[[</span><span class='fl'>3</span>]]<span class='kw'>[[</span><span class='fl'>1</span>]])) ~ <span class='st'>"("</span> ~ <span class='no'>Km</span>^<span class='fl'>2</span> ~ <span class='st'>")"</span>), <span class='kw'>title</span> <span class='kw'>=</span>
-  <span class='st'>"Level 03 Ganho da classe m/n"</span>), <span class='kw'>labs</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"Classes"</span>, <span class='kw'>ur</span> <span class='kw'>=</span>
-  <span class='st'>"Uniform Rate"</span>), <span class='kw'>marginplot</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>lh</span> <span class='kw'>=</span> <span class='fl'>0.5</span>, <span class='kw'>rh</span> <span class='kw'>=</span> <span class='fl'>0.5</span>), <span class='kw'>leg_curv</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>x</span> <span class='kw'>=</span>
-  <span class='fl'>1</span>/<span class='fl'>10</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='fl'>1</span>/<span class='fl'>10</span>), <span class='no'>...</span>)
+<span class='fu'>plot</span>(
+  <span class='no'>x</span>,
+  <span class='no'>y</span>,
+  <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>rightlabel</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/bquote.html'>bquote</a></span>(<span class='st'>"Intensity Gain/Loss of"</span> ~
+    <span class='fu'>.</span>(<span class='fu'><a href='https://rdrr.io/r/base/character.html'>as.character</a></span>(<span class='no'>dataset</span><span class='kw'>[[</span><span class='fl'>3</span>]]<span class='kw'>[[</span><span class='fl'>1</span>]])) ~ <span class='st'>"(%)"</span>), <span class='kw'>leftlabel</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/bquote.html'>bquote</a></span>(<span class='st'>"Gain/Loss of "</span> ~
+    <span class='fu'>.</span>(<span class='fu'><a href='https://rdrr.io/r/base/character.html'>as.character</a></span>(<span class='no'>dataset</span><span class='kw'>[[</span><span class='fl'>3</span>]]<span class='kw'>[[</span><span class='fl'>1</span>]])) ~ <span class='st'>"("</span> ~ <span class='no'>Km</span>^<span class='fl'>2</span> ~ <span class='st'>")"</span>), <span class='kw'>title</span> <span class='kw'>=</span>
+    <span class='st'>"Level 03 Ganho da classe m/n"</span>),
+  <span class='kw'>labs</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"Classes"</span>, <span class='kw'>ur</span> <span class='kw'>=</span> <span class='st'>"Uniform Rate"</span>),
+  <span class='kw'>marginplot</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>lh</span> <span class='kw'>=</span> <span class='fl'>0.5</span>, <span class='kw'>rh</span> <span class='kw'>=</span> <span class='fl'>0.5</span>),
+  <span class='kw'>leg_curv</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='fl'>1</span>/<span class='fl'>10</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='fl'>1</span>/<span class='fl'>10</span>),
+  <span class='no'>...</span>
+)
 
 <span class='co'># S4 method for IntensityL01,ANY</span>
-<span class='fu'>plot</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>leftlabel</span> <span class='kw'>=</span>
-  <span class='st'>"Interval Change Area (percent of map)"</span>, <span class='kw'>rightlabel</span> <span class='kw'>=</span>
-  <span class='st'>"Annual Change Area (percent of map)"</span>, <span class='kw'>title</span> <span class='kw'>=</span>
-  <span class='st'>"Level 01 Mudancas todo o Periodo"</span>), <span class='kw'>labs</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"Changes"</span>, <span class='kw'>ur</span> <span class='kw'>=</span>
-  <span class='st'>"Uniform Rate"</span>), <span class='kw'>marginplot</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>lh</span> <span class='kw'>=</span> -<span class='fl'>10</span>, <span class='kw'>rh</span> <span class='kw'>=</span> <span class='fl'>0</span>), <span class='kw'>leg_curv</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>x</span> <span class='kw'>=</span>
-  <span class='fl'>1</span>/<span class='fl'>10</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='fl'>1</span>/<span class='fl'>10</span>), <span class='kw'>color_bar</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>faster</span> <span class='kw'>=</span> <span class='st'>"#B22222"</span>, <span class='kw'>slower</span> <span class='kw'>=</span> <span class='st'>"#006400"</span>,
-  <span class='kw'>area</span> <span class='kw'>=</span> <span class='st'>"gray40"</span>), <span class='no'>...</span>)
+<span class='fu'>plot</span>(
+  <span class='no'>x</span>,
+  <span class='no'>y</span>,
+  <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>leftlabel</span> <span class='kw'>=</span> <span class='st'>"Interval Change Area (percent of map)"</span>, <span class='kw'>rightlabel</span> <span class='kw'>=</span>
+    <span class='st'>"Annual Change Area (percent of map)"</span>, <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"Level 01 Mudancas todo o Periodo"</span>),
+  <span class='kw'>labs</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"Changes"</span>, <span class='kw'>ur</span> <span class='kw'>=</span> <span class='st'>"Uniform Rate"</span>),
+  <span class='kw'>marginplot</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>lh</span> <span class='kw'>=</span> -<span class='fl'>10</span>, <span class='kw'>rh</span> <span class='kw'>=</span> <span class='fl'>0</span>),
+  <span class='kw'>leg_curv</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='fl'>1</span>/<span class='fl'>10</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='fl'>1</span>/<span class='fl'>10</span>),
+  <span class='kw'>color_bar</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>faster</span> <span class='kw'>=</span> <span class='st'>"#B22222"</span>, <span class='kw'>slower</span> <span class='kw'>=</span> <span class='st'>"#006400"</span>, <span class='kw'>area</span> <span class='kw'>=</span> <span class='st'>"gray40"</span>),
+  <span class='no'>...</span>
+)
 
 <span class='co'># S4 method for IntensityL02,ANY</span>
-<span class='fu'>plot</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>leftlabel</span> <span class='kw'>=</span>
-  <span class='fu'><a href='https://rdrr.io/r/base/bquote.html'>bquote</a></span>(<span class='st'>"Gain/Loss area ("</span> ~ <span class='no'>Km</span>^<span class='fl'>2</span> ~ <span class='st'>")"</span>), <span class='kw'>rightlabel</span> <span class='kw'>=</span>
-  <span class='st'>"Intensity Gain/Loss (%)"</span>, <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"Level 02 Ganho/Perda Anual"</span>),
-  <span class='kw'>labs</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"Classes"</span>, <span class='kw'>ur</span> <span class='kw'>=</span> <span class='st'>"Uniform Rate"</span>), <span class='kw'>marginplot</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>lh</span> <span class='kw'>=</span>
-  <span class='fl'>0.5</span>, <span class='kw'>rh</span> <span class='kw'>=</span> <span class='fl'>0.5</span>), <span class='kw'>leg_curv</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='fl'>1</span>/<span class='fl'>10</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='fl'>1</span>/<span class='fl'>10</span>), <span class='no'>...</span>)
+<span class='fu'>plot</span>(
+  <span class='no'>x</span>,
+  <span class='no'>y</span>,
+  <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>leftlabel</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/bquote.html'>bquote</a></span>(<span class='st'>"Gain/Loss area ("</span> ~ <span class='no'>Km</span>^<span class='fl'>2</span> ~ <span class='st'>")"</span>), <span class='kw'>rightlabel</span> <span class='kw'>=</span>
+    <span class='st'>"Intensity Gain/Loss (%)"</span>, <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"Level 02 Ganho/Perda Anual"</span>),
+  <span class='kw'>labs</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"Classes"</span>, <span class='kw'>ur</span> <span class='kw'>=</span> <span class='st'>"Uniform Rate"</span>),
+  <span class='kw'>marginplot</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>lh</span> <span class='kw'>=</span> <span class='fl'>0.5</span>, <span class='kw'>rh</span> <span class='kw'>=</span> <span class='fl'>0.5</span>),
+  <span class='kw'>leg_curv</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='fl'>1</span>/<span class='fl'>10</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='fl'>1</span>/<span class='fl'>10</span>),
+  <span class='no'>...</span>
+)
 
 <span class='co'># S4 method for IntensityL03,ANY</span>
-<span class='fu'>plot</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>rightlabel</span> <span class='kw'>=</span>
-  <span class='fu'><a href='https://rdrr.io/r/base/bquote.html'>bquote</a></span>(<span class='st'>"Intensity Gain/Loss of"</span> ~ <span class='fu'>.</span>(<span class='fu'><a href='https://rdrr.io/r/base/character.html'>as.character</a></span>(<span class='no'>dataset</span><span class='kw'>[[</span><span class='fl'>3</span>]]<span class='kw'>[[</span><span class='fl'>1</span>]])) ~
-  <span class='st'>"(%)"</span>), <span class='kw'>leftlabel</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/bquote.html'>bquote</a></span>(<span class='st'>"Gain/Loss of "</span> ~
-  <span class='fu'>.</span>(<span class='fu'><a href='https://rdrr.io/r/base/character.html'>as.character</a></span>(<span class='no'>dataset</span><span class='kw'>[[</span><span class='fl'>3</span>]]<span class='kw'>[[</span><span class='fl'>1</span>]])) ~ <span class='st'>"("</span> ~ <span class='no'>Km</span>^<span class='fl'>2</span> ~ <span class='st'>")"</span>), <span class='kw'>title</span> <span class='kw'>=</span>
-  <span class='st'>"Level 03 Ganho da classe m/n"</span>), <span class='kw'>labs</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"Classes"</span>, <span class='kw'>ur</span> <span class='kw'>=</span>
-  <span class='st'>"Uniform Rate"</span>), <span class='kw'>marginplot</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>lh</span> <span class='kw'>=</span> <span class='fl'>0.5</span>, <span class='kw'>rh</span> <span class='kw'>=</span> <span class='fl'>0.5</span>), <span class='kw'>leg_curv</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>x</span> <span class='kw'>=</span>
-  <span class='fl'>1</span>/<span class='fl'>10</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='fl'>1</span>/<span class='fl'>10</span>), <span class='no'>...</span>)</pre>
+<span class='fu'>plot</span>(
+  <span class='no'>x</span>,
+  <span class='no'>y</span>,
+  <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>rightlabel</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/bquote.html'>bquote</a></span>(<span class='st'>"Intensity Gain/Loss of"</span> ~
+    <span class='fu'>.</span>(<span class='fu'><a href='https://rdrr.io/r/base/character.html'>as.character</a></span>(<span class='no'>dataset</span><span class='kw'>[[</span><span class='fl'>3</span>]]<span class='kw'>[[</span><span class='fl'>1</span>]])) ~ <span class='st'>"(%)"</span>), <span class='kw'>leftlabel</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/bquote.html'>bquote</a></span>(<span class='st'>"Gain/Loss of "</span> ~
+    <span class='fu'>.</span>(<span class='fu'><a href='https://rdrr.io/r/base/character.html'>as.character</a></span>(<span class='no'>dataset</span><span class='kw'>[[</span><span class='fl'>3</span>]]<span class='kw'>[[</span><span class='fl'>1</span>]])) ~ <span class='st'>"("</span> ~ <span class='no'>Km</span>^<span class='fl'>2</span> ~ <span class='st'>")"</span>), <span class='kw'>title</span> <span class='kw'>=</span>
+    <span class='st'>"Level 03 Ganho da classe m/n"</span>),
+  <span class='kw'>labs</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"Classes"</span>, <span class='kw'>ur</span> <span class='kw'>=</span> <span class='st'>"Uniform Rate"</span>),
+  <span class='kw'>marginplot</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>lh</span> <span class='kw'>=</span> <span class='fl'>0.5</span>, <span class='kw'>rh</span> <span class='kw'>=</span> <span class='fl'>0.5</span>),
+  <span class='kw'>leg_curv</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='fl'>1</span>/<span class='fl'>10</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='fl'>1</span>/<span class='fl'>10</span>),
+  <span class='no'>...</span>
+)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>an object from the intensity analysis data</p></td>
+      <td><p>tibble. An object from the intensity analysis data</p></td>
     </tr>
     <tr>
       <th>y</th>
@@ -189,7 +217,7 @@
     </tr>
     <tr>
       <th>labels</th>
-      <td><p>character</p></td>
+      <td><p>character. left right and title</p></td>
     </tr>
     <tr>
       <th>labs</th>
@@ -210,34 +238,6 @@
     <tr>
       <th>...</th>
       <td><p>additional arguments</p></td>
-    </tr>
-    <tr>
-      <th>leftlabel</th>
-      <td><p>character</p></td>
-    </tr>
-    <tr>
-      <th>rightlabel</th>
-      <td><p>character</p></td>
-    </tr>
-    <tr>
-      <th>title</th>
-      <td><p>character</p></td>
-    </tr>
-    <tr>
-      <th>type</th>
-      <td><p>character</p></td>
-    </tr>
-    <tr>
-      <th>ur</th>
-      <td><p>character</p></td>
-    </tr>
-    <tr>
-      <th>lh</th>
-      <td><p>character</p></td>
-    </tr>
-    <tr>
-      <th>rh</th>
-      <td><p>character</p></td>
     </tr>
     </table>
 

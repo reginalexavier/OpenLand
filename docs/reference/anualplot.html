@@ -92,7 +92,7 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/openland_vignette.html">Quick Intro for OpenLand Package</a>
+      <a href="../articles/openland_vignette.html">Quick intro for OpenLand Package</a>
     </li>
   </ul>
 </li>
@@ -126,11 +126,17 @@
     <p>A barplot for the area of every point in time of the analysed period</p>
     </div>
 
-    <pre class="usage"><span class='fu'>anualplot</span>(<span class='no'>dataset</span>, <span class='no'>legendtable</span>,
-  <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"General Area in the interval (2002 - 2014)"</span>, <span class='kw'>color</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>GC</span> <span class='kw'>=</span>
-  <span class='st'>"gray70"</span>, <span class='kw'>NG</span> <span class='kw'>=</span> <span class='st'>"#006400"</span>, <span class='kw'>NL</span> <span class='kw'>=</span> <span class='st'>"#EE2C2C"</span>), <span class='kw'>fill</span> <span class='kw'>=</span> <span class='st'>"LULC Classes"</span>,
-  <span class='kw'>xlab</span> <span class='kw'>=</span> <span class='st'>"Year"</span>, <span class='kw'>ylab</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/expression.html'>expression</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste</a></span>(<span class='st'>"Area "</span>, <span class='no'>Km</span>^{     <span class='fl'>2</span> })),
-  <span class='kw'>area_km2</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='fu'>anualplot</span>(
+  <span class='no'>dataset</span>,
+  <span class='no'>legendtable</span>,
+  <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"General Area in the interval (2002 - 2014)"</span>,
+  <span class='kw'>color</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>GC</span> <span class='kw'>=</span> <span class='st'>"gray70"</span>, <span class='kw'>NG</span> <span class='kw'>=</span> <span class='st'>"#006400"</span>, <span class='kw'>NL</span> <span class='kw'>=</span> <span class='st'>"#EE2C2C"</span>),
+  <span class='kw'>fill</span> <span class='kw'>=</span> <span class='st'>"LULC Classes"</span>,
+  <span class='kw'>xlab</span> <span class='kw'>=</span> <span class='st'>"Year"</span>,
+  <span class='kw'>ylab</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/expression.html'>expression</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste</a></span>(<span class='st'>"Area "</span>, <span class='no'>Km</span>^{     <span class='fl'>2</span> })),
+  <span class='kw'>area_km2</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='no'>...</span>
+)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -167,11 +173,18 @@
       <th>area_km2</th>
       <td><p>boolean TRUE for km2 unit, FALSE for pixel unit</p></td>
     </tr>
+    <tr>
+      <th>...</th>
+      <td><p>themes parameters <code><a href='https://ggplot2.tidyverse.org/reference/theme.html'>theme</a></code></p></td>
+    </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>a barplot</p>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p><code>ggplot2::<a href='https://ggplot2.tidyverse.org/reference/theme.html'>theme</a></code></p></div>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -179,6 +192,7 @@
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       <li><a href="#value">Value</a></li>
+      <li><a href="#see-also">See also</a></li>
     </ul>
 
   </div>

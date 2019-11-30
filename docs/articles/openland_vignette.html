@@ -5,12 +5,12 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Quick Intro for OpenLand Package • OpenLand</title>
+<title>Quick intro for OpenLand Package • OpenLand</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script><meta property="og:title" content="Quick Intro for OpenLand Package">
+<script src="../pkgdown.js"></script><meta property="og:title" content="Quick intro for OpenLand Package">
 <meta property="og:description" content="">
 <meta name="twitter:card" content="summary">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
@@ -54,7 +54,7 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="../articles/openland_vignette.html">Quick Intro for OpenLand Package</a>
+      <a href="../articles/openland_vignette.html">Quick intro for OpenLand Package</a>
     </li>
   </ul>
 </li>
@@ -76,10 +76,10 @@
 
       
 
-      </header><div class="row">
+      </header><script src="openland_vignette_files/htmlwidgets-1.5.1/htmlwidgets.js"></script><script src="openland_vignette_files/d3-4.5.0/d3.min.js"></script><script src="openland_vignette_files/sankey-1/sankey.js"></script><script src="openland_vignette_files/sankeyNetwork-binding-0.4/sankeyNetwork.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1>Quick Intro for OpenLand Package</h1>
+      <h1>Quick intro for OpenLand Package</h1>
             
       
       <small class="dont-index">Source: <a href="https://github.com/tredgi/OpenLand/blob/master/vignettes/openland_vignette.Rmd"><code>vignettes/openland_vignette.Rmd</code></a></small>
@@ -93,19 +93,665 @@
 body {
 text-align: justify}
 </style>
-<p><strong>This is a Vignette on how to use the OpenLand package into Land Use and Land Cover (LULC) data manipulation and producing visualisations.</strong></p>
+<hr>
+<p><strong>This is a Vignette on how to use the OpenLand package into Land Use and Land Cover (LULC) data manipulation and producing visualizations.</strong></p>
 <div id="description-of-the-tools" class="section level2">
 <h2 class="hasAnchor">
 <a href="#description-of-the-tools" class="anchor"></a>Description of the tools</h2>
-<p>OpenLand is an open-source R package for the analysis of land use and land cover time series. It includes support for loading spatiotemporal data <code>raster map</code>; simulating landscapes with some degree of spatial correlation; extraction of land use transition matrices; computing of net change and gross changes in a given interval; performing a complete intensity analysis based on <span class="citation">(Aldwaik and Pontius 2012)</span>. It provides methods for visualizations of land use and land cover change like the outcomes of intensity analysis, as other graphs like sankey diagram (onestep or multistep) and chord diagram displaying the inter-relationships between the land uses.</p>
+<p>OpenLand is an open-source R package for the analysis of land use and land cover time series. It includes support for loading spatiotemporal data <code>raster map</code>; simulating landscapes with some degree of spatial correlation; extraction of land use transition matrices; computing of net change and gross changes in a given interval; performing a complete intensity analysis based on <span class="citation">(Aldwaik and Pontius 2012)</span>. It provides methods for visualizations of land use and land cover change like the outcomes of intensity analysis, as other graphs like sankey diagram (one-step or multistep) and chord diagram displaying the inter-relationships between the land uses.</p>
 </div>
-<div id="data-source" class="section level2">
+<div id="são-lourenço-river-basin-case-study" class="section level2">
 <h2 class="hasAnchor">
-<a href="#data-source" class="anchor"></a>Data source</h2>
-<p>The datasets we are going to use for this experiment is from the SOSPantanal…</p>
-<p>This is the steps in using OpenLand for LULCC data Analysis</p>
-<p>We first need to load these package programs firs:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(OpenLand)</a></code></pre></div>
+<a href="#s%C3%A3o-louren%C3%A7o-river-basin-case-study" class="anchor"></a>São Lourenço river Basin Case Study</h2>
+<p>For the illustrative case study, we’re going to use the map (shape file) from the 4th edition of the <a href="https://www.embrapa.br/pantanal/bacia-do-alto-paraguai">Monitoring of Changes in Land cover and Land Use in the Upper Paraguay River Basin - Brazilian portion - Review Period: 2012 to 2014</a> <span class="citation">(Embrapa Pantanal, Instituto SOS Pantanal, and WWF-Brasil 2015)</span>, which covers specifically the years (2002, 2008, 2010, 2012 and 2014).</p>
+<p>The study area of this research is the São Lourenço river basin, it is located in the southeast of Mato Grosso State, extending over an area of approximately 22,418 km<sup>2</sup> and has experienced significant changes in the LULC during the last decades, including deforestation and intensification of existing agricultural uses.</p>
+<p>The shapefile was transformed into rasters and then saved as a 5-layers <code>RasterStack</code>, included as data in the OpenLand package as <code>SaoLourencoBasin</code> (for further details over this object, run <code><a href="https://rdrr.io/r/utils/help.html">help("SaoLourencoBasin")</a></code> or <code><a href="../reference/SaoLourencoBasin.html">?SaoLourencoBasin</a></code> in the console).</p>
+<div id="step-one" class="section level3">
+<h3 class="hasAnchor">
+<a href="#step-one" class="anchor"></a>Step One</h3>
+<p>The first function is the <code>contingencyTable()</code>, this function take a list of raster layer (<code>RasterBrick</code>, <code>RasterStack</code> or a path to folder containing the rasters). The name of the rasters must be in the format (“some-text” <code><a href="https://rdrr.io/r/base/Arithmetic.html">+</a></code> “underscore” <code><a href="https://rdrr.io/r/base/Arithmetic.html">+</a></code> “the-year”) like “landscape_2019”.</p>
+<p>In our example we have the <code>SaoLourencoBasin</code> RasterStack, that can be seeing from running <code><a href="https://rdrr.io/r/utils/data.html">data(SaoLourencoBasin)</a></code> as following:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="co">## First we load the OpenLand package</span></a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(OpenLand)</a>
+<a class="sourceLine" id="cb1-3" title="3"></a>
+<a class="sourceLine" id="cb1-4" title="4"><span class="kw"><a href="https://rdrr.io/r/utils/data.html">data</a></span>(SaoLourencoBasin)</a>
+<a class="sourceLine" id="cb1-5" title="5"></a>
+<a class="sourceLine" id="cb1-6" title="6">SaoLourencoBasin</a>
+<a class="sourceLine" id="cb1-7" title="7"><span class="co">#&gt; Carregando pacotes exigidos: raster</span></a>
+<a class="sourceLine" id="cb1-8" title="8"><span class="co">#&gt; Carregando pacotes exigidos: sp</span></a>
+<a class="sourceLine" id="cb1-9" title="9"><span class="co">#&gt; class      : RasterStack </span></a>
+<a class="sourceLine" id="cb1-10" title="10"><span class="co">#&gt; dimensions : 6372, 6546, 41711112, 5  (nrow, ncol, ncell, nlayers)</span></a>
+<a class="sourceLine" id="cb1-11" title="11"><span class="co">#&gt; resolution : 30, 30  (x, y)</span></a>
+<a class="sourceLine" id="cb1-12" title="12"><span class="co">#&gt; extent     : 654007.5, 850387.5, 8099064, 8290224  (xmin, xmax, ymin, ymax)</span></a>
+<a class="sourceLine" id="cb1-13" title="13"><span class="co">#&gt; crs        : +proj=utm +zone=21 +south +ellps=GRS80 +units=m +no_defs </span></a>
+<a class="sourceLine" id="cb1-14" title="14"><span class="co">#&gt; names      : landscape_2002, landscape_2008, landscape_2010, landscape_2012, landscape_2014 </span></a>
+<a class="sourceLine" id="cb1-15" title="15"><span class="co">#&gt; min values :              2,              2,              2,              2,              2 </span></a>
+<a class="sourceLine" id="cb1-16" title="16"><span class="co">#&gt; max values :             13,             13,             13,             13,             13</span></a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1"><span class="co">#sp::spplot(SaoLourencoBasin)</span></a></code></pre></div>
+<p>tmap::tm_shape(SaoLourencoBasin) + tmap::tm_raster()</p>
+<p>sp::spplot(SaoLourencoBasin)</p>
+</div>
+<div id="step-two" class="section level3">
+<h3 class="hasAnchor">
+<a href="#step-two" class="anchor"></a>Step two</h3>
+<p>In this step we have to extract the values from our rasters and save them for next steps of analysis. The function in <code>OpenLand</code> that compute that is the <code>contingencyTable()</code>. This function returns 5 objects: lulc_Multistep, lulc_Onestep, tb_legend, totalArea, totalInterval.</p>
+<p>The two first objects are tables of contingency, the first one (<strong>lulc_Multistep</strong>) takes into account all the points in time and the second (<strong>lulc_Onestep</strong>) only the first year and the last year of the series. The third object (<strong>tb_legend</strong>) is a table containing the class name associate with every pixel value and a color to be associate with (important for the plots). The values in class and color are been created aleatory by <code>contingencyTable()</code> function. These values must be edited to the real values corresponding the data to be analysed. The fourth object (<strong>totalArea</strong>) is a table containing the total area of study in km<sup>2</sup> and in pixel unit and the fifth (<strong>totalInterval</strong>) is the total interval between the first year (Y<sub>t</sub>) and the last year(Y<sub>T</sub>) in year unit.</p>
+<p>Here a prototype of the contingency table created by the <code>contingencyTable</code> function:</p>
+<table class="table">
+<colgroup>
+<col width="14%">
+<col width="12%">
+<col width="12%">
+<col width="16%">
+<col width="16%">
+<col width="14%">
+<col width="6%">
+<col width="6%">
+</colgroup>
+<thead><tr class="header">
+<th align="center">[Y<sub><em>t</em></sub>, Y<sub><em>t+1</em></sub>]</th>
+<th align="center">Category<sub><em>i</em></sub>
+</th>
+<th align="center">Category<sub><em>j</em></sub>
+</th>
+<th align="center">C<sub><em>tij</em></sub>(km<sup>2</sup>)</th>
+<th align="center">C<sub><em>tij</em></sub>(pixel)</th>
+<th align="center">Y<sub><em>t+1</em></sub> - Y<sub><em>t</em></sub>
+</th>
+<th align="center">Y<sub><em>t</em></sub>
+</th>
+<th align="center">Y<sub><em>t+1</em></sub>
+</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="center"><code>chr</code></td>
+<td align="center"><code>int</code></td>
+<td align="center"><code>int</code></td>
+<td align="center"><code>dbl</code></td>
+<td align="center"><code>int</code></td>
+<td align="center"><code>int</code></td>
+<td align="center"><code>int</code></td>
+<td align="center"><code>int</code></td>
+</tr>
+<tr class="even">
+<td align="center">Period of analysis from time point <em>t</em> to time point <em>t+1</em>
+</td>
+<td align="center">A category at interval’s initial time point</td>
+<td align="center">A category at interval’s final time point</td>
+<td align="center">Number of elements in km<sup>2</sup> that transits from category <em>i</em> to category <em>j</em>
+</td>
+<td align="center">Number of elements in pixel that transits from category <em>i</em> to category <em>j</em>
+</td>
+<td align="center">Interval in years between time point <em>t</em> and time point <em>t+1</em>
+</td>
+<td align="center">Initial Year of the interval</td>
+<td align="center">Final Year of the interval</td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>Period</strong></td>
+<td align="center"><strong>From</strong></td>
+<td align="center"><strong>To</strong></td>
+<td align="center"><strong>km2</strong></td>
+<td align="center"><strong>QtPixel</strong></td>
+<td align="center"><strong>Interval</strong></td>
+<td align="center"><strong>yearFrom</strong></td>
+<td align="center"><strong>yearTo</strong></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>For the second table, the Y<sub><em>t+1</em></sub> terms are repced by Y<sub><em>T</em></sub>, where T is the number of time points, i.e., Y<sub><em>T</em></sub> is the last year of the series.</p>
+</blockquote>
+<p>For our study area running the function <code><a href="../reference/contingenceTable.html">contingenceTable(input_raster = SaoLourencoBasin, pixelresolution = 30)</a></code>, we have this returns:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1"></a>
+<a class="sourceLine" id="cb3-2" title="2"><span class="co"># SL_2002_2014 &lt;- contingenceTable(input_raster = SaoLourencoBasin, pixelresolution = 30)</span></a>
+<a class="sourceLine" id="cb3-3" title="3"></a>
+<a class="sourceLine" id="cb3-4" title="4">SL_<span class="dv">2002</span>_<span class="dv">2014</span></a>
+<a class="sourceLine" id="cb3-5" title="5"><span class="co">#&gt; $lulc_Multistep</span></a>
+<a class="sourceLine" id="cb3-6" title="6"><span class="co">#&gt; # A tibble: 130 x 8</span></a>
+<a class="sourceLine" id="cb3-7" title="7"><span class="co">#&gt;    Period     From    To      km2 QtPixel Interval yearFrom yearTo</span></a>
+<a class="sourceLine" id="cb3-8" title="8"><span class="co">#&gt;    &lt;chr&gt;     &lt;int&gt; &lt;int&gt;    &lt;dbl&gt;   &lt;int&gt;    &lt;int&gt;    &lt;int&gt;  &lt;int&gt;</span></a>
+<a class="sourceLine" id="cb3-9" title="9"><span class="co">#&gt;  1 2002-2008     2     2 6543.    7269961        6     2002   2008</span></a>
+<a class="sourceLine" id="cb3-10" title="10"><span class="co">#&gt;  2 2002-2008     2    10    1.56     1736        6     2002   2008</span></a>
+<a class="sourceLine" id="cb3-11" title="11"><span class="co">#&gt;  3 2002-2008     2    11   55.2     61320        6     2002   2008</span></a>
+<a class="sourceLine" id="cb3-12" title="12"><span class="co">#&gt;  4 2002-2008     2    12   23.9     26609        6     2002   2008</span></a>
+<a class="sourceLine" id="cb3-13" title="13"><span class="co">#&gt;  5 2002-2008     3     2   37.5     41649        6     2002   2008</span></a>
+<a class="sourceLine" id="cb3-14" title="14"><span class="co">#&gt;  6 2002-2008     3     3 2133.    2370190        6     2002   2008</span></a>
+<a class="sourceLine" id="cb3-15" title="15"><span class="co">#&gt;  7 2002-2008     3     7  155.     172718        6     2002   2008</span></a>
+<a class="sourceLine" id="cb3-16" title="16"><span class="co">#&gt;  8 2002-2008     3    11    7.48     8307        6     2002   2008</span></a>
+<a class="sourceLine" id="cb3-17" title="17"><span class="co">#&gt;  9 2002-2008     3    12    0.356     395        6     2002   2008</span></a>
+<a class="sourceLine" id="cb3-18" title="18"><span class="co">#&gt; 10 2002-2008     3    13    0.081      90        6     2002   2008</span></a>
+<a class="sourceLine" id="cb3-19" title="19"><span class="co">#&gt; # ... with 120 more rows</span></a>
+<a class="sourceLine" id="cb3-20" title="20"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb3-21" title="21"><span class="co">#&gt; $lulc_Onestep</span></a>
+<a class="sourceLine" id="cb3-22" title="22"><span class="co">#&gt; # A tibble: 45 x 8</span></a>
+<a class="sourceLine" id="cb3-23" title="23"><span class="co">#&gt;    Period     From    To     km2 QtPixel Interval yearFrom yearTo</span></a>
+<a class="sourceLine" id="cb3-24" title="24"><span class="co">#&gt;    &lt;chr&gt;     &lt;int&gt; &lt;int&gt;   &lt;dbl&gt;   &lt;int&gt;    &lt;int&gt;    &lt;int&gt;  &lt;int&gt;</span></a>
+<a class="sourceLine" id="cb3-25" title="25"><span class="co">#&gt;  1 2002-2014     2     2 6169.   6854816       12     2002   2014</span></a>
+<a class="sourceLine" id="cb3-26" title="26"><span class="co">#&gt;  2 2002-2014     2     9    2.39    2651       12     2002   2014</span></a>
+<a class="sourceLine" id="cb3-27" title="27"><span class="co">#&gt;  3 2002-2014     2    10   10.4    11513       12     2002   2014</span></a>
+<a class="sourceLine" id="cb3-28" title="28"><span class="co">#&gt;  4 2002-2014     2    11  412.    457631       12     2002   2014</span></a>
+<a class="sourceLine" id="cb3-29" title="29"><span class="co">#&gt;  5 2002-2014     2    12   29.7    33015       12     2002   2014</span></a>
+<a class="sourceLine" id="cb3-30" title="30"><span class="co">#&gt;  6 2002-2014     3     2  110.    121762       12     2002   2014</span></a>
+<a class="sourceLine" id="cb3-31" title="31"><span class="co">#&gt;  7 2002-2014     3     3 2091.   2323665       12     2002   2014</span></a>
+<a class="sourceLine" id="cb3-32" title="32"><span class="co">#&gt;  8 2002-2014     3     7  116.    129304       12     2002   2014</span></a>
+<a class="sourceLine" id="cb3-33" title="33"><span class="co">#&gt;  9 2002-2014     3     9    7.00    7774       12     2002   2014</span></a>
+<a class="sourceLine" id="cb3-34" title="34"><span class="co">#&gt; 10 2002-2014     3    11    9.32   10359       12     2002   2014</span></a>
+<a class="sourceLine" id="cb3-35" title="35"><span class="co">#&gt; # ... with 35 more rows</span></a>
+<a class="sourceLine" id="cb3-36" title="36"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb3-37" title="37"><span class="co">#&gt; $tb_legend</span></a>
+<a class="sourceLine" id="cb3-38" title="38"><span class="co">#&gt; # A tibble: 11 x 3</span></a>
+<a class="sourceLine" id="cb3-39" title="39"><span class="co">#&gt;    classValue className color  </span></a>
+<a class="sourceLine" id="cb3-40" title="40"><span class="co">#&gt;         &lt;int&gt; &lt;fct&gt;     &lt;chr&gt;  </span></a>
+<a class="sourceLine" id="cb3-41" title="41"><span class="co">#&gt;  1          2 LEJ       #002F70</span></a>
+<a class="sourceLine" id="cb3-42" title="42"><span class="co">#&gt;  2          3 GXL       #265BAB</span></a>
+<a class="sourceLine" id="cb3-43" title="43"><span class="co">#&gt;  3          4 IKW       #6889D0</span></a>
+<a class="sourceLine" id="cb3-44" title="44"><span class="co">#&gt;  4          5 KCI       #A3B4E5</span></a>
+<a class="sourceLine" id="cb3-45" title="45"><span class="co">#&gt;  5          7 PZV       #D3DBF4</span></a>
+<a class="sourceLine" id="cb3-46" title="46"><span class="co">#&gt;  6          8 ERH       #F6F6F6</span></a>
+<a class="sourceLine" id="cb3-47" title="47"><span class="co">#&gt;  7          9 HBS       #F7D3D3</span></a>
+<a class="sourceLine" id="cb3-48" title="48"><span class="co">#&gt;  8         10 WLE       #E6A4A4</span></a>
+<a class="sourceLine" id="cb3-49" title="49"><span class="co">#&gt;  9         11 WNH       #CB6F70</span></a>
+<a class="sourceLine" id="cb3-50" title="50"><span class="co">#&gt; 10         12 OQL       #9D3D3D</span></a>
+<a class="sourceLine" id="cb3-51" title="51"><span class="co">#&gt; 11         13 HVJ       #5F1415</span></a>
+<a class="sourceLine" id="cb3-52" title="52"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb3-53" title="53"><span class="co">#&gt; $totalArea</span></a>
+<a class="sourceLine" id="cb3-54" title="54"><span class="co">#&gt; # A tibble: 1 x 2</span></a>
+<a class="sourceLine" id="cb3-55" title="55"><span class="co">#&gt;   area_km2  QtPixel</span></a>
+<a class="sourceLine" id="cb3-56" title="56"><span class="co">#&gt;      &lt;dbl&gt;    &lt;int&gt;</span></a>
+<a class="sourceLine" id="cb3-57" title="57"><span class="co">#&gt; 1   22418. 24908860</span></a>
+<a class="sourceLine" id="cb3-58" title="58"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb3-59" title="59"><span class="co">#&gt; $totalInterval</span></a>
+<a class="sourceLine" id="cb3-60" title="60"><span class="co">#&gt; [1] 12</span></a></code></pre></div>
+<div id="editing-the-values-in-classname-and-color-columns" class="section level4">
+<h4 class="hasAnchor">
+<a href="#editing-the-values-in-classname-and-color-columns" class="anchor"></a>Editing the values in <code>className</code> and <code>color</code> columns</h4>
+<p>Like mentioned before, the <strong>tb_legend</strong> object must be edited with the real class name and colors associate with everyone of the class value. In our case the classes names and colors are based on <span class="citation">Instituto SOS Pantanal and WWF-Brasil (2015)</span> <a href="https://www.embrapa.br/documents/1354999/1529097/BAP+-+Mapeamento+da+Bacia+do+Alto+Paraguai+-+estudo+completo/e66e3afb-2334-4511-96a0-af5642a56283">(acces document here, page 17)</a>.</p>
+<table class="table">
+<thead><tr class="header">
+<th align="left">Pixel Value</th>
+<th align="center">Legend</th>
+<th align="left">Class</th>
+<th align="left">Use</th>
+<th align="left">Details</th>
+<th align="left">color</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">2</td>
+<td align="center">Ap</td>
+<td align="left">Anthropic</td>
+<td align="left">Anthropic Use</td>
+<td align="left">Pastagem</td>
+<td align="left">#FFE4B5</td>
+</tr>
+<tr class="even">
+<td align="left">3</td>
+<td align="center">FF</td>
+<td align="left">Natural</td>
+<td align="left">NA</td>
+<td align="left">Formações Florestais</td>
+<td align="left">#228B22</td>
+</tr>
+<tr class="odd">
+<td align="left">4</td>
+<td align="center">SA</td>
+<td align="left">Natural</td>
+<td align="left">NA</td>
+<td align="left">Savana Arborizada (SA - Cerrado)</td>
+<td align="left">#00FF00</td>
+</tr>
+<tr class="even">
+<td align="left">5</td>
+<td align="center">SG</td>
+<td align="left">Natural</td>
+<td align="left">NA</td>
+<td align="left">Savana Gramínea (SG - Campo)</td>
+<td align="left">#CAFF70</td>
+</tr>
+<tr class="odd">
+<td align="left">7</td>
+<td align="center">aa</td>
+<td align="left">Anthropic</td>
+<td align="left">NA</td>
+<td align="left">Alteração Antrópica</td>
+<td align="left">#EE6363</td>
+</tr>
+<tr class="even">
+<td align="left">8</td>
+<td align="center">SF</td>
+<td align="left">Natural</td>
+<td align="left">NA</td>
+<td align="left">Savana Florestada (SF - Cerradão)</td>
+<td align="left">#00CD00</td>
+</tr>
+<tr class="odd">
+<td align="left">9</td>
+<td align="center">Agua</td>
+<td align="left">Natural</td>
+<td align="left">NA</td>
+<td align="left">Rios, córregos, corixos, vazantes, baías e salinas</td>
+<td align="left">#436EEE</td>
+</tr>
+<tr class="even">
+<td align="left">10</td>
+<td align="center">Iu</td>
+<td align="left">Anthropic</td>
+<td align="left">Anthropic Use</td>
+<td align="left">Influencia Urbana</td>
+<td align="left">#FFAEB9</td>
+</tr>
+<tr class="odd">
+<td align="left">11</td>
+<td align="center">Ac</td>
+<td align="left">Anthropic</td>
+<td align="left">Anthropic Use</td>
+<td align="left">Agricultura</td>
+<td align="left">#FFA54F</td>
+</tr>
+<tr class="even">
+<td align="left">12</td>
+<td align="center">R</td>
+<td align="left">Anthropic</td>
+<td align="left">Anthropic Use</td>
+<td align="left">Reflorestamento</td>
+<td align="left">#68228B</td>
+</tr>
+<tr class="odd">
+<td align="left">13</td>
+<td align="center">Im</td>
+<td align="left">Anthropic</td>
+<td align="left">Anthropic Use</td>
+<td align="left">Degradação por Mineração</td>
+<td align="left">#636363</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1"><span class="co">## editing the classe name</span></a>
+<a class="sourceLine" id="cb4-2" title="2">SL_<span class="dv">2002</span>_<span class="dv">2014</span><span class="op">$</span>tb_legend<span class="op">$</span>className &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/factor.html">factor</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"Ap"</span>, <span class="st">"FF"</span>, <span class="st">"SA"</span>, <span class="st">"SG"</span>, <span class="st">"aa"</span>, <span class="st">"SF"</span>, </a>
+<a class="sourceLine" id="cb4-3" title="3">                                          <span class="st">"Agua"</span>, <span class="st">"Iu"</span>, <span class="st">"Ac"</span>, <span class="st">"R"</span>, <span class="st">"Im"</span>),</a>
+<a class="sourceLine" id="cb4-4" title="4">                                  <span class="dt">levels =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"FF"</span>, <span class="st">"SF"</span>, <span class="st">"SA"</span>, <span class="st">"SG"</span>, <span class="st">"aa"</span>, <span class="st">"Ap"</span>, </a>
+<a class="sourceLine" id="cb4-5" title="5">                                         <span class="st">"Ac"</span>, <span class="st">"Im"</span>, <span class="st">"Iu"</span>, <span class="st">"Agua"</span>, <span class="st">"R"</span>))</a>
+<a class="sourceLine" id="cb4-6" title="6"></a>
+<a class="sourceLine" id="cb4-7" title="7"><span class="co">## add the color by the same order of the legend,</span></a>
+<a class="sourceLine" id="cb4-8" title="8"><span class="co">## it can be the colour name (eg. "black") or the HEX value (eg. #000000)</span></a>
+<a class="sourceLine" id="cb4-9" title="9">SL_<span class="dv">2002</span>_<span class="dv">2014</span><span class="op">$</span>tb_legend<span class="op">$</span>color &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"#FFE4B5"</span>, <span class="st">"#228B22"</span>, <span class="st">"#00FF00"</span>, <span class="st">"#CAFF70"</span>, </a>
+<a class="sourceLine" id="cb4-10" title="10">                                  <span class="st">"#EE6363"</span>, <span class="st">"#00CD00"</span>, <span class="st">"#436EEE"</span>, <span class="st">"#FFAEB9"</span>, </a>
+<a class="sourceLine" id="cb4-11" title="11">                                  <span class="st">"#FFA54F"</span>, <span class="st">"#68228B"</span>, <span class="st">"#636363"</span>)</a>
+<a class="sourceLine" id="cb4-12" title="12"></a>
+<a class="sourceLine" id="cb4-13" title="13"><span class="co">## now we have</span></a>
+<a class="sourceLine" id="cb4-14" title="14">SL_<span class="dv">2002</span>_<span class="dv">2014</span><span class="op">$</span>tb_legend</a>
+<a class="sourceLine" id="cb4-15" title="15"><span class="co">#&gt; # A tibble: 11 x 3</span></a>
+<a class="sourceLine" id="cb4-16" title="16"><span class="co">#&gt;    classValue className color  </span></a>
+<a class="sourceLine" id="cb4-17" title="17"><span class="co">#&gt;         &lt;int&gt; &lt;fct&gt;     &lt;chr&gt;  </span></a>
+<a class="sourceLine" id="cb4-18" title="18"><span class="co">#&gt;  1          2 Ap        #FFE4B5</span></a>
+<a class="sourceLine" id="cb4-19" title="19"><span class="co">#&gt;  2          3 FF        #228B22</span></a>
+<a class="sourceLine" id="cb4-20" title="20"><span class="co">#&gt;  3          4 SA        #00FF00</span></a>
+<a class="sourceLine" id="cb4-21" title="21"><span class="co">#&gt;  4          5 SG        #CAFF70</span></a>
+<a class="sourceLine" id="cb4-22" title="22"><span class="co">#&gt;  5          7 aa        #EE6363</span></a>
+<a class="sourceLine" id="cb4-23" title="23"><span class="co">#&gt;  6          8 SF        #00CD00</span></a>
+<a class="sourceLine" id="cb4-24" title="24"><span class="co">#&gt;  7          9 Agua      #436EEE</span></a>
+<a class="sourceLine" id="cb4-25" title="25"><span class="co">#&gt;  8         10 Iu        #FFAEB9</span></a>
+<a class="sourceLine" id="cb4-26" title="26"><span class="co">#&gt;  9         11 Ac        #FFA54F</span></a>
+<a class="sourceLine" id="cb4-27" title="27"><span class="co">#&gt; 10         12 R         #68228B</span></a>
+<a class="sourceLine" id="cb4-28" title="28"><span class="co">#&gt; 11         13 Im        #636363</span></a></code></pre></div>
+<blockquote>
+<p>At this point one can choose to run the Intensity Analysis or creating some representations provided by the <code>OpenLand</code> package like sankey diagram with <code><a href="../reference/sankeyLand.html">sankeyLand()</a></code> function, a chord diagram with <code><a href="../reference/circlizeplot.html">circlizeplot()</a></code> or a bar plot showing the evolution trough the years analysed with <code><a href="../reference/anualplot.html">anualplot()</a></code> since they don’t depend on the intensity function returns.</p>
+</blockquote>
+</div>
+</div>
+</div>
+<div id="intensity-analysis" class="section level2">
+<h2 class="hasAnchor">
+<a href="#intensity-analysis" class="anchor"></a>Intensity Analysis</h2>
+<p>The intensity analysis is a quantitative method to analyze maps of land categories from several points in time for a single site by considering cross-tabulation matrices, where one matrix summarizes the change in each time interval. There are three levels of analysis, starting from general to more detailed levels, where each level exposes different types of information given the previous level of analysis. First, the <strong>interval level</strong> examines how the size and speed of change vary across time intervals. Second, the <strong>category level</strong> examines how the size and intensity of gross losses and gross gains in each category vary across categories for each time interval. Third, the <strong>transition level</strong> examines how the size and intensity of a category’s transitions vary across the other categories that are available for that transition. At each level, the method tests for stationarity of patterns across time intervals <span class="citation">(Aldwaik and Pontius 2012)</span>.</p>
+<p>Within the OpenLand package we have created a function <code><a href="../reference/intensityanalysis.html">intensityanalysis()</a></code> that compute the three levels of analysis. It requires the object returned by the <code><a href="../reference/contingenceTable.html">contingenceTable()</a></code> function, and the categories <code>n</code> and <code>m</code> chosen by the user.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1">testSL &lt;-<span class="st"> </span><span class="kw"><a href="../reference/intensityanalysis.html">intensityanalysis</a></span>(<span class="dt">dataset =</span> SL_<span class="dv">2002</span>_<span class="dv">2014</span>,</a>
+<a class="sourceLine" id="cb5-2" title="2">                            <span class="dt">class_n =</span> <span class="st">"Ap"</span>, <span class="dt">class_m =</span> <span class="st">"SG"</span>)</a>
+<a class="sourceLine" id="cb5-3" title="3"></a>
+<a class="sourceLine" id="cb5-4" title="4"><span class="co"># it's returns a list with 6 objects</span></a>
+<a class="sourceLine" id="cb5-5" title="5"><span class="kw"><a href="https://rdrr.io/r/base/names.html">names</a></span>(testSL)</a>
+<a class="sourceLine" id="cb5-6" title="6"><span class="co">#&gt; [1] "lulc_table"           "interval_lvl"         "category_lvlGain"    </span></a>
+<a class="sourceLine" id="cb5-7" title="7"><span class="co">#&gt; [4] "category_lvlLoss"     "transition_lvlGain_n" "transition_lvlLoss_m"</span></a></code></pre></div>
+<p>The function returns 6 objects: lulc_table, interval_lvl, category_lvlGain, category_lvlLoss, transition_lvlGain_n, transition_lvlLoss_m. On this part we adopted an object-oriented approach that allows us to setting specifics methods for plotting the intensity objects created by the <code><a href="../reference/intensityanalysis.html">intensityanalysis()</a></code> function. The system we use is the S4 class which requires classes and methods to be formally define <span class="citation">(Chambers 2008)</span>. The first object is a contingency table like the lulc_Multistep object with the unique difference that is, the column <code>From</code> and <code>To</code> values have has been replaced by their appropriate legend.</p>
+<p>The second object <em><strong>interval_lvl</strong></em> is an <code>IntensityL01</code> object the third <em><strong>category_lvlGain</strong></em> and the fourth <em><strong>category_lvlLoss</strong></em> are <code>IntensityL02</code> objects, the fifth <em><strong>transition_lvlGain_n</strong></em> and the sixth <em><strong>transition_lvlLoss_m</strong></em> are <code>IntensityL03</code> objects. An <code>IntensityL01</code> object contains two slots: the first one with the analysed level and the second a table of interval result. An <code>IntensityL02</code> object contains four slots: the first with the analysed level, the second the colors associate with the data with the legends as name’s attribute, the third slot contain a table of the category level result <em>(gain or loss)</em> and the fourth slot contain a table saving a stationarity test. An <code>IntensityL03</code> object contains four slots: the first with the analysed level, the second the colors associate with the data with the legends as name’s attribute, the third slot contain a table of the transition level result <em>(gain n or loss m)</em> and the fourth slot contains a table saving a stationarity test.</p>
+<blockquote>
+<p><span class="citation">Aldwaik and Pontius (2012)</span> considers a stationary case only whether the intensities for all time intervals reside on one side of the uniform intensity.</p>
+</blockquote>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1"><span class="co"># showing the object from the intensity analysis for our illustrative case</span></a>
+<a class="sourceLine" id="cb6-2" title="2">testSL</a>
+<a class="sourceLine" id="cb6-3" title="3"><span class="co">#&gt; $lulc_table</span></a>
+<a class="sourceLine" id="cb6-4" title="4"><span class="co">#&gt; # A tibble: 130 x 6</span></a>
+<a class="sourceLine" id="cb6-5" title="5"><span class="co">#&gt;    Period    From  To         km2 QtPixel Interval</span></a>
+<a class="sourceLine" id="cb6-6" title="6"><span class="co">#&gt;    &lt;fct&gt;     &lt;fct&gt; &lt;fct&gt;    &lt;dbl&gt;   &lt;int&gt;    &lt;int&gt;</span></a>
+<a class="sourceLine" id="cb6-7" title="7"><span class="co">#&gt;  1 2002-2008 Ap    Ap    6543.    7269961        6</span></a>
+<a class="sourceLine" id="cb6-8" title="8"><span class="co">#&gt;  2 2002-2008 Ap    Iu       1.56     1736        6</span></a>
+<a class="sourceLine" id="cb6-9" title="9"><span class="co">#&gt;  3 2002-2008 Ap    Ac      55.2     61320        6</span></a>
+<a class="sourceLine" id="cb6-10" title="10"><span class="co">#&gt;  4 2002-2008 Ap    R       23.9     26609        6</span></a>
+<a class="sourceLine" id="cb6-11" title="11"><span class="co">#&gt;  5 2002-2008 FF    Ap      37.5     41649        6</span></a>
+<a class="sourceLine" id="cb6-12" title="12"><span class="co">#&gt;  6 2002-2008 FF    FF    2133.    2370190        6</span></a>
+<a class="sourceLine" id="cb6-13" title="13"><span class="co">#&gt;  7 2002-2008 FF    aa     155.     172718        6</span></a>
+<a class="sourceLine" id="cb6-14" title="14"><span class="co">#&gt;  8 2002-2008 FF    Ac       7.48     8307        6</span></a>
+<a class="sourceLine" id="cb6-15" title="15"><span class="co">#&gt;  9 2002-2008 FF    R        0.356     395        6</span></a>
+<a class="sourceLine" id="cb6-16" title="16"><span class="co">#&gt; 10 2002-2008 FF    Im       0.081      90        6</span></a>
+<a class="sourceLine" id="cb6-17" title="17"><span class="co">#&gt; # ... with 120 more rows</span></a>
+<a class="sourceLine" id="cb6-18" title="18"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb6-19" title="19"><span class="co">#&gt; $interval_lvl</span></a>
+<a class="sourceLine" id="cb6-20" title="20"><span class="co">#&gt; An object of class "IntensityL01"</span></a>
+<a class="sourceLine" id="cb6-21" title="21"><span class="co">#&gt; Slot "level":</span></a>
+<a class="sourceLine" id="cb6-22" title="22"><span class="co">#&gt; [1] "Interval"</span></a>
+<a class="sourceLine" id="cb6-23" title="23"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb6-24" title="24"><span class="co">#&gt; Slot "intervalData":</span></a>
+<a class="sourceLine" id="cb6-25" title="25"><span class="co">#&gt; # A tibble: 4 x 4</span></a>
+<a class="sourceLine" id="cb6-26" title="26"><span class="co">#&gt; # Groups:   Period [4]</span></a>
+<a class="sourceLine" id="cb6-27" title="27"><span class="co">#&gt;   Period    PercentChange    St     U</span></a>
+<a class="sourceLine" id="cb6-28" title="28"><span class="co">#&gt;   &lt;fct&gt;             &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></a>
+<a class="sourceLine" id="cb6-29" title="29"><span class="co">#&gt; 1 2012-2014         3.32  1.66   1.13</span></a>
+<a class="sourceLine" id="cb6-30" title="30"><span class="co">#&gt; 2 2010-2012         4.23  2.12   1.13</span></a>
+<a class="sourceLine" id="cb6-31" title="31"><span class="co">#&gt; 3 2008-2010         0.880 0.440  1.13</span></a>
+<a class="sourceLine" id="cb6-32" title="32"><span class="co">#&gt; 4 2002-2008         5.18  0.864  1.13</span></a>
+<a class="sourceLine" id="cb6-33" title="33"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb6-34" title="34"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb6-35" title="35"><span class="co">#&gt; $category_lvlGain</span></a>
+<a class="sourceLine" id="cb6-36" title="36"><span class="co">#&gt; An object of class "IntensityL02"</span></a>
+<a class="sourceLine" id="cb6-37" title="37"><span class="co">#&gt; Slot "level":</span></a>
+<a class="sourceLine" id="cb6-38" title="38"><span class="co">#&gt; [1] "Category"</span></a>
+<a class="sourceLine" id="cb6-39" title="39"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb6-40" title="40"><span class="co">#&gt; Slot "lookupcolor":</span></a>
+<a class="sourceLine" id="cb6-41" title="41"><span class="co">#&gt;        Ap        FF        SA        SG        aa        SF      Agua        Iu </span></a>
+<a class="sourceLine" id="cb6-42" title="42"><span class="co">#&gt; "#FFE4B5" "#228B22" "#00FF00" "#CAFF70" "#EE6363" "#00CD00" "#436EEE" "#FFAEB9" </span></a>
+<a class="sourceLine" id="cb6-43" title="43"><span class="co">#&gt;        Ac         R        Im </span></a>
+<a class="sourceLine" id="cb6-44" title="44"><span class="co">#&gt; "#FFA54F" "#68228B" "#636363" </span></a>
+<a class="sourceLine" id="cb6-45" title="45"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb6-46" title="46"><span class="co">#&gt; Slot "categoryData":</span></a>
+<a class="sourceLine" id="cb6-47" title="47"><span class="co">#&gt; # A tibble: 23 x 6</span></a>
+<a class="sourceLine" id="cb6-48" title="48"><span class="co">#&gt; # Groups:   Period, To [23]</span></a>
+<a class="sourceLine" id="cb6-49" title="49"><span class="co">#&gt;    Period    To    Interval  GG_km2   Gtj    St</span></a>
+<a class="sourceLine" id="cb6-50" title="50"><span class="co">#&gt;    &lt;fct&gt;     &lt;fct&gt;    &lt;int&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></a>
+<a class="sourceLine" id="cb6-51" title="51"><span class="co">#&gt;  1 2012-2014 aa           2  14.9   0.510  1.66</span></a>
+<a class="sourceLine" id="cb6-52" title="52"><span class="co">#&gt;  2 2012-2014 Ap           2 612.    3.92   1.66</span></a>
+<a class="sourceLine" id="cb6-53" title="53"><span class="co">#&gt;  3 2012-2014 Ac           2 110.    1.14   1.66</span></a>
+<a class="sourceLine" id="cb6-54" title="54"><span class="co">#&gt;  4 2012-2014 Im           2   0.195 0.337  1.66</span></a>
+<a class="sourceLine" id="cb6-55" title="55"><span class="co">#&gt;  5 2012-2014 Iu           2   6.79  2.67   1.66</span></a>
+<a class="sourceLine" id="cb6-56" title="56"><span class="co">#&gt;  6 2010-2012 aa           2  47.0   1.18   2.12</span></a>
+<a class="sourceLine" id="cb6-57" title="57"><span class="co">#&gt;  7 2010-2012 Ap           2 707.    4.84   2.12</span></a>
+<a class="sourceLine" id="cb6-58" title="58"><span class="co">#&gt;  8 2010-2012 Ac           2 189.    2.00   2.12</span></a>
+<a class="sourceLine" id="cb6-59" title="59"><span class="co">#&gt;  9 2010-2012 Iu           2   1.90  0.792  2.12</span></a>
+<a class="sourceLine" id="cb6-60" title="60"><span class="co">#&gt; 10 2010-2012 R            2   2.76  0.951  2.12</span></a>
+<a class="sourceLine" id="cb6-61" title="61"><span class="co">#&gt; # ... with 13 more rows</span></a>
+<a class="sourceLine" id="cb6-62" title="62"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb6-63" title="63"><span class="co">#&gt; Slot "categoryStationarity":</span></a>
+<a class="sourceLine" id="cb6-64" title="64"><span class="co">#&gt; # A tibble: 12 x 5</span></a>
+<a class="sourceLine" id="cb6-65" title="65"><span class="co">#&gt;    To     Gain     N Stationarity Test </span></a>
+<a class="sourceLine" id="cb6-66" title="66"><span class="co">#&gt;    &lt;fct&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;        &lt;chr&gt;</span></a>
+<a class="sourceLine" id="cb6-67" title="67"><span class="co">#&gt;  1 aa        2     4 Active Gain  N    </span></a>
+<a class="sourceLine" id="cb6-68" title="68"><span class="co">#&gt;  2 Ap        2     4 Active Gain  N    </span></a>
+<a class="sourceLine" id="cb6-69" title="69"><span class="co">#&gt;  3 Ac        1     4 Active Gain  N    </span></a>
+<a class="sourceLine" id="cb6-70" title="70"><span class="co">#&gt;  4 Iu        2     4 Active Gain  N    </span></a>
+<a class="sourceLine" id="cb6-71" title="71"><span class="co">#&gt;  5 Agua      1     4 Active Gain  N    </span></a>
+<a class="sourceLine" id="cb6-72" title="72"><span class="co">#&gt;  6 R         2     4 Active Gain  N    </span></a>
+<a class="sourceLine" id="cb6-73" title="73"><span class="co">#&gt;  7 aa        2     4 Dormant Gain N    </span></a>
+<a class="sourceLine" id="cb6-74" title="74"><span class="co">#&gt;  8 Ap        2     4 Dormant Gain N    </span></a>
+<a class="sourceLine" id="cb6-75" title="75"><span class="co">#&gt;  9 Ac        3     4 Dormant Gain N    </span></a>
+<a class="sourceLine" id="cb6-76" title="76"><span class="co">#&gt; 10 Im        3     4 Dormant Gain N    </span></a>
+<a class="sourceLine" id="cb6-77" title="77"><span class="co">#&gt; 11 Iu        2     4 Dormant Gain N    </span></a>
+<a class="sourceLine" id="cb6-78" title="78"><span class="co">#&gt; 12 R         1     4 Dormant Gain N    </span></a>
+<a class="sourceLine" id="cb6-79" title="79"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb6-80" title="80"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb6-81" title="81"><span class="co">#&gt; $category_lvlLoss</span></a>
+<a class="sourceLine" id="cb6-82" title="82"><span class="co">#&gt; An object of class "IntensityL02"</span></a>
+<a class="sourceLine" id="cb6-83" title="83"><span class="co">#&gt; Slot "level":</span></a>
+<a class="sourceLine" id="cb6-84" title="84"><span class="co">#&gt; [1] "Category"</span></a>
+<a class="sourceLine" id="cb6-85" title="85"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb6-86" title="86"><span class="co">#&gt; Slot "lookupcolor":</span></a>
+<a class="sourceLine" id="cb6-87" title="87"><span class="co">#&gt;        Ap        FF        SA        SG        aa        SF      Agua        Iu </span></a>
+<a class="sourceLine" id="cb6-88" title="88"><span class="co">#&gt; "#FFE4B5" "#228B22" "#00FF00" "#CAFF70" "#EE6363" "#00CD00" "#436EEE" "#FFAEB9" </span></a>
+<a class="sourceLine" id="cb6-89" title="89"><span class="co">#&gt;        Ac         R        Im </span></a>
+<a class="sourceLine" id="cb6-90" title="90"><span class="co">#&gt; "#FFA54F" "#68228B" "#636363" </span></a>
+<a class="sourceLine" id="cb6-91" title="91"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb6-92" title="92"><span class="co">#&gt; Slot "categoryData":</span></a>
+<a class="sourceLine" id="cb6-93" title="93"><span class="co">#&gt; # A tibble: 29 x 6</span></a>
+<a class="sourceLine" id="cb6-94" title="94"><span class="co">#&gt; # Groups:   Period, From [29]</span></a>
+<a class="sourceLine" id="cb6-95" title="95"><span class="co">#&gt;    Period    From  Interval GL_km2     Lti    St</span></a>
+<a class="sourceLine" id="cb6-96" title="96"><span class="co">#&gt;    &lt;fct&gt;     &lt;fct&gt;    &lt;int&gt;  &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;</span></a>
+<a class="sourceLine" id="cb6-97" title="97"><span class="co">#&gt;  1 2012-2014 FF           2  15.4   0.365   1.66</span></a>
+<a class="sourceLine" id="cb6-98" title="98"><span class="co">#&gt;  2 2012-2014 SF           2   3.49  0.224   1.66</span></a>
+<a class="sourceLine" id="cb6-99" title="99"><span class="co">#&gt;  3 2012-2014 SA           2  25.3   0.845   1.66</span></a>
+<a class="sourceLine" id="cb6-100" title="100"><span class="co">#&gt;  4 2012-2014 SG           2  46.9   0.634   1.66</span></a>
+<a class="sourceLine" id="cb6-101" title="101"><span class="co">#&gt;  5 2012-2014 aa           2 541.   13.6     1.66</span></a>
+<a class="sourceLine" id="cb6-102" title="102"><span class="co">#&gt;  6 2012-2014 Ap           2 111.    0.759   1.66</span></a>
+<a class="sourceLine" id="cb6-103" title="103"><span class="co">#&gt;  7 2012-2014 Ac           2   1.26  0.0133  1.66</span></a>
+<a class="sourceLine" id="cb6-104" title="104"><span class="co">#&gt;  8 2010-2012 FF           2  11.1   0.263   2.12</span></a>
+<a class="sourceLine" id="cb6-105" title="105"><span class="co">#&gt;  9 2010-2012 SF           2   4.44  0.283   2.12</span></a>
+<a class="sourceLine" id="cb6-106" title="106"><span class="co">#&gt; 10 2010-2012 SA           2  29.7   0.974   2.12</span></a>
+<a class="sourceLine" id="cb6-107" title="107"><span class="co">#&gt; # ... with 19 more rows</span></a>
+<a class="sourceLine" id="cb6-108" title="108"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb6-109" title="109"><span class="co">#&gt; Slot "categoryStationarity":</span></a>
+<a class="sourceLine" id="cb6-110" title="110"><span class="co">#&gt; # A tibble: 14 x 5</span></a>
+<a class="sourceLine" id="cb6-111" title="111"><span class="co">#&gt;    From   Loss     N Stationarity Test </span></a>
+<a class="sourceLine" id="cb6-112" title="112"><span class="co">#&gt;    &lt;fct&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;        &lt;chr&gt;</span></a>
+<a class="sourceLine" id="cb6-113" title="113"><span class="co">#&gt;  1 FF        1     4 Active Loss  N    </span></a>
+<a class="sourceLine" id="cb6-114" title="114"><span class="co">#&gt;  2 SF        2     4 Active Loss  N    </span></a>
+<a class="sourceLine" id="cb6-115" title="115"><span class="co">#&gt;  3 SA        2     4 Active Loss  N    </span></a>
+<a class="sourceLine" id="cb6-116" title="116"><span class="co">#&gt;  4 SG        2     4 Active Loss  N    </span></a>
+<a class="sourceLine" id="cb6-117" title="117"><span class="co">#&gt;  5 aa        3     4 Active Loss  N    </span></a>
+<a class="sourceLine" id="cb6-118" title="118"><span class="co">#&gt;  6 Ap        1     4 Active Loss  N    </span></a>
+<a class="sourceLine" id="cb6-119" title="119"><span class="co">#&gt;  7 R         1     4 Active Loss  N    </span></a>
+<a class="sourceLine" id="cb6-120" title="120"><span class="co">#&gt;  8 FF        3     4 Dormant Loss N    </span></a>
+<a class="sourceLine" id="cb6-121" title="121"><span class="co">#&gt;  9 SF        2     4 Dormant Loss N    </span></a>
+<a class="sourceLine" id="cb6-122" title="122"><span class="co">#&gt; 10 SA        2     4 Dormant Loss N    </span></a>
+<a class="sourceLine" id="cb6-123" title="123"><span class="co">#&gt; 11 SG        2     4 Dormant Loss N    </span></a>
+<a class="sourceLine" id="cb6-124" title="124"><span class="co">#&gt; 12 aa        1     4 Dormant Loss N    </span></a>
+<a class="sourceLine" id="cb6-125" title="125"><span class="co">#&gt; 13 Ap        3     4 Dormant Loss N    </span></a>
+<a class="sourceLine" id="cb6-126" title="126"><span class="co">#&gt; 14 Ac        4     4 Dormant Loss Y    </span></a>
+<a class="sourceLine" id="cb6-127" title="127"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb6-128" title="128"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb6-129" title="129"><span class="co">#&gt; $transition_lvlGain_n</span></a>
+<a class="sourceLine" id="cb6-130" title="130"><span class="co">#&gt; An object of class "IntensityL03"</span></a>
+<a class="sourceLine" id="cb6-131" title="131"><span class="co">#&gt; Slot "level":</span></a>
+<a class="sourceLine" id="cb6-132" title="132"><span class="co">#&gt; [1] "Transition"</span></a>
+<a class="sourceLine" id="cb6-133" title="133"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb6-134" title="134"><span class="co">#&gt; Slot "lookupcolor":</span></a>
+<a class="sourceLine" id="cb6-135" title="135"><span class="co">#&gt;        Ap        FF        SA        SG        aa        SF      Agua        Iu </span></a>
+<a class="sourceLine" id="cb6-136" title="136"><span class="co">#&gt; "#FFE4B5" "#228B22" "#00FF00" "#CAFF70" "#EE6363" "#00CD00" "#436EEE" "#FFAEB9" </span></a>
+<a class="sourceLine" id="cb6-137" title="137"><span class="co">#&gt;        Ac         R        Im </span></a>
+<a class="sourceLine" id="cb6-138" title="138"><span class="co">#&gt; "#FFA54F" "#68228B" "#636363" </span></a>
+<a class="sourceLine" id="cb6-139" title="139"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb6-140" title="140"><span class="co">#&gt; Slot "transitionData":</span></a>
+<a class="sourceLine" id="cb6-141" title="141"><span class="co">#&gt; # A tibble: 20 x 7</span></a>
+<a class="sourceLine" id="cb6-142" title="142"><span class="co">#&gt; # Groups:   Period, From [20]</span></a>
+<a class="sourceLine" id="cb6-143" title="143"><span class="co">#&gt;    Period    From  To    Interval T_i2n_km2    Rtin    Wtn</span></a>
+<a class="sourceLine" id="cb6-144" title="144"><span class="co">#&gt;    &lt;fct&gt;     &lt;fct&gt; &lt;fct&gt;    &lt;int&gt;     &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;</span></a>
+<a class="sourceLine" id="cb6-145" title="145"><span class="co">#&gt;  1 2012-2014 FF    Ap           2    12.9    0.307  2.03  </span></a>
+<a class="sourceLine" id="cb6-146" title="146"><span class="co">#&gt;  2 2012-2014 SF    Ap           2     2.38   0.152  2.03  </span></a>
+<a class="sourceLine" id="cb6-147" title="147"><span class="co">#&gt;  3 2012-2014 SA    Ap           2    18.1    0.605  2.03  </span></a>
+<a class="sourceLine" id="cb6-148" title="148"><span class="co">#&gt;  4 2012-2014 SG    Ap           2    42.1    0.569  2.03  </span></a>
+<a class="sourceLine" id="cb6-149" title="149"><span class="co">#&gt;  5 2012-2014 aa    Ap           2   537.    13.5    2.03  </span></a>
+<a class="sourceLine" id="cb6-150" title="150"><span class="co">#&gt;  6 2010-2012 FF    Ap           2     3.63   0.0856 2.26  </span></a>
+<a class="sourceLine" id="cb6-151" title="151"><span class="co">#&gt;  7 2010-2012 SF    Ap           2     1.08   0.0685 2.26  </span></a>
+<a class="sourceLine" id="cb6-152" title="152"><span class="co">#&gt;  8 2010-2012 SA    Ap           2    12.3    0.403  2.26  </span></a>
+<a class="sourceLine" id="cb6-153" title="153"><span class="co">#&gt;  9 2010-2012 SG    Ap           2     8.53   0.114  2.26  </span></a>
+<a class="sourceLine" id="cb6-154" title="154"><span class="co">#&gt; 10 2010-2012 aa    Ap           2   682.    13.0    2.26  </span></a>
+<a class="sourceLine" id="cb6-155" title="155"><span class="co">#&gt; 11 2008-2010 FF    Ap           2     0.968  0.0227 0.0610</span></a>
+<a class="sourceLine" id="cb6-156" title="156"><span class="co">#&gt; 12 2008-2010 SF    Ap           2     1.10   0.0694 0.0610</span></a>
+<a class="sourceLine" id="cb6-157" title="157"><span class="co">#&gt; 13 2008-2010 SA    Ap           2     0.971  0.0314 0.0610</span></a>
+<a class="sourceLine" id="cb6-158" title="158"><span class="co">#&gt; 14 2008-2010 SG    Ap           2     3.94   0.0524 0.0610</span></a>
+<a class="sourceLine" id="cb6-159" title="159"><span class="co">#&gt; 15 2008-2010 aa    Ap           2    12.0    0.233  0.0610</span></a>
+<a class="sourceLine" id="cb6-160" title="160"><span class="co">#&gt; 16 2002-2008 FF    Ap           6    37.5    0.268  0.323 </span></a>
+<a class="sourceLine" id="cb6-161" title="161"><span class="co">#&gt; 17 2002-2008 SF    Ap           6    24.8    0.453  0.323 </span></a>
+<a class="sourceLine" id="cb6-162" title="162"><span class="co">#&gt; 18 2002-2008 SA    Ap           6    65.8    0.608  0.323 </span></a>
+<a class="sourceLine" id="cb6-163" title="163"><span class="co">#&gt; 19 2002-2008 SG    Ap           6    48.3    0.198  0.323 </span></a>
+<a class="sourceLine" id="cb6-164" title="164"><span class="co">#&gt; 20 2002-2008 aa    Ap           6   130.     1.02   0.323 </span></a>
+<a class="sourceLine" id="cb6-165" title="165"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb6-166" title="166"><span class="co">#&gt; Slot "transitionStationarity":</span></a>
+<a class="sourceLine" id="cb6-167" title="167"><span class="co">#&gt; # A tibble: 7 x 5</span></a>
+<a class="sourceLine" id="cb6-168" title="168"><span class="co">#&gt;   From   Loss     N Stationarity   Test </span></a>
+<a class="sourceLine" id="cb6-169" title="169"><span class="co">#&gt;   &lt;fct&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;          &lt;chr&gt;</span></a>
+<a class="sourceLine" id="cb6-170" title="170"><span class="co">#&gt; 1 SF        2     4 targeted by Ap N    </span></a>
+<a class="sourceLine" id="cb6-171" title="171"><span class="co">#&gt; 2 SA        1     4 targeted by Ap N    </span></a>
+<a class="sourceLine" id="cb6-172" title="172"><span class="co">#&gt; 3 aa        4     4 targeted by Ap Y    </span></a>
+<a class="sourceLine" id="cb6-173" title="173"><span class="co">#&gt; 4 FF        4     4 avoided by Ap  Y    </span></a>
+<a class="sourceLine" id="cb6-174" title="174"><span class="co">#&gt; 5 SF        2     4 avoided by Ap  N    </span></a>
+<a class="sourceLine" id="cb6-175" title="175"><span class="co">#&gt; 6 SA        3     4 avoided by Ap  N    </span></a>
+<a class="sourceLine" id="cb6-176" title="176"><span class="co">#&gt; 7 SG        4     4 avoided by Ap  Y    </span></a>
+<a class="sourceLine" id="cb6-177" title="177"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb6-178" title="178"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb6-179" title="179"><span class="co">#&gt; $transition_lvlLoss_m</span></a>
+<a class="sourceLine" id="cb6-180" title="180"><span class="co">#&gt; An object of class "IntensityL03"</span></a>
+<a class="sourceLine" id="cb6-181" title="181"><span class="co">#&gt; Slot "level":</span></a>
+<a class="sourceLine" id="cb6-182" title="182"><span class="co">#&gt; [1] "Transition"</span></a>
+<a class="sourceLine" id="cb6-183" title="183"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb6-184" title="184"><span class="co">#&gt; Slot "lookupcolor":</span></a>
+<a class="sourceLine" id="cb6-185" title="185"><span class="co">#&gt;        Ap        FF        SA        SG        aa        SF      Agua        Iu </span></a>
+<a class="sourceLine" id="cb6-186" title="186"><span class="co">#&gt; "#FFE4B5" "#228B22" "#00FF00" "#CAFF70" "#EE6363" "#00CD00" "#436EEE" "#FFAEB9" </span></a>
+<a class="sourceLine" id="cb6-187" title="187"><span class="co">#&gt;        Ac         R        Im </span></a>
+<a class="sourceLine" id="cb6-188" title="188"><span class="co">#&gt; "#FFA54F" "#68228B" "#636363" </span></a>
+<a class="sourceLine" id="cb6-189" title="189"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb6-190" title="190"><span class="co">#&gt; Slot "transitionData":</span></a>
+<a class="sourceLine" id="cb6-191" title="191"><span class="co">#&gt; # A tibble: 14 x 7</span></a>
+<a class="sourceLine" id="cb6-192" title="192"><span class="co">#&gt; # Groups:   Period, To [14]</span></a>
+<a class="sourceLine" id="cb6-193" title="193"><span class="co">#&gt;    Period    To    From  Interval T_m2j_km2     Qtmj    Vtm</span></a>
+<a class="sourceLine" id="cb6-194" title="194"><span class="co">#&gt;    &lt;fct&gt;     &lt;fct&gt; &lt;fct&gt;    &lt;int&gt;     &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;</span></a>
+<a class="sourceLine" id="cb6-195" title="195"><span class="co">#&gt;  1 2012-2014 aa    SG           2    4.76   0.163    0.125 </span></a>
+<a class="sourceLine" id="cb6-196" title="196"><span class="co">#&gt;  2 2012-2014 Ap    SG           2   42.1    0.270    0.125 </span></a>
+<a class="sourceLine" id="cb6-197" title="197"><span class="co">#&gt;  3 2012-2014 Ac    SG           2    0.0621 0.000642 0.125 </span></a>
+<a class="sourceLine" id="cb6-198" title="198"><span class="co">#&gt;  4 2010-2012 aa    SG           2   18.9    0.475    0.0749</span></a>
+<a class="sourceLine" id="cb6-199" title="199"><span class="co">#&gt;  5 2010-2012 Ap    SG           2    8.53   0.0584   0.0749</span></a>
+<a class="sourceLine" id="cb6-200" title="200"><span class="co">#&gt;  6 2010-2012 Ac    SG           2    0.632  0.00669  0.0749</span></a>
+<a class="sourceLine" id="cb6-201" title="201"><span class="co">#&gt;  7 2008-2010 aa    SG           2   30.6    0.584    0.0929</span></a>
+<a class="sourceLine" id="cb6-202" title="202"><span class="co">#&gt;  8 2008-2010 Ap    SG           2    3.94   0.0290   0.0929</span></a>
+<a class="sourceLine" id="cb6-203" title="203"><span class="co">#&gt;  9 2008-2010 Ac    SG           2    0.0873 0.000962 0.0929</span></a>
+<a class="sourceLine" id="cb6-204" title="204"><span class="co">#&gt; 10 2008-2010 Iu    SG           2    0.0504 0.0213   0.0929</span></a>
+<a class="sourceLine" id="cb6-205" title="205"><span class="co">#&gt; 11 2002-2008 aa    SG           6  244.     1.58     0.273 </span></a>
+<a class="sourceLine" id="cb6-206" title="206"><span class="co">#&gt; 12 2002-2008 Ap    SG           6   48.3    0.118    0.273 </span></a>
+<a class="sourceLine" id="cb6-207" title="207"><span class="co">#&gt; 13 2002-2008 Ac    SG           6   13.1    0.0489   0.273 </span></a>
+<a class="sourceLine" id="cb6-208" title="208"><span class="co">#&gt; 14 2002-2008 R     SG           6    0.0999 0.0129   0.273 </span></a>
+<a class="sourceLine" id="cb6-209" title="209"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb6-210" title="210"><span class="co">#&gt; Slot "transitionStationarity":</span></a>
+<a class="sourceLine" id="cb6-211" title="211"><span class="co">#&gt; # A tibble: 6 x 5</span></a>
+<a class="sourceLine" id="cb6-212" title="212"><span class="co">#&gt;   To     Gain     N Stationarity Test </span></a>
+<a class="sourceLine" id="cb6-213" title="213"><span class="co">#&gt;   &lt;fct&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;        &lt;chr&gt;</span></a>
+<a class="sourceLine" id="cb6-214" title="214"><span class="co">#&gt; 1 aa        4     4 targeted SG  Y    </span></a>
+<a class="sourceLine" id="cb6-215" title="215"><span class="co">#&gt; 2 Ap        1     4 targeted SG  N    </span></a>
+<a class="sourceLine" id="cb6-216" title="216"><span class="co">#&gt; 3 Ap        3     4 avoided SG   N    </span></a>
+<a class="sourceLine" id="cb6-217" title="217"><span class="co">#&gt; 4 Ac        4     4 avoided SG   Y    </span></a>
+<a class="sourceLine" id="cb6-218" title="218"><span class="co">#&gt; 5 Iu        1     4 avoided SG   N    </span></a>
+<a class="sourceLine" id="cb6-219" title="219"><span class="co">#&gt; 6 R         1     4 avoided SG   N</span></a></code></pre></div>
+</div>
+<div id="the-graphs" class="section level2">
+<h2 class="hasAnchor">
+<a href="#the-graphs" class="anchor"></a>The Graphs</h2>
+<p>Visualizations of the intensity analysis result is obtaining from the plot(intensityObject) function, for a more detailed over the parameters see function’s documentation.</p>
+<div id="interval-level" class="section level3">
+<h3 class="hasAnchor">
+<a href="#interval-level" class="anchor"></a>Interval Level</h3>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1"></a>
+<a class="sourceLine" id="cb7-2" title="2"><span class="kw"><a href="../reference/plot.html">plot</a></span>(testSL<span class="op">$</span>interval_lvl,</a>
+<a class="sourceLine" id="cb7-3" title="3">     <span class="dt">labels =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dt">leftlabel =</span> <span class="st">"Interval Change Area (%)"</span>,</a>
+<a class="sourceLine" id="cb7-4" title="4">                <span class="dt">rightlabel =</span> <span class="st">"Annual Change Area (%)"</span>,</a>
+<a class="sourceLine" id="cb7-5" title="5">                <span class="dt">title =</span> <span class="ot">NA</span>),</a>
+<a class="sourceLine" id="cb7-6" title="6">     <span class="dt">marginplot =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="op">-</span><span class="dv">8</span>, <span class="dv">0</span>), <span class="dt">labs =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"Changes"</span>, <span class="st">"Uniform Rate"</span>))</a></code></pre></div>
+<p><img src="openland_vignette_files/figure-html/unnamed-chunk-8-1.png" width="672"></p>
+</div>
+<div id="category-level" class="section level3">
+<h3 class="hasAnchor">
+<a href="#category-level" class="anchor"></a>Category Level</h3>
+<ul>
+<li>Gain</li>
+</ul>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1"></a>
+<a class="sourceLine" id="cb8-2" title="2"><span class="kw"><a href="../reference/plot.html">plot</a></span>(testSL<span class="op">$</span>category_lvlGain,</a>
+<a class="sourceLine" id="cb8-3" title="3">     <span class="dt">labels =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dt">leftlabel =</span> <span class="kw"><a href="https://rdrr.io/r/base/bquote.html">bquote</a></span>(<span class="st">"Gain Area ("</span> <span class="op">~</span><span class="st"> </span>Km <span class="op">^</span><span class="st"> </span><span class="dv">2</span> <span class="op">~</span><span class="st"> ")"</span>),</a>
+<a class="sourceLine" id="cb8-4" title="4">                <span class="dt">rightlabel =</span> <span class="st">"Intensity Gain (%)"</span>, <span class="dt">title =</span> <span class="ot">NA</span>),</a>
+<a class="sourceLine" id="cb8-5" title="5">     <span class="dt">marginplot =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(.<span class="dv">3</span>, <span class="fl">.3</span>), <span class="dt">labs =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"Classes"</span>, <span class="st">"Uniform Rate"</span>))</a></code></pre></div>
+<p><img src="openland_vignette_files/figure-html/unnamed-chunk-9-1.png" width="672"></p>
+<ul>
+<li>Loss</li>
+</ul>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1"></a>
+<a class="sourceLine" id="cb9-2" title="2"><span class="kw"><a href="../reference/plot.html">plot</a></span>(testSL<span class="op">$</span>category_lvlLoss,</a>
+<a class="sourceLine" id="cb9-3" title="3">     <span class="dt">labels =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dt">leftlabel =</span> <span class="kw"><a href="https://rdrr.io/r/base/bquote.html">bquote</a></span>(<span class="st">"Loss Area ("</span> <span class="op">~</span><span class="st"> </span>Km <span class="op">^</span><span class="st"> </span><span class="dv">2</span> <span class="op">~</span><span class="st"> ")"</span>),</a>
+<a class="sourceLine" id="cb9-4" title="4">                <span class="dt">rightlabel =</span> <span class="st">"Loss Intensity (%)"</span>, <span class="dt">title =</span> <span class="ot">NA</span>),</a>
+<a class="sourceLine" id="cb9-5" title="5">     <span class="dt">marginplot =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(.<span class="dv">3</span>, <span class="fl">.3</span>), <span class="dt">labs =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"Classes"</span>, <span class="st">"Uniform Rate"</span>))</a></code></pre></div>
+<p><img src="openland_vignette_files/figure-html/unnamed-chunk-10-1.png" width="672"></p>
+</div>
+<div id="transition-level" class="section level3">
+<h3 class="hasAnchor">
+<a href="#transition-level" class="anchor"></a>Transition Level</h3>
+<ul>
+<li>Gain</li>
+</ul>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" title="1"></a>
+<a class="sourceLine" id="cb10-2" title="2"><span class="kw"><a href="../reference/plot.html">plot</a></span>(testSL<span class="op">$</span>transition_lvlGain_n,</a>
+<a class="sourceLine" id="cb10-3" title="3">     <span class="dt">labels =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dt">rightlabel =</span> <span class="st">"Intensity Gain of Ap (%)"</span>,</a>
+<a class="sourceLine" id="cb10-4" title="4">                <span class="dt">leftlabel =</span> <span class="kw"><a href="https://rdrr.io/r/base/bquote.html">bquote</a></span>(<span class="st">"Gain of Ap ("</span> <span class="op">~</span><span class="st"> </span>Km <span class="op">^</span><span class="st"> </span><span class="dv">2</span> <span class="op">~</span><span class="st"> ")"</span>),</a>
+<a class="sourceLine" id="cb10-5" title="5">                <span class="dt">title =</span> <span class="ot">NA</span>),</a>
+<a class="sourceLine" id="cb10-6" title="6">     <span class="dt">marginplot =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(.<span class="dv">3</span>, <span class="fl">.3</span>), <span class="dt">labs =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"Classes"</span>, <span class="st">"Uniform Rate"</span>))</a></code></pre></div>
+<p><img src="openland_vignette_files/figure-html/unnamed-chunk-11-1.png" width="672"></p>
+<ul>
+<li>Loss</li>
+</ul>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" title="1"></a>
+<a class="sourceLine" id="cb11-2" title="2"><span class="kw"><a href="../reference/plot.html">plot</a></span>(testSL<span class="op">$</span>transition_lvlLoss_m,</a>
+<a class="sourceLine" id="cb11-3" title="3">     <span class="dt">labels =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dt">rightlabel =</span> <span class="st">"Intensity Loss of SG (%)"</span>,</a>
+<a class="sourceLine" id="cb11-4" title="4">                <span class="dt">leftlabel =</span> <span class="kw"><a href="https://rdrr.io/r/base/bquote.html">bquote</a></span>(<span class="st">"Loss of SG ("</span> <span class="op">~</span><span class="st"> </span>Km <span class="op">^</span><span class="st"> </span><span class="dv">2</span> <span class="op">~</span><span class="st"> ")"</span>),</a>
+<a class="sourceLine" id="cb11-5" title="5">                <span class="dt">title =</span> <span class="ot">NA</span>),</a>
+<a class="sourceLine" id="cb11-6" title="6">     <span class="dt">marginplot =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(.<span class="dv">3</span>, <span class="fl">.3</span>), <span class="dt">labs =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"Classes"</span>, <span class="st">"Uniform Rate"</span>))</a></code></pre></div>
+<p><img src="openland_vignette_files/figure-html/unnamed-chunk-12-1.png" width="672"></p>
+</div>
+</div>
+<div id="net-and-gross-gain-and-loss" class="section level2">
+<h2 class="hasAnchor">
+<a href="#net-and-gross-gain-and-loss" class="anchor"></a>Net and Gross gain and loss</h2>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" title="1"></a>
+<a class="sourceLine" id="cb12-2" title="2"><span class="kw"><a href="../reference/netgrossplot.html">netgrossplot</a></span>(<span class="dt">dataset =</span> SL_<span class="dv">2002</span>_<span class="dv">2014</span><span class="op">$</span>lulc_Multistep, <span class="co"># gross gain and loss</span></a>
+<a class="sourceLine" id="cb12-3" title="3">             <span class="dt">legendtable =</span> SL_<span class="dv">2002</span>_<span class="dv">2014</span><span class="op">$</span>tb_legend,</a>
+<a class="sourceLine" id="cb12-4" title="4">             <span class="dt">title =</span> <span class="ot">NULL</span>,</a>
+<a class="sourceLine" id="cb12-5" title="5">             <span class="dt">xlab =</span> <span class="st">"Classes de UCT"</span>,</a>
+<a class="sourceLine" id="cb12-6" title="6">             <span class="dt">changes =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dt">GC =</span> <span class="st">"Mudanças líquidas"</span>, <span class="dt">NG =</span> <span class="st">"Ganho Bruto"</span>, <span class="dt">NL =</span> <span class="st">"Perda Bruta"</span>),</a>
+<a class="sourceLine" id="cb12-7" title="7">             <span class="co">#color = c(GC = "gray70", NG = "#006400", NL = "#EE2C2C")</span></a>
+<a class="sourceLine" id="cb12-8" title="8">             <span class="dt">color =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dt">GC =</span> <span class="st">"gray70"</span>, <span class="dt">NG =</span> <span class="st">"blue"</span>, <span class="dt">NL =</span> <span class="st">"red"</span>)</a>
+<a class="sourceLine" id="cb12-9" title="9">             )</a></code></pre></div>
+<p><img src="openland_vignette_files/figure-html/unnamed-chunk-13-1.png" width="672"></p>
+</div>
+<div id="chord-diagram-2002---2014" class="section level2">
+<h2 class="hasAnchor">
+<a href="#chord-diagram-2002---2014" class="anchor"></a>Chord Diagram (2002 - 2014)</h2>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" title="1"></a>
+<a class="sourceLine" id="cb13-2" title="2"><span class="kw"><a href="../reference/circlizeplot.html">circlizeplot</a></span>(<span class="dt">dataset =</span> SL_<span class="dv">2002</span>_<span class="dv">2014</span><span class="op">$</span>lulc_Onestep,</a>
+<a class="sourceLine" id="cb13-3" title="3">             <span class="dt">legendtable =</span> SL_<span class="dv">2002</span>_<span class="dv">2014</span><span class="op">$</span>tb_legend)</a></code></pre></div>
+<p><img src="openland_vignette_files/figure-html/unnamed-chunk-14-1.png" width="672"></p>
+</div>
+<div id="sankey-multi-step" class="section level2">
+<h2 class="hasAnchor">
+<a href="#sankey-multi-step" class="anchor"></a>Sankey Multi Step</h2>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" title="1"></a>
+<a class="sourceLine" id="cb14-2" title="2"><span class="kw"><a href="../reference/sankeyLand.html">sankeyLand</a></span>(<span class="dt">dataset =</span> SL_<span class="dv">2002</span>_<span class="dv">2014</span><span class="op">$</span>lulc_Multistep,</a>
+<a class="sourceLine" id="cb14-3" title="3">           <span class="dt">legendtable =</span> SL_<span class="dv">2002</span>_<span class="dv">2014</span><span class="op">$</span>tb_legend)</a></code></pre></div>
+<div id="htmlwidget-2b5b1dc6c0a3f11b3bd6" style="width:768px;height:384px;" class="sankeyNetwork html-widget"></div>
+<script type="application/json" data-for="htmlwidget-2b5b1dc6c0a3f11b3bd6">{"x":{"links":{"source":[20,20,20,20,0,0,0,0,0,0,8,8,8,8,8,8,8,12,12,12,12,12,16,16,16,16,16,4,4,4,4,36,32,24,24,24,40,40,28,21,21,21,21,21,1,1,1,1,9,9,9,9,9,13,13,13,13,13,17,17,17,17,17,5,5,5,5,37,33,25,25,41,29,22,22,22,2,2,2,2,10,10,10,14,14,14,14,18,18,18,18,6,6,6,38,34,26,26,26,42,30,23,23,23,3,3,3,11,11,11,11,11,11,15,15,15,15,19,19,19,19,7,7,7,39,35,27,27,43,31],"target":[21,33,25,41,21,1,17,25,41,29,21,9,17,33,25,41,29,21,13,17,25,41,21,17,33,25,41,21,17,5,25,37,33,33,25,41,25,41,29,22,38,34,26,42,22,2,18,38,22,10,18,26,30,22,14,18,34,26,22,18,38,26,42,22,18,6,26,38,34,26,42,42,30,23,27,43,23,3,19,27,23,11,19,23,15,19,27,23,19,35,27,23,19,7,39,35,35,27,43,43,31,49,52,50,49,44,48,49,46,48,52,50,51,49,47,48,50,49,48,52,50,49,48,45,53,52,52,50,54,51],"value":[6542.9649,1.5624,55.188,23.9481,37.4841,2133.171,155.4462,7.4763,0.3555,0.081,65.835,1547.0847,107.5077,2.025,66.0483,17.4726,0.1422,48.3111,3761.5176,244.2501,13.1103,0.0999,130.0581,1987.5051,0.4518,9.5994,1.4706,24.759,79.5303,793.755,13.4199,17.0055,107.3826,1.0719,4278.3363,26.6697,28.224,59.1417,28.5111,6762.8016,2.3859,5.7222,72.8199,5.6826,0.9684,2117.7981,13.1733,1.2312,0.9711,1524.5676,21.4299,0.0711,0.045,3.9384,3726.7974,30.6441,0.0504,0.0873,12.0204,2551.7007,9.5976,0.7002,0.2205,1.1025,5.58,785.3904,1.6821,17.0055,112.4937,4464.2556,7.1469,129.1581,28.7343,6595.4547,186.0795,0.2682,3.6252,2106.6714,7.3971,0.1044,12.2994,1494.8811,17.3871,8.5329,3698.757,18.8757,0.6318,681.885,1938.1518,0.0675,2.4237,1.0755,3.3642,780.9507,30.2202,118.2663,1.8369,4535.2917,2.4876,142.2081,28.7793,7192.0503,3.0771,107.7453,12.9276,2091.2985,2.4453,18.0801,1469.6289,6.5772,0.3456,0.054,0.1953,42.0948,3651.8409,4.7592,0.0621,536.7276,1444.3551,2.1042,1.989,2.3805,1.1133,777.4569,30.2202,120.1707,1.2609,4723.2702,144.9639,28.7793]},"nodes":{"name":["FF","FF","FF","FF","SF","SF","SF","SF","SA","SA","SA","SA","SG","SG","SG","SG","aa","aa","aa","aa","Ap","Ap","Ap","Ap","Ac","Ac","Ac","Ac","Im","Im","Im","Im","Iu","Iu","Iu","Iu","Agua","Agua","Agua","Agua","R","R","R","R","FF","SF","SA","SG","aa","Ap","Ac","Im","Iu","Agua","R"],"group":["FF","FF","FF","FF","SF","SF","SF","SF","SA","SA","SA","SA","SG","SG","SG","SG","aa","aa","aa","aa","Ap","Ap","Ap","Ap","Ac","Ac","Ac","Ac","Im","Im","Im","Im","Iu","Iu","Iu","Iu","Agua","Agua","Agua","Agua","R","R","R","R","FF","SF","SA","SG","aa","Ap","Ac","Im","Iu","Agua","R"]},"options":{"NodeID":"name02","NodeGroup":"name02","LinkGroup":null,"colourScale":"d3.scaleOrdinal().domain(['FF', 'SF', 'SA', 'SG', 'aa', 'Ap', 'Ac', 'Im', 'Iu', 'Agua', 'R']).range(['#228B22', '#00CD00', '#00FF00', '#CAFF70', '#EE6363', '#FFE4B5', '#FFA54F', '#636363', '#FFAEB9', '#436EEE', '#68228B']).unknown(['grey']);","fontSize":13,"fontFamily":"sans-serif","nodeWidth":20,"nodePadding":20,"units":"","margin":{"top":null,"right":null,"bottom":null,"left":null},"iterations":0,"sinksRight":false}},"evals":[],"jsHooks":[]}</script><pre><code>           2002                 2008                2010                  2012                  2014</code></pre>
+</div>
+<div id="sankey-one-step" class="section level2">
+<h2 class="hasAnchor">
+<a href="#sankey-one-step" class="anchor"></a>Sankey One Step</h2>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" title="1"></a>
+<a class="sourceLine" id="cb16-2" title="2"><span class="kw"><a href="../reference/sankeyLand.html">sankeyLand</a></span>(<span class="dt">dataset =</span> SL_<span class="dv">2002</span>_<span class="dv">2014</span><span class="op">$</span>lulc_Onestep,</a>
+<a class="sourceLine" id="cb16-3" title="3">           <span class="dt">legendtable =</span> SL_<span class="dv">2002</span>_<span class="dv">2014</span><span class="op">$</span>tb_legend)</a></code></pre></div>
+<div id="htmlwidget-e536d886c5904123afb9" style="width:768px;height:384px;" class="sankeyNetwork html-widget"></div>
+<script type="application/json" data-for="htmlwidget-e536d886c5904123afb9">{"x":{"links":{"source":[5,5,5,5,5,0,0,0,0,0,0,0,2,2,2,2,2,2,2,3,3,3,3,3,3,3,4,4,4,4,4,4,1,1,1,1,1,9,8,6,6,6,10,10,7],"target":[16,20,19,17,21,16,11,15,20,17,21,18,16,13,15,19,17,21,18,16,14,15,20,19,17,21,16,15,20,19,17,21,16,15,12,20,17,20,19,19,17,21,17,21,18],"value":[6169.3344,2.3859,10.3617,411.8679,29.7135,109.5858,2091.2985,116.3736,6.9966,9.3231,0.3555,0.081,161.3277,1469.6289,83.4669,3.3849,70.452,17.4726,0.3825,196.1613,3651.8409,199.7901,1.7154,0.0504,17.4456,0.2853,1109.0241,1000.5966,1.6011,1.6092,14.5629,1.6911,58.8276,59.0229,777.4569,0.5157,15.6411,17.0055,107.3826,4.1697,4265.604,36.3042,28.224,59.1417,28.5111]},"nodes":{"name":["FF","SF","SA","SG","aa","Ap","Ac","Im","Iu","Agua","R","FF","SF","SA","SG","aa","Ap","Ac","Im","Iu","Agua","R"],"group":["FF","SF","SA","SG","aa","Ap","Ac","Im","Iu","Agua","R","FF","SF","SA","SG","aa","Ap","Ac","Im","Iu","Agua","R"]},"options":{"NodeID":"name02","NodeGroup":"name02","LinkGroup":null,"colourScale":"d3.scaleOrdinal().domain(['FF', 'SF', 'SA', 'SG', 'aa', 'Ap', 'Ac', 'Im', 'Iu', 'Agua', 'R']).range(['#228B22', '#00CD00', '#00FF00', '#CAFF70', '#EE6363', '#FFE4B5', '#FFA54F', '#636363', '#FFAEB9', '#436EEE', '#68228B']).unknown(['grey']);","fontSize":13,"fontFamily":"sans-serif","nodeWidth":20,"nodePadding":20,"units":"","margin":{"top":null,"right":null,"bottom":null,"left":null},"iterations":0,"sinksRight":false}},"evals":[],"jsHooks":[]}</script><pre><code>                          2002                                                  2014</code></pre>
+</div>
+<div id="an-evolution-bar-plot" class="section level2">
+<h2 class="hasAnchor">
+<a href="#an-evolution-bar-plot" class="anchor"></a>An Evolution Bar Plot</h2>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" title="1"></a>
+<a class="sourceLine" id="cb18-2" title="2"><span class="kw"><a href="../reference/anualplot.html">anualplot</a></span>(<span class="dt">dataset =</span> SL_<span class="dv">2002</span>_<span class="dv">2014</span><span class="op">$</span>lulc_Multistep, </a>
+<a class="sourceLine" id="cb18-3" title="3">          <span class="dt">legendtable =</span> SL_<span class="dv">2002</span>_<span class="dv">2014</span><span class="op">$</span>tb_legend,</a>
+<a class="sourceLine" id="cb18-4" title="4">          <span class="dt">area_km2 =</span> T,</a>
+<a class="sourceLine" id="cb18-5" title="5">          <span class="dt">panel.background =</span> ggplot2<span class="op">::</span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_rect</a></span>(<span class="dt">fill =</span> <span class="st">"grey85"</span>),</a>
+<a class="sourceLine" id="cb18-6" title="6">          <span class="dt">panel.grid.major =</span> ggplot2<span class="op">::</span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_line</a></span>(<span class="dt">colour =</span> <span class="st">"red"</span>),</a>
+<a class="sourceLine" id="cb18-7" title="7">          <span class="dt">axis.text =</span> ggplot2<span class="op">::</span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span>(<span class="dt">family =</span> <span class="st">"serif"</span>, <span class="dt">face =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"plain"</span>, <span class="st">"italic"</span>, <span class="st">"bold"</span>, <span class="st">"bold.italic"</span>)[<span class="dv">3</span>], <span class="dt">colour =</span> <span class="st">"red"</span>))</a></code></pre></div>
+<p><img src="openland_vignette_files/figure-html/unnamed-chunk-17-1.png" width="672"></p>
 </div>
 <div id="references" class="section level1 unnumbered">
 <h1 class="hasAnchor">
@@ -113,6 +759,15 @@ text-align: justify}
 <div id="refs" class="references">
 <div id="ref-Aldwaik2012">
 <p>Aldwaik, Safaa Zakaria, and Robert Gilmore Pontius. 2012. “Intensity analysis to unify measurements of size and stationarity of land changes by interval, category, and transition.” <em>Landsc. Urban Plan.</em> 106 (1): 103–14. <a href="https://doi.org/10.1016/j.landurbplan.2012.02.010">https://doi.org/10.1016/j.landurbplan.2012.02.010</a>.</p>
+</div>
+<div id="ref-Chambers2008">
+<p>Chambers, John. 2008. <em>Software for Data Analysis</em>. Statistics and Computing. New York, NY: Springer New York. <a href="https://doi.org/10.1007/978-0-387-75936-4">https://doi.org/10.1007/978-0-387-75936-4</a>.</p>
+</div>
+<div id="ref-Embrapapantanalsite2015">
+<p>Embrapa Pantanal, Instituto SOS Pantanal, and WWF-Brasil. 2015. “Mapeamento da Bacia do Alto Paraguai.” <a href="https://www.embrapa.br/pantanal/bacia-do-alto-paraguai">https://www.embrapa.br/pantanal/bacia-do-alto-paraguai</a>.</p>
+</div>
+<div id="ref-sospantanal2015">
+<p>Instituto SOS Pantanal, and WWF-Brasil. 2015. <em>Monitoramento das alterações da cobertura vegetal e uso do Solo na Bacia do Alto Paraguai – Porção Brasileira – Período de Análise: 2012 a 2014</em>. 4th ed. Brasilia. <a href="https://d3nehc6yl9qzo4.cloudfront.net/downloads/publicacao%7B%5C_%7Dbap%7B%5C_%7Drelatorio%7B%5C_%7D2012%7B%5C_%7D2014%7B%5C_%7Dweb.pdf">https://d3nehc6yl9qzo4.cloudfront.net/downloads/publicacao{\_}bap{\_}relatorio{\_}2012{\_}2014{\_}web.pdf</a>.</p>
 </div>
 </div>
 </div>
@@ -125,7 +780,14 @@ text-align: justify}
 <a href="#tocnav" class="anchor"></a>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
 <li><a href="#description-of-the-tools">Description of the tools</a></li>
-      <li><a href="#data-source">Data source</a></li>
+      <li><a href="#s%C3%A3o-louren%C3%A7o-river-basin-case-study">São Lourenço river Basin Case Study</a></li>
+      <li><a href="#intensity-analysis">Intensity Analysis</a></li>
+      <li><a href="#the-graphs">The Graphs</a></li>
+      <li><a href="#net-and-gross-gain-and-loss">Net and Gross gain and loss</a></li>
+      <li><a href="#chord-diagram-2002---2014">Chord Diagram (2002 - 2014)</a></li>
+      <li><a href="#sankey-multi-step">Sankey Multi Step</a></li>
+      <li><a href="#sankey-one-step">Sankey One Step</a></li>
+      <li><a href="#an-evolution-bar-plot">An Evolution Bar Plot</a></li>
       <li><a href="#references">References</a></li>
       </ul>
 </div>

@@ -2,9 +2,12 @@
 % Please edit documentation in R/generalfunctions.R
 \name{acc_changes}
 \alias{acc_changes}
+\alias{acc_changes01}
 \title{Accumulate changes in a LULC time serie raster}
 \usage{
 acc_changes(path)
+
+acc_changes01(path)
 }
 \arguments{
 \item{path}{list (of filenames or Raster* objects), RasterStack(\code{\link[raster]{brick}}) or

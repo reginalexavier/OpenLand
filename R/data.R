@@ -61,31 +61,31 @@
 #'
 #' @format A data list with 5 objects:
 #' \describe{
-#'   \item{lulc_Mulstistep}{A \code{tibble} of contingency between all step of time analysed, contains 8 columns:
+#'   \item{lulc_Multistep}{\code{<tibble>} A table of contingency between all step of time analysed, contains 8 columns:
 #'   \enumerate{
-#'   \item Period: period between the years analyzed
-#'   \item From: The pixel value from
-#'   \item To: The pixel value to
-#'   \item km2: The area of change in squared kilometer
-#'   \item interval: The interval in years between the period analyzed
-#'   \item QtPixel: The change in quatity of pixel
-#'   \item yearFrom: The year that the change come from
-#'   \item yearTo: The year that the change go for
+#'   \item Period: \code{<chr>} period between the years analyzed
+#'   \item From: \code{<int>} The pixel value from
+#'   \item To: \code{<int>} The pixel value to
+#'   \item km2: \code{<dbl>} The area of change in squared kilometer
+#'   \item QtPixel: \code{<int>} The change in quatity of pixel
+#'   \item Interval: \code{<int>} The interval in years between the period analyzed
+#'   \item yearFrom: \code{<int>} The year that the change come from
+#'   \item yearTo: \code{<int>} The year that the change go for
 #'   }}
-#'   \item{tb_legend}{A \code{tibble} of the pixel value his name and color, contains 3 columns:
+#'   \item{lulc_Onstep}{\code{<tibble>} A table of contingensy of the first and last year analysed with the same columns
+#'   as \code{lulc_Mulstistep} \code{tibble}}
+#'   \item{tb_legend}{\code{<tibble>} A table of the pixel value, their names and colors, contains 3 columns:
 #'   \enumerate{
-#'   \item classValue: \code{numeric} the pixel value of the classes of land use
-#'   \item className: \code{factor} The name or legend associate with a given pixel value, here as factor with a specific level for blablabla
-#'   \item color: The color associate with the given pixel value
+#'   \item classValue: \code{<int>} the pixel value of the classes of land use
+#'   \item className: \code{<fct>} The name or legend associated with a given pixel value
+#'   \item color: \code{<chr>} The color associate with the given pixel value
 #'   }}
-#'   \item{totalArea}{A \code{tibble} of two columns with the total area of study, contains 2 columns:
+#'   \item{totalArea}{\code{<tibble>} A table of two columns with the total area of study, contains 2 columns:
 #'   \enumerate{
-#'   \item area_km2: \code{numeric} The total area of study in km2
-#'   \item QtPixel: \code{numeric} The total area of study in quantity of pixel
+#'   \item area_km2: \code{<dbl>} The total area of study in km2
+#'   \item QtPixel: \code{<int>} The total area of study in quantity of pixel
 #'   }}
-#'   \item{lulc_Onstep}{A \code{tibble} of contingensy of the first and last year analysed with the same columns
-#'   like \code{lulc_Mulstistep} \code{tibble}}
-#'   \item{totalInterval}{A \code{numeric} represinting the whole interval of time analysed}
+#'   \item{totalInterval}{\code{<int>} A number represinting the whole interval of time analysed}
 #'   }
 #'
 #' @keywords datasets

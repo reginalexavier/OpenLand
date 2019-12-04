@@ -26,36 +26,35 @@ knitr::opts_chunk$set(
 **This is a Vignette on how to use the OpenLand package into Land Use and Land Cover (LULC)
 data manipulation and producing visualizations.**
 
-## Description of the tools
+## Description of the tool
 
 OpenLand is an open-source R package for the analysis of land use and land cover
 time series. It includes support for loading spatiotemporal data `raster map`; 
-simulating landscapes with some degree of spatial correlation; extraction of
-land use transition matrices; computing of net change and gross changes in a given 
-interval; performing a complete intensity analysis based on [@Aldwaik2012]. It provides
-methods for visualizations of land use and land cover change like 
-the outcomes of intensity analysis, as other graphs like sankey diagram 
-(one-step or multistep) and chord diagram displaying the inter-relationships 
-between the land uses.
+computing of net change and gross changes in a given interval; performing a complete
+intensity analysis based on [@Aldwaik2012]. It provides methods for visualizations 
+of land use and land cover change like the outcomes of intensity analysis, as 
+other graphs like sankey diagram (one-step or multistep) and chord diagram 
+displaying the inter-relationships between the land uses.
 
 ## São Lourenço river Basin Case Study
 
-For the illustrative case study, we're going to use the map (shape file) from the 4th edition of the [Monitoring 
+For the illustrative case of study, we're going to use the map (shape file) from the 4Th edition of the [Monitoring 
 of Changes in Land cover and Land Use in the Upper Paraguay River 
 Basin - Brazilian portion - Review Period: 2012 to 2014](https://www.embrapa.br/pantanal/bacia-do-alto-paraguai) [@Embrapapantanalsite2015], which covers specifically the years (2002, 2008, 2010, 2012 and 2014).
 
 The study area of this research is the São Lourenço river basin, it is located in 
 the southeast of Mato Grosso State, extending over an area of approximately 22,418 km^2^ 
-and has experienced significant changes in the LULC during the last decades, including 
+and has experienced ~~significant~~ changes (12%) in the LULC during the last decades, including 
 deforestation and intensification of existing agricultural uses.
 
-The shapefile was transformed into rasters and then saved as a 5-layers `RasterStack`, 
+The shape file was transformed into rasters and then saved as a 5-layers `RasterStack`, 
 included as data in the OpenLand package as `SaoLourencoBasin` (for  further details over this object, run `help("SaoLourencoBasin")` or `?SaoLourencoBasin` in the console).
 
-### Step One
-The first function is the `contingencyTable()`, this function take a list of raster
-layer (`RasterBrick`, `RasterStack` or a path to folder containing the rasters). The name
-of the rasters must be in the format ("some-text" `+` "underscore" `+` "the-year") like "landscape_2019".
+### The input data
+The first function used to extract the data is the `contingencyTable()`, this 
+function take a list of raster layer (`RasterBrick`, `RasterStack` or a path to a 
+folder containing the rasters). The name of the rasters must be in the format 
+("some_text" `+` "underscore" `+` "the_year") like "landscape_2019".
 
 In our example we have the `SaoLourencoBasin` RasterStack, that can be seeing from
 running `data(SaoLourencoBasin)` as following:
@@ -69,30 +68,27 @@ data(SaoLourencoBasin)
 SaoLourencoBasin
 
 ```
-```{r fig.height=5, fig.width=7}
+```{r eval=FALSE, fig.height=5, fig.width=7, include=FALSE}
 #sp::spplot(SaoLourencoBasin)
 ```
 
 
-tmap::tm_shape(SaoLourencoBasin) +
-tmap::tm_raster()
 
-sp::spplot(SaoLourencoBasin)
+### Extracting the data from the raster series
 
-### Step two
-
-In this step we have to  extract the values from our rasters and save them for 
+In this step we have to  extract the values from our rasters and save them in tables for 
 next steps of analysis. The function in `OpenLand` that compute that is the `contingencyTable()`.
 This function returns `r length(SL_2002_2014)` objects: `r names(SL_2002_2014)`.
 
-The two first objects are tables of contingency, the first one (**`r names(SL_2002_2014)[1]`**) takes into account all
-the points in time and the second (**`r names(SL_2002_2014)[2]`**) only the first year and the last year of the series.
-The third object (**`r names(SL_2002_2014)[3]`**) is a table containing the class name associate with every pixel
-value and a color to be associate with (important for the plots). The values in class
-and color are been created aleatory by `contingencyTable()` function. These values
+The first two objects are tables of contingency, the first one (**`r names(SL_2002_2014)[1]`**) takes into account all the points in time and the second (**`r names(SL_2002_2014)[2]`**) 
+only the first year and the last year of the series. The third object 
+(**`r names(SL_2002_2014)[3]`**) is a table containing the class name associate with every pixel
+value and a color to be associate with _(important for the plots)_. The values in class
+and color are have been created aleatory by `contingencyTable()` function. These values
 must be edited to the real values corresponding the data to be analysed.
-The fourth object (**`r names(SL_2002_2014)[4]`**) is a table containing the total area of study in km^2^ and in pixel unit and 
-the fifth (**`r names(SL_2002_2014)[5]`**) is the total interval between the first year (Y~t~) and the last year(Y~T~) in year unit.
+The fourth object (**`r names(SL_2002_2014)[4]`**) is a table containing the total 
+area of study in km^2^ and in pixel unit and the fifth (**`r names(SL_2002_2014)[5]`**) 
+is the total interval between the first year (Y~t=1~) and the last year(Y~T~) in year unit.
 
 
 Here a prototype of the contingency table created by the `contingencyTable` function:
@@ -121,7 +117,7 @@ SL_2002_2014
 ```
 
 #### Editing the values in ``r names(SL_2002_2014$tb_legend[2])`` and ``r names(SL_2002_2014$tb_legend[3])`` columns
-Like mentioned before, the **`r names(SL_2002_2014[3])`** object must be edited with the real
+As mentioned before, the **`r names(SL_2002_2014[3])`** object must be edited with the real
 class name and colors associate with everyone of the class value. In our case the
 classes names and colors are based on @sospantanal2015 [(acces document here, page 17)](https://www.embrapa.br/documents/1354999/1529097/BAP+-+Mapeamento+da+Bacia+do+Alto+Paraguai+-+estudo+completo/e66e3afb-2334-4511-96a0-af5642a56283).
 
@@ -171,7 +167,7 @@ caseStudy$lulc_Mulstistep[1:10, ]
 > At this point one can choose to run the Intensity Analysis or creating some representations
 provided by the `OpenLand` package like sankey diagram with `sankeyLand()` function, a chord 
 diagram with `circlizeplot()` or a bar plot showing the evolution trough the years analysed
-with `anualplot()` since they don't depend on the intensity function returns.
+with `barplotLand()` since they don't depend on the intensity function returns.
 
 
 ## Intensity Analysis
@@ -188,12 +184,12 @@ intensity of a category’s transitions vary across the other categories that ar
 available for that transition. At each level, the method tests for stationarity 
 of patterns across time intervals [@Aldwaik2012].
 
-Within the OpenLand package we have created a function `intensityanalysis()` that
+Within the OpenLand package we have created a function `intensityAnalysis()` that
 compute the three levels of analysis. It requires the object returned by the 
 `contingenceTable()` function, and the categories `n` and `m` chosen by the user.
 
 ```{r}
-testSL <- intensityanalysis(dataset = SL_2002_2014,
+testSL <- intensityAnalysis(dataset = SL_2002_2014,
                             class_n = "Ap", class_m = "SG")
 
 # it's returns a list with 6 objects
@@ -214,19 +210,21 @@ The second object _**`r names(testSL[2])`**_ is an ``r class(testSL[[2]])`` obje
 the third _**`r names(testSL[3])`**_ and the fourth _**`r names(testSL[4])`**_ are ``r class(testSL[[4]])``
 objects,  the fifth _**`r names(testSL[5])`**_ and the sixth _**`r names(testSL[6])`**_ are 
 ``r class(testSL[[6]])`` objects.
-An ``r class(testSL[[2]])`` object contains two slots: the first one with the analysed level and the
-second a table of interval result.
-An ``r class(testSL[[4]])`` object contains four slots: the first with the analysed level, the
-second the colors associate with the data with the legends as name's attribute, the third slot contain
-a table of the category level result _(gain or loss)_  and the fourth slot contain a table 
+
+An ``r class(testSL[[2]])`` object contains two slots: the first one with the analysed level name and the
+second a table of **interval level** result.
+An ``r class(testSL[[4]])`` object contains four slots: the first with the analysed level name, the
+second contains the colors associate with the data with the legends as name's attribute, the third slot contains
+a table of the **category level** result _(gain or loss)_  and the fourth slot contain a table 
 saving a stationarity test.
-An ``r class(testSL[[6]])`` object contains four slots: the first with the analysed level, the
-second the colors associate with the data with the legends as name's attribute, the third slot contain
-a table of the transition level result _(gain n or loss m)_ and the fourth slot contains a table 
-saving a stationarity test.
+An ``r class(testSL[[6]])`` object contains four slots: the first with the analysed level name, the
+second contains the colors associate with the data with the legends as name's attribute, the third slot
+contain a table of the **transition level** result _(gain n or loss m)_ and the fourth 
+slot contains a table saving a stationarity test.
 
 > @Aldwaik2012 considers a stationary case only whether the intensities for all time 
-intervals reside on one side of the uniform intensity.
+intervals reside on one side of the uniform intensity, i.e, smaller or bigger than 
+the uniform rate over the whole period.
 
 
 ```{r}
@@ -241,7 +239,7 @@ testSL
 
 ### Outcomes of intensity analysis
 
-Visualizations of the intensity analysis result is obtaining from the plot(intensityObject) 
+Visualizations of the intensity analysis result is obtaining from the plot(intensity-object) 
 function, for a more detailed over the parameters see function's documentation.
 
 
@@ -259,7 +257,7 @@ plot(testSL$interval_lvl,
 
 #### Category Level
 
-* Gain
+* Gain Area
 
 ```{r, fig.width=7, fig.height=4}
 
@@ -271,7 +269,7 @@ plot(testSL$category_lvlGain,
 
 ```
 
-* Loss
+* Loss Area
 ```{r, fig.width=7, fig.height=4}
 
 plot(testSL$category_lvlLoss,
@@ -283,7 +281,7 @@ plot(testSL$category_lvlLoss,
 
 #### Transition Level
 
-* Gain
+* Gain of Ap
 ```{r, fig.width=7, fig.height=4}
 
 plot(testSL$transition_lvlGain_n,
@@ -294,7 +292,7 @@ plot(testSL$transition_lvlGain_n,
 
 ```
 
-* Loss
+* Loss of SG
 ```{r, fig.width=7, fig.height=4}
 
 plot(testSL$transition_lvlLoss_m,
@@ -374,6 +372,91 @@ barplotLand(dataset = SL_2002_2014$lulc_Multistep,
                                                      )
 
 ```
+
+## Other functions
+
+OpenLand have others functions that helps having some quick summary over one or a series
+of raster. One of them is the `acc_chages()` when running over a series of raster it 
+gives us as return a raster contains the number of times a pixel have been change 
+during the period analysed and a table containing the percentage of every pixel value.
+
+
+```{r}
+
+# testacc <- acc_changes(SaoLourencoBasin)
+# 
+# testacc
+
+```
+
+Plotting the map with the `tmap` function:
+
+```{r fig.height=7, fig.width=7}
+
+# tmap_options(max.raster = c(plot = 41711112, view = 41711112))
+
+# acc_map <- tmap::tm_shape(testacc[[1]]) +
+#   tmap::tm_raster(
+#     style = "cat",
+#     labels = c(
+#       paste0(testacc[[2]]$PxValue[1], " Change", " (", round(testacc[[2]]$Percent[1], 2), "%", ")"),
+#       paste0(testacc[[2]]$PxValue[2], " Change", " (", round(testacc[[2]]$Percent[2], 2), "%", ")"),
+#       paste0(testacc[[2]]$PxValue[3], " Changes", " (", round(testacc[[2]]$Percent[3], 2), "%", ")")
+#     ),
+#     palette = c("#757575", "#FFD700", "#CD0000"),
+#     title = "Changes in the interval \n2002 - 2014"
+#   ) +
+#   tmap::tm_legend(
+#     position = c(0.01, 0.2),
+#     legend.title.size = 1.2,
+#     legend.title.fontface = "bold",
+#     legend.text.size = 0.8
+#   ) +
+#   tmap::tm_compass(type = "arrow",
+#                    position = c("right", "top"),
+#                    size = 3) +
+#   tmap::tm_scale_bar(
+#     breaks = c(seq(0, 40, 10)),
+#     position = c(0.76, 0.001),
+#     text.size = 0.6
+#   ) +
+#   tmap::tm_credits(
+#     paste0(
+#       "Case of Study site",
+#       "\nAccumulate changes from 2002 to 2014",
+#       "\nData create with OpenLand package",
+#       "\nLULC derived from Embrapa Pantanal, Instituto SOS Pantanal, and WWF-Brasil 2015."
+#     ),
+#     size = 0.7,
+#     position = c(0.01, -0, 01)
+#   ) +
+#   tmap::tm_graticules(
+#     n.x = 6,
+#     n.y = 6,
+#     lines = FALSE,
+#     #alpha = 0.1
+#     labels.rot = c(0, 90)
+#   ) +
+#   tmap::tm_layout(inner.margins = c(0.02, 0.02, 0.02, 0.02))
+# 
+# 
+# 
+# 
+# tmap::tmap_save(acc_map,
+#                 filename = "vignettes/acc_mymap.png",
+#                 width = 7,
+#                 height = 7)
+
+
+```
+
+```{r mymap, echo=FALSE, fig.cap='Accumulate changes in pixel in the interval 2002 - 2014 in four time points (2002, 2008, 2010, 2012, 2014)', out.width='100%'}
+
+knitr::include_graphics("acc_mymap.png")
+
+```
+
+
 
 
 

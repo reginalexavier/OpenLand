@@ -100,7 +100,6 @@ summary_map <- function(path) {
 #'     the quantity time of change as pixel value.
 #' @export
 #'
-#' @name acc_changes
 #'
 #' @examples
 #' test <- demo_landscape(2000:2005, res = 1, prob = c(0.05, 0.3, 0.05, 0.4, 0.2))
@@ -108,71 +107,8 @@ summary_map <- function(path) {
 #' acc_changes(raster::stack(test))
 #' acc_changes(raster::brick(test))
 #'
+
 acc_changes <- function(path) {
-
-  #importing the rasters
-  if (c(class(path)) %in% c("RasterStack", "RasterBrick")) {
-
-    rList  <- raster::unstack(path)
-
-  } else if ((c(class(path[[1]]))) == "RasterLayer") {
-
-    rList <- path
-
-  } else if (class(path) == "character") {
-    raster_files <- list.files(path, pattern = ".tif$", full.names = T)
-
-    rList <- vector("list", length = length(raster_files))
-
-    for (i in seq_along(raster_files)) {
-      rList[[i]] <- raster::raster(raster_files[i])
-    }
-  } else {
-    stop("The input can only be a `RasterStack`, `RasterBrick`, a list of `RasterLayer` or
-         a path directory of rasters `.tif` ")
-  }
-
-  difflist <- mapply(
-    function(x, y, z)
-      raster::overlay(
-        x,
-        y,
-        fun = function(x1, x2)
-          ifelse((x1 != x2), z, 0)
-      ),
-    x = rList[1:(length(rList) - 1)],
-    y = rList[2:length(rList)],
-    z = 1:(length(rList) - 1),
-    SIMPLIFY = FALSE
-  )
-  # capturing the sequence of the changes by pixel, reducing all maps in difflist
-  seq_change <- Reduce(function(a, b)
-    raster::overlay(
-      a,
-      b,
-      fun = function(y1, y2) {
-        value <-
-          as.numeric(ifelse((y2 != 0), paste0(y1, y2), paste0(y1))) * 1
-      }
-    ), difflist)
-  # how many times a pixel change in the interval analysed???
-  qt_change <- raster::overlay(
-    seq_change,
-    fun = function(x)
-      value <- ifelse(x == 0, 0, nchar(x))
-  )
-
-  return(list(seq_change, qt_change))
-}
-
-
-
-
-
-
-#' @rdname acc_changes
-#'
-acc_changes01 <- function(path) {
 
   #importing the rasters
   if (c(class(path)) %in% c("RasterStack", "RasterBrick")) {
@@ -211,12 +147,16 @@ acc_changes01 <- function(path) {
 
   sumraster <- sum(raster::stack(difflist))
 
-  Freq <- NULL
+  Freq <- Var1 <- NULL
 
   df01_values <- table(matrix(sumraster))
 
   df_values <- dplyr::mutate(data.frame(df01_values),
-                             percent = Freq/sum(Freq)*100)
+                             Var1 = as.character(Var1),
+                             Var1 = as.integer(Var1),
+                             Percent = Freq/sum(Freq)*100)
+
+  df_values <- dplyr::as_tibble(df_values)
 
   names(df_values) <- c("PxValue", "Qt", "Percent")
 

@@ -163,11 +163,11 @@ NULL
 #'
 #'
 #' @examples
-#' intensityanalysis(dataset = SL_2002_2014, class_n = "Ap", class_m = "SG", area_km2 = TRUE)
+#' intensityAnalysis(dataset = SL_2002_2014, class_n = "Ap", class_m = "SG", area_km2 = TRUE)
 #'
 #'
 
-intensityanalysis <-
+intensityAnalysis <-
   function(dataset, class_n, class_m, area_km2 = TRUE) {
     # seting the data
     AE <- dataset[[4]] #study area

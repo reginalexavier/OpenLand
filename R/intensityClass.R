@@ -1,25 +1,33 @@
 #'
-#' Class Intensity Level 1
+#' Class Interval
 #'
-#' An S4 class for the intensity level 1 analysis result
+#' An S4 class for the Interval level analysis result
 #'
-#' @slot level character
-#' @slot intervalData a tibble
+#' @slot intervalData tibble; A table of Interval level's result (\emph{St} and \emph{U} values)
 #'
+#' @details \bold{The slot \code{intervalData} receives a table containing 4 columns in the following format:}
+#'    \enumerate{
+#'    \item Period: \code{<fct>}. The period \emph{[Yt, Yt+1]}.
+#'    \item PercentChange: \code{<dbl>}. Interval Change Area (percent of map).
+#'    \item St: \code{<dbl>}. annual intensity of change for time
+#'    interval [Yt, Yt+1].
+#'    \item U: \code{<dbl>}. value of uniform line for time intensity analysis.
+#'    }
 #' @export
-#' @exportClass IntensityL01
-#' @rdname IntensityL01-class
+#' @aliases Interval
+#' @exportClass Interval
+#' @rdname Interval-class
 #' @import methods
 #'
-
-
 setClass(
-  Class = "IntensityL01", slots = c(level = "character",
-                                    intervalData = "tbl_df"),
-  prototype = prototype(level = "Interval",
+  Class = "Interval",
+  slots = c(#level = "character",
+            intervalData = "tbl_df"),
+  prototype = prototype(#level = "Interval",
                         intervalData = tibble::tibble()),
   validity = function(object) {
-    if (!(tibble::is_tibble(object@intervalData) & (ncol(object@intervalData) == 4)))
+    if (!(tibble::is_tibble(object@intervalData) &
+          (ncol(object@intervalData) == 4)))
     {
       stop("The data have to be a `tibble` and have 4 columns")
     }
@@ -27,34 +35,97 @@ setClass(
   }
 )
 
-#' Class Intensity Level 2
+
+
+
+
+
+
+
+#' Class Category
 #'
-#' A class for the intensity level 2 analysis result
+#' A class for the Category level analysis result
 #'
-#' @slot level character
-#' @slot lookupcolor character
-#' @slot categoryData a tibble
-#' @slot categoryStationarity a tibble
+#' @slot lookupcolor character; The colors associate with the data with the legends as name’s attribute
+#' @slot categoryData tibble; A table of Category level's result (gain (\emph{Gtj}) or loss (\emph{Lti}) values)
+#' @slot categoryStationarity tibble; A table containing a stationarity test. A change
+#'    is take as stationary only whether the intensities for all time intervals reside
+#'    on one side of the uniform intensity, i.e, smaller or bigger than the uniform
+#'    rate over the whole period.
 #'
+#' @details \bold{The slots \code{categoryData} and \code{categoryStationarity} can receive
+#'    tables for "Gain" or "Loss" in the format following format:}
+#' \enumerate{
+#'
+#' \item Gain
+#'
+#'  \itemize{
+#'
+#'  \item \code{categoryData}: \code{<tibble>}. A table containing 6 columns:
+#'  \enumerate{
+#'    \item Period: \code{<fct>}. The period \emph{[Yt, Yt+1]}.
+#'    \item To: \code{<fct>}. a category \emph{j}.
+#'    \item Interval: \code{<int>}. duration of the period \emph{[Yt, Yt+1]}.
+#'    \item GG_km2/GG_pixel: \code{<dbl>/<int>}. area of gross gain of category \emph{j} during \emph{[Yt, Yt+1]}.
+#'    \item Gtj: \code{<dbl>}. annual intensity of gross gain of category \emph{j} for time interval \emph{[Yt, Yt+1]}.
+#'    \item St: \code{<dbl>}. annual intensity of change for time interval \emph{[Yt, Yt+1]}.
+#'    }
+#'  \item categoryStationarity:  \code{<tibble>}. A table of stationarity test over the gain of the classes in
+#'   in the Category level, containing 5 columns:
+#'  \enumerate{
+#'    \item To: \code{<fct>}. acategory \emph{j}.
+#'    \item gain: \code{<int>}. Number of time the class loss during time interval \emph{[Yt, Yt+1]}.
+#'    \item N: \code{<int>}. Number total of time of trasition to be considered as stationary (T).
+#'    \item Stationarity: \code{<chr>}. \emph{Active Gain} or \emph{Dormant Gain}.
+#'    \item Test: \code{<chr>}. \emph{Y} for stationarity detected and \emph{N} when not.
+#'    }
+#'    }
+#'
+#' \item Loss
+#'
+#'  \itemize{
+#'
+#'  \item \code{categoryData}: \code{<tibble>}. A table containing 6 columns:
+#'  \enumerate{
+#'    \item Period: \code{<fct>}. The period \emph{[Yt, Yt+1]}.
+#'    \item From: \code{<fct>}. a category \emph{i}.
+#'    \item Interval: \code{<int>}. duration of the period \emph{[Yt, Yt+1]}.
+#'    \item GG_km2/GG_pixel: \code{<dbl>/<int>}. area of gross loss of category j during \emph{[Yt, Yt+1]}.
+#'    \item Lti: \code{<dbl>}. annual intensity of gross loss of category i for time interval \emph{[Yt, Yt+1]}.
+#'    \item STt: \code{<dbl>}. annual intensity of change for time interval \emph{[Yt, Yt+1]}.
+#'    }
+#'   \item categoryStationarity: \code{<tibble>}. A table of stationarity test over the loss of the classes in
+#'   in the Category level, containing 5 columns:
+#'  \enumerate{
+#'    \item From: \code{<fct>}. acategory \emph{i}.
+#'    \item loss: \code{<int>}.  Number of time the class loss during time interval \emph{[Yt, Yt+1]}.
+#'    \item N: \code{<int>}. Number total of time of trasition to be considered as stationary (T).
+#'    \item Stationarity: \code{<chr>}. \emph{Active Loss} or \emph{Dormant Loss}.
+#'    \item Test: \code{<chr>}. \emph{Y} for stationarity detected and \emph{N} when not.
+#'    }
+#'    }
+#'
+#'    }
+#'
+#'
+#' @aliases Category
 #' @export
-#' @exportClass IntensityL02
-#' @rdname IntensityL02-class
+#' @exportClass Category
+#' @rdname Category-class
 #'
-
-
 setClass(
-  Class = "IntensityL02",
+  Class = "Category",
   slots = c(
-    level = "character",
+    #level = "character",
     lookupcolor = "character",
     categoryData = "tbl_df",
     categoryStationarity = "tbl_df"
   ),
-  prototype = prototype(
-    level = "Category",
-    categoryData = tibble::tibble(),
-    categoryStationarity = tibble::tibble()
-  ),
+  # prototype = prototype(
+  #   #level = "Category",
+  #   categoryData = tibble::tibble(),
+  #   categoryStationarity = tibble::tibble()
+  # ),
   validity = function(object) {
     if (!(tibble::is_tibble(object@categoryData) &
           (ncol(object@categoryData) == 6))) {
@@ -76,32 +147,103 @@ setClass(
   }
 )
 
-#' Class Intensity Level 3
+
+
+
+
+#' Class Transition
 #'
-#' An S4 class for the intensity level 3 analysis  result
+#' An S4 class for the Transition level analysis  result, the objects of this class
+#' can be plot with the plot method \code{\link{plot}}
 #'
-#' @slot level character
-#' @slot lookupcolor character
-#' @slot transitionData a tibble
-#' @slot transitionStationarity a tibble
+#' @slot lookupcolor character; The colors associate with the data with the legends as name’s attribute
+#' @slot transitionData tibble; A table of Transition level's result (gain n (\emph{Rtin} & \emph{Wtn})
+#'    or loss m (\emph{Qtmj} & \emph{Vtm}) values)
+#' @slot transitionStationarity tibble; A table containing a stationarity test. A change
+#'    is take as stationary only whether the intensities for all time intervals reside
+#'    on one side of the uniform intensity, i.e, smaller or bigger than the uniform
+#'    rate over the whole period.
 #'
+#'
+#'
+#' @details \bold{The slots \code{transitionData} and \code{transitionStationarity} can receive
+#'    tables for "Gain of class n" or "Loss of class m" in the following format:}
+#' \enumerate{
+#'
+#' \item Gain of class n:
+#'
+#'  \itemize{
+#'
+#'   \item \code{transitionData}: \code{<tibble>}. A table with 7 columns:
+#'   \enumerate{
+#'    \item Period: \code{<fct>}. The period \emph{[Yt, Yt+1]}.
+#'    \item From: \code{<fct>}. a category i.
+#'    \item To: \code{<fct>}. the gaining category in the transition of interest \emph{(n)}.
+#'    \item Interval: \code{<int>}. duration of the period \emph{[Yt, Yt+1]}.
+#'    \item T_i2n_km2/T_i2n_pixel: \code{<dbl>}. transition from category i to category n
+#'    during time interval \emph{[Yt, Yt+1]} where \emph{i}  \code{is not equal to} \emph{n}.
+#'    \item Rtin: \code{<dbl>}. annual intensity of transition from category i to category n
+#'    during time interval \emph{[Yt, Yt+1]} where \emph{i}  \code{is not equal to} \emph{n}.
+#'    \item Wtn: \code{<dbl>}. value of uniform intensity of transition to category
+#'    n from all non-n categories at time Yt during time interval \emph{[Yt, Yt+1]}.
+#'    }
+#'  \item transitionStationarity: \code{<tibble>}. A table of stationarity test over the gain on \emph{class n}
+#'  containing 5 columns:
+#'  \enumerate{
+#'    \item From: \code{<fct>}. the losing category in the transition of interest to the n category.
+#'    \item loss: \code{<int>}. Number of time the class loss to the n class.
+#'    \item N: \code{<int>}. Number total of time of trasition to be considered as stationary (T).
+#'    \item Stationarity: \code{<chr>}. \emph{targeted by} or \emph{avoided by} by the \code{n} class.
+#'    \item Test: \code{<chr>}. \emph{Y} for stationarity detected and \emph{N} when not.
+#'    }
+#'    }
+#'
+#' \item Loss of class m:
+#'
+#'  \itemize{
+#'
+#'   \item \code{transitionData}: \code{<tibble>}. A table with 7 columns:
+#'   \enumerate{
+#'    \item Period: \code{<fct>}. The period \emph{[Yt, Yt+1]}.
+#'    \item To: \code{<fct>}. a category \emph{j}.
+#'    \item From: \code{<fct>}. the losing category in the transition of interest (m).
+#'    \item Interval: \code{<dbl>}. duration of the period \emph{[Yt, Yt+1]}.
+#'    \item T_m2j_km2/T_m2j_pixel: \code{<dbl>}. a transition from category \emph{m} to
+#'    category \emph{j} during time interval \emph{[Yt, Yt+1]}
+#'    where \emph{j}  \code{is not equal to} \emph{m}.
+#'    \item Qtmj: \code{<dbl>}. annual intensity of transition from category \emph{m} to
+#'    category \emph{j} during time interval \emph{[Yt, Yt+1]}
+#'    where \emph{j}  \code{is not equal to} \emph{m}.
+#'    \item Vtm: \code{<dbl>}. value of uniform intensity of transition from
+#'    category \emph{m} to all \emph{non-m} categories at time \out{Y<sub>t+1</sub>}
+#'    during time interval \emph{[Yt, Yt+1]}.
+#'    }
+#'  \item transitionStationarity: \code{<tibble>}. A table of stationarity test over the loss of \emph{class m}
+#'  containing 5 columns:
+#'  \enumerate{
+#'    \item To: \code{<fct>}. the gaining category in the transition of interest from the m category.
+#'    \item gain: \code{<int>}. Number of time the class gain from the m class.
+#'    \item N: \code{<int>}. Number total of time of trasition to be considered as stationary (T).
+#'    \item Stationarity: \code{<chr>}. \emph{targeted} or \emph{avoided} by the \code{m} class.
+#'    \item Test: \code{<chr>}. \emph{Y} for stationarity detected and \emph{N} when not.
+#'    }
+#'    }
+#'
+#' }
+#' @aliases Transition
 #' @export
-#' @exportClass IntensityL03
-#' @rdname IntensityL03-class
+#' @exportClass Transition
+#' @rdname Transition-class
 #'
-
-
-
-
 setClass(
-  Class = "IntensityL03",
+  Class = "Transition",
   slots = c(
-    level = "character",
+    #level = "character",
     lookupcolor = "character",
     transitionData = "tbl_df",
     transitionStationarity = "tbl_df"
   ),
-  prototype = methods::prototype(level = "Transition"),
+  #prototype = methods::prototype(level = "Transition"),
   validity = function(object) {
     if (!(tibble::is_tibble(object@transitionData) &
           (ncol(object@transitionData) == 7))) {

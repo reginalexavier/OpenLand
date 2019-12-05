@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Quick summary of categorical raster raster — summary_map • OpenLand</title>
+<title>Class Category — Category-class • OpenLand</title>
 
 
 <!-- jquery -->
@@ -35,8 +35,8 @@
 
 
 
-<meta property="og:title" content="Quick summary of categorical raster raster — summary_map" />
-<meta property="og:description" content="Quick summary of categorical raster raster" />
+<meta property="og:title" content="Class Category — Category-class" />
+<meta property="og:description" content="A class for the Category level analysis result" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -117,47 +117,83 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Quick summary of categorical raster raster</h1>
-    <small class="dont-index">Source: <a href='https://github.com/tredgi/OpenLand/blob/master/R/generalfunctions.R'><code>R/generalfunctions.R</code></a></small>
-    <div class="hidden name"><code>summary_map.Rd</code></div>
+    <h1>Class Category</h1>
+    <small class="dont-index">Source: <a href='https://github.com/tredgi/OpenLand/blob/master/R/intensityClass.R'><code>R/intensityClass.R</code></a></small>
+    <div class="hidden name"><code>Category-class.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Quick summary of categorical raster raster</p>
+    <p>A class for the Category level analysis result</p>
     </div>
 
-    <pre class="usage"><span class='fu'>summary_map</span>(<span class='no'>path</span>)</pre>
 
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>path</th>
-      <td><p>The path for the raster to be analysed</p></td>
-    </tr>
-    </table>
 
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>A table containing in columns each pixel value and its quantity</p>
+    <p><b>The slots <code>categoryData</code> and <code>categoryStationarity</code> can receive
+   tables for "Gain" or "Loss" in the format following format:</b></p><ol>
+<li><p>Gain</p>
+<p></p><ul>
+<li><p><code>categoryData</code>: <code>&lt;tibble&gt;</code>. A table containing 6 columns:</p><ol>
+<li><p>Period: <code>&lt;fct&gt;</code>. The period <em>[Yt, Yt+1]</em>.</p></li>
+<li><p>To: <code>&lt;fct&gt;</code>. a category <em>j</em>.</p></li>
+<li><p>Interval: <code>&lt;int&gt;</code>. duration of the period <em>[Yt, Yt+1]</em>.</p></li>
+<li><p>GG_km2/GG_pixel: <code>&lt;dbl&gt;/&lt;int&gt;</code>. area of gross gain of category <em>j</em> during <em>[Yt, Yt+1]</em>.</p></li>
+<li><p>Gtj: <code>&lt;dbl&gt;</code>. annual intensity of gross gain of category <em>j</em> for time interval <em>[Yt, Yt+1]</em>.</p></li>
+<li><p>St: <code>&lt;dbl&gt;</code>. annual intensity of change for time interval <em>[Yt, Yt+1]</em>.</p></li>
+</ol></li>
+<li><p>categoryStationarity:  <code>&lt;tibble&gt;</code>. A table of stationarity test over the gain of the classes in
+  in the Category level, containing 5 columns:</p><ol>
+<li><p>To: <code>&lt;fct&gt;</code>. acategory <em>j</em>.</p></li>
+<li><p>gain: <code>&lt;int&gt;</code>. Number of time the class loss during time interval <em>[Yt, Yt+1]</em>.</p></li>
+<li><p>N: <code>&lt;int&gt;</code>. Number total of time of trasition to be considered as stationary (T).</p></li>
+<li><p>Stationarity: <code>&lt;chr&gt;</code>. <em>Active Gain</em> or <em>Dormant Gain</em>.</p></li>
+<li><p>Test: <code>&lt;chr&gt;</code>. <em>Y</em> for stationarity detected and <em>N</em> when not.</p></li>
+</ol></li>
+</ul></li>
+<li><p>Loss</p>
+<p></p><ul>
+<li><p><code>categoryData</code>: <code>&lt;tibble&gt;</code>. A table containing 6 columns:</p><ol>
+<li><p>Period: <code>&lt;fct&gt;</code>. The period <em>[Yt, Yt+1]</em>.</p></li>
+<li><p>From: <code>&lt;fct&gt;</code>. a category <em>i</em>.</p></li>
+<li><p>Interval: <code>&lt;int&gt;</code>. duration of the period <em>[Yt, Yt+1]</em>.</p></li>
+<li><p>GG_km2/GG_pixel: <code>&lt;dbl&gt;/&lt;int&gt;</code>. area of gross loss of category j during <em>[Yt, Yt+1]</em>.</p></li>
+<li><p>Lti: <code>&lt;dbl&gt;</code>. annual intensity of gross loss of category i for time interval <em>[Yt, Yt+1]</em>.</p></li>
+<li><p>STt: <code>&lt;dbl&gt;</code>. annual intensity of change for time interval <em>[Yt, Yt+1]</em>.</p></li>
+</ol></li>
+<li><p>categoryStationarity: <code>&lt;tibble&gt;</code>. A table of stationarity test over the loss of the classes in
+  in the Category level, containing 5 columns:</p><ol>
+<li><p>From: <code>&lt;fct&gt;</code>. acategory <em>i</em>.</p></li>
+<li><p>loss: <code>&lt;int&gt;</code>.  Number of time the class loss during time interval <em>[Yt, Yt+1]</em>.</p></li>
+<li><p>N: <code>&lt;int&gt;</code>. Number total of time of trasition to be considered as stationary (T).</p></li>
+<li><p>Stationarity: <code>&lt;chr&gt;</code>. <em>Active Loss</em> or <em>Dormant Loss</em>.</p></li>
+<li><p>Test: <code>&lt;chr&gt;</code>. <em>Y</em> for stationarity detected and <em>N</em> when not.</p></li>
+</ol></li>
+</ul></li>
+</ol>
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>
-<span class='fu'>summary_map</span>(<span class='fu'><a href='demo_landscape.html'>demo_landscape</a></span>(<span class='fl'>2000</span>, <span class='kw'>res</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>prob</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0.05</span>, <span class='fl'>0.3</span>, <span class='fl'>0.05</span>, <span class='fl'>0.4</span>, <span class='fl'>0.2</span>))<span class='kw'>[[</span><span class='fl'>1</span>]])</div><div class='output co'>#&gt; # A tibble: 5 x 2
-#&gt;   pixvalue    Qt
-#&gt; *    &lt;dbl&gt; &lt;dbl&gt;
-#&gt; 1        1   531
-#&gt; 2        2  2951
-#&gt; 3        3   499
-#&gt; 4        4  4008
-#&gt; 5        5  2011</div></pre>
+    <h2 class="hasAnchor" id="slots"><a class="anchor" href="#slots"></a>Slots</h2>
+
+    
+
+<dl class='dl-horizontal'>
+<dt><code>lookupcolor</code></dt><dd><p>character; The colors associate with the data with the legends as name’s attribute</p></dd>
+
+<dt><code>categoryData</code></dt><dd><p>tibble; A table of Category level's result (gain (<em>Gtj</em>) or loss (<em>Lti</em>) values)</p></dd>
+
+<dt><code>categoryStationarity</code></dt><dd><p>tibble; A table containing a stationarity test. A change
+is take as stationary only whether the intensities for all time intervals reside
+on one side of the uniform intensity, i.e, smaller or bigger than the uniform
+rate over the whole period.</p></dd>
+
+</dl>
+
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#value">Value</a></li>
-      <li><a href="#examples">Examples</a></li>
+      <li><a href="#details">Details</a></li>
+      <li><a href="#slots">Slots</a></li>
     </ul>
 
   </div>

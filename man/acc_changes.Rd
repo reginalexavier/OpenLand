@@ -11,15 +11,12 @@ acc_changes(path)
 RasterStack(\code{\link[raster]{stack}})}
 }
 \value{
-Two maps, the first containing the sequence of change as pixel value and second
-    the quantity time of change as pixel value.
+Two objects, a raster layer and a table.
 }
 \description{
-This fucntion return two maps, the first containing the sequence of change as
-pixel value (answering: in what point of time a pixel has changes?) and second
-the quantity time of change as pixel value(answering: how many times a pixel
-has change). These maps can be plotted  with the plot function method of the
-raster package or with the `tmap` package.
+This function calculate the number of times a pixel have changed during the
+period analysed. It gives as return a raster with the number of change as pixel value
+and a table containing the percentage of every category/group of pixel value.
 }
 \examples{
 test <- demo_landscape(2000:2005, res = 1, prob = c(0.05, 0.3, 0.05, 0.4, 0.2))

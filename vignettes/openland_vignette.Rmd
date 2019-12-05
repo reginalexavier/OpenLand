@@ -166,7 +166,7 @@ caseStudy$lulc_Mulstistep[1:10, ]
 
 > At this point one can choose to run the Intensity Analysis or creating some representations
 provided by the `OpenLand` package like sankey diagram with `sankeyLand()` function, a chord 
-diagram with `circlizeplot()` or a bar plot showing the evolution trough the years analysed
+diagram with `chordDiagramLand()` or a bar plot showing the evolution trough the years analysed
 with `barplotLand()` since they don't depend on the intensity function returns.
 
 
@@ -211,15 +211,14 @@ the third _**`r names(testSL[3])`**_ and the fourth _**`r names(testSL[4])`**_ a
 objects,  the fifth _**`r names(testSL[5])`**_ and the sixth _**`r names(testSL[6])`**_ are 
 ``r class(testSL[[6]])`` objects.
 
-An ``r class(testSL[[2]])`` object contains two slots: the first one with the analysed level name and the
-second a table of **interval level** result.
-An ``r class(testSL[[4]])`` object contains four slots: the first with the analysed level name, the
-second contains the colors associate with the data with the legends as name's attribute, the third slot contains
-a table of the **category level** result _(gain or loss)_  and the fourth slot contain a table 
-saving a stationarity test.
-An ``r class(testSL[[6]])`` object contains four slots: the first with the analysed level name, the
-second contains the colors associate with the data with the legends as name's attribute, the third slot
-contain a table of the **transition level** result _(gain n or loss m)_ and the fourth 
+An ``r class(testSL[[2]])`` object contains one slot containing a table of 
+**interval level**'s result _(S~t~ and U values)_. A ``r class(testSL[[4]])`` 
+object contains three slots: the first contains the colors associate with the data with the
+legends as name's attribute, the second slot contains a table of the **category level**'s 
+result _(gain (G~tj~) or loss (L~ti~) values)_  and the third slot contains a table saving a stationarity test.
+A ``r class(testSL[[6]])`` object contains three slots: the first contains the colors 
+associate with the data with the legends as name's attribute, the second slot contains a
+table of the **transition level**'s result _(gain n (R~tin~ & W~tn~) or loss m (Q~tmj~ & V~tm~) values)_ and the fourth 
 slot contains a table saving a stationarity test.
 
 > @Aldwaik2012 considers a stationary case only whether the intensities for all time 
@@ -325,7 +324,7 @@ netgrossplot(dataset = SL_2002_2014$lulc_Multistep, # gross gain and loss
 
 ```{r fig.width=7, fig.height=6}
 
-circlizeplot(dataset = SL_2002_2014$lulc_Onestep,
+chordDiagramLand(dataset = SL_2002_2014$lulc_Onestep,
              legendtable = SL_2002_2014$tb_legend)
 
 ```

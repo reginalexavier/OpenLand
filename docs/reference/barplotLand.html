@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function reference • OpenLand</title>
+<title>A barplot for the area of every point in time of the analysed period — barplotLand • OpenLand</title>
 
 
 <!-- jquery -->
@@ -35,7 +35,9 @@
 
 
 
-<meta property="og:title" content="Function reference" />
+<meta property="og:title" content="A barplot for the area of every point in time of the analysed period — barplotLand" />
+<meta property="og:description" content="A barplot for the area of every point in time of the analysed period" />
+<meta name="twitter:card" content="summary" />
 
 
 
@@ -54,7 +56,7 @@
   </head>
 
   <body>
-    <div class="container template-reference-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -113,132 +115,86 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Reference</h1>
+    <h1>A barplot for the area of every point in time of the analysed period</h1>
+    <small class="dont-index">Source: <a href='https://github.com/tredgi/OpenLand/blob/master/R/otherplots.R'><code>R/otherplots.R</code></a></small>
+    <div class="hidden name"><code>barplotLand.Rd</code></div>
     </div>
 
-    <table class="ref-index">
+    <div class="ref-description">
+    <p>A barplot for the area of every point in time of the analysed period</p>
+    </div>
 
-    <colgroup>
-      
-      <col class="alias" />
-      <col class="title" />
-    </colgroup>
+    <pre class="usage"><span class='fu'>barplotLand</span>(
+  <span class='no'>dataset</span>,
+  <span class='no'>legendtable</span>,
+  <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"General Area in the interval (2002 - 2014)"</span>,
+  <span class='kw'>color</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>GC</span> <span class='kw'>=</span> <span class='st'>"gray70"</span>, <span class='kw'>NG</span> <span class='kw'>=</span> <span class='st'>"#006400"</span>, <span class='kw'>NL</span> <span class='kw'>=</span> <span class='st'>"#EE2C2C"</span>),
+  <span class='kw'>fill</span> <span class='kw'>=</span> <span class='st'>"LULC Classes"</span>,
+  <span class='kw'>xlab</span> <span class='kw'>=</span> <span class='st'>"Year"</span>,
+  <span class='kw'>ylab</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/expression.html'>expression</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste</a></span>(<span class='st'>"Area "</span>, <span class='no'>Km</span>^{     <span class='fl'>2</span> })),
+  <span class='kw'>area_km2</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='no'>...</span>
+)</pre>
 
-    <tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="acc_changes.html">acc_changes()</a></code> </p>
-        </td>
-        <td><p>Accumulate changes in a LULC time serie raster</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="barplotLand.html">barplotLand()</a></code> </p>
-        </td>
-        <td><p>A barplot for the area of every point in time of the analysed period</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="Category-class.html">Category-class</a></code> </p>
-        </td>
-        <td><p>Class Category</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="chordDiagramLand.html">chordDiagramLand()</a></code> </p>
-        </td>
-        <td><p>A circlize plot for the transition between two times point, one step.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="contingenceTable.html">contingenceTable()</a></code> </p>
-        </td>
-        <td><p>Contingence Table</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="demo_landscape.html">demo_landscape()</a></code> </p>
-        </td>
-        <td><p>Create Raster with Random pixel Value</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="intensityAnalysis.html">intensityAnalysis()</a></code> </p>
-        </td>
-        <td><p>Perform the intensity analysis from a cross-tabulation matrices</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="Interval-class.html">Interval-class</a></code> </p>
-        </td>
-        <td><p>Class Interval</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="netgrossplot.html">netgrossplot()</a></code> </p>
-        </td>
-        <td><p>A barplot for the Net Gain/Loss and Gross Changes between land use classes for the period analysed</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="plot.html">plot(<i>&lt;Interval&gt;</i>,<i>&lt;ANY&gt;</i>)</a></code> <code><a href="plot.html">plot(<i>&lt;Category&gt;</i>,<i>&lt;ANY&gt;</i>)</a></code> <code><a href="plot.html">plot(<i>&lt;Transition&gt;</i>,<i>&lt;ANY&gt;</i>)</a></code> </p>
-        </td>
-        <td><p>Plot method for objects from Intensity Analysis</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="sankeyLand.html">sankeyLand()</a></code> </p>
-        </td>
-        <td><p>A sandkey plot for the land use land cover transition for the period analysed</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="SaoLourencoBasin.html">SaoLourencoBasin</a></code> </p>
-        </td>
-        <td><p>Rasters of Land Use and Land Cover of the São Lourenço River Basin (2002 - 2014)</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="SL_2002_2014.html">SL_2002_2014</a></code> </p>
-        </td>
-        <td><p>Tables of Land Use and Land Cover of the São Lourenço River Basin (2002 - 2014)</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="summary_dir.html">summary_dir()</a></code> </p>
-        </td>
-        <td><p>Summary of multiple parameters in a raster directory</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="summary_map.html">summary_map()</a></code> </p>
-        </td>
-        <td><p>Quick summary of categorical raster raster</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="Transition-class.html">Transition-class</a></code> </p>
-        </td>
-        <td><p>Class Transition</p></td>
-      </tr>
-    </tbody>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>dataset</th>
+      <td><p>A table of the multi step transition</p></td>
+    </tr>
+    <tr>
+      <th>legendtable</th>
+      <td><p>A table contains the legend of the land use classes and his respective color</p></td>
+    </tr>
+    <tr>
+      <th>title</th>
+      <td><p>The title of the plot</p></td>
+    </tr>
+    <tr>
+      <th>color</th>
+      <td><p>A color list for the three types of chages</p></td>
+    </tr>
+    <tr>
+      <th>fill</th>
+      <td><p>Legend</p></td>
+    </tr>
+    <tr>
+      <th>xlab</th>
+      <td><p>character Label for the x axe</p></td>
+    </tr>
+    <tr>
+      <th>ylab</th>
+      <td><p>character Label for the y axe</p></td>
+    </tr>
+    <tr>
+      <th>area_km2</th>
+      <td><p>boolean TRUE for km2 unit, FALSE for pixel unit</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>themes parameters <code><a href='https://ggplot2.tidyverse.org/reference/theme.html'>theme</a></code></p></td>
+    </tr>
     </table>
-  </div>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>a barplot</p>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p><code>ggplot2::<a href='https://ggplot2.tidyverse.org/reference/theme.html'>theme</a></code></p></div>
+
+  </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#section-all-functions">All functions</a></li>
+      <li><a href="#arguments">Arguments</a></li>
+      <li><a href="#value">Value</a></li>
+      <li><a href="#see-also">See also</a></li>
     </ul>
+
   </div>
 </div>
 

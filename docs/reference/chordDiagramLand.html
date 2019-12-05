@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function reference • OpenLand</title>
+<title>A circlize plot for the transition between two times point, one step. — chordDiagramLand • OpenLand</title>
 
 
 <!-- jquery -->
@@ -35,7 +35,9 @@
 
 
 
-<meta property="og:title" content="Function reference" />
+<meta property="og:title" content="A circlize plot for the transition between two times point, one step. — chordDiagramLand" />
+<meta property="og:description" content="A circlize plot for the transition between two times point, one step." />
+<meta name="twitter:card" content="summary" />
 
 
 
@@ -54,7 +56,7 @@
   </head>
 
   <body>
-    <div class="container template-reference-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -113,132 +115,67 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Reference</h1>
+    <h1>A circlize plot for the transition between two times point, one step.</h1>
+    <small class="dont-index">Source: <a href='https://github.com/tredgi/OpenLand/blob/master/R/otherplots.R'><code>R/otherplots.R</code></a></small>
+    <div class="hidden name"><code>chordDiagramLand.Rd</code></div>
     </div>
 
-    <table class="ref-index">
+    <div class="ref-description">
+    <p>A circlize plot for the transition between two times point, one step.</p>
+    </div>
 
-    <colgroup>
-      
-      <col class="alias" />
-      <col class="title" />
-    </colgroup>
+    <pre class="usage"><span class='fu'>chordDiagramLand</span>(
+  <span class='no'>dataset</span>,
+  <span class='no'>legendtable</span>,
+  <span class='kw'>legposition</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='fl'>1.8</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='fl'>1.5</span>),
+  <span class='kw'>legtitle</span> <span class='kw'>=</span> <span class='st'>"Classes"</span>,
+  <span class='kw'>sectorcol</span> <span class='kw'>=</span> <span class='st'>"gray80"</span>,
+  <span class='kw'>area_km2</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
+)</pre>
 
-    <tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="acc_changes.html">acc_changes()</a></code> </p>
-        </td>
-        <td><p>Accumulate changes in a LULC time serie raster</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="barplotLand.html">barplotLand()</a></code> </p>
-        </td>
-        <td><p>A barplot for the area of every point in time of the analysed period</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="Category-class.html">Category-class</a></code> </p>
-        </td>
-        <td><p>Class Category</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="chordDiagramLand.html">chordDiagramLand()</a></code> </p>
-        </td>
-        <td><p>A circlize plot for the transition between two times point, one step.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="contingenceTable.html">contingenceTable()</a></code> </p>
-        </td>
-        <td><p>Contingence Table</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="demo_landscape.html">demo_landscape()</a></code> </p>
-        </td>
-        <td><p>Create Raster with Random pixel Value</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="intensityAnalysis.html">intensityAnalysis()</a></code> </p>
-        </td>
-        <td><p>Perform the intensity analysis from a cross-tabulation matrices</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="Interval-class.html">Interval-class</a></code> </p>
-        </td>
-        <td><p>Class Interval</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="netgrossplot.html">netgrossplot()</a></code> </p>
-        </td>
-        <td><p>A barplot for the Net Gain/Loss and Gross Changes between land use classes for the period analysed</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="plot.html">plot(<i>&lt;Interval&gt;</i>,<i>&lt;ANY&gt;</i>)</a></code> <code><a href="plot.html">plot(<i>&lt;Category&gt;</i>,<i>&lt;ANY&gt;</i>)</a></code> <code><a href="plot.html">plot(<i>&lt;Transition&gt;</i>,<i>&lt;ANY&gt;</i>)</a></code> </p>
-        </td>
-        <td><p>Plot method for objects from Intensity Analysis</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="sankeyLand.html">sankeyLand()</a></code> </p>
-        </td>
-        <td><p>A sandkey plot for the land use land cover transition for the period analysed</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="SaoLourencoBasin.html">SaoLourencoBasin</a></code> </p>
-        </td>
-        <td><p>Rasters of Land Use and Land Cover of the São Lourenço River Basin (2002 - 2014)</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="SL_2002_2014.html">SL_2002_2014</a></code> </p>
-        </td>
-        <td><p>Tables of Land Use and Land Cover of the São Lourenço River Basin (2002 - 2014)</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="summary_dir.html">summary_dir()</a></code> </p>
-        </td>
-        <td><p>Summary of multiple parameters in a raster directory</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="summary_map.html">summary_map()</a></code> </p>
-        </td>
-        <td><p>Quick summary of categorical raster raster</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="Transition-class.html">Transition-class</a></code> </p>
-        </td>
-        <td><p>Class Transition</p></td>
-      </tr>
-    </tbody>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>dataset</th>
+      <td><p>A table of the one step transition</p></td>
+    </tr>
+    <tr>
+      <th>legendtable</th>
+      <td><p>A table contains the legend of the land use classes and his respective color</p></td>
+    </tr>
+    <tr>
+      <th>legposition</th>
+      <td><p>A list of `x` and `y` parameter position for the legend</p></td>
+    </tr>
+    <tr>
+      <th>legtitle</th>
+      <td><p>The title of the legen</p></td>
+    </tr>
+    <tr>
+      <th>sectorcol</th>
+      <td><p>The color of the extern sector containing the years</p></td>
+    </tr>
+    <tr>
+      <th>area_km2</th>
+      <td><p>boolean TRUE for km2 unit, FALSE for pixel unit</p></td>
+    </tr>
     </table>
-  </div>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>A circlize plot</p>
+
+  </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#section-all-functions">All functions</a></li>
+      <li><a href="#arguments">Arguments</a></li>
+      <li><a href="#value">Value</a></li>
     </ul>
+
   </div>
 </div>
 

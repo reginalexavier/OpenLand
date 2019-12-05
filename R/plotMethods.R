@@ -1,11 +1,11 @@
-#' @include intensityFunction.R
+#' @include intensityAnalysis.R
 NULL
 
 #' Plot method for objects from Intensity Analysis
 #'
 #' Plot \code{Intensity} objects based on Intensity Analysis tables
 #'
-#' @param IntensityL01 the class
+#' @param Interval the class
 #' @param x tibble. An object from the intensity analysis data
 #' @param y not used
 #' @param labels character. left right and title
@@ -13,8 +13,7 @@ NULL
 #' @param marginplot character
 #' @param leg_curv character
 #' @param color_bar character
-#' @param IntensityL01 the class
-#' @param ... additional arguments
+#' @param \dots additional arguments themes parameters \code{\link[ggplot2]{theme}}
 #'
 #' @return An intensity graph
 #'
@@ -33,12 +32,12 @@ NULL
 #'
 #' @name plot
 #' @rdname plot
-#' @aliases plot,IntensityL01,ANY-method
+#' @aliases plot,Interval,ANY-method
 #'
 
 setMethod(
   f = "plot",
-  signature = "IntensityL01",
+  signature = "Interval",
   definition = function(x,
                         y,
                         labels = c(leftlabel = "Interval Change Area (percent of map)",
@@ -187,10 +186,10 @@ setMethod(
 
 #' @rdname plot
 #'
-#' @param IntensityL02 the class
+#' @param Category the class
 setMethod(
   f = "plot",
-  signature = "IntensityL02",
+  signature = "Category",
   definition = function(x,
                         y,
                         labels = c(
@@ -342,10 +341,10 @@ setMethod(
 
 #' @rdname plot
 #'
-#' @param IntensityL03 the class
+#' @param Transition the class
 setMethod(
   f = "plot",
-  signature = "IntensityL03",
+  signature = "Transition",
   definition = function(x,
                         y,
                         labels = c(

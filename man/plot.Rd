@@ -2,12 +2,12 @@
 % Please edit documentation in R/plotMethods.R
 \name{plot}
 \alias{plot}
-\alias{plot,IntensityL01,ANY-method}
-\alias{plot,IntensityL02,ANY-method}
-\alias{plot,IntensityL03,ANY-method}
+\alias{plot,Interval,ANY-method}
+\alias{plot,Category,ANY-method}
+\alias{plot,Transition,ANY-method}
 \title{Plot method for objects from Intensity Analysis}
 \usage{
-\S4method{plot}{IntensityL01,ANY}(
+\S4method{plot}{Interval,ANY}(
   x,
   y,
   labels = c(leftlabel = "Interval Change Area (percent of map)", rightlabel =
@@ -19,7 +19,7 @@
   ...
 )
 
-\S4method{plot}{IntensityL02,ANY}(
+\S4method{plot}{Category,ANY}(
   x,
   y,
   labels = c(leftlabel = bquote("Gain/Loss area (" ~ Km^2 ~ ")"), rightlabel =
@@ -30,7 +30,7 @@
   ...
 )
 
-\S4method{plot}{IntensityL03,ANY}(
+\S4method{plot}{Transition,ANY}(
   x,
   y,
   labels = c(rightlabel = bquote("Intensity Gain/Loss of" ~
@@ -58,13 +58,13 @@
 
 \item{color_bar}{character}
 
-\item{...}{additional arguments}
+\item{\dots}{additional arguments themes parameters \code{\link[ggplot2]{theme}}}
 
-\item{IntensityL01}{the class}
+\item{Interval}{the class}
 
-\item{IntensityL02}{the class}
+\item{Category}{the class}
 
-\item{IntensityL03}{the class}
+\item{Transition}{the class}
 }
 \value{
 An intensity graph

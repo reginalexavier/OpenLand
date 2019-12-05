@@ -85,7 +85,7 @@ barplotLand <-
 #'
 #'
 #'
-circlizeplot <-
+chordDiagramLand <-
   function(dataset,
            legendtable,
            legposition = c(x = 1.8, y = 1.5),

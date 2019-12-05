@@ -29,6 +29,9 @@ A list that contains 5 objects.
   \item yearFrom: \code{<chr>} The year that the change come from \emph{[Yt]}
   \item yearTo: \code{<chr>} The year that the change go for \emph{[Yt+1]}
   }
+  \item \code{lulc_Onestep}:\code{<tibble>} The table of contingency between the
+  first and the last year analysed \emph{[Yt, Yt+1]}, contains
+  8 columns like \code{lulc_Mulstistep}.
   \item \code{tb_legend}: \code{<tibble>} A table of the pixel value his name and color, contains 3 columns:
   \enumerate{
   \item classValue: \code{<dbl>} the pixel value of the classes of land use
@@ -52,9 +55,6 @@ A list that contains 5 objects.
   \item area_km2: \code{<numeric>} The total area of study in square meter.
   \item QtPixel: \code{<numeric>} The total area of study in quantity of pixel
   }
-  \item \code{lulc_Onestep}:\code{<tibble>} The table of contingency between the
-  first and the last year analysed \emph{[Yt, Yt+1]}, contains
-  8 columns like \code{lulc_Mulstistep}.
   \item \code{totalInterval}: \code{<numeric>} The value represinting the whole time points
   interval of time analysed \emph{[Yt, Yt+1]}, in years.
   }

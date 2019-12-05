@@ -48,7 +48,7 @@ Collate:
     'data.R'
     'generalfunctions.R'
     'intensityClass.R'
-    'intensityFunction.R'
+    'intensityAnalysis.R'
     'plotMethods.R'
     'otherplots.R'
 Suggests: 

@@ -87,17 +87,15 @@ summary_map <- function(path) {
 
 #' Accumulate changes in a LULC time serie raster
 #'
-#' This fucntion return two maps, the first containing the sequence of change as
-#' pixel value (answering: in what point of time a pixel has changes?) and second
-#' the quantity time of change as pixel value(answering: how many times a pixel
-#' has change). These maps can be plotted  with the plot function method of the
-#' raster package or with the `tmap` package.
+#' This function calculate the number of times a pixel have changed during the
+#' period analysed. It gives as return a raster with the number of change as pixel value
+#' and a table containing the percentage of every category/group of pixel value.
+#'
 #'
 #' @param path list (of filenames or Raster* objects), RasterStack(\code{\link[raster]{brick}}) or
 #' RasterStack(\code{\link[raster]{stack}})
 #'
-#' @return Two maps, the first containing the sequence of change as pixel value and second
-#'     the quantity time of change as pixel value.
+#' @return Two objects, a raster layer and a table.
 #' @export
 #'
 #'

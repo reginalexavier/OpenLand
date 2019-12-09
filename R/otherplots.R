@@ -174,9 +174,6 @@ chordDiagramLand <-
       title = legtitle #,
       #title_gap = unit(2, "mm")
     )
-    
-    class(legenda) <- "Legends"
-
 
     # parameters
     #circos.clear()

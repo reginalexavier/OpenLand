@@ -2,18 +2,16 @@
 
 language: R
 cache: packages
-warnins_are_errors: true
+# warnins_are_errors: true
 
 sudo: false
 
-os:
-  - linux
-  - osx
+
 
 r:
-  - 3.5
   - release
   - devel
+  - oldrel
 
 addons:
   apt:

@@ -2,7 +2,7 @@
 
 language: R
 cache: packages
-# warnins_are_errors: true
+warnins_are_errors: true
 
 sudo: false
 
@@ -11,7 +11,7 @@ sudo: false
 r:
   - release
   - devel
-  - oldrel
+  #- oldrel
 
 addons:
   apt:

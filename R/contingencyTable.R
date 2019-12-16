@@ -1,3 +1,6 @@
+utils::globalVariables(c("Interval", "Period", "Year_from",
+                         "Year_to", "strings01", "strings02"))
+
 #' @include demolandscape.R
 NULL
 
@@ -114,9 +117,9 @@ contingenceTable <-
         rList[2:length(rList)]
       ))
 
-    Year_from <- Year_to <- strings01 <- strings02 <-
-      yearTo <- yearFrom <-
-      QtPixel <- Period <- From <- To <- km2 <- Interval <- NULL
+    # Year_from <- Year_to <- strings01 <- strings02 <-
+    #   yearTo <- yearFrom <-
+    #   QtPixel <- Period <- From <- To <- km2 <- Interval <- NULL
 
     if (!extent_test) {
       stop("The rasters have differents nrow, ncol and/or src, please edit the files and retry!")

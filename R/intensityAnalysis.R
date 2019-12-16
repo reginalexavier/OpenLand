@@ -1,3 +1,6 @@
+utils::globalVariables(c("Gain", "Gtj", "Loss", "Lti", "N", "Qtmj",
+                         "Rtin", "St", "Vtm", "Wtn", "intch_QtPixel",
+                         "intch_km2", "num02"))
 #' @include intensityClass.R
 NULL
 
@@ -99,12 +102,12 @@ intensityAnalysis <-
 
     names(lookupcolor) <- class_fillColor$className
 
-    From <-
-      To <-
-      Period <-
-      km2 <-
-      Interval <- QtPixel <- intch_km2 <- num02 <- St <- U <- Gtj <-
-      Gain <- N <- Lti <- Loss <- Rtin <- Wtn <- Qtmj <- Vtm  <- intch_QtPixel <- NULL
+    # From <-
+    #   To <-
+    #   Period <-
+    #   km2 <-
+    #   Interval <- QtPixel <- intch_km2 <- num02 <- St <- U <- Gtj <-
+    #   Gain <- N <- Lti <- Loss <- Rtin <- Wtn <- Qtmj <- Vtm  <- intch_QtPixel <- NULL
 
     if (isTRUE(area_km2)) {
       #____________Interval-------

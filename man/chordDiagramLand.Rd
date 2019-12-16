@@ -27,7 +27,7 @@ chordDiagramLand(
 \item{area_km2}{boolean TRUE for km2 unit, FALSE for pixel unit}
 }
 \value{
-A circlize plot
+A Chord Diagram
 }
 \description{
 A circlize plot for the transition between two times point, one step.

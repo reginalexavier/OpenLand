@@ -1,3 +1,6 @@
+utils::globalVariables(c("From", "To", "target", "km2", "Year",
+                         "QtPixel", "yearFrom", "yearTo",
+                         "colorFrom", "colorTo", "lulc", "area"))
 #' @include plotMethods.R
 NULL
 
@@ -31,7 +34,10 @@ barplotLand <-
            xlab = "Year",
            ylab = expression(paste("Area ", Km ^ {2})),
            area_km2 = TRUE, ...) {
-    From <- To <- yearTo <- km2 <- yearFrom <- Year <- lulc <- area <- NULL
+
+#    From <- To <- yearTo <- km2 <- yearFrom <- Year <- lulc <- area <- NULL
+
+
     datachange <- dataset %>%
       left_join(legendtable, by = c("From" = "classValue")) %>%
       left_join(legendtable, by = c("To" = "classValue")) %>%
@@ -80,7 +86,7 @@ barplotLand <-
 #' @param sectorcol The color of the extern sector containing the years
 #' @param area_km2 boolean TRUE for km2 unit, FALSE for pixel unit
 #'
-#' @return A circlize plot
+#' @return A Chord Diagram
 #' @export
 #'
 #'
@@ -93,9 +99,9 @@ chordDiagramLand <-
            sectorcol = "gray80",
            area_km2 = TRUE) {
 
-    From <-
-      To <-
-      target <- km2 <- yearFrom <- yearTo <- colorFrom <- colorTo <- QtPixel <- NULL
+    # From <-
+    #   To <-
+    #   target <- km2 <- yearFrom <- yearTo <- colorFrom <- colorTo <- QtPixel <- NULL
 
     circle_data <- dataset %>%
       left_join(legendtable, by = c("From" = "classValue")) %>%
@@ -278,7 +284,7 @@ netgrossplot <-
            changesLabel = c(GC = "Gross changes", NG = "Net Gain", NL = "Net Loss"),
            color = c(GC = "gray70", NG = "#006400", NL = "#EE2C2C"),
            area_km2 = TRUE) {
-    From <- To <- km2 <- QtPixel <- area <- NULL
+#    From <- To <- km2 <- QtPixel <- area <- NULL
     datachange <- (dataset %>%
       left_join(legendtable, by = c("From" = "classValue")) %>%
       left_join(legendtable, by = c("To" = "classValue")) %>%

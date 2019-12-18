@@ -36,11 +36,9 @@
 
 
 <meta property="og:title" content="Accumulate changes in a LULC time serie raster — acc_changes" />
-<meta property="og:description" content="This fucntion return two maps, the first containing the sequence of change as
-pixel value (answering: in what point of time a pixel has changes?) and second
-the quantity time of change as pixel value(answering: how many times a pixel
-has change). These maps can be plotted  with the plot function method of the
-raster package or with the `tmap` package." />
+<meta property="og:description" content="This function calculate the number of times a pixel have changed during the
+period analysed. It gives as return a raster with the number of change as pixel value
+and a table containing the percentage of every category/group of pixel value." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -127,11 +125,9 @@ raster package or with the `tmap` package." />
     </div>
 
     <div class="ref-description">
-    <p>This fucntion return two maps, the first containing the sequence of change as
-pixel value (answering: in what point of time a pixel has changes?) and second
-the quantity time of change as pixel value(answering: how many times a pixel
-has change). These maps can be plotted  with the plot function method of the
-raster package or with the `tmap` package.</p>
+    <p>This function calculate the number of times a pixel have changed during the
+period analysed. It gives as return a raster with the number of change as pixel value
+and a table containing the percentage of every category/group of pixel value.</p>
     </div>
 
     <pre class="usage"><span class='fu'>acc_changes</span>(<span class='no'>path</span>)</pre>
@@ -148,8 +144,7 @@ RasterStack(<code><a href='https://rdrr.io/pkg/raster/man/stack.html'>stack</a><
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Two maps, the first containing the sequence of change as pixel value and second
-    the quantity time of change as pixel value.</p>
+    <p>Two objects, a raster layer and a table.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='no'>test</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='demo_landscape.html'>demo_landscape</a></span>(<span class='fl'>2000</span>:<span class='fl'>2005</span>, <span class='kw'>res</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>prob</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0.05</span>, <span class='fl'>0.3</span>, <span class='fl'>0.05</span>, <span class='fl'>0.4</span>, <span class='fl'>0.2</span>))

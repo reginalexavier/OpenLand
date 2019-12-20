@@ -59,7 +59,7 @@ SaoLourencoBasin
 
 ### Extracting the data from the raster series
 
-In this step we have to  extract the values from our rasters and save them in tables for next steps of analysis. The function in `OpenLand` that compute that is the `contingencyTable()`. This function returns `r length(SL_2002_2014)` objects: `r names(SL_2002_2014)`.
+In this step the values from the input raster layers are extracted and saved in tables for next processing steps. The function in `OpenLand` that compute that is the `contingencyTable()`. This function returns `r length(SL_2002_2014)` objects: `r names(SL_2002_2014)`.
 
 The first two objects are tables of contingency, the first one (**`r names(SL_2002_2014)[1]`**) takes into account all the points in time and the second (**`r names(SL_2002_2014)[2]`**) only the first year and the last year of the series. The third object (**`r names(SL_2002_2014)[3]`**) is a table containing the class name associate with every pixel value and a color to be associate with _(important for the plots)_. The values in class and color are have been created aleatory by `contingencyTable()` function. These values must be edited to the real values corresponding the data to be analysed. The fourth object (**`r names(SL_2002_2014)[4]`**) is a table containing the total area of study in km^2^ and in pixel unit and the fifth (**`r names(SL_2002_2014)[5]`**) is the total interval between the first year (Y~t=1~) and the last year(Y~T~) in year unit.
 

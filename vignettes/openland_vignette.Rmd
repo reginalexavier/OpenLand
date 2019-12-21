@@ -38,7 +38,7 @@ The study area of this research is the São Lourenço river basin, it is located
 The shape file was transformed into rasters and then saved as a 5-layers `RasterStack`, included as data in the OpenLand package as `SaoLourencoBasin` (for  further details over this object, run `help("SaoLourencoBasin")` or `?SaoLourencoBasin` in the console).
 
 ### The input data
-The first function used to extract the data is the `contingencyTable()`, this function take a list of raster layer (`RasterBrick`, `RasterStack` or a path to a folder containing the rasters). The name of the rasters must be in the format ("some_text" `+` "underscore" `+` "the_year") like "landscape_2019".
+The function used to extract the data is `contingencyTable()`, whichthis function take a list of raster layer (`RasterBrick`, `RasterStack` or a path to a folder containing the rasters). The name of the rasters must be in the format ("some_text" `+` "underscore" `+` "the_year") like "landscape_2019".
 
 In our example we have the `SaoLourencoBasin` RasterStack, that can be seeing from running `data(SaoLourencoBasin)` as following:
 

@@ -1,5 +1,5 @@
 ---
-title: "Quick intro for OpenLand Package"
+title: "Quick introduction to the OpenLand package"
 output: rmarkdown::html_vignette
 bibliography: papers_OpenLand.bib
 vignette: >
@@ -21,26 +21,20 @@ knitr::opts_chunk$set(
 ```
 
 
-
 ----
-**This is a Vignette on how to use the OpenLand package into Land Use and Land Cover (LULC) data manipulation and producing visualizations.**
+**This is a Vignette on how to use the OpenLand package for exploratory analysis of Land Use and Cover (LUC) time series.**
 
 ## Description of the tool
 
-OpenLand is an open-source R package for the analysis of land use and land cover time series. It includes support for loading spatiotemporal data `raster map`; computing of net change and gross changes in a given interval; performing a complete intensity analysis based on [@Aldwaik2012]. It provides methods for visualizations of land use and land cover change like the outcomes of intensity analysis, as other graphs like sankey diagram (one-step or multistep) and chord diagram displaying the inter-relationships between the land uses.
+OpenLand is an open-source R package for the analysis of land use and cover (LUC) time series. It includes support for consistency check and loading spatiotemporal raster data and synthetized spatial plotting. Several LUC change (LUCC) metrics in regular or irregular time intervals can be extracted and visualized through one- and multistep sankey and chord diagrams. A complete intensity analysis acording to [@Aldwaik2012] is implemented, including tools for the generation of standardized multilevel output graphics.
 
-## São Lourenço river Basin Case Study
+## São Lourenço river Basin example dataset
 
-For the illustrative case of study, we're going to use the map (shape file) from the 4Th edition of the [Monitoring of Changes in Land cover and Land Use in the Upper Paraguay River Basin - Brazilian portion - Review Period: 2012 to 2014](https://www.embrapa.br/pantanal/bacia-do-alto-paraguai) [@Embrapapantanalsite2015], which covers specifically the years (2002, 2008, 2010, 2012 and 2014).
+The OpenLand functionality is illustrated for a LUC dataset of São Lourenço river basin, a major Pantanal wetland contribution area as provided by the 4th edition of the [Monitoring of Changes in Land cover and Land Use in the Upper Paraguay River Basin - Brazilian portion - Review Period: 2012 to 2014](https://www.embrapa.br/pantanal/bacia-do-alto-paraguai) [@Embrapapantanalsite2015]. The time series is composed by five LUC maps (2002, 2008, 2010, 2012 and 2014). The study area of approximately 22,400 km^2^ is located in the Cerrado savannah biom in the southeast of the Brazilian state of Mato Grosso, which has experienced a LUCC of about 12% of its extension during the 12-years period, including deforestation and intensification of existing agricultural uses.
+For processing in the OpenLand package, the original multi-year shape file was transformed into rasters and then saved as a 5-layers `RasterStack`, which is included in the OpenLand package as `SaoLourencoBasin`. For  further details over this object, run `help("SaoLourencoBasin")` or `?SaoLourencoBasin` in the console.
 
-The study area of this research is the São Lourenço river basin, it is located in the southeast of Mato Grosso State, extending over an area of approximately 22,418 km^2^ and has experienced ~~significant~~ changes (12%) in the LULC during the [2002 - 2014]'s period ~~last decades~~, including deforestation and intensification of existing agricultural uses.
-
-The shape file was transformed into rasters and then saved as a 5-layers `RasterStack`, included as data in the OpenLand package as `SaoLourencoBasin` (for  further details over this object, run `help("SaoLourencoBasin")` or `?SaoLourencoBasin` in the console).
-
-### The input data
-The function used to extract the data is `contingencyTable()`, whichthis function take a list of raster layer (`RasterBrick`, `RasterStack` or a path to a folder containing the rasters). The name of the rasters must be in the format ("some_text" `+` "underscore" `+` "the_year") like "landscape_2019".
-
-In our example we have the `SaoLourencoBasin` RasterStack, that can be seeing from running `data(SaoLourencoBasin)` as following:
+### Input data constraints
+The function `contingencyTable()` for data consistency check and extraction demands as input a list of raster layers (`RasterBrick`, `RasterStack` or a path to a folder containing the rasters). The name of the rasters must be in the format ("some_text" `+` "underscore" `+` "the_year") like "landscape_2019". In our example we included the `SaoLourencoBasin` RasterStack, which parameters can be explored by running `data(SaoLourencoBasin)`:
 
 ```{r setup}
 ## First we load the OpenLand package
@@ -56,15 +50,14 @@ SaoLourencoBasin
 ```
 
 
+### Extracting the data from raster time series
 
-### Extracting the data from the raster series
+After data extraction `contingencyTable()` saves multiple grid information in tables for the next processing steps. The function returns `r length(SL_2002_2014)` objects: `r names(SL_2002_2014)`.
 
-In this step the values from the input raster layers are extracted and saved in tables for next processing steps. The function in `OpenLand` that compute that is the `contingencyTable()`. This function returns `r length(SL_2002_2014)` objects: `r names(SL_2002_2014)`.
-
-The first two objects are tables of contingency, the first one (**`r names(SL_2002_2014)[1]`**) takes into account all the points in time and the second (**`r names(SL_2002_2014)[2]`**) only the first year and the last year of the series. The third object (**`r names(SL_2002_2014)[3]`**) is a table containing the class name associate with every pixel value and a color to be associate with _(important for the plots)_. The values in class and color are have been created aleatory by `contingencyTable()` function. These values must be edited to the real values corresponding the data to be analysed. The fourth object (**`r names(SL_2002_2014)[4]`**) is a table containing the total area of study in km^2^ and in pixel unit and the fifth (**`r names(SL_2002_2014)[5]`**) is the total interval between the first year (Y~t=1~) and the last year(Y~T~) in year unit.
+The first two objects are contingency tables. The first one (**`r names(SL_2002_2014)[1]`**) takes into account grid cells of the entire time series, whereas the second (**`r names(SL_2002_2014)[2]`**) calculates LUC transitions only between the first and last year of the series. The third object (**`r names(SL_2002_2014)[3]`**) is a table containing the class name associated with pixel values and and a respective color used for plotting. Class values and color are created aleatorily by `contingencyTable()`. Their values must be edited to produce meaningful plot legends and color schemes. The fourth object (**`r names(SL_2002_2014)[4]`**) is a table containing the extension of the study area in km^2^ and in pixel units. The fifth table (**`r names(SL_2002_2014)[5]`**) stores the range of years between the first (Y~t=1~) and the last year(Y~T~) of the series.
 
 
-Here a prototype of the contingency table created by the `contingencyTable` function:
+Fields, their format, description and labelling of a table created by the `contingencyTable` are given in the following:
 
 |[Y~_t_~, Y~_t+1_~] | Category~_i_~ | Category~_j_~ |C~_tij_~(km^2^)|C~_tij_~(pixel)|Y~_t+1_~ - Y~_t_~|Y~_t_~|Y~_t+1_~|
 |:------------:|:----------:|:----------:|:--------------:|:--------------:|:------------:|:----:|:----:|
@@ -72,11 +65,9 @@ Here a prototype of the contingency table created by the `contingencyTable` func
 |Period of analysis from time point _t_ to time point _t+1_|A category at interval’s initial time point|A category at  interval’s final time point|Number of elements in km^2^ that transits from category _i_ to category _j_|Number of elements in pixel that transits from category _i_ to category _j_|Interval in years between time point _t_ and time point _t+1_|Initial Year of the interval| Final Year of the interval|
 |**Period**|**From**|**To**|**km2**|**QtPixel**|**Interval**|**yearFrom**|**yearTo**|
 
-> For the second table,  the Y~_t+1_~ terms are repced by Y~_T_~, where T is the number of time points, i.e., Y~_T_~ is the last year of the series.
+In the second table,  the Y~_t+1_~ terms are replaced by Y~_T_~, where T is the number of time steps, i.e., Y~_T_~ is the last year of the series.
 
-
-
-For our study area running the function `contingenceTable(input_raster = SaoLourencoBasin, pixelresolution = 30)`, we have this returns:
+For our study area, `contingenceTable(input_raster = SaoLourencoBasin, pixelresolution = 30)` returns the following outputs:
 
 
 
@@ -88,8 +79,8 @@ SL_2002_2014
 
 ```
 
-#### Editing the values in ``r names(SL_2002_2014$tb_legend[2])`` and ``r names(SL_2002_2014$tb_legend[3])`` columns
-As mentioned before, the **`r names(SL_2002_2014[3])`** object must be edited with the real class name and colors associate with everyone of the class value. In our case the classes names and colors are based on @sospantanal2015 [(acces document here, page 17)](https://www.embrapa.br/documents/1354999/1529097/BAP+-+Mapeamento+da+Bacia+do+Alto+Paraguai+-+estudo+completo/e66e3afb-2334-4511-96a0-af5642a56283).
+### Editing the values in the ``r names(SL_2002_2014$tb_legend[2])`` and ``r names(SL_2002_2014$tb_legend[3])`` columns
+As mentioned before, the **`r names(SL_2002_2014[3])`** object must be edited with the real class name and colors associated with the class values. In our case, the classes names and colors are based on the conventions given by  @sospantanal2015 [(access document here, page 17)](https://www.embrapa.br/documents/1354999/1529097/BAP+-+Mapeamento+da+Bacia+do+Alto+Paraguai+-+estudo+completo/e66e3afb-2334-4511-96a0-af5642a56283).
 
 |Pixel Value|Legend|Class|Use|Details|color|
 |:---|:-----:|:-----------------|:-------------------|:------------------------------|:------|
@@ -134,13 +125,13 @@ caseStudy$lulc_Mulstistep[1:10, ]
 ```
 
 
-> At this point one can choose to run the Intensity Analysis or creating some representations provided by the `OpenLand` package like sankey diagram with `sankeyLand()` function, a chord diagram with `chordDiagramLand()` or a bar plot showing the evolution trough the years analysed with `barplotLand()` since they don't depend on the intensity function returns.
+At this point, one can choose to run the Intensity Analysis or to create a series of non-spatial representations of LUCC provided by the `OpenLand` package, such like sankey diagrams with the `sankeyLand()` function, chord diagrams using `chordDiagramLand()` or bar plots showing LUC evolution trough the years using `barplotLand()`, since they do not depend on the output of Intensity Analysis.
 
 
 ## Intensity Analysis
-The intensity analysis is a quantitative method to analyze maps of land categories from several points in time for a single site by considering cross-tabulation matrices, where one matrix summarizes the change in each time interval. There are three levels of analysis, starting from general to more detailed levels, where each level exposes different types of information given the previous level of analysis. First, the **interval level** examines how the size and speed of change vary across time intervals. Second, the **category level** examines how the size and intensity of gross losses and gross gains in each category vary across categories for each time interval. Third, the **transition level** examines how the size and intensity of a category’s transitions vary across the other categories that are available for that transition. At each level, the method tests for stationarity of patterns across time intervals [@Aldwaik2012].
+Intensity Analysis (IA) is a quantitative method to analyze LUC maps at several time steps, using cross-tabulation matrices, where each matrix summarizes the LUC change at each time interval. IA evaluates, in three levels the deviation between observed change intensity and hypothesized uniform change intensity. Hereby each level details information given by the previous analysis level. First, the **interval level** indicates how size and rate of change varies across time intervals. Second, the **category level** examines for each time interval how the size and intensity of gross losses and gross gains in each category vary across categories for each time interval. Third, the **transition level** examines for each category how the size and intensity of a category’s transitions vary across the other categories that are available for that transition. At each level, the method tests for stationarity of patterns across time intervals [@Aldwaik2012].
 
-Within the OpenLand package we have created a function `intensityAnalysis()` that compute the three levels of analysis. It requires the object returned by the `contingenceTable()` function, and the categories `n` and `m` chosen by the user.
+Within the OpenLand package, the `intensityAnalysis()` function computes the three levels of analysis. It requires the object returned by the `contingenceTable()` function, and the categories `n` and `m` defined by the user.
 
 ```{r}
 testSL <- intensityAnalysis(dataset = SL_2002_2014,
@@ -152,13 +143,13 @@ names(testSL)
 ```
 
 The function returns `r length(testSL)` objects: `r names(testSL)`.
-On this part we adopted an object-oriented approach that allows us to setting specifics methods for plotting the intensity objects created by the `intensityanalysis()` function. The system we use is the S4 class which requires classes and methods to be formally define [@Chambers2008]. The first object is a contingency table like the `r names(SL_2002_2014)[1]` object with the unique difference that is, the column `From` and `To` values have has been replaced by their appropriate legend.
+Here, we adopted an object-oriented approach that allows us to set specifics methods for plotting the intensity objects created by `intensityanalysis()`. Specifically, we used the S4 class, which requires the formal definition of classes and methods [@Chambers2008]. The first object is a contingency table like the `r names(SL_2002_2014)[1]` object with the unique difference that the columns `From` and `To` have been replaced by their appropriate denominations.
 
-The second object _**`r names(testSL[2])`**_ is an ``r class(testSL[[2]])`` object the third _**`r names(testSL[3])`**_ and the fourth _**`r names(testSL[4])`**_ are ``r class(testSL[[4]])`` objects,  the fifth _**`r names(testSL[5])`**_ and the sixth _**`r names(testSL[6])`**_ are ``r class(testSL[[6]])`` objects.
+The second object _**`r names(testSL[2])`**_ is an ``r class(testSL[[2]])`` object, the third _**`r names(testSL[3])`**_ and the fourth _**`r names(testSL[4])`**_ are ``r class(testSL[[4]])`` objects,  whereas the fifth _**`r names(testSL[5])`**_ and the sixth _**`r names(testSL[6])`**_ are ``r class(testSL[[6]])`` objects.
 
-An ``r class(testSL[[2]])`` object contains one slot containing a table of  **interval level**'s result _(S~t~ and U values)_. A ``r class(testSL[[4]])`` object contains three slots: the first contains the colors associate with the data with the legends as name's attribute, the second slot contains a table of the **category level**'s result _(gain (G~tj~) or loss (L~ti~) values)_  and the third slot contains a table saving a stationarity test. A ``r class(testSL[[6]])`` object contains three slots: the first contains the colors associate with the data with the legends as name's attribute, the second slot contains a table of the **transition level**'s result _(gain n (R~tin~ & W~tn~) or loss m (Q~tmj~ & V~tm~) values)_ and the fourth slot contains a table saving a stationarity test.
+An ``r class(testSL[[2]])`` object contains one slot containing a table of  **interval level** result _(S~t~ and U values)_. A ``r class(testSL[[4]])`` object contains three slots: the first contains the colors associated with the legend items as name attributes, the second slot contains a table of the **category level** result _(gain (G~tj~) or loss (L~ti~) values)_  and the third slot contains a table storing the results of a stationarity test. A ``r class(testSL[[6]])`` object contains three slots: the first contains the colors associated with the legend items as name attributes, the second slot contains a table of the **transition level** result _(gain n (R~tin~ & W~tn~) or loss m (Q~tmj~ & V~tm~) values)_ and the fourth slot contains a table storing the results of a stationarity test.
 
-> @Aldwaik2012 considers a stationary case only whether the intensities for all time intervals reside on one side of the uniform intensity, i.e, smaller or bigger than the uniform rate over the whole period.
+@Aldwaik2012 consider a stationary case only when the intensities for all time intervals reside on one side of the uniform intensity, i.e. that they are smaller or larger than the uniform rate over the whole period.
 
 
 ```{r}
@@ -168,13 +159,9 @@ testSL
 ```
 
 
-
 ## The Graphs 
-
 ### Outcomes of intensity analysis
-
-Visualizations of the intensity analysis result is obtaining from the plot(intensity-object) function, for a more detailed over the parameters see function's documentation.
-
+Visualizations of the IA results are obtained from the plot(intensity-object) function. For a more details about the parameters, please see the documentation of the `plot()` function.
 
 #### Interval Level
 
@@ -236,7 +223,9 @@ plot(testSL$transition_lvlLoss_m,
 
 ```
 
-### Other graphs
+### Miscancelous visualization tools
+
+OpenLand provides a bench of visualization tools of LUCC metrics. One-step transitions can be balanced by net and gross changes of all classes through a combined bar chart.  Transitions between LUC classes can be detailed by a circular chord chart, based on the Circulize package (Gu, 2019). An implementation of  Sankey diagram based on the networkD3 package (DISPLAYR, 2019) allow the representation of one- and multistep LUCC between classes. Areal development of all LUC classes throughout the observation period can be visualized by a grouped barchart. 
 
 #### Net and Gross gain and loss
 
@@ -308,7 +297,7 @@ barplotLand(dataset = SL_2002_2014$lulc_Multistep,
 
 ## Other functions
 
-OpenLand have others functions that helps having some quick summary over one or a series of raster. One of them is the `acc_chages()` when running over a series of raster it gives us as return a raster contains the number of times a pixel have been change during the period analysed and a table containing the percentage of every pixel value.
+OpenLand enables furthermore the spatial screening of LUCC frequencies for one or a series of raster layers. The `acc_changes()` returns for LUC time series the number of times a pixel has changed during the analysed period analysed, returning a grid layer and a table with the percentages of transition numbers in the study area.
 
 
 ```{r}

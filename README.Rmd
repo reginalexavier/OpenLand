@@ -22,15 +22,8 @@ knitr::opts_chunk$set(
 [![Codecov test coverage](https://codecov.io/gh/tredgi/OpenLand/branch/master/graph/badge.svg)](https://codecov.io/gh/tredgi/OpenLand?branch=master)
 <!-- badges: end -->
 
-OpenLand is an open-source R package for the analysis of land use and land cover
-time series. It includes support for loading spatiotemporal data 'raster map'; 
-simulating landscapes with some degree of spatial correlation; extraction of
-land use transition matrices; computing of net change and gross changes in a given 
-interval; performing a complete intensity analysis based on Pontius. It provides
-methods for visualizations of land use and land cover change like 
-the outcomes of intensity analysis, as other graphs like sankey diagram 
-(onestep or multistep) and chord diagram displaying the inter-relationships 
-between the land uses.
+OpenLand is an open-source R package for the analysis of land use and cover (LUC) time series. It includes support for consistency check and loading spatiotemporal raster data and synthesized spatial plotting. Several LUC change (LUCC) metrics in regular or irregular time intervals can be extracted and visualized through one- and multistep sankey and chord diagrams. A complete intensity analysis according to [@Aldwaik2012] is implemented, including tools for the generation of standardized multilevel output graphics.
+
 
 ## Installation
 

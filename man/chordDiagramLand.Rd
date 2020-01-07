@@ -14,17 +14,17 @@ chordDiagramLand(
 )
 }
 \arguments{
-\item{dataset}{A table of the one step transition}
+\item{dataset}{\code{<tibble>}. A table of the one step transition (\code{lulc_OneStep}) from \code{\link{contingencyTable}}.}
 
-\item{legendtable}{A table contains the legend of the land use classes and his respective color}
+\item{legendtable}{\code{<tibble>}. A table (\code{lulc_Onestep}) contains the legend of the LUC category and his respective color.}
 
-\item{legposition}{A list of `x` and `y` parameter position for the legend}
+\item{legposition}{\code{<numeric>}. A vector containing the `x` and `y` values for the position of the legend.}
 
-\item{legtitle}{The title of the legen}
+\item{legtitle}{\code{<character>}. The title of the legend.}
 
-\item{sectorcol}{The color of the extern sector containing the years}
+\item{sectorcol}{\code{<character>}. The color of the extern sector containing the years.}
 
-\item{area_km2}{boolean TRUE for km2 unit, FALSE for pixel unit}
+\item{area_km2}{\code{<logical>}. If TRUE the change is computed in km2, if FALSE in pixel counts.}
 }
 \value{
 A Chord Diagram

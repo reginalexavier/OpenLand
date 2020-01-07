@@ -2,36 +2,33 @@
 % Please edit documentation in R/otherplots.R
 \name{barplotLand}
 \alias{barplotLand}
-\title{A barplot for the area of every point in time of the analysed period}
+\title{A barplot for the area of every time point of the analysed period}
 \usage{
 barplotLand(
   dataset,
   legendtable,
   title = "General Area in the interval (2002 - 2014)",
-  color = c(GC = "gray70", NG = "#006400", NL = "#EE2C2C"),
-  fill = "LULC Classes",
+  caption = "LULC Classes",
   xlab = "Year",
-  ylab = expression(paste("Area ", Km^{     2 })),
+  ylab = expression(paste("Area ", km^{     2 })),
   area_km2 = TRUE,
   ...
 )
 }
 \arguments{
-\item{dataset}{A table of the multi step transition}
+\item{dataset}{\code{<tibble>}. A table of the multi step transition (\code{lulc_Mulstistep}) from \code{\link{contingencyTable}}.}
 
-\item{legendtable}{A table contains the legend of the land use classes and his respective color}
+\item{legendtable}{\code{<tibble>}. A table (\code{lulc_Onestep}) contains the legend of the LUC category and his respective color.}
 
-\item{title}{The title of the plot}
+\item{title}{\code{<chr>}. The title of the plot}
 
-\item{color}{A color list for the three types of chages}
+\item{caption}{\code{<chr>}. The caption of the plot.}
 
-\item{fill}{Legend}
+\item{xlab}{\code{<chr>}. Label for the x axis.}
 
-\item{xlab}{character Label for the x axe}
+\item{ylab}{\code{<chr>}. Label for the y axis.}
 
-\item{ylab}{character Label for the y axe}
-
-\item{area_km2}{boolean TRUE for km2 unit, FALSE for pixel unit}
+\item{area_km2}{\code{<logical>}. If TRUE the change is computed in km2, if FALSE in pixel counts.}
 
 \item{\dots}{themes parameters \code{\link[ggplot2]{theme}}}
 }
@@ -39,7 +36,7 @@ barplotLand(
 a barplot
 }
 \description{
-A barplot for the area of every point in time of the analysed period
+A barplot for the area of every time point of the analysed period
 }
 \seealso{
 \code{ggplot2::\link[ggplot2]{theme}}

@@ -2,7 +2,7 @@
 % Please edit documentation in R/otherplots.R
 \name{netgrossplot}
 \alias{netgrossplot}
-\title{A barplot for the Net Gain/Loss and Gross Changes between land use classes for the period analysed}
+\title{A Bar Plot}
 \usage{
 netgrossplot(
   dataset,
@@ -16,31 +16,33 @@ netgrossplot(
 )
 }
 \arguments{
-\item{dataset}{A table of multi step transition}
+\item{dataset}{\code{<tibble>}. A table of the multi step transition (\code{lulc_Mulstistep}) from \code{\link{contingencyTable}}.}
 
-\item{legendtable}{A table contains the legend of the land use classes and his respective color}
+\item{legendtable}{\code{<tibble>}. A table (\code{lulc_Onestep}) contains the legend of the LUC category and his respective color.}
 
-\item{title}{character. The title of the plot (optional), use \code{NULL} for no title.}
+\item{title}{\code{<character>}. The title of the plot (optional), use \code{NULL} for no title.}
 
-\item{xlab}{character. Label for the x axe}
+\item{xlab}{\code{<character>}. Label for the x axis}
 
-\item{ylab}{character. Label for the y axe}
+\item{ylab}{\code{<character>}. Label for the y axis}
 
-\item{changesLabel}{character. Labels for the three types of chages, the default is c(GC = "Gross chages", NG = "Net Gain", NL = "Net Loss")}
+\item{changesLabel}{\code{<character>}. Labels for the three types of chages, the
+defaults are c(GC = "Gross chages", NG = "Net Gain", NL = "Net Loss")}
 
-\item{color}{character. Colors for the three types of chages}
+\item{color}{\code{<chr>}. A vector of the the three types of changes colors.}
 
-\item{area_km2}{boolean. TRUE for km2 unit, FALSE for pixel unit}
+\item{area_km2}{\code{<logical>}. If TRUE the change is computed in km2, if FALSE in pixel counts.}
 }
 \value{
 A bar plot
 }
 \description{
-A barplot for the Net Gain/Loss and Gross Changes between land use classes for the period analysed
+A barplot showing the LUC evolution trough the years, it presents the Net Gain/Loss
+and Gross Changes between land use classes for the period analysed.
 }
 \examples{
 test1 <- demo_landscape(2000:2005)
-test2 <- contingenceTable(input_raster = test1, pixelresolution = 1)
+test2 <- contingencyTable(input_raster = test1, pixelresolution = 1)
 netgrossplot(dataset = test2$lulc_Multistep, legendtable = test2$tb_legend, area_km2 = FALSE)
 
 

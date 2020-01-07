@@ -3,14 +3,14 @@
 \docType{data}
 \name{SaoLourencoBasin}
 \alias{SaoLourencoBasin}
-\title{Rasters of Land Use and Land Cover of the São Lourenço River Basin (2002 - 2014)}
+\title{Land use and cover (LUC) rasters of the São Lourenço River Basin (2002 - 2014)}
 \format{An object of class \code{"RasterBrick"} with 5 layers:
 \itemize{
-  \item \strong{landscape_2002:} Land scape of the land use and land cover for the yeear 2002
-  \item \strong{landscape_2008:} Land scape of the land use and land cover for the yeear 2008
-  \item \strong{landscape_2010:} Land scape of the land use and land cover for the yeear 2010
-  \item \strong{landscape_2012:} Land scape of the land use and land cover for the yeear 2012
-  \item \strong{landscape_2014:} Land scape of the land use and land cover for the yeear 2014
+  \item \strong{landscape_2002:} LUC in 2002
+  \item \strong{landscape_2008:} LUC in 2008
+  \item \strong{landscape_2010:} LUC in 2010
+  \item \strong{landscape_2012:} LUC in 2012
+  \item \strong{landscape_2014:} LUC in 2014
   }}
 \source{
 \url{https://www.embrapa.br/pantanal/bacia-do-alto-paraguai}
@@ -20,8 +20,8 @@ data(SaoLourencoBasin)
 }
 \description{
 A multi-layer raster (RasterStack) with five (5) RasterLayer objects
-represinting the years 2002, 2008, 2010, 2012 and 2014 respectively.
-These Raster* have everyone 11 classes of use, these classes are:
+representing LUC in the years of 2002, 2008, 2010, 2012 and 2014 respectively.
+Each Raster* has 11 LUC classes:
 \tabular{cclll}{
 \strong{Pixel Value} \tab \strong{Legend} \tab \strong{Class}
 \tab \strong{Use} \tab \strong{Details}  \cr

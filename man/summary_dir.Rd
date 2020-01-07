@@ -10,10 +10,10 @@ summary_dir(path)
 \item{path}{The path for a raster directory/list to be analysed}
 }
 \value{
-Table with the parameters in columns
+Table with the raster parameters in columns
 }
 \description{
-Comparring the extent of rasters
+Listing major charateristics of raster inputs
 }
 \examples{
 

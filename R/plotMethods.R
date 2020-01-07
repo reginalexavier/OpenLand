@@ -5,14 +5,14 @@ NULL
 #'
 #' Plot \code{Intensity} objects based on Intensity Analysis tables
 #'
-#' @param Interval the class
-#' @param x tibble. An object from the intensity analysis data
+#' @param Interval The class of the object
+#' @param x tibble. An object from the Intensity Analysis data
 #' @param y not used
-#' @param labels character. left right and title
-#' @param labs character
-#' @param marginplot character
-#' @param leg_curv character
-#' @param color_bar character
+#' @param labels character. left and right battom titles(caption)
+#' @param labs character. The laterals legends
+#' @param marginplot numeric. The margin between the plot, can be ajust for the 0 value
+#' @param leg_curv numeric. Values x and y that controls the length of the Uniform Intensity curve.
+#' @param color_bar character. Colors for the fast, slow and area bars (only for an \code{\linkS4class{Interval}} object).
 #' @param \dots additional arguments themes parameters \code{\link[ggplot2]{theme}}
 #'
 #' @return An intensity graph
@@ -43,11 +43,11 @@ setMethod(
                         labels = c(leftlabel = "Interval Change Area (percent of map)",
                                    rightlabel = "Annual Change Area (percent of map)",
                                    title = "Level 01 Mudancas todo o Periodo"),
-                        labs = c(type = "Changes", ur = "Uniform Rate"),
+                        labs = c(type = "Changes", ur = "Uniform Intensity"),
                         marginplot = c(lh = -10, rh = 0),
                         leg_curv = c(x = 1 / 10, y = 1 / 10),
-                        color_bar = c(faster = "#B22222",
-                                      slower = "#006400",
+                        color_bar = c(fast = "#B22222",
+                                      slow = "#006400",
                                       area = "gray40"),
                         ...) {
     Type <- St <-  U <-  NULL
@@ -197,7 +197,7 @@ setMethod(
                           rightlabel = "Intensity Gain/Loss (%)",
                           title = "Level 02 Ganho/Perda Anual"
                         ),
-                        labs = c(type = "Classes", ur = "Uniform Rate"),
+                        labs = c(type = "Classes", ur = "Uniform Intensity"),
                         marginplot = c(lh = 0.5, rh = 0.5),
                         leg_curv = c(x = 1 / 10, y = 1 / 10),
                         ...) {
@@ -352,7 +352,7 @@ setMethod(
                           leftlabel = bquote("Gain/Loss of " ~ .(as.character(dataset[[3]][[1]])) ~ "(" ~ Km ^ 2 ~ ")"),
                           title = "Level 03 Ganho da classe m/n"
                         ),
-                        labs = c(type = "Classes", ur = "Uniform Rate"),
+                        labs = c(type = "Classes", ur = "Uniform Intensity"),
                         marginplot = c(lh = 0.5, rh = 0.5),
                         leg_curv = c(x = 1 / 10, y = 1 / 10),
                         ...) {

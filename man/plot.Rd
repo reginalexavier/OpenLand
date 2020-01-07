@@ -12,10 +12,10 @@
   y,
   labels = c(leftlabel = "Interval Change Area (percent of map)", rightlabel =
     "Annual Change Area (percent of map)", title = "Level 01 Mudancas todo o Periodo"),
-  labs = c(type = "Changes", ur = "Uniform Rate"),
+  labs = c(type = "Changes", ur = "Uniform Intensity"),
   marginplot = c(lh = -10, rh = 0),
   leg_curv = c(x = 1/10, y = 1/10),
-  color_bar = c(faster = "#B22222", slower = "#006400", area = "gray40"),
+  color_bar = c(fast = "#B22222", slow = "#006400", area = "gray40"),
   ...
 )
 
@@ -24,7 +24,7 @@
   y,
   labels = c(leftlabel = bquote("Gain/Loss area (" ~ Km^2 ~ ")"), rightlabel =
     "Intensity Gain/Loss (\%)", title = "Level 02 Ganho/Perda Anual"),
-  labs = c(type = "Classes", ur = "Uniform Rate"),
+  labs = c(type = "Classes", ur = "Uniform Intensity"),
   marginplot = c(lh = 0.5, rh = 0.5),
   leg_curv = c(x = 1/10, y = 1/10),
   ...
@@ -37,30 +37,30 @@
     .(as.character(dataset[[3]][[1]])) ~ "(\%)"), leftlabel = bquote("Gain/Loss of " ~
     .(as.character(dataset[[3]][[1]])) ~ "(" ~ Km^2 ~ ")"), title =
     "Level 03 Ganho da classe m/n"),
-  labs = c(type = "Classes", ur = "Uniform Rate"),
+  labs = c(type = "Classes", ur = "Uniform Intensity"),
   marginplot = c(lh = 0.5, rh = 0.5),
   leg_curv = c(x = 1/10, y = 1/10),
   ...
 )
 }
 \arguments{
-\item{x}{tibble. An object from the intensity analysis data}
+\item{x}{tibble. An object from the Intensity Analysis data}
 
 \item{y}{not used}
 
-\item{labels}{character. left right and title}
+\item{labels}{character. left and right battom titles(caption)}
 
-\item{labs}{character}
+\item{labs}{character. The laterals legends}
 
-\item{marginplot}{character}
+\item{marginplot}{numeric. The margin between the plot, can be ajust for the 0 value}
 
-\item{leg_curv}{character}
+\item{leg_curv}{numeric. Values x and y that controls the length of the Uniform Intensity curve.}
 
-\item{color_bar}{character}
+\item{color_bar}{character. Colors for the fast, slow and area bars (only for an \code{\linkS4class{Interval}} object).}
 
 \item{\dots}{additional arguments themes parameters \code{\link[ggplot2]{theme}}}
 
-\item{Interval}{the class}
+\item{Interval}{The class of the object}
 
 \item{Category}{the class}
 

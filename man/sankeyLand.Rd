@@ -2,24 +2,24 @@
 % Please edit documentation in R/otherplots.R
 \name{sankeyLand}
 \alias{sankeyLand}
-\title{A sandkey plot for the land use land cover transition for the period analysed}
+\title{A sankey diagram}
 \usage{
 sankeyLand(dataset, legendtable, iterations = 0)
 }
 \arguments{
-\item{dataset}{Table of one step transition for a onestep sankey plot or a table multi step
-transition for a multistep sankey plot.}
+\item{dataset}{\code{<tibble>}. A table of the multi step transition (\code{lulc_Mulstistep})
+or one step transition (\code{lulc_OneStep}) from \code{\link{contingencyTable}}, for a a coresponding sankey diagram.}
 
-\item{legendtable}{A table contains the legend of the land use classes and his respective color}
+\item{legendtable}{\code{<tibble>}. A table (\code{lulc_Onestep}) contains the legend of the LUC category and his respective color.}
 
 \item{iterations}{numeric. Number of iterations in the diagramm layout for computation
-of the depth (y-position) of each node.}
+of the depth (y-position) of each node \code{\link[networkD3]{sankeyNetwork}}.}
 }
 \value{
-A land use land cover transition sankey plot for the period analysed
+A sankey diagram
 }
 \description{
-A sandkey plot for the land use land cover transition for the period analysed
+A sankey showing the LUC transition for the period analysed.
 }
 \seealso{
 \code{\link[networkD3]{sankeyNetwork}}

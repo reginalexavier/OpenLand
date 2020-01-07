@@ -1,8 +1,8 @@
-#' Rasters of Land Use and Land Cover of the São Lourenço River Basin (2002 - 2014)
+#' Land use and cover (LUC) rasters of the São Lourenço River Basin (2002 - 2014)
 #'
 #' A multi-layer raster (RasterStack) with five (5) RasterLayer objects
-#' represinting the years 2002, 2008, 2010, 2012 and 2014 respectively.
-#' These Raster* have everyone 11 classes of use, these classes are:
+#' representing LUC in the years of 2002, 2008, 2010, 2012 and 2014 respectively.
+#' Each Raster* has 11 LUC classes:
 #' \tabular{cclll}{
 #' \strong{Pixel Value} \tab \strong{Legend} \tab \strong{Class}
 #' \tab \strong{Use} \tab \strong{Details}  \cr
@@ -25,11 +25,11 @@
 #'
 #' @format An object of class \code{"RasterBrick"} with 5 layers:
 #' \itemize{
-#'   \item \strong{landscape_2002:} Land scape of the land use and land cover for the yeear 2002
-#'   \item \strong{landscape_2008:} Land scape of the land use and land cover for the yeear 2008
-#'   \item \strong{landscape_2010:} Land scape of the land use and land cover for the yeear 2010
-#'   \item \strong{landscape_2012:} Land scape of the land use and land cover for the yeear 2012
-#'   \item \strong{landscape_2014:} Land scape of the land use and land cover for the yeear 2014
+#'   \item \strong{landscape_2002:} LUC in 2002
+#'   \item \strong{landscape_2008:} LUC in 2008
+#'   \item \strong{landscape_2010:} LUC in 2010
+#'   \item \strong{landscape_2012:} LUC in 2012
+#'   \item \strong{landscape_2014:} LUC in 2014
 #'   }
 #'
 #' @keywords datasets
@@ -48,10 +48,10 @@
 
 
 
-#' Tables of Land Use and Land Cover of the São Lourenço River Basin (2002 - 2014)
+#' Tables of land use and cover (LUC) in the São Lourenço River Basin (2002 - 2014)
 #'
-#' A list containing five objects from \code{\link{contingenceTable}} funtion
-#' with the \code{\link{SaoLourencoBasin}} as input
+#' A list containing five objects created by the \code{\link{contingencyTable}} funtion
+#' with \code{\link{SaoLourencoBasin}} as input
 #' (\code{SL_2002_2014 <- contingenceTable(input_raster = SaoLourencoBasin, pixelresolution = 30)}).
 #'
 #'
@@ -61,31 +61,33 @@
 #'
 #' @format A data list with 5 objects:
 #' \describe{
-#'   \item{lulc_Multistep}{\code{<tibble>} A table of contingency between all step of time analysed, contains 8 columns:
+#'   \item{lulc_Multistep}{\code{<tibble>} Contingency table for all analysed time steps, containing 8 columns:
 #'   \enumerate{
-#'   \item Period: \code{<chr>} period between the years analyzed
-#'   \item From: \code{<int>} The pixel value from
-#'   \item To: \code{<int>} The pixel value to
-#'   \item km2: \code{<dbl>} The area of change in squared kilometer
-#'   \item QtPixel: \code{<int>} The change in quatity of pixel
-#'   \item Interval: \code{<int>} The interval in years between the period analyzed
-#'   \item yearFrom: \code{<int>} The year that the change come from
-#'   \item yearTo: \code{<int>} The year that the change go for
+#'   \item Period: \code{<chr>} The period \emph{[Yt, Yt+1]}.
+#'   \item From: \code{<int>} numerical code of a LUC category \emph{i}.
+#'   \item To: \code{<int>} numerical code of a LUC category \emph{j}.
+#'   \item km2: \code{<dbl>} Area in square kilometers that transited from the class category \emph{i}
+#'    to category \emph{j} in the period from \emph{Yt} to \emph{Yt+1}.
+#'   \item QtPixel: \code{<int>} Pixel count that transited from the classes category \emph{i}
+#'    to category \emph{j} in the period from \emph{Yt} to \emph{Yt+1}.
+#'   \item Interval: \code{<int>} Interval of years between the first and
+#'    the last year of the period \emph{[Yt, Yt+1]}.
+#'   \item yearFrom: \code{<int>} The year that the change comes from \emph{[Yt]}
+#'   \item yearTo: \code{<int>} The year that the change goes for \emph{[Yt+1]}
 #'   }}
-#'   \item{lulc_Onstep}{\code{<tibble>} A table of contingensy of the first and last year analysed with the same columns
-#'   as \code{lulc_Mulstistep} \code{tibble}}
-#'   \item{tb_legend}{\code{<tibble>} A table of the pixel value, their names and colors, contains 3 columns:
+#'   \item{lulc_Onstep}{\code{<tibble>} Contingency table for the entire analysed period \emph{[Yt1, YT]}, containing
+#'   8 columns identical with \code{lulc_Mulstistep}}.
+#'   \item{tb_legend}{\code{<tibble>} A table of the pixel value, his name and color containing 3 columns:
 #'   \enumerate{
-#'   \item classValue: \code{<int>} the pixel value of the classes of land use
-#'   \item className: \code{<fct>} The name or legend associated with a given pixel value
-#'   \item color: \code{<chr>} The color associate with the given pixel value
+#'   \item classValue: \code{<int>} the pixel value of the LUC class
+#'   \item className: \code{<fct>} randomly created string associated with a given pixel value of a LUC category
+#'   \item color: \code{<chr>} random color associated with the given pixel value of a LUC category.
 #'   }}
-#'   \item{totalArea}{\code{<tibble>} A table of two columns with the total area of study, contains 2 columns:
+#'   \item{totalArea}{\code{<tibble>} A table with the total area of the study area containing 2 columns:
 #'   \enumerate{
-#'   \item area_km2: \code{<dbl>} The total area of study in km2
-#'   \item QtPixel: \code{<int>} The total area of study in quantity of pixel
-#'   }}
-#'   \item{totalInterval}{\code{<int>} A number represinting the whole interval of time analysed}
+#'   \item area_km2: \code{<dbl>} The total area in square kilometers.
+#'   \item QtPixel: \code{<int>} The total area in pixel counts}}
+#'   \item{totalInterval}{\code{<int>} Total interval of the analysed time series in years}
 #'   }
 #'
 #' @keywords datasets

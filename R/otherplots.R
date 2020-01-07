@@ -4,16 +4,15 @@ utils::globalVariables(c("From", "To", "target", "km2", "Year",
 #' @include plotMethods.R
 NULL
 
-#' A barplot for the area of every point in time of the analysed period
+#' A barplot for the area of every time point of the analysed period
 #'
-#' @param dataset A table of the multi step transition
-#' @param legendtable A table contains the legend of the land use classes and his respective color
-#' @param title The title of the plot
-#' @param color A color list for the three types of chages
-#' @param fill Legend
-#' @param xlab character Label for the x axe
-#' @param ylab character Label for the y axe
-#' @param area_km2 boolean TRUE for km2 unit, FALSE for pixel unit
+#' @param dataset \code{<tibble>}. A table of the multi step transition (\code{lulc_Mulstistep}) from \code{\link{contingencyTable}}.
+#' @param legendtable \code{<tibble>}. A table (\code{lulc_Onestep}) contains the legend of the LUC category and his respective color.
+#' @param title \code{<chr>}. The title of the plot
+#' @param caption \code{<chr>}. The caption of the plot.
+#' @param xlab \code{<chr>}. Label for the x axis.
+#' @param ylab \code{<chr>}. Label for the y axis.
+#' @param area_km2 \code{<logical>}. If TRUE the change is computed in km2, if FALSE in pixel counts.
 #' @param \dots themes parameters \code{\link[ggplot2]{theme}}
 #'
 #'
@@ -29,10 +28,10 @@ barplotLand <-
   function(dataset,
            legendtable,
            title = "General Area in the interval (2002 - 2014)",
-           color = c(GC = "gray70", NG = "#006400", NL = "#EE2C2C"),
-           fill = "LULC Classes",
+           #color = c(GC = "gray70", NG = "#006400", NL = "#EE2C2C"),
+           caption = "LULC Classes",
            xlab = "Year",
-           ylab = expression(paste("Area ", Km ^ {2})),
+           ylab = expression(paste("Area ", km ^ {2})),
            area_km2 = TRUE, ...) {
 
 #    From <- To <- yearTo <- km2 <- yearFrom <- Year <- lulc <- area <- NULL
@@ -65,7 +64,7 @@ barplotLand <-
     ggplot(data = datanual, aes(as.character(Year), area)) +
       geom_bar(aes(fill = lulc), stat = "identity", position = "dodge") +
       scale_fill_manual(values = legendtable$color[order(legendtable$className)]) +
-      labs(fill = fill) +
+      labs(fill = caption) +
       xlab(xlab) +
       ylab(ylab) +
       ggtitle(title) +
@@ -79,12 +78,12 @@ barplotLand <-
 
 #' A circlize plot for the transition between two times point, one step.
 #'
-#' @param dataset A table of the one step transition
-#' @param legendtable A table contains the legend of the land use classes and his respective color
-#' @param legposition A list of `x` and `y` parameter position for the legend
-#' @param legtitle The title of the legen
-#' @param sectorcol The color of the extern sector containing the years
-#' @param area_km2 boolean TRUE for km2 unit, FALSE for pixel unit
+#' @param dataset \code{<tibble>}. A table of the one step transition (\code{lulc_OneStep}) from \code{\link{contingencyTable}}.
+#' @param legendtable \code{<tibble>}. A table (\code{lulc_Onestep}) contains the legend of the LUC category and his respective color.
+#' @param legposition \code{<numeric>}. A vector containing the `x` and `y` values for the position of the legend.
+#' @param legtitle \code{<character>}. The title of the legend.
+#' @param sectorcol \code{<character>}. The color of the extern sector containing the years.
+#' @param area_km2 \code{<logical>}. If TRUE the change is computed in km2, if FALSE in pixel counts.
 #'
 #' @return A Chord Diagram
 #' @export
@@ -253,17 +252,22 @@ chordDiagramLand <-
 
 
 
-#' A barplot for the Net Gain/Loss and Gross Changes between land use classes for the period analysed
+#' A Bar Plot
 #'
-#' @param dataset A table of multi step transition
-#' @param legendtable A table contains the legend of the land use classes and his respective color
-#' @param title character. The title of the plot (optional), use \code{NULL} for no title.
-#' @param xlab character. Label for the x axe
-#' @param ylab character. Label for the y axe
-#' @param changesLabel character. Labels for the three types of chages, the default is c(GC = "Gross chages", NG = "Net Gain", NL = "Net Loss")
-#' @param color character. Colors for the three types of chages
-#' @param area_km2 boolean. TRUE for km2 unit, FALSE for pixel unit
 #'
+#' A barplot showing the LUC evolution trough the years, it presents the Net Gain/Loss
+#' and Gross Changes between land use classes for the period analysed.
+#'
+#'
+#' @param dataset \code{<tibble>}. A table of the multi step transition (\code{lulc_Mulstistep}) from \code{\link{contingencyTable}}.
+#' @param legendtable \code{<tibble>}. A table (\code{lulc_Onestep}) contains the legend of the LUC category and his respective color.
+#' @param title \code{<character>}. The title of the plot (optional), use \code{NULL} for no title.
+#' @param xlab \code{<character>}. Label for the x axis
+#' @param ylab \code{<character>}. Label for the y axis
+#' @param changesLabel \code{<character>}. Labels for the three types of chages, the
+#'  defaults are c(GC = "Gross chages", NG = "Net Gain", NL = "Net Loss")
+#' @param color \code{<chr>}. A vector of the the three types of changes colors.
+#' @param area_km2  \code{<logical>}. If TRUE the change is computed in km2, if FALSE in pixel counts.
 #'
 #'
 #' @return A bar plot
@@ -271,7 +275,7 @@ chordDiagramLand <-
 #'
 #' @examples
 #' test1 <- demo_landscape(2000:2005)
-#' test2 <- contingenceTable(input_raster = test1, pixelresolution = 1)
+#' test2 <- contingencyTable(input_raster = test1, pixelresolution = 1)
 #' netgrossplot(dataset = test2$lulc_Multistep, legendtable = test2$tb_legend, area_km2 = FALSE)
 #'
 #'
@@ -344,18 +348,20 @@ netgrossplot <-
 
 
 
-#' A sandkey plot for the land use land cover transition for the period analysed
+#' A sankey diagram
 #'
-#' @param dataset Table of one step transition for a onestep sankey plot or a table multi step
-#' transition for a multistep sankey plot.
-#' @param legendtable A table contains the legend of the land use classes and his respective color
+#' A sankey showing the LUC transition for the period analysed.
+#'
+#' @param dataset \code{<tibble>}. A table of the multi step transition (\code{lulc_Mulstistep})
+#' or one step transition (\code{lulc_OneStep}) from \code{\link{contingencyTable}}, for a a coresponding sankey diagram.
+#' @param legendtable \code{<tibble>}. A table (\code{lulc_Onestep}) contains the legend of the LUC category and his respective color.
 #' @param iterations numeric. Number of iterations in the diagramm layout for computation
-#' of the depth (y-position) of each node.
+#' of the depth (y-position) of each node \code{\link[networkD3]{sankeyNetwork}}.
 #'
 #' @seealso \code{\link[networkD3]{sankeyNetwork}}
 #'
 #'
-#' @return A land use land cover transition sankey plot for the period analysed
+#' @return A sankey diagram
 #' @export
 #'
 #'

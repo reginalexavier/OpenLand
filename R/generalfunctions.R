@@ -1,11 +1,11 @@
 
 #' Summary of multiple parameters in a raster directory
 #'
-#' Comparring the extent of rasters
+#' Listing major charateristics of raster inputs
 #'
 #' @param path The path for a raster directory/list to be analysed
 #'
-#' @return Table with the parameters in columns
+#' @return Table with the raster parameters in columns
 #' @export
 #'
 #' @examples
@@ -54,11 +54,11 @@ summary_dir <- function(path) {
 }
 
 
-#' Quick summary of categorical raster raster
+#' Summary of major characteristics of a unique categorical raster
 #'
 #' @param path The path for the raster to be analysed
 #'
-#' @return A table containing in columns each pixel value and its quantity
+#' @return A table containing in columns the pixel counts for each pixel value
 #'
 #' @export
 #'
@@ -85,14 +85,14 @@ summary_map <- function(path) {
 
 
 
-#' Accumulate changes in a LULC time serie raster
+#' Accumulates changes in a LULC raster time series
 #'
-#' This function calculate the number of times a pixel have changed during the
-#' period analysed. It gives as return a raster with the number of change as pixel value
-#' and a table containing the percentage of every category/group of pixel value.
+#' This function calculates the number of times a pixel has changed during the
+#' analysed period. It returns a raster with the number of changes as pixel value
+#' and a table containing the areal percentage of every pixel value (number of chages).
 #'
 #'
-#' @param path list (of filenames or Raster* objects), RasterStack(\code{\link[raster]{brick}}) or
+#' @param path list. List of filenames, list of Raster* objects, RasterStack(\code{\link[raster]{brick}}) or
 #' RasterStack(\code{\link[raster]{stack}})
 #'
 #' @return Two objects, a raster layer and a table.

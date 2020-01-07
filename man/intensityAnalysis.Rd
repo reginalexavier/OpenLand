@@ -2,32 +2,32 @@
 % Please edit documentation in R/intensityAnalysis.R
 \name{intensityAnalysis}
 \alias{intensityAnalysis}
-\title{Perform the intensity analysis from a cross-tabulation matrices}
+\title{Performs the intensity analysis based on cross-tabulation matrices of each time step}
 \usage{
 intensityAnalysis(dataset, class_n, class_m, area_km2 = TRUE)
 }
 \arguments{
-\item{dataset}{list. The result object from \code{\link{contingenceTable}}.}
+\item{dataset}{list. The result object from \code{\link{contingencyTable}}.}
 
-\item{class_n}{character. the gaining category in the transition of interest \emph{n}.}
+\item{class_n}{character. The gaining category in the transition of interest (\emph{n}).}
 
-\item{class_m}{character. the losing category in the transition of interest \emph{m}.}
+\item{class_m}{character. The losing category in the transition of interest (\emph{m}).}
 
-\item{area_km2}{logical. Whether the change would be computed in km2 or quantity of pixel unit.}
+\item{area_km2}{logical. If TRUE the change is computed in km2, if FALSE in pixel counts.}
 }
 \value{
-Intensity objects including the levels tables and strationarity test tables
+Intensity object
 }
 \description{
-This function inplement the Intensity Analysis, a quantitative method to analyze
-maps of land categories from several points in time for a single site by
-considering cross-tabulation matrices, where one matrix summarizes the change
-in each time interval.
+This function inplements an Intensity Analysis (IA) according to Aldwaik & Pontius (2012), a quantitative method to analyze
+time series of land use and cover (LUC) maps.  For IA, a cross-tabulation matrix is composed for each LUC transition step
+in time.
 }
 \details{
-There are three levels of analysis, starting from general to more detailed levels, where each level
-exposes different types of information given the previous level of analysis
+IA includes three levels of analysis of LUC changes. Consecutive analysis levels detail hearby information
+given by the previous analysis level
 \cite{(Aldwaik and Pontius, 2012, 2013)}.
+
 
 \enumerate{
  \item The \emph{interval level} examines how the size and speed of change vary
@@ -39,28 +39,30 @@ transitions vary across the other categories that are available for that transit
   }
 
 
-At each level, the method tests for stationarity of patterns across time intervals.
+At each analysis level, the method tests for stationarity of patterns across time intervals.
 
-\bold{The function return a list with 6 objects:}
+\bold{The function returns a list with 6 objects:}
 \enumerate{
- \item lulc_table: \code{tibble}. A table of contingency between all step of time analysed, containing 6 columns:
+ \item lulc_table: \code{tibble}. Contingency table of LUC transitions at all analysed time steps, containing 6 columns:
    \enumerate{
-   \item Period:  \code{<fct>}. The period of change in the format \code{first year - last year}.
-   \item From: \code{<fct>}. The class in the first year.
-   \item To: \code{<fct>}. The class in the last year.
-   \item km2: \code{<dbl>}. The quantity in kilometer that transit from the classes \code{From}
-   to \code{To} in the period.
-   \item QtPixel: \code{<int>}. The quantity in number of pixel that transits from
-   the classes \code{From} to \code{To} in the period.
-   \item Interval: \code{<int>}. The number of time point between the first and the last year of the period.
+   \item Period:  \code{<fct>}. Evaluated period of transition in the format \code{year t - year t+1}.
+   \item From: \code{<fct>}. The class in year t.
+   \item To: \code{<fct>}. The class in year t+1.
+   \item km2: \code{<dbl>}. Area in square kilometers that transited from the classe \code{From}
+   to the classe \code{To} in the period.
+   \item QtPixel: \code{<int>}. Number of pixels that transited from
+   the classe \code{From} to the classe \code{To} in the period.
+   \item Interval: \code{<int>}. Interval in years of the evaluated period.
 
    }
 
- \item \emph{lv1_tbl}: An \code{\linkS4class{Interval}} object (containing the \emph{St} and \emph{U} values).
- \item \emph{category_lvlGain}: A \code{\linkS4class{Category}} object (gain with the \emph{Gtj} values).
- \item \emph{category_lvlLoss}: A \code{\linkS4class{Category}} object (loss with the \emph{Lti} values).
- \item \emph{transition_lvlGain_n}: A \code{\linkS4class{Transition}} object (gain in \emph{class n} with \emph{Rtin} and \emph{Wtn} values).
- \item \emph{transition_lvlLoss_m}: A \code{\linkS4class{Transition}} object (loss in \emph{class m} with \emph{Qtmj} and \emph{Vtm} values).
+ \item \emph{lv1_tbl}: An \code{\linkS4class{Interval}} object containing the \emph{St} and \emph{U} values.
+ \item \emph{category_lvlGain}: A \code{\linkS4class{Category}} object containing the gain of the LUC class in a period (\emph{Gtj}).
+ \item \emph{category_lvlLoss}: A \code{\linkS4class{Category}} object containing the loss of the LUC class in a period (\emph{Lti}).
+ \item \emph{transition_lvlGain_n}: A \code{\linkS4class{Transition}} object containing the annualized rate of gain in \emph{class n} (\emph{Rtin}) and
+ the respective Uniform Intensity (\emph{Wtn}).
+ \item \emph{transition_lvlLoss_m}: A \code{\linkS4class{Transition}} object containing the annualized rate of loss in \emph{class m} (\emph{Qtmj}) and
+ the respective Uniform Intensity (\emph{Vtm}).
 
   }
 }

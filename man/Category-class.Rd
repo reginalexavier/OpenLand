@@ -6,11 +6,11 @@
 \alias{Category}
 \title{Class Category}
 \description{
-A class for the Category level analysis result
+An S4 class for the Category level result of an Intensity analysis
 }
 \details{
 \bold{The slots \code{categoryData} and \code{categoryStationarity} can receive
-   tables for "Gain" or "Loss" in the format following format:}
+   tables for "Gain" or "Loss" in the following format:}
 \enumerate{
 
 \item Gain
@@ -20,20 +20,20 @@ A class for the Category level analysis result
  \item \code{categoryData}: \code{<tibble>}. A table containing 6 columns:
  \enumerate{
    \item Period: \code{<fct>}. The period \emph{[Yt, Yt+1]}.
-   \item To: \code{<fct>}. a category \emph{j}.
-   \item Interval: \code{<int>}. duration of the period \emph{[Yt, Yt+1]}.
-   \item GG_km2/GG_pixel: \code{<dbl>/<int>}. area of gross gain of category \emph{j} during \emph{[Yt, Yt+1]}.
-   \item Gtj: \code{<dbl>}. annual intensity of gross gain of category \emph{j} for time interval \emph{[Yt, Yt+1]}.
-   \item St: \code{<dbl>}. annual intensity of change for time interval \emph{[Yt, Yt+1]}.
+   \item To: \code{<fct>}. A LUC category \emph{j}.
+   \item Interval: \code{<int>}. Duration of the period \emph{[Yt, Yt+1]} in years.
+   \item GG_km2/GG_pixel: \code{<dbl>/<int>}. Area of gross gain of category \emph{j} during \emph{[Yt, Yt+1]}.
+   \item Gtj: \code{<dbl>}. Annual intensity of gross gain of category \emph{j} for time interval \emph{[Yt, Yt+1]}.
+   \item St: \code{<dbl>}. Annual intensity of change for time interval \emph{[Yt, Yt+1]}.
    }
- \item categoryStationarity:  \code{<tibble>}. A table of stationarity test over the gain of the classes in
-  in the Category level, containing 5 columns:
+ \item categoryStationarity:  \code{<tibble>}. A table with the results of a stationarity test of
+  the gain of the classes on the Category level, containing 5 columns:
  \enumerate{
-   \item To: \code{<fct>}. acategory \emph{j}.
-   \item gain: \code{<int>}. Number of time the class loss during time interval \emph{[Yt, Yt+1]}.
-   \item N: \code{<int>}. Number total of time of trasition to be considered as stationary (T).
+   \item To: \code{<fct>}. A category of interest \emph{j}.
+   \item gain: \code{<int>}. Number of times a class had gains during all time intervals \emph{[Yt, Yt+1]}.
+   \item N: \code{<int>}. Total number of evaluated time points (T).
    \item Stationarity: \code{<chr>}. \emph{Active Gain} or \emph{Dormant Gain}.
-   \item Test: \code{<chr>}. \emph{Y} for stationarity detected and \emph{N} when not.
+   \item Test: \code{<chr>}. \emph{Y} if stationarity was detected and \emph{N} if not.
    }
    }
 
@@ -44,20 +44,20 @@ A class for the Category level analysis result
  \item \code{categoryData}: \code{<tibble>}. A table containing 6 columns:
  \enumerate{
    \item Period: \code{<fct>}. The period \emph{[Yt, Yt+1]}.
-   \item From: \code{<fct>}. a category \emph{i}.
-   \item Interval: \code{<int>}. duration of the period \emph{[Yt, Yt+1]}.
-   \item GG_km2/GG_pixel: \code{<dbl>/<int>}. area of gross loss of category j during \emph{[Yt, Yt+1]}.
-   \item Lti: \code{<dbl>}. annual intensity of gross loss of category i for time interval \emph{[Yt, Yt+1]}.
-   \item STt: \code{<dbl>}. annual intensity of change for time interval \emph{[Yt, Yt+1]}.
+   \item From: \code{<fct>}. A LUC category \emph{i}.
+   \item Interval: \code{<int>}. Duration of the period \emph{[Yt, Yt+1]} in years.
+   \item GG_km2/GG_pixel: \code{<dbl>/<int>}. Area of gross loss of category \emph{i} during \emph{[Yt, Yt+1]}.
+   \item Lti: \code{<dbl>}. Annual intensity of gross loss of category \emph{i} for time interval \emph{[Yt, Yt+1]}.
+   \item STt: \code{<dbl>}. Annual intensity of change for time interval \emph{[Yt, Yt+1]}.
    }
   \item categoryStationarity: \code{<tibble>}. A table of stationarity test over the loss of the classes in
   in the Category level, containing 5 columns:
  \enumerate{
-   \item From: \code{<fct>}. acategory \emph{i}.
-   \item loss: \code{<int>}.  Number of time the class loss during time interval \emph{[Yt, Yt+1]}.
-   \item N: \code{<int>}. Number total of time of trasition to be considered as stationary (T).
+   \item From: \code{<fct>}. A category of interest \emph{i}.
+   \item loss: \code{<int>}. Number of times a class had losses during all time intervals \emph{[Yt, Yt+1]}.
+   \item N: \code{<int>}. Total number of evaluated time points (T).
    \item Stationarity: \code{<chr>}. \emph{Active Loss} or \emph{Dormant Loss}.
-   \item Test: \code{<chr>}. \emph{Y} for stationarity detected and \emph{N} when not.
+   \item Test: \code{<chr>}. \emph{Y} if stationarity was detected and \emph{N} if not.
    }
    }
 
@@ -66,13 +66,13 @@ A class for the Category level analysis result
 \section{Slots}{
 
 \describe{
-\item{\code{lookupcolor}}{character; The colors associate with the data with the legends as name’s attribute}
+\item{\code{lookupcolor}}{character. The colors associated with the LUC legend items}
 
-\item{\code{categoryData}}{tibble; A table of Category level's result (gain (\emph{Gtj}) or loss (\emph{Lti}) values)}
+\item{\code{categoryData}}{tibble. A table of Category level's results (gain (\emph{Gtj}) or loss (\emph{Lti}) values)}
 
-\item{\code{categoryStationarity}}{tibble; A table containing a stationarity test. A change
-is take as stationary only whether the intensities for all time intervals reside
-on one side of the uniform intensity, i.e, smaller or bigger than the uniform
+\item{\code{categoryStationarity}}{tibble. A table containing results of a stationarity test. A change
+is considered stationary only if the intensities for all time intervals reside
+on one side of the uniform intensity, i.e are smaller or bigger than the uniform
 rate over the whole period.}
 }}
 

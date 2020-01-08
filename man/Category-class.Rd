@@ -6,7 +6,7 @@
 \alias{Category}
 \title{Class Category}
 \description{
-An S4 class for the Category level result of an Intensity analysis
+A S4 class for the Category level result of an Intensity analysis
 }
 \details{
 \bold{The slots \code{categoryData} and \code{categoryStationarity} can receive

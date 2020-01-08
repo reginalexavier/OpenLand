@@ -1,7 +1,7 @@
 #'
 #' Class Interval
 #'
-#' An S4 class for the Interval level result of an Intensity analysis
+#' A S4 class for the Interval level result of an Intensity analysis
 #'
 #' @slot intervalData tibble. A table with the results of an Intensity analysis at the Interval level (\emph{St} and \emph{U} values)
 #'
@@ -44,7 +44,7 @@ setClass(
 
 #' Class Category
 #'
-#' An S4 class for the Category level result of an Intensity analysis
+#' A S4 class for the Category level result of an Intensity analysis
 #'
 #' @slot lookupcolor character. The colors associated with the LUC legend items
 #' @slot categoryData tibble. A table of Category level's results (gain (\emph{Gtj}) or loss (\emph{Lti}) values)
@@ -153,7 +153,7 @@ setClass(
 
 #' Class Transition
 #'
-#' An S4 class for the Transition level result of an Intensity analysis.
+#' A S4 class for the Transition level result of an Intensity analysis.
 #' Can be plotted with the plot method \code{\link{plot}}
 #'
 #' @slot lookupcolor character. The colors associated with the LUC legend items

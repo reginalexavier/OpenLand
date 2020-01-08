@@ -6,7 +6,7 @@
 \alias{Transition}
 \title{Class Transition}
 \description{
-An S4 class for the Transition level result of an Intensity analysis.
+A S4 class for the Transition level result of an Intensity analysis.
 Can be plotted with the plot method \code{\link{plot}}
 }
 \details{

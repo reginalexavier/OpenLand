@@ -6,7 +6,7 @@
 \alias{Interval}
 \title{Class Interval}
 \description{
-An S4 class for the Interval level result of an Intensity analysis
+A S4 class for the Interval level result of an Intensity analysis
 }
 \details{
 \bold{The slot \code{intervalData} receives a table containing 4 columns in the following format:}

@@ -9,7 +9,7 @@
 A S4 class for the Interval level result of an Intensity analysis
 }
 \details{
-\bold{The slot \code{intervalData} receives a table containing 4 columns in the following format:}
+The slot \code{intervalData} receives a table containing 4 columns in the following format:
    \enumerate{
    \item Period: \code{<fct>}. The period of interest \emph{[Yt, Yt+1]}.
    \item PercentChange: \code{<dbl>}. Changed area on the Interval level (%).

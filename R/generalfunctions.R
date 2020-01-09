@@ -89,7 +89,7 @@ summary_map <- function(path) {
 #'
 #' This function calculates the number of times a pixel has changed during the
 #' analysed period. It returns a raster with the number of changes as pixel value
-#' and a table containing the areal percentage of every pixel value (number of chages).
+#' and a table containing the areal percentage of every pixel value (number of changes).
 #'
 #'
 #' @param path list. List of filenames, list of Raster* objects, RasterStack(\code{\link[raster]{brick}}) or

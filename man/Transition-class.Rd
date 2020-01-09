@@ -10,8 +10,8 @@ A S4 class for the Transition level result of an Intensity analysis.
 Can be plotted with the plot method \code{\link{plot}}
 }
 \details{
-\bold{The slots \code{transitionData} and \code{transitionStationarity} can receive
-   tables for "Gain of class n" or "Loss of class m" in the following format:}
+The slots \code{transitionData} and \code{transitionStationarity} can receive
+   tables for "Gain of class n" or "Loss of class m" in the following format:
 \enumerate{
 
 \item Gain of class n:

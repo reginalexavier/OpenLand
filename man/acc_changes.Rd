@@ -16,7 +16,7 @@ Two objects, a raster layer and a table.
 \description{
 This function calculates the number of times a pixel has changed during the
 analysed period. It returns a raster with the number of changes as pixel value
-and a table containing the areal percentage of every pixel value (number of chages).
+and a table containing the areal percentage of every pixel value (number of changes).
 }
 \examples{
 test <- demo_landscape(2000:2005, res = 1, prob = c(0.05, 0.3, 0.05, 0.4, 0.2))

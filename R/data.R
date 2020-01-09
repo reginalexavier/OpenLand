@@ -6,17 +6,17 @@
 #' \tabular{cclll}{
 #' \strong{Pixel Value} \tab \strong{Legend} \tab \strong{Class}
 #' \tab \strong{Use} \tab \strong{Details}  \cr
-#' 2        \tab Ap     \tab Anthropic \tab Anthropic Use \tab Pastagem    \cr
-#' 3        \tab FF     \tab Natural   \tab NA            \tab Formações Florestais \cr
-#' 4        \tab SA     \tab Natural   \tab NA            \tab Savana Arborizada (SA - Cerrado)  \cr
-#' 5        \tab SG     \tab Natural   \tab NA            \tab Savana Gramínea (SG - Campo) \cr
-#' 7        \tab aa     \tab Anthropic \tab NA            \tab Alteração Antrópica \cr
-#' 8        \tab SF     \tab Natural   \tab NA            \tab Savana Florestada (SF - Cerradão) \cr
-#' 9        \tab Agua   \tab Natural   \tab NA            \tab Rios, córregos, corixos, vazantes, baías e salinas   \cr
-#' 10       \tab Iu     \tab Anthropic \tab Anthropic Use \tab Influencia Urbana   \cr
-#' 11       \tab Ac     \tab Anthropic \tab Anthropic Use \tab Agricultura           \cr
-#' 12       \tab R      \tab Anthropic \tab Anthropic Use \tab Reflorestamento   \cr
-#' 13       \tab Im     \tab Anthropic \tab Anthropic Use \tab Degradação por Mineração
+#' 2        \tab Ap     \tab Anthropic \tab Anthropic Use \tab Pasture    \cr
+#' 3        \tab FF     \tab Natural   \tab NA            \tab Forest \cr
+#' 4        \tab SA     \tab Natural   \tab NA            \tab Park Savannah   \cr
+#' 5        \tab SG     \tab Natural   \tab NA            \tab Gramineous Savannah \cr
+#' 7        \tab aa     \tab Anthropic \tab NA            \tab Anthropized Vegetation  \cr
+#' 8        \tab SF     \tab Natural   \tab NA            \tab Woooded Savannah          \cr
+#' 9        \tab Agua   \tab Natural   \tab NA            \tab Water body     \cr
+#' 10       \tab Iu     \tab Anthropic \tab Anthropic Use \tab Urban                      \cr
+#' 11       \tab Ac     \tab Anthropic \tab Anthropic Use \tab Crop farming                \cr
+#' 12       \tab R      \tab Anthropic \tab Anthropic Use \tab Reforestation           \cr
+#' 13       \tab Im     \tab Anthropic \tab Anthropic Use \tab Mining
 #' }
 #'
 #' @docType data

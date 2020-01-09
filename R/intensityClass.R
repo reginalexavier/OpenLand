@@ -5,7 +5,7 @@
 #'
 #' @slot intervalData tibble. A table with the results of an Intensity analysis at the Interval level (\emph{St} and \emph{U} values)
 #'
-#' @details \bold{The slot \code{intervalData} receives a table containing 4 columns in the following format:}
+#' @details The slot \code{intervalData} receives a table containing 4 columns in the following format:
 #'    \enumerate{
 #'    \item Period: \code{<fct>}. The period of interest \emph{[Yt, Yt+1]}.
 #'    \item PercentChange: \code{<dbl>}. Changed area on the Interval level (%).
@@ -53,8 +53,8 @@ setClass(
 #'    on one side of the uniform intensity, i.e are smaller or bigger than the uniform
 #'    rate over the whole period.
 #'
-#' @details \bold{The slots \code{categoryData} and \code{categoryStationarity} can receive
-#'    tables for "Gain" or "Loss" in the following format:}
+#' @details The slots \code{categoryData} and \code{categoryStationarity} can receive
+#'    tables for "Gain" or "Loss" in the following format:
 #' \enumerate{
 #'
 #' \item Gain
@@ -166,8 +166,8 @@ setClass(
 #'
 #'
 #'
-#' @details \bold{The slots \code{transitionData} and \code{transitionStationarity} can receive
-#'    tables for "Gain of class n" or "Loss of class m" in the following format:}
+#' @details The slots \code{transitionData} and \code{transitionStationarity} can receive
+#'    tables for "Gain of class n" or "Loss of class m" in the following format:
 #' \enumerate{
 #'
 #' \item Gain of class n:

@@ -9,8 +9,8 @@
 A S4 class for the Category level result of an Intensity analysis
 }
 \details{
-\bold{The slots \code{categoryData} and \code{categoryStationarity} can receive
-   tables for "Gain" or "Loss" in the following format:}
+The slots \code{categoryData} and \code{categoryStationarity} can receive
+   tables for "Gain" or "Loss" in the following format:
 \enumerate{
 
 \item Gain

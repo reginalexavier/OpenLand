@@ -361,10 +361,10 @@ Plotting the map with the `tmap` function:
 #     labels.rot = c(0, 90)
 #   ) +
 #   tmap::tm_layout(inner.margins = c(0.02, 0.02, 0.02, 0.02))
-# 
-# 
-# 
-# 
+#
+#
+#
+#
 # tmap::tmap_save(acc_map,
 #                 filename = "vignettes/acc_mymap.png",
 #                 width = 7,

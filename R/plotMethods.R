@@ -81,8 +81,8 @@ setMethod(
         aes(
           x = length(unique(dataset[[1]])) / 2,
           y = dataset[[4]],
-          xend = (length(unique(dataset[[1]])) / 2) + leg_curv[[1]],
-          yend = dataset[[4]] + leg_curv[[2]]
+          xend = (length(unique(dataset[[1]])) / 2) + leg_curv[[2]],
+          yend = dataset[[4]] + leg_curv[[1]]
         ),
         size = .6,
         curvature = .1,
@@ -91,8 +91,8 @@ setMethod(
       geom_text(
         aes(x = (length(unique(
           dataset[[1]]
-        )) / 2) + leg_curv[[1]],
-        y = dataset[[4]] + leg_curv[[2]]),
+        )) / 2) + leg_curv[[2]],
+        y = dataset[[4]] + leg_curv[[1]]),
         label = paste(round(dataset[[4]], 2), "%"),
         colour = "black",
         fontface = "plain",
@@ -228,8 +228,8 @@ setMethod(
         aes(
           x = length(unique(dataset[[2]])) / 2,
           y = dataset[[6]],
-          xend = (length(unique(dataset[[2]])) / 2) + leg_curv[[1]],
-          yend = dataset[[6]] + leg_curv[[2]]
+          xend = (length(unique(dataset[[2]])) / 2) + leg_curv[[2]],
+          yend = dataset[[6]] + leg_curv[[1]]
         ),
         curvature = .1,
         arrow = arrow(length = unit(2, "mm"), ends = "first")
@@ -238,8 +238,8 @@ setMethod(
       geom_text(
         aes(x = (length(unique(
           dataset[[2]]
-        )) / 2) + leg_curv[[1]],
-        y = dataset[[6]] + leg_curv[[2]]),
+        )) / 2) + leg_curv[[2]],
+        y = dataset[[6]] + leg_curv[[1]]),
         label = paste(round(dataset[[6]], 2), "%"),
         colour = "black",
         fontface = "bold",
@@ -382,8 +382,8 @@ setMethod(
         aes(
           x = length(unique(dataset[[2]])) / 2,
           y = dataset[[7]],
-          xend = (length(unique(dataset[[2]])) / 2) + leg_curv[[1]],
-          yend = dataset[[7]] + leg_curv[[2]]
+          xend = (length(unique(dataset[[2]])) / 2) + leg_curv[[2]],
+          yend = dataset[[7]] + leg_curv[[1]]
         ),
         curvature = .1,
         arrow = arrow(length = unit(2, "mm"), ends = "first")
@@ -392,8 +392,8 @@ setMethod(
       geom_text(
         aes(x = (length(unique(
           dataset[[2]]
-        )) / 2) + leg_curv[[1]],
-        y = dataset[[7]] + leg_curv[[2]]),
+        )) / 2) + leg_curv[[2]],
+        y = dataset[[7]] + leg_curv[[1]]),
         label = paste(round(dataset[[7]], 2), "%"),
         colour = "black",
         fontface = "bold",

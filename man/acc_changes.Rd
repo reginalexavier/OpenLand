@@ -2,21 +2,21 @@
 % Please edit documentation in R/generalfunctions.R
 \name{acc_changes}
 \alias{acc_changes}
-\title{Accumulate changes in a LULC time serie raster}
+\title{Accumulates changes in a LULC raster time series}
 \usage{
 acc_changes(path)
 }
 \arguments{
-\item{path}{list (of filenames or Raster* objects), RasterStack(\code{\link[raster]{brick}}) or
+\item{path}{list. List of filenames, list of Raster* objects, RasterStack(\code{\link[raster]{brick}}) or
 RasterStack(\code{\link[raster]{stack}})}
 }
 \value{
 Two objects, a raster layer and a table.
 }
 \description{
-This function calculate the number of times a pixel have changed during the
-period analysed. It gives as return a raster with the number of change as pixel value
-and a table containing the percentage of every category/group of pixel value.
+This function calculates the number of times a pixel has changed during the
+analysed period. It returns a raster with the number of changes as pixel value
+and a table containing the areal percentage of every pixel value (number of changes).
 }
 \examples{
 test <- demo_landscape(2000:2005, res = 1, prob = c(0.05, 0.3, 0.05, 0.4, 0.2))

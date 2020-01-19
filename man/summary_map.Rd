@@ -2,7 +2,7 @@
 % Please edit documentation in R/generalfunctions.R
 \name{summary_map}
 \alias{summary_map}
-\title{Quick summary of categorical raster raster}
+\title{Summary of major characteristics of a unique categorical raster}
 \usage{
 summary_map(path)
 }
@@ -10,10 +10,10 @@ summary_map(path)
 \item{path}{The path for the raster to be analysed}
 }
 \value{
-A table containing in columns each pixel value and its quantity
+A table containing in columns the pixel counts for each pixel value
 }
 \description{
-Quick summary of categorical raster raster
+Summary of major characteristics of a unique categorical raster
 }
 \examples{
 

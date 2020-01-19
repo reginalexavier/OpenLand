@@ -28,7 +28,7 @@
 #' @import dplyr
 #' @return list
 #' @export
-#'
+#' @keywords internal
 #' @examples
 #' demo_landscape(2000:2005, res = 1)
 

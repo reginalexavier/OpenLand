@@ -6,21 +6,21 @@
 \alias{Interval}
 \title{Class Interval}
 \description{
-An S4 class for the Interval level analysis result
+A S4 class for the Interval level result of an Intensity analysis
 }
 \details{
-\bold{The slot \code{intervalData} receives a table containing 4 columns in the following format:}
+The slot \code{intervalData} receives a table containing 4 columns in the following format:
    \enumerate{
-   \item Period: \code{<fct>}. The period \emph{[Yt, Yt+1]}.
-   \item PercentChange: \code{<dbl>}. Interval Change Area (percent of map).
-   \item St: \code{<dbl>}. annual intensity of change for time
-   interval [Yt, Yt+1].
-   \item U: \code{<dbl>}. value of uniform line for time intensity analysis.
+   \item Period: \code{<fct>}. The period of interest \emph{[Yt, Yt+1]}.
+   \item PercentChange: \code{<dbl>}. Changed area on the Interval level (%).
+   \item St: \code{<dbl>}. Annual intensity of change for a time
+   period [Yt, Yt+1].
+   \item U: \code{<dbl>}. Uniform intensity for a LUC class change in a time period of interest.
    }
 }
 \section{Slots}{
 
 \describe{
-\item{\code{intervalData}}{tibble; A table of Interval level's result (\emph{St} and \emph{U} values)}
+\item{\code{intervalData}}{tibble. A table with the results of an Intensity analysis at the Interval level (\emph{St} and \emph{U} values)}
 }}
 

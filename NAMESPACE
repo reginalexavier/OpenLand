@@ -3,7 +3,7 @@
 export(acc_changes)
 export(barplotLand)
 export(chordDiagramLand)
-export(contingenceTable)
+export(contingencyTable)
 export(demo_landscape)
 export(intensityAnalysis)
 export(netgrossplot)

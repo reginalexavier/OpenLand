@@ -5,12 +5,12 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Quick intro for OpenLand Package • OpenLand</title>
+<title>Quick introduction to the OpenLand package • OpenLand</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script><meta property="og:title" content="Quick intro for OpenLand Package">
+<script src="../pkgdown.js"></script><meta property="og:title" content="Quick introduction to the OpenLand package">
 <meta property="og:description" content="">
 <meta name="twitter:card" content="summary">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
@@ -54,7 +54,7 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="../articles/openland_vignette.html">Quick intro for OpenLand Package</a>
+      <a href="../articles/openland_vignette.html">Quick introduction to the OpenLand package</a>
     </li>
   </ul>
 </li>
@@ -79,7 +79,7 @@
       </header><script src="openland_vignette_files/htmlwidgets-1.5.1/htmlwidgets.js"></script><script src="openland_vignette_files/d3-4.5.0/d3.min.js"></script><script src="openland_vignette_files/sankey-1/sankey.js"></script><script src="openland_vignette_files/sankeyNetwork-binding-0.4/sankeyNetwork.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1>Quick intro for OpenLand Package</h1>
+      <h1>Quick introduction to the OpenLand package</h1>
             
       
       <small class="dont-index">Source: <a href="https://github.com/tredgi/OpenLand/blob/master/vignettes/openland_vignette.Rmd"><code>vignettes/openland_vignette.Rmd</code></a></small>
@@ -94,23 +94,22 @@ body {
 text-align: justify}
 </style>
 <hr>
-<p><strong>This is a Vignette on how to use the OpenLand package into Land Use and Land Cover (LULC) data manipulation and producing visualizations.</strong></p>
+<p><strong>This is a Vignette on how to use the OpenLand package for exploratory analysis of Land Use and Cover (LUC) time series.</strong></p>
 <div id="description-of-the-tool" class="section level2">
 <h2 class="hasAnchor">
 <a href="#description-of-the-tool" class="anchor"></a>Description of the tool</h2>
-<p>OpenLand is an open-source R package for the analysis of land use and land cover time series. It includes support for loading spatiotemporal data <code>raster map</code>; computing of net change and gross changes in a given interval; performing a complete intensity analysis based on <span class="citation">(Aldwaik and Pontius 2012)</span>. It provides methods for visualizations of land use and land cover change like the outcomes of intensity analysis, as other graphs like sankey diagram (one-step or multistep) and chord diagram displaying the inter-relationships between the land uses.</p>
+<p>OpenLand is an open-source R package for the analysis of land use and cover (LUC) time series. It includes support for consistency check and loading spatiotemporal raster data and synthetized spatial plotting. Several LUC change (LUCC) metrics in regular or irregular time intervals can be extracted and visualized through one- and multistep sankey and chord diagrams. A complete intensity analysis acording to <span class="citation">(Aldwaik and Pontius 2012)</span> is implemented, including tools for the generation of standardized multilevel output graphics.</p>
 </div>
-<div id="são-lourenço-river-basin-case-study" class="section level2">
+<div id="são-lourenço-river-basin-example-dataset" class="section level2">
 <h2 class="hasAnchor">
-<a href="#s%C3%A3o-louren%C3%A7o-river-basin-case-study" class="anchor"></a>São Lourenço river Basin Case Study</h2>
-<p>For the illustrative case of study, we’re going to use the map (shape file) from the 4Th edition of the <a href="https://www.embrapa.br/pantanal/bacia-do-alto-paraguai">Monitoring of Changes in Land cover and Land Use in the Upper Paraguay River Basin - Brazilian portion - Review Period: 2012 to 2014</a> <span class="citation">(Embrapa Pantanal, Instituto SOS Pantanal, and WWF-Brasil 2015)</span>, which covers specifically the years (2002, 2008, 2010, 2012 and 2014).</p>
-<p>The study area of this research is the São Lourenço river basin, it is located in the southeast of Mato Grosso State, extending over an area of approximately 22,418 km<sup>2</sup> and has experienced <del>significant</del> changes (12%) in the LULC during the [2002 - 2014]’s period <del>last decades</del>, including deforestation and intensification of existing agricultural uses.</p>
-<p>The shape file was transformed into rasters and then saved as a 5-layers <code>RasterStack</code>, included as data in the OpenLand package as <code>SaoLourencoBasin</code> (for further details over this object, run <code><a href="https://rdrr.io/r/utils/help.html">help("SaoLourencoBasin")</a></code> or <code><a href="../reference/SaoLourencoBasin.html">?SaoLourencoBasin</a></code> in the console).</p>
-<div id="the-input-data" class="section level3">
+
+<a href="#s%C3%A3o-louren%C3%A7o-river-basin-example-dataset" class="anchor"></a>São Lourenço river Basin example dataset</h2>
+<p>The OpenLand functionality is illustrated for a LUC dataset of São Lourenço river basin, a major Pantanal wetland contribution area as provided by the 4th edition of the <a href="https://www.embrapa.br/pantanal/bacia-do-alto-paraguai">Monitoring of Changes in Land cover and Land Use in the Upper Paraguay River Basin - Brazilian portion - Review Period: 2012 to 2014</a> <span class="citation">(Embrapa Pantanal, Instituto SOS Pantanal, and WWF-Brasil 2015)</span>. The time series is composed by five LUC maps (2002, 2008, 2010, 2012 and 2014). The study area of approximately 22,400 km<sup>2</sup> is located in the Cerrado savannah biom in the southeast of the Brazilian state of Mato Grosso, which has experienced a LUCC of about 12% of its extension during the 12-years period, including deforestation and intensification of existing agricultural uses. For processing in the OpenLand package, the original multi-year shape file was transformed into rasters and then saved as a 5-layers <code>RasterStack</code>, which is included in the OpenLand package as <code>SaoLourencoBasin</code>. For further details over this object, run <code><a href="https://rdrr.io/r/utils/help.html">help("SaoLourencoBasin")</a></code> or <code><a href="../reference/SaoLourencoBasin.html">?SaoLourencoBasin</a></code> in the console.</p>
+<div id="input-data-constraints" class="section level3">
+
 <h3 class="hasAnchor">
-<a href="#the-input-data" class="anchor"></a>The input data</h3>
-<p>The first function used to extract the data is the <code>contingencyTable()</code>, this function take a list of raster layer (<code>RasterBrick</code>, <code>RasterStack</code> or a path to a folder containing the rasters). The name of the rasters must be in the format (“some_text” <code><a href="https://rdrr.io/r/base/Arithmetic.html">+</a></code> “underscore” <code><a href="https://rdrr.io/r/base/Arithmetic.html">+</a></code> “the_year”) like “landscape_2019”.</p>
-<p>In our example we have the <code>SaoLourencoBasin</code> RasterStack, that can be seeing from running <code><a href="https://rdrr.io/r/utils/data.html">data(SaoLourencoBasin)</a></code> as following:</p>
+<a href="#input-data-constraints" class="anchor"></a>Input data constraints</h3>
+<p>The function <code>contingencyTable()</code> for data consistency check and extraction demands as input a list of raster layers (<code>RasterBrick</code>, <code>RasterStack</code> or a path to a folder containing the rasters). The name of the rasters must be in the format (“some_text” <code><a href="https://rdrr.io/r/base/Arithmetic.html">+</a></code> “underscore” <code><a href="https://rdrr.io/r/base/Arithmetic.html">+</a></code> “the_year”) like “landscape_2019”. In our example we included the <code>SaoLourencoBasin</code> RasterStack, which parameters can be explored by running <code><a href="https://rdrr.io/r/utils/data.html">data(SaoLourencoBasin)</a></code>:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="co">## First we load the OpenLand package</span></a>
 <a class="sourceLine" id="cb1-2" title="2"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(OpenLand)</a>
 <a class="sourceLine" id="cb1-3" title="3"></a>
@@ -128,12 +127,12 @@ text-align: justify}
 <a class="sourceLine" id="cb1-15" title="15"><span class="co">#&gt; min values :              2,              2,              2,              2,              2 </span></a>
 <a class="sourceLine" id="cb1-16" title="16"><span class="co">#&gt; max values :             13,             13,             13,             13,             13</span></a></code></pre></div>
 </div>
-<div id="extracting-the-data-from-the-raster-series" class="section level3">
+<div id="extracting-the-data-from-raster-time-series" class="section level3">
 <h3 class="hasAnchor">
-<a href="#extracting-the-data-from-the-raster-series" class="anchor"></a>Extracting the data from the raster series</h3>
-<p>In this step we have to extract the values from our rasters and save them in tables for next steps of analysis. The function in <code>OpenLand</code> that compute that is the <code>contingencyTable()</code>. This function returns 5 objects: lulc_Multistep, lulc_Onestep, tb_legend, totalArea, totalInterval.</p>
-<p>The first two objects are tables of contingency, the first one (<strong>lulc_Multistep</strong>) takes into account all the points in time and the second (<strong>lulc_Onestep</strong>) only the first year and the last year of the series. The third object (<strong>tb_legend</strong>) is a table containing the class name associate with every pixel value and a color to be associate with <em>(important for the plots)</em>. The values in class and color are have been created aleatory by <code>contingencyTable()</code> function. These values must be edited to the real values corresponding the data to be analysed. The fourth object (<strong>totalArea</strong>) is a table containing the total area of study in km<sup>2</sup> and in pixel unit and the fifth (<strong>totalInterval</strong>) is the total interval between the first year (Y<sub>t=1</sub>) and the last year(Y<sub>T</sub>) in year unit.</p>
-<p>Here a prototype of the contingency table created by the <code>contingencyTable</code> function:</p>
+<a href="#extracting-the-data-from-raster-time-series" class="anchor"></a>Extracting the data from raster time series</h3>
+<p>After data extraction <code>contingencyTable()</code> saves multiple grid information in tables for the next processing steps. The function returns 5 objects: lulc_Multistep, lulc_Onestep, tb_legend, totalArea, totalInterval.</p>
+<p>The first two objects are contingency tables. The first one (<strong>lulc_Multistep</strong>) takes into account grid cells of the entire time series, whereas the second (<strong>lulc_Onestep</strong>) calculates LUC transitions only between the first and last year of the series. The third object (<strong>tb_legend</strong>) is a table containing the class name associated with pixel values and and a respective color used for plotting. Class values and color are created aleatorily by <code>contingencyTable()</code>. Their values must be edited to produce meaningful plot legends and color schemes. The fourth object (<strong>totalArea</strong>) is a table containing the extension of the study area in km<sup>2</sup> and in pixel units. The fifth table (<strong>totalInterval</strong>) stores the range of years between the first (Y<sub>t=1</sub>) and the last year(Y<sub>T</sub>) of the series.</p>
+<p>Fields, their format, description and labelling of a table created by the <code>contingencyTable</code> are given in the following:</p>
 <table class="table">
 <colgroup>
 <col width="14%">
@@ -197,10 +196,8 @@ text-align: justify}
 </tr>
 </tbody>
 </table>
-<blockquote>
-<p>For the second table, the Y<sub><em>t+1</em></sub> terms are repced by Y<sub><em>T</em></sub>, where T is the number of time points, i.e., Y<sub><em>T</em></sub> is the last year of the series.</p>
-</blockquote>
-<p>For our study area running the function <code><a href="../reference/contingenceTable.html">contingenceTable(input_raster = SaoLourencoBasin, pixelresolution = 30)</a></code>, we have this returns:</p>
+<p>In the second table, the Y<sub><em>t+1</em></sub> terms are replaced by Y<sub><em>T</em></sub>, where T is the number of time steps, i.e., Y<sub><em>T</em></sub> is the last year of the series.</p>
+<p>For our study area, <code><a href="../reference/contingenceTable.html">contingenceTable(input_raster = SaoLourencoBasin, pixelresolution = 30)</a></code> returns the following outputs:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1"></a>
 <a class="sourceLine" id="cb2-2" title="2"><span class="co"># SL_2002_2014 &lt;- contingenceTable(input_raster = SaoLourencoBasin, pixelresolution = 30)</span></a>
 <a class="sourceLine" id="cb2-3" title="3"></a>
@@ -261,10 +258,11 @@ text-align: justify}
 <a class="sourceLine" id="cb2-58" title="58"><span class="co">#&gt; </span></a>
 <a class="sourceLine" id="cb2-59" title="59"><span class="co">#&gt; $totalInterval</span></a>
 <a class="sourceLine" id="cb2-60" title="60"><span class="co">#&gt; [1] 12</span></a></code></pre></div>
-<div id="editing-the-values-in-classname-and-color-columns" class="section level4">
-<h4 class="hasAnchor">
-<a href="#editing-the-values-in-classname-and-color-columns" class="anchor"></a>Editing the values in <code>className</code> and <code>color</code> columns</h4>
-<p>As mentioned before, the <strong>tb_legend</strong> object must be edited with the real class name and colors associate with everyone of the class value. In our case the classes names and colors are based on <span class="citation">Instituto SOS Pantanal and WWF-Brasil (2015)</span> <a href="https://www.embrapa.br/documents/1354999/1529097/BAP+-+Mapeamento+da+Bacia+do+Alto+Paraguai+-+estudo+completo/e66e3afb-2334-4511-96a0-af5642a56283">(acces document here, page 17)</a>.</p>
+</div>
+<div id="editing-the-values-in-the-classname-and-color-columns" class="section level3">
+<h3 class="hasAnchor">
+<a href="#editing-the-values-in-the-classname-and-color-columns" class="anchor"></a>Editing the values in the <code>className</code> and <code>color</code> columns</h3>
+<p>As mentioned before, the <strong>tb_legend</strong> object must be edited with the real class name and colors associated with the class values. In our case, the classes names and colors are based on the conventions given by <span class="citation">Instituto SOS Pantanal and WWF-Brasil (2015)</span> <a href="https://www.embrapa.br/documents/1354999/1529097/BAP+-+Mapeamento+da+Bacia+do+Alto+Paraguai+-+estudo+completo/e66e3afb-2334-4511-96a0-af5642a56283">(access document here, page 17)</a>.</p>
 <table class="table">
 <thead><tr class="header">
 <th align="left">Pixel Value</th>
@@ -393,30 +391,27 @@ text-align: justify}
 <a class="sourceLine" id="cb3-26" title="26"><span class="co">#&gt;  9         11 Ac        #FFA54F</span></a>
 <a class="sourceLine" id="cb3-27" title="27"><span class="co">#&gt; 10         12 R         #68228B</span></a>
 <a class="sourceLine" id="cb3-28" title="28"><span class="co">#&gt; 11         13 Im        #636363</span></a></code></pre></div>
-<blockquote>
-<p>At this point one can choose to run the Intensity Analysis or creating some representations provided by the <code>OpenLand</code> package like sankey diagram with <code><a href="../reference/sankeyLand.html">sankeyLand()</a></code> function, a chord diagram with <code><a href="../reference/chordDiagramLand.html">chordDiagramLand()</a></code> or a bar plot showing the evolution trough the years analysed with <code><a href="../reference/barplotLand.html">barplotLand()</a></code> since they don’t depend on the intensity function returns.</p>
-</blockquote>
-</div>
+<p>At this point, one can choose to run the Intensity Analysis or to create a series of non-spatial representations of LUCC provided by the <code>OpenLand</code> package, such like sankey diagrams with the <code><a href="../reference/sankeyLand.html">sankeyLand()</a></code> function, chord diagrams using <code><a href="../reference/chordDiagramLand.html">chordDiagramLand()</a></code> or bar plots showing LUC evolution trough the years using <code><a href="../reference/barplotLand.html">barplotLand()</a></code>, since they do not depend on the output of Intensity Analysis.</p>
 </div>
 </div>
 <div id="intensity-analysis" class="section level2">
 <h2 class="hasAnchor">
 <a href="#intensity-analysis" class="anchor"></a>Intensity Analysis</h2>
-<p>The intensity analysis is a quantitative method to analyze maps of land categories from several points in time for a single site by considering cross-tabulation matrices, where one matrix summarizes the change in each time interval. There are three levels of analysis, starting from general to more detailed levels, where each level exposes different types of information given the previous level of analysis. First, the <strong>interval level</strong> examines how the size and speed of change vary across time intervals. Second, the <strong>category level</strong> examines how the size and intensity of gross losses and gross gains in each category vary across categories for each time interval. Third, the <strong>transition level</strong> examines how the size and intensity of a category’s transitions vary across the other categories that are available for that transition. At each level, the method tests for stationarity of patterns across time intervals <span class="citation">(Aldwaik and Pontius 2012)</span>.</p>
-<p>Within the OpenLand package we have created a function <code><a href="../reference/intensityanalysis.html">intensityAnalysis()</a></code> that compute the three levels of analysis. It requires the object returned by the <code><a href="../reference/contingenceTable.html">contingenceTable()</a></code> function, and the categories <code>n</code> and <code>m</code> chosen by the user.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1">testSL &lt;-<span class="st"> </span><span class="kw"><a href="../reference/intensityanalysis.html">intensityAnalysis</a></span>(<span class="dt">dataset =</span> SL_<span class="dv">2002</span>_<span class="dv">2014</span>,</a>
+
+<p>Intensity Analysis (IA) is a quantitative method to analyze LUC maps at several time steps, using cross-tabulation matrices, where each matrix summarizes the LUC change at each time interval. IA evaluates, in three levels the deviation between observed change intensity and hypothesized uniform change intensity. Hereby each level details information given by the previous analysis level. First, the <strong>interval level</strong> indicates how size and rate of change varies across time intervals. Second, the <strong>category level</strong> examines for each time interval how the size and intensity of gross losses and gross gains in each category vary across categories for each time interval. Third, the <strong>transition level</strong> examines for each category how the size and intensity of a category’s transitions vary across the other categories that are available for that transition. At each level, the method tests for stationarity of patterns across time intervals <span class="citation">(Aldwaik and Pontius 2012)</span>.</p>
+<p>Within the OpenLand package, the <code><a href="../reference/intensityAnalysis.html">intensityAnalysis()</a></code> function computes the three levels of analysis. It requires the object returned by the <code><a href="../reference/contingenceTable.html">contingenceTable()</a></code> function, and the categories <code>n</code> and <code>m</code> defined by the user.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1">testSL &lt;-<span class="st"> </span><span class="kw"><a href="../reference/intensityAnalysis.html">intensityAnalysis</a></span>(<span class="dt">dataset =</span> SL_<span class="dv">2002</span>_<span class="dv">2014</span>,</a>
+
 <a class="sourceLine" id="cb4-2" title="2">                            <span class="dt">class_n =</span> <span class="st">"Ap"</span>, <span class="dt">class_m =</span> <span class="st">"SG"</span>)</a>
 <a class="sourceLine" id="cb4-3" title="3"></a>
 <a class="sourceLine" id="cb4-4" title="4"><span class="co"># it's returns a list with 6 objects</span></a>
 <a class="sourceLine" id="cb4-5" title="5"><span class="kw"><a href="https://rdrr.io/r/base/names.html">names</a></span>(testSL)</a>
 <a class="sourceLine" id="cb4-6" title="6"><span class="co">#&gt; [1] "lulc_table"           "interval_lvl"         "category_lvlGain"    </span></a>
 <a class="sourceLine" id="cb4-7" title="7"><span class="co">#&gt; [4] "category_lvlLoss"     "transition_lvlGain_n" "transition_lvlLoss_m"</span></a></code></pre></div>
-<p>The function returns 6 objects: lulc_table, interval_lvl, category_lvlGain, category_lvlLoss, transition_lvlGain_n, transition_lvlLoss_m. On this part we adopted an object-oriented approach that allows us to setting specifics methods for plotting the intensity objects created by the <code>intensityanalysis()</code> function. The system we use is the S4 class which requires classes and methods to be formally define <span class="citation">(Chambers 2008)</span>. The first object is a contingency table like the lulc_Multistep object with the unique difference that is, the column <code>From</code> and <code>To</code> values have has been replaced by their appropriate legend.</p>
-<p>The second object <em><strong>interval_lvl</strong></em> is an <code>Interval</code> object the third <em><strong>category_lvlGain</strong></em> and the fourth <em><strong>category_lvlLoss</strong></em> are <code>Category</code> objects, the fifth <em><strong>transition_lvlGain_n</strong></em> and the sixth <em><strong>transition_lvlLoss_m</strong></em> are <code>Transition</code> objects.</p>
-<p>An <code>Interval</code> object contains one slot containing a table of <strong>interval level</strong>’s result <em>(S<sub>t</sub> and U values)</em>. A <code>Category</code> object contains three slots: the first contains the colors associate with the data with the legends as name’s attribute, the second slot contains a table of the <strong>category level</strong>’s result <em>(gain (G<sub>tj</sub>) or loss (L<sub>ti</sub>) values)</em> and the third slot contains a table saving a stationarity test. A <code>Transition</code> object contains three slots: the first contains the colors associate with the data with the legends as name’s attribute, the second slot contains a table of the <strong>transition level</strong>’s result <em>(gain n (R<sub>tin</sub> &amp; W<sub>tn</sub>) or loss m (Q<sub>tmj</sub> &amp; V<sub>tm</sub>) values)</em> and the fourth slot contains a table saving a stationarity test.</p>
-<blockquote>
-<p><span class="citation">Aldwaik and Pontius (2012)</span> considers a stationary case only whether the intensities for all time intervals reside on one side of the uniform intensity, i.e, smaller or bigger than the uniform rate over the whole period.</p>
-</blockquote>
+<p>The function returns 6 objects: lulc_table, interval_lvl, category_lvlGain, category_lvlLoss, transition_lvlGain_n, transition_lvlLoss_m. Here, we adopted an object-oriented approach that allows us to set specifics methods for plotting the intensity objects created by <code>intensityanalysis()</code>. Specifically, we used the S4 class, which requires the formal definition of classes and methods <span class="citation">(Chambers 2008)</span>. The first object is a contingency table like the lulc_Multistep object with the unique difference that the columns <code>From</code> and <code>To</code> have been replaced by their appropriate denominations.</p>
+<p>The second object <em><strong>interval_lvl</strong></em> is an <code>Interval</code> object, the third <em><strong>category_lvlGain</strong></em> and the fourth <em><strong>category_lvlLoss</strong></em> are <code>Category</code> objects, whereas the fifth <em><strong>transition_lvlGain_n</strong></em> and the sixth <em><strong>transition_lvlLoss_m</strong></em> are <code>Transition</code> objects.</p>
+<p>An <code>Interval</code> object contains one slot containing a table of <strong>interval level</strong> result <em>(S<sub>t</sub> and U values)</em>. A <code>Category</code> object contains three slots: the first contains the colors associated with the legend items as name attributes, the second slot contains a table of the <strong>category level</strong> result <em>(gain (G<sub>tj</sub>) or loss (L<sub>ti</sub>) values)</em> and the third slot contains a table storing the results of a stationarity test. A <code>Transition</code> object contains three slots: the first contains the colors associated with the legend items as name attributes, the second slot contains a table of the <strong>transition level</strong> result <em>(gain n (R<sub>tin</sub> &amp; W<sub>tn</sub>) or loss m (Q<sub>tmj</sub> &amp; V<sub>tm</sub>) values)</em> and the fourth slot contains a table storing the results of a stationarity test.</p>
+<p><span class="citation">Aldwaik and Pontius (2012)</span> consider a stationary case only when the intensities for all time intervals reside on one side of the uniform intensity, i.e. that they are smaller or larger than the uniform rate over the whole period.</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1"><span class="co"># showing the objects from the intensity analysis for our illustrative case</span></a>
 <a class="sourceLine" id="cb5-2" title="2">testSL</a>
 <a class="sourceLine" id="cb5-3" title="3"><span class="co">#&gt; $lulc_table</span></a>
@@ -628,7 +623,7 @@ text-align: justify}
 <div id="outcomes-of-intensity-analysis" class="section level3">
 <h3 class="hasAnchor">
 <a href="#outcomes-of-intensity-analysis" class="anchor"></a>Outcomes of intensity analysis</h3>
-<p>Visualizations of the intensity analysis result is obtaining from the plot(intensity-object) function, for a more detailed over the parameters see function’s documentation.</p>
+<p>Visualizations of the IA results are obtained from the plot(intensity-object) function. For a more details about the parameters, please see the documentation of the <code><a href="../reference/plot.html">plot()</a></code> function.</p>
 <div id="interval-level" class="section level4">
 <h4 class="hasAnchor">
 <a href="#interval-level" class="anchor"></a>Interval Level</h4>
@@ -687,9 +682,10 @@ text-align: justify}
 <p><img src="openland_vignette_files/figure-html/unnamed-chunk-12-1.png" width="672"></p>
 </div>
 </div>
-<div id="other-graphs" class="section level3">
+<div id="miscancelous-visualization-tools" class="section level3">
 <h3 class="hasAnchor">
-<a href="#other-graphs" class="anchor"></a>Other graphs</h3>
+<a href="#miscancelous-visualization-tools" class="anchor"></a>Miscancelous visualization tools</h3>
+<p>OpenLand provides a bench of visualization tools of LUCC metrics. One-step transitions can be balanced by net and gross changes of all classes through a combined bar chart. Transitions between LUC classes can be detailed by a circular chord chart, based on the Circulize package (Gu, 2019). An implementation of Sankey diagram based on the networkD3 package (DISPLAYR, 2019) allow the representation of one- and multistep LUCC between classes. Areal development of all LUC classes throughout the observation period can be visualized by a grouped barchart.</p>
 <div id="net-and-gross-gain-and-loss" class="section level4">
 <h4 class="hasAnchor">
 <a href="#net-and-gross-gain-and-loss" class="anchor"></a>Net and Gross gain and loss</h4>
@@ -718,8 +714,10 @@ text-align: justify}
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" title="1"></a>
 <a class="sourceLine" id="cb13-2" title="2"><span class="kw"><a href="../reference/sankeyLand.html">sankeyLand</a></span>(<span class="dt">dataset =</span> SL_<span class="dv">2002</span>_<span class="dv">2014</span><span class="op">$</span>lulc_Multistep,</a>
 <a class="sourceLine" id="cb13-3" title="3">           <span class="dt">legendtable =</span> SL_<span class="dv">2002</span>_<span class="dv">2014</span><span class="op">$</span>tb_legend)</a></code></pre></div>
-<div id="htmlwidget-2405a4ab3828bc9373b5" style="width:768px;height:384px;" class="sankeyNetwork html-widget"></div>
-<script type="application/json" data-for="htmlwidget-2405a4ab3828bc9373b5">{"x":{"links":{"source":[20,20,20,20,0,0,0,0,0,0,8,8,8,8,8,8,8,12,12,12,12,12,16,16,16,16,16,4,4,4,4,36,32,24,24,24,40,40,28,21,21,21,21,21,1,1,1,1,9,9,9,9,9,13,13,13,13,13,17,17,17,17,17,5,5,5,5,37,33,25,25,41,29,22,22,22,2,2,2,2,10,10,10,14,14,14,14,18,18,18,18,6,6,6,38,34,26,26,26,42,30,23,23,23,3,3,3,11,11,11,11,11,11,15,15,15,15,19,19,19,19,7,7,7,39,35,27,27,43,31],"target":[21,33,25,41,21,1,17,25,41,29,21,9,17,33,25,41,29,21,13,17,25,41,21,17,33,25,41,21,17,5,25,37,33,33,25,41,25,41,29,22,38,34,26,42,22,2,18,38,22,10,18,26,30,22,14,18,34,26,22,18,38,26,42,22,18,6,26,38,34,26,42,42,30,23,27,43,23,3,19,27,23,11,19,23,15,19,27,23,19,35,27,23,19,7,39,35,35,27,43,43,31,49,52,50,49,44,48,49,46,48,52,50,51,49,47,48,50,49,48,52,50,49,48,45,53,52,52,50,54,51],"value":[6542.9649,1.5624,55.188,23.9481,37.4841,2133.171,155.4462,7.4763,0.3555,0.081,65.835,1547.0847,107.5077,2.025,66.0483,17.4726,0.1422,48.3111,3761.5176,244.2501,13.1103,0.0999,130.0581,1987.5051,0.4518,9.5994,1.4706,24.759,79.5303,793.755,13.4199,17.0055,107.3826,1.0719,4278.3363,26.6697,28.224,59.1417,28.5111,6762.8016,2.3859,5.7222,72.8199,5.6826,0.9684,2117.7981,13.1733,1.2312,0.9711,1524.5676,21.4299,0.0711,0.045,3.9384,3726.7974,30.6441,0.0504,0.0873,12.0204,2551.7007,9.5976,0.7002,0.2205,1.1025,5.58,785.3904,1.6821,17.0055,112.4937,4464.2556,7.1469,129.1581,28.7343,6595.4547,186.0795,0.2682,3.6252,2106.6714,7.3971,0.1044,12.2994,1494.8811,17.3871,8.5329,3698.757,18.8757,0.6318,681.885,1938.1518,0.0675,2.4237,1.0755,3.3642,780.9507,30.2202,118.2663,1.8369,4535.2917,2.4876,142.2081,28.7793,7192.0503,3.0771,107.7453,12.9276,2091.2985,2.4453,18.0801,1469.6289,6.5772,0.3456,0.054,0.1953,42.0948,3651.8409,4.7592,0.0621,536.7276,1444.3551,2.1042,1.989,2.3805,1.1133,777.4569,30.2202,120.1707,1.2609,4723.2702,144.9639,28.7793]},"nodes":{"name":["FF","FF","FF","FF","SF","SF","SF","SF","SA","SA","SA","SA","SG","SG","SG","SG","aa","aa","aa","aa","Ap","Ap","Ap","Ap","Ac","Ac","Ac","Ac","Im","Im","Im","Im","Iu","Iu","Iu","Iu","Agua","Agua","Agua","Agua","R","R","R","R","FF","SF","SA","SG","aa","Ap","Ac","Im","Iu","Agua","R"],"group":["FF","FF","FF","FF","SF","SF","SF","SF","SA","SA","SA","SA","SG","SG","SG","SG","aa","aa","aa","aa","Ap","Ap","Ap","Ap","Ac","Ac","Ac","Ac","Im","Im","Im","Im","Iu","Iu","Iu","Iu","Agua","Agua","Agua","Agua","R","R","R","R","FF","SF","SA","SG","aa","Ap","Ac","Im","Iu","Agua","R"]},"options":{"NodeID":"name02","NodeGroup":"name02","LinkGroup":null,"colourScale":"d3.scaleOrdinal().domain(['FF', 'SF', 'SA', 'SG', 'aa', 'Ap', 'Ac', 'Im', 'Iu', 'Agua', 'R']).range(['#228B22', '#00CD00', '#00FF00', '#CAFF70', '#EE6363', '#FFE4B5', '#FFA54F', '#636363', '#FFAEB9', '#436EEE', '#68228B']).unknown(['grey']);","fontSize":13,"fontFamily":"sans-serif","nodeWidth":20,"nodePadding":20,"units":"","margin":{"top":null,"right":null,"bottom":null,"left":null},"iterations":0,"sinksRight":false}},"evals":[],"jsHooks":[]}</script><pre><code>           2002                 2008                2010                  2012                  2014</code></pre>
+
+<div id="htmlwidget-1e9141f2e2815d1c8d1d" style="width:768px;height:384px;" class="sankeyNetwork html-widget"></div>
+<script type="application/json" data-for="htmlwidget-1e9141f2e2815d1c8d1d">{"x":{"links":{"source":[20,20,20,20,0,0,0,0,0,0,8,8,8,8,8,8,8,12,12,12,12,12,16,16,16,16,16,4,4,4,4,36,32,24,24,24,40,40,28,21,21,21,21,21,1,1,1,1,9,9,9,9,9,13,13,13,13,13,17,17,17,17,17,5,5,5,5,37,33,25,25,41,29,22,22,22,2,2,2,2,10,10,10,14,14,14,14,18,18,18,18,6,6,6,38,34,26,26,26,42,30,23,23,23,3,3,3,11,11,11,11,11,11,15,15,15,15,19,19,19,19,7,7,7,39,35,27,27,43,31],"target":[21,33,25,41,21,1,17,25,41,29,21,9,17,33,25,41,29,21,13,17,25,41,21,17,33,25,41,21,17,5,25,37,33,33,25,41,25,41,29,22,38,34,26,42,22,2,18,38,22,10,18,26,30,22,14,18,34,26,22,18,38,26,42,22,18,6,26,38,34,26,42,42,30,23,27,43,23,3,19,27,23,11,19,23,15,19,27,23,19,35,27,23,19,7,39,35,35,27,43,43,31,49,52,50,49,44,48,49,46,48,52,50,51,49,47,48,50,49,48,52,50,49,48,45,53,52,52,50,54,51],"value":[6542.9649,1.5624,55.188,23.9481,37.4841,2133.171,155.4462,7.4763,0.3555,0.081,65.835,1547.0847,107.5077,2.025,66.0483,17.4726,0.1422,48.3111,3761.5176,244.2501,13.1103,0.0999,130.0581,1987.5051,0.4518,9.5994,1.4706,24.759,79.5303,793.755,13.4199,17.0055,107.3826,1.0719,4278.3363,26.6697,28.224,59.1417,28.5111,6762.8016,2.3859,5.7222,72.8199,5.6826,0.9684,2117.7981,13.1733,1.2312,0.9711,1524.5676,21.4299,0.0711,0.045,3.9384,3726.7974,30.6441,0.0504,0.0873,12.0204,2551.7007,9.5976,0.7002,0.2205,1.1025,5.58,785.3904,1.6821,17.0055,112.4937,4464.2556,7.1469,129.1581,28.7343,6595.4547,186.0795,0.2682,3.6252,2106.6714,7.3971,0.1044,12.2994,1494.8811,17.3871,8.5329,3698.757,18.8757,0.6318,681.885,1938.1518,0.0675,2.4237,1.0755,3.3642,780.9507,30.2202,118.2663,1.8369,4535.2917,2.4876,142.2081,28.7793,7192.0503,3.0771,107.7453,12.9276,2091.2985,2.4453,18.0801,1469.6289,6.5772,0.3456,0.054,0.1953,42.0948,3651.8409,4.7592,0.0621,536.7276,1444.3551,2.1042,1.989,2.3805,1.1133,777.4569,30.2202,120.1707,1.2609,4723.2702,144.9639,28.7793]},"nodes":{"name":["FF","FF","FF","FF","SF","SF","SF","SF","SA","SA","SA","SA","SG","SG","SG","SG","aa","aa","aa","aa","Ap","Ap","Ap","Ap","Ac","Ac","Ac","Ac","Im","Im","Im","Im","Iu","Iu","Iu","Iu","Agua","Agua","Agua","Agua","R","R","R","R","FF","SF","SA","SG","aa","Ap","Ac","Im","Iu","Agua","R"],"group":["FF","FF","FF","FF","SF","SF","SF","SF","SA","SA","SA","SA","SG","SG","SG","SG","aa","aa","aa","aa","Ap","Ap","Ap","Ap","Ac","Ac","Ac","Ac","Im","Im","Im","Im","Iu","Iu","Iu","Iu","Agua","Agua","Agua","Agua","R","R","R","R","FF","SF","SA","SG","aa","Ap","Ac","Im","Iu","Agua","R"]},"options":{"NodeID":"name02","NodeGroup":"name02","LinkGroup":null,"colourScale":"d3.scaleOrdinal().domain(['FF', 'SF', 'SA', 'SG', 'aa', 'Ap', 'Ac', 'Im', 'Iu', 'Agua', 'R']).range(['#228B22', '#00CD00', '#00FF00', '#CAFF70', '#EE6363', '#FFE4B5', '#FFA54F', '#636363', '#FFAEB9', '#436EEE', '#68228B']).unknown(['grey']);","fontSize":13,"fontFamily":"sans-serif","nodeWidth":20,"nodePadding":20,"units":"","margin":{"top":null,"right":null,"bottom":null,"left":null},"iterations":0,"sinksRight":false}},"evals":[],"jsHooks":[]}</script><pre><code>           2002                 2008                2010                  2012                  2014</code></pre>
+
 </div>
 <div id="sankey-one-step" class="section level4">
 <h4 class="hasAnchor">
@@ -727,8 +725,10 @@ text-align: justify}
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" title="1"></a>
 <a class="sourceLine" id="cb15-2" title="2"><span class="kw"><a href="../reference/sankeyLand.html">sankeyLand</a></span>(<span class="dt">dataset =</span> SL_<span class="dv">2002</span>_<span class="dv">2014</span><span class="op">$</span>lulc_Onestep,</a>
 <a class="sourceLine" id="cb15-3" title="3">           <span class="dt">legendtable =</span> SL_<span class="dv">2002</span>_<span class="dv">2014</span><span class="op">$</span>tb_legend)</a></code></pre></div>
-<div id="htmlwidget-06049f07b8e67409ba9d" style="width:768px;height:384px;" class="sankeyNetwork html-widget"></div>
-<script type="application/json" data-for="htmlwidget-06049f07b8e67409ba9d">{"x":{"links":{"source":[5,5,5,5,5,0,0,0,0,0,0,0,2,2,2,2,2,2,2,3,3,3,3,3,3,3,4,4,4,4,4,4,1,1,1,1,1,9,8,6,6,6,10,10,7],"target":[16,20,19,17,21,16,11,15,20,17,21,18,16,13,15,19,17,21,18,16,14,15,20,19,17,21,16,15,20,19,17,21,16,15,12,20,17,20,19,19,17,21,17,21,18],"value":[6169.3344,2.3859,10.3617,411.8679,29.7135,109.5858,2091.2985,116.3736,6.9966,9.3231,0.3555,0.081,161.3277,1469.6289,83.4669,3.3849,70.452,17.4726,0.3825,196.1613,3651.8409,199.7901,1.7154,0.0504,17.4456,0.2853,1109.0241,1000.5966,1.6011,1.6092,14.5629,1.6911,58.8276,59.0229,777.4569,0.5157,15.6411,17.0055,107.3826,4.1697,4265.604,36.3042,28.224,59.1417,28.5111]},"nodes":{"name":["FF","SF","SA","SG","aa","Ap","Ac","Im","Iu","Agua","R","FF","SF","SA","SG","aa","Ap","Ac","Im","Iu","Agua","R"],"group":["FF","SF","SA","SG","aa","Ap","Ac","Im","Iu","Agua","R","FF","SF","SA","SG","aa","Ap","Ac","Im","Iu","Agua","R"]},"options":{"NodeID":"name02","NodeGroup":"name02","LinkGroup":null,"colourScale":"d3.scaleOrdinal().domain(['FF', 'SF', 'SA', 'SG', 'aa', 'Ap', 'Ac', 'Im', 'Iu', 'Agua', 'R']).range(['#228B22', '#00CD00', '#00FF00', '#CAFF70', '#EE6363', '#FFE4B5', '#FFA54F', '#636363', '#FFAEB9', '#436EEE', '#68228B']).unknown(['grey']);","fontSize":13,"fontFamily":"sans-serif","nodeWidth":20,"nodePadding":20,"units":"","margin":{"top":null,"right":null,"bottom":null,"left":null},"iterations":0,"sinksRight":false}},"evals":[],"jsHooks":[]}</script><pre><code>                          2002                                                  2014</code></pre>
+
+<div id="htmlwidget-697fd16a37c73e23d0f4" style="width:768px;height:384px;" class="sankeyNetwork html-widget"></div>
+<script type="application/json" data-for="htmlwidget-697fd16a37c73e23d0f4">{"x":{"links":{"source":[5,5,5,5,5,0,0,0,0,0,0,0,2,2,2,2,2,2,2,3,3,3,3,3,3,3,4,4,4,4,4,4,1,1,1,1,1,9,8,6,6,6,10,10,7],"target":[16,20,19,17,21,16,11,15,20,17,21,18,16,13,15,19,17,21,18,16,14,15,20,19,17,21,16,15,20,19,17,21,16,15,12,20,17,20,19,19,17,21,17,21,18],"value":[6169.3344,2.3859,10.3617,411.8679,29.7135,109.5858,2091.2985,116.3736,6.9966,9.3231,0.3555,0.081,161.3277,1469.6289,83.4669,3.3849,70.452,17.4726,0.3825,196.1613,3651.8409,199.7901,1.7154,0.0504,17.4456,0.2853,1109.0241,1000.5966,1.6011,1.6092,14.5629,1.6911,58.8276,59.0229,777.4569,0.5157,15.6411,17.0055,107.3826,4.1697,4265.604,36.3042,28.224,59.1417,28.5111]},"nodes":{"name":["FF","SF","SA","SG","aa","Ap","Ac","Im","Iu","Agua","R","FF","SF","SA","SG","aa","Ap","Ac","Im","Iu","Agua","R"],"group":["FF","SF","SA","SG","aa","Ap","Ac","Im","Iu","Agua","R","FF","SF","SA","SG","aa","Ap","Ac","Im","Iu","Agua","R"]},"options":{"NodeID":"name02","NodeGroup":"name02","LinkGroup":null,"colourScale":"d3.scaleOrdinal().domain(['FF', 'SF', 'SA', 'SG', 'aa', 'Ap', 'Ac', 'Im', 'Iu', 'Agua', 'R']).range(['#228B22', '#00CD00', '#00FF00', '#CAFF70', '#EE6363', '#FFE4B5', '#FFA54F', '#636363', '#FFAEB9', '#436EEE', '#68228B']).unknown(['grey']);","fontSize":13,"fontFamily":"sans-serif","nodeWidth":20,"nodePadding":20,"units":"","margin":{"top":null,"right":null,"bottom":null,"left":null},"iterations":0,"sinksRight":false}},"evals":[],"jsHooks":[]}</script><pre><code>                          2002                                                  2014</code></pre>
+
 </div>
 <div id="an-evolution-bar-plot" class="section level4">
 <h4 class="hasAnchor">
@@ -750,7 +750,7 @@ text-align: justify}
 <div id="other-functions" class="section level2">
 <h2 class="hasAnchor">
 <a href="#other-functions" class="anchor"></a>Other functions</h2>
-<p>OpenLand have others functions that helps having some quick summary over one or a series of raster. One of them is the <code>acc_chages()</code> when running over a series of raster it gives us as return a raster contains the number of times a pixel have been change during the period analysed and a table containing the percentage of every pixel value.</p>
+<p>OpenLand enables furthermore the spatial screening of LUCC frequencies for one or a series of raster layers. The <code><a href="../reference/acc_changes.html">acc_changes()</a></code> returns for LUC time series the number of times a pixel has changed during the analysed period analysed, returning a grid layer and a table with the percentages of transition numbers in the study area.</p>
 <div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" title="1"></a>
 <a class="sourceLine" id="cb18-2" title="2"><span class="co"># testacc &lt;- acc_changes(SaoLourencoBasin)</span></a>
 <a class="sourceLine" id="cb18-3" title="3"><span class="co"># </span></a>
@@ -843,7 +843,7 @@ Accumulate changes in pixel in the interval 2002 - 2014 in four time points (200
 <a href="#tocnav" class="anchor"></a>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
 <li><a href="#description-of-the-tool">Description of the tool</a></li>
-      <li><a href="#s%C3%A3o-louren%C3%A7o-river-basin-case-study">São Lourenço river Basin Case Study</a></li>
+      <li><a href="#s%C3%A3o-louren%C3%A7o-river-basin-example-dataset">São Lourenço river Basin example dataset</a></li>
       <li><a href="#intensity-analysis">Intensity Analysis</a></li>
       <li><a href="#the-graphs">The Graphs</a></li>
       <li><a href="#other-functions">Other functions</a></li>

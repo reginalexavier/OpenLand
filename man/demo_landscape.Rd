@@ -73,3 +73,4 @@ the sample value for the lulc
 \examples{
 demo_landscape(2000:2005, res = 1)
 }
+\keyword{internal}

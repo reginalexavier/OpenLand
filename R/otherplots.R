@@ -194,7 +194,7 @@ chordDiagramLand <-
       track.margin = c(-0.01, 0.015),
       points.overflow.warning = T
     )
-    par(mar = rep(0, 4))
+    par(mar = rep(0, 4)) # precisa mesmo???
     # the base plot
     circlize::chordDiagram(
       x = onestepcircle,

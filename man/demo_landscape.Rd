@@ -15,13 +15,7 @@ demo_landscape(
   ymx = 100,
   crs = NA,
   class = 1:5,
-  prob = NULL,
-  sim.autocorrelate = FALSE,
-  bin.interval = TRUE,
-  psill = 0.025,
-  model = "Exp",
-  range = 1000,
-  variance = c("identity", "mu", "mu(1-mu)")[1]
+  prob = NULL
 )
 }
 \arguments{
@@ -46,22 +40,6 @@ demo_landscape(
 \item{class}{the raster classes}
 
 \item{prob}{the probability of occorence for the class list}
-
-\item{sim.autocorrelate}{logical This argument define if the simulation will
-be a autocorrelate in space or pixel of independent values.}
-
-\item{bin.interval}{logical This argument define if the categorisation of the
-value will be via igual interval or igual number see `ggplot2`}
-
-\item{psill}{sill see variogram}
-
-\item{model}{a model see variogram}
-
-\item{range}{a range of the variability}
-
-\item{variance}{character; variance function to transform to non-stationary
-covariances; "identity" does not transform, other options are "mu"
-(Poisson) and "mu(1-mu)" (binomial)}
 }
 \value{
 list

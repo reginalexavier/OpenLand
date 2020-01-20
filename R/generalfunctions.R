@@ -99,6 +99,7 @@ summary_map <- function(path) {
 #' @export
 #'
 #'
+#'
 #' @examples
 #' test <- demo_landscape(2000:2005, res = 1, prob = c(0.05, 0.3, 0.05, 0.4, 0.2))
 #' acc_changes(test)

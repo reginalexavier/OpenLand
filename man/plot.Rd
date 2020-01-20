@@ -7,6 +7,8 @@
 \alias{plot,Transition,ANY-method}
 \title{Plot method for objects from Intensity Analysis}
 \usage{
+plot(x, y, ...)
+
 \S4method{plot}{Interval,ANY}(
   x,
   y,
@@ -48,6 +50,8 @@
 
 \item{y}{ignored}
 
+\item{\dots}{additional arguments for theme parameters \code{\link[ggplot2]{theme}}}
+
 \item{labels}{character. Left and right axis titles(caption)}
 
 \item{labs}{character. The lateral legend}
@@ -58,13 +62,11 @@
 
 \item{color_bar}{character. Colors defined for the fast, slow and area bars (only for an \code{\linkS4class{Interval}} object).}
 
-\item{\dots}{additional arguments for theme parameters \code{\link[ggplot2]{theme}}}
-
 \item{Interval}{The class of the object}
 
-\item{Category}{the class}
+\item{Category}{The class of the object}
 
-\item{Transition}{the class}
+\item{Transition}{The class of the object}
 }
 \value{
 An intensity graph

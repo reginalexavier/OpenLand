@@ -63,8 +63,9 @@ NULL
 #'   }
 #'
 #'
-#'
 #' @export
+#'
+#' @importFrom raster unstack crosstab compareRaster raster values stack overlay brick
 #'
 #' @examples
 #'
@@ -170,24 +171,22 @@ contingencyTable <-
 
     tb_legend$className <- as.factor(vapply(seq_len(nrow(tb_legend)), function(x) genclass(), character(1)))
 
-    if (version$major <= 3 & version$minor < 6.0) {
+    tb_legend$color <- base::sample(x = c("#002F70", "#0A468D", "#295EAE", "#4A76C7", "#6F8DD2",
+                                          "#8EA4DE", "#ABBBE8", "#C5CFF0", "#DCE2F6", "#EFF1F8",
+                                          "#F9EFEF", "#F9DCDC", "#F3C5C5", "#EAACAC", "#DD9191",
+                                          "#CE7575", "#BD5758", "#A13F3F", "#7F2A2B", "#5F1415"),
+                                    size = nrow(tb_legend),
+                                    replace = (nrow(tb_legend) > 20))
 
-      tb_legend$color <- base::sample(grDevices::colors(), nrow(tb_legend), replace = F)
-
-    } else {
-
-      tb_legend$color <- grDevices::hcl.colors(nrow(tb_legend), palette = "Blue-Red 3", alpha = NULL, rev = FALSE, fixup = TRUE)
-
-    }
 
     areaTotal <-
       lulctable[[2]] %>% dplyr::group_by(Period) %>% dplyr::summarise(area_km2 = sum(km2), QtPixel = sum(QtPixel))
 
     contingencyTable <-
       list(
-        lulc_Multistep = tibble::as_tibble(lulctable[[2]]),
-        lulc_Onestep = tibble::as_tibble(lulctable[[1]]),
-        tb_legend = tibble::as_tibble(tb_legend),
+        lulc_Multistep = dplyr::as_tibble(lulctable[[2]]),
+        lulc_Onestep = dplyr::as_tibble(lulctable[[1]]),
+        tb_legend = dplyr::as_tibble(tb_legend),
         totalArea = areaTotal[1, c(2,3)],
         totalInterval = allinterval
       )

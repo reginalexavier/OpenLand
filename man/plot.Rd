@@ -18,6 +18,7 @@ plot(x, y, ...)
   marginplot = c(lh = -10, rh = 0),
   leg_curv = c(x = 1/10, y = 1/10),
   color_bar = c(fast = "#B22222", slow = "#006400", area = "gray40"),
+  fontsize_ui = 10,
   ...
 )
 
@@ -29,6 +30,7 @@ plot(x, y, ...)
   labs = c(type = "Classes", ur = "Uniform Intensity"),
   marginplot = c(lh = 0.5, rh = 0.5),
   leg_curv = c(x = 1/10, y = 1/10),
+  fontsize_ui = 10,
   ...
 )
 
@@ -42,6 +44,7 @@ plot(x, y, ...)
   labs = c(type = "Classes", ur = "Uniform Intensity"),
   marginplot = c(lh = 0.5, rh = 0.5),
   leg_curv = c(x = 1/10, y = 1/10),
+  fontsize_ui = 10,
   ...
 )
 }
@@ -61,6 +64,8 @@ plot(x, y, ...)
 \item{leg_curv}{numeric. X and y values that control the arrow size and position apointing to the Uniform Intensity vertical line.}
 
 \item{color_bar}{character. Colors defined for the fast, slow and area bars (only for an \code{\linkS4class{Interval}} object).}
+
+\item{fontsize_ui}{numeric. Fontsize of the uniform intensity percent in the plot.}
 
 \item{Interval}{The class of the object}
 

@@ -12,18 +12,17 @@ NULL
 #' @param marginplot numeric. Adjustment of the origins of left and right part of the plots
 #' @param leg_curv numeric. X and y values that control the arrow size and position apointing to the Uniform Intensity vertical line.
 #' @param color_bar character. Colors defined for the fast, slow and area bars (only for an \code{\linkS4class{Interval}} object).
+#' @param fontsize_ui numeric. Fontsize of the uniform intensity percent in the plot.
 #' @param \dots additional arguments for theme parameters \code{\link[ggplot2]{theme}}
+#'
+#'
+#'
+#'
 #'
 #' @return An intensity graph
 #'
 #'
-#'
-#' @importFrom ggplot2 ggplot aes geom_bar geom_hline scale_y_continuous scale_x_continuous
-#'    ylab xlab labs scale_color_manual coord_flip guides guide_legend scale_fill_manual geom_curve
-#'    theme facet_wrap scale_y_reverse scale_x_discrete expand_scale arrow unit geom_text geom_bar
-#'    geom_segment ggtitle element_text element_blank margin
-#'    theme_gray theme_bw theme_linedraw theme_light theme_dark theme_minimal
-#'    theme_classic theme_void
+#' @import ggplot2
 #'
 #' @name plot
 #' @exportMethod plot
@@ -51,6 +50,7 @@ setMethod(
                         color_bar = c(fast = "#B22222",
                                       slow = "#006400",
                                       area = "gray40"),
+                        fontsize_ui = 10,
                         ...) {
     Type <- St <-  U <-  NULL
 
@@ -97,7 +97,9 @@ setMethod(
         y = dataset[[4]] + leg_curv[[1]]),
         label = paste(round(dataset[[4]], 2), "%"),
         colour = "black",
-        fontface = "plain",
+        fontface = c("plain", "bold", "italic", "bold.italic")[1],
+        family = c("sans", "serif", "mono")[1],
+        size = fontsize_ui / .pt,
         nudge_y = 1 / 100,
         hjust = "left"
       ) +
@@ -203,6 +205,7 @@ setMethod(
                         labs = c(type = "Classes", ur = "Uniform Intensity"),
                         marginplot = c(lh = 0.5, rh = 0.5),
                         leg_curv = c(x = 1 / 10, y = 1 / 10),
+                        fontsize_ui = 10,
                         ...) {
     dataset <- x$categoryData
     lookupcolor <- x$lookupcolor
@@ -245,7 +248,9 @@ setMethod(
         y = dataset[[6]] + leg_curv[[1]]),
         label = paste(round(dataset[[6]], 2), "%"),
         colour = "black",
-        fontface = "bold",
+        fontface = c("plain", "bold", "italic", "bold.italic")[1],
+        family = c("sans", "serif", "mono")[1],
+        size = fontsize_ui / .pt,
         nudge_y = 1 / 100,
         hjust = "left"
       ) +
@@ -359,6 +364,7 @@ setMethod(
                         labs = c(type = "Classes", ur = "Uniform Intensity"),
                         marginplot = c(lh = 0.5, rh = 0.5),
                         leg_curv = c(x = 1 / 10, y = 1 / 10),
+                        fontsize_ui = 10,
                         ...) {
     dataset <- x$transitionData
     lookupcolor <- x$lookupcolor
@@ -400,7 +406,9 @@ setMethod(
         y = dataset[[7]] + leg_curv[[1]]),
         label = paste(round(dataset[[7]], 2), "%"),
         colour = "black",
-        fontface = "bold",
+        fontface = c("plain", "bold", "italic", "bold.italic")[1],
+        family = c("sans", "serif", "mono")[1],
+        size = fontsize_ui / .pt,
         nudge_y = 1 / 100,
         hjust = "left"
       ) +

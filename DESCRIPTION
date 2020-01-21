@@ -39,6 +39,7 @@ Imports:
     methods (>= 3.6.2),
     tibble (>= 2.1.3)
 Collate: 
+    'OpenLand-package.R'
     'demolandscape.R'
     'contingencyTable.R'
     'data.R'

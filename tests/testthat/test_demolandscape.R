@@ -1,4 +1,4 @@
-context("just testing for testing")
+context("demo_landscape")
 
 
 test_that("whether the demo gives the same output", {

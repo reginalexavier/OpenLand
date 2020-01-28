@@ -387,6 +387,7 @@ intensityAnalysis <-
           )
       )
 
+    # return ----
     intensity_tables <-
       list(
         lulc_table = lulc,

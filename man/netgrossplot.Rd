@@ -40,9 +40,21 @@ A bar plot
 A stacked barplot showing net and gross changes of LUC categories during the entire analysed time period.
 }
 \examples{
-test1 <- demo_landscape(2000:2005)
-test2 <- contingencyTable(input_raster = test1, pixelresolution = 1)
-netgrossplot(dataset = test2$lulc_Multistep, legendtable = test2$tb_legend, area_km2 = FALSE)
+
+# editing the class name
+
+SL_2002_2014$tb_legend$className <- factor(c("Ap", "FF", "SA", "SG", "aa", "SF",
+                                             "Agua", "Iu", "Ac", "R", "Im"),
+                                  levels = c("FF", "SF", "SA", "SG", "aa", "Ap",
+                                             "Ac", "Im", "Iu", "Agua", "R"))
+
+
+netgrossplot(dataset = SL_2002_2014$lulc_Multistep,
+             legendtable = SL_2002_2014$tb_legend,
+             title = NULL,
+             xlab = "Classes de UCT",
+             changes = c(GC = "Gross changes", NG = "Net Gain", NL = "Net Loss"),
+             color = c(GC = "gray70", NG = "#006400", NL = "#EE2C2C"))
 
 
 }

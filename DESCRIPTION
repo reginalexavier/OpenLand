@@ -50,10 +50,9 @@ Collate:
     'plotMethods.R'
     'otherplots.R'
 Suggests: 
-    tmap (>= 2.3.1),
+    tmap,
     knitr,
     rmarkdown,
-    qpdf,
     covr,
     testthat
 VignetteBuilder: knitr

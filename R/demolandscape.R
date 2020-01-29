@@ -20,12 +20,15 @@
 #' @export
 #' @keywords internal
 #' @examples
-#' demo_landscape(2000:2005, res = 1)
+#' .demo_landscape(year =  2000:2005,
+#'                 res = 1,
+#'                 crs = "+proj=utm +zone=21 +south +ellps=GRS80 +units=m +no_defs")
+#'
 
 
 
 
-demo_landscape <- function(year,
+.demo_landscape <- function(year,
                            nrows = 100,
                            ncols = 100,
                            res = 1,

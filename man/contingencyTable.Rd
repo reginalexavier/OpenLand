@@ -61,6 +61,7 @@ A list that contains 5 objects.
 Extracts LUC transitions for all input grids of the time series
 }
 \examples{
+\donttest{contingencyTable(input_raster = SaoLourencoBasin, pixelresolution = 30)}
 
-contingencyTable(demo_landscape(year = 2000:2005, res = 1), pixelresolution = 1)
+
 }

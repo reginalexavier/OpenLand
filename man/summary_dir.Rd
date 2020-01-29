@@ -17,7 +17,7 @@ Listing major charateristics of raster inputs
 }
 \examples{
 
-summary_dir(demo_landscape(2000:2005, res = 1, prob = c(0.05, 0.3, 0.05, 0.4, 0.2)))
+summary_dir(raster::unstack(SaoLourencoBasin))
 
 
 }

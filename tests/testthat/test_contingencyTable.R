@@ -1,12 +1,14 @@
 context("contingencyTable")
 
+set.seed(159)
+demo_raster <- .demo_landscape(year =  2000:2005,
+                               res = 1,
+                               crs = "+proj=utm +zone=21 +south +ellps=GRS80 +units=m +no_defs")
+demo_cont <- contingencyTable(demo_raster, pixelresolution = 1)
+
+
+
 test_that("Behavior of the contengencyTable", {
-
-  set.seed(159)
-
-  demo_raster <- demo_landscape(2000:2005, res = 1)
-
-  demo_cont <- contingencyTable(demo_raster, pixelresolution = 1)
 
   expect_silent(contingencyTable(demo_raster, pixelresolution = 1))
   expect_silent(contingencyTable(raster::stack(demo_raster), pixelresolution = 1))

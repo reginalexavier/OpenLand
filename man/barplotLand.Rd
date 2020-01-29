@@ -38,6 +38,25 @@ a barplot
 \description{
 A grouped barplot representing the areas of LUC categories at each time point of the analysed period
 }
+\examples{
+
+# editing the class name
+
+SL_2002_2014$tb_legend$className <- factor(c("Ap", "FF", "SA", "SG", "aa", "SF",
+                                             "Agua", "Iu", "Ac", "R", "Im"),
+                                  levels = c("FF", "SF", "SA", "SG", "aa", "Ap",
+                                             "Ac", "Im", "Iu", "Agua", "R"))
+
+SL_2002_2014$tb_legend$color <- c("#FFE4B5", "#228B22", "#00FF00", "#CAFF70",
+                                  "#EE6363", "#00CD00", "#436EEE", "#FFAEB9",
+                                  "#FFA54F", "#68228B", "#636363")
+
+barplotLand(dataset = SL_2002_2014$lulc_Multistep,
+            legendtable = SL_2002_2014$tb_legend,
+            area_km2 = TRUE)
+
+
+}
 \seealso{
 \code{ggplot2::\link[ggplot2]{theme}}
 }

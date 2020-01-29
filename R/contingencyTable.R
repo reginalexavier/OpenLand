@@ -68,12 +68,13 @@ NULL
 #' @importFrom raster unstack crosstab compareRaster raster values stack overlay brick
 #'
 #' @examples
+#' \donttest{contingencyTable(input_raster = SaoLourencoBasin, pixelresolution = 30)}
 #'
-#'contingencyTable(demo_landscape(year = 2000:2005, res = 1), pixelresolution = 1)
+#'
 
 contingencyTable <-
   function(input_raster, pixelresolution = 30) {
-    #importing the rasters
+    # importing the rasters
     if (c(class(input_raster)) %in% c("RasterStack", "RasterBrick")) {
 
       rList  <- raster::unstack(input_raster)
@@ -98,7 +99,7 @@ contingencyTable <-
     stop("The input can only be a `RasterStack`, `RasterBrick`, a list of `RasterLayer` or
          a path directory of rasters `.tif` ")
     }
-    #testing if the raster are similar in nrow, ncol and crs
+    # testing if the raster are similar in nrow, ncol and crs
     extent_test <-
       all(mapply(
         function(x, y)
@@ -126,7 +127,7 @@ contingencyTable <-
     if (!extent_test) {
       stop("The rasters have differents nrow, ncol and/or src, please edit the files and retry!")
     } else {
-      #how to compute the cross table of two layers, then setting the columns name???
+      # how to compute the cross table of two layers, then setting the columns name???
       lulc <- list("oneStep", "multiStep")
       table_cross <- function(x, y) {
         contengency <-
@@ -142,7 +143,7 @@ contingencyTable <-
       if (length(rList) > 2) {
         lulc[[1]] <- table_cross(rList[[1]], rList[[length(rList)]])
       }
-      #compute a serie of contengency table iteratively over the whole list of raster
+      # compute a serie of contengency table iteratively over the whole list of raster
       lulc[[2]] <-
         Reduce(rbind,
                mapply(function(x, y)
@@ -160,8 +161,8 @@ contingencyTable <-
           tidyr::unite("Period", c("yearFrom", "yearTo"), sep = "-", remove = FALSE) %>%
           dplyr::select(Period, From, To, km2, QtPixel, Interval, yearFrom, yearTo))
 
-    #calculating the total interval and the pixelValue
-    allinterval <-
+
+    allinterval <- # calculating the total interval and the pixelValue
       as.numeric(dplyr::last(lulctable[[2]]$yearTo)) - as.numeric(dplyr::first(lulctable[[2]]$yearFrom))
 
     tb_legend <-

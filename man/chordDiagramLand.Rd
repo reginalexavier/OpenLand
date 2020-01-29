@@ -32,3 +32,21 @@ A Chord Diagram
 \description{
 A circlize plot representing the one step transitions between two times point of interest.
 }
+\examples{
+
+# editing the class name
+
+SL_2002_2014$tb_legend$className <- factor(c("Ap", "FF", "SA", "SG", "aa", "SF",
+                                             "Agua", "Iu", "Ac", "R", "Im"),
+                                  levels = c("FF", "SF", "SA", "SG", "aa", "Ap",
+                                             "Ac", "Im", "Iu", "Agua", "R"))
+
+SL_2002_2014$tb_legend$color <- c("#FFE4B5", "#228B22", "#00FF00", "#CAFF70",
+                                  "#EE6363", "#00CD00", "#436EEE", "#FFAEB9",
+                                  "#FFA54F", "#68228B", "#636363")
+
+
+chordDiagramLand(dataset = SL_2002_2014$lulc_Onestep,
+                 legendtable = SL_2002_2014$tb_legend)
+
+}

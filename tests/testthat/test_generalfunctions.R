@@ -1,10 +1,9 @@
 context("generalfunctions")
 
-
 set.seed(159)
-
-demo_raster <- demo_landscape(2000:2005, res = 1)
-
+demo_raster <- .demo_landscape(year =  2000:2005,
+                               res = 1,
+                               crs = "+proj=utm +zone=21 +south +ellps=GRS80 +units=m +no_defs")
 demo_acc_changes <- acc_changes(demo_raster)
 
 test_that("Behavior of acc_changes", {

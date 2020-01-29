@@ -10,7 +10,7 @@
 #'
 #' @examples
 #'
-#' summary_dir(demo_landscape(2000:2005, res = 1, prob = c(0.05, 0.3, 0.05, 0.4, 0.2)))
+#' summary_dir(raster::unstack(SaoLourencoBasin))
 #'
 #'
 summary_dir <- function(path) {
@@ -63,8 +63,8 @@ summary_dir <- function(path) {
 #' @export
 #'
 #' @examples
+#' \donttest{summary_map(SaoLourencoBasin[[1]])}
 #'
-#' summary_map(demo_landscape(2000, res = 1, prob = c(0.05, 0.3, 0.05, 0.4, 0.2))[[1]])
 summary_map <- function(path) {
   rastermap <-
     if (class(path) != "character") {
@@ -101,10 +101,7 @@ summary_map <- function(path) {
 #'
 #'
 #' @examples
-#' test <- demo_landscape(2000:2005, res = 1, prob = c(0.05, 0.3, 0.05, 0.4, 0.2))
-#' acc_changes(test)
-#' acc_changes(raster::stack(test))
-#' acc_changes(raster::brick(test))
+#' \donttest{acc_changes(SaoLourencoBasin)}
 #'
 
 acc_changes <- function(path) {

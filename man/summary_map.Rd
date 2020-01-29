@@ -16,6 +16,6 @@ A table containing in columns the pixel counts for each pixel value
 Summary of major characteristics of a unique categorical raster
 }
 \examples{
+\donttest{summary_map(SaoLourencoBasin[[1]])}
 
-summary_map(demo_landscape(2000, res = 1, prob = c(0.05, 0.3, 0.05, 0.4, 0.2))[[1]])
 }

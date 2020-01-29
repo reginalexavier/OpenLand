@@ -1,9 +1,9 @@
 context("intensityClass & generic_method")
 
 set.seed(159)
-
-demo_raster <- demo_landscape(2000:2005, res = 1)
-
+demo_raster <- .demo_landscape(year =  2000:2005,
+                               res = 1,
+                               crs = "+proj=utm +zone=21 +south +ellps=GRS80 +units=m +no_defs")
 demo_cont <- contingencyTable(demo_raster, pixelresolution = 1)
 
 demo_int_pixel <-

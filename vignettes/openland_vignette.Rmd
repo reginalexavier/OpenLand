@@ -13,7 +13,7 @@ body {
 text-align: justify}
 </style>
 
-```{r, include = FALSE}
+```{r setup, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
@@ -36,7 +36,7 @@ For processing in the OpenLand package, the original multi-year shape file was t
 ### Input data constraints
 The function `contingencyTable()` for data extraction demands as input a list of raster layers (`RasterBrick`, `RasterStack` or a path to a folder containing the rasters). The name of the rasters must be in the format ("some_text" `+` "underscore" `+` "the_year") like "landscape_2019". In our example we included the `SaoLourencoBasin` RasterStack, which parameters can be explored by running `data(SaoLourencoBasin)`:
 
-```{r setup}
+```{r}
 ## First we load the OpenLand package
 library(OpenLand)
 
@@ -137,7 +137,7 @@ Within the OpenLand package, the `intensityAnalysis()` function computes the thr
 testSL <- intensityAnalysis(dataset = SL_2002_2014,
                             class_n = "Ap", class_m = "SG")
 
-# it's returns a list with 6 objects
+# it returns a list with 6 objects
 names(testSL)
 
 ```
@@ -159,7 +159,7 @@ testSL
 
 ## The Graphs 
 ### Outcomes of intensity analysis
-Visualizations of the IA results are obtained from the `plot(intensity-object)` function. For more details on the function arguments, please see the documentation of the `plot()` function.
+Visualizations of the IA results are obtained from the `plot(intensity-object)` function. For more details on the function arguments, please see the documentation of the `plot()` method.
 
 #### Interval Level
 

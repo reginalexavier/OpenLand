@@ -56,22 +56,24 @@ multi-year shape file was transformed into rasters and then saved as a
 library(OpenLand)
 ```
 
-> **What is Intensity Analysis?**: Intensity Analysis (IA) is a
-> quantitative method to analyze LUC maps at several time steps, using
-> cross-tabulation matrices, where each matrix summarizes the LUC change
-> at each time interval. IA evaluates in three levels the deviation
-> between observed change intensity and hypothesized uniform change
-> intensity. Hereby, each level details information given by the
-> previous analysis level. First, the **interval level** indicates how
-> size and rate of change varies across time intervals. Second, the
-> **category level** examines for each time interval how the size and
-> intensity of gross losses and gross gains in each category vary across
-> categories for each time interval. Third, the **transition level**
-> determines for each category how the size and intensity of a
-> category’s transitions vary across the other categories that are
-> available for that transition. At each level, the method tests for
-> stationarity of patterns across time intervals (Aldwaik and Pontius
-> 2012).
+##### **What is Intensity Analysis?**
+
+Intensity Analysis (IA) is a quantitative method to analyze LUC maps at
+several time steps, using cross-tabulation matrices, where each matrix
+summarizes the LUC change at each time interval. IA evaluates in three
+levels the deviation between observed change intensity and hypothesized
+uniform change intensity. Hereby, each level details information given
+by the previous analysis level. First, the **interval level** indicates
+how size and rate of change varies across time intervals. Second, the
+**category level** examines for each time interval how the size and
+intensity of gross losses and gross gains in each category vary across
+categories for each time interval. Third, the **transition level**
+determines for each category how the size and intensity of a category’s
+transitions vary across the other categories that are available for that
+transition. At each level, the method tests for stationarity of patterns
+across time intervals (Aldwaik and Pontius 2012).
+
+### Outcomes of intensity analysis
 
 The data is extracted from the rasters with the `contingencyTable()`
 function which returns a multiple grid information in tables for the
@@ -91,8 +93,6 @@ names(testSL)
 #> [1] "lulc_table"           "interval_lvl"         "category_lvlGain"    
 #> [4] "category_lvlLoss"     "transition_lvlGain_n" "transition_lvlLoss_m"
 ```
-
-### Outcomes of intensity analysis
 
 The `intensityAnalysis()` function returns 6 objects: lulc\_table,
 interval\_lvl, category\_lvlGain, category\_lvlLoss,

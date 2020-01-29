@@ -48,7 +48,7 @@ SL_2002_2014$tb_legend$className <- factor(c("Ap", "FF", "SA", "SG", "aa", "SF",
                                   levels = c("FF", "SF", "SA", "SG", "aa", "Ap",
                                              "Ac", "Im", "Iu", "Agua", "R"))
 
-
+# the plot
 netgrossplot(dataset = SL_2002_2014$lulc_Multistep,
              legendtable = SL_2002_2014$tb_legend,
              title = NULL,

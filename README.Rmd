@@ -54,8 +54,12 @@ library(OpenLand)
 
 
 
-> **What is Intensity Analysis?**:
-> Intensity Analysis (IA) is a quantitative method to analyze LUC maps at several time steps, using cross-tabulation matrices, where each matrix summarizes the LUC change at each time interval. IA evaluates in three levels the deviation between observed change intensity and hypothesized uniform change intensity. Hereby, each level details information given by the previous analysis level. First, the **interval level** indicates how size and rate of change varies across time intervals. Second, the **category level** examines for each time interval how the size and intensity of gross losses and gross gains in each category vary across categories for each time interval. Third, the **transition level** determines for each category how the size and intensity of a category’s transitions vary across the other categories that are available for that transition. At each level, the method tests for stationarity of patterns across time intervals (Aldwaik and Pontius 2012).
+##### **What is Intensity Analysis?**
+Intensity Analysis (IA) is a quantitative method to analyze LUC maps at several time steps, using cross-tabulation matrices, where each matrix summarizes the LUC change at each time interval. IA evaluates in three levels the deviation between observed change intensity and hypothesized uniform change intensity. Hereby, each level details information given by the previous analysis level. First, the **interval level** indicates how size and rate of change varies across time intervals. Second, the **category level** examines for each time interval how the size and intensity of gross losses and gross gains in each category vary across categories for each time interval. Third, the **transition level** determines for each category how the size and intensity of a category’s transitions vary across the other categories that are available for that transition. At each level, the method tests for stationarity of patterns across time intervals (Aldwaik and Pontius 2012).
+
+
+
+### Outcomes of intensity analysis
 
 The data is extracted from the rasters with the `contingencyTable()` function which returns a multiple grid information in tables for the next processing steps.  Within the OpenLand package, the `intensityAnalysis()` function computes the three levels of analysis. It requires the object returned by the `contingenceTable()` function and that the user predefines two LUC categories `n` and `m`. Generally, `n` is a target category which experienced relevant gains and `m` a category with important losses.
 
@@ -87,7 +91,6 @@ names(testSL)
 ```
 
 
-### Outcomes of intensity analysis
 
 The `intensityAnalysis()` function returns `r length(testSL)` objects: `r names(testSL)`.
 Here, we adopted an object-oriented approach that allows to set specific methods for plotting the intensity objects. Specifically, we used the S4 class, which requires the formal definition of classes and methods (Chambers 2008).

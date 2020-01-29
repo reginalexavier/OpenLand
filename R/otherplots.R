@@ -39,7 +39,7 @@ NULL
 #' SL_2002_2014$tb_legend$color <- c("#FFE4B5", "#228B22", "#00FF00", "#CAFF70",
 #'                                   "#EE6363", "#00CD00", "#436EEE", "#FFAEB9",
 #'                                   "#FFA54F", "#68228B", "#636363")
-#'
+#' # the plot
 #' barplotLand(dataset = SL_2002_2014$lulc_Multistep,
 #'             legendtable = SL_2002_2014$tb_legend,
 #'             area_km2 = TRUE)
@@ -126,7 +126,7 @@ barplotLand <-
 #'                                   "#EE6363", "#00CD00", "#436EEE", "#FFAEB9",
 #'                                   "#FFA54F", "#68228B", "#636363")
 #'
-#'
+#' # the plot
 #' chordDiagramLand(dataset = SL_2002_2014$lulc_Onestep,
 #'                  legendtable = SL_2002_2014$tb_legend)
 #'
@@ -321,7 +321,7 @@ chordDiagramLand <-
 #'                                   levels = c("FF", "SF", "SA", "SG", "aa", "Ap",
 #'                                              "Ac", "Im", "Iu", "Agua", "R"))
 #'
-#'
+#' # the plot
 #' netgrossplot(dataset = SL_2002_2014$lulc_Multistep,
 #'              legendtable = SL_2002_2014$tb_legend,
 #'              title = NULL,
@@ -429,11 +429,11 @@ netgrossplot <-
 #'                                   "#EE6363", "#00CD00", "#436EEE", "#FFAEB9",
 #'                                   "#FFA54F", "#68228B", "#636363")
 #'
-#' # a onestep sankey
+#' # onestep sankey
 #' sankeyLand(dataset = SL_2002_2014$lulc_Onestep,
 #'            legendtable = SL_2002_2014$tb_legend)
 #'
-#' # a multistep sankey
+#' # multistep sankey
 #' sankeyLand(dataset = SL_2002_2014$lulc_Multistep,
 #'            legendtable = SL_2002_2014$tb_legend)
 #'

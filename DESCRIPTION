@@ -36,7 +36,7 @@ Imports:
     circlize (>= 0.4.8),
     networkD3 (>= 0.4),
     raster (>= 3.0.7),
-    methods (>= 3.6.2),
+    methods,
     tibble (>= 2.1.3)
 Collate: 
     'OpenLand-package.R'

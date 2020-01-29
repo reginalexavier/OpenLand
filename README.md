@@ -1,17 +1,12 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-<style>
-body {
-text-align: justify}
-</style>
-
-# OpenLand <img src='man/figures/logo.png' align="right" height="120" />
+# OpenLand <img src='man/figures/logo.png' align="right" height="139" />
 
 <!-- badges: start -->
 
 [![Travis build
-status](https://travis-ci.com/reginalexavier/OpenLand.svg?branch=master)](https://travis-ci.com/reginalexavier/OpenLand)
+status](https://travis-ci.org/reginalexavier/OpenLand.svg?branch=master)](https://travis-ci.org/reginalexavier/OpenLand)
 [![AppVeyor build
 status](https://ci.appveyor.com/api/projects/status/github/reginalexavier/OpenLand?branch=master&svg=true)](https://ci.appveyor.com/project/reginalexavier/OpenLand)
 [![Codecov test

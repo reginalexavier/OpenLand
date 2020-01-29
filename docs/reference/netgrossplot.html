@@ -6,8 +6,15 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>A barplot for the Net Gain/Loss and Gross Changes between land use classes for the period analysed — netgrossplot • OpenLand</title>
+<title>Net and gross changes of LUC categories — netgrossplot • OpenLand</title>
 
+<!-- favicons -->
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -35,8 +42,9 @@
 
 
 
-<meta property="og:title" content="A barplot for the Net Gain/Loss and Gross Changes between land use classes for the period analysed — netgrossplot" />
-<meta property="og:description" content="A barplot for the Net Gain/Loss and Gross Changes between land use classes for the period analysed" />
+<meta property="og:title" content="Net and gross changes of LUC categories — netgrossplot" />
+<meta property="og:description" content="A stacked barplot showing net and gross changes of LUC categories during the entire analysed time period." />
+<meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -99,7 +107,7 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/tredgi/OpenLand">
+  <a href="https://github.com/reginalexavier/OpenLand">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
@@ -117,22 +125,22 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>A barplot for the Net Gain/Loss and Gross Changes between land use classes for the period analysed</h1>
-    <small class="dont-index">Source: <a href='https://github.com/tredgi/OpenLand/blob/master/R/otherplots.R'><code>R/otherplots.R</code></a></small>
+    <h1>Net and gross changes of LUC categories</h1>
+    <small class="dont-index">Source: <a href='https://github.com/reginalexavier/OpenLand/blob/master/R/otherplots.R'><code>R/otherplots.R</code></a></small>
     <div class="hidden name"><code>netgrossplot.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>A barplot for the Net Gain/Loss and Gross Changes between land use classes for the period analysed</p>
+    <p>A stacked barplot showing net and gross changes of LUC categories during the entire analysed time period.</p>
     </div>
 
     <pre class="usage"><span class='fu'>netgrossplot</span>(
   <span class='no'>dataset</span>,
   <span class='no'>legendtable</span>,
-  <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"General Changes (First year - Last year)"</span>,
-  <span class='kw'>xlab</span> <span class='kw'>=</span> <span class='st'>"Land Use Classes"</span>,
-  <span class='kw'>ylab</span> <span class='kw'>=</span> <span class='st'>"Area (Kilometer)"</span>,
-  <span class='kw'>changesLabel</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>GC</span> <span class='kw'>=</span> <span class='st'>"Gross changes"</span>, <span class='kw'>NG</span> <span class='kw'>=</span> <span class='st'>"Net Gain"</span>, <span class='kw'>NL</span> <span class='kw'>=</span> <span class='st'>"Net Loss"</span>),
+  <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"LUC change (First year - Last year)"</span>,
+  <span class='kw'>xlab</span> <span class='kw'>=</span> <span class='st'>"LUC category"</span>,
+  <span class='kw'>ylab</span> <span class='kw'>=</span> <span class='st'>"Area (Km2)"</span>,
+  <span class='kw'>changesLabel</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>GC</span> <span class='kw'>=</span> <span class='st'>"Gross change"</span>, <span class='kw'>NG</span> <span class='kw'>=</span> <span class='st'>"Net gain"</span>, <span class='kw'>NL</span> <span class='kw'>=</span> <span class='st'>"Net loss"</span>),
   <span class='kw'>color</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>GC</span> <span class='kw'>=</span> <span class='st'>"gray70"</span>, <span class='kw'>NG</span> <span class='kw'>=</span> <span class='st'>"#006400"</span>, <span class='kw'>NL</span> <span class='kw'>=</span> <span class='st'>"#EE2C2C"</span>),
   <span class='kw'>area_km2</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
 )</pre>
@@ -142,35 +150,36 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>dataset</th>
-      <td><p>A table of multi step transition</p></td>
+      <td><p><code>&lt;tibble&gt;</code>. A table of the multi step transition (<code>lulc_Mulstistep</code>) generated by <code><a href='contingencyTable.html'>contingencyTable</a></code>.</p></td>
     </tr>
     <tr>
       <th>legendtable</th>
-      <td><p>A table contains the legend of the land use classes and his respective color</p></td>
+      <td><p><code>&lt;tibble&gt;</code>. A table (<code>lulc_Onestep</code>) containing the LUC legend items and their respective color.</p></td>
     </tr>
     <tr>
       <th>title</th>
-      <td><p>character. The title of the plot (optional), use <code>NULL</code> for no title.</p></td>
+      <td><p><code>&lt;character&gt;</code>. The title of the plot (optional), use <code>NULL</code> for no title.</p></td>
     </tr>
     <tr>
       <th>xlab</th>
-      <td><p>character. Label for the x axe</p></td>
+      <td><p><code>&lt;character&gt;</code>. Label for the x axis</p></td>
     </tr>
     <tr>
       <th>ylab</th>
-      <td><p>character. Label for the y axe</p></td>
+      <td><p><code>&lt;character&gt;</code>. Label for the y axis</p></td>
     </tr>
     <tr>
       <th>changesLabel</th>
-      <td><p>character. Labels for the three types of chages, the default is c(GC = "Gross chages", NG = "Net Gain", NL = "Net Loss")</p></td>
+      <td><p><code>&lt;character&gt;</code>. Labels for the three types of changes, defaults are
+c(GC = "Gross change", NG = "Net gain", NL = "Net loss")</p></td>
     </tr>
     <tr>
       <th>color</th>
-      <td><p>character. Colors for the three types of chages</p></td>
+      <td><p><code>&lt;chr&gt;</code>. A vector defining the three bar colors.</p></td>
     </tr>
     <tr>
       <th>area_km2</th>
-      <td><p>boolean. TRUE for km2 unit, FALSE for pixel unit</p></td>
+      <td><p><code>&lt;logical&gt;</code>. If TRUE the change is computed in km2, if FALSE in pixel counts.</p></td>
     </tr>
     </table>
 
@@ -179,9 +188,21 @@
     <p>A bar plot</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>test1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='demo_landscape.html'>demo_landscape</a></span>(<span class='fl'>2000</span>:<span class='fl'>2005</span>)
-<span class='no'>test2</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='contingenceTable.html'>contingenceTable</a></span>(<span class='kw'>input_raster</span> <span class='kw'>=</span> <span class='no'>test1</span>, <span class='kw'>pixelresolution</span> <span class='kw'>=</span> <span class='fl'>1</span>)
-<span class='fu'>netgrossplot</span>(<span class='kw'>dataset</span> <span class='kw'>=</span> <span class='no'>test2</span>$<span class='no'>lulc_Multistep</span>, <span class='kw'>legendtable</span> <span class='kw'>=</span> <span class='no'>test2</span>$<span class='no'>tb_legend</span>, <span class='kw'>area_km2</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='img'><img src='netgrossplot-1.png' alt='' width='700' height='433' /></div><div class='input'>
+    <pre class="examples"><div class='input'>
+<span class='co'># editing the class name</span>
+
+<span class='no'>SL_2002_2014</span>$<span class='no'>tb_legend</span>$<span class='no'>className</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Ap"</span>, <span class='st'>"FF"</span>, <span class='st'>"SA"</span>, <span class='st'>"SG"</span>, <span class='st'>"aa"</span>, <span class='st'>"SF"</span>,
+                                             <span class='st'>"Agua"</span>, <span class='st'>"Iu"</span>, <span class='st'>"Ac"</span>, <span class='st'>"R"</span>, <span class='st'>"Im"</span>),
+                                  <span class='kw'>levels</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"FF"</span>, <span class='st'>"SF"</span>, <span class='st'>"SA"</span>, <span class='st'>"SG"</span>, <span class='st'>"aa"</span>, <span class='st'>"Ap"</span>,
+                                             <span class='st'>"Ac"</span>, <span class='st'>"Im"</span>, <span class='st'>"Iu"</span>, <span class='st'>"Agua"</span>, <span class='st'>"R"</span>))
+
+
+<span class='fu'>netgrossplot</span>(<span class='kw'>dataset</span> <span class='kw'>=</span> <span class='no'>SL_2002_2014</span>$<span class='no'>lulc_Multistep</span>,
+             <span class='kw'>legendtable</span> <span class='kw'>=</span> <span class='no'>SL_2002_2014</span>$<span class='no'>tb_legend</span>,
+             <span class='kw'>title</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+             <span class='kw'>xlab</span> <span class='kw'>=</span> <span class='st'>"Classes de UCT"</span>,
+             <span class='kw'>changes</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>GC</span> <span class='kw'>=</span> <span class='st'>"Gross changes"</span>, <span class='kw'>NG</span> <span class='kw'>=</span> <span class='st'>"Net Gain"</span>, <span class='kw'>NL</span> <span class='kw'>=</span> <span class='st'>"Net Loss"</span>),
+             <span class='kw'>color</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>GC</span> <span class='kw'>=</span> <span class='st'>"gray70"</span>, <span class='kw'>NG</span> <span class='kw'>=</span> <span class='st'>"#006400"</span>, <span class='kw'>NL</span> <span class='kw'>=</span> <span class='st'>"#EE2C2C"</span>))</div><div class='img'><img src='netgrossplot-1.png' alt='' width='700' height='433' /></div><div class='input'>
 
 </div></pre>
   </div>

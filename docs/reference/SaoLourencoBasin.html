@@ -6,8 +6,15 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Rasters of Land Use and Land Cover of the São Lourenço River Basin (2002 - 2014) — SaoLourencoBasin • OpenLand</title>
+<title>Land use and cover (LUC) rasters of the São Lourenço River Basin (2002 - 2014) — SaoLourencoBasin • OpenLand</title>
 
+<!-- favicons -->
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -35,25 +42,26 @@
 
 
 
-<meta property="og:title" content="Rasters of Land Use and Land Cover of the São Lourenço River Basin (2002 - 2014) — SaoLourencoBasin" />
+<meta property="og:title" content="Land use and cover (LUC) rasters of the São Lourenço River Basin (2002 - 2014) — SaoLourencoBasin" />
 <meta property="og:description" content="A multi-layer raster (RasterStack) with five (5) RasterLayer objects
-represinting the years 2002, 2008, 2010, 2012 and 2014 respectively.
-These Raster* have everyone 11 classes of use, these classes are:
+representing LUC in the years of 2002, 2008, 2010, 2012 and 2014 respectively.
+Each Raster* has 11 LUC classes:
 Pixel ValueLegendClassUseDetails
-2ApAnthropicAnthropic UsePastagem
-3FFNaturalNAFormações Florestais
-4SANaturalNASavana Arborizada (SA - Cerrado)
-5SGNaturalNASavana Gramínea (SG - Campo)
-7aaAnthropicNAAlteração Antrópica
-8SFNaturalNASavana Florestada (SF - Cerradão)
-9AguaNaturalNARios, córregos, corixos, vazantes, baías e salinas
-10IuAnthropicAnthropic UseInfluencia Urbana
-11AcAnthropicAnthropic UseAgricultura
-12RAnthropicAnthropic UseReflorestamento
-13ImAnthropicAnthropic UseDegradação por Mineração
+2ApAnthropicAnthropic UsePasture
+3FFNaturalNAForest
+4SANaturalNAPark Savannah
+5SGNaturalNAGramineous Savannah
+7aaAnthropicNAAnthropized Vegetation
+8SFNaturalNAWoooded Savannah
+9AguaNaturalNAWater body
+10IuAnthropicAnthropic UseUrban
+11AcAnthropicAnthropic UseCrop farming
+12RAnthropicAnthropic UseReforestation
+13ImAnthropicAnthropic UseMining
 
 
 " />
+<meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -116,7 +124,7 @@ Pixel ValueLegendClassUseDetails
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/tredgi/OpenLand">
+  <a href="https://github.com/reginalexavier/OpenLand">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
@@ -134,27 +142,27 @@ Pixel ValueLegendClassUseDetails
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Rasters of Land Use and Land Cover of the São Lourenço River Basin (2002 - 2014)</h1>
-    <small class="dont-index">Source: <a href='https://github.com/tredgi/OpenLand/blob/master/R/data.R'><code>R/data.R</code></a></small>
+    <h1>Land use and cover (LUC) rasters of the São Lourenço River Basin (2002 - 2014)</h1>
+    <small class="dont-index">Source: <a href='https://github.com/reginalexavier/OpenLand/blob/master/R/data.R'><code>R/data.R</code></a></small>
     <div class="hidden name"><code>SaoLourencoBasin.Rd</code></div>
     </div>
 
     <div class="ref-description">
     <p>A multi-layer raster (RasterStack) with five (5) RasterLayer objects
-represinting the years 2002, 2008, 2010, 2012 and 2014 respectively.
-These Raster* have everyone 11 classes of use, these classes are:</p><table class='table'>
+representing LUC in the years of 2002, 2008, 2010, 2012 and 2014 respectively.
+Each Raster* has 11 LUC classes:</p><table class='table'>
 <tr><td><strong>Pixel Value</strong></td><td><strong>Legend</strong></td><td><strong>Class</strong></td><td><strong>Use</strong></td><td><strong>Details</strong></td></tr>
-<tr><td>2</td><td>Ap</td><td>Anthropic</td><td>Anthropic Use</td><td>Pastagem</td></tr>
-<tr><td>3</td><td>FF</td><td>Natural</td><td>NA</td><td>Formações Florestais</td></tr>
-<tr><td>4</td><td>SA</td><td>Natural</td><td>NA</td><td>Savana Arborizada (SA - Cerrado)</td></tr>
-<tr><td>5</td><td>SG</td><td>Natural</td><td>NA</td><td>Savana Gramínea (SG - Campo)</td></tr>
-<tr><td>7</td><td>aa</td><td>Anthropic</td><td>NA</td><td>Alteração Antrópica</td></tr>
-<tr><td>8</td><td>SF</td><td>Natural</td><td>NA</td><td>Savana Florestada (SF - Cerradão)</td></tr>
-<tr><td>9</td><td>Agua</td><td>Natural</td><td>NA</td><td>Rios, córregos, corixos, vazantes, baías e salinas</td></tr>
-<tr><td>10</td><td>Iu</td><td>Anthropic</td><td>Anthropic Use</td><td>Influencia Urbana</td></tr>
-<tr><td>11</td><td>Ac</td><td>Anthropic</td><td>Anthropic Use</td><td>Agricultura</td></tr>
-<tr><td>12</td><td>R</td><td>Anthropic</td><td>Anthropic Use</td><td>Reflorestamento</td></tr>
-<tr><td>13</td><td>Im</td><td>Anthropic</td><td>Anthropic Use</td><td>Degradação por Mineração</td></tr>
+<tr><td>2</td><td>Ap</td><td>Anthropic</td><td>Anthropic Use</td><td>Pasture</td></tr>
+<tr><td>3</td><td>FF</td><td>Natural</td><td>NA</td><td>Forest</td></tr>
+<tr><td>4</td><td>SA</td><td>Natural</td><td>NA</td><td>Park Savannah</td></tr>
+<tr><td>5</td><td>SG</td><td>Natural</td><td>NA</td><td>Gramineous Savannah</td></tr>
+<tr><td>7</td><td>aa</td><td>Anthropic</td><td>NA</td><td>Anthropized Vegetation</td></tr>
+<tr><td>8</td><td>SF</td><td>Natural</td><td>NA</td><td>Woooded Savannah</td></tr>
+<tr><td>9</td><td>Agua</td><td>Natural</td><td>NA</td><td>Water body</td></tr>
+<tr><td>10</td><td>Iu</td><td>Anthropic</td><td>Anthropic Use</td><td>Urban</td></tr>
+<tr><td>11</td><td>Ac</td><td>Anthropic</td><td>Anthropic Use</td><td>Crop farming</td></tr>
+<tr><td>12</td><td>R</td><td>Anthropic</td><td>Anthropic Use</td><td>Reforestation</td></tr>
+<tr><td>13</td><td>Im</td><td>Anthropic</td><td>Anthropic Use</td><td>Mining</td></tr>
 </table>
 
 
@@ -166,11 +174,11 @@ These Raster* have everyone 11 classes of use, these classes are:</p><table clas
     <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
     <p>An object of class <code>"RasterBrick"</code> with 5 layers:</p><ul>
-<li><p><strong>landscape_2002:</strong> Land scape of the land use and land cover for the yeear 2002</p></li>
-<li><p><strong>landscape_2008:</strong> Land scape of the land use and land cover for the yeear 2008</p></li>
-<li><p><strong>landscape_2010:</strong> Land scape of the land use and land cover for the yeear 2010</p></li>
-<li><p><strong>landscape_2012:</strong> Land scape of the land use and land cover for the yeear 2012</p></li>
-<li><p><strong>landscape_2014:</strong> Land scape of the land use and land cover for the yeear 2014</p></li>
+<li><p><strong>landscape_2002:</strong> LUC in 2002</p></li>
+<li><p><strong>landscape_2008:</strong> LUC in 2008</p></li>
+<li><p><strong>landscape_2010:</strong> LUC in 2010</p></li>
+<li><p><strong>landscape_2012:</strong> LUC in 2012</p></li>
+<li><p><strong>landscape_2014:</strong> LUC in 2014</p></li>
 </ul>
     <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
 
@@ -184,7 +192,7 @@ Alto Paraguai – Porção Brasileira – Período de Análise: 2012 a 2014. 4th
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>SaoLourencoBasin</span>)
-<span class='kw pkg'>raster</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/raster/man/plot.html'>plot</a></span>(<span class='no'>SaoLourencoBasin</span><span class='kw'>[[</span><span class='fl'>1</span>]])</div><div class='output co'>#&gt; <span class='error'>Error in .local(.Object, ...): </span></div><div class='input'>
+<span class='kw pkg'>raster</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/raster/man/plot.html'>plot</a></span>(<span class='no'>SaoLourencoBasin</span><span class='kw'>[[</span><span class='fl'>1</span>]])</div><div class='img'><img src='SaoLourencoBasin-1.png' alt='' width='700' height='433' /></div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

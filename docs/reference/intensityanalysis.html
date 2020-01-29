@@ -6,8 +6,15 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Perform the intensity analysis from a cross-tabulation matrices — intensityAnalysis • OpenLand</title>
+<title>Performs the intensity analysis based on cross-tabulation matrices of each time step — intensityAnalysis • OpenLand</title>
 
+<!-- favicons -->
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -35,11 +42,11 @@
 
 
 
-<meta property="og:title" content="Perform the intensity analysis from a cross-tabulation matrices — intensityAnalysis" />
-<meta property="og:description" content="This function inplement the Intensity Analysis, a quantitative method to analyze
-maps of land categories from several points in time for a single site by
-considering cross-tabulation matrices, where one matrix summarizes the change
-in each time interval." />
+<meta property="og:title" content="Performs the intensity analysis based on cross-tabulation matrices of each time step — intensityAnalysis" />
+<meta property="og:description" content="This function inplements an Intensity Analysis (IA) according to Aldwaik &amp;amp; Pontius (2012), a quantitative method to analyze
+time series of land use and cover (LUC) maps.  For IA, a cross-tabulation matrix is composed for each LUC transition step
+in time." />
+<meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -102,7 +109,7 @@ in each time interval." />
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/tredgi/OpenLand">
+  <a href="https://github.com/reginalexavier/OpenLand">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
@@ -120,16 +127,15 @@ in each time interval." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Perform the intensity analysis from a cross-tabulation matrices</h1>
-    <small class="dont-index">Source: <a href='https://github.com/tredgi/OpenLand/blob/master/R/intensityAnalysis.R'><code>R/intensityAnalysis.R</code></a></small>
-    <div class="hidden name"><code>intensityanalysis.Rd</code></div>
+    <h1>Performs the intensity analysis based on cross-tabulation matrices of each time step</h1>
+    <small class="dont-index">Source: <a href='https://github.com/reginalexavier/OpenLand/blob/master/R/intensityAnalysis.R'><code>R/intensityAnalysis.R</code></a></small>
+    <div class="hidden name"><code>intensityAnalysis.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>This function inplement the Intensity Analysis, a quantitative method to analyze
-maps of land categories from several points in time for a single site by
-considering cross-tabulation matrices, where one matrix summarizes the change
-in each time interval.</p>
+    <p>This function inplements an Intensity Analysis (IA) according to Aldwaik &amp; Pontius (2012), a quantitative method to analyze
+time series of land use and cover (LUC) maps.  For IA, a cross-tabulation matrix is composed for each LUC transition step
+in time.</p>
     </div>
 
     <pre class="usage"><span class='fu'>intensityAnalysis</span>(<span class='no'>dataset</span>, <span class='no'>class_n</span>, <span class='no'>class_m</span>, <span class='kw'>area_km2</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
@@ -139,30 +145,31 @@ in each time interval.</p>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>dataset</th>
-      <td><p>list. The result object from <code><a href='contingenceTable.html'>contingenceTable</a></code>.</p></td>
+      <td><p>list. The result object from <code><a href='contingencyTable.html'>contingencyTable</a></code>.</p></td>
     </tr>
     <tr>
       <th>class_n</th>
-      <td><p>character. the gaining category in the transition of interest <em>n</em>.</p></td>
+      <td><p>character. The gaining category in the transition of interest (<em>n</em>).</p></td>
     </tr>
     <tr>
       <th>class_m</th>
-      <td><p>character. the losing category in the transition of interest <em>m</em>.</p></td>
+      <td><p>character. The losing category in the transition of interest (<em>m</em>).</p></td>
     </tr>
     <tr>
       <th>area_km2</th>
-      <td><p>logical. Whether the change would be computed in km2 or quantity of pixel unit.</p></td>
+      <td><p>logical. If TRUE the change is computed in km2, if FALSE in pixel counts.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Intensity objects including the levels tables and strationarity test tables</p>
+    <p>Intensity object</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>There are three levels of analysis, starting from general to more detailed levels, where each level
-exposes different types of information given the previous level of analysis
+    <p>IA includes three levels of analysis of LUC changes. Consecutive analysis levels detail hearby information
+given by the previous analysis level
 <cite>(Aldwaik and Pontius, 2012, 2013)</cite>.</p>
+
 <ol>
 <li><p>The <em>interval level</em> examines how the size and speed of change vary
 across time intervals.</p></li>
@@ -173,23 +180,25 @@ transitions vary across the other categories that are available for that transit
 </ol>
 
 
-<p>At each level, the method tests for stationarity of patterns across time intervals.</p>
-<p><b>The function return a list with 6 objects:</b></p><ol>
-<li><p>lulc_table: <code>tibble</code>. A table of contingency between all step of time analysed, containing 6 columns:</p><ol>
-<li><p>Period:  <code>&lt;fct&gt;</code>. The period of change in the format <code>first year - last year</code>.</p></li>
-<li><p>From: <code>&lt;fct&gt;</code>. The class in the first year.</p></li>
-<li><p>To: <code>&lt;fct&gt;</code>. The class in the last year.</p></li>
-<li><p>km2: <code>&lt;dbl&gt;</code>. The quantity in kilometer that transit from the classes <code>From</code>
-   to <code>To</code> in the period.</p></li>
-<li><p>QtPixel: <code>&lt;int&gt;</code>. The quantity in number of pixel that transits from
-   the classes <code>From</code> to <code>To</code> in the period.</p></li>
-<li><p>Interval: <code>&lt;int&gt;</code>. The number of time point between the first and the last year of the period.</p></li>
+<p>At each analysis level, the method tests for stationarity of patterns across time intervals.</p>
+<p><b>The function returns a list with 6 objects:</b></p><ol>
+<li><p>lulc_table: <code>tibble</code>. Contingency table of LUC transitions at all analysed time steps, containing 6 columns:</p><ol>
+<li><p>Period:  <code>&lt;fct&gt;</code>. Evaluated period of transition in the format <code>year t - year t+1</code>.</p></li>
+<li><p>From: <code>&lt;fct&gt;</code>. The class in year t.</p></li>
+<li><p>To: <code>&lt;fct&gt;</code>. The class in year t+1.</p></li>
+<li><p>km2: <code>&lt;dbl&gt;</code>. Area in square kilometers that transited from the classe <code>From</code>
+   to the classe <code>To</code> in the period.</p></li>
+<li><p>QtPixel: <code>&lt;int&gt;</code>. Number of pixels that transited from
+   the classe <code>From</code> to the classe <code>To</code> in the period.</p></li>
+<li><p>Interval: <code>&lt;int&gt;</code>. Interval in years of the evaluated period.</p></li>
 </ol></li>
-<li><p><em>lv1_tbl</em>: An <code><a href='Interval-class.html'>Interval</a></code> object (containing the <em>St</em> and <em>U</em> values).</p></li>
-<li><p><em>category_lvlGain</em>: A <code><a href='Category-class.html'>Category</a></code> object (gain with the <em>Gtj</em> values).</p></li>
-<li><p><em>category_lvlLoss</em>: A <code><a href='Category-class.html'>Category</a></code> object (loss with the <em>Lti</em> values).</p></li>
-<li><p><em>transition_lvlGain_n</em>: A <code><a href='Transition-class.html'>Transition</a></code> object (gain in <em>class n</em> with <em>Rtin</em> and <em>Wtn</em> values).</p></li>
-<li><p><em>transition_lvlLoss_m</em>: A <code><a href='Transition-class.html'>Transition</a></code> object (loss in <em>class m</em> with <em>Qtmj</em> and <em>Vtm</em> values).</p></li>
+<li><p><em>lv1_tbl</em>: An <code><a href='Interval-class.html'>Interval</a></code> object containing the <em>St</em> and <em>U</em> values.</p></li>
+<li><p><em>category_lvlGain</em>: A <code><a href='Category-class.html'>Category</a></code> object containing the gain of the LUC class in a period (<em>Gtj</em>).</p></li>
+<li><p><em>category_lvlLoss</em>: A <code><a href='Category-class.html'>Category</a></code> object containing the loss of the LUC class in a period (<em>Lti</em>).</p></li>
+<li><p><em>transition_lvlGain_n</em>: A <code><a href='Transition-class.html'>Transition</a></code> object containing the annualized rate of gain in <em>class n</em> (<em>Rtin</em>) and
+ the respective Uniform Intensity (<em>Wtn</em>).</p></li>
+<li><p><em>transition_lvlLoss_m</em>: A <code><a href='Transition-class.html'>Transition</a></code> object containing the annualized rate of loss in <em>class m</em> (<em>Qtmj</em>) and
+ the respective Uniform Intensity (<em>Vtm</em>).</p></li>
 </ol>
 
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
@@ -205,169 +214,224 @@ Information Science. Taylor &amp; Francis, 27(9), pp. 1717–1739. doi: <a href=
 .</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>intensityAnalysis</span>(<span class='kw'>dataset</span> <span class='kw'>=</span> <span class='no'>SL_2002_2014</span>, <span class='kw'>class_n</span> <span class='kw'>=</span> <span class='st'>"Ap"</span>, <span class='kw'>class_m</span> <span class='kw'>=</span> <span class='st'>"SG"</span>, <span class='kw'>area_km2</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: Factor `Period` contains implicit NA, consider using `forcats::fct_explicit_na`</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Factor `From` contains implicit NA, consider using `forcats::fct_explicit_na`</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Factor `Period` contains implicit NA, consider using `forcats::fct_explicit_na`</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Factor `From` contains implicit NA, consider using `forcats::fct_explicit_na`</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Factor `Period` contains implicit NA, consider using `forcats::fct_explicit_na`</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Factor `From` contains implicit NA, consider using `forcats::fct_explicit_na`</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Factor `Period` contains implicit NA, consider using `forcats::fct_explicit_na`</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Factor `To` contains implicit NA, consider using `forcats::fct_explicit_na`</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Factor `Period` contains implicit NA, consider using `forcats::fct_explicit_na`</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Factor `To` contains implicit NA, consider using `forcats::fct_explicit_na`</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Factor `Period` contains implicit NA, consider using `forcats::fct_explicit_na`</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Factor `To` contains implicit NA, consider using `forcats::fct_explicit_na`</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Factor `Period` contains implicit NA, consider using `forcats::fct_explicit_na`</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Factor `From` contains implicit NA, consider using `forcats::fct_explicit_na`</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Factor `Period` contains implicit NA, consider using `forcats::fct_explicit_na`</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Factor `To` contains implicit NA, consider using `forcats::fct_explicit_na`</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Factor `Period` contains implicit NA, consider using `forcats::fct_explicit_na`</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Factor `To` contains implicit NA, consider using `forcats::fct_explicit_na`</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Factor `Period` contains implicit NA, consider using `forcats::fct_explicit_na`</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Factor `To` contains implicit NA, consider using `forcats::fct_explicit_na`</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Factor `Period` contains implicit NA, consider using `forcats::fct_explicit_na`</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Factor `From` contains implicit NA, consider using `forcats::fct_explicit_na`</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Factor `Period` contains implicit NA, consider using `forcats::fct_explicit_na`</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Factor `From` contains implicit NA, consider using `forcats::fct_explicit_na`</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Factor `Period` contains implicit NA, consider using `forcats::fct_explicit_na`</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Factor `From` contains implicit NA, consider using `forcats::fct_explicit_na`</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Factor `Period` contains implicit NA, consider using `forcats::fct_explicit_na`</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Factor `To` contains implicit NA, consider using `forcats::fct_explicit_na`</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Factor `From` contains implicit NA, consider using `forcats::fct_explicit_na`</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Factor `From` contains implicit NA, consider using `forcats::fct_explicit_na`</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Factor `To` contains implicit NA, consider using `forcats::fct_explicit_na`</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Factor `To` contains implicit NA, consider using `forcats::fct_explicit_na`</span></div><div class='output co'>#&gt; $lulc_table
-#&gt; # A tibble: 130 x 6
+    <pre class="examples"><div class='input'>
+<span class='co'># editing the class name</span>
+
+<span class='no'>SL_2002_2014</span>$<span class='no'>tb_legend</span>$<span class='no'>className</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Ap"</span>, <span class='st'>"FF"</span>, <span class='st'>"SA"</span>, <span class='st'>"SG"</span>, <span class='st'>"aa"</span>, <span class='st'>"SF"</span>,
+                                             <span class='st'>"Agua"</span>, <span class='st'>"Iu"</span>, <span class='st'>"Ac"</span>, <span class='st'>"R"</span>, <span class='st'>"Im"</span>),
+                                  <span class='kw'>levels</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"FF"</span>, <span class='st'>"SF"</span>, <span class='st'>"SA"</span>, <span class='st'>"SG"</span>, <span class='st'>"aa"</span>, <span class='st'>"Ap"</span>,
+                                             <span class='st'>"Ac"</span>, <span class='st'>"Im"</span>, <span class='st'>"Iu"</span>, <span class='st'>"Agua"</span>, <span class='st'>"R"</span>))
+
+<span class='no'>SL_2002_2014</span>$<span class='no'>tb_legend</span>$<span class='no'>color</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"#FFE4B5"</span>, <span class='st'>"#228B22"</span>, <span class='st'>"#00FF00"</span>, <span class='st'>"#CAFF70"</span>,
+                                  <span class='st'>"#EE6363"</span>, <span class='st'>"#00CD00"</span>, <span class='st'>"#436EEE"</span>, <span class='st'>"#FFAEB9"</span>,
+                                  <span class='st'>"#FFA54F"</span>, <span class='st'>"#68228B"</span>, <span class='st'>"#636363"</span>)
+
+<span class='fu'>intensityAnalysis</span>(<span class='kw'>dataset</span> <span class='kw'>=</span> <span class='no'>SL_2002_2014</span>, <span class='kw'>class_n</span> <span class='kw'>=</span> <span class='st'>"Ap"</span>, <span class='kw'>class_m</span> <span class='kw'>=</span> <span class='st'>"SG"</span>, <span class='kw'>area_km2</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; $lulc_table
+#&gt; <span style='color: #555555;'># A tibble: 130 x 6</span><span>
 #&gt;    Period    From  To         km2 QtPixel Interval
-#&gt;    &lt;fct&gt;     &lt;fct&gt; &lt;fct&gt;    &lt;dbl&gt;   &lt;int&gt;    &lt;int&gt;
-#&gt;  1 2002-2008 LEJ   LEJ   6543.    7269961        6
-#&gt;  2 2002-2008 LEJ   WLE      1.56     1736        6
-#&gt;  3 2002-2008 LEJ   WNH     55.2     61320        6
-#&gt;  4 2002-2008 LEJ   OQL     23.9     26609        6
-#&gt;  5 2002-2008 GXL   LEJ     37.5     41649        6
-#&gt;  6 2002-2008 GXL   GXL   2133.    2370190        6
-#&gt;  7 2002-2008 GXL   PZV    155.     172718        6
-#&gt;  8 2002-2008 GXL   WNH      7.48     8307        6
-#&gt;  9 2002-2008 GXL   OQL      0.356     395        6
-#&gt; 10 2002-2008 GXL   HVJ      0.081      90        6
-#&gt; # … with 120 more rows
+#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;fct&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;fct&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;fct&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>
+#&gt; </span><span style='color: #555555;'> 1</span><span> 2002-2008 Ap    Ap    </span><span style='text-decoration: underline;'>6</span><span>543.    7</span><span style='text-decoration: underline;'>269</span><span>961        6
+#&gt; </span><span style='color: #555555;'> 2</span><span> 2002-2008 Ap    Iu       1.56     </span><span style='text-decoration: underline;'>1</span><span>736        6
+#&gt; </span><span style='color: #555555;'> 3</span><span> 2002-2008 Ap    Ac      55.2     </span><span style='text-decoration: underline;'>61</span><span>320        6
+#&gt; </span><span style='color: #555555;'> 4</span><span> 2002-2008 Ap    R       23.9     </span><span style='text-decoration: underline;'>26</span><span>609        6
+#&gt; </span><span style='color: #555555;'> 5</span><span> 2002-2008 FF    Ap      37.5     </span><span style='text-decoration: underline;'>41</span><span>649        6
+#&gt; </span><span style='color: #555555;'> 6</span><span> 2002-2008 FF    FF    </span><span style='text-decoration: underline;'>2</span><span>133.    2</span><span style='text-decoration: underline;'>370</span><span>190        6
+#&gt; </span><span style='color: #555555;'> 7</span><span> 2002-2008 FF    aa     155.     </span><span style='text-decoration: underline;'>172</span><span>718        6
+#&gt; </span><span style='color: #555555;'> 8</span><span> 2002-2008 FF    Ac       7.48     </span><span style='text-decoration: underline;'>8</span><span>307        6
+#&gt; </span><span style='color: #555555;'> 9</span><span> 2002-2008 FF    R        0.356     395        6
+#&gt; </span><span style='color: #555555;'>10</span><span> 2002-2008 FF    Im       0.081      90        6
+#&gt; </span><span style='color: #555555;'># ... with 120 more rows</span><span>
 #&gt; 
 #&gt; $interval_lvl
 #&gt; An object of class "Interval"
 #&gt; Slot "intervalData":
-#&gt; # A tibble: 4 x 4
-#&gt; # Groups:   Period [4]
+#&gt; </span><span style='color: #555555;'># A tibble: 4 x 4</span><span>
+#&gt; </span><span style='color: #555555;'># Groups:   Period [4]</span><span>
 #&gt;   Period    PercentChange    St     U
-#&gt;   &lt;fct&gt;             &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-#&gt; 1 2012-2014         3.32  1.66   1.13
-#&gt; 2 2010-2012         4.23  2.12   1.13
-#&gt; 3 2008-2010         0.880 0.440  1.13
-#&gt; 4 2002-2008         5.18  0.864  1.13
+#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;fct&gt;</span><span>             </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #555555;'>1</span><span> 2012-2014         3.32  1.66   1.13
+#&gt; </span><span style='color: #555555;'>2</span><span> 2010-2012         4.23  2.12   1.13
+#&gt; </span><span style='color: #555555;'>3</span><span> 2008-2010         0.880 0.440  1.13
+#&gt; </span><span style='color: #555555;'>4</span><span> 2002-2008         5.18  0.864  1.13
 #&gt; 
 #&gt; 
 #&gt; $category_lvlGain
 #&gt; An object of class "Category"
 #&gt; Slot "lookupcolor":
-#&gt;       LEJ       GXL       IKW       KCI       PZV       ERH       HBS       WLE 
-#&gt; "#002F70" "#265BAB" "#6889D0" "#A3B4E5" "#D3DBF4" "#F6F6F6" "#F7D3D3" "#E6A4A4" 
-#&gt;       WNH       OQL       HVJ 
-#&gt; "#CB6F70" "#9D3D3D" "#5F1415" 
+#&gt;        Ap        FF        SA        SG        aa        SF      Agua        Iu 
+#&gt; "#FFE4B5" "#228B22" "#00FF00" "#CAFF70" "#EE6363" "#00CD00" "#436EEE" "#FFAEB9" 
+#&gt;        Ac         R        Im 
+#&gt; "#FFA54F" "#68228B" "#636363" 
 #&gt; 
 #&gt; Slot "categoryData":
-#&gt; # A tibble: 23 x 6
-#&gt; # Groups:   Period, To [23]
+#&gt; </span><span style='color: #555555;'># A tibble: 23 x 6</span><span>
+#&gt; </span><span style='color: #555555;'># Groups:   Period, To [23]</span><span>
 #&gt;    Period    To    Interval  GG_km2   Gtj    St
-#&gt;    &lt;fct&gt;     &lt;fct&gt;    &lt;int&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-#&gt;  1 2012-2014 HVJ          2   0.195 0.337  1.66
-#&gt;  2 2012-2014 LEJ          2 612.    3.92   1.66
-#&gt;  3 2012-2014 PZV          2  14.9   0.510  1.66
-#&gt;  4 2012-2014 WLE          2   6.79  2.67   1.66
-#&gt;  5 2012-2014 WNH          2 110.    1.14   1.66
-#&gt;  6 2010-2012 LEJ          2 707.    4.84   2.12
-#&gt;  7 2010-2012 OQL          2   2.76  0.951  2.12
-#&gt;  8 2010-2012 PZV          2  47.0   1.18   2.12
-#&gt;  9 2010-2012 WLE          2   1.90  0.792  2.12
-#&gt; 10 2010-2012 WNH          2 189.    2.00   2.12
-#&gt; # … with 13 more rows
+#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;fct&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;fct&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #555555;'> 1</span><span> 2012-2014 aa           2  14.9   0.510  1.66
+#&gt; </span><span style='color: #555555;'> 2</span><span> 2012-2014 Ap           2 612.    3.92   1.66
+#&gt; </span><span style='color: #555555;'> 3</span><span> 2012-2014 Ac           2 110.    1.14   1.66
+#&gt; </span><span style='color: #555555;'> 4</span><span> 2012-2014 Im           2   0.195 0.337  1.66
+#&gt; </span><span style='color: #555555;'> 5</span><span> 2012-2014 Iu           2   6.79  2.67   1.66
+#&gt; </span><span style='color: #555555;'> 6</span><span> 2010-2012 aa           2  47.0   1.18   2.12
+#&gt; </span><span style='color: #555555;'> 7</span><span> 2010-2012 Ap           2 707.    4.84   2.12
+#&gt; </span><span style='color: #555555;'> 8</span><span> 2010-2012 Ac           2 189.    2.00   2.12
+#&gt; </span><span style='color: #555555;'> 9</span><span> 2010-2012 Iu           2   1.90  0.792  2.12
+#&gt; </span><span style='color: #555555;'>10</span><span> 2010-2012 R            2   2.76  0.951  2.12
+#&gt; </span><span style='color: #555555;'># ... with 13 more rows</span><span>
 #&gt; 
 #&gt; Slot "categoryStationarity":
-#&gt; # A tibble: 12 x 5
+#&gt; </span><span style='color: #555555;'># A tibble: 12 x 5</span><span>
 #&gt;    To     Gain     N Stationarity Test 
-#&gt;    &lt;fct&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;        &lt;chr&gt;
-#&gt;  1 HBS       1     4 Active Gain  N    
-#&gt;  2 LEJ       2     4 Active Gain  N    
-#&gt;  3 OQL       2     4 Active Gain  N    
-#&gt;  4 PZV       2     4 Active Gain  N    
-#&gt;  5 WLE       2     4 Active Gain  N    
-#&gt;  6 WNH       1     4 Active Gain  N    
-#&gt;  7 HVJ       3     4 Dormant Gain N    
-#&gt;  8 LEJ       2     4 Dormant Gain N    
-#&gt;  9 OQL       1     4 Dormant Gain N    
-#&gt; 10 PZV       2     4 Dormant Gain N    
-#&gt; 11 WLE       2     4 Dormant Gain N    
-#&gt; 12 WNH       3     4 Dormant Gain N    
+#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;fct&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>
+#&gt; </span><span style='color: #555555;'> 1</span><span> aa        2     4 Active Gain  N    
+#&gt; </span><span style='color: #555555;'> 2</span><span> Ap        2     4 Active Gain  N    
+#&gt; </span><span style='color: #555555;'> 3</span><span> Ac        1     4 Active Gain  N    
+#&gt; </span><span style='color: #555555;'> 4</span><span> Iu        2     4 Active Gain  N    
+#&gt; </span><span style='color: #555555;'> 5</span><span> Agua      1     4 Active Gain  N    
+#&gt; </span><span style='color: #555555;'> 6</span><span> R         2     4 Active Gain  N    
+#&gt; </span><span style='color: #555555;'> 7</span><span> aa        2     4 Dormant Gain N    
+#&gt; </span><span style='color: #555555;'> 8</span><span> Ap        2     4 Dormant Gain N    
+#&gt; </span><span style='color: #555555;'> 9</span><span> Ac        3     4 Dormant Gain N    
+#&gt; </span><span style='color: #555555;'>10</span><span> Im        3     4 Dormant Gain N    
+#&gt; </span><span style='color: #555555;'>11</span><span> Iu        2     4 Dormant Gain N    
+#&gt; </span><span style='color: #555555;'>12</span><span> R         1     4 Dormant Gain N    
 #&gt; 
 #&gt; 
 #&gt; $category_lvlLoss
 #&gt; An object of class "Category"
 #&gt; Slot "lookupcolor":
-#&gt;       LEJ       GXL       IKW       KCI       PZV       ERH       HBS       WLE 
-#&gt; "#002F70" "#265BAB" "#6889D0" "#A3B4E5" "#D3DBF4" "#F6F6F6" "#F7D3D3" "#E6A4A4" 
-#&gt;       WNH       OQL       HVJ 
-#&gt; "#CB6F70" "#9D3D3D" "#5F1415" 
+#&gt;        Ap        FF        SA        SG        aa        SF      Agua        Iu 
+#&gt; "#FFE4B5" "#228B22" "#00FF00" "#CAFF70" "#EE6363" "#00CD00" "#436EEE" "#FFAEB9" 
+#&gt;        Ac         R        Im 
+#&gt; "#FFA54F" "#68228B" "#636363" 
 #&gt; 
 #&gt; Slot "categoryData":
-#&gt; # A tibble: 29 x 6
-#&gt; # Groups:   Period, From [29]
+#&gt; </span><span style='color: #555555;'># A tibble: 29 x 6</span><span>
+#&gt; </span><span style='color: #555555;'># Groups:   Period, From [29]</span><span>
 #&gt;    Period    From  Interval GL_km2     Lti    St
-#&gt;    &lt;fct&gt;     &lt;fct&gt;    &lt;int&gt;  &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;
-#&gt;  1 2012-2014 ERH          2   3.49  0.224   1.66
-#&gt;  2 2012-2014 GXL          2  15.4   0.365   1.66
-#&gt;  3 2012-2014 IKW          2  25.3   0.845   1.66
-#&gt;  4 2012-2014 KCI          2  46.9   0.634   1.66
-#&gt;  5 2012-2014 LEJ          2 111.    0.759   1.66
-#&gt;  6 2012-2014 PZV          2 541.   13.6     1.66
-#&gt;  7 2012-2014 WNH          2   1.26  0.0133  1.66
-#&gt;  8 2010-2012 ERH          2   4.44  0.283   2.12
-#&gt;  9 2010-2012 GXL          2  11.1   0.263   2.12
-#&gt; 10 2010-2012 IKW          2  29.7   0.974   2.12
-#&gt; # … with 19 more rows
+#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;fct&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;fct&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #555555;'> 1</span><span> 2012-2014 FF           2  15.4   0.365   1.66
+#&gt; </span><span style='color: #555555;'> 2</span><span> 2012-2014 SF           2   3.49  0.224   1.66
+#&gt; </span><span style='color: #555555;'> 3</span><span> 2012-2014 SA           2  25.3   0.845   1.66
+#&gt; </span><span style='color: #555555;'> 4</span><span> 2012-2014 SG           2  46.9   0.634   1.66
+#&gt; </span><span style='color: #555555;'> 5</span><span> 2012-2014 aa           2 541.   13.6     1.66
+#&gt; </span><span style='color: #555555;'> 6</span><span> 2012-2014 Ap           2 111.    0.759   1.66
+#&gt; </span><span style='color: #555555;'> 7</span><span> 2012-2014 Ac           2   1.26  0.013</span><span style='text-decoration: underline;'>3</span><span>  1.66
+#&gt; </span><span style='color: #555555;'> 8</span><span> 2010-2012 FF           2  11.1   0.263   2.12
+#&gt; </span><span style='color: #555555;'> 9</span><span> 2010-2012 SF           2   4.44  0.283   2.12
+#&gt; </span><span style='color: #555555;'>10</span><span> 2010-2012 SA           2  29.7   0.974   2.12
+#&gt; </span><span style='color: #555555;'># ... with 19 more rows</span><span>
 #&gt; 
 #&gt; Slot "categoryStationarity":
-#&gt; # A tibble: 14 x 5
+#&gt; </span><span style='color: #555555;'># A tibble: 14 x 5</span><span>
 #&gt;    From   Loss     N Stationarity Test 
-#&gt;    &lt;fct&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;        &lt;chr&gt;
-#&gt;  1 ERH       2     4 Active Loss  N    
-#&gt;  2 GXL       1     4 Active Loss  N    
-#&gt;  3 IKW       2     4 Active Loss  N    
-#&gt;  4 KCI       2     4 Active Loss  N    
-#&gt;  5 LEJ       1     4 Active Loss  N    
-#&gt;  6 OQL       1     4 Active Loss  N    
-#&gt;  7 PZV       3     4 Active Loss  N    
-#&gt;  8 ERH       2     4 Dormant Loss N    
-#&gt;  9 GXL       3     4 Dormant Loss N    
-#&gt; 10 IKW       2     4 Dormant Loss N    
-#&gt; 11 KCI       2     4 Dormant Loss N    
-#&gt; 12 LEJ       3     4 Dormant Loss N    
-#&gt; 13 PZV       1     4 Dormant Loss N    
-#&gt; 14 WNH       4     4 Dormant Loss Y    
+#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;fct&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>
+#&gt; </span><span style='color: #555555;'> 1</span><span> FF        1     4 Active Loss  N    
+#&gt; </span><span style='color: #555555;'> 2</span><span> SF        2     4 Active Loss  N    
+#&gt; </span><span style='color: #555555;'> 3</span><span> SA        2     4 Active Loss  N    
+#&gt; </span><span style='color: #555555;'> 4</span><span> SG        2     4 Active Loss  N    
+#&gt; </span><span style='color: #555555;'> 5</span><span> aa        3     4 Active Loss  N    
+#&gt; </span><span style='color: #555555;'> 6</span><span> Ap        1     4 Active Loss  N    
+#&gt; </span><span style='color: #555555;'> 7</span><span> R         1     4 Active Loss  N    
+#&gt; </span><span style='color: #555555;'> 8</span><span> FF        3     4 Dormant Loss N    
+#&gt; </span><span style='color: #555555;'> 9</span><span> SF        2     4 Dormant Loss N    
+#&gt; </span><span style='color: #555555;'>10</span><span> SA        2     4 Dormant Loss N    
+#&gt; </span><span style='color: #555555;'>11</span><span> SG        2     4 Dormant Loss N    
+#&gt; </span><span style='color: #555555;'>12</span><span> aa        1     4 Dormant Loss N    
+#&gt; </span><span style='color: #555555;'>13</span><span> Ap        3     4 Dormant Loss N    
+#&gt; </span><span style='color: #555555;'>14</span><span> Ac        4     4 Dormant Loss Y    
 #&gt; 
 #&gt; 
 #&gt; $transition_lvlGain_n
 #&gt; An object of class "Transition"
 #&gt; Slot "lookupcolor":
-#&gt;       LEJ       GXL       IKW       KCI       PZV       ERH       HBS       WLE 
-#&gt; "#002F70" "#265BAB" "#6889D0" "#A3B4E5" "#D3DBF4" "#F6F6F6" "#F7D3D3" "#E6A4A4" 
-#&gt;       WNH       OQL       HVJ 
-#&gt; "#CB6F70" "#9D3D3D" "#5F1415" 
+#&gt;        Ap        FF        SA        SG        aa        SF      Agua        Iu 
+#&gt; "#FFE4B5" "#228B22" "#00FF00" "#CAFF70" "#EE6363" "#00CD00" "#436EEE" "#FFAEB9" 
+#&gt;        Ac         R        Im 
+#&gt; "#FFA54F" "#68228B" "#636363" 
 #&gt; 
-#&gt; Slot "transitionData":</div><div class='output co'>#&gt; <span class='warning'>Warning: Factor `Period` contains implicit NA, consider using `forcats::fct_explicit_na`</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Factor `From` contains implicit NA, consider using `forcats::fct_explicit_na`</span></div><div class='output co'>#&gt; # A tibble: 1 x 7
-#&gt; # Groups:   Period, From [1]
-#&gt;   Period From  To    Interval T_i2n_km2  Rtin   Wtn
-#&gt;   &lt;fct&gt;  &lt;fct&gt; &lt;fct&gt;    &lt;int&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-#&gt; 1 &lt;NA&gt;   &lt;NA&gt;  &lt;NA&gt;        NA         0    NA    NA
+#&gt; Slot "transitionData":
+#&gt; </span><span style='color: #555555;'># A tibble: 20 x 7</span><span>
+#&gt; </span><span style='color: #555555;'># Groups:   Period, From [20]</span><span>
+#&gt;    Period    From  To    Interval T_i2n_km2    Rtin    Wtn
+#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;fct&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;fct&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;fct&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #555555;'> 1</span><span> 2012-2014 FF    Ap           2    12.9    0.307  2.03  
+#&gt; </span><span style='color: #555555;'> 2</span><span> 2012-2014 SF    Ap           2     2.38   0.152  2.03  
+#&gt; </span><span style='color: #555555;'> 3</span><span> 2012-2014 SA    Ap           2    18.1    0.605  2.03  
+#&gt; </span><span style='color: #555555;'> 4</span><span> 2012-2014 SG    Ap           2    42.1    0.569  2.03  
+#&gt; </span><span style='color: #555555;'> 5</span><span> 2012-2014 aa    Ap           2   537.    13.5    2.03  
+#&gt; </span><span style='color: #555555;'> 6</span><span> 2010-2012 FF    Ap           2     3.63   0.085</span><span style='text-decoration: underline;'>6</span><span> 2.26  
+#&gt; </span><span style='color: #555555;'> 7</span><span> 2010-2012 SF    Ap           2     1.08   0.068</span><span style='text-decoration: underline;'>5</span><span> 2.26  
+#&gt; </span><span style='color: #555555;'> 8</span><span> 2010-2012 SA    Ap           2    12.3    0.403  2.26  
+#&gt; </span><span style='color: #555555;'> 9</span><span> 2010-2012 SG    Ap           2     8.53   0.114  2.26  
+#&gt; </span><span style='color: #555555;'>10</span><span> 2010-2012 aa    Ap           2   682.    13.0    2.26  
+#&gt; </span><span style='color: #555555;'>11</span><span> 2008-2010 FF    Ap           2     0.968  0.022</span><span style='text-decoration: underline;'>7</span><span> 0.061</span><span style='text-decoration: underline;'>0</span><span>
+#&gt; </span><span style='color: #555555;'>12</span><span> 2008-2010 SF    Ap           2     1.10   0.069</span><span style='text-decoration: underline;'>4</span><span> 0.061</span><span style='text-decoration: underline;'>0</span><span>
+#&gt; </span><span style='color: #555555;'>13</span><span> 2008-2010 SA    Ap           2     0.971  0.031</span><span style='text-decoration: underline;'>4</span><span> 0.061</span><span style='text-decoration: underline;'>0</span><span>
+#&gt; </span><span style='color: #555555;'>14</span><span> 2008-2010 SG    Ap           2     3.94   0.052</span><span style='text-decoration: underline;'>4</span><span> 0.061</span><span style='text-decoration: underline;'>0</span><span>
+#&gt; </span><span style='color: #555555;'>15</span><span> 2008-2010 aa    Ap           2    12.0    0.233  0.061</span><span style='text-decoration: underline;'>0</span><span>
+#&gt; </span><span style='color: #555555;'>16</span><span> 2002-2008 FF    Ap           6    37.5    0.268  0.323 
+#&gt; </span><span style='color: #555555;'>17</span><span> 2002-2008 SF    Ap           6    24.8    0.453  0.323 
+#&gt; </span><span style='color: #555555;'>18</span><span> 2002-2008 SA    Ap           6    65.8    0.608  0.323 
+#&gt; </span><span style='color: #555555;'>19</span><span> 2002-2008 SG    Ap           6    48.3    0.198  0.323 
+#&gt; </span><span style='color: #555555;'>20</span><span> 2002-2008 aa    Ap           6   130.     1.02   0.323 
 #&gt; 
 #&gt; Slot "transitionStationarity":
-#&gt; # A tibble: 2 x 5
+#&gt; </span><span style='color: #555555;'># A tibble: 7 x 5</span><span>
 #&gt;   From   Loss     N Stationarity   Test 
-#&gt;   &lt;fct&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;          &lt;chr&gt;
-#&gt; 1 &lt;NA&gt;      0     1 targeted by Ap N    
-#&gt; 2 &lt;NA&gt;      0     1 avoided by Ap  N    
+#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;fct&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>          </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>
+#&gt; </span><span style='color: #555555;'>1</span><span> SF        2     4 targeted by Ap N    
+#&gt; </span><span style='color: #555555;'>2</span><span> SA        1     4 targeted by Ap N    
+#&gt; </span><span style='color: #555555;'>3</span><span> aa        4     4 targeted by Ap Y    
+#&gt; </span><span style='color: #555555;'>4</span><span> FF        4     4 avoided by Ap  Y    
+#&gt; </span><span style='color: #555555;'>5</span><span> SF        2     4 avoided by Ap  N    
+#&gt; </span><span style='color: #555555;'>6</span><span> SA        3     4 avoided by Ap  N    
+#&gt; </span><span style='color: #555555;'>7</span><span> SG        4     4 avoided by Ap  Y    
 #&gt; 
 #&gt; 
 #&gt; $transition_lvlLoss_m
 #&gt; An object of class "Transition"
 #&gt; Slot "lookupcolor":
-#&gt;       LEJ       GXL       IKW       KCI       PZV       ERH       HBS       WLE 
-#&gt; "#002F70" "#265BAB" "#6889D0" "#A3B4E5" "#D3DBF4" "#F6F6F6" "#F7D3D3" "#E6A4A4" 
-#&gt;       WNH       OQL       HVJ 
-#&gt; "#CB6F70" "#9D3D3D" "#5F1415" 
+#&gt;        Ap        FF        SA        SG        aa        SF      Agua        Iu 
+#&gt; "#FFE4B5" "#228B22" "#00FF00" "#CAFF70" "#EE6363" "#00CD00" "#436EEE" "#FFAEB9" 
+#&gt;        Ac         R        Im 
+#&gt; "#FFA54F" "#68228B" "#636363" 
 #&gt; 
-#&gt; Slot "transitionData":</div><div class='output co'>#&gt; <span class='warning'>Warning: Factor `Period` contains implicit NA, consider using `forcats::fct_explicit_na`</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Factor `To` contains implicit NA, consider using `forcats::fct_explicit_na`</span></div><div class='output co'>#&gt; # A tibble: 1 x 7
-#&gt; # Groups:   Period, To [1]
-#&gt;   Period To    From  Interval T_m2j_km2  Qtmj   Vtm
-#&gt;   &lt;fct&gt;  &lt;fct&gt; &lt;fct&gt;    &lt;int&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-#&gt; 1 &lt;NA&gt;   &lt;NA&gt;  &lt;NA&gt;        NA         0    NA    NA
+#&gt; Slot "transitionData":
+#&gt; </span><span style='color: #555555;'># A tibble: 14 x 7</span><span>
+#&gt; </span><span style='color: #555555;'># Groups:   Period, To [14]</span><span>
+#&gt;    Period    To    From  Interval T_m2j_km2     Qtmj    Vtm
+#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;fct&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;fct&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;fct&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #555555;'> 1</span><span> 2012-2014 aa    SG           2    4.76   0.163    0.125 
+#&gt; </span><span style='color: #555555;'> 2</span><span> 2012-2014 Ap    SG           2   42.1    0.270    0.125 
+#&gt; </span><span style='color: #555555;'> 3</span><span> 2012-2014 Ac    SG           2    0.062</span><span style='text-decoration: underline;'>1</span><span> 0.000</span><span style='text-decoration: underline;'>642</span><span> 0.125 
+#&gt; </span><span style='color: #555555;'> 4</span><span> 2010-2012 aa    SG           2   18.9    0.475    0.074</span><span style='text-decoration: underline;'>9</span><span>
+#&gt; </span><span style='color: #555555;'> 5</span><span> 2010-2012 Ap    SG           2    8.53   0.058</span><span style='text-decoration: underline;'>4</span><span>   0.074</span><span style='text-decoration: underline;'>9</span><span>
+#&gt; </span><span style='color: #555555;'> 6</span><span> 2010-2012 Ac    SG           2    0.632  0.006</span><span style='text-decoration: underline;'>69</span><span>  0.074</span><span style='text-decoration: underline;'>9</span><span>
+#&gt; </span><span style='color: #555555;'> 7</span><span> 2008-2010 aa    SG           2   30.6    0.584    0.092</span><span style='text-decoration: underline;'>9</span><span>
+#&gt; </span><span style='color: #555555;'> 8</span><span> 2008-2010 Ap    SG           2    3.94   0.029</span><span style='text-decoration: underline;'>0</span><span>   0.092</span><span style='text-decoration: underline;'>9</span><span>
+#&gt; </span><span style='color: #555555;'> 9</span><span> 2008-2010 Ac    SG           2    0.087</span><span style='text-decoration: underline;'>3</span><span> 0.000</span><span style='text-decoration: underline;'>962</span><span> 0.092</span><span style='text-decoration: underline;'>9</span><span>
+#&gt; </span><span style='color: #555555;'>10</span><span> 2008-2010 Iu    SG           2    0.050</span><span style='text-decoration: underline;'>4</span><span> 0.021</span><span style='text-decoration: underline;'>3</span><span>   0.092</span><span style='text-decoration: underline;'>9</span><span>
+#&gt; </span><span style='color: #555555;'>11</span><span> 2002-2008 aa    SG           6  244.     1.58     0.273 
+#&gt; </span><span style='color: #555555;'>12</span><span> 2002-2008 Ap    SG           6   48.3    0.118    0.273 
+#&gt; </span><span style='color: #555555;'>13</span><span> 2002-2008 Ac    SG           6   13.1    0.048</span><span style='text-decoration: underline;'>9</span><span>   0.273 
+#&gt; </span><span style='color: #555555;'>14</span><span> 2002-2008 R     SG           6    0.099</span><span style='text-decoration: underline;'>9</span><span> 0.012</span><span style='text-decoration: underline;'>9</span><span>   0.273 
 #&gt; 
 #&gt; Slot "transitionStationarity":
-#&gt; # A tibble: 2 x 5
+#&gt; </span><span style='color: #555555;'># A tibble: 6 x 5</span><span>
 #&gt;   To     Gain     N Stationarity Test 
-#&gt;   &lt;fct&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;        &lt;chr&gt;
-#&gt; 1 &lt;NA&gt;      0     1 targeted SG  N    
-#&gt; 2 &lt;NA&gt;      0     1 avoided SG   N    
+#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;fct&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>
+#&gt; </span><span style='color: #555555;'>1</span><span> aa        4     4 targeted SG  Y    
+#&gt; </span><span style='color: #555555;'>2</span><span> Ap        1     4 targeted SG  N    
+#&gt; </span><span style='color: #555555;'>3</span><span> Ap        3     4 avoided SG   N    
+#&gt; </span><span style='color: #555555;'>4</span><span> Ac        4     4 avoided SG   Y    
+#&gt; </span><span style='color: #555555;'>5</span><span> Iu        1     4 avoided SG   N    
+#&gt; </span><span style='color: #555555;'>6</span><span> R         1     4 avoided SG   N    
 #&gt; 
 #&gt; </div><div class='input'>
 
-</div></pre>
+</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

@@ -8,6 +8,13 @@
 
 <title>Class Interval — Interval-class • OpenLand</title>
 
+<!-- favicons -->
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -36,7 +43,8 @@
 
 
 <meta property="og:title" content="Class Interval — Interval-class" />
-<meta property="og:description" content="An S4 class for the Interval level analysis result" />
+<meta property="og:description" content="A S4 class for the Interval level result of an Intensity analysis" />
+<meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -99,7 +107,7 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/tredgi/OpenLand">
+  <a href="https://github.com/reginalexavier/OpenLand">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
@@ -118,24 +126,24 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Class Interval</h1>
-    <small class="dont-index">Source: <a href='https://github.com/tredgi/OpenLand/blob/master/R/intensityClass.R'><code>R/intensityClass.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/reginalexavier/OpenLand/blob/master/R/intensityClass.R'><code>R/intensityClass.R</code></a></small>
     <div class="hidden name"><code>Interval-class.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>An S4 class for the Interval level analysis result</p>
+    <p>A S4 class for the Interval level result of an Intensity analysis</p>
     </div>
 
 
 
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p><b>The slot <code>intervalData</code> receives a table containing 4 columns in the following format:</b></p><ol>
-<li><p>Period: <code>&lt;fct&gt;</code>. The period <em>[Yt, Yt+1]</em>.</p></li>
-<li><p>PercentChange: <code>&lt;dbl&gt;</code>. Interval Change Area (percent of map).</p></li>
-<li><p>St: <code>&lt;dbl&gt;</code>. annual intensity of change for time
-   interval [Yt, Yt+1].</p></li>
-<li><p>U: <code>&lt;dbl&gt;</code>. value of uniform line for time intensity analysis.</p></li>
+    <p>The slot <code>intervalData</code> receives a table containing 4 columns in the following format:</p><ol>
+<li><p>Period: <code>&lt;fct&gt;</code>. The period of interest <em>[Yt, Yt+1]</em>.</p></li>
+<li><p>PercentChange: <code>&lt;dbl&gt;</code>. Changed area on the Interval level (<!-- %). --></p></li>
+<li><p>St: <code>&lt;dbl&gt;</code>. Annual intensity of change for a time
+   period [Yt, Yt+1].</p></li>
+<li><p>U: <code>&lt;dbl&gt;</code>. Uniform intensity for a LUC class change in a time period of interest.</p></li>
 </ol>
 
     <h2 class="hasAnchor" id="slots"><a class="anchor" href="#slots"></a>Slots</h2>
@@ -143,7 +151,7 @@
     
 
 <dl class='dl-horizontal'>
-<dt><code>intervalData</code></dt><dd><p>tibble; A table of Interval level's result (<em>St</em> and <em>U</em> values)</p></dd>
+<dt><code>intervalData</code></dt><dd><p>tibble. A table with the results of an Intensity analysis at the Interval level (<em>St</em> and <em>U</em> values)</p></dd>
 
 </dl>
 

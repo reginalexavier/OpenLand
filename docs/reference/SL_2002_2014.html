@@ -6,8 +6,15 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Tables of Land Use and Land Cover of the São Lourenço River Basin (2002 - 2014) — SL_2002_2014 • OpenLand</title>
+<title>Tables of land use and cover (LUC) in the São Lourenço River Basin (2002 - 2014) — SL_2002_2014 • OpenLand</title>
 
+<!-- favicons -->
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -35,10 +42,11 @@
 
 
 
-<meta property="og:title" content="Tables of Land Use and Land Cover of the São Lourenço River Basin (2002 - 2014) — SL_2002_2014" />
-<meta property="og:description" content="A list containing five objects from contingenceTable funtion
-with the SaoLourencoBasin as input
+<meta property="og:title" content="Tables of land use and cover (LUC) in the São Lourenço River Basin (2002 - 2014) — SL_2002_2014" />
+<meta property="og:description" content="A list containing five objects created by the contingencyTable funtion
+with SaoLourencoBasin as input
 (SL_2002_2014 &amp;lt;- contingenceTable(input_raster = SaoLourencoBasin, pixelresolution = 30))." />
+<meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -101,7 +109,7 @@ with the SaoLourencoBasin as input
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/tredgi/OpenLand">
+  <a href="https://github.com/reginalexavier/OpenLand">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
@@ -119,14 +127,14 @@ with the SaoLourencoBasin as input
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Tables of Land Use and Land Cover of the São Lourenço River Basin (2002 - 2014)</h1>
-    <small class="dont-index">Source: <a href='https://github.com/tredgi/OpenLand/blob/master/R/data.R'><code>R/data.R</code></a></small>
+    <h1>Tables of land use and cover (LUC) in the São Lourenço River Basin (2002 - 2014)</h1>
+    <small class="dont-index">Source: <a href='https://github.com/reginalexavier/OpenLand/blob/master/R/data.R'><code>R/data.R</code></a></small>
     <div class="hidden name"><code>SL_2002_2014.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>A list containing five objects from <code><a href='contingenceTable.html'>contingenceTable</a></code> funtion
-with the <code><a href='SaoLourencoBasin.html'>SaoLourencoBasin</a></code> as input
+    <p>A list containing five objects created by the <code><a href='contingencyTable.html'>contingencyTable</a></code> funtion
+with <code><a href='SaoLourencoBasin.html'>SaoLourencoBasin</a></code> as input
 (<code>SL_2002_2014 &lt;- contingenceTable(input_raster = SaoLourencoBasin, pixelresolution = 30)</code>).</p>
     </div>
 
@@ -136,31 +144,34 @@ with the <code><a href='SaoLourencoBasin.html'>SaoLourencoBasin</a></code> as in
     <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
     <p>A data list with 5 objects:</p><dl class='dl-horizontal'>
-  <dt>lulc_Multistep</dt><dd><p><code>&lt;tibble&gt;</code> A table of contingency between all step of time analysed, contains 8 columns:
+  <dt>lulc_Multistep</dt><dd><p><code>&lt;tibble&gt;</code> Contingency table for all analysed time steps, containing 8 columns:
   <ol>
-<li><p>Period: <code>&lt;chr&gt;</code> period between the years analyzed</p></li>
-<li><p>From: <code>&lt;int&gt;</code> The pixel value from</p></li>
-<li><p>To: <code>&lt;int&gt;</code> The pixel value to</p></li>
-<li><p>km2: <code>&lt;dbl&gt;</code> The area of change in squared kilometer</p></li>
-<li><p>QtPixel: <code>&lt;int&gt;</code> The change in quatity of pixel</p></li>
-<li><p>Interval: <code>&lt;int&gt;</code> The interval in years between the period analyzed</p></li>
-<li><p>yearFrom: <code>&lt;int&gt;</code> The year that the change come from</p></li>
-<li><p>yearTo: <code>&lt;int&gt;</code> The year that the change go for</p></li>
+<li><p>Period: <code>&lt;chr&gt;</code> The period <em>[Yt, Yt+1]</em>.</p></li>
+<li><p>From: <code>&lt;int&gt;</code> numerical code of a LUC category <em>i</em>.</p></li>
+<li><p>To: <code>&lt;int&gt;</code> numerical code of a LUC category <em>j</em>.</p></li>
+<li><p>km2: <code>&lt;dbl&gt;</code> Area in square kilometers that transited from the class category <em>i</em>
+   to category <em>j</em> in the period from <em>Yt</em> to <em>Yt+1</em>.</p></li>
+<li><p>QtPixel: <code>&lt;int&gt;</code> Pixel count that transited from the classes category <em>i</em>
+   to category <em>j</em> in the period from <em>Yt</em> to <em>Yt+1</em>.</p></li>
+<li><p>Interval: <code>&lt;int&gt;</code> Interval of years between the first and
+   the last year of the period <em>[Yt, Yt+1]</em>.</p></li>
+<li><p>yearFrom: <code>&lt;int&gt;</code> The year that the change comes from <em>[Yt]</em></p></li>
+<li><p>yearTo: <code>&lt;int&gt;</code> The year that the change goes for <em>[Yt+1]</em></p></li>
 </ol></p></dd>
-  <dt>lulc_Onstep</dt><dd><p><code>&lt;tibble&gt;</code> A table of contingensy of the first and last year analysed with the same columns
-  as <code>lulc_Mulstistep</code> <code>tibble</code></p></dd>
-  <dt>tb_legend</dt><dd><p><code>&lt;tibble&gt;</code> A table of the pixel value, their names and colors, contains 3 columns:
+  <dt>lulc_Onstep</dt><dd><p><code>&lt;tibble&gt;</code> Contingency table for the entire analysed period <em>[Yt1, YT]</em>, containing
+  8 columns identical with <code>lulc_Mulstistep</code></p></dd>.
+  <dt>tb_legend</dt><dd><p><code>&lt;tibble&gt;</code> A table of the pixel value, his name and color containing 3 columns:
   <ol>
-<li><p>classValue: <code>&lt;int&gt;</code> the pixel value of the classes of land use</p></li>
-<li><p>className: <code>&lt;fct&gt;</code> The name or legend associated with a given pixel value</p></li>
-<li><p>color: <code>&lt;chr&gt;</code> The color associate with the given pixel value</p></li>
+<li><p>classValue: <code>&lt;int&gt;</code> the pixel value of the LUC class</p></li>
+<li><p>className: <code>&lt;fct&gt;</code> randomly created string associated with a given pixel value of a LUC category</p></li>
+<li><p>color: <code>&lt;chr&gt;</code> random color associated with the given pixel value of a LUC category.</p></li>
 </ol></p></dd>
-  <dt>totalArea</dt><dd><p><code>&lt;tibble&gt;</code> A table of two columns with the total area of study, contains 2 columns:
+  <dt>totalArea</dt><dd><p><code>&lt;tibble&gt;</code> A table with the total area of the study area containing 2 columns:
   <ol>
-<li><p>area_km2: <code>&lt;dbl&gt;</code> The total area of study in km2</p></li>
-<li><p>QtPixel: <code>&lt;int&gt;</code> The total area of study in quantity of pixel</p></li>
+<li><p>area_km2: <code>&lt;dbl&gt;</code> The total area in square kilometers.</p></li>
+<li><p>QtPixel: <code>&lt;int&gt;</code> The total area in pixel counts</p></li>
 </ol></p></dd>
-  <dt>totalInterval</dt><dd><p><code>&lt;int&gt;</code> A number represinting the whole interval of time analysed</p></dd>
+  <dt>totalInterval</dt><dd><p><code>&lt;int&gt;</code> Total interval of the analysed time series in years</p></dd>
   
 </dl>
     <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>

@@ -8,6 +8,13 @@
 
 <title>Class Category — Category-class • OpenLand</title>
 
+<!-- favicons -->
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -36,7 +43,8 @@
 
 
 <meta property="og:title" content="Class Category — Category-class" />
-<meta property="og:description" content="A class for the Category level analysis result" />
+<meta property="og:description" content="A S4 class for the Category level result of an Intensity analysis" />
+<meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -99,7 +107,7 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/tredgi/OpenLand">
+  <a href="https://github.com/reginalexavier/OpenLand">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
@@ -118,56 +126,56 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Class Category</h1>
-    <small class="dont-index">Source: <a href='https://github.com/tredgi/OpenLand/blob/master/R/intensityClass.R'><code>R/intensityClass.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/reginalexavier/OpenLand/blob/master/R/intensityClass.R'><code>R/intensityClass.R</code></a></small>
     <div class="hidden name"><code>Category-class.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>A class for the Category level analysis result</p>
+    <p>A S4 class for the Category level result of an Intensity analysis</p>
     </div>
 
 
 
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p><b>The slots <code>categoryData</code> and <code>categoryStationarity</code> can receive
-   tables for "Gain" or "Loss" in the format following format:</b></p><ol>
+    <p>The slots <code>categoryData</code> and <code>categoryStationarity</code> can receive
+   tables for "Gain" or "Loss" in the following format:</p><ol>
 <li><p>Gain</p>
 <p></p><ul>
 <li><p><code>categoryData</code>: <code>&lt;tibble&gt;</code>. A table containing 6 columns:</p><ol>
 <li><p>Period: <code>&lt;fct&gt;</code>. The period <em>[Yt, Yt+1]</em>.</p></li>
-<li><p>To: <code>&lt;fct&gt;</code>. a category <em>j</em>.</p></li>
-<li><p>Interval: <code>&lt;int&gt;</code>. duration of the period <em>[Yt, Yt+1]</em>.</p></li>
-<li><p>GG_km2/GG_pixel: <code>&lt;dbl&gt;/&lt;int&gt;</code>. area of gross gain of category <em>j</em> during <em>[Yt, Yt+1]</em>.</p></li>
-<li><p>Gtj: <code>&lt;dbl&gt;</code>. annual intensity of gross gain of category <em>j</em> for time interval <em>[Yt, Yt+1]</em>.</p></li>
-<li><p>St: <code>&lt;dbl&gt;</code>. annual intensity of change for time interval <em>[Yt, Yt+1]</em>.</p></li>
+<li><p>To: <code>&lt;fct&gt;</code>. A LUC category <em>j</em>.</p></li>
+<li><p>Interval: <code>&lt;int&gt;</code>. Duration of the period <em>[Yt, Yt+1]</em> in years.</p></li>
+<li><p>GG_km2/GG_pixel: <code>&lt;dbl&gt;/&lt;int&gt;</code>. Area of gross gain of category <em>j</em> during <em>[Yt, Yt+1]</em>.</p></li>
+<li><p>Gtj: <code>&lt;dbl&gt;</code>. Annual intensity of gross gain of category <em>j</em> for time interval <em>[Yt, Yt+1]</em>.</p></li>
+<li><p>St: <code>&lt;dbl&gt;</code>. Annual intensity of change for time interval <em>[Yt, Yt+1]</em>.</p></li>
 </ol></li>
-<li><p>categoryStationarity:  <code>&lt;tibble&gt;</code>. A table of stationarity test over the gain of the classes in
-  in the Category level, containing 5 columns:</p><ol>
-<li><p>To: <code>&lt;fct&gt;</code>. acategory <em>j</em>.</p></li>
-<li><p>gain: <code>&lt;int&gt;</code>. Number of time the class loss during time interval <em>[Yt, Yt+1]</em>.</p></li>
-<li><p>N: <code>&lt;int&gt;</code>. Number total of time of trasition to be considered as stationary (T).</p></li>
+<li><p>categoryStationarity:  <code>&lt;tibble&gt;</code>. A table with the results of a stationarity test of
+  the gain of the classes on the Category level, containing 5 columns:</p><ol>
+<li><p>To: <code>&lt;fct&gt;</code>. A category of interest <em>j</em>.</p></li>
+<li><p>gain: <code>&lt;int&gt;</code>. Number of times a class had gains during all time intervals <em>[Yt, Yt+1]</em>.</p></li>
+<li><p>N: <code>&lt;int&gt;</code>. Total number of evaluated time points (T).</p></li>
 <li><p>Stationarity: <code>&lt;chr&gt;</code>. <em>Active Gain</em> or <em>Dormant Gain</em>.</p></li>
-<li><p>Test: <code>&lt;chr&gt;</code>. <em>Y</em> for stationarity detected and <em>N</em> when not.</p></li>
+<li><p>Test: <code>&lt;chr&gt;</code>. <em>Y</em> if stationarity was detected and <em>N</em> if not.</p></li>
 </ol></li>
 </ul></li>
 <li><p>Loss</p>
 <p></p><ul>
 <li><p><code>categoryData</code>: <code>&lt;tibble&gt;</code>. A table containing 6 columns:</p><ol>
 <li><p>Period: <code>&lt;fct&gt;</code>. The period <em>[Yt, Yt+1]</em>.</p></li>
-<li><p>From: <code>&lt;fct&gt;</code>. a category <em>i</em>.</p></li>
-<li><p>Interval: <code>&lt;int&gt;</code>. duration of the period <em>[Yt, Yt+1]</em>.</p></li>
-<li><p>GG_km2/GG_pixel: <code>&lt;dbl&gt;/&lt;int&gt;</code>. area of gross loss of category j during <em>[Yt, Yt+1]</em>.</p></li>
-<li><p>Lti: <code>&lt;dbl&gt;</code>. annual intensity of gross loss of category i for time interval <em>[Yt, Yt+1]</em>.</p></li>
-<li><p>STt: <code>&lt;dbl&gt;</code>. annual intensity of change for time interval <em>[Yt, Yt+1]</em>.</p></li>
+<li><p>From: <code>&lt;fct&gt;</code>. A LUC category <em>i</em>.</p></li>
+<li><p>Interval: <code>&lt;int&gt;</code>. Duration of the period <em>[Yt, Yt+1]</em> in years.</p></li>
+<li><p>GG_km2/GG_pixel: <code>&lt;dbl&gt;/&lt;int&gt;</code>. Area of gross loss of category <em>i</em> during <em>[Yt, Yt+1]</em>.</p></li>
+<li><p>Lti: <code>&lt;dbl&gt;</code>. Annual intensity of gross loss of category <em>i</em> for time interval <em>[Yt, Yt+1]</em>.</p></li>
+<li><p>STt: <code>&lt;dbl&gt;</code>. Annual intensity of change for time interval <em>[Yt, Yt+1]</em>.</p></li>
 </ol></li>
 <li><p>categoryStationarity: <code>&lt;tibble&gt;</code>. A table of stationarity test over the loss of the classes in
   in the Category level, containing 5 columns:</p><ol>
-<li><p>From: <code>&lt;fct&gt;</code>. acategory <em>i</em>.</p></li>
-<li><p>loss: <code>&lt;int&gt;</code>.  Number of time the class loss during time interval <em>[Yt, Yt+1]</em>.</p></li>
-<li><p>N: <code>&lt;int&gt;</code>. Number total of time of trasition to be considered as stationary (T).</p></li>
+<li><p>From: <code>&lt;fct&gt;</code>. A category of interest <em>i</em>.</p></li>
+<li><p>loss: <code>&lt;int&gt;</code>. Number of times a class had losses during all time intervals <em>[Yt, Yt+1]</em>.</p></li>
+<li><p>N: <code>&lt;int&gt;</code>. Total number of evaluated time points (T).</p></li>
 <li><p>Stationarity: <code>&lt;chr&gt;</code>. <em>Active Loss</em> or <em>Dormant Loss</em>.</p></li>
-<li><p>Test: <code>&lt;chr&gt;</code>. <em>Y</em> for stationarity detected and <em>N</em> when not.</p></li>
+<li><p>Test: <code>&lt;chr&gt;</code>. <em>Y</em> if stationarity was detected and <em>N</em> if not.</p></li>
 </ol></li>
 </ul></li>
 </ol>
@@ -177,13 +185,13 @@
     
 
 <dl class='dl-horizontal'>
-<dt><code>lookupcolor</code></dt><dd><p>character; The colors associate with the data with the legends as name’s attribute</p></dd>
+<dt><code>lookupcolor</code></dt><dd><p>character. The colors associated with the LUC legend items</p></dd>
 
-<dt><code>categoryData</code></dt><dd><p>tibble; A table of Category level's result (gain (<em>Gtj</em>) or loss (<em>Lti</em>) values)</p></dd>
+<dt><code>categoryData</code></dt><dd><p>tibble. A table of Category level's results (gain (<em>Gtj</em>) or loss (<em>Lti</em>) values)</p></dd>
 
-<dt><code>categoryStationarity</code></dt><dd><p>tibble; A table containing a stationarity test. A change
-is take as stationary only whether the intensities for all time intervals reside
-on one side of the uniform intensity, i.e, smaller or bigger than the uniform
+<dt><code>categoryStationarity</code></dt><dd><p>tibble. A table containing results of a stationarity test. A change
+is considered stationary only if the intensities for all time intervals reside
+on one side of the uniform intensity, i.e are smaller or bigger than the uniform
 rate over the whole period.</p></dd>
 
 </dl>

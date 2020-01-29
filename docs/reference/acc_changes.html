@@ -6,8 +6,15 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Accumulate changes in a LULC time serie raster — acc_changes • OpenLand</title>
+<title>Accumulates changes in a LULC raster time series — acc_changes • OpenLand</title>
 
+<!-- favicons -->
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -35,10 +42,11 @@
 
 
 
-<meta property="og:title" content="Accumulate changes in a LULC time serie raster — acc_changes" />
-<meta property="og:description" content="This function calculate the number of times a pixel have changed during the
-period analysed. It gives as return a raster with the number of change as pixel value
-and a table containing the percentage of every category/group of pixel value." />
+<meta property="og:title" content="Accumulates changes in a LULC raster time series — acc_changes" />
+<meta property="og:description" content="This function calculates the number of times a pixel has changed during the
+analysed period. It returns a raster with the number of changes as pixel value
+and a table containing the areal percentage of every pixel value (number of changes)." />
+<meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -101,7 +109,7 @@ and a table containing the percentage of every category/group of pixel value." /
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/tredgi/OpenLand">
+  <a href="https://github.com/reginalexavier/OpenLand">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
@@ -119,15 +127,15 @@ and a table containing the percentage of every category/group of pixel value." /
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Accumulate changes in a LULC time serie raster</h1>
-    <small class="dont-index">Source: <a href='https://github.com/tredgi/OpenLand/blob/master/R/generalfunctions.R'><code>R/generalfunctions.R</code></a></small>
+    <h1>Accumulates changes in a LULC raster time series</h1>
+    <small class="dont-index">Source: <a href='https://github.com/reginalexavier/OpenLand/blob/master/R/generalfunctions.R'><code>R/generalfunctions.R</code></a></small>
     <div class="hidden name"><code>acc_changes.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>This function calculate the number of times a pixel have changed during the
-period analysed. It gives as return a raster with the number of change as pixel value
-and a table containing the percentage of every category/group of pixel value.</p>
+    <p>This function calculates the number of times a pixel has changed during the
+analysed period. It returns a raster with the number of changes as pixel value
+and a table containing the areal percentage of every pixel value (number of changes).</p>
     </div>
 
     <pre class="usage"><span class='fu'>acc_changes</span>(<span class='no'>path</span>)</pre>
@@ -137,7 +145,7 @@ and a table containing the percentage of every category/group of pixel value.</p
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>path</th>
-      <td><p>list (of filenames or Raster* objects), RasterStack(<code><a href='https://rdrr.io/pkg/raster/man/brick.html'>brick</a></code>) or
+      <td><p>list. List of filenames, list of Raster* objects, RasterStack(<code><a href='https://rdrr.io/pkg/raster/man/brick.html'>brick</a></code>) or
 RasterStack(<code><a href='https://rdrr.io/pkg/raster/man/stack.html'>stack</a></code>)</p></td>
     </tr>
     </table>
@@ -147,72 +155,26 @@ RasterStack(<code><a href='https://rdrr.io/pkg/raster/man/stack.html'>stack</a><
     <p>Two objects, a raster layer and a table.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>test</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='demo_landscape.html'>demo_landscape</a></span>(<span class='fl'>2000</span>:<span class='fl'>2005</span>, <span class='kw'>res</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>prob</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0.05</span>, <span class='fl'>0.3</span>, <span class='fl'>0.05</span>, <span class='fl'>0.4</span>, <span class='fl'>0.2</span>))
-<span class='fu'>acc_changes</span>(<span class='no'>test</span>)</div><div class='output co'>#&gt; [[1]]
+    <pre class="examples"><div class='input'><span class='fu'>acc_changes</span>(<span class='no'>SaoLourencoBasin</span>)</div><div class='output co'>#&gt; [[1]]
 #&gt; class      : RasterLayer 
-#&gt; dimensions : 100, 100, 10000  (nrow, ncol, ncell)
-#&gt; resolution : 1, 1  (x, y)
-#&gt; extent     : 0, 100, 0, 100  (xmin, xmax, ymin, ymax)
-#&gt; crs        : NA 
-#&gt; source     : memory
+#&gt; dimensions : 6372, 6546, 41711112  (nrow, ncol, ncell)
+#&gt; resolution : 30, 30  (x, y)
+#&gt; extent     : 654007.5, 850387.5, 8099064, 8290224  (xmin, xmax, ymin, ymax)
+#&gt; crs        : +proj=utm +zone=21 +south +ellps=GRS80 +units=m +no_defs 
+#&gt; source     : C:/Users/pg_reginal/AppData/Local/Temp/Rtmp0UW8Jf/raster/r_tmp_2020-01-29_131401_3848_64535.grd 
 #&gt; names      : layer 
-#&gt; values     : 0, 5  (min, max)
+#&gt; values     : 0, 2  (min, max)
 #&gt; 
 #&gt; 
 #&gt; [[2]]
-#&gt; # A tibble: 6 x 3
-#&gt;   PxValue    Qt Percent
-#&gt;     &lt;int&gt; &lt;int&gt;   &lt;dbl&gt;
-#&gt; 1       0    38    0.38
-#&gt; 2       1   315    3.15
-#&gt; 3       2  1268   12.7 
-#&gt; 4       3  2879   28.8 
-#&gt; 5       4  3562   35.6 
-#&gt; 6       5  1938   19.4 
-#&gt; </div><div class='input'><span class='fu'>acc_changes</span>(<span class='kw pkg'>raster</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/raster/man/stack.html'>stack</a></span>(<span class='no'>test</span>))</div><div class='output co'>#&gt; [[1]]
-#&gt; class      : RasterLayer 
-#&gt; dimensions : 100, 100, 10000  (nrow, ncol, ncell)
-#&gt; resolution : 1, 1  (x, y)
-#&gt; extent     : 0, 100, 0, 100  (xmin, xmax, ymin, ymax)
-#&gt; crs        : NA 
-#&gt; source     : memory
-#&gt; names      : layer 
-#&gt; values     : 0, 5  (min, max)
-#&gt; 
-#&gt; 
-#&gt; [[2]]
-#&gt; # A tibble: 6 x 3
-#&gt;   PxValue    Qt Percent
-#&gt;     &lt;int&gt; &lt;int&gt;   &lt;dbl&gt;
-#&gt; 1       0    38    0.38
-#&gt; 2       1   315    3.15
-#&gt; 3       2  1268   12.7 
-#&gt; 4       3  2879   28.8 
-#&gt; 5       4  3562   35.6 
-#&gt; 6       5  1938   19.4 
-#&gt; </div><div class='input'><span class='fu'>acc_changes</span>(<span class='kw pkg'>raster</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/raster/man/brick.html'>brick</a></span>(<span class='no'>test</span>))</div><div class='output co'>#&gt; [[1]]
-#&gt; class      : RasterLayer 
-#&gt; dimensions : 100, 100, 10000  (nrow, ncol, ncell)
-#&gt; resolution : 1, 1  (x, y)
-#&gt; extent     : 0, 100, 0, 100  (xmin, xmax, ymin, ymax)
-#&gt; crs        : NA 
-#&gt; source     : memory
-#&gt; names      : layer 
-#&gt; values     : 0, 5  (min, max)
-#&gt; 
-#&gt; 
-#&gt; [[2]]
-#&gt; # A tibble: 6 x 3
-#&gt;   PxValue    Qt Percent
-#&gt;     &lt;int&gt; &lt;int&gt;   &lt;dbl&gt;
-#&gt; 1       0    38    0.38
-#&gt; 2       1   315    3.15
-#&gt; 3       2  1268   12.7 
-#&gt; 4       3  2879   28.8 
-#&gt; 5       4  3562   35.6 
-#&gt; 6       5  1938   19.4 
+#&gt; <span style='color: #555555;'># A tibble: 3 x 3</span><span>
+#&gt;   PxValue       Qt Percent
+#&gt;     </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #555555;'>1</span><span>       0 21</span><span style='text-decoration: underline;'>819</span><span>779   87.6 
+#&gt; </span><span style='color: #555555;'>2</span><span>       1  2</span><span style='text-decoration: underline;'>787</span><span>995   11.2 
+#&gt; </span><span style='color: #555555;'>3</span><span>       2   </span><span style='text-decoration: underline;'>301</span><span>086    1.21
 #&gt; </div><div class='input'>
-</div></pre>
+</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

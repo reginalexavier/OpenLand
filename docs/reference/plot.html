@@ -8,6 +8,13 @@
 
 <title>Plot method for objects from Intensity Analysis — plot • OpenLand</title>
 
+<!-- favicons -->
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -37,6 +44,7 @@
 
 <meta property="og:title" content="Plot method for objects from Intensity Analysis — plot" />
 <meta property="og:description" content="Plot Intensity objects based on Intensity Analysis tables" />
+<meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -99,7 +107,7 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/tredgi/OpenLand">
+  <a href="https://github.com/reginalexavier/OpenLand">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
@@ -118,7 +126,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Plot method for objects from Intensity Analysis</h1>
-    <small class="dont-index">Source: <a href='https://github.com/tredgi/OpenLand/blob/master/R/plotMethods.R'><code>R/plotMethods.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/reginalexavier/OpenLand/blob/master/R/plotMethods.R'><code>R/plotMethods.R</code></a></small>
     <div class="hidden name"><code>plot.Rd</code></div>
     </div>
 
@@ -126,16 +134,19 @@
     <p>Plot <code>Intensity</code> objects based on Intensity Analysis tables</p>
     </div>
 
-    <pre class="usage"><span class='co'># S4 method for Interval,ANY</span>
+    <pre class="usage"><span class='fu'>plot</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>...</span>)
+
+<span class='co'># S4 method for Interval,ANY</span>
 <span class='fu'>plot</span>(
   <span class='no'>x</span>,
   <span class='no'>y</span>,
   <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>leftlabel</span> <span class='kw'>=</span> <span class='st'>"Interval Change Area (percent of map)"</span>, <span class='kw'>rightlabel</span> <span class='kw'>=</span>
     <span class='st'>"Annual Change Area (percent of map)"</span>, <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"Level 01 Mudancas todo o Periodo"</span>),
-  <span class='kw'>labs</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"Changes"</span>, <span class='kw'>ur</span> <span class='kw'>=</span> <span class='st'>"Uniform Rate"</span>),
+  <span class='kw'>labs</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"Changes"</span>, <span class='kw'>ur</span> <span class='kw'>=</span> <span class='st'>"Uniform Intensity"</span>),
   <span class='kw'>marginplot</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>lh</span> <span class='kw'>=</span> -<span class='fl'>10</span>, <span class='kw'>rh</span> <span class='kw'>=</span> <span class='fl'>0</span>),
   <span class='kw'>leg_curv</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='fl'>1</span>/<span class='fl'>10</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='fl'>1</span>/<span class='fl'>10</span>),
-  <span class='kw'>color_bar</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>faster</span> <span class='kw'>=</span> <span class='st'>"#B22222"</span>, <span class='kw'>slower</span> <span class='kw'>=</span> <span class='st'>"#006400"</span>, <span class='kw'>area</span> <span class='kw'>=</span> <span class='st'>"gray40"</span>),
+  <span class='kw'>color_bar</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>fast</span> <span class='kw'>=</span> <span class='st'>"#B22222"</span>, <span class='kw'>slow</span> <span class='kw'>=</span> <span class='st'>"#006400"</span>, <span class='kw'>area</span> <span class='kw'>=</span> <span class='st'>"gray40"</span>),
+  <span class='kw'>fontsize_ui</span> <span class='kw'>=</span> <span class='fl'>10</span>,
   <span class='no'>...</span>
 )
 
@@ -145,9 +156,10 @@
   <span class='no'>y</span>,
   <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>leftlabel</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/bquote.html'>bquote</a></span>(<span class='st'>"Gain/Loss area ("</span> ~ <span class='no'>Km</span>^<span class='fl'>2</span> ~ <span class='st'>")"</span>), <span class='kw'>rightlabel</span> <span class='kw'>=</span>
     <span class='st'>"Intensity Gain/Loss (%)"</span>, <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"Level 02 Ganho/Perda Anual"</span>),
-  <span class='kw'>labs</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"Classes"</span>, <span class='kw'>ur</span> <span class='kw'>=</span> <span class='st'>"Uniform Rate"</span>),
+  <span class='kw'>labs</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"Classes"</span>, <span class='kw'>ur</span> <span class='kw'>=</span> <span class='st'>"Uniform Intensity"</span>),
   <span class='kw'>marginplot</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>lh</span> <span class='kw'>=</span> <span class='fl'>0.5</span>, <span class='kw'>rh</span> <span class='kw'>=</span> <span class='fl'>0.5</span>),
   <span class='kw'>leg_curv</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='fl'>1</span>/<span class='fl'>10</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='fl'>1</span>/<span class='fl'>10</span>),
+  <span class='kw'>fontsize_ui</span> <span class='kw'>=</span> <span class='fl'>10</span>,
   <span class='no'>...</span>
 )
 
@@ -159,9 +171,10 @@
     <span class='fu'>.</span>(<span class='fu'><a href='https://rdrr.io/r/base/character.html'>as.character</a></span>(<span class='no'>dataset</span><span class='kw'>[[</span><span class='fl'>3</span>]]<span class='kw'>[[</span><span class='fl'>1</span>]])) ~ <span class='st'>"(%)"</span>), <span class='kw'>leftlabel</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/bquote.html'>bquote</a></span>(<span class='st'>"Gain/Loss of "</span> ~
     <span class='fu'>.</span>(<span class='fu'><a href='https://rdrr.io/r/base/character.html'>as.character</a></span>(<span class='no'>dataset</span><span class='kw'>[[</span><span class='fl'>3</span>]]<span class='kw'>[[</span><span class='fl'>1</span>]])) ~ <span class='st'>"("</span> ~ <span class='no'>Km</span>^<span class='fl'>2</span> ~ <span class='st'>")"</span>), <span class='kw'>title</span> <span class='kw'>=</span>
     <span class='st'>"Level 03 Ganho da classe m/n"</span>),
-  <span class='kw'>labs</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"Classes"</span>, <span class='kw'>ur</span> <span class='kw'>=</span> <span class='st'>"Uniform Rate"</span>),
+  <span class='kw'>labs</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"Classes"</span>, <span class='kw'>ur</span> <span class='kw'>=</span> <span class='st'>"Uniform Intensity"</span>),
   <span class='kw'>marginplot</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>lh</span> <span class='kw'>=</span> <span class='fl'>0.5</span>, <span class='kw'>rh</span> <span class='kw'>=</span> <span class='fl'>0.5</span>),
   <span class='kw'>leg_curv</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='fl'>1</span>/<span class='fl'>10</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='fl'>1</span>/<span class='fl'>10</span>),
+  <span class='kw'>fontsize_ui</span> <span class='kw'>=</span> <span class='fl'>10</span>,
   <span class='no'>...</span>
 )</pre>
 
@@ -170,47 +183,51 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>tibble. An object from the intensity analysis data</p></td>
+      <td><p>tibble. An object generated by <code><a href='intensityAnalysis.html'>intensityAnalysis</a></code></p></td>
     </tr>
     <tr>
       <th>y</th>
-      <td><p>not used</p></td>
-    </tr>
-    <tr>
-      <th>labels</th>
-      <td><p>character. left right and title</p></td>
-    </tr>
-    <tr>
-      <th>labs</th>
-      <td><p>character</p></td>
-    </tr>
-    <tr>
-      <th>marginplot</th>
-      <td><p>character</p></td>
-    </tr>
-    <tr>
-      <th>leg_curv</th>
-      <td><p>character</p></td>
-    </tr>
-    <tr>
-      <th>color_bar</th>
-      <td><p>character</p></td>
+      <td><p>ignored</p></td>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>additional arguments themes parameters <code><a href='https://ggplot2.tidyverse.org/reference/theme.html'>theme</a></code></p></td>
+      <td><p>additional arguments for theme parameters <code><a href='https://ggplot2.tidyverse.org/reference/theme.html'>theme</a></code></p></td>
+    </tr>
+    <tr>
+      <th>labels</th>
+      <td><p>character. Left and right axis titles(caption)</p></td>
+    </tr>
+    <tr>
+      <th>labs</th>
+      <td><p>character. The lateral legend</p></td>
+    </tr>
+    <tr>
+      <th>marginplot</th>
+      <td><p>numeric. Adjustment of the origins of left and right part of the plots</p></td>
+    </tr>
+    <tr>
+      <th>leg_curv</th>
+      <td><p>numeric. X and y values that control the arrow size and position apointing to the Uniform Intensity vertical line.</p></td>
+    </tr>
+    <tr>
+      <th>color_bar</th>
+      <td><p>character. Colors defined for the fast, slow and area bars (only for an <code><a href='Interval-class.html'>Interval</a></code> object).</p></td>
+    </tr>
+    <tr>
+      <th>fontsize_ui</th>
+      <td><p>numeric. Fontsize of the uniform intensity percent in the plot.</p></td>
     </tr>
     <tr>
       <th>Interval</th>
-      <td><p>the class</p></td>
+      <td><p>The class of the object</p></td>
     </tr>
     <tr>
       <th>Category</th>
-      <td><p>the class</p></td>
+      <td><p>The class of the object</p></td>
     </tr>
     <tr>
       <th>Transition</th>
-      <td><p>the class</p></td>
+      <td><p>The class of the object</p></td>
     </tr>
     </table>
 

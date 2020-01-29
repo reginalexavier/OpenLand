@@ -6,12 +6,14 @@ warnins_are_errors: true
 
 sudo: false
 
-
+os:
+  - linux
+  - osx
 
 r:
   - release
   - devel
-  #- oldrel
+  - oldrel
 
 addons:
   apt:

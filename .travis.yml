@@ -21,8 +21,8 @@ after_success:
   - Rscript -e 'covr::codecov(type = "all")'
 
 before_cache:
-    - Rscript -e 'remotes::install_github("r-lib/pkgdown")'
-    deploy:
-      provider: script
-      script: Rscript -e 'pkgdown::deploy_site_github(verbose = TRUE)'
-      skip_cleanup: true
+  - Rscript -e 'remotes::install_github("r-lib/pkgdown")'
+deploy:
+  provider: script
+  script: Rscript -e 'pkgdown::deploy_site_github(verbose = TRUE)'
+  skip_cleanup: true

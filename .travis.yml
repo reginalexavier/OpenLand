@@ -2,8 +2,9 @@
 
 language: R
 cache: packages
-warnins_are_errors: true
-sudo: false
+
+os:
+  - linux
 
 
 r:
@@ -20,11 +21,9 @@ addons:
 after_success:
   - Rscript -e 'covr::codecov(type = "all")'
 
-before_cache:
-  - Rscript -e 'remotes::install_github("r-lib/pkgdown")'
+before_cache: Rscript -e 'remotes::install_cran("pkgdown")'
+
 deploy:
   provider: script
-  script: Rscript -e 'pkgdown::deploy_site_github(verbose = TRUE)'
+  script: Rscript -e 'pkgdown::deploy_site_github()'
   skip_cleanup: true
-  github-token: $GITHUB_TOKEN
-

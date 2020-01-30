@@ -9,7 +9,7 @@ sudo: false
 r:
   - release
   - devel
-  - oldrel
+ # - oldrel
 
 addons:
   apt:
@@ -20,9 +20,9 @@ addons:
 after_success:
   - Rscript -e 'covr::codecov(type = "all")'
 
-before_cache: Rscript -e 'remotes::install_cran("pkgdown")'
-deploy:
-  provider: script
-  script: Rscript -e 'pkgdown::deploy_site_github()'
-  skip_cleanup: true
-
+before_cache:
+    - Rscript -e 'remotes::install_github("r-lib/pkgdown")'
+    deploy:
+      provider: script
+      script: Rscript -e 'pkgdown::deploy_site_github(verbose = TRUE)'
+      skip_cleanup: true

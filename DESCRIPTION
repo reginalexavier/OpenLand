@@ -31,7 +31,7 @@ Imports:
     tidyr (>= 1.0.0),
     ggplot2 (>= 3.2.1),
     gridExtra (>= 2.3),
-    grid (>= 3.6.2),
+    grid,
     ComplexHeatmap,
     circlize (>= 0.4.8),
     networkD3 (>= 0.4),

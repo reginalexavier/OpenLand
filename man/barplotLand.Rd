@@ -7,10 +7,10 @@
 barplotLand(
   dataset,
   legendtable,
-  title = "LUC area in the interval (2002 - 2014)",
+  title = NULL,
   caption = "LUC category",
   xlab = "Year",
-  ylab = expression(paste("Area ", km^{     2 })),
+  ylab = "Area (km2 or pixel)",
   area_km2 = TRUE,
   ...
 )

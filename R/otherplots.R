@@ -1,5 +1,5 @@
 utils::globalVariables(c("From", "To", "target", "km2", "Year",
-                         "QtPixel", "yearFrom", "yearTo",
+                         "QtPixel", "yearFrom", "yearTo", "name",
                          "colorFrom", "colorTo", "lulc", "area"))
 #' @include plotMethods.R
 NULL
@@ -48,14 +48,11 @@ NULL
 barplotLand <-
   function(dataset,
            legendtable,
-           title = "LUC area in the interval (2002 - 2014)",
-           #color = c(GC = "gray70", NG = "#006400", NL = "#EE2C2C"),
+           title = NULL,
            caption = "LUC category",
            xlab = "Year",
-           ylab = expression(paste("Area ", km ^ {2})),
+           ylab = "Area (km2 or pixel)",
            area_km2 = TRUE, ...) {
-
-#    From <- To <- yearTo <- km2 <- yearFrom <- Year <- lulc <- area <- NULL
 
 
     datachange <- dataset %>%
@@ -68,8 +65,6 @@ barplotLand <-
         "colorFrom" = "color.x",
         "colorTo" = "color.y"
       )
-
-    # datanual %>% group_by(Year) %>% summarise(sum(area))
 
     areaif <- ifelse(isTRUE(area_km2), "km2", "QtPixel")
 
@@ -138,9 +133,6 @@ chordDiagramLand <-
            sectorcol = "gray80",
            area_km2 = TRUE) {
 
-    # From <-
-    #   To <-
-    #   target <- km2 <- yearFrom <- yearTo <- colorFrom <- colorTo <- QtPixel <- NULL
 
     circle_data <- dataset %>%
       left_join(legendtable, by = c("From" = "classValue")) %>%
@@ -185,12 +177,11 @@ chordDiagramLand <-
     grid.col <- c(grid_a, grid_b)
 
 
-    # tablelegend$color[order(tablelegend$legend)]
-
+    # first and last year
     ano01 <- unique(onestepcircle$source)
     ano02 <- unique(onestepcircle$target)
 
-    #
+    # km2 or pixel
     if (isTRUE(area_km2)) {
     onestepcircle <- onestepcircle[c(1,2,3)]} else {
       onestepcircle <- onestepcircle[c(1,2,4)]
@@ -221,14 +212,13 @@ chordDiagramLand <-
     )
 
     # parameters
-    #circos.clear()
     circlize::circos.par(
       start.degree = 0,
       gap.degree = 1,
       track.margin = c(-0.01, 0.015),
       points.overflow.warning = T
     )
-    par(mar = rep(0, 4)) # precisa mesmo???
+    par(mar = rep(0, 4)) # realy need this???
     # the base plot
     circlize::chordDiagram(
       x = onestepcircle,
@@ -249,7 +239,7 @@ chordDiagramLand <-
       )
     )
 
-    #the km2 label
+    # the km2 label
     for (si in circlize::get.all.sector.index()) {
       circlize::circos.axis(
         h = "top",
@@ -258,8 +248,8 @@ chordDiagramLand <-
         track.index = 2
       )
     }
-    #adding the externs arcs 2002 & 2014
 
+    # adding the externs arcs
     circlize::highlight.sector(
       ano01,
       track.index = 1,
@@ -278,7 +268,7 @@ chordDiagramLand <-
       text.col = "black",
       niceFacing = TRUE
     )
-    #the legend
+    # the legend
     ComplexHeatmap::draw(
       legenda,
       x = unit(legposition[[1]], "cm"),
@@ -333,20 +323,20 @@ chordDiagramLand <-
 netgrossplot <-
   function(dataset,
            legendtable,
-           title = "LUC change (First year - Last year)",
+           title = NULL,
            xlab = "LUC category",
            ylab = "Area (Km2)",
            changesLabel = c(GC = "Gross change", NG = "Net gain", NL = "Net loss"),
            color = c(GC = "gray70", NG = "#006400", NL = "#EE2C2C"),
            area_km2 = TRUE) {
-#    From <- To <- km2 <- QtPixel <- area <- NULL
+
     datachange <- (dataset %>%
       left_join(legendtable, by = c("From" = "classValue")) %>%
       left_join(legendtable, by = c("To" = "classValue")) %>%
       dplyr::select(-c(From, To)) %>%
       rename(
         "From" = "className.x",
-        "To" = "className.y"))[c(1, 2, 3, 7, 9)] #Period, km2, QtPixel, From, To
+        "To" = "className.y"))[c(1, 2, 3, 7, 9)]
 
     areaif <- ifelse(isTRUE(area_km2), "km2", "QtPixel")
 
@@ -379,7 +369,7 @@ netgrossplot <-
         data = lulc_gainLoss_net,
         stat = "identity",
         width = 0.4,
-        inherit.aes = F
+        inherit.aes = FALSE
       ) +
       geom_segment(data = lulc_gainLoss_net,
                    aes(
@@ -439,7 +429,7 @@ netgrossplot <-
 #'
 #'
 sankeyLand <- function(dataset, legendtable, iterations = 0) {
-  From <- To <- target <- km2 <- yearFrom <- yearTo <- name <- NULL
+  #From <- To <- target <- km2 <- yearFrom <- yearTo <- name <- NULL
   linkMultistep <- dataset %>%
     left_join(legendtable, by = c("From" = "classValue")) %>%
     left_join(legendtable, by = c("To" = "classValue")) %>%

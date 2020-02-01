@@ -19,7 +19,7 @@ intensityAnalysis(dataset, class_n, class_m, area_km2 = TRUE)
 Intensity object
 }
 \description{
-This function inplements an Intensity Analysis (IA) according to Aldwaik & Pontius (2012), a quantitative method to analyze
+This function implements an Intensity Analysis (IA) according to Aldwaik & Pontius (2012), a quantitative method to analyze
 time series of land use and cover (LUC) maps.  For IA, a cross-tabulation matrix is composed for each LUC transition step
 in time.
 }
@@ -86,7 +86,7 @@ intensityAnalysis(dataset = SL_2002_2014, class_n = "Ap", class_m = "SG", area_k
 \references{
 Aldwaik, S. Z. and Pontius, R. G. (2012) ‘Intensity analysis to unify
 measurements of size and stationarity of land changes by interval, category, and
-transition’, Landscape and Urban Planning. Elsevier B.V., 106(1), pp. 103–114.
+transition, Landscape and Urban Planning. Elsevier B.V., 106(1), pp. 103–114.
 \doi{10.1016/j.landurbplan.2012.02.010}.
 
 Aldwaik, S. Z. and Pontius, R. G. (2013) ‘Map errors that could account for deviations

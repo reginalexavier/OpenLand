@@ -7,7 +7,7 @@
 netgrossplot(
   dataset,
   legendtable,
-  title = "LUC change (First year - Last year)",
+  title = NULL,
   xlab = "LUC category",
   ylab = "Area (Km2)",
   changesLabel = c(GC = "Gross change", NG = "Net gain", NL = "Net loss"),

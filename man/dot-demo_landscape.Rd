@@ -19,7 +19,7 @@
 )
 }
 \arguments{
-\item{year}{A list of year, first and last included}
+\item{year}{A vector of year, first and last included}
 
 \item{nrows}{nrows of the raster to be created}
 
@@ -27,7 +27,7 @@
 
 \item{res}{the resolution of the raster to be created}
 
-\item{xmn}{x minimun extent}
+\item{xmn}{x minimum extent}
 
 \item{xmx}{x maximum extent}
 
@@ -39,7 +39,7 @@
 
 \item{class}{the raster classes}
 
-\item{prob}{the probability of occorence for the class list}
+\item{prob}{the probability of occurrence for the class list}
 }
 \value{
 list

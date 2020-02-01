@@ -38,9 +38,14 @@ test_that("Behavior of the plot methods", {
 
 test_that("Behavior of the other plots", {
 
-  expect_visible(barplotLand(demo_cont$lulc_Multistep, demo_cont$tb_legend))
-  expect_invisible(chordDiagramLand(demo_cont$lulc_Onestep, demo_cont$tb_legend))
-  expect_visible(netgrossplot(demo_cont$lulc_Multistep, demo_cont$tb_legend))
+  expect_visible(barplotLand(demo_cont$lulc_Multistep, demo_cont$tb_legend, area_km2 = TRUE))
+  expect_invisible(chordDiagramLand(demo_cont$lulc_Onestep, demo_cont$tb_legend, area_km2 = TRUE))
+  expect_visible(netgrossplot(demo_cont$lulc_Multistep, demo_cont$tb_legend, area_km2 = TRUE))
+
+  expect_visible(barplotLand(demo_cont$lulc_Multistep, demo_cont$tb_legend, area_km2 = FALSE))
+  expect_invisible(chordDiagramLand(demo_cont$lulc_Onestep, demo_cont$tb_legend, area_km2 = FALSE))
+  expect_visible(netgrossplot(demo_cont$lulc_Multistep, demo_cont$tb_legend, area_km2 = FALSE))
+
   expect_visible(sankeyLand(demo_cont$lulc_Onestep, demo_cont$tb_legend))
   expect_visible(sankeyLand(demo_cont$lulc_Multistep, demo_cont$tb_legend))
 

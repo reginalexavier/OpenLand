@@ -39,9 +39,6 @@
 #' das alterações da cobertura vegetal e uso do Solo na Bacia do
 #' Alto Paraguai – Porção Brasileira – Período de Análise: 2012 a 2014. 4th edn. Brasilia.})
 #'
-#' @examples
-#' data(SaoLourencoBasin)
-#' \donttest{raster::plot(SaoLourencoBasin[[1]])}
 #'
 #' @source \url{https://www.embrapa.br/pantanal/bacia-do-alto-paraguai}
 "SaoLourencoBasin"

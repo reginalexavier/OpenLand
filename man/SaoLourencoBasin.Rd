@@ -38,11 +38,6 @@ Each Raster* has 11 LUC classes:
 13       \tab Im     \tab Anthropic \tab Anthropic Use \tab Mining
 }
 }
-\examples{
-data(SaoLourencoBasin)
-\donttest{raster::plot(SaoLourencoBasin[[1]])}
-
-}
 \references{
 Instituto SOS Pantanal and WWF-Brasil (2015)
 (\href{https://d3nehc6yl9qzo4.cloudfront.net/downloads/publicacao_bap_relatorio_2012_2014_web.pdf}{Monitoramento

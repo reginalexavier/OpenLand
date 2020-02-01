@@ -3,17 +3,17 @@
 #' This function create a raster serie with some setup like the layer name and
 #' the sample value for the lulc
 #'
-#' @param year A list of year, first and last included
+#' @param year A vector of year, first and last included
 #' @param nrows nrows of the raster to be created
 #' @param ncols ncols of the raster to be created
 #' @param res the resolution of the raster to be created
-#' @param xmn x minimun extent
+#' @param xmn x minimum extent
 #' @param xmx x maximum extent
 #' @param ymn y minimum extent
 #' @param ymx y maximum extent
 #' @param crs the coordinate referencing system
 #' @param class the raster classes
-#' @param prob the probability of occorence for the class list
+#' @param prob the probability of occurrence for the class list
 #'
 #' @import dplyr
 #' @return list
@@ -29,16 +29,16 @@
 
 
 .demo_landscape <- function(year,
-                           nrows = 100,
-                           ncols = 100,
-                           res = 1,
-                           xmn = 0,
-                           xmx = 100,
-                           ymn = 0,
-                           ymx = 100,
-                           crs = NA,
-                           class = 1:5,
-                           prob = NULL) {
+                            nrows = 100,
+                            ncols = 100,
+                            res = 1,
+                            xmn = 0,
+                            xmx = 100,
+                            ymn = 0,
+                            ymx = 100,
+                            crs = NA,
+                            class = 1:5,
+                            prob = NULL) {
   # a sample raster
   landscape <- raster::raster(
     nrows = nrows,
@@ -80,6 +80,5 @@
 
   return(raster_list)
 }
-
 
 

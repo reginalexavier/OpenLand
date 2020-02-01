@@ -13,10 +13,11 @@ plot(x, y, ...)
   x,
   y,
   labels = c(leftlabel = "Interval Change Area (percent of map)", rightlabel =
-    "Annual Change Area (percent of map)", title = "Level 01 Mudancas todo o Periodo"),
+    "Annual Change Area (percent of map)"),
+  title = NA,
   labs = c(type = "Changes", ur = "Uniform Intensity"),
   marginplot = c(lh = -10, rh = 0),
-  leg_curv = c(x = 1/10, y = 1/10),
+  leg_curv = c(x = 0.1, y = 0.1),
   color_bar = c(fast = "#B22222", slow = "#006400", area = "gray40"),
   fontsize_ui = 10,
   ...
@@ -25,11 +26,12 @@ plot(x, y, ...)
 \S4method{plot}{Category,ANY}(
   x,
   y,
-  labels = c(leftlabel = bquote("Gain/Loss area (" ~ Km^2 ~ ")"), rightlabel =
-    "Intensity Gain/Loss (\%)", title = "Level 02 Ganho/Perda Anual"),
+  labels = c(leftlabel = "Gain area (km2 or pixel)", rightlabel =
+    "Intensity Gain/Loss (\%)"),
+  title = NA,
   labs = c(type = "Classes", ur = "Uniform Intensity"),
   marginplot = c(lh = 0.5, rh = 0.5),
-  leg_curv = c(x = 1/10, y = 1/10),
+  leg_curv = c(x = 0.1, y = 0.1),
   fontsize_ui = 10,
   ...
 )
@@ -37,13 +39,12 @@ plot(x, y, ...)
 \S4method{plot}{Transition,ANY}(
   x,
   y,
-  labels = c(rightlabel = bquote("Intensity Gain/Loss of" ~
-    .(as.character(dataset[[3]][[1]])) ~ "(\%)"), leftlabel = bquote("Gain/Loss of " ~
-    .(as.character(dataset[[3]][[1]])) ~ "(" ~ Km^2 ~ ")"), title =
-    "Level 03 Ganho da classe m/n"),
+  labels = c(rightlabel = "Intensity Gain/Loss of class m/n (\%)", leftlabel =
+    "Gain/Loss of class m/n (km2 or pixel)"),
+  title = NA,
   labs = c(type = "Classes", ur = "Uniform Intensity"),
   marginplot = c(lh = 0.5, rh = 0.5),
-  leg_curv = c(x = 1/10, y = 1/10),
+  leg_curv = c(x = 0.1, y = 0.1),
   fontsize_ui = 10,
   ...
 )
@@ -57,11 +58,13 @@ plot(x, y, ...)
 
 \item{labels}{character. Left and right axis titles(caption)}
 
+\item{title}{character. Main title}
+
 \item{labs}{character. The lateral legend}
 
 \item{marginplot}{numeric. Adjustment of the origins of left and right part of the plots}
 
-\item{leg_curv}{numeric. X and y values that control the arrow size and position apointing to the Uniform Intensity vertical line.}
+\item{leg_curv}{numeric. X and y values that control the arrow size and position pointing to the Uniform Intensity vertical line.}
 
 \item{color_bar}{character. Colors defined for the fast, slow and area bars (only for an \code{\linkS4class{Interval}} object).}
 

@@ -21,12 +21,9 @@
 #'
 setClass(
   Class = "Interval",
-  slots = c(#level = "character",
-            intervalData = "tbl_df"),
-  prototype = prototype(#level = "Interval",
-                        intervalData = tibble::tibble()),
+  slots = c(intervalData = "tbl_df"),
   validity = function(object) {
-    if (!(tibble::is_tibble(object@intervalData) &
+    if (!("tbl_df" %in% class(object@intervalData) &
           (ncol(object@intervalData) == 4)))
     {
       stop("The data has to be a `tibble` and must have 4 columns")
@@ -116,22 +113,17 @@ setClass(
 setClass(
   Class = "Category",
   slots = c(
-    #level = "character",
     lookupcolor = "character",
     categoryData = "tbl_df",
     categoryStationarity = "tbl_df"
   ),
-  # prototype = prototype(
-  #   #level = "Category",
-  #   categoryData = tibble::tibble(),
-  #   categoryStationarity = tibble::tibble()
-  # ),
+
   validity = function(object) {
-    if (!(tibble::is_tibble(object@categoryData) &
+    if (!("tbl_df" %in% class(object@categoryData) &
           (ncol(object@categoryData) == 6))) {
       stop("The `categoryData` data has to be a `tibble` and must have 5 columns")
 
-    } else if (!(tibble::is_tibble(object@categoryStationarity) &
+    } else if (!("tbl_df" %in% class(object@categoryStationarity) &
                  (ncol(object@categoryStationarity) == 5)))
 
     {
@@ -238,17 +230,15 @@ setClass(
 setClass(
   Class = "Transition",
   slots = c(
-    #level = "character",
     lookupcolor = "character",
     transitionData = "tbl_df",
     transitionStationarity = "tbl_df"
   ),
-  #prototype = methods::prototype(level = "Transition"),
   validity = function(object) {
-    if (!(tibble::is_tibble(object@transitionData) &
+    if (!("tbl_df" %in% class(object@transitionData) &
           (ncol(object@transitionData) == 7))) {
       stop("The `transitionData` data has to be a `tibble` and must have 7 columns")
-    } else if (!(tibble::is_tibble(object@transitionStationarity) &
+    } else if (!("tbl_df" %in% class(object@transitionStationarity) &
                  (ncol(object@transitionStationarity) == 5)))
     {
       stop("The `categoryStationarity` data has to be a `tibble` and must have 5 columns")

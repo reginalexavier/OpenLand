@@ -33,7 +33,8 @@ devtools::install_github("reginalexavier/OpenLand")
 ## Illustrative Example
 
 This is a basic example which shows how OpenLand works, for a more
-detailed illustration, please see our vignettes.
+detailed illustration, please see our
+[vignettes](https://reginalexavier.github.io/OpenLand/articles/openland_vignette.html).
 
 The OpenLand functionality is illustrated for a LUC dataset of São
 Lourenço river basin, a major Pantanal wetland contribution area as
@@ -75,14 +76,16 @@ across time intervals (Aldwaik and Pontius 2012).
 
 ### Outcomes of intensity analysis
 
-The data is extracted from the rasters with the `contingencyTable()`
+The data is extracted from the rasters with the
+[`contingencyTable()`](https://reginalexavier.github.io/OpenLand/reference/contingencyTable.html)
 function which returns a multiple grid information in tables for the
 next processing steps. Within the OpenLand package, the
-`intensityAnalysis()` function computes the three levels of analysis. It
-requires the object returned by the `contingenceTable()` function and
-that the user predefines two LUC categories `n` and `m`. Generally, `n`
-is a target category which experienced relevant gains and `m` a category
-with important losses.
+[`intensityAnalysis()`](https://reginalexavier.github.io/OpenLand/reference/intensityAnalysis.html)
+function computes the three levels of analysis. It requires the object
+returned by the `contingenceTable()` function and that the user
+predefines two LUC categories `n` and `m`. Generally, `n` is a target
+category which experienced relevant gains and `m` a category with
+important losses.
 
 ``` r
 testSL <- intensityAnalysis(dataset = SL_2002_2014,
@@ -156,17 +159,19 @@ testSL$category_lvlGain
 #> 12 R         1     4 Dormant Gain N
 ```
 
-#### Ploting an intensity object
+#### Plotting an intensity object
 
 Visualizations of the IA results are obtained from the
 `plot(intensity-object)` function. For more details on the function
-arguments, please see the documentation of the `plot()` method.
+arguments, please see the documentation of the
+[`plot()`](https://reginalexavier.github.io/OpenLand/reference/plot.html)
+method.
 
 ``` r
 
 plot(testSL$category_lvlGain,
-     labels = c(leftlabel = bquote("Gain Area (" ~ km ^ 2 ~ ")"),
-                rightlabel = "Intensity Gain (%)", title = NA),
+     labels = c(leftlabel = bquote("Gain Area (" ~km^2~ ")"),
+                rightlabel = "Intensity Gain (%)"),
      marginplot = c(.3, .3), labs = c("Classes", "Uniform intensity"), 
      leg_curv = c(x = 1, y = .5),
      fontsize_ui = 8)
@@ -202,7 +207,6 @@ chart.
 
 netgrossplot(dataset = SL_2002_2014$lulc_Multistep,
              legendtable = SL_2002_2014$tb_legend,
-             title = NULL,
              xlab = "Classes de UCT",
              ylab = bquote("Area (" ~km^2~")"),
              changes = c(GC = "Gross changes", NG = "Net Gain", NL = "Net Loss"),
@@ -255,13 +259,17 @@ Chord Diagram 2002 - 2014 (area in km<sup>2</sup>)
 #### Other functions
 
 OpenLand enables furthermore the spatial screening of LUCC frequencies
-for one or a series of raster layers with `summary_map()` and
-`summary_dir()`. The `acc_changes()` function returns for a LUC time
-series the number of times a pixel has changed during the analysed
-period, returning a grid layer and a table with the percentages of
-transition numbers in the study area. Here we use the
-[tmap](https://github.com/mtennekes/tmap) package for ploting the
-outcomes of the `acc_changes()` function.
+for one or a series of raster layers with
+[`summary_map()`](https://reginalexavier.github.io/OpenLand/reference/summary_map.html)
+and
+[`summary_dir()`](https://reginalexavier.github.io/OpenLand/reference/summary_dir.html).
+The
+[`acc_changes()`](https://reginalexavier.github.io/OpenLand/reference/acc_changes.html)
+function returns for a LUC time series the number of times a pixel has
+changed during the analysed period, returning a grid layer and a table
+with the percentages of transition numbers in the study area. Here we
+use the [tmap](https://github.com/mtennekes/tmap) package for plotting
+the outcomes of the `acc_changes()` function.
 
 <div class="figure" style="text-align: center">
 

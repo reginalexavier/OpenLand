@@ -26,8 +26,8 @@ plot(x, y, ...)
 \S4method{plot}{Category,ANY}(
   x,
   y,
-  labels = c(leftlabel = "Gain area (km2 or pixel)", rightlabel =
-    "Intensity Gain/Loss (\%)"),
+  labels = c(leftlabel = "Annual Change Area (km2 or pixels)", rightlabel =
+    "Annual Change Intensity (percent of category)"),
   title = NA,
   labs = c(type = "Classes", ur = "Uniform Intensity"),
   marginplot = c(lh = 0.5, rh = 0.5),
@@ -39,8 +39,8 @@ plot(x, y, ...)
 \S4method{plot}{Transition,ANY}(
   x,
   y,
-  labels = c(rightlabel = "Intensity Gain/Loss of class m/n (\%)", leftlabel =
-    "Gain/Loss of class m/n (km2 or pixel)"),
+  labels = c(leftlabel = "Annual Transition Area (km2 or pixels)", rightlabel =
+    "Annual Transition Intensity (percent of category)"),
   title = NA,
   labs = c(type = "Classes", ur = "Uniform Intensity"),
   marginplot = c(lh = 0.5, rh = 0.5),

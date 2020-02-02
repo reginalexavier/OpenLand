@@ -43,8 +43,9 @@ setMethod(
   signature = "Interval",
   definition = function(x,
                         y,
-                        labels = c(leftlabel = "Interval Change Area (percent of map)",
-                                   rightlabel = "Annual Change Area (percent of map)"),
+                        labels = c(
+                          leftlabel = "Interval Change Area (percent of map)",
+                          rightlabel = "Annual Change Area (percent of map)"),
                         title = NA,
                         labs = c(type = "Changes", ur = "Uniform Intensity"),
                         marginplot = c(lh = -10, rh = 0),
@@ -199,8 +200,8 @@ setMethod(
   definition = function(x,
                         y,
                         labels = c(
-                          leftlabel = "Gain area (km2 or pixel)",
-                          rightlabel = "Intensity Gain/Loss (%)"),
+                          leftlabel = "Annual Change Area (km2 or pixels)",
+                          rightlabel = "Annual Change Intensity (percent of category)"),
                         title = NA,
                         labs = c(type = "Classes", ur = "Uniform Intensity"),
                         marginplot = c(lh = 0.5, rh = 0.5),
@@ -356,8 +357,8 @@ setMethod(
   definition = function(x,
                         y,
                         labels = c(
-                          rightlabel = "Intensity Gain/Loss of class m/n (%)",
-                          leftlabel = "Gain/Loss of class m/n (km2 or pixel)"),
+                          leftlabel = "Annual Transition Area (km2 or pixels)",
+                          rightlabel = "Annual Transition Intensity (percent of category)"),
                         title = NA,
                         labs = c(type = "Classes", ur = "Uniform Intensity"),
                         marginplot = c(lh = 0.5, rh = 0.5),
@@ -459,8 +460,8 @@ setMethod(
 
     if (!is.na(title)) {
       title_lab <- format_lab(title)
-      left_lab <- format_lab(labels[[2]])
-      right_lab <- format_lab(labels[[1]])
+      left_lab <- format_lab(labels[[1]])
+      right_lab <- format_lab(labels[[2]])
 
       my_layout <-
         matrix(c(rep(1, 6), NA, rep(rep(2:3, c(
@@ -478,8 +479,8 @@ setMethod(
         layout_matrix = my_layout
       )
     } else {
-      left_lab <- format_lab(labels[[2]])
-      right_lab <- format_lab(labels[[1]])
+      left_lab <- format_lab(labels[[1]])
+      right_lab <- format_lab(labels[[2]])
 
       my_layout <-
         matrix(c(rep(rep(2:3, c(

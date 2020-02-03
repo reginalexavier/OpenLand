@@ -176,7 +176,7 @@ setMethod(
       my_layout <-
         matrix(c(rep(rep(2:3, c(
           3, 5
-        )), 20), rep(4:5, c(3, 3)), NA, NA),
+        )), 20), rep(c(4, 5, NA), c(3, 4, 1))),
         ncol = 8, byrow = TRUE)
 
       gridExtra::grid.arrange(GL01_area, GL01_taxa,
@@ -329,7 +329,7 @@ setMethod(
       my_layout <-
         matrix(c(rep(rep(2:3, c(
           3, 4
-        )), 20), rep(4:5, c(3, 3)), NA),
+        )), 20), rep(c(4, 5, NA), c(3, 3, 1))),
         ncol = 7, byrow = TRUE)
 
       gridExtra::grid.arrange(GL02_ganho_area,
@@ -485,7 +485,7 @@ setMethod(
       my_layout <-
         matrix(c(rep(rep(2:3, c(
           3, 4
-        )), 20), rep(4:5, c(3, 3)), NA),
+        )), 20), rep(c(4, 5, NA), c(3, 3, 1))),
         ncol = 7, byrow = TRUE)
 
       gridExtra::grid.arrange(GL03_ganho_area,

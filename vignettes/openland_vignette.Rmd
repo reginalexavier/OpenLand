@@ -180,7 +180,7 @@ plot(testSL$interval_lvl,
 ```{r, fig.width=7, fig.height=4}
 
 plot(testSL$category_lvlGain,
-     labels = c(leftlabel = bquote("Gain Area (" ~ km ^ 2 ~ ")"),
+     labels = c(leftlabel = bquote("Gain Area (" ~ km^2 ~ ")"),
                 rightlabel = "Intensity Gain (%)"),
      marginplot = c(.3, .3), labs = c("Classes", "Uniform Rate"), 
      leg_curv = c(x = 5/10, y = 5/10))
@@ -192,7 +192,7 @@ plot(testSL$category_lvlGain,
 ```{r, fig.width=7, fig.height=4}
 
 plot(testSL$category_lvlLoss,
-     labels = c(leftlabel = bquote("Loss Area (" ~ km ^ 2 ~ ")"),
+     labels = c(leftlabel = bquote("Loss Area (" ~ km^2 ~ ")"),
                 rightlabel = "Loss Intensity (%)"),
      marginplot = c(.3, .3), labs = c("Classes", "Uniform Rate"), 
      leg_curv = c(x = 5/10, y = 5/10))
@@ -205,8 +205,8 @@ plot(testSL$category_lvlLoss,
 ```{r, fig.width=7, fig.height=4}
 
 plot(testSL$transition_lvlGain_n,
-     labels = c(rightlabel = "Intensity Gain of Ap (%)",
-                leftlabel = bquote("Gain of Ap (" ~ km ^ 2 ~ ")")),
+     labels = c(leftlabel = bquote("Gain of Ap (" ~ km^2 ~ ")"),
+                rightlabel = "Intensity Gain of Ap (%)"),
      marginplot = c(.3, .3), labs = c("Classes", "Uniform Rate"), 
      leg_curv = c(x = 5/10, y = 5/10))
 
@@ -216,8 +216,8 @@ plot(testSL$transition_lvlGain_n,
 ```{r, fig.width=7, fig.height=4}
 
 plot(testSL$transition_lvlLoss_m,
-     labels = c(rightlabel = "Intensity Loss of SG (%)",
-                leftlabel = bquote("Loss of SG (" ~ km ^ 2 ~ ")")),
+     labels = c(leftlabel = bquote("Loss of SG (" ~ km^2 ~ ")"),
+                rightlabel = "Intensity Loss of SG (%)"),
      marginplot = c(.3, .3), labs = c("Classes", "Uniform Rate"), 
      leg_curv = c(x = 1/10, y = 5/10))
   

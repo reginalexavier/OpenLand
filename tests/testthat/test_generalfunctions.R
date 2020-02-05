@@ -9,6 +9,7 @@ demo_acc_changes <- acc_changes(demo_raster)
 test_that("Behavior of acc_changes", {
 
   expect_error(acc_changes(.demo_landscape(2000)))
+  expect_error(acc_changes(2000))
   expect_silent(acc_changes(demo_raster))
   expect_silent(acc_changes(raster::stack(demo_raster)))
   expect_silent(acc_changes(raster::brick(demo_raster)))

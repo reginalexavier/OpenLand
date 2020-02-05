@@ -128,6 +128,12 @@ acc_changes <- function(path) {
          a path directory of rasters `.tif` ")
   }
 
+  n_raster <- length(rList)
+
+  if (n_raster < 2) {
+    stop('acc_changes needs at least 2 rasters')
+  }
+
   difflist <- mapply(
     function(x, y)
       raster::overlay(

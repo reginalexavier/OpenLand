@@ -99,6 +99,13 @@ contingencyTable <-
     stop("The input can only be a `RasterStack`, `RasterBrick`, a list of `RasterLayer` or
          a path directory of rasters `.tif` ")
     }
+
+    n_raster <- length(rList)
+
+    if (n_raster < 2) {
+      stop('contingencyTable needs at least 2 rasters')
+    }
+
     # testing if the raster are similar in nrow, ncol and crs
     extent_test <-
       all(mapply(

@@ -14,6 +14,11 @@ test_that("Behavior of the contengencyTable", {
                                                  .demo_landscape(year = 2002, xmx = 50)),
                                 pixelresolution = 1))
 
+  expect_error(contingencyTable(input_raster = .demo_landscape(year = 2000),
+                                pixelresolution = 1))
+
+  expect_error(contingencyTable(input_raster = 5L))
+
   expect_error(contingencyTable(input_raster = c(.demo_landscape(year = 2000,
                                                                  crs = "+proj=utm +zone=22 +south +ellps=GRS80 +units=m +no_defs" ),
                                                  .demo_landscape(year = 2002,

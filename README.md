@@ -11,6 +11,8 @@ status](https://travis-ci.org/reginalexavier/OpenLand.svg?branch=master)](https:
 status](https://ci.appveyor.com/api/projects/status/github/reginalexavier/OpenLand?branch=master&svg=true)](https://ci.appveyor.com/project/reginalexavier/OpenLand)
 [![Codecov test
 coverage](https://codecov.io/gh/reginalexavier/OpenLand/branch/master/graph/badge.svg)](https://codecov.io/gh/reginalexavier/OpenLand?branch=master)
+[![License: GPL
+v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 <!-- badges: end -->
 
 OpenLand is an open-source R package for the analysis of land use and

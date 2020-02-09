@@ -5,6 +5,7 @@ cache: packages
 
 os:
   - linux
+  - osx
 
 
 r:

@@ -10,6 +10,7 @@ netgrossplot(
   title = NULL,
   xlab = "LUC category",
   ylab = "Area (Km2)",
+  legend_title = "Changes",
   changesLabel = c(GC = "Gross change", NG = "Net gain", NL = "Net loss"),
   color = c(GC = "gray70", NG = "#006400", NL = "#EE2C2C"),
   area_km2 = TRUE
@@ -25,6 +26,8 @@ netgrossplot(
 \item{xlab}{\code{<character>}. Label for the x axis}
 
 \item{ylab}{\code{<character>}. Label for the y axis}
+
+\item{legend_title}{\code{<character>}. The title of the legend}
 
 \item{changesLabel}{\code{<character>}. Labels for the three types of changes, defaults are
 c(GC = "Gross change", NG = "Net gain", NL = "Net loss")}

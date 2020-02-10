@@ -293,6 +293,7 @@ chordDiagramLand <-
 #' @param title \code{<character>}. The title of the plot (optional), use \code{NULL} for no title.
 #' @param xlab \code{<character>}. Label for the x axis
 #' @param ylab \code{<character>}. Label for the y axis
+#' @param legend_title \code{<character>}. The title of the legend
 #' @param changesLabel \code{<character>}. Labels for the three types of changes, defaults are
 #' c(GC = "Gross change", NG = "Net gain", NL = "Net loss")
 #' @param color \code{<chr>}. A vector defining the three bar colors.
@@ -326,6 +327,7 @@ netgrossplot <-
            title = NULL,
            xlab = "LUC category",
            ylab = "Area (Km2)",
+           legend_title = "Changes",
            changesLabel = c(GC = "Gross change", NG = "Net gain", NL = "Net loss"),
            color = c(GC = "gray70", NG = "#006400", NL = "#EE2C2C"),
            area_km2 = TRUE) {
@@ -362,6 +364,9 @@ netgrossplot <-
     }
 
 
+    names(color) <- unname(changesLabel[c("GC", "NG", "NL")]) # pairing the legend with the color
+
+
     ggplot(data = lulc_gainloss_gross, aes(To, lulc_gainloss_gross[[2]])) +
       geom_bar(stat = "identity", width = 0.5, aes(fill = changesLabel[[1]])) +
       geom_bar(
@@ -378,8 +383,8 @@ netgrossplot <-
                      xend = as.numeric(To) + 0.3,
                      yend = area
                    )) +
-      scale_fill_manual(values = c(color[[1]], color[[2]], color[[3]])) +
-      labs(fill = "Changes") +
+      scale_fill_manual(values = color) +
+      labs(fill = legend_title) +
       geom_hline(yintercept = 0, size = .3) +
       xlab(xlab) +
       ylab(ylab) +

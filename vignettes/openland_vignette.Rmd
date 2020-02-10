@@ -234,8 +234,9 @@ OpenLand provides a bench of visualization tools of LUCC metrics. One-step trans
 
 netgrossplot(dataset = SL_2002_2014$lulc_Multistep, # gross gain and loss
              legendtable = SL_2002_2014$tb_legend,
-             xlab = "Classes de UCT",
-             changes = c(GC = "Gross changes", NG = "Net Gain", NL = "Net Loss"),
+             xlab = "LUC Category",
+             ylab = bquote("Area (" ~ km^2 ~ ")"),
+             changesLabel = c(GC = "Gross changes", NG = "Net Gain", NL = "Net Loss"),
              color = c(GC = "gray70", NG = "#006400", NL = "#EE2C2C")
              )
 

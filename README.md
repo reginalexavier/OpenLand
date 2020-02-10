@@ -209,9 +209,9 @@ chart.
 
 netgrossplot(dataset = SL_2002_2014$lulc_Multistep,
              legendtable = SL_2002_2014$tb_legend,
-             xlab = "Classes de UCT",
-             ylab = bquote("Area (" ~km^2~")"),
-             changes = c(GC = "Gross changes", NG = "Net Gain", NL = "Net Loss"),
+             xlab = "LUC Category",
+             ylab = bquote("Area (" ~ km^2 ~ ")"),
+             changesLabel = c(GC = "Gross changes", NG = "Net Gain", NL = "Net Loss"),
              color = c(GC = "gray70", NG = "#006400", NL = "#EE2C2C")
              )
 ```

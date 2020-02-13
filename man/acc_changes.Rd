@@ -7,7 +7,7 @@
 acc_changes(path)
 }
 \arguments{
-\item{path}{list. List of filenames, list of Raster* objects, RasterStack(\code{\link[raster]{brick}}) or
+\item{path}{list. List of filenames, list of Raster* objects, RasterBrick(\code{\link[raster]{brick}}) or
 RasterStack(\code{\link[raster]{stack}})}
 }
 \value{

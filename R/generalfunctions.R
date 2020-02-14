@@ -180,7 +180,7 @@ acc_changes <- function(path) {
 #'
 #' @examples
 #' \donttest{gain_map(SaoLourencoBasin)}
-gain_map <- function(path, persistence = 99) {
+lulc_gain <- function(path, persistence = 99) {
   if (c(class(path)) %in% c("RasterStack", "RasterBrick")) {
     rList  <- raster::unstack(path)
 
@@ -208,7 +208,7 @@ gain_map <- function(path, persistence = 99) {
     stop('gain_map needs at least 2 rasters')
   }
 
-  gain_map_list <- raster::brick(mapply(
+  gain_map <- raster::brick(mapply(
     function(x, y)
       raster::overlay(
         x,
@@ -238,7 +238,7 @@ gain_map <- function(path, persistence = 99) {
 #'
 #' @examples
 #' \donttest{loss_map(SaoLourencoBasin)}
-loss_map <- function(path, persistence = 99) {
+lulc_loss <- function(path, persistence = 99) {
   if (c(class(path)) %in% c("RasterStack", "RasterBrick")) {
     rList  <- raster::unstack(path)
 
@@ -266,7 +266,7 @@ loss_map <- function(path, persistence = 99) {
     stop('loss_map needs at least 2 rasters')
   }
 
-  loss_map_list <- raster::brick(mapply(
+  loss_map <- raster::brick(mapply(
     function(x, y)
       raster::overlay(
         x,

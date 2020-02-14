@@ -8,7 +8,7 @@ demo_cont <- contingencyTable(demo_raster, pixelresolution = 1)
 
 
 
-test_that("Behavior of the contengencyTable", {
+test_that("Behavior of the contingencyTable", {
 
   expect_error(contingencyTable(input_raster = c(.demo_landscape(year = 2000),
                                                  .demo_landscape(year = 2002, xmx = 50)),

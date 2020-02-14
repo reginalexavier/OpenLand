@@ -7,8 +7,8 @@
 contingencyTable(input_raster, pixelresolution = 30)
 }
 \arguments{
-\item{input_raster}{list. List of filenames, list of Raster* objects,
-RasterStack(\code{\link[raster]{brick}}) or RasterStack(\code{\link[raster]{stack}}}
+\item{input_raster}{path (character), Raster* object or list of Raster* objects. See \cr
+\code{raster::\link[raster]{raster}} for more information about supported filetypes.}
 
 \item{pixelresolution}{numeric. The pixel spatial resolution in meter.}
 }

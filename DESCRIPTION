@@ -39,6 +39,7 @@ Imports:
     methods
 Collate: 
     'OpenLand-package.R'
+    'rasters_input.R'
     'demolandscape.R'
     'contingencyTable.R'
     'data.R'

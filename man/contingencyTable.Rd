@@ -13,7 +13,7 @@ contingencyTable(input_raster, pixelresolution = 30)
 \item{pixelresolution}{numeric. The pixel spatial resolution in meter.}
 }
 \value{
-A list that contains 5 objects.
+A list that contains 6 objects.
 \itemize{
   \item \code{lulc_Mulstistep}: \code{<tibble>} Contingency table for all analysed time steps, containing 8 columns:
   \enumerate{
@@ -55,6 +55,15 @@ A list that contains 5 objects.
   \item QtPixel: \code{<numeric>} The total area in pixel counts
   }
   \item \code{totalInterval}: \code{<numeric>} Total interval of the analysed time series in years
+  \item \code{alluvial_data}: \code{<tibble>} Contingency table for the entire analysed period \emph{[Yt1, YT]}, containing
+  5 columns identical with \code{lulc_Mulstistep}: flow_id Years Category QtPixel    km2
+  \enumerate{
+  \item flow_id: \code{<int>} The id representing an unique quantity of flow over the all period \emph{[Yt1, YT]}.
+  \item Years: \code{<int>} The year \emph{Yt}
+  \item Category: \code{<int>} numerical code of a LUC category \emph{i} at year \emph{Yt}
+  \item QtPixel: \code{<int>} Pixel count associated with the flow_id.
+  \item km2: \code{<dbl>} Area in square kilometers associated with the flow_id.
+  }
   }
 }
 \description{

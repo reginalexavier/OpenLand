@@ -99,7 +99,7 @@ intensityAnalysis <-
     AE <- dataset[[4]] #s tudy area
 
     allinterval <-
-      dataset[[length(dataset)]] # whole interval in years
+      dataset[[5]] # whole interval in years
 
     lulc <-
       dplyr::left_join(dataset[[1]], dataset[[3]][, c(1, 2)], by = c("From" = "classValue")) %>%

@@ -2,6 +2,7 @@
 
 export(.demo_landscape)
 export(acc_changes)
+export(alluvial_Land)
 export(barplotLand)
 export(chordDiagramLand)
 export(contingencyTable)

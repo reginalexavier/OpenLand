@@ -166,9 +166,10 @@ contingencyTable <-
 
     alluvial_format <- function(x) {
       new_table <- dplyr::mutate(x, flow_id = 1:n()) %>% tidyr::pivot_longer(cols = seq_len(ncol(x) - 1)) %>%
-        dplyr::rename(c("QtPixel" = "Freq", "Category" = "value")) %>%
+        dplyr::rename("QtPixel" = "Freq", "Category" = "value") %>%
         tidyr::separate(name, c("name", "Years")) %>% dplyr::mutate(km2 = QtPixel * (pixelresolution ^ 2) / 1000000) %>%
-        dplyr::select(flow_id, Years, Category, QtPixel, km2)
+        dplyr::select(flow_id, Years, Category, QtPixel, km2) %>%
+        dplyr::mutate(Years = as.integer(Years), Category = as.integer(Category))
       new_table
     }
 

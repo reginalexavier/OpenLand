@@ -533,18 +533,19 @@ alluvial_Land <-
            ylab = "Area (km2 or pixel)",
            year_filter = NULL,
            area_km2 = TRUE, ...) {
-
     dataset_cat <- dataset %>% left_join(legendtable[c(1,2)], by = c("Category" = "classValue")) %>%
       mutate(Years = as.factor(Years)) %>%
-      filter(Years %in% ifelse(is.null(year_filter), unique(dataset$Years), year_filter))
+      filter(Years %in% if (is.null(year_filter)){
+        as.character(unique(dataset$Years))
+      } else {
+        year_filter
+      })
 
     areaif <- ifelse(!isTRUE(area_km2), "km2", "QtPixel")
 
     dataset_cat <- dataset_cat %>% select(-areaif)
 
-    colnames(dataset_cat[4]) <- "area"
-
-    areaif <- ifelse(isTRUE(area_km2), "km2", "QtPixel")
+    colnames(dataset_cat) <- c("flow_id", "Years", "Category", "area", "className")
 
 
     ggplot(data = dataset_cat,

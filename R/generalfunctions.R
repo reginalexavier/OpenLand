@@ -68,7 +68,11 @@ summary_dir <- function(path) {
 summary_map <- function(path) {
   rastermap <-
     if (class(path) != "character") {
-      path
+      if (class(path) == "RasterLayer") {
+        path
+      } else {
+        path[[1]]
+      }
     } else {
       raster::raster(path)
     }

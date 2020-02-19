@@ -46,11 +46,8 @@ setMethod(".input_rasters", signature(x = "list"),
               stop("list elements must be named")
             files <- list.names
             sorted_files <- sort(files)
-            if (length(sorted_files) > 0) {
-              maps <- raster::stack(x[sorted_files])
-            } else {
-              stop("maps not found")
-            }
+            maps <- raster::stack(x[sorted_files])
+
           })
 
 #' @rdname dot-input_rasters

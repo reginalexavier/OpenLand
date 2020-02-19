@@ -23,7 +23,7 @@ summary_dir <- function(path) {
     raster_files <-
       list.files(path,
                  pattern = ".tif$",
-                 full.names = T)
+                 full.names = TRUE)
 
     layer_list <- vector("list", length = length(raster_files))
 
@@ -109,26 +109,10 @@ summary_map <- function(path) {
 #'
 
 acc_changes <- function(path) {
-  if (c(class(path)) %in% c("RasterStack", "RasterBrick")) {
 
-    rList  <- raster::unstack(path)
+  rList <- .input_rasters(path)
 
-  } else if ((c(class(path[[1]]))) == "RasterLayer") {
-
-    rList <- path
-
-  } else if (class(path) == "character") {
-    raster_files <- list.files(path, pattern = ".tif$", full.names = T)
-
-    rList <- vector("list", length = length(raster_files))
-
-    for (i in seq_along(raster_files)) {
-      rList[[i]] <- raster::raster(raster_files[i])
-    }
-  } else {
-    stop("The input can only be a `RasterStack`, `RasterBrick`, a list of `RasterLayer` or
-         a path directory of rasters `.tif` ")
-  }
+  rList <- raster::unstack(rList)
 
   n_raster <- length(rList)
 
@@ -167,5 +151,3 @@ acc_changes <- function(path) {
   list(sumraster, df_values)
 
 }
-
-

@@ -23,7 +23,7 @@ summary_dir <- function(path) {
     raster_files <-
       list.files(path,
                  pattern = ".tif$",
-                 full.names = T)
+                 full.names = TRUE)
 
     layer_list <- vector("list", length = length(raster_files))
 
@@ -68,7 +68,11 @@ summary_dir <- function(path) {
 summary_map <- function(path) {
   rastermap <-
     if (class(path) != "character") {
-      path
+      if (class(path) == "RasterLayer") {
+        path
+      } else {
+        path[[1]]
+      }
     } else {
       raster::raster(path)
     }
@@ -92,7 +96,7 @@ summary_map <- function(path) {
 #' and a table containing the areal percentage of every pixel value (number of changes).
 #'
 #'
-#' @param path list. List of filenames, list of Raster* objects, RasterStack(\code{\link[raster]{brick}}) or
+#' @param path list. List of filenames, list of Raster* objects, RasterBrick(\code{\link[raster]{brick}}) or
 #' RasterStack(\code{\link[raster]{stack}})
 #'
 #' @return Two objects, a raster layer and a table.
@@ -106,27 +110,9 @@ summary_map <- function(path) {
 
 acc_changes <- function(path) {
 
-  #importing the rasters
-  if (c(class(path)) %in% c("RasterStack", "RasterBrick")) {
+  rList <- .input_rasters(path)
 
-    rList  <- raster::unstack(path)
-
-  } else if ((c(class(path[[1]]))) == "RasterLayer") {
-
-    rList <- path
-
-  } else if (class(path) == "character") {
-    raster_files <- list.files(path, pattern = ".tif$", full.names = T)
-
-    rList <- vector("list", length = length(raster_files))
-
-    for (i in seq_along(raster_files)) {
-      rList[[i]] <- raster::raster(raster_files[i])
-    }
-  } else {
-    stop("The input can only be a `RasterStack`, `RasterBrick`, a list of `RasterLayer` or
-         a path directory of rasters `.tif` ")
-  }
+  rList <- raster::unstack(rList)
 
   n_raster <- length(rList)
 

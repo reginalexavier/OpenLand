@@ -25,9 +25,6 @@
 #'                 crs = "+proj=utm +zone=21 +south +ellps=GRS80 +units=m +no_defs")
 #'
 
-
-
-
 .demo_landscape <- function(year,
                             nrows = 100,
                             ncols = 100,
@@ -51,11 +48,8 @@
     crs = crs
   )
 
-  mapdemo <- function(year01, pixvalue) {
-    # an atribuitor of values
-
+  mapdemo <- function(year01, pixvalue) {  # an atribuitor of values
     raster::values(landscape) <- pixvalue
-
     names(landscape) <- paste0("landscape_", year01)
     landscape
   }
@@ -76,9 +70,12 @@
   # create a list of n of them
   raster_list <-
     mapply(function(x, y)
-      mapdemo(year01 = x, pixvalue = y), year, pixsample)
+      mapdemo(year01 = x, pixvalue = y), year, pixsample, USE.NAMES = TRUE)
+
+  names(raster_list) <- vapply(raster_list, function(x) names(x), FUN.VALUE = character(1L))
 
   return(raster_list)
+
 }
 
 

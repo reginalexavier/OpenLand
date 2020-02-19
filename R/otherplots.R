@@ -1,6 +1,8 @@
 utils::globalVariables(c("From", "To", "target", "km2", "Year",
                          "QtPixel", "yearFrom", "yearTo", "name",
-                         "colorFrom", "colorTo", "lulc", "area"))
+                         "colorFrom", "colorTo", "lulc", "area",
+                         "Category", "Years", "flow_id",
+                         "geom_flow", "geom_stratum"))
 #' @include plotMethods.R
 NULL
 
@@ -501,3 +503,4 @@ sankeyLand <- function(dataset, legendtable, iterations = 0) {
     sinksRight = FALSE
   )
 }
+

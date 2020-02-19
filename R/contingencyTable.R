@@ -1,7 +1,7 @@
 utils::globalVariables(c("Interval", "Period", "Year_from",
                          "Year_to", "strings01", "strings02"))
 
-#' @include demolandscape.R
+#' @include demolandscape.R rasters_input.R
 NULL
 
 #' Contingency table
@@ -9,8 +9,8 @@ NULL
 #'
 #' Extracts LUC transitions for all input grids of the time series
 #'
-#' @param input_raster list. List of filenames, list of Raster* objects,
-#' RasterStack(\code{\link[raster]{brick}}) or RasterStack(\code{\link[raster]{stack}}
+#' @param input_raster path (character), Raster* object or list of Raster* objects. See \cr
+#' \code{raster::\link[raster]{raster}} for more information about supported filetypes.
 #' @param pixelresolution numeric. The pixel spatial resolution in meter.
 #'
 #'
@@ -18,7 +18,7 @@ NULL
 #'
 #' @import dplyr
 #'
-#' @return A list that contains 5 objects.
+#' @return A list that contains 6 objects.
 #' \itemize{
 #'   \item \code{lulc_Mulstistep}: \code{<tibble>} Contingency table for all analysed time steps, containing 8 columns:
 #'   \enumerate{
@@ -60,6 +60,15 @@ NULL
 #'   \item QtPixel: \code{<numeric>} The total area in pixel counts
 #'   }
 #'   \item \code{totalInterval}: \code{<numeric>} Total interval of the analysed time series in years
+#'   \item \code{alluvial_data}: \code{<tibble>} Contingency table for the entire analysed period \emph{[Yt1, YT]}, containing
+#'   5 columns identical with \code{lulc_Mulstistep}: flow_id Years Category QtPixel    km2
+#'   \enumerate{
+#'   \item flow_id: \code{<int>} The id representing an unique quantity of flow over the all period \emph{[Yt1, YT]}.
+#'   \item Years: \code{<int>} The year \emph{Yt}
+#'   \item Category: \code{<int>} numerical code of a LUC category \emph{i} at year \emph{Yt}
+#'   \item QtPixel: \code{<int>} Pixel count associated with the flow_id.
+#'   \item km2: \code{<dbl>} Area in square kilometers associated with the flow_id.
+#'   }
 #'   }
 #'
 #'
@@ -74,88 +83,53 @@ NULL
 
 contingencyTable <-
   function(input_raster, pixelresolution = 30) {
-    # importing the rasters
-    if (c(class(input_raster)) %in% c("RasterStack", "RasterBrick")) {
 
-      rList  <- raster::unstack(input_raster)
+    rList <- .input_rasters(input_raster)
 
-    } else if ((c(class(input_raster[[1]]))) == "RasterLayer") {
-
-        rList <- input_raster
-
-    } else if (class(input_raster) == "character") {
-      raster_files <-
-        list.files(input_raster,
-                   pattern = ".tif$",
-                   full.names = T)
-
-      rList <- vector("list", length = length(raster_files))
-
-
-      for (i in seq_along(raster_files)) {
-        rList[[i]] <- raster::raster(raster_files[i])
-      }
-    } else {
-    stop("The input can only be a `RasterStack`, `RasterBrick`, a list of `RasterLayer` or
-         a path directory of rasters `.tif` ")
-    }
-
-    n_raster <- length(rList)
+    n_raster <- raster::nlayers(rList)
 
     if (n_raster < 2) {
       stop('contingencyTable needs at least 2 rasters')
     }
 
-    # testing if the raster are similar in nrow, ncol and crs
-    extent_test <-
-      all(mapply(
-        function(x, y)
-          raster::compareRaster(
-            x,
-            y,
-            extent = TRUE,
-            rowcol = TRUE,
-            crs = TRUE,
-            res = FALSE,
-            orig = FALSE,
-            rotation = TRUE,
-            values = FALSE,
-            stopiffalse = FALSE,
-            showwarning = FALSE
-          ),
-        rList[1:(length(rList) - 1)],
-        rList[2:length(rList)]
-      ))
+    # compute the cross table of two layers, then setting the columns name
 
-    # Year_from <- Year_to <- strings01 <- strings02 <-
-    #   yearTo <- yearFrom <-
-    #   QtPixel <- Period <- From <- To <- km2 <- Interval <- NULL
+    table_one <- raster::crosstab(rList[[1]], rList[[raster::nlayers(rList)]], long = T)
 
-    if (!extent_test) {
-      stop("The rasters have differents nrow, ncol and/or src, please edit the files and retry!")
+    if (raster::nlayers(rList) == 2) {
+      table_multi <- table_one
     } else {
-      # how to compute the cross table of two layers, then setting the columns name???
-      lulc <- list("oneStep", "multiStep")
-      table_cross <- function(x, y) {
-        contengency <-
-          raster::crosstab(x, y, long = TRUE, progress = "text")
-        contengency %>% dplyr::mutate(Year_from = colnames(contengency)[1],
-                               Year_to = colnames(contengency)[2]) %>%
-          dplyr::rename(
-            From = colnames(contengency)[1],
-            To = colnames(contengency)[2],
-            QtPixel = colnames(contengency)[3]
-          ) %>% dplyr::mutate(From = as.integer(From), To = as.integer(To))
-      }
-      if (length(rList) > 2) {
-        lulc[[1]] <- table_cross(rList[[1]], rList[[length(rList)]])
-      }
-      # compute a serie of contengency table iteratively over the whole list of raster
-      lulc[[2]] <-
-        Reduce(rbind,
-               mapply(function(x, y)
-                 table_cross(x, y), rList[1:(length(rList) - 1)], rList[2:length(rList)], SIMPLIFY = FALSE))
+      table_multi <- raster::crosstab(rList, long = T)
+
     }
+
+    table_cross <- function(w) {
+      Reduce(rbind,
+             lapply(seq_len(ncol(w) - 2), function(x) {
+               contengency <- w[c(x, x + 1, ncol(w))]
+               contengency %>%  dplyr::mutate(Year_from = colnames(contengency)[1],
+                                              Year_to = colnames(contengency)[2]) %>%
+                 dplyr::rename(
+                   From = colnames(contengency)[1],
+                   To = colnames(contengency)[2],
+                   QtPixel = colnames(contengency)[3]
+                 ) %>% dplyr::mutate(From = as.integer(From), To = as.integer(To))
+             }))}
+
+    lulc <- list("oneStep", "multiStep")
+
+
+    lulc[[1]] <- table_cross(table_one)
+
+    if (raster::nlayers(rList) == 2) {
+      lulc[[2]] <- lulc[[1]]
+    } else {
+      lulc[[2]] <- table_cross(table_multi) %>%
+        group_by(Year_to, Year_from, From, To) %>% summarise(QtPixel = sum(QtPixel)) %>%
+        select(From, To, QtPixel, Year_from, Year_to)
+    }
+
+
     lulctable <-
       lapply(lulc, function(x)
         x %>% dplyr::arrange(Year_from) %>%

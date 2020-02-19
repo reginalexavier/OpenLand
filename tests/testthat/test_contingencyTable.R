@@ -8,7 +8,7 @@ demo_cont <- contingencyTable(demo_raster, pixelresolution = 1)
 
 
 
-test_that("Behavior of the contengencyTable", {
+test_that("Behavior of the contingencyTable", {
 
   expect_error(contingencyTable(input_raster = c(.demo_landscape(year = 2000),
                                                  .demo_landscape(year = 2002, xmx = 50)),
@@ -25,6 +25,7 @@ test_that("Behavior of the contengencyTable", {
                                                                  crs = "+proj=utm +zone=21 +south +ellps=GRS80 +units=m +no_defs")),
                                 pixelresolution = 1))
 
+  expect_silent(contingencyTable(.demo_landscape(2000:2001)))
   expect_silent(contingencyTable(demo_raster, pixelresolution = 1))
   expect_silent(contingencyTable(raster::stack(demo_raster), pixelresolution = 1))
   expect_silent(contingencyTable(raster::brick(demo_raster), pixelresolution = 1))

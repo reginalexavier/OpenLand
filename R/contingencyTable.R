@@ -164,25 +164,13 @@ contingencyTable <-
     areaTotal <-
       lulctable[[2]] %>% dplyr::group_by(Period) %>% dplyr::summarise(area_km2 = sum(km2), QtPixel = sum(QtPixel))
 
-    alluvial_format <- function(x) {
-      new_table <- dplyr::mutate(x, flow_id = 1:n()) %>% tidyr::pivot_longer(cols = seq_len(ncol(x) - 1)) %>%
-        dplyr::rename("QtPixel" = "Freq", "Category" = "value") %>%
-        tidyr::separate(name, c("name", "Years")) %>% dplyr::mutate(km2 = QtPixel * (pixelresolution ^ 2) / 1000000) %>%
-        dplyr::select(flow_id, Years, Category, QtPixel, km2) %>%
-        dplyr::mutate(Years = as.integer(Years), Category = as.integer(Category))
-      new_table
-    }
-
-    alluvial_multi <- alluvial_format(table_multi)
-
     contingencyTable <-
       list(
         lulc_Multistep = dplyr::as_tibble(lulctable[[2]]),
         lulc_Onestep = dplyr::as_tibble(lulctable[[1]]),
         tb_legend = dplyr::as_tibble(tb_legend),
         totalArea = areaTotal[1, c(2,3)],
-        totalInterval = allinterval,
-        alluvial_data = alluvial_multi
+        totalInterval = allinterval
       )
     return(contingencyTable)
   }

@@ -2,13 +2,10 @@
 
 export(.demo_landscape)
 export(acc_changes)
-export(alluvial_Land)
 export(barplotLand)
 export(chordDiagramLand)
 export(contingencyTable)
 export(intensityAnalysis)
-export(lulc_gain)
-export(lulc_loss)
 export(netgrossplot)
 export(sankeyLand)
 export(summary_dir)

@@ -36,8 +36,7 @@ Imports:
     circlize (>= 0.4.8),
     networkD3 (>= 0.4),
     raster (>= 3.0.7),
-    methods,
-    ggalluvial
+    methods
 Collate: 
     'OpenLand-package.R'
     'rasters_input.R'

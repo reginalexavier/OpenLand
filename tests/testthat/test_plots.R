@@ -19,16 +19,19 @@ demo_int_km2 <-
 test_that("Behavior of the plot methods", {
 
   expect_invisible(OpenLand::plot(demo_int_km2$interval_lvl))
+  expect_invisible(OpenLand::plot(demo_int_km2$interval_lvl, title = "Main Title"))
   expect_output(str(OpenLand::plot(demo_int_km2$interval_lvl)), "gtable, containing")
 
 
 
   expect_invisible(OpenLand::plot(demo_int_km2$category_lvlGain))
+  expect_invisible(OpenLand::plot(demo_int_km2$category_lvlGain, title = "Main Title"))
   expect_output(str(OpenLand::plot(demo_int_km2$category_lvlGain)), "gtable, containing")
 
 
 
   expect_invisible(OpenLand::plot(demo_int_km2$transition_lvlGain_n))
+  expect_invisible(OpenLand::plot(demo_int_km2$transition_lvlGain_n, title = "Main Title"))
   expect_output(str(OpenLand::plot(demo_int_km2$transition_lvlGain_n)), "gtable, containing")
 
 

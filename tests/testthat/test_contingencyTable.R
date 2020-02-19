@@ -25,6 +25,7 @@ test_that("Behavior of the contingencyTable", {
                                                                  crs = "+proj=utm +zone=21 +south +ellps=GRS80 +units=m +no_defs")),
                                 pixelresolution = 1))
 
+  expect_silent(contingencyTable(.demo_landscape(2000:2001)))
   expect_silent(contingencyTable(demo_raster, pixelresolution = 1))
   expect_silent(contingencyTable(raster::stack(demo_raster), pixelresolution = 1))
   expect_silent(contingencyTable(raster::brick(demo_raster), pixelresolution = 1))

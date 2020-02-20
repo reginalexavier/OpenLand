@@ -3,7 +3,7 @@
 #'
 #' Listing major charateristics of raster inputs
 #'
-#' @param path The path for a raster directory/list to be analysed
+#' @param path The path for the Raster* directory/list to be analysed
 #'
 #' @return Table with the raster parameters in columns
 #' @export

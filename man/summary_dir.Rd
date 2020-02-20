@@ -7,7 +7,7 @@
 summary_dir(path)
 }
 \arguments{
-\item{path}{The path for a raster directory/list to be analysed}
+\item{path}{The path for the Raster* directory/list to be analysed}
 }
 \value{
 Table with the raster parameters in columns

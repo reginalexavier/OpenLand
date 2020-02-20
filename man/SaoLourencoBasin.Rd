@@ -4,7 +4,7 @@
 \name{SaoLourencoBasin}
 \alias{SaoLourencoBasin}
 \title{Land use and cover (LUC) rasters of the São Lourenço River Basin (2002 - 2014)}
-\format{An object of class \code{"RasterBrick"} with 5 layers:
+\format{An object of class \code{"RasterStack"} with 5 layers:
 \itemize{
   \item \strong{landscape_2002:} LUC in 2002
   \item \strong{landscape_2008:} LUC in 2008

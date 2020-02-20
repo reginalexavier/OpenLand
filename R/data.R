@@ -23,7 +23,7 @@
 #'
 #' @usage data(SaoLourencoBasin)
 #'
-#' @format An object of class \code{"RasterBrick"} with 5 layers:
+#' @format An object of class \code{"RasterStack"} with 5 layers:
 #' \itemize{
 #'   \item \strong{landscape_2002:} LUC in 2002
 #'   \item \strong{landscape_2008:} LUC in 2008

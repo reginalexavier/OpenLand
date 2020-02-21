@@ -51,7 +51,7 @@ barplotLand <-
   function(dataset,
            legendtable,
            title = NULL,
-           caption = "LUC category",
+           caption = "LUC Categories",
            xlab = "Year",
            ylab = "Area (km2 or pixel)",
            area_km2 = TRUE, ...) {
@@ -131,7 +131,7 @@ chordDiagramLand <-
   function(dataset,
            legendtable,
            legposition = c(x = 1.8, y = 1.5),
-           legtitle = "categories",
+           legtitle = "Categories",
            sectorcol = "gray80",
            area_km2 = TRUE) {
 

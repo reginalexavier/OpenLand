@@ -8,7 +8,7 @@ chordDiagramLand(
   dataset,
   legendtable,
   legposition = c(x = 1.8, y = 1.5),
-  legtitle = "categories",
+  legtitle = "Categories",
   sectorcol = "gray80",
   area_km2 = TRUE
 )

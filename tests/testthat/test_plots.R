@@ -9,8 +9,8 @@ demo_cont <- contingencyTable(demo_raster, pixelresolution = 1)
 demo_int_km2 <-
   intensityAnalysis(
     dataset = demo_cont,
-    class_n = "GUP",
-    class_m = "SXQ",
+    category_n = "GUP",
+    category_m = "SXQ",
     area_km2 = TRUE
   )
 

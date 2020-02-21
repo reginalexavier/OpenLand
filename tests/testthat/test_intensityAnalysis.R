@@ -14,31 +14,31 @@ test_that("Behavior of the intensityAnalysis", {
   demo_int_km2 <-
     intensityAnalysis(
       dataset = demo_cont,
-      class_n = "GUP",
-      class_m = "SXQ",
+      category_n = "GUP",
+      category_m = "SXQ",
       area_km2 = TRUE
     )
 
   demo_int_pixel <-
     intensityAnalysis(
       dataset = demo_cont,
-      class_n = "GUP",
-      class_m = "SXQ",
+      category_n = "GUP",
+      category_m = "SXQ",
       area_km2 = FALSE
     )
 
 
   expect_visible(intensityAnalysis(
     dataset = demo_cont,
-    class_n = "GUP",
-    class_m = "SXQ",
+    category_n = "GUP",
+    category_m = "SXQ",
     area_km2 = FALSE
   ))
 
   expect_visible(intensityAnalysis(
     dataset = demo_cont,
-    class_n = "GUP",
-    class_m = "SXQ",
+    category_n = "GUP",
+    category_m = "SXQ",
     area_km2 = TRUE
   ))
 

@@ -8,7 +8,7 @@ barplotLand(
   dataset,
   legendtable,
   title = NULL,
-  caption = "LUC category",
+  caption = "LUC Categories",
   xlab = "Year",
   ylab = "Area (km2 or pixel)",
   area_km2 = TRUE,

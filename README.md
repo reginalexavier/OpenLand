@@ -91,7 +91,7 @@ important losses.
 
 ``` r
 testSL <- intensityAnalysis(dataset = SL_2002_2014,
-                            class_n = "Ap", class_m = "SG")
+                            category_n = "Ap", category_m = "SG")
 
 # it returns a list with 6 objects
 names(testSL)
@@ -174,7 +174,7 @@ method.
 plot(testSL$category_lvlGain,
      labels = c(leftlabel = bquote("Gain Area (" ~km^2~ ")"),
                 rightlabel = "Intensity Gain (%)"),
-     marginplot = c(.3, .3), labs = c("Classes", "Uniform intensity"), 
+     marginplot = c(.3, .3), labs = c("Categories", "Uniform intensity"), 
      leg_curv = c(x = 1, y = .5),
      fontsize_ui = 8)
 ```
@@ -195,13 +195,13 @@ Gain area outcome - Category level
 
 OpenLand provides a bench of visualization tools of LUCC metrics.
 One-step transitions can be balanced by net and gross changes of all
-classes through a combined bar chart. Transitions between LUC classes
-can be detailed by a circular chord chart, based on the Circlize package
-(Gu et al. 2014). An implementation of Sankey diagram based on the
-networkD3 package (Allaire et al. 2017) allow the representation of one-
-and multistep LUCC between classes. Areal development of all LUC classes
-throughout the observation period can be visualized by a grouped bar
-chart.
+categories through a combined bar chart. Transitions between LUC
+categories can be detailed by a circular chord chart, based on the
+Circlize package (Gu et al. 2014). An implementation of Sankey diagram
+based on the networkD3 package (Allaire et al. 2017) allow the
+representation of one- and multistep LUCC between categories. Areal
+development of all LUC categories throughout the observation period can
+be visualized by a grouped bar chart.
 
 ##### Net and Gross gain and loss
 

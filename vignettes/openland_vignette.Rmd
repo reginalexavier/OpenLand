@@ -54,7 +54,7 @@ SaoLourencoBasin
 
 After data extraction `contingencyTable()` saves multiple grid information in tables for the next processing steps. The function returns `r length(SL_2002_2014)` objects: `r names(SL_2002_2014)`.
 
-The first two objects are contingency tables. The first one (**`r names(SL_2002_2014)[1]`**) takes into account grid cells of the entire time series, whereas the second (**`r names(SL_2002_2014)[2]`**) calculates LUC transitions only between the first and last year of the series. The third object (**`r names(SL_2002_2014)[3]`**) is a table containing the class name associated with a pixel value and a respective color used for plotting. Class values and colors are created randomly by `contingencyTable()`. Their values must be edited to produce meaningful plot legends and color schemes. The fourth object (**`r names(SL_2002_2014)[4]`**) is a table containing the extension of the study area in km^2^ and in pixel units. The fifth table (**`r names(SL_2002_2014)[5]`**) stores the range between the first (Y~t=1~) and the last year(Y~T~) of the series.
+The first two objects are contingency tables. The first one (**`r names(SL_2002_2014)[1]`**) takes into account grid cells of the entire time series, whereas the second (**`r names(SL_2002_2014)[2]`**) calculates LUC transitions only between the first and last year of the series. The third object (**`r names(SL_2002_2014)[3]`**) is a table containing the category name associated with a pixel value and a respective color used for plotting. Category values and colors are created randomly by `contingencyTable()`. Their values must be edited to produce meaningful plot legends and color schemes. The fourth object (**`r names(SL_2002_2014)[4]`**) is a table containing the extension of the study area in km^2^ and in pixel units. The fifth table (**`r names(SL_2002_2014)[5]`**) stores the range between the first (Y~t=1~) and the last year(Y~T~) of the series.
 
 
 Fields, format, description and labeling of a **`r names(SL_2002_2014)[1]`** table created by the `contingencyTable` are given in the following:
@@ -80,9 +80,9 @@ SL_2002_2014
 ```
 
 ### Editing the values in the ``r names(SL_2002_2014$tb_legend[2])`` and ``r names(SL_2002_2014$tb_legend[3])`` columns
-As mentioned before, the **`r names(SL_2002_2014[3])`** object must be edited with the real class name and colors associated with the class values. In our case, the class names and colors follow the conventions given by  @sospantanal2015 [(access document here, page 17)](https://www.embrapa.br/documents/1354999/1529097/BAP+-+Mapeamento+da+Bacia+do+Alto+Paraguai+-+estudo+completo/e66e3afb-2334-4511-96a0-af5642a56283). The Portuguese legend acronyms were maintained as defined in the original dataset.
+As mentioned before, the **`r names(SL_2002_2014[3])`** object must be edited with the real category name and colors associated with the category values. In our case, the category names and colors follow the conventions given by  @sospantanal2015 [(access document here, page 17)](https://www.embrapa.br/documents/1354999/1529097/BAP+-+Mapeamento+da+Bacia+do+Alto+Paraguai+-+estudo+completo/e66e3afb-2334-4511-96a0-af5642a56283). The Portuguese legend acronyms were maintained as defined in the original dataset.
 
-|Pixel Value|Legend|Class|Use|Details|color|
+|Pixel Value|Legend|Class|Use|Category|color|
 |:---|:-----:|:-----------------|:-------------------|:------------------------------|:------|
 |2        | Ap     | Anthropic | Anthropic Use | Pasture                             |#FFE4B5|
 |3        | FF     | Natural   | NA            | Forest                              |#228B22|
@@ -99,8 +99,8 @@ As mentioned before, the **`r names(SL_2002_2014[3])`** object must be edited wi
 
 
 ```{r echo=TRUE}
-## editing the classe name
-SL_2002_2014$tb_legend$className <- factor(c("Ap", "FF", "SA", "SG", "aa", "SF", 
+## editing the category name
+SL_2002_2014$tb_legend$categoryName <- factor(c("Ap", "FF", "SA", "SG", "aa", "SF", 
                                           "Agua", "Iu", "Ac", "R", "Im"),
                                   levels = c("FF", "SF", "SA", "SG", "aa", "Ap", 
                                          "Ac", "Im", "Iu", "Agua", "R"))
@@ -135,7 +135,7 @@ Within the OpenLand package, the `intensityAnalysis()` function computes the thr
 
 ```{r}
 testSL <- intensityAnalysis(dataset = SL_2002_2014,
-                            class_n = "Ap", class_m = "SG")
+                            category_n = "Ap", category_m = "SG")
 
 # it returns a list with 6 objects
 names(testSL)
@@ -147,7 +147,7 @@ Here, we adopted an object-oriented approach that allows to set specific methods
 
 The second object _**`r names(testSL[2])`**_ is an ``r class(testSL[[2]])`` object, the third _**`r names(testSL[3])`**_ and the fourth _**`r names(testSL[4])`**_ are ``r class(testSL[[4]])`` objects,  whereas the fifth _**`r names(testSL[5])`**_ and the sixth _**`r names(testSL[6])`**_ are ``r class(testSL[[6]])`` objects.
 
-An ``r class(testSL[[2]])`` object contains one slot containing a table of  **interval level** result _(S~t~ and U values)_. A ``r class(testSL[[4]])`` object contains three slots: the first contains the colors associated with the legend items as name attributes, the second slot contains a table of the **category level** result _(gain (G~tj~) or loss (L~ti~) values)_  and the third slot contains a table storing the results of a stationarity test. A ``r class(testSL[[6]])`` object contains three slots: the first contains the color associated with the respective legend item defined as name attribute, the second slot contains a table of the **transition level** result _(gain n (R~tin~ & W~tn~) or loss m (Q~tmj~ & V~tm~) values)_. The third slot contains a table storing the results of a stationarity test. Hereby, @Aldwaik2012 consider a stationary case only when the intensities for all time intervals reside on one side of the uniform intensity, i.e. that they are always smaller or larger than the uniform rate over the whole period.
+An ``r class(testSL[[2]])`` object contains one slot containing a table of  **interval level** result _(S~t~ and U values)_. A ``r class(testSL[[4]])`` object contains three slots: the first contains the colors associated with the legend items as name attributes, the second slot contains a table of the **category level** result _(gain (G~tj~) or loss (L~ti~) values)_  and the third slot contains a table storing the results of a stationarity test. A ``r class(testSL[[6]])`` object contains three slots: the first contains the color associated with the respective legend item defined as name attribute, the second slot contains a table of the **transition level** result _(gain n (R~tin~ and W~tn~) or loss m (Q~tmj~ and V~tm~) values)_. The third slot contains a table storing the results of a stationarity test. Hereby, @Aldwaik2012 consider a stationary case only when the intensities for all time intervals reside on one side of the uniform intensity, i.e. that they are always smaller or larger than the uniform rate over the whole period.
 
 
 ```{r}
@@ -182,7 +182,7 @@ plot(testSL$interval_lvl,
 plot(testSL$category_lvlGain,
      labels = c(leftlabel = bquote("Gain Area (" ~ km^2 ~ ")"),
                 rightlabel = "Intensity Gain (%)"),
-     marginplot = c(.3, .3), labs = c("Classes", "Uniform Rate"), 
+     marginplot = c(.3, .3), labs = c("Categories", "Uniform Rate"), 
      leg_curv = c(x = 5/10, y = 5/10))
 
 
@@ -194,7 +194,7 @@ plot(testSL$category_lvlGain,
 plot(testSL$category_lvlLoss,
      labels = c(leftlabel = bquote("Loss Area (" ~ km^2 ~ ")"),
                 rightlabel = "Loss Intensity (%)"),
-     marginplot = c(.3, .3), labs = c("Classes", "Uniform Rate"), 
+     marginplot = c(.3, .3), labs = c("Categories", "Uniform Rate"), 
      leg_curv = c(x = 5/10, y = 5/10))
 
 ```
@@ -207,7 +207,7 @@ plot(testSL$category_lvlLoss,
 plot(testSL$transition_lvlGain_n,
      labels = c(leftlabel = bquote("Gain of Ap (" ~ km^2 ~ ")"),
                 rightlabel = "Intensity Gain of Ap (%)"),
-     marginplot = c(.3, .3), labs = c("Classes", "Uniform Rate"), 
+     marginplot = c(.3, .3), labs = c("Categories", "Uniform Rate"), 
      leg_curv = c(x = 5/10, y = 5/10))
 
 ```
@@ -218,7 +218,7 @@ plot(testSL$transition_lvlGain_n,
 plot(testSL$transition_lvlLoss_m,
      labels = c(leftlabel = bquote("Loss of SG (" ~ km^2 ~ ")"),
                 rightlabel = "Intensity Loss of SG (%)"),
-     marginplot = c(.3, .3), labs = c("Classes", "Uniform Rate"), 
+     marginplot = c(.3, .3), labs = c("Categories", "Uniform Rate"), 
      leg_curv = c(x = 1/10, y = 5/10))
   
 
@@ -226,7 +226,7 @@ plot(testSL$transition_lvlLoss_m,
 
 ### Miscellaneous visualization tools
 
-OpenLand provides a bench of visualization tools of LUCC metrics. One-step transitions can be balanced by net and gross changes of all classes through a combined bar chart.  Transitions between LUC classes can be detailed by a circular chord chart, based on the Circlize package [@Gu2014]. An implementation of  Sankey diagram based on the networkD3 package [@Allaire2017] allow the representation of one- and multistep LUCC between classes. Areal development of all LUC classes throughout the observation period can be visualized by a grouped bar chart. 
+OpenLand provides a bench of visualization tools of LUCC metrics. One-step transitions can be balanced by net and gross changes of all categories through a combined bar chart.  Transitions between LUC categories can be detailed by a circular chord chart, based on the Circlize package [@Gu2014]. An implementation of  Sankey diagram based on the networkD3 package [@Allaire2017] allow the representation of one- and multistep LUCC between categories. Areal development of all LUC categories throughout the observation period can be visualized by a grouped bar chart. 
 
 #### Net and Gross gain and loss
 
@@ -292,7 +292,7 @@ barplotLand(dataset = SL_2002_2014$lulc_Multistep,
 ```
 
 ## Other functions
-Two auxiliary functions allow users to check for consistency in the input gridded LUC time series, including extent, projection, cell resolution and classes. The `summary_map()` function returns the number of pixel by class of a single raster layer, whereas `summary_dir()` lists the spatial extension, spatial resolution, cartographic projection and the class range for the LUC maps. 
+Two auxiliary functions allow users to check for consistency in the input gridded LUC time series, including extent, projection, cell resolution and categories. The `summary_map()` function returns the number of pixel by category of a single raster layer, whereas `summary_dir()` lists the spatial extension, spatial resolution, cartographic projection and the category range for the LUC maps. 
 OpenLand enables furthermore the spatial screening of LUCC frequencies for one or a series of raster layers. The `acc_changes()` returns for LUC time series the number of times a pixel has changed during the analysed period, returning a grid layer and a table with the percentages of transition numbers in the study area.
 
 

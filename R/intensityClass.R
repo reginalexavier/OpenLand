@@ -12,7 +12,7 @@
 #'    \item PercentChange: \code{<dbl>}. Changed area on the Interval level (\%).
 #'    \item St: \code{<dbl>}. Annual intensity of change for a time
 #'    period [Yt, Yt+1].
-#'    \item U: \code{<dbl>}. Uniform intensity for a LUC class change in a time period of interest.
+#'    \item U: \code{<dbl>}. Uniform intensity for a LUC category change in a time period of interest.
 #'    }
 #' @export
 #' @aliases Interval
@@ -70,10 +70,10 @@ setClass(
 #'    \item St: \code{<dbl>}. Annual intensity of change for time interval \emph{[Yt, Yt+1]}.
 #'    }
 #'  \item categoryStationarity:  \code{<tibble>}. A table with the results of a stationarity test of
-#'   the gain of the classes on the Category level, containing 5 columns:
+#'   the gain of the categories on the Category level, containing 5 columns:
 #'  \enumerate{
 #'    \item To: \code{<fct>}. A category of interest \emph{j}.
-#'    \item gain: \code{<int>}. Number of times a class had gains during all time intervals \emph{[Y1, YT]}.
+#'    \item gain: \code{<int>}. Number of times a category had gains during all time intervals \emph{[Y1, YT]}.
 #'    \item N: \code{<int>}. Total number of evaluated time points (T).
 #'    \item Stationarity: \code{<chr>}. \emph{Active Gain} or \emph{Dormant Gain}.
 #'    \item Test: \code{<chr>}. \emph{Y} if stationarity was detected and \emph{N} if not.
@@ -93,11 +93,11 @@ setClass(
 #'    \item Lti: \code{<dbl>}. Annual intensity of gross loss of category \emph{i} for time interval \emph{[Yt, Yt+1]}.
 #'    \item STt: \code{<dbl>}. Annual intensity of change for time interval \emph{[Yt, Yt+1]}.
 #'    }
-#'   \item categoryStationarity: \code{<tibble>}. A table of stationarity test over the loss of the classes in
+#'   \item categoryStationarity: \code{<tibble>}. A table of stationarity test over the loss of the categories in
 #'   in the Category level, containing 5 columns:
 #'  \enumerate{
 #'    \item From: \code{<fct>}. A category of interest \emph{i}.
-#'    \item loss: \code{<int>}. Number of times a class had losses during all time intervals \emph{[Y1, YT]}.
+#'    \item loss: \code{<int>}. Number of times a category had losses during all time intervals \emph{[Y1, YT]}.
 #'    \item N: \code{<int>}. Total number of evaluated time points (T).
 #'    \item Stationarity: \code{<chr>}. \emph{Active Loss} or \emph{Dormant Loss}.
 #'    \item Test: \code{<chr>}. \emph{Y} if stationarity was detected and \emph{N} if not.
@@ -161,10 +161,10 @@ setClass(
 #'
 #'
 #' @details The slots \code{transitionData} and \code{transitionStationarity} can receive
-#'    tables for "Gain of class n" or "Loss of class m" in the following format:
+#'    tables for "Gain of category n" or "Loss of category m" in the following format:
 #' \enumerate{
 #'
-#' \item Gain of class n:
+#' \item Gain of category n:
 #'
 #'  \itemize{
 #'
@@ -182,7 +182,7 @@ setClass(
 #'    n from all non-n categories at time Yt during time interval \emph{[Yt, Yt+1]}.
 #'    }
 #'  \item transitionStationarity: \code{<tibble>}. A table containing results of a stationarity test
-#'  over the gain on \emph{class n} containing 5 columns:
+#'  over the gain on \emph{category n} containing 5 columns:
 #'  \enumerate{
 #'    \item From: \code{<fct>}. The losing category in the transition of interest to the category n.
 #'    \item loss: \code{<int>}. Number of times the category had losses to the category n.
@@ -192,7 +192,7 @@ setClass(
 #'    }
 #'    }
 #'
-#' \item Loss of class m:
+#' \item Loss of category m:
 #'
 #'  \itemize{
 #'
@@ -213,7 +213,7 @@ setClass(
 #'    during time interval \emph{[Yt, Yt+1]}.
 #'    }
 #'  \item transitionStationarity: \code{<tibble>}. A table containing results of a stationarity test
-#'  over the loss of \emph{class m} containing 5 columns:
+#'  over the loss of \emph{category m} containing 5 columns:
 #'  \enumerate{
 #'    \item To: \code{<fct>}. The gaining category in the transition of interest from the category m.
 #'    \item gain: \code{<int>}. Number of times the category had gains from the category m.

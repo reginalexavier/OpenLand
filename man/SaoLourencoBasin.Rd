@@ -21,10 +21,10 @@ data(SaoLourencoBasin)
 \description{
 A multi-layer raster (RasterStack) with five (5) RasterLayer objects
 representing LUC in the years of 2002, 2008, 2010, 2012 and 2014 respectively.
-Each RasterLayer has 11 LUC classes:
+Each RasterLayer has 11 LUC categories:
 \tabular{cclll}{
 \strong{Pixel Value} \tab \strong{Legend} \tab \strong{Class}
-\tab \strong{Use} \tab \strong{Details}  \cr
+\tab \strong{Use} \tab \strong{Category}  \cr
 2        \tab Ap     \tab Anthropic \tab Anthropic Use \tab Pasture    \cr
 3        \tab FF     \tab Natural   \tab NA            \tab Forest \cr
 4        \tab SA     \tab Natural   \tab NA            \tab Park Savannah   \cr

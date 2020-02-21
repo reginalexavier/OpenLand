@@ -44,9 +44,9 @@ A stacked barplot showing net and gross changes of LUC categories during the ent
 }
 \examples{
 
-# editing the class name
+# editing the category name
 
-SL_2002_2014$tb_legend$className <- factor(c("Ap", "FF", "SA", "SG", "aa", "SF",
+SL_2002_2014$tb_legend$categoryName <- factor(c("Ap", "FF", "SA", "SG", "aa", "SF",
                                              "Agua", "Iu", "Ac", "R", "Im"),
                                   levels = c("FF", "SF", "SA", "SG", "aa", "Ap",
                                              "Ac", "Im", "Iu", "Agua", "R"))
@@ -55,7 +55,7 @@ SL_2002_2014$tb_legend$className <- factor(c("Ap", "FF", "SA", "SG", "aa", "SF",
 netgrossplot(dataset = SL_2002_2014$lulc_Multistep,
              legendtable = SL_2002_2014$tb_legend,
              title = NULL,
-             xlab = "Classes de UCT",
+             xlab = "LUC Category",
              changes = c(GC = "Gross changes", NG = "Net Gain", NL = "Net Loss"),
              color = c(GC = "gray70", NG = "#006400", NL = "#EE2C2C"))
 

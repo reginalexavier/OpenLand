@@ -29,7 +29,7 @@ plot(x, y, ...)
   labels = c(leftlabel = "Annual Change Area (km2 or pixels)", rightlabel =
     "Annual Change Intensity (percent of category)"),
   title = NA,
-  labs = c(type = "Classes", ur = "Uniform Intensity"),
+  labs = c(type = "Categories", ur = "Uniform Intensity"),
   marginplot = c(lh = 0.5, rh = 0.5),
   leg_curv = c(x = 0.1, y = 0.1),
   fontsize_ui = 10,
@@ -42,7 +42,7 @@ plot(x, y, ...)
   labels = c(leftlabel = "Annual Transition Area (km2 or pixels)", rightlabel =
     "Annual Transition Intensity (percent of category)"),
   title = NA,
-  labs = c(type = "Classes", ur = "Uniform Intensity"),
+  labs = c(type = "Categories", ur = "Uniform Intensity"),
   marginplot = c(lh = 0.5, rh = 0.5),
   leg_curv = c(x = 0.1, y = 0.1),
   fontsize_ui = 10,
@@ -74,5 +74,5 @@ plot(x, y, ...)
 An intensity graph
 }
 \description{
-Plot \code{Intensity} objects based on Intensity Analysis tables
+Plot \code{Intensity} objects based on Intensity Analysis output.
 }

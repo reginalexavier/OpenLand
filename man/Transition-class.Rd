@@ -6,15 +6,15 @@
 \alias{Transition}
 \title{Class Transition}
 \description{
-A S4 class for the Transition level result of an Intensity analysis.
-Can be plotted with the plot method \code{\link{plot}}
+A S4 class for the Transition level result of an Intensity analysis. Can be
+plotted with the plot method \code{\link{plot}}.
 }
 \details{
 The slots \code{transitionData} and \code{transitionStationarity} can receive
-   tables for "Gain of class n" or "Loss of class m" in the following format:
+   tables for "Gain of category n" or "Loss of category m" in the following format:
 \enumerate{
 
-\item Gain of class n:
+\item Gain of category n:
 
  \itemize{
 
@@ -32,7 +32,7 @@ The slots \code{transitionData} and \code{transitionStationarity} can receive
    n from all non-n categories at time Yt during time interval \emph{[Yt, Yt+1]}.
    }
  \item transitionStationarity: \code{<tibble>}. A table containing results of a stationarity test
- over the gain on \emph{class n} containing 5 columns:
+ over the gain on \emph{category n} containing 5 columns:
  \enumerate{
    \item From: \code{<fct>}. The losing category in the transition of interest to the category n.
    \item loss: \code{<int>}. Number of times the category had losses to the category n.
@@ -42,7 +42,7 @@ The slots \code{transitionData} and \code{transitionStationarity} can receive
    }
    }
 
-\item Loss of class m:
+\item Loss of category m:
 
  \itemize{
 
@@ -63,7 +63,7 @@ The slots \code{transitionData} and \code{transitionStationarity} can receive
    during time interval \emph{[Yt, Yt+1]}.
    }
  \item transitionStationarity: \code{<tibble>}. A table containing results of a stationarity test
- over the loss of \emph{class m} containing 5 columns:
+ over the loss of \emph{category m} containing 5 columns:
  \enumerate{
    \item To: \code{<fct>}. The gaining category in the transition of interest from the category m.
    \item gain: \code{<int>}. Number of times the category had gains from the category m.

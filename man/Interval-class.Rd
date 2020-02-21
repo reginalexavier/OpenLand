@@ -6,7 +6,8 @@
 \alias{Interval}
 \title{Class Interval}
 \description{
-A S4 class for the Interval level result of an Intensity analysis
+A S4 class for the Interval level result of an Intensity analysis.  Can be
+plotted with the plot method \code{\link{plot}}.
 }
 \details{
 The slot \code{intervalData} receives a table containing 4 columns in the following format:
@@ -15,7 +16,7 @@ The slot \code{intervalData} receives a table containing 4 columns in the follow
    \item PercentChange: \code{<dbl>}. Changed area on the Interval level (\%).
    \item St: \code{<dbl>}. Annual intensity of change for a time
    period [Yt, Yt+1].
-   \item U: \code{<dbl>}. Uniform intensity for a LUC class change in a time period of interest.
+   \item U: \code{<dbl>}. Uniform intensity for a LUC category change in a time period of interest.
    }
 }
 \section{Slots}{

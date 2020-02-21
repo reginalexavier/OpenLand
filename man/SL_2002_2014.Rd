@@ -11,9 +11,9 @@
   \item Period: \code{<chr>} The period \emph{[Yt, Yt+1]}.
   \item From: \code{<int>} numerical code of a LUC category \emph{i}.
   \item To: \code{<int>} numerical code of a LUC category \emph{j}.
-  \item km2: \code{<dbl>} Area in square kilometers that transited from the class category \emph{i}
+  \item km2: \code{<dbl>} Area in square kilometers that transited from the category \emph{i}
    to category \emph{j} in the period from \emph{Yt} to \emph{Yt+1}.
-  \item QtPixel: \code{<int>} Pixel count that transited from the classes category \emph{i}
+  \item QtPixel: \code{<int>} Pixel count that transited from the categories \emph{i}
    to category \emph{j} in the period from \emph{Yt} to \emph{Yt+1}.
   \item Interval: \code{<int>} Interval of years between the first and
    the last year of the period \emph{[Yt, Yt+1]}.
@@ -24,8 +24,8 @@
   8 columns identical with \code{lulc_Mulstistep}}.
   \item{tb_legend}{\code{<tibble>} A table of the pixel value, his name and color containing 3 columns:
   \enumerate{
-  \item classValue: \code{<int>} the pixel value of the LUC class.
-  \item className: \code{<fct>} randomly created string associated with a given pixel value of a LUC category.
+  \item categoryValue: \code{<int>} the pixel value of the LUC category.
+  \item categoryName: \code{<fct>} randomly created string associated with a given pixel value of a LUC category.
   \item color: \code{<chr>} random color associated with the given pixel value of a LUC category.
   }}
   \item{totalArea}{\code{<tibble>} A table with the total area of the study area containing 2 columns:

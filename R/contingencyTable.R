@@ -25,11 +25,11 @@ NULL
 #'   \item Period: \code{<chr>} The period \emph{[Yt, Yt+1]}.
 #'   \item From: \code{<dbl>} numerical code of a LUC category \emph{i}.
 #'   \item To: \code{<dbl>} numerical code of a LUC category \emph{j}.
-#'   \item km2: \code{<dbl>} Area in square kilometers that transited from the class category \emph{i}
+#'   \item km2: \code{<dbl>} Area in square kilometers that transited from the category \emph{i}
 #'    to category \emph{j} in the period from \emph{Yt} to \emph{Yt+1}.
 #'   \item Interval: \code{<dbl>} Interval of years between the first and
 #'    the last year of the period \emph{[Yt, Yt+1]}.
-#'   \item QtPixel: \code{<int>} Pixel count that transited from the classes category \emph{i}
+#'   \item QtPixel: \code{<int>} Pixel count that transited from the categories \emph{i}
 #'    to category \emph{j} in the period from \emph{Yt} to \emph{Yt+1}.
 #'   \item yearFrom: \code{<chr>} The year that the change comes from \emph{[Yt]}.
 #'   \item yearTo: \code{<chr>} The year that the change goes for \emph{[Yt+1]}.
@@ -38,18 +38,18 @@ NULL
 #'   8 columns identical with \code{lulc_Mulstistep}.
 #'   \item \code{tb_legend}: \code{<tibble>} A table of the pixel value, his name and color containing 3 columns:
 #'   \enumerate{
-#'   \item classValue: \code{<dbl>} the pixel value of the LUC class.
-#'   \item className: \code{<factor>} randomly created string associated with a given pixel value of a LUC category.
+#'   \item categoryValue: \code{<dbl>} the pixel value of the LUC category.
+#'   \item categoryName: \code{<factor>} randomly created string associated with a given pixel value of a LUC category.
 #'   \item color: \code{<chr>} random color associated with the given pixel value of a LUC category.
-#'   Before further analysis, one would like to change the \code{className} and \code{color} values.
+#'   Before further analysis, one would like to change the \code{categoryName} and \code{color} values.
 #'     \itemize{
-#'         \item Therefore the class names have to be in the same order as the \code{classValue}
+#'         \item Therefore the category names have to be in the same order as the \code{categoryValue}
 #'         and the \code{levels} should be put in the right order for legend plotting. Like:
 #'         \preformatted{
 #'
-#'         myobject$tb_legend$className <- factor(c("name1", "name2", "name3", "name4"),
+#'         myobject$tb_legend$categoryName <- factor(c("name1", "name2", "name3", "name4"),
 #'                                                levels = c("name3", "name2", "name1", "name4"))}
-#'         \item The colors have to in the same order as the values in the \code{classValue} column. Colors can be given by the
+#'         \item The colors have to in the same order as the values in the \code{categoryValue} column. Colors can be given by the
 #'        color name (eg. "black") or an HEX value (eg. #FFFFFF). Like:
 #'        \preformatted{
 #'
@@ -138,11 +138,11 @@ contingencyTable <-
       as.numeric(dplyr::last(lulctable[[2]]$yearTo)) - as.numeric(dplyr::first(lulctable[[2]]$yearFrom))
 
     tb_legend <-
-      lulctable[[2]] %>% dplyr::distinct(From) %>% dplyr::rename(classValue = From)
+      lulctable[[2]] %>% dplyr::distinct(From) %>% dplyr::rename(categoryValue = From)
 
-    genclass <- function() {paste(sample(LETTERS, size = 3, replace = FALSE), collapse = "")}
+    genCategory <- function() {paste(sample(LETTERS, size = 3, replace = FALSE), collapse = "")}
 
-    tb_legend$className <- as.factor(vapply(seq_len(nrow(tb_legend)), function(x) genclass(), character(1)))
+    tb_legend$categoryName <- as.factor(vapply(seq_len(nrow(tb_legend)), function(x) genCategory(), character(1)))
 
     tb_legend$color <- base::sample(x = c("#002F70", "#0A468D", "#295EAE", "#4A76C7", "#6F8DD2",
                                           "#8EA4DE", "#ABBBE8", "#C5CFF0", "#DCE2F6", "#EFF1F8",

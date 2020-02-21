@@ -23,9 +23,9 @@ A sankey showing the one or multi step LUC transitions during the analysed perio
 }
 \examples{
 
-# editing the class name
+# editing the category name
 
-SL_2002_2014$tb_legend$className <- factor(c("Ap", "FF", "SA", "SG", "aa", "SF",
+SL_2002_2014$tb_legend$categoryName <- factor(c("Ap", "FF", "SA", "SG", "aa", "SF",
                                              "Agua", "Iu", "Ac", "R", "Im"),
                                   levels = c("FF", "SF", "SA", "SG", "aa", "Ap",
                                              "Ac", "Im", "Iu", "Agua", "R"))

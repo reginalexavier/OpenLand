@@ -14,7 +14,7 @@ raster only the first RasterLayer will be analysed.}
 A table containing in columns the pixel counts for each pixel value
 }
 \description{
-This function presents a summary with the pixel quantity of each class present
+This function presents a summary with the pixel quantity of each category present
 in a categorical raster.
 }
 \examples{

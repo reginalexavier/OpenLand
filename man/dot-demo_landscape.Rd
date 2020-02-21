@@ -14,7 +14,7 @@
   ymn = 0,
   ymx = 100,
   crs = NA,
-  class = 1:5,
+  category = 1:5,
   prob = NULL
 )
 }
@@ -37,9 +37,9 @@
 
 \item{crs}{character. the coordinate referencing system.}
 
-\item{class}{A numeric vector of the raster classes.}
+\item{category}{A numeric vector of the raster categories.}
 
-\item{prob}{A numreic vector of the probability of occurrence for the class list.}
+\item{prob}{A numreic vector of the probability of occurrence for the category list.}
 }
 \value{
 list

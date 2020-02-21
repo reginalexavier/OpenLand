@@ -12,8 +12,8 @@
 #' @param ymn numeric. y minimum extent.
 #' @param ymx numeric. y maximum extent.
 #' @param crs character. the coordinate referencing system.
-#' @param class A numeric vector of the raster classes.
-#' @param prob A numreic vector of the probability of occurrence for the class list.
+#' @param category A numeric vector of the raster categories.
+#' @param prob A numreic vector of the probability of occurrence for the category list.
 #'
 #'
 #' @seealso \code{\link[raster]{raster}}
@@ -37,7 +37,7 @@
                             ymn = 0,
                             ymx = 100,
                             crs = NA,
-                            class = 1:5,
+                            category = 1:5,
                             prob = NULL) {
   # a sample raster
   landscape <- raster::raster(
@@ -63,7 +63,7 @@
   pixsample <-
     lapply(year, function(x)
       base::sample(
-        class,
+        category,
         samplerow * samplecol,
         replace = T,
         prob = prob

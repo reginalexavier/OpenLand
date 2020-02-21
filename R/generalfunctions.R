@@ -58,7 +58,7 @@ summary_dir <- function(path) {
 
 #' Quantitative summary of a unique categorical raster
 #'
-#' This function presents a summary with the pixel quantity of each class present
+#' This function presents a summary with the pixel quantity of each category present
 #' in a categorical raster.
 #'
 #' @param path The path for the raster to be analysed, if path is a multilayer

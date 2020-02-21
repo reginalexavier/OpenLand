@@ -30,9 +30,9 @@ NULL
 #'
 #' @examples
 #'
-#' # editing the class name
+#' # editing the category name
 #'
-#' SL_2002_2014$tb_legend$className <- factor(c("Ap", "FF", "SA", "SG", "aa", "SF",
+#' SL_2002_2014$tb_legend$categoryName <- factor(c("Ap", "FF", "SA", "SG", "aa", "SF",
 #'                                              "Agua", "Iu", "Ac", "R", "Im"),
 #'                                   levels = c("FF", "SF", "SA", "SG", "aa", "Ap",
 #'                                              "Ac", "Im", "Iu", "Agua", "R"))
@@ -58,12 +58,12 @@ barplotLand <-
 
 
     datachange <- dataset %>%
-      left_join(legendtable, by = c("From" = "classValue")) %>%
-      left_join(legendtable, by = c("To" = "classValue")) %>%
+      left_join(legendtable, by = c("From" = "categoryValue")) %>%
+      left_join(legendtable, by = c("To" = "categoryValue")) %>%
       dplyr::select(-c(From, To)) %>%
       rename(
-        "From" = "className.x",
-        "To" = "className.y",
+        "From" = "categoryName.x",
+        "To" = "categoryName.y",
         "colorFrom" = "color.x",
         "colorTo" = "color.y"
       )
@@ -81,7 +81,7 @@ barplotLand <-
 
     ggplot(data = datanual, aes(as.character(Year), area)) +
       geom_bar(aes(fill = lulc), stat = "identity", position = "dodge") +
-      scale_fill_manual(values = legendtable$color[order(legendtable$className)]) +
+      scale_fill_manual(values = legendtable$color[order(legendtable$categoryName)]) +
       labs(fill = caption) +
       xlab(xlab) +
       ylab(ylab) +
@@ -111,9 +111,9 @@ barplotLand <-
 #'
 #' @examples
 #'
-#' # editing the class name
+#' # editing the category name
 #'
-#' SL_2002_2014$tb_legend$className <- factor(c("Ap", "FF", "SA", "SG", "aa", "SF",
+#' SL_2002_2014$tb_legend$categoryName <- factor(c("Ap", "FF", "SA", "SG", "aa", "SF",
 #'                                              "Agua", "Iu", "Ac", "R", "Im"),
 #'                                   levels = c("FF", "SF", "SA", "SG", "aa", "Ap",
 #'                                              "Ac", "Im", "Iu", "Agua", "R"))
@@ -131,18 +131,18 @@ chordDiagramLand <-
   function(dataset,
            legendtable,
            legposition = c(x = 1.8, y = 1.5),
-           legtitle = "Classes",
+           legtitle = "categories",
            sectorcol = "gray80",
            area_km2 = TRUE) {
 
 
     circle_data <- dataset %>%
-      left_join(legendtable, by = c("From" = "classValue")) %>%
-      left_join(legendtable, by = c("To" = "classValue")) %>%
+      left_join(legendtable, by = c("From" = "categoryValue")) %>%
+      left_join(legendtable, by = c("To" = "categoryValue")) %>%
       dplyr::select(-c(From, To)) %>%
       rename(
-        "From" = "className.x",
-        "To" = "className.y",
+        "From" = "categoryName.x",
+        "To" = "categoryName.y",
         "colorFrom" = "color.x",
         "colorTo" = "color.y"
       ) %>% tidyr::unite("source",
@@ -198,7 +198,7 @@ chordDiagramLand <-
       gap = unit(1, "mm"),
       labels_gp = grid::gpar(fontsize = 12),
       #labels_rot = 0,
-      legend_gp = grid::gpar(fill = legendtable$color[order(legendtable$className)]),
+      legend_gp = grid::gpar(fill = legendtable$color[order(legendtable$categoryName)]),
       direction = c("vertical", "horizontal")[2],
       background = "#EEEEEE",
       title_position = c(
@@ -307,9 +307,9 @@ chordDiagramLand <-
 #'
 #' @examples
 #'
-#' # editing the class name
+#' # editing the category name
 #'
-#' SL_2002_2014$tb_legend$className <- factor(c("Ap", "FF", "SA", "SG", "aa", "SF",
+#' SL_2002_2014$tb_legend$categoryName <- factor(c("Ap", "FF", "SA", "SG", "aa", "SF",
 #'                                              "Agua", "Iu", "Ac", "R", "Im"),
 #'                                   levels = c("FF", "SF", "SA", "SG", "aa", "Ap",
 #'                                              "Ac", "Im", "Iu", "Agua", "R"))
@@ -318,7 +318,7 @@ chordDiagramLand <-
 #' netgrossplot(dataset = SL_2002_2014$lulc_Multistep,
 #'              legendtable = SL_2002_2014$tb_legend,
 #'              title = NULL,
-#'              xlab = "Classes de UCT",
+#'              xlab = "LUC Category",
 #'              changes = c(GC = "Gross changes", NG = "Net Gain", NL = "Net Loss"),
 #'              color = c(GC = "gray70", NG = "#006400", NL = "#EE2C2C"))
 #'
@@ -335,12 +335,12 @@ netgrossplot <-
            area_km2 = TRUE) {
 
     datachange <- (dataset %>%
-      left_join(legendtable, by = c("From" = "classValue")) %>%
-      left_join(legendtable, by = c("To" = "classValue")) %>%
+      left_join(legendtable, by = c("From" = "categoryValue")) %>%
+      left_join(legendtable, by = c("To" = "categoryValue")) %>%
       dplyr::select(-c(From, To)) %>%
       rename(
-        "From" = "className.x",
-        "To" = "className.y"))[c(1, 2, 3, 7, 9)]
+        "From" = "categoryName.x",
+        "To" = "categoryName.y"))[c(1, 2, 3, 7, 9)]
 
     areaif <- ifelse(isTRUE(area_km2), "km2", "QtPixel")
 
@@ -414,9 +414,9 @@ netgrossplot <-
 #'
 #' @examples
 #'
-#' # editing the class name
+#' # editing the category name
 #'
-#' SL_2002_2014$tb_legend$className <- factor(c("Ap", "FF", "SA", "SG", "aa", "SF",
+#' SL_2002_2014$tb_legend$categoryName <- factor(c("Ap", "FF", "SA", "SG", "aa", "SF",
 #'                                              "Agua", "Iu", "Ac", "R", "Im"),
 #'                                   levels = c("FF", "SF", "SA", "SG", "aa", "Ap",
 #'                                              "Ac", "Im", "Iu", "Agua", "R"))
@@ -437,12 +437,12 @@ netgrossplot <-
 #'
 sankeyLand <- function(dataset, legendtable, iterations = 0) {
   linkMultistep <- dataset %>%
-    left_join(legendtable, by = c("From" = "classValue")) %>%
-    left_join(legendtable, by = c("To" = "classValue")) %>%
+    left_join(legendtable, by = c("From" = "categoryValue")) %>%
+    left_join(legendtable, by = c("To" = "categoryValue")) %>%
     dplyr::select(-c(From, To)) %>%
     rename(
-      "From" = "className.x",
-      "To" = "className.y",
+      "From" = "categoryName.x",
+      "To" = "categoryName.y",
       "colorFrom" = "color.x",
       "colorTo" = "color.y"
     ) %>% tidyr::unite("source",
@@ -456,11 +456,11 @@ sankeyLand <- function(dataset, legendtable, iterations = 0) {
     dplyr::select(source, target, From, To, km2, yearFrom, yearTo)
   # defining the color scale
   domain <- paste(paste0("'",
-                         as.character(levels(legendtable$className)), "'"),
+                         as.character(levels(legendtable$categoryName)), "'"),
                   collapse = ", ")
 
   range <- paste(paste0("'",
-                        as.character(legendtable$color[order(legendtable$className)]), "'"),
+                        as.character(legendtable$color[order(legendtable$categoryName)]), "'"),
                  collapse = ", ")
 
   colorScale <-

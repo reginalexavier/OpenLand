@@ -6,7 +6,8 @@
 \alias{Category}
 \title{Class Category}
 \description{
-A S4 class for the Category level result of an Intensity analysis
+A S4 class for the Category level result of an Intensity analysis.  Can be
+plotted with the plot method \code{\link{plot}}.
 }
 \details{
 The slots \code{categoryData} and \code{categoryStationarity} can receive
@@ -27,10 +28,10 @@ The slots \code{categoryData} and \code{categoryStationarity} can receive
    \item St: \code{<dbl>}. Annual intensity of change for time interval \emph{[Yt, Yt+1]}.
    }
  \item categoryStationarity:  \code{<tibble>}. A table with the results of a stationarity test of
-  the gain of the classes on the Category level, containing 5 columns:
+  the gain of the categories on the Category level, containing 5 columns:
  \enumerate{
    \item To: \code{<fct>}. A category of interest \emph{j}.
-   \item gain: \code{<int>}. Number of times a class had gains during all time intervals \emph{[Y1, YT]}.
+   \item gain: \code{<int>}. Number of times a category had gains during all time intervals \emph{[Y1, YT]}.
    \item N: \code{<int>}. Total number of evaluated time points (T).
    \item Stationarity: \code{<chr>}. \emph{Active Gain} or \emph{Dormant Gain}.
    \item Test: \code{<chr>}. \emph{Y} if stationarity was detected and \emph{N} if not.
@@ -50,11 +51,11 @@ The slots \code{categoryData} and \code{categoryStationarity} can receive
    \item Lti: \code{<dbl>}. Annual intensity of gross loss of category \emph{i} for time interval \emph{[Yt, Yt+1]}.
    \item STt: \code{<dbl>}. Annual intensity of change for time interval \emph{[Yt, Yt+1]}.
    }
-  \item categoryStationarity: \code{<tibble>}. A table of stationarity test over the loss of the classes in
+  \item categoryStationarity: \code{<tibble>}. A table of stationarity test over the loss of the categories in
   in the Category level, containing 5 columns:
  \enumerate{
    \item From: \code{<fct>}. A category of interest \emph{i}.
-   \item loss: \code{<int>}. Number of times a class had losses during all time intervals \emph{[Y1, YT]}.
+   \item loss: \code{<int>}. Number of times a category had losses during all time intervals \emph{[Y1, YT]}.
    \item N: \code{<int>}. Total number of evaluated time points (T).
    \item Stationarity: \code{<chr>}. \emph{Active Loss} or \emph{Dormant Loss}.
    \item Test: \code{<chr>}. \emph{Y} if stationarity was detected and \emph{N} if not.

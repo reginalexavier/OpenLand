@@ -8,7 +8,7 @@ chordDiagramLand(
   dataset,
   legendtable,
   legposition = c(x = 1.8, y = 1.5),
-  legtitle = "Classes",
+  legtitle = "categories",
   sectorcol = "gray80",
   area_km2 = TRUE
 )
@@ -34,9 +34,9 @@ A circlize plot representing the one step transitions between two times point of
 }
 \examples{
 
-# editing the class name
+# editing the category name
 
-SL_2002_2014$tb_legend$className <- factor(c("Ap", "FF", "SA", "SG", "aa", "SF",
+SL_2002_2014$tb_legend$categoryName <- factor(c("Ap", "FF", "SA", "SG", "aa", "SF",
                                              "Agua", "Iu", "Ac", "R", "Im"),
                                   levels = c("FF", "SF", "SA", "SG", "aa", "Ap",
                                              "Ac", "Im", "Iu", "Agua", "R"))

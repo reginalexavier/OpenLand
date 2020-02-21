@@ -203,7 +203,7 @@ setMethod(
                           leftlabel = "Annual Change Area (km2 or pixels)",
                           rightlabel = "Annual Change Intensity (percent of category)"),
                         title = NA,
-                        labs = c(type = "Classes", ur = "Uniform Intensity"),
+                        labs = c(type = "Categories", ur = "Uniform Intensity"),
                         marginplot = c(lh = 0.5, rh = 0.5),
                         leg_curv = c(x = 0.1, y = 0.1),
                         fontsize_ui = 10,
@@ -281,7 +281,7 @@ setMethod(
       ylab(NULL) +
       geom_hline(aes(yintercept = 0), size = .3) +
       coord_flip() +
-      labs(fill = "Classes") +
+      labs(fill = "Categories") +
       scale_y_reverse(expand = expand_scale(mult = c(0.01, 0))) +
       scale_x_discrete(position = "top") +
       theme(
@@ -360,7 +360,7 @@ setMethod(
                           leftlabel = "Annual Transition Area (km2 or pixels)",
                           rightlabel = "Annual Transition Intensity (percent of category)"),
                         title = NA,
-                        labs = c(type = "Classes", ur = "Uniform Intensity"),
+                        labs = c(type = "Categories", ur = "Uniform Intensity"),
                         marginplot = c(lh = 0.5, rh = 0.5),
                         leg_curv = c(x = 0.1, y = 0.1),
                         fontsize_ui = 10,
@@ -437,7 +437,7 @@ setMethod(
       ylab(NULL) +
       geom_hline(aes(yintercept = 0), size = .01) +
       coord_flip() +
-      labs(fill = "Classes") +
+      labs(fill = "Categories") +
       scale_y_reverse(expand = expand_scale(mult = c(0.01, 0))) +
       scale_x_discrete(position = "top") +
       theme(

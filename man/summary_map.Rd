@@ -2,18 +2,20 @@
 % Please edit documentation in R/generalfunctions.R
 \name{summary_map}
 \alias{summary_map}
-\title{Summary of major characteristics of a unique categorical raster}
+\title{Quantitative summary of a unique categorical raster}
 \usage{
 summary_map(path)
 }
 \arguments{
-\item{path}{The path for the raster to be analysed}
+\item{path}{The path for the raster to be analysed, if path is a multilayer
+raster only the first RasterLayer will be analysed.}
 }
 \value{
 A table containing in columns the pixel counts for each pixel value
 }
 \description{
-Summary of major characteristics of a unique categorical raster
+This function presents a summary with the pixel quantity of each class present
+in a categorical raster.
 }
 \examples{
 \donttest{summary_map(SaoLourencoBasin[[1]])}

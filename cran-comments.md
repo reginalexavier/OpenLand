@@ -8,3 +8,4 @@
 0 errors | 0 warnings | 1 note
 
 * This is a new release.
+* checking installed package size ... NOTE installed size is 11.2Mb sub-directories of 1Mb or more: data 9.5Mb

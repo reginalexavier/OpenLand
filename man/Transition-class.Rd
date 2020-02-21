@@ -78,10 +78,10 @@ The slots \code{transitionData} and \code{transitionStationarity} can receive
 \section{Slots}{
 
 \describe{
-\item{\code{lookupcolor}}{character. The colors associated with the LUC legend items}
+\item{\code{lookupcolor}}{The colors (character vector) associated with the LUC legend items.}
 
 \item{\code{transitionData}}{tibble. A table of Transition level's results (gain n (\emph{Rtin} & \emph{Wtn})
-or loss m (\emph{Qtmj} & \emph{Vtm}) values)}
+or loss m (\emph{Qtmj} & \emph{Vtm}) values).}
 
 \item{\code{transitionStationarity}}{tibble. A table containing results of a stationarity test. A change
 is considered stationary only if the intensities for all time intervals reside

@@ -7,11 +7,10 @@
 acc_changes(path)
 }
 \arguments{
-\item{path}{list. List of filenames, list of Raster* objects, RasterBrick(\code{\link[raster]{brick}}) or
-RasterStack(\code{\link[raster]{stack}})}
+\item{path}{The path for the Raster* directory or list of Raster* to be analysed.}
 }
 \value{
-Two objects, a raster layer and a table.
+Two objects, a RasterLayer and a table.
 }
 \description{
 This function calculates the number of times a pixel has changed during the

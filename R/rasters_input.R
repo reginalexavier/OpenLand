@@ -2,8 +2,8 @@
 #'
 #' A methods for loading the raster into OpenLand
 #'
-#' @param x path (character), Raster* object or list of Raster* objects
-#' @param \dots additional arguments to \code{raster::\link[raster]{raster}}
+#' @param x path (character), Raster* object or list of Raster* objects.
+#' @param \dots additional arguments to \code{raster::\link[raster]{raster}}.
 #'
 #' @return A RasterStack
 #'

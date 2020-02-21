@@ -26,5 +26,5 @@ The core functions in this package: \code{\link{intensityAnalysis}},
 \code{\link{contingencyTable}},
 }
 \author{
-Reginal Exavier - \email{reginalexavier@rocketmail.com}, Peter Zeilhofer - \email{zeilhoferpeter@gmail.com}
+Reginal Exavier \email{reginalexavier@rocketmail.com}, Peter Zeilhofer \email{zeilhoferpeter@gmail.com}
 }

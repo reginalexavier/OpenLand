@@ -7,13 +7,15 @@
 summary_dir(path)
 }
 \arguments{
-\item{path}{The path for the Raster* directory/list to be analysed}
+\item{path}{The path for the Raster* directory or list of Raster* to be analysed.}
 }
 \value{
 Table with the raster parameters in columns
 }
 \description{
-Listing major charateristics of raster inputs
+Listing major charateristics of raster inputs. Those characteristics are the
+dimensions, the resolution, the extent, the values (min, max) and the coordinate
+reference system.
 }
 \examples{
 

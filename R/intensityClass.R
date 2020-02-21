@@ -1,14 +1,15 @@
 #'
 #' Class Interval
 #'
-#' A S4 class for the Interval level result of an Intensity analysis
+#' A S4 class for the Interval level result of an Intensity analysis.  Can be
+#' plotted with the plot method \code{\link{plot}}.
 #'
-#' @slot intervalData tibble. A table with the results of an Intensity analysis at the Interval level (\emph{St} and \emph{U} values)
+#' @slot intervalData tibble. A table with the results of an Intensity analysis at the Interval level (\emph{St} and \emph{U} values).
 #'
 #' @details The slot \code{intervalData} receives a table containing 4 columns in the following format:
 #'    \enumerate{
 #'    \item Period: \code{<fct>}. The period of interest \emph{[Yt, Yt+1]}.
-#'    \item PercentChange: \code{<dbl>}. Changed area on the Interval level (%).
+#'    \item PercentChange: \code{<dbl>}. Changed area on the Interval level (\%).
 #'    \item St: \code{<dbl>}. Annual intensity of change for a time
 #'    period [Yt, Yt+1].
 #'    \item U: \code{<dbl>}. Uniform intensity for a LUC class change in a time period of interest.
@@ -41,10 +42,11 @@ setClass(
 
 #' Class Category
 #'
-#' A S4 class for the Category level result of an Intensity analysis
+#' A S4 class for the Category level result of an Intensity analysis.  Can be
+#' plotted with the plot method \code{\link{plot}}.
 #'
-#' @slot lookupcolor character. The colors associated with the LUC legend items
-#' @slot categoryData tibble. A table of Category level's results (gain (\emph{Gtj}) or loss (\emph{Lti}) values)
+#' @slot lookupcolor The colors (character vector) associated with the LUC legend items.
+#' @slot categoryData tibble. A table of Category level's results (gain (\emph{Gtj}) or loss (\emph{Lti}) values).
 #' @slot categoryStationarity tibble. A table containing results of a stationarity test. A change
 #'    is considered stationary only if the intensities for all time intervals reside
 #'    on one side of the uniform intensity, i.e are smaller or bigger than the uniform
@@ -71,7 +73,7 @@ setClass(
 #'   the gain of the classes on the Category level, containing 5 columns:
 #'  \enumerate{
 #'    \item To: \code{<fct>}. A category of interest \emph{j}.
-#'    \item gain: \code{<int>}. Number of times a class had gains during all time intervals \emph{[Yt, Yt+1]}.
+#'    \item gain: \code{<int>}. Number of times a class had gains during all time intervals \emph{[Y1, YT]}.
 #'    \item N: \code{<int>}. Total number of evaluated time points (T).
 #'    \item Stationarity: \code{<chr>}. \emph{Active Gain} or \emph{Dormant Gain}.
 #'    \item Test: \code{<chr>}. \emph{Y} if stationarity was detected and \emph{N} if not.
@@ -95,7 +97,7 @@ setClass(
 #'   in the Category level, containing 5 columns:
 #'  \enumerate{
 #'    \item From: \code{<fct>}. A category of interest \emph{i}.
-#'    \item loss: \code{<int>}. Number of times a class had losses during all time intervals \emph{[Yt, Yt+1]}.
+#'    \item loss: \code{<int>}. Number of times a class had losses during all time intervals \emph{[Y1, YT]}.
 #'    \item N: \code{<int>}. Total number of evaluated time points (T).
 #'    \item Stationarity: \code{<chr>}. \emph{Active Loss} or \emph{Dormant Loss}.
 #'    \item Test: \code{<chr>}. \emph{Y} if stationarity was detected and \emph{N} if not.
@@ -145,12 +147,12 @@ setClass(
 
 #' Class Transition
 #'
-#' A S4 class for the Transition level result of an Intensity analysis.
-#' Can be plotted with the plot method \code{\link{plot}}
+#' A S4 class for the Transition level result of an Intensity analysis. Can be
+#' plotted with the plot method \code{\link{plot}}.
 #'
-#' @slot lookupcolor character. The colors associated with the LUC legend items
+#' @slot lookupcolor The colors (character vector) associated with the LUC legend items.
 #' @slot transitionData tibble. A table of Transition level's results (gain n (\emph{Rtin} & \emph{Wtn})
-#'    or loss m (\emph{Qtmj} & \emph{Vtm}) values)
+#'    or loss m (\emph{Qtmj} & \emph{Vtm}) values).
 #' @slot transitionStationarity tibble. A table containing results of a stationarity test. A change
 #'    is considered stationary only if the intensities for all time intervals reside
 #'    on one side of the uniform intensity, i.e are smaller or bigger than the uniform

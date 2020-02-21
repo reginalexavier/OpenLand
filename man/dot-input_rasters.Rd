@@ -25,9 +25,9 @@
 \S4method{.input_rasters}{RasterStack}(x, ...)
 }
 \arguments{
-\item{x}{path (character), Raster* object or list of Raster* objects}
+\item{x}{path (character), Raster* object or list of Raster* objects.}
 
-\item{\dots}{additional arguments to \code{raster::\link[raster]{raster}}}
+\item{\dots}{additional arguments to \code{raster::\link[raster]{raster}}.}
 }
 \value{
 A RasterStack

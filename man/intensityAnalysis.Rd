@@ -48,9 +48,9 @@ At each analysis level, the method tests for stationarity of patterns across tim
    \item Period:  \code{<fct>}. Evaluated period of transition in the format \code{year t - year t+1}.
    \item From: \code{<fct>}. The class in year t.
    \item To: \code{<fct>}. The class in year t+1.
-   \item km2: \code{<dbl>}. Area in square kilometers that transited from the classe \code{From}
+   \item km2: \code{<dbl>}. Area in square kilometers that transited from the classe \code{From}.
    to the classe \code{To} in the period.
-   \item QtPixel: \code{<int>}. Number of pixels that transited from
+   \item QtPixel: \code{<int>}. Number of pixels that transited from.
    the classe \code{From} to the classe \code{To} in the period.
    \item Interval: \code{<int>}. Interval in years of the evaluated period.
 

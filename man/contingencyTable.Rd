@@ -8,7 +8,7 @@ contingencyTable(input_raster, pixelresolution = 30)
 }
 \arguments{
 \item{input_raster}{path (character), Raster* object or list of Raster* objects. See \cr
-\code{raster::\link[raster]{raster}} for more information about supported filetypes.}
+\code{\link[raster]{raster}} for more information about supported filetypes.}
 
 \item{pixelresolution}{numeric. The pixel spatial resolution in meter.}
 }
@@ -26,15 +26,15 @@ A list that contains 5 objects.
    the last year of the period \emph{[Yt, Yt+1]}.
   \item QtPixel: \code{<int>} Pixel count that transited from the classes category \emph{i}
    to category \emph{j} in the period from \emph{Yt} to \emph{Yt+1}.
-  \item yearFrom: \code{<chr>} The year that the change comes from \emph{[Yt]}
-  \item yearTo: \code{<chr>} The year that the change goes for \emph{[Yt+1]}
+  \item yearFrom: \code{<chr>} The year that the change comes from \emph{[Yt]}.
+  \item yearTo: \code{<chr>} The year that the change goes for \emph{[Yt+1]}.
   }
   \item \code{lulc_Onestep}:\code{<tibble>} Contingency table for the entire analysed period \emph{[Yt1, YT]}, containing
   8 columns identical with \code{lulc_Mulstistep}.
   \item \code{tb_legend}: \code{<tibble>} A table of the pixel value, his name and color containing 3 columns:
   \enumerate{
-  \item classValue: \code{<dbl>} the pixel value of the LUC class
-  \item className: \code{<factor>} randomly created string associated with a given pixel value of a LUC category
+  \item classValue: \code{<dbl>} the pixel value of the LUC class.
+  \item className: \code{<factor>} randomly created string associated with a given pixel value of a LUC category.
   \item color: \code{<chr>} random color associated with the given pixel value of a LUC category.
   Before further analysis, one would like to change the \code{className} and \code{color} values.
     \itemize{
@@ -52,9 +52,9 @@ A list that contains 5 objects.
   \item \code{totalArea}: \code{<tibble>}  A table with the total area of the study area containing 2 columns:
   \enumerate{
   \item area_km2: \code{<numeric>} The total area in square kilometers.
-  \item QtPixel: \code{<numeric>} The total area in pixel counts
+  \item QtPixel: \code{<numeric>} The total area in pixel counts.
   }
-  \item \code{totalInterval}: \code{<numeric>} Total interval of the analysed time series in years
+  \item \code{totalInterval}: \code{<numeric>} Total interval of the analysed time series in years.
   }
 }
 \description{

@@ -35,9 +35,9 @@ NULL
 #'    \item Period:  \code{<fct>}. Evaluated period of transition in the format \code{year t - year t+1}.
 #'    \item From: \code{<fct>}. The class in year t.
 #'    \item To: \code{<fct>}. The class in year t+1.
-#'    \item km2: \code{<dbl>}. Area in square kilometers that transited from the classe \code{From}
+#'    \item km2: \code{<dbl>}. Area in square kilometers that transited from the classe \code{From}.
 #'    to the classe \code{To} in the period.
-#'    \item QtPixel: \code{<int>}. Number of pixels that transited from
+#'    \item QtPixel: \code{<int>}. Number of pixels that transited from.
 #'    the classe \code{From} to the classe \code{To} in the period.
 #'    \item Interval: \code{<int>}. Interval in years of the evaluated period.
 #'
@@ -60,6 +60,7 @@ NULL
 #' @param class_n character. The gaining category in the transition of interest (\emph{n}).
 #' @param class_m character. The losing category in the transition of interest (\emph{m}).
 #' @param area_km2 logical. If TRUE the change is computed in km2, if FALSE in pixel counts.
+#'
 #' @return Intensity object
 #' @export
 #'

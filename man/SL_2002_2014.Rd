@@ -24,15 +24,15 @@
   8 columns identical with \code{lulc_Mulstistep}}.
   \item{tb_legend}{\code{<tibble>} A table of the pixel value, his name and color containing 3 columns:
   \enumerate{
-  \item classValue: \code{<int>} the pixel value of the LUC class
-  \item className: \code{<fct>} randomly created string associated with a given pixel value of a LUC category
+  \item classValue: \code{<int>} the pixel value of the LUC class.
+  \item className: \code{<fct>} randomly created string associated with a given pixel value of a LUC category.
   \item color: \code{<chr>} random color associated with the given pixel value of a LUC category.
   }}
   \item{totalArea}{\code{<tibble>} A table with the total area of the study area containing 2 columns:
   \enumerate{
   \item area_km2: \code{<dbl>} The total area in square kilometers.
-  \item QtPixel: \code{<int>} The total area in pixel counts}}
-  \item{totalInterval}{\code{<int>} Total interval of the analysed time series in years}
+  \item QtPixel: \code{<int>} The total area in pixel counts}}.
+  \item{totalInterval}{\code{<int>} Total interval of the analysed time series in years}.
   }}
 \source{
 \url{https://www.embrapa.br/pantanal/bacia-do-alto-paraguai}

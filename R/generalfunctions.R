@@ -1,9 +1,11 @@
 
 #' Summary of multiple parameters in a raster directory
 #'
-#' Listing major charateristics of raster inputs
+#' Listing major charateristics of raster inputs. Those characteristics are the
+#' dimensions, the resolution, the extent, the values (min, max) and the coordinate
+#' reference system.
 #'
-#' @param path The path for the Raster* directory/list to be analysed
+#' @param path The path for the Raster* directory or list of Raster* to be analysed.
 #'
 #' @return Table with the raster parameters in columns
 #' @export
@@ -54,9 +56,14 @@ summary_dir <- function(path) {
 }
 
 
-#' Summary of major characteristics of a unique categorical raster
+#' Quantitative summary of a unique categorical raster
 #'
-#' @param path The path for the raster to be analysed
+#' This function presents a summary with the pixel quantity of each class present
+#' in a categorical raster.
+#'
+#' @param path The path for the raster to be analysed, if path is a multilayer
+#' raster only the first RasterLayer will be analysed.
+#'
 #'
 #' @return A table containing in columns the pixel counts for each pixel value
 #'
@@ -96,10 +103,10 @@ summary_map <- function(path) {
 #' and a table containing the areal percentage of every pixel value (number of changes).
 #'
 #'
-#' @param path list. List of filenames, list of Raster* objects, RasterBrick(\code{\link[raster]{brick}}) or
-#' RasterStack(\code{\link[raster]{stack}})
+#' @param path The path for the Raster* directory or list of Raster* to be analysed.
 #'
-#' @return Two objects, a raster layer and a table.
+#'
+#' @return Two objects, a RasterLayer and a table.
 #' @export
 #'
 #'

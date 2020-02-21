@@ -30,7 +30,7 @@ The slots \code{categoryData} and \code{categoryStationarity} can receive
   the gain of the classes on the Category level, containing 5 columns:
  \enumerate{
    \item To: \code{<fct>}. A category of interest \emph{j}.
-   \item gain: \code{<int>}. Number of times a class had gains during all time intervals \emph{[Yt, Yt+1]}.
+   \item gain: \code{<int>}. Number of times a class had gains during all time intervals \emph{[Y1, YT]}.
    \item N: \code{<int>}. Total number of evaluated time points (T).
    \item Stationarity: \code{<chr>}. \emph{Active Gain} or \emph{Dormant Gain}.
    \item Test: \code{<chr>}. \emph{Y} if stationarity was detected and \emph{N} if not.
@@ -54,7 +54,7 @@ The slots \code{categoryData} and \code{categoryStationarity} can receive
   in the Category level, containing 5 columns:
  \enumerate{
    \item From: \code{<fct>}. A category of interest \emph{i}.
-   \item loss: \code{<int>}. Number of times a class had losses during all time intervals \emph{[Yt, Yt+1]}.
+   \item loss: \code{<int>}. Number of times a class had losses during all time intervals \emph{[Y1, YT]}.
    \item N: \code{<int>}. Total number of evaluated time points (T).
    \item Stationarity: \code{<chr>}. \emph{Active Loss} or \emph{Dormant Loss}.
    \item Test: \code{<chr>}. \emph{Y} if stationarity was detected and \emph{N} if not.
@@ -66,9 +66,9 @@ The slots \code{categoryData} and \code{categoryStationarity} can receive
 \section{Slots}{
 
 \describe{
-\item{\code{lookupcolor}}{character. The colors associated with the LUC legend items}
+\item{\code{lookupcolor}}{The colors (character vector) associated with the LUC legend items.}
 
-\item{\code{categoryData}}{tibble. A table of Category level's results (gain (\emph{Gtj}) or loss (\emph{Lti}) values)}
+\item{\code{categoryData}}{tibble. A table of Category level's results (gain (\emph{Gtj}) or loss (\emph{Lti}) values).}
 
 \item{\code{categoryStationarity}}{tibble. A table containing results of a stationarity test. A change
 is considered stationary only if the intensities for all time intervals reside

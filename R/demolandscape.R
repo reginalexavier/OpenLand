@@ -3,17 +3,20 @@
 #' This function create a raster serie with some setup like the layer name and
 #' the sample value for the lulc
 #'
-#' @param year A vector of year, first and last included
-#' @param nrows nrows of the raster to be created
-#' @param ncols ncols of the raster to be created
-#' @param res the resolution of the raster to be created
-#' @param xmn x minimum extent
-#' @param xmx x maximum extent
-#' @param ymn y minimum extent
-#' @param ymx y maximum extent
-#' @param crs the coordinate referencing system
-#' @param class the raster classes
-#' @param prob the probability of occurrence for the class list
+#' @param year numeric. A vector of year, first and last included.
+#' @param nrows numeric. nrows of the raster to be created.
+#' @param ncols numeric. ncols of the raster to be created.
+#' @param res numeric. the resolution of the raster to be created.
+#' @param xmn numeric. x minimum extent.
+#' @param xmx numeric. x maximum extent.
+#' @param ymn numeric. y minimum extent.
+#' @param ymx numeric. y maximum extent.
+#' @param crs character. the coordinate referencing system.
+#' @param class A numeric vector of the raster classes.
+#' @param prob A numreic vector of the probability of occurrence for the class list.
+#'
+#'
+#' @seealso \code{\link[raster]{raster}}
 #'
 #' @import dplyr
 #' @return list

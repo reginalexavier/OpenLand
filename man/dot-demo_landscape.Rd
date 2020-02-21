@@ -19,27 +19,27 @@
 )
 }
 \arguments{
-\item{year}{A vector of year, first and last included}
+\item{year}{numeric. A vector of year, first and last included.}
 
-\item{nrows}{nrows of the raster to be created}
+\item{nrows}{numeric. nrows of the raster to be created.}
 
-\item{ncols}{ncols of the raster to be created}
+\item{ncols}{numeric. ncols of the raster to be created.}
 
-\item{res}{the resolution of the raster to be created}
+\item{res}{numeric. the resolution of the raster to be created.}
 
-\item{xmn}{x minimum extent}
+\item{xmn}{numeric. x minimum extent.}
 
-\item{xmx}{x maximum extent}
+\item{xmx}{numeric. x maximum extent.}
 
-\item{ymn}{y minimum extent}
+\item{ymn}{numeric. y minimum extent.}
 
-\item{ymx}{y maximum extent}
+\item{ymx}{numeric. y maximum extent.}
 
-\item{crs}{the coordinate referencing system}
+\item{crs}{character. the coordinate referencing system.}
 
-\item{class}{the raster classes}
+\item{class}{A numeric vector of the raster classes.}
 
-\item{prob}{the probability of occurrence for the class list}
+\item{prob}{A numreic vector of the probability of occurrence for the class list.}
 }
 \value{
 list
@@ -53,5 +53,8 @@ the sample value for the lulc
                 res = 1,
                 crs = "+proj=utm +zone=21 +south +ellps=GRS80 +units=m +no_defs")
 
+}
+\seealso{
+\code{\link[raster]{raster}}
 }
 \keyword{internal}

@@ -1,54 +1,7 @@
-#' Land use and cover (LUC) rasters of the São Lourenço River Basin (2002 - 2014)
-#'
-#' A multi-layer raster (RasterStack) with five (5) RasterLayer objects
-#' representing LUC in the years of 2002, 2008, 2010, 2012 and 2014 respectively.
-#' Each RasterLayer has 11 LUC categories:
-#' \tabular{cclll}{
-#' \strong{Pixel Value} \tab \strong{Legend} \tab \strong{Class}
-#' \tab \strong{Use} \tab \strong{Category}  \cr
-#' 2        \tab Ap     \tab Anthropic \tab Anthropic Use \tab Pasture    \cr
-#' 3        \tab FF     \tab Natural   \tab NA            \tab Forest \cr
-#' 4        \tab SA     \tab Natural   \tab NA            \tab Park Savannah   \cr
-#' 5        \tab SG     \tab Natural   \tab NA            \tab Gramineous Savannah \cr
-#' 7        \tab aa     \tab Anthropic \tab NA            \tab Anthropized Vegetation  \cr
-#' 8        \tab SF     \tab Natural   \tab NA            \tab Woooded Savannah          \cr
-#' 9        \tab Agua   \tab Natural   \tab NA            \tab Water body     \cr
-#' 10       \tab Iu     \tab Anthropic \tab Anthropic Use \tab Urban                      \cr
-#' 11       \tab Ac     \tab Anthropic \tab Anthropic Use \tab Crop farming                \cr
-#' 12       \tab R      \tab Anthropic \tab Anthropic Use \tab Reforestation           \cr
-#' 13       \tab Im     \tab Anthropic \tab Anthropic Use \tab Mining
-#' }
-#'
-#' @docType data
-#'
-#' @usage data(SaoLourencoBasin)
-#'
-#' @format An object of class \code{"RasterStack"} with 5 layers:
-#' \itemize{
-#'   \item \strong{landscape_2002:} LUC in 2002.
-#'   \item \strong{landscape_2008:} LUC in 2008.
-#'   \item \strong{landscape_2010:} LUC in 2010.
-#'   \item \strong{landscape_2012:} LUC in 2012.
-#'   \item \strong{landscape_2014:} LUC in 2014.
-#'   }
-#'
-#' @keywords datasets
-#'
-#' @references Instituto SOS Pantanal and WWF-Brasil (2015)
-#' (\href{https://d3nehc6yl9qzo4.cloudfront.net/downloads/publicacao_bap_relatorio_2012_2014_web.pdf}{Monitoramento
-#' das alterações da cobertura vegetal e uso do Solo na Bacia do
-#' Alto Paraguai – Porção Brasileira – Período de Análise: 2012 a 2014. 4th edn. Brasilia.})
-#'
-#'
-#' @source \url{https://www.embrapa.br/pantanal/bacia-do-alto-paraguai}
-"SaoLourencoBasin"
-
-
-
 #' Tables of land use and cover (LUC) in the São Lourenço River Basin (2002 - 2014)
 #'
 #' A list containing five objects created by the \code{\link{contingencyTable}} funtion
-#' with \code{\link{SaoLourencoBasin}} as input
+#' with \code{SaoLourencoBasin} as input
 #' (\code{SL_2002_2014 <- contingenceTable(input_raster = SaoLourencoBasin, pixelresolution = 30)}).
 #'
 #'

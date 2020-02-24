@@ -18,6 +18,13 @@ analysed period. It returns a raster with the number of changes as pixel value
 and a table containing the areal percentage of every pixel value (number of changes).
 }
 \examples{
-\donttest{acc_changes(SaoLourencoBasin)}
+\donttest{
+url <- "https://zenodo.org/record/3685230/files/SaoLourencoBasin.rda?download=1"
+temp <- tempfile()
+download.file(url_dra, temp, mode = "wb") #downloading the online dataset
+load(temp)
+# the acc_changes() function, with the SaoLourencoBasin dataset
+acc_changes(SaoLourencoBasin)
+}
 
 }

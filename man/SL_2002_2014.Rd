@@ -42,7 +42,7 @@ data(SL_2002_2014)
 }
 \description{
 A list containing five objects created by the \code{\link{contingencyTable}} funtion
-with \code{\link{SaoLourencoBasin}} as input
+with \code{SaoLourencoBasin} as input
 (\code{SL_2002_2014 <- contingenceTable(input_raster = SaoLourencoBasin, pixelresolution = 30)}).
 }
 \keyword{datasets}

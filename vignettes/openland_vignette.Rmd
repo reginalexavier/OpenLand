@@ -40,7 +40,13 @@ The function `contingencyTable()` for data extraction demands as input a list of
 ## First we load the OpenLand package
 library(OpenLand)
 
-data(SaoLourencoBasin)
+#data(SaoLourencoBasin)
+
+url_dra <- "https://zenodo.org/record/3685230/files/SaoLourencoBasin.rda?download=1" # link of download
+
+temp <- tempfile()
+download.file(url_dra, temp, mode = "wb") #downloading the online dataset
+load(temp)
 
 SaoLourencoBasin
 

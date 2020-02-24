@@ -18,8 +18,14 @@ dimensions, the resolution, the extent, the values (min, max) and the coordinate
 reference system.
 }
 \examples{
+\donttest{
+url <- "https://zenodo.org/record/3685230/files/SaoLourencoBasin.rda?download=1"
+temp <- tempfile()
+download.file(url, temp, mode = "wb") #downloading the online dataset
+load(temp)
+# the acc_changes() function, with the SaoLourencoBasin dataset
 
 summary_dir(raster::unstack(SaoLourencoBasin))
-
+}
 
 }

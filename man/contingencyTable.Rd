@@ -61,7 +61,14 @@ A list that contains 5 objects.
 Extracts LUC transitions for all input grids of the time series.
 }
 \examples{
-\donttest{contingencyTable(input_raster = SaoLourencoBasin, pixelresolution = 30)}
+\donttest{
+url <- "https://zenodo.org/record/3685230/files/SaoLourencoBasin.rda?download=1"
+temp <- tempfile()
+download.file(url, temp, mode = "wb") #downloading the online dataset
+load(temp)
+# the contingencyTable() function, with the SaoLourencoBasin dataset
+contingencyTable(input_raster = SaoLourencoBasin, pixelresolution = 30)
+}
 
 
 }

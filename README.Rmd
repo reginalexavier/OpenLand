@@ -36,6 +36,7 @@ You can install OpenLand from github with:
 
 
 ```{r installation, eval = FALSE}
+# install.packages("devtools")
 devtools::install_github("reginalexavier/OpenLand")
 ```
 
@@ -45,7 +46,7 @@ devtools::install_github("reginalexavier/OpenLand")
 This is a basic example which shows how OpenLand works, for a more detailed illustration, please see our [vignettes](https://reginalexavier.github.io/OpenLand/articles/openland_vignette.html).
 
 The OpenLand functionality is illustrated for a LUC dataset of São Lourenço river basin, a major Pantanal wetland contribution area as provided by the 4^th^ edition of the [Monitoring of Changes in Land cover and Land Use in the Upper Paraguay River Basin - Brazilian portion - Review Period: 2012 to 2014](https://www.embrapa.br/pantanal/bacia-do-alto-paraguai) (Embrapa Pantanal, Instituto SOS Pantanal, and WWF-Brasil 2015). The time series is composed by five LUC maps (2002, 2008, 2010, 2012 and 2014). The study area of approximately 22,400 km^2^ is located in the Cerrado Savannah biom in the southeast of the Brazilian state of Mato Grosso.
-For processing in the OpenLand package, the original multi-year shape file was transformed into rasters and then saved as a 5-layer `RasterStack`, which is included in the OpenLand package as `SaoLourencoBasin`. For  further details about this object, run `help("SaoLourencoBasin")` or `?SaoLourencoBasin` in the R console.
+For processing in the OpenLand package, the original multi-year shape file was transformed into rasters and then saved as a 5-layer `RasterStack` (`SaoLourencoBasin`), available from a public repository [(10.5281/zenodo.3685229)](http://doi.org/10.5281/zenodo.3685230) as an `.RDA` file which can be loaded into `R`.
 
 ```{r example}
 # Loading the package
@@ -83,17 +84,17 @@ SL_2002_2014$tb_legend
 ```
 
 ```{r}
-testSL <- intensityAnalysis(dataset = SL_2002_2014,
+my_test <- intensityAnalysis(dataset = SL_2002_2014, # here the outcome from the `contingenceTable()` function
                             category_n = "Ap", category_m = "SG")
 
 # it returns a list with 6 objects
-names(testSL)
+names(my_test)
 
 ```
 
 
 
-The `intensityAnalysis()` function returns `r length(testSL)` objects: `r names(testSL)`.
+The `intensityAnalysis()` function returns `r length(my_test)` objects: `r names(my_test)`.
 Here, we adopted an object-oriented approach that allows to set specific methods for plotting the intensity objects. Specifically, we used the S4 class, which requires the formal definition of classes and methods (Chambers 2008).
 
 
@@ -101,11 +102,11 @@ Here, we adopted an object-oriented approach that allows to set specific methods
 
 #### Presentation of an intensity object
 
-In this example we will show an object from ``r class(testSL[[4]])`` class. A ``r class(testSL[[4]])`` object contains three slots: the first contains the colors associated with the legend items as name attributes, the second slot contains a table of the **category level** result _(gain (G~tj~) or loss (L~ti~) values)_  and the third slot contains a table storing the results of a stationarity test.
+In this example we will show an object from ``r class(my_test[[4]])`` class. A ``r class(my_test[[4]])`` object contains three slots: the first contains the colors associated with the legend items as name attributes, the second slot contains a table of the **category level** result _(gain (G~tj~) or loss (L~ti~) values)_  and the third slot contains a table storing the results of a stationarity test.
 
 ```{r}
 
-testSL$category_lvlGain
+my_test$category_lvlGain
 
 ```
 
@@ -116,7 +117,7 @@ Visualizations of the IA results are obtained from the `plot(intensity-object)` 
 
 ```{r, cat_level, echo=TRUE, fig.align='center', fig.cap="Gain area outcome - Category level", out.width="80%", dev.args=list(pointsize=10), dpi=150}
 
-plot(testSL$category_lvlGain,
+plot(my_test$category_lvlGain,
      labels = c(leftlabel = bquote("Gain Area (" ~km^2~ ")"),
                 rightlabel = "Intensity Gain (%)"),
      marginplot = c(.3, .3), labs = c("Categories", "Uniform intensity"), 

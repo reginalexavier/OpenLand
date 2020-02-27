@@ -10,8 +10,9 @@ A S4 class for the Transition level result of an Intensity analysis. Can be
 plotted with the plot method \code{\link{plot}}.
 }
 \details{
-The slots \code{transitionData} and \code{transitionStationarity} can receive
-   tables for "Gain of category n" or "Loss of category m" in the following format:
+The slots \code{transitionData} and \code{transitionStationarity} can
+receive tables for "Gain of category n" or "Loss of category m" in the following
+format:
 \enumerate{
 
 \item Gain of category n:
@@ -24,21 +25,27 @@ The slots \code{transitionData} and \code{transitionStationarity} can receive
    \item From: \code{<fct>}. A category i.
    \item To: \code{<fct>}. The gaining category in the transition of interest \emph{(n)}.
    \item Interval: \code{<int>}. Duration of the period \emph{[Yt, Yt+1]}.
-   \item T_i2n_km2/T_i2n_pixel: \code{<dbl>}. Area with transition from category i to category n
+   \item T_i2n_km2/T_i2n_pixel: \code{<dbl>}. Area with transition from category
+   i to category n during time interval \emph{[Yt, Yt+1]} where \emph{i}
+   \code{is not equal to} \emph{n}.
+   \item Rtin: \code{<dbl>}. Annual intensity of transition from category i to
+   category n
    during time interval \emph{[Yt, Yt+1]} where \emph{i}  \code{is not equal to} \emph{n}.
-   \item Rtin: \code{<dbl>}. Annual intensity of transition from category i to category n
-   during time interval \emph{[Yt, Yt+1]} where \emph{i}  \code{is not equal to} \emph{n}.
-   \item Wtn: \code{<dbl>}. Value of the uniform intensity of the transition to category
-   n from all non-n categories at time Yt during time interval \emph{[Yt, Yt+1]}.
+   \item Wtn: \code{<dbl>}. Value of the uniform intensity of the transition
+   to category n from all non-n categories at time Yt during time interval \emph{[Yt, Yt+1]}.
    }
- \item transitionStationarity: \code{<tibble>}. A table containing results of a stationarity test
- over the gain on \emph{category n} containing 5 columns:
+ \item transitionStationarity: \code{<tibble>}. A table containing results of
+ a stationarity test over the gain on \emph{category n} containing 5 columns:
  \enumerate{
-   \item From: \code{<fct>}. The losing category in the transition of interest to the category n.
-   \item loss: \code{<int>}. Number of times the category had losses to the category n.
+   \item From: \code{<fct>}. The losing category in the transition of interest
+   to the category n.
+   \item loss: \code{<int>}. Number of times the category had losses to the
+   category n.
    \item N: \code{<int>}. Total number of transitions to be considered as stationary (T).
-   \item Stationarity: \code{<chr>}. \emph{targeted by} or \emph{avoided by} the category \code{n}.
-   \item Test: \code{<chr>}. \emph{Y} for stationarity detected and \emph{N} when not.
+   \item Stationarity: \code{<chr>}. \emph{targeted by} or \emph{avoided by}
+   the category \code{n}.
+   \item Test: \code{<chr>}. \emph{Y} for stationarity detected and \emph{N}
+   when not.
    }
    }
 
@@ -52,21 +59,24 @@ The slots \code{transitionData} and \code{transitionStationarity} can receive
    \item To: \code{<fct>}. A category \emph{j}.
    \item From: \code{<fct>}. The losing category in the transition of interest (m).
    \item Interval: \code{<dbl>}. Duration of the period \emph{[Yt, Yt+1]}.
-   \item T_m2j_km2/T_m2j_pixel: \code{<dbl>}. Area with transition from category \emph{m} to
-   category \emph{j} during time interval \emph{[Yt, Yt+1]}
+   \item T_m2j_km2/T_m2j_pixel: \code{<dbl>}. Area with transition from category
+    \emph{m} to category \emph{j} during time interval \emph{[Yt, Yt+1]}
    where \emph{j}  \code{is not equal to} \emph{m}.
    \item Qtmj: \code{<dbl>}. Annual intensity of transition from category \emph{m} to
    category \emph{j} during time interval \emph{[Yt, Yt+1]}
    where \emph{j}  \code{is not equal to} \emph{m}.
-   \item Vtm: \code{<dbl>}. Value of the uniform intensity of the transition from
-   category \emph{m} to all \emph{non-m} categories at time \out{Y<sub>t+1</sub>}
+   \item Vtm: \code{<dbl>}. Value of the uniform intensity of the transition
+   from category \emph{m} to all \emph{non-m} categories at time \out{Y<sub>t+1</sub>}
    during time interval \emph{[Yt, Yt+1]}.
    }
- \item transitionStationarity: \code{<tibble>}. A table containing results of a stationarity test
+ \item transitionStationarity: \code{<tibble>}. A table containing results of
+ a stationarity test
  over the loss of \emph{category m} containing 5 columns:
  \enumerate{
-   \item To: \code{<fct>}. The gaining category in the transition of interest from the category m.
-   \item gain: \code{<int>}. Number of times the category had gains from the category m.
+   \item To: \code{<fct>}. The gaining category in the transition of interest
+   from the category m.
+   \item gain: \code{<int>}. Number of times the category had gains from the
+   category m.
    \item N: \code{<int>}. Total number of transitions to be considered as stationary (T).
    \item Stationarity: \code{<chr>}. \emph{targeted} or \emph{avoided} the category \code{m}.
    \item Test: \code{<chr>}. \emph{Y} for stationarity detected and \emph{N} when not.
@@ -83,9 +93,9 @@ The slots \code{transitionData} and \code{transitionStationarity} can receive
 \item{\code{transitionData}}{tibble. A table of Transition level's results (gain n (\emph{Rtin} & \emph{Wtn})
 or loss m (\emph{Qtmj} & \emph{Vtm}) values).}
 
-\item{\code{transitionStationarity}}{tibble. A table containing results of a stationarity test. A change
-is considered stationary only if the intensities for all time intervals reside
-on one side of the uniform intensity, i.e are smaller or bigger than the uniform
-rate over the whole period.}
+\item{\code{transitionStationarity}}{tibble. A table containing results of a stationarity
+test. A change is considered stationary only if the intensities for all time
+intervals reside on one side of the uniform intensity, i.e are smaller or bigger
+than the uniform rate over the whole period.}
 }}
 

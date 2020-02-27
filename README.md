@@ -29,6 +29,7 @@ standardized multilevel output graphics.
 You can install OpenLand from github with:
 
 ``` r
+# install.packages("devtools")
 devtools::install_github("reginalexavier/OpenLand")
 ```
 
@@ -50,9 +51,10 @@ time series is composed by five LUC maps (2002, 2008, 2010, 2012 and
 in the Cerrado Savannah biom in the southeast of the Brazilian state of
 Mato Grosso. For processing in the OpenLand package, the original
 multi-year shape file was transformed into rasters and then saved as a
-5-layer `RasterStack`, which is included in the OpenLand package as
-`SaoLourencoBasin`. For further details about this object, run
-`help("SaoLourencoBasin")` or `?SaoLourencoBasin` in the R console.
+5-layer `RasterStack` (`SaoLourencoBasin`), available from a public
+repository
+[(10.5281/zenodo.3685229)](http://doi.org/10.5281/zenodo.3685230) as an
+`.RDA` file which can be loaded into `R`.
 
 ``` r
 # Loading the package
@@ -90,11 +92,11 @@ category which experienced relevant gains and `m` a category with
 important losses.
 
 ``` r
-testSL <- intensityAnalysis(dataset = SL_2002_2014,
+my_test <- intensityAnalysis(dataset = SL_2002_2014, # here the outcome from the `contingenceTable()` function
                             category_n = "Ap", category_m = "SG")
 
 # it returns a list with 6 objects
-names(testSL)
+names(my_test)
 #> [1] "lulc_table"           "interval_lvl"         "category_lvlGain"    
 #> [4] "category_lvlLoss"     "transition_lvlGain_n" "transition_lvlLoss_m"
 ```
@@ -118,7 +120,7 @@ contains a table storing the results of a stationarity test.
 
 ``` r
 
-testSL$category_lvlGain
+my_test$category_lvlGain
 #> An object of class "Category"
 #> Slot "lookupcolor":
 #>        Ap        FF        SA        SG        aa        SF      Agua        Iu 
@@ -171,7 +173,7 @@ method.
 
 ``` r
 
-plot(testSL$category_lvlGain,
+plot(my_test$category_lvlGain,
      labels = c(leftlabel = bquote("Gain Area (" ~km^2~ ")"),
                 rightlabel = "Intensity Gain (%)"),
      marginplot = c(.3, .3), labs = c("Categories", "Uniform intensity"), 

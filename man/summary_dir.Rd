@@ -7,19 +7,26 @@
 summary_dir(path)
 }
 \arguments{
-\item{path}{The path for the Raster* directory or list of Raster* to be analysed.}
+\item{path}{The path for the Raster* directory or list of Raster* to be
+analysed.}
 }
 \value{
 Table with the raster parameters in columns
 }
 \description{
 Listing major charateristics of raster inputs. Those characteristics are the
-dimensions, the resolution, the extent, the values (min, max) and the coordinate
-reference system.
+dimensions, the resolution, the extent, the values (min, max) and the
+coordinate reference system.
 }
 \examples{
+\donttest{
+url <- "https://zenodo.org/record/3685230/files/SaoLourencoBasin.rda?download=1"
+temp <- tempfile()
+download.file(url, temp, mode = "wb") # downloading the SaoLourencoBasin dataset
+load(temp)
+# the acc_changes() function, with the SaoLourencoBasin dataset
 
 summary_dir(raster::unstack(SaoLourencoBasin))
-
+}
 
 }

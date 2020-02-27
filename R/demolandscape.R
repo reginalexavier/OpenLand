@@ -13,7 +13,8 @@
 #' @param ymx numeric. y maximum extent.
 #' @param crs character. the coordinate referencing system.
 #' @param category A numeric vector of the raster categories.
-#' @param prob A numreic vector of the probability of occurrence for the category list.
+#' @param prob A numreric vector of the probability of occurrence for the
+#' category list.
 #'
 #'
 #' @seealso \code{\link[raster]{raster}}
@@ -75,7 +76,8 @@
     mapply(function(x, y)
       mapdemo(year01 = x, pixvalue = y), year, pixsample, USE.NAMES = TRUE)
 
-  names(raster_list) <- vapply(raster_list, function(x) names(x), FUN.VALUE = character(1L))
+  names(raster_list) <- vapply(raster_list, function(x)
+    names(x), FUN.VALUE = character(1L))
 
   return(raster_list)
 

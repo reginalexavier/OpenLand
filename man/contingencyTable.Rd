@@ -7,39 +7,50 @@
 contingencyTable(input_raster, pixelresolution = 30)
 }
 \arguments{
-\item{input_raster}{path (character), Raster* object or list of Raster* objects. See \cr
-\code{\link[raster]{raster}} for more information about supported filetypes.}
+\item{input_raster}{path (character), Raster* object or list of Raster*
+objects. See \cr \code{\link[raster]{raster}} for more information about
+supported file types.}
 
 \item{pixelresolution}{numeric. The pixel spatial resolution in meter.}
 }
 \value{
 A list that contains 5 objects.
 \itemize{
-  \item \code{lulc_Mulstistep}: \code{<tibble>} Contingency table for all analysed time steps, containing 8 columns:
+  \item \code{lulc_Mulstistep}: \code{<tibble>} Contingency table for all
+  analysed time steps, containing 8 columns:
   \enumerate{
   \item Period: \code{<chr>} The period \emph{[Yt, Yt+1]}.
   \item From: \code{<dbl>} numerical code of a LUC category \emph{i}.
   \item To: \code{<dbl>} numerical code of a LUC category \emph{j}.
-  \item km2: \code{<dbl>} Area in square kilometers that transited from the category \emph{i}
+  \item km2: \code{<dbl>} Area in square kilometers that transited from the
+  category \emph{i}
    to category \emph{j} in the period from \emph{Yt} to \emph{Yt+1}.
   \item Interval: \code{<dbl>} Interval of years between the first and
    the last year of the period \emph{[Yt, Yt+1]}.
-  \item QtPixel: \code{<int>} Pixel count that transited from the categories \emph{i}
+  \item QtPixel: \code{<int>} Pixel count that transited from the categories
+   \emph{i}
    to category \emph{j} in the period from \emph{Yt} to \emph{Yt+1}.
   \item yearFrom: \code{<chr>} The year that the change comes from \emph{[Yt]}.
   \item yearTo: \code{<chr>} The year that the change goes for \emph{[Yt+1]}.
   }
-  \item \code{lulc_Onestep}:\code{<tibble>} Contingency table for the entire analysed period \emph{[Y1, YT]}, containing
+  \item \code{lulc_Onestep}:\code{<tibble>} Contingency table for the entire
+  analysed period \emph{[Y1, YT]}, containing
   8 columns identical with \code{lulc_Mulstistep}.
-  \item \code{tb_legend}: \code{<tibble>} A table of the pixel value, his name and color containing 3 columns:
+  \item \code{tb_legend}: \code{<tibble>} A table of the pixel value, his
+  name and color containing 3 columns:
   \enumerate{
   \item categoryValue: \code{<dbl>} the pixel value of the LUC category.
-  \item categoryName: \code{<factor>} randomly created string associated with a given pixel value of a LUC category.
-  \item color: \code{<chr>} random color associated with the given pixel value of a LUC category.
-  Before further analysis, one would like to change the \code{categoryName} and \code{color} values.
+  \item categoryName: \code{<factor>} randomly created string associated with
+   a given pixel value of a LUC category.
+  \item color: \code{<chr>} random color associated with the given pixel value
+   of a LUC category.
+  Before further analysis, one would like to change the \code{categoryName}
+  and \code{color} values.
     \itemize{
-        \item Therefore the category names have to be in the same order as the \code{categoryValue}
-        and the \code{levels} should be put in the right order for legend plotting. Like:
+        \item Therefore the category names have to be in the same order as the
+         \code{categoryValue}
+        and the \code{levels} should be put in the right order for legend
+        plotting. Like:
         \preformatted{
 
         myobject$tb_legend$categoryName <- factor(c("name1", "name2", "name3", "name4"),
@@ -49,19 +60,28 @@ A list that contains 5 objects.
        \preformatted{
 
        myobject$tb_legend$color <- c("#CDB79E", "red", "#66CD00", "yellow")}}}
-  \item \code{totalArea}: \code{<tibble>}  A table with the total area of the study area containing 2 columns:
+  \item \code{totalArea}: \code{<tibble>}  A table with the total area of the
+   study area containing 2 columns:
   \enumerate{
   \item area_km2: \code{<numeric>} The total area in square kilometers.
   \item QtPixel: \code{<numeric>} The total area in pixel counts.
   }
-  \item \code{totalInterval}: \code{<numeric>} Total interval of the analysed time series in years.
+  \item \code{totalInterval}: \code{<numeric>} Total interval of the analysed
+   time series in years.
   }
 }
 \description{
 Extracts LUC transitions for all input grids of the time series.
 }
 \examples{
-\donttest{contingencyTable(input_raster = SaoLourencoBasin, pixelresolution = 30)}
+\donttest{
+url <- "https://zenodo.org/record/3685230/files/SaoLourencoBasin.rda?download=1"
+temp <- tempfile()
+download.file(url, temp, mode = "wb") #downloading the online dataset
+load(temp)
+# the contingencyTable() function, with the SaoLourencoBasin dataset
+contingencyTable(input_raster = SaoLourencoBasin, pixelresolution = 30)
+}
 
 
 }

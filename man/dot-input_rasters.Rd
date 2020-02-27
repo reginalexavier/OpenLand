@@ -36,6 +36,7 @@ A RasterStack
 A methods for loading the raster into OpenLand
 }
 \seealso{
-\code{raster::\link[raster]{raster}}, \code{raster::\link[raster]{stack}}
+\code{raster::\link[raster]{raster}},
+\code{raster::\link[raster]{stack}}
 }
 \keyword{internal}

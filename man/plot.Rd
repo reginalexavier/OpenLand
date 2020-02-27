@@ -54,7 +54,8 @@ plot(x, y, ...)
 
 \item{y}{ignored.}
 
-\item{\dots}{additional arguments for theme parameters from ggplot2, see \code{\link[ggplot2]{theme}}.}
+\item{\dots}{additional arguments for theme parameters from ggplot2, see
+\code{\link[ggplot2]{theme}}.}
 
 \item{labels}{character. Left and right axis titles(caption).}
 
@@ -62,11 +63,14 @@ plot(x, y, ...)
 
 \item{labs}{character. The lateral legend.}
 
-\item{marginplot}{numeric. Adjustment of the origins of left and right part of the plots.}
+\item{marginplot}{numeric. Adjustment of the origins of left and right part of
+the plots.}
 
-\item{leg_curv}{numeric. x and y values that control the arrow size and position pointing to the Uniform Intensity vertical line.}
+\item{leg_curv}{numeric. x and y values that control the arrow size and position
+pointing to the Uniform Intensity vertical line.}
 
-\item{color_bar}{character. Colors defined for the fast, slow and area bars (only for an \code{\linkS4class{Interval}} object).}
+\item{color_bar}{character. Colors defined for the fast, slow and area bars
+(only for an \code{\linkS4class{Interval}} object).}
 
 \item{fontsize_ui}{numeric. Fontsize of the uniform intensity percent in the plot.}
 }

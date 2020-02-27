@@ -11,11 +11,15 @@ NULL
 #' @param labels character. Left and right axis titles(caption).
 #' @param title character. Main title.
 #' @param labs character. The lateral legend.
-#' @param marginplot numeric. Adjustment of the origins of left and right part of the plots.
-#' @param leg_curv numeric. x and y values that control the arrow size and position pointing to the Uniform Intensity vertical line.
-#' @param color_bar character. Colors defined for the fast, slow and area bars (only for an \code{\linkS4class{Interval}} object).
+#' @param marginplot numeric. Adjustment of the origins of left and right part of
+#' the plots.
+#' @param leg_curv numeric. x and y values that control the arrow size and position
+#' pointing to the Uniform Intensity vertical line.
+#' @param color_bar character. Colors defined for the fast, slow and area bars
+#' (only for an \code{\linkS4class{Interval}} object).
 #' @param fontsize_ui numeric. Fontsize of the uniform intensity percent in the plot.
-#' @param \dots additional arguments for theme parameters from ggplot2, see \code{\link[ggplot2]{theme}}.
+#' @param \dots additional arguments for theme parameters from ggplot2, see
+#' \code{\link[ggplot2]{theme}}.
 #'
 #'
 #'
@@ -25,6 +29,7 @@ NULL
 #'
 #'
 #' @import ggplot2
+#' @importFrom gridExtra grid.arrange
 #'
 #' @name plot
 #' @exportMethod plot

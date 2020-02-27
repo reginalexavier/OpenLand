@@ -2,7 +2,8 @@
 % Please edit documentation in R/intensityAnalysis.R
 \name{intensityAnalysis}
 \alias{intensityAnalysis}
-\title{Performs the intensity analysis based on cross-tabulation matrices of each time step}
+\title{Performs the intensity analysis based on cross-tabulation matrices of each
+time step}
 \usage{
 intensityAnalysis(dataset, category_n, category_m, area_km2 = TRUE)
 }
@@ -19,36 +20,43 @@ intensityAnalysis(dataset, category_n, category_m, area_km2 = TRUE)
 Intensity object
 }
 \description{
-This function implements an Intensity Analysis (IA) according to Aldwaik & Pontius (2012), a quantitative method to analyze
-time series of land use and cover (LUC) maps.  For IA, a cross-tabulation matrix is composed for each LUC transition step
-in time.
+This function implements an Intensity Analysis (IA) according to Aldwaik &
+Pontius (2012), a quantitative method to analyze time series of land use and
+cover (LUC) maps.  For IA, a cross-tabulation matrix is composed for each LUC
+transition step in time.
 }
 \details{
-IA includes three levels of analysis of LUC changes. Consecutive analysis levels detail hearby information
-given by the previous analysis level
+IA includes three levels of analysis of LUC changes. Consecutive analysis
+levels detail hereby information given by the previous analysis level
 \cite{(Aldwaik and Pontius, 2012, 2013)}.
 
 
 \enumerate{
- \item The \emph{interval level} examines how the size and speed of change vary
-across time intervals.
- \item The \emph{category level} examines how the size and intensity of gross losses
-and gross gains in each category vary across categories for each time interval.
- \item The \emph{transition level} examines how the size and intensity of a category’s
-transitions vary across the other categories that are available for that transition.
+ \item The \emph{interval level} examines how the size and speed of change
+ vary across time intervals.
+ \item The \emph{category level} examines how the size and intensity of gross
+ losses and gross gains in each category vary across categories for each time
+ interval.
+ \item The \emph{transition level} examines how the size and intensity of a
+ category’s transitions vary across the other categories that are available
+ for that transition.
   }
 
 
-At each analysis level, the method tests for stationarity of patterns across time intervals.
+At each analysis level, the method tests for stationarity of patterns across
+time intervals.
 
 \bold{The function returns a list with 6 objects:}
 \enumerate{
- \item lulc_table: \code{tibble}. Contingency table of LUC transitions at all analysed time steps, containing 6 columns:
+ \item lulc_table: \code{tibble}. Contingency table of LUC transitions at all
+  analysed time steps, containing 6 columns:
    \enumerate{
-   \item Period:  \code{<fct>}. Evaluated period of transition in the format \code{year t - year t+1}.
+   \item Period:  \code{<fct>}. Evaluated period of transition in the format
+   \code{year t - year t+1}.
    \item From: \code{<fct>}. The category in year t.
    \item To: \code{<fct>}. The category in year t+1.
-   \item km2: \code{<dbl>}. Area in square kilometers that transited from the category \code{From}.
+   \item km2: \code{<dbl>}. Area in square kilometers that transited from the
+    category \code{From}.
    to the category \code{To} in the period.
    \item QtPixel: \code{<int>}. Number of pixels that transited from.
    the category \code{From} to the category \code{To} in the period.
@@ -56,12 +64,17 @@ At each analysis level, the method tests for stationarity of patterns across tim
 
    }
 
- \item \emph{lv1_tbl}: An \code{\linkS4class{Interval}} object containing the \emph{St} and \emph{U} values.
- \item \emph{category_lvlGain}: A \code{\linkS4class{Category}} object containing the gain of the LUC category in a period (\emph{Gtj}).
- \item \emph{category_lvlLoss}: A \code{\linkS4class{Category}} object containing the loss of the LUC category in a period (\emph{Lti}).
- \item \emph{transition_lvlGain_n}: A \code{\linkS4class{Transition}} object containing the annualized rate of gain in \emph{category n} (\emph{Rtin}) and
+ \item \emph{lv1_tbl}: An \code{\linkS4class{Interval}} object containing the
+  \emph{St} and \emph{U} values.
+ \item \emph{category_lvlGain}: A \code{\linkS4class{Category}} object
+ containing the gain of the LUC category in a period (\emph{Gtj}).
+ \item \emph{category_lvlLoss}: A \code{\linkS4class{Category}} object
+ containing the loss of the LUC category in a period (\emph{Lti}).
+ \item \emph{transition_lvlGain_n}: A \code{\linkS4class{Transition}} object
+ containing the annualized rate of gain in \emph{category n} (\emph{Rtin}) and
  the respective Uniform Intensity (\emph{Wtn}).
- \item \emph{transition_lvlLoss_m}: A \code{\linkS4class{Transition}} object containing the annualized rate of loss in \emph{category m} (\emph{Qtmj}) and
+ \item \emph{transition_lvlLoss_m}: A \code{\linkS4class{Transition}} object
+ containing the annualized rate of loss in \emph{category m} (\emph{Qtmj}) and
  the respective Uniform Intensity (\emph{Vtm}).
 
   }
@@ -90,6 +103,6 @@ transition, Landscape and Urban Planning. Elsevier B.V., 106(1), pp. 103–114.
 \doi{10.1016/j.landurbplan.2012.02.010}.
 
 Aldwaik, S. Z. and Pontius, R. G. (2013) ‘Map errors that could account for deviations
-from a uniform intensity of land change’, International Journal of Geographical
+from a uniform intensity of land change, International Journal of Geographical
 Information Science. Taylor & Francis, 27(9), pp. 1717–1739. \doi{10.1080/13658816.2013.787618}.
 }

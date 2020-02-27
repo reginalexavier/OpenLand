@@ -39,7 +39,8 @@
 
 \item{category}{A numeric vector of the raster categories.}
 
-\item{prob}{A numreic vector of the probability of occurrence for the category list.}
+\item{prob}{A numreric vector of the probability of occurrence for the
+category list.}
 }
 \value{
 list

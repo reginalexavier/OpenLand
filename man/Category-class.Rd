@@ -23,15 +23,18 @@ The slots \code{categoryData} and \code{categoryStationarity} can receive
    \item Period: \code{<fct>}. The period \emph{[Yt, Yt+1]}.
    \item To: \code{<fct>}. A LUC category \emph{j}.
    \item Interval: \code{<int>}. Duration of the period \emph{[Yt, Yt+1]} in years.
-   \item GG_km2/GG_pixel: \code{<dbl>/<int>}. Area of gross gain of category \emph{j} during \emph{[Yt, Yt+1]}.
-   \item Gtj: \code{<dbl>}. Annual intensity of gross gain of category \emph{j} for time interval \emph{[Yt, Yt+1]}.
+   \item GG_km2/GG_pixel: \code{<dbl>/<int>}. Area of gross gain of category
+   \emph{j} during \emph{[Yt, Yt+1]}.
+   \item Gtj: \code{<dbl>}. Annual intensity of gross gain of category \emph{j}
+   for time interval \emph{[Yt, Yt+1]}.
    \item St: \code{<dbl>}. Annual intensity of change for time interval \emph{[Yt, Yt+1]}.
    }
- \item categoryStationarity:  \code{<tibble>}. A table with the results of a stationarity test of
-  the gain of the categories on the Category level, containing 5 columns:
+ \item categoryStationarity:  \code{<tibble>}. A table with the results of a
+ stationarity test of the gain of the categories on the Category level, containing 5 columns:
  \enumerate{
    \item To: \code{<fct>}. A category of interest \emph{j}.
-   \item gain: \code{<int>}. Number of times a category had gains during all time intervals \emph{[Y1, YT]}.
+   \item gain: \code{<int>}. Number of times a category had gains during all
+   time intervals \emph{[Y1, YT]}.
    \item N: \code{<int>}. Total number of evaluated time points (T).
    \item Stationarity: \code{<chr>}. \emph{Active Gain} or \emph{Dormant Gain}.
    \item Test: \code{<chr>}. \emph{Y} if stationarity was detected and \emph{N} if not.
@@ -47,15 +50,18 @@ The slots \code{categoryData} and \code{categoryStationarity} can receive
    \item Period: \code{<fct>}. The period \emph{[Yt, Yt+1]}.
    \item From: \code{<fct>}. A LUC category \emph{i}.
    \item Interval: \code{<int>}. Duration of the period \emph{[Yt, Yt+1]} in years.
-   \item GG_km2/GG_pixel: \code{<dbl>/<int>}. Area of gross loss of category \emph{i} during \emph{[Yt, Yt+1]}.
-   \item Lti: \code{<dbl>}. Annual intensity of gross loss of category \emph{i} for time interval \emph{[Yt, Yt+1]}.
+   \item GG_km2/GG_pixel: \code{<dbl>/<int>}. Area of gross loss of category
+   \emph{i} during \emph{[Yt, Yt+1]}.
+   \item Lti: \code{<dbl>}. Annual intensity of gross loss of category \emph{i}
+   for time interval \emph{[Yt, Yt+1]}.
    \item STt: \code{<dbl>}. Annual intensity of change for time interval \emph{[Yt, Yt+1]}.
    }
-  \item categoryStationarity: \code{<tibble>}. A table of stationarity test over the loss of the categories in
-  in the Category level, containing 5 columns:
+  \item categoryStationarity: \code{<tibble>}. A table of stationarity test
+  over the loss of the categories in the Category level, containing 5 columns:
  \enumerate{
    \item From: \code{<fct>}. A category of interest \emph{i}.
-   \item loss: \code{<int>}. Number of times a category had losses during all time intervals \emph{[Y1, YT]}.
+   \item loss: \code{<int>}. Number of times a category had losses during all
+   time intervals \emph{[Y1, YT]}.
    \item N: \code{<int>}. Total number of evaluated time points (T).
    \item Stationarity: \code{<chr>}. \emph{Active Loss} or \emph{Dormant Loss}.
    \item Test: \code{<chr>}. \emph{Y} if stationarity was detected and \emph{N} if not.
@@ -69,11 +75,12 @@ The slots \code{categoryData} and \code{categoryStationarity} can receive
 \describe{
 \item{\code{lookupcolor}}{The colors (character vector) associated with the LUC legend items.}
 
-\item{\code{categoryData}}{tibble. A table of Category level's results (gain (\emph{Gtj}) or loss (\emph{Lti}) values).}
+\item{\code{categoryData}}{tibble. A table of Category level's results (gain (\emph{Gtj})
+or loss (\emph{Lti}) values).}
 
-\item{\code{categoryStationarity}}{tibble. A table containing results of a stationarity test. A change
-is considered stationary only if the intensities for all time intervals reside
-on one side of the uniform intensity, i.e are smaller or bigger than the uniform
-rate over the whole period.}
+\item{\code{categoryStationarity}}{tibble. A table containing results of a stationarity
+test. A change is considered stationary only if the intensities for all time
+intervals reside on one side of the uniform intensity, i.e are smaller or bigger
+than the uniform rate over the whole period.}
 }}
 

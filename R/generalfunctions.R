@@ -2,10 +2,11 @@
 #' Summary of multiple parameters in a raster directory
 #'
 #' Listing major charateristics of raster inputs. Those characteristics are the
-#' dimensions, the resolution, the extent, the values (min, max) and the coordinate
-#' reference system.
+#' dimensions, the resolution, the extent, the values (min, max) and the
+#' coordinate reference system.
 #'
-#' @param path The path for the Raster* directory or list of Raster* to be analysed.
+#' @param path The path for the Raster* directory or list of Raster* to be
+#' analysed.
 #'
 #' @return Table with the raster parameters in columns
 #' @export
@@ -14,7 +15,7 @@
 #' \donttest{
 #' url <- "https://zenodo.org/record/3685230/files/SaoLourencoBasin.rda?download=1"
 #' temp <- tempfile()
-#' download.file(url, temp, mode = "wb") #downloading the online dataset
+#' download.file(url, temp, mode = "wb") # downloading the SaoLourencoBasin dataset
 #' load(temp)
 #' # the acc_changes() function, with the SaoLourencoBasin dataset
 #'
@@ -64,8 +65,8 @@ summary_dir <- function(path) {
 
 #' Quantitative summary of a unique categorical raster
 #'
-#' This function presents a summary with the pixel quantity of each category present
-#' in a categorical raster.
+#' This function presents a summary with the pixel quantity of each category
+#' present in a categorical raster.
 #'
 #' @param path The path for the raster to be analysed, if path is a multilayer
 #' raster only the first RasterLayer will be analysed.
@@ -76,7 +77,13 @@ summary_dir <- function(path) {
 #' @export
 #'
 #' @examples
-#' \donttest{summary_map(SaoLourencoBasin[[1]])}
+#' \donttest{
+#' url <- "https://zenodo.org/record/3685230/files/SaoLourencoBasin.rda?download=1"
+#' temp <- tempfile()
+#' download.file(url, temp, mode = "wb") # downloading the SaoLourencoBasin dataset
+#' load(temp)
+#' summary_map(SaoLourencoBasin[[1]])
+#' }
 #'
 summary_map <- function(path) {
   rastermap <-
@@ -104,12 +111,14 @@ summary_map <- function(path) {
 
 #' Accumulates changes in a LULC raster time series
 #'
-#' This function calculates the number of times a pixel has changed during the
-#' analysed period. It returns a raster with the number of changes as pixel value
-#' and a table containing the areal percentage of every pixel value (number of changes).
+#' This function calculates the number of times a pixel has changed during
+#' the analysed period. It returns a raster with the number of changes as
+#' pixel value and a table containing the areal percentage of every pixel value
+#' (number of changes).
 #'
 #'
-#' @param path The path for the Raster* directory or list of Raster* to be analysed.
+#' @param path The path for the Raster* directory or list of Raster* to be
+#' analysed.
 #'
 #'
 #' @return Two objects, a RasterLayer and a table.
@@ -121,7 +130,7 @@ summary_map <- function(path) {
 #' \donttest{
 #' url <- "https://zenodo.org/record/3685230/files/SaoLourencoBasin.rda?download=1"
 #' temp <- tempfile()
-#' download.file(url_dra, temp, mode = "wb") #downloading the online dataset
+#' download.file(url, temp, mode = "wb") # downloading the SaoLourencoBasin dataset
 #' load(temp)
 #' # the acc_changes() function, with the SaoLourencoBasin dataset
 #' acc_changes(SaoLourencoBasin)

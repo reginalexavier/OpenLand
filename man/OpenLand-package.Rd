@@ -17,8 +17,8 @@ output graphics.
 }
 \references{
 Aldwaik, S. Z. and Pontius, R. G. (2012) ‘Intensity analysis to unify
-measurements of size and stationarity of land changes by interval, category, and
-transition’, Landscape and Urban Planning. Elsevier B.V., 106(1), pp. 103–114.
+measurements of size and stationarity of land changes by interval, category,
+and transition, Landscape and Urban Planning. Elsevier B.V., 106(1), pp. 103–114.
 \doi{10.1016/j.landurbplan.2012.02.010}.
 }
 \seealso{

@@ -7,7 +7,8 @@
 #'
 #' @return A RasterStack
 #'
-#' @seealso \code{raster::\link[raster]{raster}}, \code{raster::\link[raster]{stack}}
+#' @seealso \code{raster::\link[raster]{raster}},
+#' \code{raster::\link[raster]{stack}}
 #'
 #' @keywords internal
 #' @name dot-input_rasters

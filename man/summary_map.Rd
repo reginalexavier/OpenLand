@@ -14,10 +14,16 @@ raster only the first RasterLayer will be analysed.}
 A table containing in columns the pixel counts for each pixel value
 }
 \description{
-This function presents a summary with the pixel quantity of each category present
-in a categorical raster.
+This function presents a summary with the pixel quantity of each category
+present in a categorical raster.
 }
 \examples{
-\donttest{summary_map(SaoLourencoBasin[[1]])}
+\donttest{
+url <- "https://zenodo.org/record/3685230/files/SaoLourencoBasin.rda?download=1"
+temp <- tempfile()
+download.file(url, temp, mode = "wb") # downloading the SaoLourencoBasin dataset
+load(temp)
+summary_map(SaoLourencoBasin[[1]])
+}
 
 }

@@ -382,7 +382,7 @@ setMethod(
                                                                  levels(dataset[[2]])))]])) +
       xlab(NULL) +
       ylab(NULL) +
-      geom_hline(aes(yintercept = 0), size = .01) +
+      geom_hline(aes(yintercept = 0), size = .3) +
       geom_hline(aes(yintercept = dataset[[7]], color = names(dataset)[[7]]),
                  linetype = 5,
                  size = .3) +
@@ -440,7 +440,7 @@ setMethod(
                                                                  levels(dataset[[2]])))]])) +
       xlab(NULL) +
       ylab(NULL) +
-      geom_hline(aes(yintercept = 0), size = .01) +
+      geom_hline(aes(yintercept = 0), size = .3) +
       coord_flip() +
       labs(fill = "Categories") +
       scale_y_reverse(expand = expand_scale(mult = c(0.01, 0))) +

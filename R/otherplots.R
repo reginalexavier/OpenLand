@@ -2,7 +2,7 @@ utils::globalVariables(c("From", "To", "target", "km2", "Year",
                          "QtPixel", "yearFrom", "yearTo", "name",
                          "colorFrom", "colorTo", "lulc", "area",
                          "Category", "Years", "flow_id",
-                         "geom_flow", "geom_stratum"))
+                         "geom_flow", "geom_stratum", "area_gross"))
 #' @include plotMethods.R
 NULL
 
@@ -380,11 +380,11 @@ netgrossplot <-
       lulc_gainloss_gross <- lulc_gainloss_gross[c(1, 3, 4, 5, 6)]
     }
 
-
+    names(lulc_gainloss_gross) <- c("Period", "area_gross", "From", "To", "changes")
     names(color) <- unname(changesLabel[c("GC", "NG", "NL")]) # pairing the legend with the color
 
 
-    ggplot(data = lulc_gainloss_gross, aes(To, lulc_gainloss_gross[[2]])) +
+    ggplot(data = lulc_gainloss_gross, aes(To, area_gross)) +
       geom_bar(stat = "identity", width = 0.5, aes(fill = changesLabel[[1]])) +
       geom_bar(
         aes(x = To, y = area, fill = changes),

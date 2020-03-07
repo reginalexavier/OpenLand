@@ -7,7 +7,7 @@
 chordDiagramLand(
   dataset,
   legendtable,
-  legposition = c(x = 1.8, y = 1.5),
+  legposition = c(x = 18, y = 15),
   legtitle = "Categories",
   sectorcol = "gray80",
   area_km2 = TRUE
@@ -20,7 +20,7 @@ by \code{\link{contingencyTable}}.}
 \item{legendtable}{A table containing the LUC legend items and their respective
 color (\code{tb_legend}).}
 
-\item{legposition}{numeric. A vector containing the `x` and `y` values for the
+\item{legposition}{numeric. A vector containing the `x` and `y` values(mm) for the
 position of the legend.}
 
 \item{legtitle}{character. The title of the legend.}

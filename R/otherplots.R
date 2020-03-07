@@ -108,7 +108,7 @@ barplotLand <-
 #' by \code{\link{contingencyTable}}.
 #' @param legendtable A table containing the LUC legend items and their respective
 #' color (\code{tb_legend}).
-#' @param legposition numeric. A vector containing the `x` and `y` values for the
+#' @param legposition numeric. A vector containing the `x` and `y` values(mm) for the
 #' position of the legend.
 #' @param legtitle character. The title of the legend.
 #' @param sectorcol character. The color of the external sector containing the years
@@ -140,7 +140,7 @@ barplotLand <-
 chordDiagramLand <-
   function(dataset,
            legendtable,
-           legposition = c(x = 1.8, y = 1.5),
+           legposition = c(x = 18, y = 15),
            legtitle = "Categories",
            sectorcol = "gray80",
            area_km2 = TRUE) {
@@ -228,7 +228,7 @@ chordDiagramLand <-
       start.degree = 0,
       gap.degree = 1,
       track.margin = c(-0.01, 0.015),
-      points.overflow.warning = T
+      points.overflow.warning = TRUE
     )
     par(mar = rep(0, 4)) # realy need this???
     # the base plot
@@ -243,7 +243,7 @@ chordDiagramLand <-
       annotationTrackHeight = c(0.05, 0.1),
       link.arr.type = "big.arrow",
       link.sort = TRUE,
-      link.decreasing = F,
+      link.decreasing = FALSE,
       link.largest.ontop = TRUE,
       preAllocateTracks = list(
         track.height = circlize::uh(5, "mm"),
@@ -283,8 +283,8 @@ chordDiagramLand <-
     # the legend
     ComplexHeatmap::draw(
       legenda,
-      x = unit(legposition[[1]], "cm"),
-      y = unit(legposition[[2]], "cm"),
+      x = unit(legposition[[1]], "mm"),
+      y = unit(legposition[[2]], "mm"),
       just = c("right", "bottom")
     )
 

@@ -28,16 +28,16 @@ RoxygenNote: 7.0.2
 Depends: 
     R (>= 3.4.0)
 Imports: 
-    dplyr (>= 0.8.3),
-    tidyr (>= 1.0.0),
-    ggplot2 (>= 3.2.1),
+    dplyr (>= 0.8.4),
+    tidyr (>= 1.0.2),
+    ggplot2 (>= 3.3.0),
     gridExtra (>= 2.3),
-    grid,
-    ComplexHeatmap,
+    grid (>= 3.6.3),
+    ComplexHeatmap (>= 2.1.0),
     circlize (>= 0.4.8),
     networkD3 (>= 0.4),
-    raster (>= 3.0.7),
-    methods
+    raster (>= 3.0.12),
+    methods (>= 3.6.3)
 Collate: 
     'OpenLand-package.R'
     'rasters_input.R'
@@ -51,10 +51,10 @@ Collate:
     'plotMethods.R'
     'otherplots.R'
 Suggests: 
-    tmap,
-    knitr,
-    rmarkdown,
-    covr,
-    testthat
+    tmap (>= 2.3.2),
+    knitr (>= 1.28),
+    rmarkdown (>= 2.1),
+    covr (>= 3.5.0),
+    testthat (>= 2.3.2)
 VignetteBuilder: knitr
 biocViews:

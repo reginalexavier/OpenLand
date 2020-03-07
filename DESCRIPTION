@@ -1,5 +1,5 @@
 Package: OpenLand
-Title: Quantitative Analysis and Visualization of Land Use and Land Cover Change
+Title: "Quantitative Analysis and Visualization of Land Use and Land Cover Change"
 Version: 1.0.0
 Authors@R: c(
     person(given = "Reginal",
@@ -16,9 +16,9 @@ Description: Tools for the analysis of land use and cover (LUC) time series. It
     spatial plotting. Several LUC change (LUCC) metrics in regular or irregular 
     time intervals can be extracted and visualized through one- and multistep 
     sankey and chord diagrams. A complete intensity analysis according to 
-    (Aldwaik and Pontius 2012) <DOI:10.1016/j.landurbplan.2012.02.010> 
-    (see <https://pubag.nal.usda.gov/catalog/840621>) is implemented, including 
-    tools for the generation of standardized multilevel output graphics.
+    Aldwaik and Pontius (2012) <doi:10.1016/j.landurbplan.2012.02.010> is 
+    implemented, including tools for the generation of standardized multilevel 
+    output graphics.
 License: GPL-3
 URL: https://github.com/reginalexavier/OpenLand
 BugReports: https://github.com/reginalexavier/OpenLand/issues

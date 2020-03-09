@@ -31,13 +31,13 @@ NULL
 #' @import ggplot2
 #' @importFrom gridExtra grid.arrange
 #'
-#' @name plot
+#' @name plot-methods
 #' @exportMethod plot
 #'
 #'
 methods::setGeneric(name = "plot", def = function(x, y, ...) standardGeneric("plot"))
 #' @name plot
-#' @rdname plot
+#' @rdname plot-methods
 #'
 #' @aliases plot,Interval,ANY-method
 #'
@@ -195,7 +195,7 @@ setMethod(
 
 
 
-#' @rdname plot
+#' @rdname plot-methods
 #'
 #'
 #' @aliases plot,Category,ANY-method
@@ -352,7 +352,7 @@ setMethod(
 
 
 
-#' @rdname plot
+#' @rdname plot-methods
 #'
 #'
 #' @aliases plot,Transition,ANY-method

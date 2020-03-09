@@ -38,7 +38,7 @@ NULL
 methods::setGeneric(name = "plot", def = function(x, y, ...) standardGeneric("plot"))
 #' @name plot
 #' @rdname plot-methods
-#'
+#' @export
 #' @aliases plot,Interval,ANY-method
 #'
 #'
@@ -81,8 +81,8 @@ setMethod(
       ylab(NULL) +
       scale_color_manual(values = "black") +
       labs(fill = labs[[1]], color = labs[[2]]) +
-      scale_y_continuous(expand = expansion(mult = c(0, .01))) +
-      scale_x_discrete(expand = expansion(mult = c(0.06, 0.06))) +
+      scale_y_continuous(expand = expand_scale(mult = c(0, .01))) +
+      scale_x_discrete(expand = expand_scale(mult = c(0.06, 0.06))) +
       guides(fill = guide_legend(order = 1),
              color = guide_legend(order = 2)) +
       coord_flip() +
@@ -137,8 +137,8 @@ setMethod(
       xlab(expression(paste("Periodo de tempo [ ", Y[t], ",", Y[t + 1], "]"))) +
       ylab(NULL) +
       geom_hline(aes(yintercept = 0), size = .01) +
-      scale_y_reverse(expand = expansion(mult = c(0.01, 0))) +
-      scale_x_discrete(position = "top", expand = expansion(mult = c(0.06, 0.06))) +
+      scale_y_reverse(expand = expand_scale(mult = c(0.01, 0))) +
+      scale_x_discrete(position = "top", expand = expand_scale(mult = c(0.06, 0.06))) +
       theme(
         axis.title.y = element_blank(),
         axis.ticks.length.y = unit(2, "pt"),
@@ -196,7 +196,7 @@ setMethod(
 
 
 #' @rdname plot-methods
-#'
+#' @export
 #'
 #' @aliases plot,Category,ANY-method
 setMethod(
@@ -232,7 +232,7 @@ setMethod(
       scale_color_manual(values = "black") +
       coord_flip() +
       labs(fill = labs[[1]], colour = labs[[2]]) +
-      scale_y_continuous(expand = expansion(mult = c(0, .01))) +
+      scale_y_continuous(expand = expand_scale(mult = c(0, .01))) +
       guides(fill = guide_legend(order = 1),
              color = guide_legend(order = 2)) +
 
@@ -287,7 +287,7 @@ setMethod(
       geom_hline(aes(yintercept = 0), size = .3) +
       coord_flip() +
       labs(fill = "Categories") +
-      scale_y_reverse(expand = expansion(mult = c(0.01, 0))) +
+      scale_y_reverse(expand = expand_scale(mult = c(0.01, 0))) +
       scale_x_discrete(position = "top") +
       theme(
         axis.ticks.length.y = unit(0, "pt"),
@@ -353,7 +353,7 @@ setMethod(
 
 
 #' @rdname plot-methods
-#'
+#' @export
 #'
 #' @aliases plot,Transition,ANY-method
 setMethod(
@@ -389,7 +389,7 @@ setMethod(
       scale_color_manual(values = "black") +
       coord_flip() +
       labs(fill = labs[[1]], colour = labs[[2]]) +
-      scale_y_continuous(expand = expansion(mult = c(0, .01))) +
+      scale_y_continuous(expand = expand_scale(mult = c(0, .01))) +
       guides(fill = guide_legend(order = 1),
              color = guide_legend(order = 2)) +
       geom_curve(
@@ -443,7 +443,7 @@ setMethod(
       geom_hline(aes(yintercept = 0), size = .3) +
       coord_flip() +
       labs(fill = "Categories") +
-      scale_y_reverse(expand = expansion(mult = c(0.01, 0))) +
+      scale_y_reverse(expand = expand_scale(mult = c(0.01, 0))) +
       scale_x_discrete(position = "top") +
       theme(
         axis.ticks.length.y = unit(0, "pt"),

@@ -7,10 +7,12 @@
 chordDiagramLand(
   dataset,
   legendtable,
-  legposition = c(x = 0.01, y = 0.5),
+  legposition = c(x = -1.3, y = 0),
   legtitle = "Categories",
   sectorcol = "gray80",
-  area_km2 = TRUE
+  area_km2 = TRUE,
+  legendsize = 1,
+  y.intersp = 1
 )
 }
 \arguments{
@@ -21,7 +23,7 @@ by \code{\link{contingencyTable}}.}
 color (\code{tb_legend}).}
 
 \item{legposition}{numeric. A vector containing the `x` and `y` values for the
-position of the legend (Normalised Parent Coordinates).}
+position of the legend. (see \code{graphics::\link[graphics]{legend}}).}
 
 \item{legtitle}{character. The title of the legend.}
 
@@ -30,6 +32,10 @@ of compared time points.}
 
 \item{area_km2}{logical. If TRUE the change is computed in km2, if FALSE in
 pixel counts.}
+
+\item{legendsize}{numeric. Font size of the legend. (see "cex" in \code{graphics::\link[graphics]{legend}}).}
+
+\item{y.intersp}{numeric. character interspacing factor for vertical (y) spacing.}
 }
 \value{
 A Chord Diagram

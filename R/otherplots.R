@@ -30,7 +30,7 @@ NULL
 #' @return a barplot
 #' @export
 #'
-#' @importFrom graphics par
+#' @importFrom graphics par legend text
 #'
 #' @examples
 #'
@@ -109,12 +109,14 @@ barplotLand <-
 #' @param legendtable A table containing the LUC legend items and their respective
 #' color (\code{tb_legend}).
 #' @param legposition numeric. A vector containing the `x` and `y` values for the
-#' position of the legend (Normalised Parent Coordinates).
+#' position of the legend. (see \code{graphics::\link[graphics]{legend}}).
 #' @param legtitle character. The title of the legend.
 #' @param sectorcol character. The color of the external sector containing the years
 #' of compared time points.
 #' @param area_km2 logical. If TRUE the change is computed in km2, if FALSE in
 #' pixel counts.
+#' @param legendsize numeric. Font size of the legend. (see "cex" in \code{graphics::\link[graphics]{legend}}).
+#' @param y.intersp numeric. character interspacing factor for vertical (y) spacing.
 #'
 #' @return A Chord Diagram
 #' @export
@@ -140,10 +142,12 @@ barplotLand <-
 chordDiagramLand <-
   function(dataset,
            legendtable,
-           legposition = c(x = 0.01, y = 0.5),
+           legposition = c(x = -1.3, y = 0),
            legtitle = "Categories",
            sectorcol = "gray80",
-           area_km2 = TRUE) {
+           area_km2 = TRUE,
+           legendsize = 1,
+           y.intersp = 1) {
 
 
     circle_data <- dataset %>%
@@ -156,13 +160,13 @@ chordDiagramLand <-
         "colorFrom" = "color.x",
         "colorTo" = "color.y"
       ) %>% tidyr::unite("source",
-                  c("From", "yearFrom"),
-                  sep = "-",
-                  remove = FALSE) %>%
+                         c("From", "yearFrom"),
+                         sep = "-",
+                         remove = FALSE) %>%
       tidyr::unite("target",
-            c("To", "yearTo"),
-            sep = "-",
-            remove = FALSE) %>%
+                   c("To", "yearTo"),
+                   sep = "-",
+                   remove = FALSE) %>%
       dplyr::select(source,
                     target,
                     From,
@@ -195,33 +199,9 @@ chordDiagramLand <-
 
     # km2 or pixel
     if (isTRUE(area_km2)) {
-    onestepcircle <- onestepcircle[c(1,2,3)]} else {
-      onestepcircle <- onestepcircle[c(1,2,4)]
-    }
-
-    # the legend
-    legenda <- ComplexHeatmap::Legend(
-      at = levels(circle_data$From),
-      type = "grid",
-      grid_height = unit(6, "mm"),
-      grid_width = unit(3, "mm"),
-      gap = unit(1, "mm"),
-      labels_gp = grid::gpar(fontsize = 12),
-      #labels_rot = 0,
-      legend_gp = grid::gpar(fill = legendtable$color[order(legendtable$categoryName)]),
-      direction = c("vertical", "horizontal")[2],
-      background = "#EEEEEE",
-      title_position = c(
-        "topleft",
-        "topcenter",
-        "leftcenter",
-        "lefttop",
-        "leftcenter-rot",
-        "lefttop-rot"
-      )[1],
-      title = legtitle #,
-      #title_gap = unit(2, "mm")
-    )
+      onestepcircle <- onestepcircle[c(1,2,3)]} else {
+        onestepcircle <- onestepcircle[c(1,2,4)]
+      }
 
     # parameters
     circlize::circos.par(
@@ -280,13 +260,29 @@ chordDiagramLand <-
       text.col = "black",
       niceFacing = TRUE
     )
+
     # the legend
-    ComplexHeatmap::draw(
-      legenda,
-      x = unit(legposition[[1]], "npc"),
-      y = unit(legposition[[2]], "npc"),
-      just = c("left", "top")
+    graphics::legend(
+      x = legposition[[1]],
+      y = legposition[[2]],
+      legend = levels(circle_data$From),
+      pt.cex = 0,
+      cex = legendsize,
+      bty = 'n',
+      y.intersp = y.intersp,
+      fill = legendtable$color[order(legendtable$categoryName)]
     )
+    # the title
+    graphics::text(
+      x = legposition[[1]],
+      y = legposition[[2]] + 0.01,
+      labels = legtitle,
+      pos = 4,
+      adj = c(0, 1),
+      font = 2,
+      cex = legendsize + (legendsize * 0.3)
+    )
+
 
     circlize::circos.clear()
   }

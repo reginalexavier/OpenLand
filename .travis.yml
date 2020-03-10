@@ -10,6 +10,7 @@ os:
 
 
 r:
+  - oldrel
   - release
   - devel
   #- oldrel

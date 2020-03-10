@@ -2,6 +2,7 @@
 
 language: r
 cache: packages
+warnins_are_errors: false
 
 os:
   - linux

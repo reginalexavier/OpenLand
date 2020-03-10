@@ -2,7 +2,7 @@ utils::globalVariables(c("Type", "St", "U"))
 #' @include intensityAnalysis.R
 NULL
 
-#' Plot method for objects from Intensity Analysis
+#' Methods for function \code{plot} in package \pkg{OpenLand}
 #'
 #' Plot \code{Intensity} objects based on Intensity Analysis output.
 #'
@@ -27,15 +27,20 @@ NULL
 #' @import ggplot2
 #' @importFrom gridExtra grid.arrange
 #'
+#' @keywords methods plot
 #' @docType methods
 #' @rdname plot-methods
+#' @aliases plot,ANY,ANY-method plot,Interval,ANY-method plot,Category,ANY-method plot,Transition,ANY-method
 #' @export
 #'
 #'
-methods::setGeneric(name = "plot", def = function(x, y, ...) standardGeneric("plot"))
+methods::setGeneric(name = "plot", def = function(x, y, ...)
+  standardGeneric("plot"))
+
+
 
 #' @param Interval The class.
-#'
+#' @docType methods
 #' @rdname plot-methods
 #' @export
 #' @aliases plot,Interval,ANY-method
@@ -43,7 +48,7 @@ methods::setGeneric(name = "plot", def = function(x, y, ...) standardGeneric("pl
 #'
 methods::setMethod(
   f = "plot",
-  signature = "Interval",
+  signature("Interval", "ANY"),
   definition = function(x,
                         y,
                         labels = c(
@@ -194,14 +199,14 @@ methods::setMethod(
 
 
 #' @param Category The class.
-#'
+#' @docType methods
 #' @rdname plot-methods
 #' @export
 #'
 #' @aliases plot,Category,ANY-method
 methods::setMethod(
   f = "plot",
-  signature = "Category",
+  signature("Category", "ANY"),
   definition = function(x,
                         y,
                         labels = c(
@@ -353,14 +358,14 @@ methods::setMethod(
 
 
 #' @param Transition The class.
-#'
+#' @docType methods
 #' @rdname plot-methods
 #' @export
 #'
 #' @aliases plot,Transition,ANY-method
 methods::setMethod(
   f = "plot",
-  signature = "Transition",
+  signature("Transition", "ANY"),
   definition = function(x,
                         y,
                         labels = c(

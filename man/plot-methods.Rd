@@ -3,10 +3,11 @@
 \docType{methods}
 \name{plot}
 \alias{plot}
+\alias{plot,ANY,ANY-method}
 \alias{plot,Interval,ANY-method}
 \alias{plot,Category,ANY-method}
 \alias{plot,Transition,ANY-method}
-\title{Plot method for objects from Intensity Analysis}
+\title{Methods for function \code{plot} in package \pkg{OpenLand}}
 \usage{
 plot(x, y, ...)
 
@@ -87,3 +88,5 @@ An intensity graph
 \description{
 Plot \code{Intensity} objects based on Intensity Analysis output.
 }
+\keyword{methods}
+\keyword{plot}

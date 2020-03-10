@@ -17,6 +17,10 @@ r:
 #script:
   #- R CMD build . --compact-vignettes=gs+qpdf
   #- R CMD check *tar.gz --as-cran
+env:
+   global:
+     - R_BUILD_ARGS="--compact-vignettes=gs+qpdf"
+     - R_CHECK_ARGS="*tar.gz --as-cran"
 
 addons:
   apt:

@@ -21,29 +21,27 @@ NULL
 #' @param \dots additional arguments for theme parameters from ggplot2, see
 #' \code{\link[ggplot2]{theme}}.
 #'
-#'
-#'
-#'
-#'
 #' @return An intensity graph
 #'
 #'
 #' @import ggplot2
 #' @importFrom gridExtra grid.arrange
 #'
-#' @name plot-methods
-#' @exportMethod plot
+#' @docType methods
+#' @rdname plot-methods
+#' @export
 #'
 #'
 methods::setGeneric(name = "plot", def = function(x, y, ...) standardGeneric("plot"))
-#' @name plot
+
+#' @param Interval The class.
+#'
 #' @rdname plot-methods
 #' @export
 #' @aliases plot,Interval,ANY-method
 #'
 #'
-
-setMethod(
+methods::setMethod(
   f = "plot",
   signature = "Interval",
   definition = function(x,
@@ -195,11 +193,13 @@ setMethod(
 
 
 
+#' @param Category The class.
+#'
 #' @rdname plot-methods
 #' @export
 #'
 #' @aliases plot,Category,ANY-method
-setMethod(
+methods::setMethod(
   f = "plot",
   signature = "Category",
   definition = function(x,
@@ -352,11 +352,13 @@ setMethod(
 
 
 
+#' @param Transition The class.
+#'
 #' @rdname plot-methods
 #' @export
 #'
 #' @aliases plot,Transition,ANY-method
-setMethod(
+methods::setMethod(
   f = "plot",
   signature = "Transition",
   definition = function(x,

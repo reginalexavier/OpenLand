@@ -23,7 +23,7 @@ by \code{\link{contingencyTable}}.}
 color (\code{tb_legend}).}
 
 \item{legposition}{numeric. A vector containing the `x` and `y` values for the
-position of the legend. (see \code{graphics::\link[graphics]{legend}}).}
+position of the legend. (see \code{\link[graphics]{legend}}).}
 
 \item{legtitle}{character. The title of the legend.}
 
@@ -33,7 +33,7 @@ of compared time points.}
 \item{area_km2}{logical. If TRUE the change is computed in km2, if FALSE in
 pixel counts.}
 
-\item{legendsize}{numeric. Font size of the legend. (see "cex" in \code{graphics::\link[graphics]{legend}}).}
+\item{legendsize}{numeric. Font size of the legend. (see "cex" in \code{\link[graphics]{legend}}).}
 
 \item{y.intersp}{numeric. character interspacing factor for vertical (y) spacing.}
 }

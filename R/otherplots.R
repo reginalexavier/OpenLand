@@ -109,13 +109,13 @@ barplotLand <-
 #' @param legendtable A table containing the LUC legend items and their respective
 #' color (\code{tb_legend}).
 #' @param legposition numeric. A vector containing the `x` and `y` values for the
-#' position of the legend. (see \code{graphics::\link[graphics]{legend}}).
+#' position of the legend. (see \code{\link[graphics]{legend}}).
 #' @param legtitle character. The title of the legend.
 #' @param sectorcol character. The color of the external sector containing the years
 #' of compared time points.
 #' @param area_km2 logical. If TRUE the change is computed in km2, if FALSE in
 #' pixel counts.
-#' @param legendsize numeric. Font size of the legend. (see "cex" in \code{graphics::\link[graphics]{legend}}).
+#' @param legendsize numeric. Font size of the legend. (see "cex" in \code{\link[graphics]{legend}}).
 #' @param y.intersp numeric. character interspacing factor for vertical (y) spacing.
 #'
 #' @return A Chord Diagram

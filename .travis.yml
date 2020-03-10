@@ -14,9 +14,9 @@ r:
   - devel
   #- oldrel
     
-script:
-  - R CMD build . --compact-vignettes=gs+qpdf
-  - R CMD check *tar.gz --as-cran
+#script:
+  #- R CMD build . --compact-vignettes=gs+qpdf
+  #- R CMD check *tar.gz --as-cran
 
 addons:
   apt:

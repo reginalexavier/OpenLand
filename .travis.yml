@@ -2,7 +2,7 @@
 
 language: r
 cache: packages
-warnins_are_errors: false
+
 
 os:
   - linux
@@ -13,12 +13,19 @@ r:
   - release
   - devel
   #- oldrel
+    
+script:
+  - R CMD build . --compact-vignettes=gs+qpdf
+  - R CMD check *tar.gz --as-cran
 
 addons:
   apt:
+    update: true
     packages:
       - libudunits2-dev
       - libgdal-dev
+      - qpdf
+      - ghostscript
 
 after_success:
   - Rscript -e 'covr::codecov(type = "all")'

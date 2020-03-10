@@ -156,7 +156,7 @@ The second object _**`r names(testSL[2])`**_ is an ``r class(testSL[[2]])`` obje
 An ``r class(testSL[[2]])`` object contains one slot containing a table of  **interval level** result _(S~t~ and U values)_. A ``r class(testSL[[4]])`` object contains three slots: the first contains the colors associated with the legend items as name attributes, the second slot contains a table of the **category level** result _(gain (G~tj~) or loss (L~ti~) values)_  and the third slot contains a table storing the results of a stationarity test. A ``r class(testSL[[6]])`` object contains three slots: the first contains the color associated with the respective legend item defined as name attribute, the second slot contains a table of the **transition level** result _(gain n (R~tin~ and W~tn~) or loss m (Q~tmj~ and V~tm~) values)_. The third slot contains a table storing the results of a stationarity test. Hereby, @Aldwaik2012 consider a stationary case only when the intensities for all time intervals reside on one side of the uniform intensity, i.e. that they are always smaller or larger than the uniform rate over the whole period.
 
 
-```{r}
+```{r }
 # showing the objects from the intensity analysis for our illustrative case
 testSL
 
@@ -169,7 +169,7 @@ Visualizations of the IA results are obtained from the `plot(intensity-object)` 
 
 #### Interval Level
 
-```{r, fig.width=7, fig.height=4}
+```{r fig.height=4, fig.width=7, warning=FALSE}
 
 plot(testSL$interval_lvl,
      labels = c(leftlabel = "Interval Change Area (%)",
@@ -183,7 +183,7 @@ plot(testSL$interval_lvl,
 
 * Gain Area
 
-```{r, fig.width=7, fig.height=4}
+```{r, fig.width=7, fig.height=4, warning=FALSE}
 
 plot(testSL$category_lvlGain,
      labels = c(leftlabel = bquote("Gain Area (" ~ km^2 ~ ")"),
@@ -195,7 +195,7 @@ plot(testSL$category_lvlGain,
 ```
 
 * Loss Area
-```{r, fig.width=7, fig.height=4}
+```{r, fig.width=7, fig.height=4, warning=FALSE}
 
 plot(testSL$category_lvlLoss,
      labels = c(leftlabel = bquote("Loss Area (" ~ km^2 ~ ")"),
@@ -208,7 +208,7 @@ plot(testSL$category_lvlLoss,
 #### Transition Level
 
 * Gain of the `n` category ("Ap")
-```{r, fig.width=7, fig.height=4}
+```{r, fig.width=7, fig.height=4, warning=FALSE}
 
 plot(testSL$transition_lvlGain_n,
      labels = c(leftlabel = bquote("Gain of Ap (" ~ km^2 ~ ")"),
@@ -219,7 +219,7 @@ plot(testSL$transition_lvlGain_n,
 ```
 
 * Loss of the `m` category ("SG")
-```{r, fig.width=7, fig.height=4}
+```{r, fig.width=7, fig.height=4, warning=FALSE}
 
 plot(testSL$transition_lvlLoss_m,
      labels = c(leftlabel = bquote("Loss of SG (" ~ km^2 ~ ")"),

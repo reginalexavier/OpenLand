@@ -115,7 +115,7 @@ my_test$category_lvlGain
 
 Visualizations of the IA results are obtained from the `plot(intensity-object)` function. For more details on the function arguments, please see the documentation of the [`plot()`](https://reginalexavier.github.io/OpenLand/reference/plot.html) method.
 
-```{r, cat_level, echo=TRUE, fig.align='center', fig.cap="Gain area outcome - Category level", out.width="80%", dev.args=list(pointsize=10), dpi=150}
+```{r, cat_level, echo=TRUE, fig.align='center', fig.cap="Gain area outcome - Category level", out.width="80%", dev.args=list(pointsize=10), dpi=150, warning=FALSE}
 
 plot(my_test$category_lvlGain,
      labels = c(leftlabel = bquote("Gain Area (" ~km^2~ ")"),

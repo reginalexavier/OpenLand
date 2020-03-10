@@ -10,14 +10,11 @@ os:
 
 
 r:
-  - oldrel
   - release
   - devel
   #- oldrel
-    
-#script:
-  #- R CMD build . --compact-vignettes=gs+qpdf
-  #- R CMD check *tar.gz --as-cran
+
+
 env:
    global:
      - R_BUILD_ARGS="--compact-vignettes=gs+qpdf"

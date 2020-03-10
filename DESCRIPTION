@@ -1,5 +1,5 @@
 Package: OpenLand
-Title: "Quantitative Analysis and Visualization of Land Use and Land Cover Change"
+Title: Quantitative Analysis and Visualization of LUCC
 Version: 1.0.0
 Authors@R: c(
     person(given = "Reginal",

@@ -33,6 +33,7 @@ setMethod(".input_rasters", signature(x = "character"),
               sorted_files <- sort(files)
               paths <- file.path(x, sorted_files)
               maps <- raster::stack(paths)
+              maps
             } else {
               stop("maps not found")
             }
@@ -48,7 +49,7 @@ setMethod(".input_rasters", signature(x = "list"),
             files <- list.names
             sorted_files <- sort(files)
             maps <- raster::stack(x[sorted_files])
-
+            maps
           })
 
 #' @rdname dot-input_rasters
@@ -56,6 +57,7 @@ setMethod(".input_rasters", signature(x = "list"),
 setMethod(".input_rasters", signature(x = "RasterLayer"),
           function(x, ...) {
             maps <- raster::stack(x)
+            maps
           })
 
 #' @rdname dot-input_rasters
@@ -63,6 +65,7 @@ setMethod(".input_rasters", signature(x = "RasterLayer"),
 setMethod(".input_rasters", signature(x = "RasterBrick"),
           function(x, ...) {
             maps <- x
+            maps
           })
 
 #' @rdname dot-input_rasters
@@ -70,6 +73,7 @@ setMethod(".input_rasters", signature(x = "RasterBrick"),
 setMethod(".input_rasters", signature(x = "RasterStack"),
           function(x, ...) {
             maps <- x
+            maps
           })
 
 

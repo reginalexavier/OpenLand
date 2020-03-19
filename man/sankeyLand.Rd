@@ -28,8 +28,8 @@ A sankey showing the one or multi step LUC transitions during the analysed perio
 
 SL_2002_2014$tb_legend$categoryName <- factor(c("Ap", "FF", "SA", "SG", "aa", "SF",
                                              "Agua", "Iu", "Ac", "R", "Im"),
-                                  levels = c("FF", "SF", "SA", "SG", "aa", "Ap",
-                                             "Ac", "Im", "Iu", "Agua", "R"))
+                                     levels = c("FF", "SF", "SA", "SG", "aa", "Ap",
+                                              "Ac", "Im", "Iu", "Agua", "R"))
 
 SL_2002_2014$tb_legend$color <- c("#FFE4B5", "#228B22", "#00FF00", "#CAFF70",
                                   "#EE6363", "#00CD00", "#436EEE", "#FFAEB9",

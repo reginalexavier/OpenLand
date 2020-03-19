@@ -116,7 +116,11 @@ barplotLand <-
 #' @param area_km2 logical. If TRUE the change is computed in km2, if FALSE in
 #' pixel counts.
 #' @param legendsize numeric. Font size of the legend. (see "cex" in \code{\link[graphics]{legend}}).
-#' @param y.intersp numeric. character interspacing factor for vertical (y) spacing.
+#' @param y.intersp numeric. character interspacing factor for vertical (y)
+#' spacing in the legend.
+#' @param x.margin numeric vector ensuring additional space (blank area) on the
+#' left or right of the circle for the legend, by default it is c(-1, 1). (see
+#' "canvas.xlim" in \code{\link[circlize]{circos.par}})
 #'
 #' @return A Chord Diagram
 #' @export
@@ -126,9 +130,9 @@ barplotLand <-
 #' # editing the category names
 #'
 #' SL_2002_2014$tb_legend$categoryName <- factor(c("Ap", "FF", "SA", "SG", "aa", "SF",
-#'                                              "Agua", "Iu", "Ac", "R", "Im"),
-#'                                   levels = c("FF", "SF", "SA", "SG", "aa", "Ap",
-#'                                              "Ac", "Im", "Iu", "Agua", "R"))
+#'                                                "Agua", "Iu", "Ac", "R", "Im"),
+#'                                      levels = c("FF", "SF", "SA", "SG", "aa", "Ap",
+#'                                               "Ac", "Im", "Iu", "Agua", "R"))
 #'
 #  # add the color by the same order of the legend factor
 #' SL_2002_2014$tb_legend$color <- c("#FFE4B5", "#228B22", "#00FF00", "#CAFF70",
@@ -147,7 +151,8 @@ chordDiagramLand <-
            sectorcol = "gray80",
            area_km2 = TRUE,
            legendsize = 1,
-           y.intersp = 1) {
+           y.intersp = 1,
+           x.margin = c(-1, 1)) {
 
 
     circle_data <- dataset %>%
@@ -203,14 +208,21 @@ chordDiagramLand <-
         onestepcircle <- onestepcircle[c(1,2,4)]
       }
 
+    old.par <- par(no.readonly = TRUE)
+    on.exit(par(old.par))
+    circlize::circos.clear()
+
     # parameters
     circlize::circos.par(
       start.degree = 0,
       gap.degree = 1,
       track.margin = c(-0.01, 0.015),
-      points.overflow.warning = TRUE
-    )
-    par(mar = rep(0, 4)) # realy need this???
+      points.overflow.warning = TRUE,
+      "canvas.xlim" = c(x.margin[[1]], x.margin[[2]])
+      )
+
+    par(mar = rep(0, 4)) # outer part
+
     # the base plot
     circlize::chordDiagram(
       x = onestepcircle,
@@ -322,8 +334,8 @@ chordDiagramLand <-
 #'
 #' SL_2002_2014$tb_legend$categoryName <- factor(c("Ap", "FF", "SA", "SG", "aa", "SF",
 #'                                              "Agua", "Iu", "Ac", "R", "Im"),
-#'                                   levels = c("FF", "SF", "SA", "SG", "aa", "Ap",
-#'                                              "Ac", "Im", "Iu", "Agua", "R"))
+#'                                      levels = c("FF", "SF", "SA", "SG", "aa", "Ap",
+#'                                               "Ac", "Im", "Iu", "Agua", "R"))
 #'
 #' # the plot
 #' netgrossplot(dataset = SL_2002_2014$lulc_Multistep,
@@ -430,8 +442,8 @@ netgrossplot <-
 #'
 #' SL_2002_2014$tb_legend$categoryName <- factor(c("Ap", "FF", "SA", "SG", "aa", "SF",
 #'                                              "Agua", "Iu", "Ac", "R", "Im"),
-#'                                   levels = c("FF", "SF", "SA", "SG", "aa", "Ap",
-#'                                              "Ac", "Im", "Iu", "Agua", "R"))
+#'                                      levels = c("FF", "SF", "SA", "SG", "aa", "Ap",
+#'                                               "Ac", "Im", "Iu", "Agua", "R"))
 #'
 #  # add the color by the same order of the legend factor
 #' SL_2002_2014$tb_legend$color <- c("#FFE4B5", "#228B22", "#00FF00", "#CAFF70",

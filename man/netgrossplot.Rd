@@ -53,8 +53,8 @@ entire analysed time period.
 
 SL_2002_2014$tb_legend$categoryName <- factor(c("Ap", "FF", "SA", "SG", "aa", "SF",
                                              "Agua", "Iu", "Ac", "R", "Im"),
-                                  levels = c("FF", "SF", "SA", "SG", "aa", "Ap",
-                                             "Ac", "Im", "Iu", "Agua", "R"))
+                                     levels = c("FF", "SF", "SA", "SG", "aa", "Ap",
+                                              "Ac", "Im", "Iu", "Agua", "R"))
 
 # the plot
 netgrossplot(dataset = SL_2002_2014$lulc_Multistep,

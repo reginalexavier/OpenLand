@@ -12,7 +12,8 @@ chordDiagramLand(
   sectorcol = "gray80",
   area_km2 = TRUE,
   legendsize = 1,
-  y.intersp = 1
+  y.intersp = 1,
+  x.margin = c(-1, 1)
 )
 }
 \arguments{
@@ -35,7 +36,12 @@ pixel counts.}
 
 \item{legendsize}{numeric. Font size of the legend. (see "cex" in \code{\link[graphics]{legend}}).}
 
-\item{y.intersp}{numeric. character interspacing factor for vertical (y) spacing.}
+\item{y.intersp}{numeric. character interspacing factor for vertical (y)
+spacing in the legend.}
+
+\item{x.margin}{numeric vector ensuring additional space (blank area) on the
+left or right of the circle for the legend, by default it is c(-1, 1). (see
+"canvas.xlim" in \code{\link[circlize]{circos.par}})}
 }
 \value{
 A Chord Diagram
@@ -49,9 +55,9 @@ of interest.
 # editing the category names
 
 SL_2002_2014$tb_legend$categoryName <- factor(c("Ap", "FF", "SA", "SG", "aa", "SF",
-                                             "Agua", "Iu", "Ac", "R", "Im"),
-                                  levels = c("FF", "SF", "SA", "SG", "aa", "Ap",
-                                             "Ac", "Im", "Iu", "Agua", "R"))
+                                               "Agua", "Iu", "Ac", "R", "Im"),
+                                     levels = c("FF", "SF", "SA", "SG", "aa", "Ap",
+                                              "Ac", "Im", "Iu", "Agua", "R"))
 
 SL_2002_2014$tb_legend$color <- c("#FFE4B5", "#228B22", "#00FF00", "#CAFF70",
                                   "#EE6363", "#00CD00", "#436EEE", "#FFAEB9",

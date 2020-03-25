@@ -47,8 +47,8 @@ This is a basic example which shows how OpenLand works, for a more
 detailed illustration, please see our
 [vignettes](https://reginalexavier.github.io/OpenLand/articles/openland_vignette.html).
 
-The OpenLand functionality is illustrated for a LUC dataset of SÃ£o
-LourenÃ§o river basin, a major Pantanal wetland contribution area as
+The OpenLand functionality is illustrated for a LUC dataset of São
+Lourenço river basin, a major Pantanal wetland contribution area as
 provided by the 4<sup>th</sup> edition of the [Monitoring of Changes in
 Land cover and Land Use in the Upper Paraguay River Basin - Brazilian
 portion - Review Period: 2012
@@ -81,11 +81,10 @@ how size and rate of change varies across time intervals. Second, the
 **category level** examines for each time interval how the size and
 intensity of gross losses and gross gains in each category vary across
 categories for each time interval. Third, the **transition level**
-determines for each category how the size and intensity of a
-categoryâ€™s transitions vary across the other categories that are
-available for that transition. At each level, the method tests for
-stationarity of patterns across time intervals (Aldwaik and Pontius
-2012).
+determines for each category how the size and intensity of a category’s
+transitions vary across the other categories that are available for that
+transition. At each level, the method tests for stationarity of patterns
+across time intervals (Aldwaik and Pontius 2012).
 
 ### Outcomes of intensity analysis
 
@@ -299,13 +298,13 @@ points (2002, 2008, 2010, 2012, 2014)
 
 ## References
 
-Aldwaik, Safaa Zakaria, and Robert Gilmore Pontius. 2012. â€œIntensity
+Aldwaik, Safaa Zakaria, and Robert Gilmore Pontius. 2012. “Intensity
 analysis to unify measurements of size and stationarity of land changes
-by interval, category, and transition.â€ Landsc. Urban Plan. 106 (1):
-103â€“14. <https://doi.org/10.1016/j.landurbplan.2012.02.010>.
+by interval, category, and transition.” Landsc. Urban Plan. 106 (1):
+103–14. <https://doi.org/10.1016/j.landurbplan.2012.02.010>.
 
 Allaire, J J, Christopher Gandrud, Kenton Russell, and C J Yetman. 2017.
-â€œnetworkD3: D3 JavaScript Network Graphs from R.â€
+“networkD3: D3 JavaScript Network Graphs from R.”
 <https://cran.r-project.org/package=networkD3>.
 
 Chambers, John. 2008. Software for Data Analysis. Statistics and
@@ -313,9 +312,9 @@ Computing. New York, NY: Springer New York.
 <https://doi.org/10.1007/978-0-387-75936-4>.
 
 Embrapa Pantanal, Instituto SOS Pantanal, and WWF-Brasil. 2015.
-â€œMapeamento da Bacia do Alto Paraguai.â€
+“Mapeamento da Bacia do Alto Paraguai.”
 <https://www.embrapa.br/pantanal/bacia-do-alto-paraguai>.
 
 Gu, Zuguang, Lei Gu, Roland Eils, Matthias Schlesner, and Benedikt
-Brors. 2014. â€œcirclize implements and enhances circular visualization
-in R.â€ Bioinformatics 30 (19): 2811â€“2.
+Brors. 2014. “circlize implements and enhances circular visualization in
+R.” Bioinformatics 30 (19): 2811–2.

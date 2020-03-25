@@ -32,10 +32,15 @@ OpenLand is an open-source R package for the analysis of land use and cover (LUC
 
 ## Installation
 
-You can install OpenLand from github with:
+Install the released version of OpenLand from CRAN:
 
+```{r installation1, eval = FALSE}
+install.packages("OpenLand")
+```
 
-```{r installation, eval = FALSE}
+Or install the development version from GitHub with:
+
+```{r installation2, eval = FALSE}
 # install.packages("devtools")
 devtools::install_github("reginalexavier/OpenLand")
 ```

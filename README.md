@@ -26,7 +26,13 @@ standardized multilevel output graphics.
 
 ## Installation
 
-You can install OpenLand from github with:
+Install the released version of OpenLand from CRAN:
+
+``` r
+install.packages("OpenLand")
+```
+
+Or install the development version from GitHub with:
 
 ``` r
 # install.packages("devtools")

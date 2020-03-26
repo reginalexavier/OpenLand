@@ -180,3 +180,104 @@ acc_changes <- function(path) {
   list(sumraster, df_values)
 
 }
+
+
+#' Gain and persistence area in a LULC raster time series
+#'
+#' This function calculates the gain of every category during the analysed period.
+#' For a series containing n rasters it returns a list of (n - 1) rasters, i.e, a
+#' raster for every interval.
+#'
+#' @param path list. List of filenames, list of Raster* objects, RasterBrick(\code{\link[raster]{brick}}) or
+#' RasterStack(\code{\link[raster]{stack}})
+#' @param persistence int. value to be assigned to a persistence pixel
+#'
+#' @return A RasterBrick
+#' @export
+#'
+#' @examples
+#' \donttest{gain_map(SaoLourencoBasin)}
+luc_gain <- function(path, persistence = 99) {
+  rList <- .input_rasters(path)
+
+  rList <- raster::unstack(rList)
+
+  n_raster <- length(rList)
+
+  if (n_raster < 2) {
+    stop('luc_gain needs at least 2 rasters')
+  }
+
+  gain_map <- raster::brick(mapply(
+    function(x, y) {
+      temp_map <- raster::overlay(
+        x,
+        y,
+        fun = function(x1, y1)
+          ifelse((x1 != y1), y1, persistence)
+      )
+      step_name <- paste0("from_",
+                          unlist(strsplit(names(x), split = "_"))[2],
+                          "_to_",
+                          unlist(strsplit(names(y), split = "_"))[2])
+      names(temp_map) <- step_name
+
+      temp_map
+    },
+    x = rList[1:(length(rList) - 1)],
+    y = rList[2:length(rList)],
+    SIMPLIFY = FALSE
+  ))
+
+}
+
+#' Loss and persistence area in a LULC raster time series
+#'
+#' This function calculates the loss of every category during the analysed period.
+#' For a series containing n rasters it returns a list of (n - 1) rasters, i.e, a
+#' raster for every interval.
+#'
+#' @param path list. List of filenames, list of Raster* objects, RasterBrick(\code{\link[raster]{brick}}) or
+#' RasterStack(\code{\link[raster]{stack}})
+#' @param persistence int. value to be assigned to a persistence pixel
+#'
+#' @return A RasterBrick
+#' @export
+#'
+#' @examples
+#' \donttest{loss_map(SaoLourencoBasin)}
+
+luc_loss <- function(path, persistence = 99) {
+  rList <- .input_rasters(path)
+
+  rList <- raster::unstack(rList)
+
+  n_raster <- length(rList)
+
+  if (n_raster < 2) {
+    stop('luc_loss needs at least 2 rasters')
+  }
+
+  loss_map <- raster::brick(mapply(
+    function(x, y) {
+      temp_map <- raster::overlay(
+        x,
+        y,
+        fun = function(x1, y1)
+          ifelse((x1 != y1), x1, persistence)
+      )
+      step_name <- paste0("from_",
+                          unlist(strsplit(names(x), split = "_"))[2],
+                          "_to_",
+                          unlist(strsplit(names(y), split = "_"))[2])
+      names(temp_map) <- step_name
+
+      temp_map
+    },
+    x = rList[1:(length(rList) - 1)],
+    y = rList[2:length(rList)],
+    SIMPLIFY = FALSE
+  ))
+
+
+}

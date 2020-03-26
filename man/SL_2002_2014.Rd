@@ -4,7 +4,8 @@
 \name{SL_2002_2014}
 \alias{SL_2002_2014}
 \title{Tables of land use and cover (LUC) in the São Lourenço River Basin (2002 - 2014)}
-\format{A data list with 5 objects:
+\format{
+A data list with 5 objects:
 \describe{
   \item{lulc_Multistep}{\code{<tibble>} Contingency table for all analysed
   time steps, containing 8 columns:
@@ -41,7 +42,8 @@
   \item QtPixel: \code{<int>} The total area in pixel counts}}.
   \item{totalInterval}{\code{<int>} Total interval of the analysed time
   series in years}.
-  }}
+  }
+}
 \source{
 \url{https://www.embrapa.br/pantanal/bacia-do-alto-paraguai}
 }

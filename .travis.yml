@@ -14,6 +14,9 @@ r:
   - devel
   #- oldrel
 
+# Set dependencies from CRAN
+r_packages: rgdal
+
 
 env:
    global:

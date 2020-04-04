@@ -24,19 +24,19 @@ test_that("Behavior of acc_changes", {
 })
 
 
-testFolder <- tempdir()
-
-lapply(.demo_landscape(year = 2000:2004), function(x)
-  raster::writeRaster(x,
-                      filename = file.path(testFolder, paste0(names(x), ".tif")),
-                      datatype = 'INT1U',
-                      overwrite = TRUE
-  ))
+# testFolder <- tempdir()
+#
+# lapply(.demo_landscape(year = 2000:2004), function(x)
+#   raster::writeRaster(x,
+#                       filename = file.path(testFolder, paste0(names(x), ".tif")),
+#                       datatype = 'INT1U',
+#                       overwrite = TRUE
+#   ))
 
 test_that("Behavior of summary_dir", {
 
-  expect_silent(summary_dir(testFolder))
-  expect_equal(nrow(summary_dir(testFolder)), 5)
+  # expect_silent(summary_dir(testFolder))
+  # expect_equal(nrow(summary_dir(testFolder)), 5)
   expect_silent(summary_dir(demo_raster))
   expect_visible(summary_dir(demo_raster))
   expect_error(summary_dir(raster::stack(demo_raster)))
@@ -50,8 +50,8 @@ test_that("Behavior of summary_dir", {
 
 test_that("Behavior of summary_map", {
 
-  expect_silent(summary_map(list.files(testFolder, pattern = "tif$", full.names = TRUE)[1]))
-  expect_silent(summary_map(.input_rasters(testFolder)))
+  # expect_silent(summary_map(list.files(testFolder, pattern = "tif$", full.names = TRUE)[1]))
+  # expect_silent(summary_map(.input_rasters(testFolder)))
   expect_silent(summary_map(demo_raster[[1]]))
   expect_visible(summary_map(demo_raster[[1]]))
   expect_equal(ncol(summary_map(demo_raster[[1]])), 2)
@@ -60,5 +60,5 @@ test_that("Behavior of summary_map", {
 
 })
 
-file.remove(list.files(testFolder, pattern = "landscape", full.names = TRUE))
+# file.remove(list.files(testFolder, pattern = "landscape", full.names = TRUE))
 

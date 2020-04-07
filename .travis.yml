@@ -33,7 +33,6 @@ after_success:
   - Rscript -e 'covr::codecov(type = "all")'
 
 before_cache: Rscript -e 'remotes::install_cran("pkgdown")'
-
 deploy:
   provider: script
   script: Rscript -e 'pkgdown::deploy_site_github()'

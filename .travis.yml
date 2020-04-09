@@ -3,17 +3,16 @@
 language: r
 cache: packages
 
-
 os:
   - linux
  # - osx
-
 
 r:
   - release
   - devel
   #- oldrel
 
+r_packages: pkgdown
 
 env:
    global:
@@ -31,20 +30,8 @@ addons:
 
 after_success:
   - Rscript -e 'covr::codecov(type = "all")'
-
-
-# before_cache: Rscript -e 'remotes::install_cran("pkgdown")'
-# deploy:
-#   provider: script
-#   script: Rscript -e 'pkgdown::deploy_site_github()'
-#   skip_cleanup: true
-r_github_packages:
-  - r-lib/pkgdown
-
-after_success:
-      - tar -C .. -xf $PKG_TARBALL
-      - rm -rf OpenLand.Rcheck
-      - Rscript -e 'pkgdown::build_site()'
+  - Rscript -e 'pkgdown::build_site()'
+  
 deploy:
   - provider: pages
         skip-cleanup: true

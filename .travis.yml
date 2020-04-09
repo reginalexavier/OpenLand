@@ -38,3 +38,18 @@ after_success:
 #   provider: script
 #   script: Rscript -e 'pkgdown::deploy_site_github()'
 #   skip_cleanup: true
+r_github_packages:
+  - r-lib/pkgdown
+
+after_success:
+      - tar -C .. -xf $PKG_TARBALL
+      - rm -rf OpenLand.Rcheck
+      - Rscript -e 'pkgdown::build_site()'
+deploy:
+  - provider: pages
+        skip-cleanup: true
+        github-token: $GITHUB_TOKEN
+        keep-history: false
+        local-dir: docs
+        on:
+          branch: master

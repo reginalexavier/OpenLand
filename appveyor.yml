@@ -21,7 +21,7 @@ environment:
   # R_REMOTES_STANDALONE: true
 
 # Adapt as necessary starting from here
-   matrix:
+matrix:
   - R_VERSION: release  
   - R_VERSION: devel
 

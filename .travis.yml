@@ -12,7 +12,8 @@ r:
   - devel
   #- oldrel
 
-r_packages: pkgdown
+r_packages: 
+  - pkgdown
 
 env:
    global:

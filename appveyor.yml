@@ -24,7 +24,7 @@ environment:
   matrix:
     - R_VERSION: release  
     - R_VERSION: patched
-    - R_VERSION: 4.0.0
+#   - R_VERSION: 4.0.0
 #   - R_VERSION: devel
 
 build_script:

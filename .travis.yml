@@ -12,9 +12,6 @@ r:
   - devel
   #- oldrel
 
-r_packages: 
-  - pkgdown
-
 env:
    global:
      - R_BUILD_ARGS="--compact-vignettes=gs+qpdf"
@@ -31,13 +28,17 @@ addons:
 
 after_success:
   - Rscript -e 'covr::codecov(type = "all")'
-  - Rscript -e 'pkgdown::build_site()'
 
+install: R -q -e 'tic::install()'
+script: R -q -e 'tic::script()'
+
+before_deploy: R -q -e 'tic::before_deploy()'
 deploy:
-  - provider: pages
-        skip-cleanup: true
-        github-token: $GITHUB_TOKEN
-        keep-history: false
-        local-dir: docs
-        on:
-          branch: master
+   provider: script
+   script: R -q -e 'tic::deploy()'
+   on:
+     branch: master
+     condition:
+       - $TRAVIS_PULL_REQUEST = false
+       - $TRAVIS_EVENT_TYPE != cron
+       - $TRAVIS_R_VERSION_STRING = release

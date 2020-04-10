@@ -3,17 +3,16 @@
 language: r
 cache: packages
 
-
 os:
   - linux
  # - osx
-
 
 r:
   - release
   - devel
   #- oldrel
 
+r_packages: pkgdown
 
 env:
    global:
@@ -31,10 +30,13 @@ addons:
 
 after_success:
   - Rscript -e 'covr::codecov(type = "all")'
+  - Rscript -e 'pkgdown::build_site()'
 
-
-# before_cache: Rscript -e 'remotes::install_cran("pkgdown")'
-# deploy:
-#   provider: script
-#   script: Rscript -e 'pkgdown::deploy_site_github()'
-#   skip_cleanup: true
+deploy:
+  - provider: pages
+        skip-cleanup: true
+        github-token: $GITHUB_TOKEN
+        keep-history: false
+        local-dir: docs
+        on:
+          branch: master

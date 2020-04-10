@@ -17,23 +17,27 @@
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
 
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous" />
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
 <!-- headroom.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -43,9 +47,9 @@
 
 
 <meta property="og:title" content="Area of LUC categories at time points — barplotLand" />
-<meta property="og:description" content="A grouped barplot representing the areas of LUC categories at each time point of the analysed period" />
+<meta property="og:description" content="A grouped barplot representing the areas of LUC categories at each time point
+of the analysed period." />
 <meta property="og:image" content="/logo.png" />
-<meta name="twitter:card" content="summary" />
 
 
 
@@ -63,7 +67,7 @@
 
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -77,7 +81,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">OpenLand</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.0.9000</span>
       </span>
     </div>
 
@@ -104,10 +108,13 @@
     </li>
   </ul>
 </li>
+<li>
+  <a href="../news/index.html">Changelog</a>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/reginalexavier/OpenLand">
+  <a href="https://github.com/reginalexavier/OpenLand/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
@@ -131,16 +138,17 @@
     </div>
 
     <div class="ref-description">
-    <p>A grouped barplot representing the areas of LUC categories at each time point of the analysed period</p>
+    <p>A grouped barplot representing the areas of LUC categories at each time point
+of the analysed period.</p>
     </div>
 
     <pre class="usage"><span class='fu'>barplotLand</span>(
   <span class='no'>dataset</span>,
   <span class='no'>legendtable</span>,
-  <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"LUC area in the interval (2002 - 2014)"</span>,
-  <span class='kw'>caption</span> <span class='kw'>=</span> <span class='st'>"LUC category"</span>,
+  <span class='kw'>title</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>caption</span> <span class='kw'>=</span> <span class='st'>"LUC Categories"</span>,
   <span class='kw'>xlab</span> <span class='kw'>=</span> <span class='st'>"Year"</span>,
-  <span class='kw'>ylab</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/expression.html'>expression</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste</a></span>(<span class='st'>"Area "</span>, <span class='no'>km</span>^{     <span class='fl'>2</span> })),
+  <span class='kw'>ylab</span> <span class='kw'>=</span> <span class='st'>"Area (km2 or pixel)"</span>,
   <span class='kw'>area_km2</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
   <span class='no'>...</span>
 )</pre>
@@ -150,35 +158,38 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>dataset</th>
-      <td><p><code>&lt;tibble&gt;</code>. A table of the multi step transitions (<code>lulc_Mulstistep</code>) generated by <code><a href='contingencyTable.html'>contingencyTable</a></code>.</p></td>
+      <td><p>A table of the multi step transitions (<code>lulc_Multistep</code>)
+generated by <code><a href='contingencyTable.html'>contingencyTable</a></code>.</p></td>
     </tr>
     <tr>
       <th>legendtable</th>
-      <td><p><code>&lt;tibble&gt;</code>. A table (<code>lulc_Onestep</code>) containing the LUC legend items and their respective color.</p></td>
+      <td><p>A table containing the LUC legend items and their respective
+color (<code>tb_legend</code>).</p></td>
     </tr>
     <tr>
       <th>title</th>
-      <td><p><code>&lt;chr&gt;</code>. The title of the plot</p></td>
+      <td><p>character. The title of the plot.</p></td>
     </tr>
     <tr>
       <th>caption</th>
-      <td><p><code>&lt;chr&gt;</code>. The caption of the plot.</p></td>
+      <td><p>character. The caption of the plot.</p></td>
     </tr>
     <tr>
       <th>xlab</th>
-      <td><p><code>&lt;chr&gt;</code>. Label for the x axis.</p></td>
+      <td><p>character. Label for the x axis.</p></td>
     </tr>
     <tr>
       <th>ylab</th>
-      <td><p><code>&lt;chr&gt;</code>. Label for the y axis.</p></td>
+      <td><p>character. Label for the y axis.</p></td>
     </tr>
     <tr>
       <th>area_km2</th>
-      <td><p><code>&lt;logical&gt;</code>. If TRUE the change is computed in km2, if FALSE in pixel counts.</p></td>
+      <td><p>logical. If TRUE the change is computed in km2, if FALSE in
+pixel counts.</p></td>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>additional themes parameters <code><a href='https://ggplot2.tidyverse.org/reference/theme.html'>theme</a></code></p></td>
+      <td><p>additional themes parameters, see <code><a href='https://rdrr.io/pkg/ggplot2/man/theme.html'>theme</a></code>.</p></td>
     </tr>
     </table>
 
@@ -187,13 +198,13 @@
     <p>a barplot</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code>ggplot2::<a href='https://ggplot2.tidyverse.org/reference/theme.html'>theme</a></code></p></div>
+    <div class='dont-index'><p><code>ggplot2::<a href='https://rdrr.io/pkg/ggplot2/man/theme.html'>theme</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-<span class='co'># editing the class name</span>
+<span class='co'># editing the category names</span>
 
-<span class='no'>SL_2002_2014</span>$<span class='no'>tb_legend</span>$<span class='no'>className</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Ap"</span>, <span class='st'>"FF"</span>, <span class='st'>"SA"</span>, <span class='st'>"SG"</span>, <span class='st'>"aa"</span>, <span class='st'>"SF"</span>,
+<span class='no'>SL_2002_2014</span>$<span class='no'>tb_legend</span>$<span class='no'>categoryName</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Ap"</span>, <span class='st'>"FF"</span>, <span class='st'>"SA"</span>, <span class='st'>"SG"</span>, <span class='st'>"aa"</span>, <span class='st'>"SF"</span>,
                                              <span class='st'>"Agua"</span>, <span class='st'>"Iu"</span>, <span class='st'>"Ac"</span>, <span class='st'>"R"</span>, <span class='st'>"Im"</span>),
                                   <span class='kw'>levels</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"FF"</span>, <span class='st'>"SF"</span>, <span class='st'>"SA"</span>, <span class='st'>"SG"</span>, <span class='st'>"aa"</span>, <span class='st'>"Ap"</span>,
                                              <span class='st'>"Ac"</span>, <span class='st'>"Im"</span>, <span class='st'>"Iu"</span>, <span class='st'>"Agua"</span>, <span class='st'>"R"</span>))
@@ -201,22 +212,17 @@
 <span class='no'>SL_2002_2014</span>$<span class='no'>tb_legend</span>$<span class='no'>color</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"#FFE4B5"</span>, <span class='st'>"#228B22"</span>, <span class='st'>"#00FF00"</span>, <span class='st'>"#CAFF70"</span>,
                                   <span class='st'>"#EE6363"</span>, <span class='st'>"#00CD00"</span>, <span class='st'>"#436EEE"</span>, <span class='st'>"#FFAEB9"</span>,
                                   <span class='st'>"#FFA54F"</span>, <span class='st'>"#68228B"</span>, <span class='st'>"#636363"</span>)
-
+<span class='co'># the plot</span>
 <span class='fu'>barplotLand</span>(<span class='kw'>dataset</span> <span class='kw'>=</span> <span class='no'>SL_2002_2014</span>$<span class='no'>lulc_Multistep</span>,
             <span class='kw'>legendtable</span> <span class='kw'>=</span> <span class='no'>SL_2002_2014</span>$<span class='no'>tb_legend</span>,
             <span class='kw'>area_km2</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='img'><img src='barplotLand-1.png' alt='' width='700' height='433' /></div><div class='input'>
 
 </div></pre>
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#value">Value</a></li>
-      <li><a href="#see-also">See also</a></li>
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
 
@@ -227,7 +233,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.0.</p>
 </div>
 
       </footer>

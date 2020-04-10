@@ -17,23 +17,27 @@
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
 
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous" />
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
 <!-- headroom.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -43,9 +47,8 @@
 
 
 <meta property="og:title" content="Contingency table — contingencyTable" />
-<meta property="og:description" content="Extracts LUC transitions for all input grids of the time series" />
+<meta property="og:description" content="Extracts LUC transitions for all input grids of the time series." />
 <meta property="og:image" content="/logo.png" />
-<meta name="twitter:card" content="summary" />
 
 
 
@@ -63,7 +66,7 @@
 
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -77,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">OpenLand</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.0.9000</span>
       </span>
     </div>
 
@@ -104,10 +107,13 @@
     </li>
   </ul>
 </li>
+<li>
+  <a href="../news/index.html">Changelog</a>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/reginalexavier/OpenLand">
+  <a href="https://github.com/reginalexavier/OpenLand/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
@@ -131,7 +137,7 @@
     </div>
 
     <div class="ref-description">
-    <p>Extracts LUC transitions for all input grids of the time series</p>
+    <p>Extracts LUC transitions for all input grids of the time series.</p>
     </div>
 
     <pre class="usage"><span class='fu'>contingencyTable</span>(<span class='no'>input_raster</span>, <span class='kw'>pixelresolution</span> <span class='kw'>=</span> <span class='fl'>30</span>)</pre>
@@ -141,8 +147,9 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>input_raster</th>
-      <td><p>list. List of filenames, list of Raster* objects,
-RasterStack(<code><a href='https://rdrr.io/pkg/raster/man/brick.html'>brick</a></code>) or RasterStack(<code><a href='https://rdrr.io/pkg/raster/man/stack.html'>stack</a></code></p></td>
+      <td><p>path (character), Raster* object or list of Raster*
+objects. See <br /> <code><a href='https://rdrr.io/pkg/raster/man/raster.html'>raster</a></code> for more information about
+supported file types.</p></td>
     </tr>
     <tr>
       <th>pixelresolution</th>
@@ -153,47 +160,65 @@ RasterStack(<code><a href='https://rdrr.io/pkg/raster/man/brick.html'>brick</a><
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>A list that contains 5 objects.</p><ul>
-<li><p><code>lulc_Mulstistep</code>: <code>&lt;tibble&gt;</code> Contingency table for all analysed time steps, containing 8 columns:</p><ol>
+<li><p><code>lulc_Mulstistep</code>: <code>&lt;tibble&gt;</code> Contingency table for all
+  analysed time steps, containing 8 columns:</p><ol>
 <li><p>Period: <code>&lt;chr&gt;</code> The period <em>[Yt, Yt+1]</em>.</p></li>
 <li><p>From: <code>&lt;dbl&gt;</code> numerical code of a LUC category <em>i</em>.</p></li>
 <li><p>To: <code>&lt;dbl&gt;</code> numerical code of a LUC category <em>j</em>.</p></li>
-<li><p>km2: <code>&lt;dbl&gt;</code> Area in square kilometers that transited from the class category <em>i</em>
+<li><p>km2: <code>&lt;dbl&gt;</code> Area in square kilometers that transited from the
+  category <em>i</em>
    to category <em>j</em> in the period from <em>Yt</em> to <em>Yt+1</em>.</p></li>
 <li><p>Interval: <code>&lt;dbl&gt;</code> Interval of years between the first and
    the last year of the period <em>[Yt, Yt+1]</em>.</p></li>
-<li><p>QtPixel: <code>&lt;int&gt;</code> Pixel count that transited from the classes category <em>i</em>
+<li><p>QtPixel: <code>&lt;int&gt;</code> Pixel count that transited from the categories
+   <em>i</em>
    to category <em>j</em> in the period from <em>Yt</em> to <em>Yt+1</em>.</p></li>
-<li><p>yearFrom: <code>&lt;chr&gt;</code> The year that the change comes from <em>[Yt]</em></p></li>
-<li><p>yearTo: <code>&lt;chr&gt;</code> The year that the change goes for <em>[Yt+1]</em></p></li>
+<li><p>yearFrom: <code>&lt;chr&gt;</code> The year that the change comes from <em>[Yt]</em>.</p></li>
+<li><p>yearTo: <code>&lt;chr&gt;</code> The year that the change goes for <em>[Yt+1]</em>.</p></li>
 </ol></li>
-<li><p><code>lulc_Onestep</code>:<code>&lt;tibble&gt;</code> Contingency table for the entire analysed period <em>[Yt1, YT]</em>, containing
+<li><p><code>lulc_Onestep</code>:<code>&lt;tibble&gt;</code> Contingency table for the entire
+  analysed period <em>[Y1, YT]</em>, containing
   8 columns identical with <code>lulc_Mulstistep</code>.</p></li>
-<li><p><code>tb_legend</code>: <code>&lt;tibble&gt;</code> A table of the pixel value, his name and color containing 3 columns:</p><ol>
-<li><p>classValue: <code>&lt;dbl&gt;</code> the pixel value of the LUC class</p></li>
-<li><p>className: <code>&lt;factor&gt;</code> randomly created string associated with a given pixel value of a LUC category</p></li>
-<li><p>color: <code>&lt;chr&gt;</code> random color associated with the given pixel value of a LUC category.
-  Before further analysis, one would like to change the <code>className</code> and <code>color</code> values.</p><ul>
-<li><p>Therefore the class names have to be in the same order as the <code>classValue</code>
-        and the <code>levels</code> should be put in the right order for legend plotting. Like:</p><pre>
+<li><p><code>tb_legend</code>: <code>&lt;tibble&gt;</code> A table of the pixel value, his
+  name and color containing 3 columns:</p><ol>
+<li><p>categoryValue: <code>&lt;dbl&gt;</code> the pixel value of the LUC category.</p></li>
+<li><p>categoryName: <code>&lt;factor&gt;</code> randomly created string associated with
+   a given pixel value of a LUC category.</p></li>
+<li><p>color: <code>&lt;chr&gt;</code> random color associated with the given pixel value
+   of a LUC category.
+  Before further analysis, one would like to change the <code>categoryName</code>
+  and <code>color</code> values.</p><ul>
+<li><p>Therefore the category names have to be in the same order as the
+         <code>categoryValue</code>
+        and the <code>levels</code> should be put in the right order for legend
+        plotting. Like:</p><pre>
 
-        myobject$tb_legend$className &lt;- factor(c("name1", "name2", "name3", "name4"),
-                                               levels = c("name3", "name2", "name1", "name4"))</pre></li>
-<li><p>The colors have to in the same order as the values in the <code>classValue</code> column. Colors can be given by the
+        <span class='no'>myobject</span>$<span class='no'>tb_legend</span>$<span class='no'>categoryName</span> <span class='kw'>&amp;</span><span class='no'>lt</span>;- <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"name1"</span>, <span class='st'>"name2"</span>, <span class='st'>"name3"</span>, <span class='st'>"name4"</span>),
+                                               <span class='kw'>levels</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"name3"</span>, <span class='st'>"name2"</span>, <span class='st'>"name1"</span>, <span class='st'>"name4"</span>))</pre></li>
+<li><p>The colors have to in the same order as the values in the <code>categoryValue</code> column. Colors can be given by the
        color name (eg. "black") or an HEX value (eg. #FFFFFF). Like:</p><pre>
 
-       myobject$tb_legend$color &lt;- c("#CDB79E", "red", "#66CD00", "yellow")</pre></li>
+       <span class='no'>myobject</span>$<span class='no'>tb_legend</span>$<span class='no'>color</span> <span class='kw'>&amp;</span><span class='no'>lt</span>;- <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"#CDB79E"</span>, <span class='st'>"red"</span>, <span class='st'>"#66CD00"</span>, <span class='st'>"yellow"</span>)</pre></li>
 </ul></li>
 </ol></li>
-<li><p><code>totalArea</code>: <code>&lt;tibble&gt;</code>  A table with the total area of the study area containing 2 columns:</p><ol>
+<li><p><code>totalArea</code>: <code>&lt;tibble&gt;</code>  A table with the total area of the
+   study area containing 2 columns:</p><ol>
 <li><p>area_km2: <code>&lt;numeric&gt;</code> The total area in square kilometers.</p></li>
-<li><p>QtPixel: <code>&lt;numeric&gt;</code> The total area in pixel counts</p></li>
+<li><p>QtPixel: <code>&lt;numeric&gt;</code> The total area in pixel counts.</p></li>
 </ol></li>
-<li><p><code>totalInterval</code>: <code>&lt;numeric&gt;</code> Total interval of the analysed time series in years</p></li>
+<li><p><code>totalInterval</code>: <code>&lt;numeric&gt;</code> Total interval of the analysed
+   time series in years.</p></li>
 </ul>
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>contingencyTable</span>(<span class='kw'>input_raster</span> <span class='kw'>=</span> <span class='no'>SaoLourencoBasin</span>, <span class='kw'>pixelresolution</span> <span class='kw'>=</span> <span class='fl'>30</span>)</div><div class='output co'>#&gt; $lulc_Multistep
+    <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
+<span class='no'>url</span> <span class='kw'>&lt;-</span> <span class='st'>"https://zenodo.org/record/3685230/files/SaoLourencoBasin.rda?download=1"</span>
+<span class='no'>temp</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span>()
+<span class='fu'><a href='https://rdrr.io/r/utils/download.file.html'>download.file</a></span>(<span class='no'>url</span>, <span class='no'>temp</span>, <span class='kw'>mode</span> <span class='kw'>=</span> <span class='st'>"wb"</span>) <span class='co'>#downloading the online dataset</span>
+<span class='fu'><a href='https://rdrr.io/r/base/load.html'>load</a></span>(<span class='no'>temp</span>)
+<span class='co'># the contingencyTable() function, with the SaoLourencoBasin dataset</span>
+<span class='fu'>contingencyTable</span>(<span class='kw'>input_raster</span> <span class='kw'>=</span> <span class='no'>SaoLourencoBasin</span>, <span class='kw'>pixelresolution</span> <span class='kw'>=</span> <span class='fl'>30</span>)</div><div class='output co'>#&gt; $lulc_Multistep
 #&gt; <span style='color: #555555;'># A tibble: 130 x 8</span><span>
 #&gt;    Period     From    To      km2 QtPixel Interval yearFrom yearTo
 #&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>
@@ -227,19 +252,19 @@ RasterStack(<code><a href='https://rdrr.io/pkg/raster/man/brick.html'>brick</a><
 #&gt; 
 #&gt; $tb_legend
 #&gt; </span><span style='color: #555555;'># A tibble: 11 x 3</span><span>
-#&gt;    classValue className color  
-#&gt;         </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;fct&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  
-#&gt; </span><span style='color: #555555;'> 1</span><span>          2 IEY       #002F70
-#&gt; </span><span style='color: #555555;'> 2</span><span>          3 XOM       #8EA4DE
-#&gt; </span><span style='color: #555555;'> 3</span><span>          4 BWK       #0A468D
-#&gt; </span><span style='color: #555555;'> 4</span><span>          5 KEU       #EAACAC
-#&gt; </span><span style='color: #555555;'> 5</span><span>          7 LBF       #5F1415
-#&gt; </span><span style='color: #555555;'> 6</span><span>          8 DPB       #DCE2F6
-#&gt; </span><span style='color: #555555;'> 7</span><span>          9 CYV       #A13F3F
-#&gt; </span><span style='color: #555555;'> 8</span><span>         10 KGU       #6F8DD2
-#&gt; </span><span style='color: #555555;'> 9</span><span>         11 FIV       #C5CFF0
-#&gt; </span><span style='color: #555555;'>10</span><span>         12 JUB       #CE7575
-#&gt; </span><span style='color: #555555;'>11</span><span>         13 QTX       #295EAE
+#&gt;    categoryValue categoryName color  
+#&gt;            </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;fct&gt;</span><span>        </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  
+#&gt; </span><span style='color: #555555;'> 1</span><span>             2 MWL          #8EA4DE
+#&gt; </span><span style='color: #555555;'> 2</span><span>             3 EFO          #DCE2F6
+#&gt; </span><span style='color: #555555;'> 3</span><span>             4 ODF          #EFF1F8
+#&gt; </span><span style='color: #555555;'> 4</span><span>             5 IEY          #0A468D
+#&gt; </span><span style='color: #555555;'> 5</span><span>             7 XOM          #002F70
+#&gt; </span><span style='color: #555555;'> 6</span><span>             8 BWK          #4A76C7
+#&gt; </span><span style='color: #555555;'> 7</span><span>             9 KEU          #C5CFF0
+#&gt; </span><span style='color: #555555;'> 8</span><span>            10 LBF          #5F1415
+#&gt; </span><span style='color: #555555;'> 9</span><span>            11 DPB          #CE7575
+#&gt; </span><span style='color: #555555;'>10</span><span>            12 CYV          #F3C5C5
+#&gt; </span><span style='color: #555555;'>11</span><span>            13 KGU          #BD5758
 #&gt; 
 #&gt; $totalArea
 #&gt; </span><span style='color: #555555;'># A tibble: 1 x 2</span><span>
@@ -249,18 +274,15 @@ RasterStack(<code><a href='https://rdrr.io/pkg/raster/man/brick.html'>brick</a><
 #&gt; 
 #&gt; $totalInterval
 #&gt; [1] 12
-#&gt; </div><div class='input'>
+#&gt; </div><div class='input'># }
+
 
 </div></span></pre>
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#value">Value</a></li>
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
 
@@ -271,7 +293,7 @@ RasterStack(<code><a href='https://rdrr.io/pkg/raster/man/brick.html'>brick</a><
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.0.</p>
 </div>
 
       </footer>

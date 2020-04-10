@@ -17,23 +17,27 @@
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
 
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous" />
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
 <!-- headroom.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -46,7 +50,6 @@
 <meta property="og:description" content="This function create a raster serie with some setup like the layer name and
 the sample value for the lulc" />
 <meta property="og:image" content="/logo.png" />
-<meta name="twitter:card" content="summary" />
 
 
 
@@ -64,7 +67,7 @@ the sample value for the lulc" />
 
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -78,7 +81,7 @@ the sample value for the lulc" />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">OpenLand</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.0.9000</span>
       </span>
     </div>
 
@@ -105,10 +108,13 @@ the sample value for the lulc" />
     </li>
   </ul>
 </li>
+<li>
+  <a href="../news/index.html">Changelog</a>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/reginalexavier/OpenLand">
+  <a href="https://github.com/reginalexavier/OpenLand/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
@@ -146,7 +152,7 @@ the sample value for the lulc</p>
   <span class='kw'>ymn</span> <span class='kw'>=</span> <span class='fl'>0</span>,
   <span class='kw'>ymx</span> <span class='kw'>=</span> <span class='fl'>100</span>,
   <span class='kw'>crs</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
-  <span class='kw'>class</span> <span class='kw'>=</span> <span class='fl'>1</span>:<span class='fl'>5</span>,
+  <span class='kw'>category</span> <span class='kw'>=</span> <span class='fl'>1</span>:<span class='fl'>5</span>,
   <span class='kw'>prob</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
 )</pre>
 
@@ -155,58 +161,62 @@ the sample value for the lulc</p>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>year</th>
-      <td><p>A list of year, first and last included</p></td>
+      <td><p>numeric. A vector of year, first and last included.</p></td>
     </tr>
     <tr>
       <th>nrows</th>
-      <td><p>nrows of the raster to be created</p></td>
+      <td><p>numeric. nrows of the raster to be created.</p></td>
     </tr>
     <tr>
       <th>ncols</th>
-      <td><p>ncols of the raster to be created</p></td>
+      <td><p>numeric. ncols of the raster to be created.</p></td>
     </tr>
     <tr>
       <th>res</th>
-      <td><p>the resolution of the raster to be created</p></td>
+      <td><p>numeric. the resolution of the raster to be created.</p></td>
     </tr>
     <tr>
       <th>xmn</th>
-      <td><p>x minimun extent</p></td>
+      <td><p>numeric. x minimum extent.</p></td>
     </tr>
     <tr>
       <th>xmx</th>
-      <td><p>x maximum extent</p></td>
+      <td><p>numeric. x maximum extent.</p></td>
     </tr>
     <tr>
       <th>ymn</th>
-      <td><p>y minimum extent</p></td>
+      <td><p>numeric. y minimum extent.</p></td>
     </tr>
     <tr>
       <th>ymx</th>
-      <td><p>y maximum extent</p></td>
+      <td><p>numeric. y maximum extent.</p></td>
     </tr>
     <tr>
       <th>crs</th>
-      <td><p>the coordinate referencing system</p></td>
+      <td><p>character. the coordinate referencing system.</p></td>
     </tr>
     <tr>
-      <th>class</th>
-      <td><p>the raster classes</p></td>
+      <th>category</th>
+      <td><p>A numeric vector of the raster categories.</p></td>
     </tr>
     <tr>
       <th>prob</th>
-      <td><p>the probability of occorence for the class list</p></td>
+      <td><p>A numreric vector of the probability of occurrence for the
+category list.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>list</p>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p><code><a href='https://rdrr.io/pkg/raster/man/raster.html'>raster</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>.demo_landscape</span>(<span class='kw'>year</span> <span class='kw'>=</span>  <span class='fl'>2000</span>:<span class='fl'>2005</span>,
                 <span class='kw'>res</span> <span class='kw'>=</span> <span class='fl'>1</span>,
-                <span class='kw'>crs</span> <span class='kw'>=</span> <span class='st'>"+proj=utm +zone=21 +south +ellps=GRS80 +units=m +no_defs"</span>)</div><div class='output co'>#&gt; [[1]]
+                <span class='kw'>crs</span> <span class='kw'>=</span> <span class='st'>"+proj=utm +zone=21 +south +ellps=GRS80 +units=m +no_defs"</span>)</div><div class='output co'>#&gt; $landscape_2000
 #&gt; class      : RasterLayer 
 #&gt; dimensions : 100, 100, 10000  (nrow, ncol, ncell)
 #&gt; resolution : 1, 1  (x, y)
@@ -217,7 +227,7 @@ the sample value for the lulc</p>
 #&gt; values     : 1, 5  (min, max)
 #&gt; 
 #&gt; 
-#&gt; [[2]]
+#&gt; $landscape_2001
 #&gt; class      : RasterLayer 
 #&gt; dimensions : 100, 100, 10000  (nrow, ncol, ncell)
 #&gt; resolution : 1, 1  (x, y)
@@ -228,7 +238,7 @@ the sample value for the lulc</p>
 #&gt; values     : 1, 5  (min, max)
 #&gt; 
 #&gt; 
-#&gt; [[3]]
+#&gt; $landscape_2002
 #&gt; class      : RasterLayer 
 #&gt; dimensions : 100, 100, 10000  (nrow, ncol, ncell)
 #&gt; resolution : 1, 1  (x, y)
@@ -239,7 +249,7 @@ the sample value for the lulc</p>
 #&gt; values     : 1, 5  (min, max)
 #&gt; 
 #&gt; 
-#&gt; [[4]]
+#&gt; $landscape_2003
 #&gt; class      : RasterLayer 
 #&gt; dimensions : 100, 100, 10000  (nrow, ncol, ncell)
 #&gt; resolution : 1, 1  (x, y)
@@ -250,7 +260,7 @@ the sample value for the lulc</p>
 #&gt; values     : 1, 5  (min, max)
 #&gt; 
 #&gt; 
-#&gt; [[5]]
+#&gt; $landscape_2004
 #&gt; class      : RasterLayer 
 #&gt; dimensions : 100, 100, 10000  (nrow, ncol, ncell)
 #&gt; resolution : 1, 1  (x, y)
@@ -261,7 +271,7 @@ the sample value for the lulc</p>
 #&gt; values     : 1, 5  (min, max)
 #&gt; 
 #&gt; 
-#&gt; [[6]]
+#&gt; $landscape_2005
 #&gt; class      : RasterLayer 
 #&gt; dimensions : 100, 100, 10000  (nrow, ncol, ncell)
 #&gt; resolution : 1, 1  (x, y)
@@ -274,14 +284,10 @@ the sample value for the lulc</p>
 #&gt; </div><div class='input'>
 </div></pre>
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#value">Value</a></li>
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
 
@@ -292,7 +298,7 @@ the sample value for the lulc</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.0.</p>
 </div>
 
       </footer>

@@ -181,7 +181,7 @@ knitr::include_graphics("man/figures/sankey_multi.png")
 
 OpenLand enables furthermore the spatial screening of LUCC frequencies for one or a series of raster layers with  [`summary_map()`](https://reginalexavier.github.io/OpenLand/reference/summary_map.html) and [`summary_dir()`](https://reginalexavier.github.io/OpenLand/reference/summary_dir.html). The [`acc_changes()`](https://reginalexavier.github.io/OpenLand/reference/acc_changes.html) function returns for a LUC time series the number of times a pixel has changed during the analysed period, returning a grid layer and a table with the percentages of transition numbers in the study area. Here we use the [tmap](https://github.com/mtennekes/tmap) package for plotting the outcomes of the `acc_changes()` function.
 
-```{r mymap, echo=FALSE, fig.cap='Accumulate changes in pixel in the interval 2002 - 2014 in four time points (2002, 2008, 2010, 2012, 2014)', out.width='90%',fig.align='center'}
+```{r mymap, echo=FALSE, fig.cap='Accumulated changes in pixel in the interval 2002 - 2014 in four time points (2002, 2008, 2010, 2012, 2014)', out.width='90%',fig.align='center'}
 
 knitr::include_graphics("man/figures/acc_mymap.png")
 
@@ -190,12 +190,12 @@ knitr::include_graphics("man/figures/acc_mymap.png")
 
 ## References
 
-Aldwaik, Safaa Zakaria, and Robert Gilmore Pontius. 2012. “Intensity analysis to unify measurements of size and stationarity of land changes by interval, category, and transition.” Landsc. Urban Plan. 106 (1): 103–14. https://doi.org/10.1016/j.landurbplan.2012.02.010.
+Aldwaik, Safaa Zakaria, and Robert Gilmore Pontius. 2012. "Intensity analysis to unify measurements of size and stationarity of land changes by interval, category, and transition." Landsc. Urban Plan. 106 (1): 103–14. https://doi.org/10.1016/j.landurbplan.2012.02.010.
 
-Allaire, J J, Christopher Gandrud, Kenton Russell, and C J Yetman. 2017. “networkD3: D3 JavaScript Network Graphs from R.” https://cran.r-project.org/package=networkD3.
+Allaire, J J, Christopher Gandrud, Kenton Russell, and C J Yetman. 2017. "networkD3: D3 JavaScript Network Graphs from R." https://cran.r-project.org/package=networkD3.
 
 Chambers, John. 2008. Software for Data Analysis. Statistics and Computing. New York, NY: Springer New York. https://doi.org/10.1007/978-0-387-75936-4.
 
-Embrapa Pantanal, Instituto SOS Pantanal, and WWF-Brasil. 2015. “Mapeamento da Bacia do Alto Paraguai.” https://www.embrapa.br/pantanal/bacia-do-alto-paraguai.
+Embrapa Pantanal, Instituto SOS Pantanal, and WWF-Brasil. 2015. "Mapeamento da Bacia do Alto Paraguai." https://www.embrapa.br/pantanal/bacia-do-alto-paraguai.
 
-Gu, Zuguang, Lei Gu, Roland Eils, Matthias Schlesner, and Benedikt Brors. 2014. “circlize implements and enhances circular visualization in R.” Bioinformatics 30 (19): 2811–2.
+Gu, Zuguang, Lei Gu, Roland Eils, Matthias Schlesner, and Benedikt Brors. 2014. "circlize implements and enhances circular visualization in R." Bioinformatics 30 (19): 2811–2.

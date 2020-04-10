@@ -285,11 +285,11 @@ the outcomes of the `acc_changes()` function.
 
 <div class="figure" style="text-align: center">
 
-<img src="man/figures/acc_mymap.png" alt="Accumulate changes in pixel in the interval 2002 - 2014 in four time points (2002, 2008, 2010, 2012, 2014)" width="90%" />
+<img src="man/figures/acc_mymap.png" alt="Accumulated changes in pixel in the interval 2002 - 2014 in four time points (2002, 2008, 2010, 2012, 2014)" width="90%" />
 
 <p class="caption">
 
-Accumulate changes in pixel in the interval 2002 - 2014 in four time
+Accumulated changes in pixel in the interval 2002 - 2014 in four time
 points (2002, 2008, 2010, 2012, 2014)
 
 </p>

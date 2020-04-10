@@ -17,23 +17,27 @@
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
 
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous" />
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
 <!-- headroom.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -43,10 +47,9 @@
 
 
 <meta property="og:title" content="Class Transition — Transition-class" />
-<meta property="og:description" content="A S4 class for the Transition level result of an Intensity analysis.
-Can be plotted with the plot method plot" />
+<meta property="og:description" content="A S4 class for the Transition level result of an Intensity analysis. Can be
+plotted with the plot method plot." />
 <meta property="og:image" content="/logo.png" />
-<meta name="twitter:card" content="summary" />
 
 
 
@@ -64,7 +67,7 @@ Can be plotted with the plot method plot" />
 
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -78,7 +81,7 @@ Can be plotted with the plot method plot" />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">OpenLand</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.0.9000</span>
       </span>
     </div>
 
@@ -105,10 +108,13 @@ Can be plotted with the plot method plot" />
     </li>
   </ul>
 </li>
+<li>
+  <a href="../news/index.html">Changelog</a>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/reginalexavier/OpenLand">
+  <a href="https://github.com/reginalexavier/OpenLand/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
@@ -132,60 +138,70 @@ Can be plotted with the plot method plot" />
     </div>
 
     <div class="ref-description">
-    <p>A S4 class for the Transition level result of an Intensity analysis.
-Can be plotted with the plot method <code><a href='plot.html'>plot</a></code></p>
+    <p>A S4 class for the Transition level result of an Intensity analysis. Can be
+plotted with the plot method <code><a href='plot-methods.html'>plot</a></code>.</p>
     </div>
 
 
 
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>The slots <code>transitionData</code> and <code>transitionStationarity</code> can receive
-   tables for "Gain of class n" or "Loss of class m" in the following format:</p><ol>
-<li><p>Gain of class n:</p>
+    <p>The slots <code>transitionData</code> and <code>transitionStationarity</code> can
+receive tables for "Gain of category n" or "Loss of category m" in the following
+format:</p><ol>
+<li><p>Gain of category n:</p>
 <p></p><ul>
 <li><p><code>transitionData</code>: <code>&lt;tibble&gt;</code>. A table with 7 columns:</p><ol>
 <li><p>Period: <code>&lt;fct&gt;</code>. The period <em>[Yt, Yt+1]</em>.</p></li>
 <li><p>From: <code>&lt;fct&gt;</code>. A category i.</p></li>
 <li><p>To: <code>&lt;fct&gt;</code>. The gaining category in the transition of interest <em>(n)</em>.</p></li>
 <li><p>Interval: <code>&lt;int&gt;</code>. Duration of the period <em>[Yt, Yt+1]</em>.</p></li>
-<li><p>T_i2n_km2/T_i2n_pixel: <code>&lt;dbl&gt;</code>. Area with transition from category i to category n
+<li><p>T_i2n_km2/T_i2n_pixel: <code>&lt;dbl&gt;</code>. Area with transition from category
+   i to category n during time interval <em>[Yt, Yt+1]</em> where <em>i</em>
+   <code>is not equal to</code> <em>n</em>.</p></li>
+<li><p>Rtin: <code>&lt;dbl&gt;</code>. Annual intensity of transition from category i to
+   category n
    during time interval <em>[Yt, Yt+1]</em> where <em>i</em>  <code>is not equal to</code> <em>n</em>.</p></li>
-<li><p>Rtin: <code>&lt;dbl&gt;</code>. Annual intensity of transition from category i to category n
-   during time interval <em>[Yt, Yt+1]</em> where <em>i</em>  <code>is not equal to</code> <em>n</em>.</p></li>
-<li><p>Wtn: <code>&lt;dbl&gt;</code>. Value of the uniform intensity of the transition to category
-   n from all non-n categories at time Yt during time interval <em>[Yt, Yt+1]</em>.</p></li>
+<li><p>Wtn: <code>&lt;dbl&gt;</code>. Value of the uniform intensity of the transition
+   to category n from all non-n categories at time Yt during time interval <em>[Yt, Yt+1]</em>.</p></li>
 </ol></li>
-<li><p>transitionStationarity: <code>&lt;tibble&gt;</code>. A table containing results of a stationarity test
- over the gain on <em>class n</em> containing 5 columns:</p><ol>
-<li><p>From: <code>&lt;fct&gt;</code>. The losing category in the transition of interest to the category n.</p></li>
-<li><p>loss: <code>&lt;int&gt;</code>. Number of times the category had losses to the category n.</p></li>
+<li><p>transitionStationarity: <code>&lt;tibble&gt;</code>. A table containing results of
+ a stationarity test over the gain on <em>category n</em> containing 5 columns:</p><ol>
+<li><p>From: <code>&lt;fct&gt;</code>. The losing category in the transition of interest
+   to the category n.</p></li>
+<li><p>loss: <code>&lt;int&gt;</code>. Number of times the category had losses to the
+   category n.</p></li>
 <li><p>N: <code>&lt;int&gt;</code>. Total number of transitions to be considered as stationary (T).</p></li>
-<li><p>Stationarity: <code>&lt;chr&gt;</code>. <em>targeted by</em> or <em>avoided by</em> the category <code>n</code>.</p></li>
-<li><p>Test: <code>&lt;chr&gt;</code>. <em>Y</em> for stationarity detected and <em>N</em> when not.</p></li>
+<li><p>Stationarity: <code>&lt;chr&gt;</code>. <em>targeted by</em> or <em>avoided by</em>
+   the category <code>n</code>.</p></li>
+<li><p>Test: <code>&lt;chr&gt;</code>. <em>Y</em> for stationarity detected and <em>N</em>
+   when not.</p></li>
 </ol></li>
 </ul></li>
-<li><p>Loss of class m:</p>
+<li><p>Loss of category m:</p>
 <p></p><ul>
 <li><p><code>transitionData</code>: <code>&lt;tibble&gt;</code>. A table with 7 columns:</p><ol>
 <li><p>Period: <code>&lt;fct&gt;</code>. The period <em>[Yt, Yt+1]</em>.</p></li>
 <li><p>To: <code>&lt;fct&gt;</code>. A category <em>j</em>.</p></li>
 <li><p>From: <code>&lt;fct&gt;</code>. The losing category in the transition of interest (m).</p></li>
 <li><p>Interval: <code>&lt;dbl&gt;</code>. Duration of the period <em>[Yt, Yt+1]</em>.</p></li>
-<li><p>T_m2j_km2/T_m2j_pixel: <code>&lt;dbl&gt;</code>. Area with transition from category <em>m</em> to
-   category <em>j</em> during time interval <em>[Yt, Yt+1]</em>
+<li><p>T_m2j_km2/T_m2j_pixel: <code>&lt;dbl&gt;</code>. Area with transition from category
+    <em>m</em> to category <em>j</em> during time interval <em>[Yt, Yt+1]</em>
    where <em>j</em>  <code>is not equal to</code> <em>m</em>.</p></li>
 <li><p>Qtmj: <code>&lt;dbl&gt;</code>. Annual intensity of transition from category <em>m</em> to
    category <em>j</em> during time interval <em>[Yt, Yt+1]</em>
    where <em>j</em>  <code>is not equal to</code> <em>m</em>.</p></li>
-<li><p>Vtm: <code>&lt;dbl&gt;</code>. Value of the uniform intensity of the transition from
-   category <em>m</em> to all <em>non-m</em> categories at time Y<sub>t+1</sub>
+<li><p>Vtm: <code>&lt;dbl&gt;</code>. Value of the uniform intensity of the transition
+   from category <em>m</em> to all <em>non-m</em> categories at time Y<sub>t+1</sub>
    during time interval <em>[Yt, Yt+1]</em>.</p></li>
 </ol></li>
-<li><p>transitionStationarity: <code>&lt;tibble&gt;</code>. A table containing results of a stationarity test
- over the loss of <em>class m</em> containing 5 columns:</p><ol>
-<li><p>To: <code>&lt;fct&gt;</code>. The gaining category in the transition of interest from the category m.</p></li>
-<li><p>gain: <code>&lt;int&gt;</code>. Number of times the category had gains from the category m.</p></li>
+<li><p>transitionStationarity: <code>&lt;tibble&gt;</code>. A table containing results of
+ a stationarity test
+ over the loss of <em>category m</em> containing 5 columns:</p><ol>
+<li><p>To: <code>&lt;fct&gt;</code>. The gaining category in the transition of interest
+   from the category m.</p></li>
+<li><p>gain: <code>&lt;int&gt;</code>. Number of times the category had gains from the
+   category m.</p></li>
 <li><p>N: <code>&lt;int&gt;</code>. Total number of transitions to be considered as stationary (T).</p></li>
 <li><p>Stationarity: <code>&lt;chr&gt;</code>. <em>targeted</em> or <em>avoided</em> the category <code>m</code>.</p></li>
 <li><p>Test: <code>&lt;chr&gt;</code>. <em>Y</em> for stationarity detected and <em>N</em> when not.</p></li>
@@ -197,27 +213,24 @@ Can be plotted with the plot method <code><a href='plot.html'>plot</a></code></p
 
     
 
-<dl class='dl-horizontal'>
-<dt><code>lookupcolor</code></dt><dd><p>character. The colors associated with the LUC legend items</p></dd>
+<dl'>
+<dt><code>lookupcolor</code></dt><dd><p>The colors (character vector) associated with the LUC legend items.</p></dd>
 
 <dt><code>transitionData</code></dt><dd><p>tibble. A table of Transition level's results (gain n (<em>Rtin</em> &amp; <em>Wtn</em>)
-or loss m (<em>Qtmj</em> &amp; <em>Vtm</em>) values)</p></dd>
+or loss m (<em>Qtmj</em> &amp; <em>Vtm</em>) values).</p></dd>
 
-<dt><code>transitionStationarity</code></dt><dd><p>tibble. A table containing results of a stationarity test. A change
-is considered stationary only if the intensities for all time intervals reside
-on one side of the uniform intensity, i.e are smaller or bigger than the uniform
-rate over the whole period.</p></dd>
+<dt><code>transitionStationarity</code></dt><dd><p>tibble. A table containing results of a stationarity
+test. A change is considered stationary only if the intensities for all time
+intervals reside on one side of the uniform intensity, i.e are smaller or bigger
+than the uniform rate over the whole period.</p></dd>
 
 </dl>
 
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#details">Details</a></li>
-      <li><a href="#slots">Slots</a></li>
-    </ul>
-
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
 
@@ -228,7 +241,7 @@ rate over the whole period.</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.0.</p>
 </div>
 
       </footer>

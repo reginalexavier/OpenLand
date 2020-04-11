@@ -105,12 +105,12 @@ contingencyTable <-
 
     # compute the cross table of two layers, then setting the columns name
 
-    table_one <- raster::crosstab(rList[[1]], rList[[raster::nlayers(rList)]], long = T)
+    table_one <- raster::crosstab(rList[[1]], rList[[raster::nlayers(rList)]], long = TRUE)
 
     if (raster::nlayers(rList) == 2) {
       table_multi <- table_one
     } else {
-      table_multi <- raster::crosstab(rList, long = T)
+      table_multi <- raster::crosstab(rList, long = TRUE)
 
     }
 

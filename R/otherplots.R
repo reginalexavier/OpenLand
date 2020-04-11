@@ -502,7 +502,7 @@ sankeyLand <- function(dataset, legendtable, iterations = 0) {
       as.character(linkMultistep[order(linkMultistep$From), ]$source),
       as.character(linkMultistep[order(linkMultistep$To), ]$target)
     ) %>% unique()) %>%
-    tidyr::separate(name, c("name02", "year"), sep = "-", remove = F)
+    tidyr::separate(name, c("name02", "year"), sep = "-", remove = FALSE)
 
   linkMultistep$IDsource <-
     match(linkMultistep$source, nodeMultistep$name) - 1

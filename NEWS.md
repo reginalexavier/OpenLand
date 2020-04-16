@@ -1,4 +1,6 @@
-# OpenLand (development version)
+# OpenLand 1.0.1
+
+* fixed summary_map bug
 
 # OpenLand 1.0.0
 

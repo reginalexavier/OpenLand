@@ -4,7 +4,7 @@ language: r
 cache: packages
 
 r_packages: 
-  - lwgeom
+  - lwgeom-0.2-1
 
 os:
   - linux

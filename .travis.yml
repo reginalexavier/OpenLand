@@ -3,6 +3,8 @@
 language: r
 cache: packages
 
+r_packages: 
+  - lwgeom
 
 os:
   - linux
@@ -28,7 +30,6 @@ addons:
       - libgdal-dev
       - qpdf
       - ghostscript
-      - lwgeom
 
 after_success:
   - Rscript -e 'covr::codecov(type = "all")'

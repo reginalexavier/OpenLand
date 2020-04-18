@@ -30,7 +30,7 @@ NULL
 #'
 #' @keywords methods plot
 #' @docType methods
-#' @rdname plot-methods
+#' @rdname plot
 #' @aliases plot,ANY,ANY-method plot,Interval,ANY-method plot,Category,ANY-method plot,Transition,ANY-method
 #' @export
 #'
@@ -42,7 +42,7 @@ methods::setGeneric(name = "plot", def = function(x, y, ...)
 
 #' @param Interval The class.
 #' @docType methods
-#' @rdname plot-methods
+#' @rdname plot
 #' @export
 #' @aliases plot,Interval,ANY-method
 #'
@@ -201,7 +201,7 @@ methods::setMethod(
 
 #' @param Category The class.
 #' @docType methods
-#' @rdname plot-methods
+#' @rdname plot
 #' @export
 #'
 #' @aliases plot,Category,ANY-method
@@ -360,7 +360,7 @@ methods::setMethod(
 
 #' @param Transition The class.
 #' @docType methods
-#' @rdname plot-methods
+#' @rdname plot
 #' @export
 #'
 #' @aliases plot,Transition,ANY-method

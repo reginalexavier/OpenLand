@@ -208,8 +208,8 @@ chordDiagramLand <-
         onestepcircle <- onestepcircle[c(1,2,4)]
       }
 
-    old.par <- par(no.readonly = TRUE)
-    on.exit(par(old.par))
+    old.par <- graphics::par(no.readonly = TRUE)
+    on.exit(graphics::par(old.par))
     circlize::circos.clear()
 
     # parameters
@@ -221,7 +221,7 @@ chordDiagramLand <-
       "canvas.xlim" = c(x.margin[[1]], x.margin[[2]])
       )
 
-    par(mar = rep(0, 4)) # outer part
+    graphics::par(mar = rep(0, 4)) # outer part
 
     # the base plot
     circlize::chordDiagram(
@@ -502,7 +502,7 @@ sankeyLand <- function(dataset, legendtable, iterations = 0) {
       as.character(linkMultistep[order(linkMultistep$From), ]$source),
       as.character(linkMultistep[order(linkMultistep$To), ]$target)
     ) %>% unique()) %>%
-    tidyr::separate(name, c("name02", "year"), sep = "-", remove = F)
+    tidyr::separate(name, c("name02", "year"), sep = "-", remove = FALSE)
 
   linkMultistep$IDsource <-
     match(linkMultistep$source, nodeMultistep$name) - 1

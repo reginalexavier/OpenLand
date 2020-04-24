@@ -26,10 +26,11 @@ NULL
 #'
 #' @import ggplot2
 #' @importFrom gridExtra grid.arrange
+#' @importFrom grid textGrob gpar
 #'
 #' @keywords methods plot
 #' @docType methods
-#' @rdname plot-methods
+#' @rdname plot
 #' @aliases plot,ANY,ANY-method plot,Interval,ANY-method plot,Category,ANY-method plot,Transition,ANY-method
 #' @export
 #'
@@ -41,7 +42,7 @@ methods::setGeneric(name = "plot", def = function(x, y, ...)
 
 #' @param Interval The class.
 #' @docType methods
-#' @rdname plot-methods
+#' @rdname plot
 #' @export
 #' @aliases plot,Interval,ANY-method
 #'
@@ -84,8 +85,8 @@ methods::setMethod(
       ylab(NULL) +
       scale_color_manual(values = "black") +
       labs(fill = labs[[1]], color = labs[[2]]) +
-      scale_y_continuous(expand = expand_scale(mult = c(0, .01))) +
-      scale_x_discrete(expand = expand_scale(mult = c(0.06, 0.06))) +
+      scale_y_continuous(expand = expansion(mult = c(0, .01))) +
+      scale_x_discrete(expand = expansion(mult = c(0.06, 0.06))) +
       guides(fill = guide_legend(order = 1),
              color = guide_legend(order = 2)) +
       coord_flip() +
@@ -140,8 +141,8 @@ methods::setMethod(
       xlab(expression(paste("Periodo de tempo [ ", Y[t], ",", Y[t + 1], "]"))) +
       ylab(NULL) +
       geom_hline(aes(yintercept = 0), size = .01) +
-      scale_y_reverse(expand = expand_scale(mult = c(0.01, 0))) +
-      scale_x_discrete(position = "top", expand = expand_scale(mult = c(0.06, 0.06))) +
+      scale_y_reverse(expand = expansion(mult = c(0.01, 0))) +
+      scale_x_discrete(position = "top", expand = expansion(mult = c(0.06, 0.06))) +
       theme(
         axis.title.y = element_blank(),
         axis.ticks.length.y = unit(2, "pt"),
@@ -200,7 +201,7 @@ methods::setMethod(
 
 #' @param Category The class.
 #' @docType methods
-#' @rdname plot-methods
+#' @rdname plot
 #' @export
 #'
 #' @aliases plot,Category,ANY-method
@@ -237,7 +238,7 @@ methods::setMethod(
       scale_color_manual(values = "black") +
       coord_flip() +
       labs(fill = labs[[1]], colour = labs[[2]]) +
-      scale_y_continuous(expand = expand_scale(mult = c(0, .01))) +
+      scale_y_continuous(expand = expansion(mult = c(0, .01))) +
       guides(fill = guide_legend(order = 1),
              color = guide_legend(order = 2)) +
 
@@ -292,7 +293,7 @@ methods::setMethod(
       geom_hline(aes(yintercept = 0), size = .3) +
       coord_flip() +
       labs(fill = "Categories") +
-      scale_y_reverse(expand = expand_scale(mult = c(0.01, 0))) +
+      scale_y_reverse(expand = expansion(mult = c(0.01, 0))) +
       scale_x_discrete(position = "top") +
       theme(
         axis.ticks.length.y = unit(0, "pt"),
@@ -359,7 +360,7 @@ methods::setMethod(
 
 #' @param Transition The class.
 #' @docType methods
-#' @rdname plot-methods
+#' @rdname plot
 #' @export
 #'
 #' @aliases plot,Transition,ANY-method
@@ -396,7 +397,7 @@ methods::setMethod(
       scale_color_manual(values = "black") +
       coord_flip() +
       labs(fill = labs[[1]], colour = labs[[2]]) +
-      scale_y_continuous(expand = expand_scale(mult = c(0, .01))) +
+      scale_y_continuous(expand = expansion(mult = c(0, .01))) +
       guides(fill = guide_legend(order = 1),
              color = guide_legend(order = 2)) +
       geom_curve(
@@ -450,7 +451,7 @@ methods::setMethod(
       geom_hline(aes(yintercept = 0), size = .3) +
       coord_flip() +
       labs(fill = "Categories") +
-      scale_y_reverse(expand = expand_scale(mult = c(0.01, 0))) +
+      scale_y_reverse(expand = expansion(mult = c(0.01, 0))) +
       scale_x_discrete(position = "top") +
       theme(
         axis.ticks.length.y = unit(0, "pt"),

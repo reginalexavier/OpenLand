@@ -98,11 +98,12 @@ summary_map <- function(path) {
     }
   value_map <- table(raster::values(rastermap))
 
-  tbfinal <- dplyr::tibble(pixvalue = numeric(), Qt = numeric())
+  tbfinal <- dplyr::tibble(pixvalue = numeric(length(value_map)),
+                           Qt = numeric(length(value_map)))
 
   for (i in seq_along(value_map)) {
     tbfinal[i, c(1:2)] <-
-      c(as.numeric(names(value_map)[i]), value_map[[i]])
+      list(as.numeric(names(value_map)[i]), value_map[[i]])
   }
   return(tbfinal)
 }

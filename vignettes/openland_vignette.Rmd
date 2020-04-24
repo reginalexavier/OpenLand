@@ -169,7 +169,7 @@ Visualizations of the IA results are obtained from the `plot(intensity-object)` 
 
 #### Interval Level
 
-```{r fig.height=4, fig.width=7, warning=FALSE}
+```{r fig.width=7, fig.height=4}
 
 plot(testSL$interval_lvl,
      labels = c(leftlabel = "Interval Change Area (%)",
@@ -183,7 +183,7 @@ plot(testSL$interval_lvl,
 
 * Gain Area
 
-```{r, fig.width=7, fig.height=4, warning=FALSE}
+```{r fig.width=7, fig.height=4}
 
 plot(testSL$category_lvlGain,
      labels = c(leftlabel = bquote("Gain Area (" ~ km^2 ~ ")"),
@@ -195,7 +195,7 @@ plot(testSL$category_lvlGain,
 ```
 
 * Loss Area
-```{r, fig.width=7, fig.height=4, warning=FALSE}
+```{r fig.width=7, fig.height=4}
 
 plot(testSL$category_lvlLoss,
      labels = c(leftlabel = bquote("Loss Area (" ~ km^2 ~ ")"),
@@ -208,7 +208,7 @@ plot(testSL$category_lvlLoss,
 #### Transition Level
 
 * Gain of the `n` category ("Ap")
-```{r, fig.width=7, fig.height=4, warning=FALSE}
+```{r fig.width=7, fig.height=4}
 
 plot(testSL$transition_lvlGain_n,
      labels = c(leftlabel = bquote("Gain of Ap (" ~ km^2 ~ ")"),
@@ -219,7 +219,7 @@ plot(testSL$transition_lvlGain_n,
 ```
 
 * Loss of the `m` category ("SG")
-```{r, fig.width=7, fig.height=4, warning=FALSE}
+```{r fig.width=7, fig.height=4}
 
 plot(testSL$transition_lvlLoss_m,
      labels = c(leftlabel = bquote("Loss of SG (" ~ km^2 ~ ")"),
@@ -260,7 +260,7 @@ chordDiagramLand(dataset = SL_2002_2014$lulc_Onestep,
 
 #### Sankey Multi Step
 
-```{r, fig.width=8, fig.height=4}
+```{r fig.width=8, fig.height=4}
 
 sankeyLand(dataset = SL_2002_2014$lulc_Multistep,
            legendtable = SL_2002_2014$tb_legend)
@@ -275,7 +275,7 @@ sankeyLand(dataset = SL_2002_2014$lulc_Multistep,
 
 #### Sankey One Step
 
-```{r, fig.width=8, fig.height=4}
+```{r fig.width=8, fig.height=4}
 
 sankeyLand(dataset = SL_2002_2014$lulc_Onestep,
            legendtable = SL_2002_2014$tb_legend)
@@ -287,7 +287,7 @@ sankeyLand(dataset = SL_2002_2014$lulc_Onestep,
 
 #### An Evolution Bar Plot
 
-```{r, fig.width=7, fig.height=4}
+```{r fig.width=7, fig.height=4}
 
 barplotLand(dataset = SL_2002_2014$lulc_Multistep, 
           legendtable = SL_2002_2014$tb_legend,
@@ -371,7 +371,7 @@ Plotting the map with the `tmap` function:
 
 ```
 
-```{r mymap, echo=FALSE, fig.cap='Accumulate changes in pixel in the interval 2002 - 2014 in four time points (2002, 2008, 2010, 2012, 2014)', out.width='100%'}
+```{r mymap, echo=FALSE, fig.cap='Accumulated changes in pixels in the interval 2002 - 2014 at four time points (2002, 2008, 2010, 2012, 2014)', out.width='100%'}
 
 knitr::include_graphics("acc_mymap.png")
 

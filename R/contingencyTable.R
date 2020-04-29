@@ -103,43 +103,34 @@ contingencyTable <-
       stop('contingencyTable needs at least 2 rasters')
     }
 
-    # compute the cross table of two layers, then setting the columns name
+    # compute the cross table of two rasters, then setting the columns name
+    table_cross <- function(x, y) {
+      contengency <- raster::crosstab(x, y, long = TRUE, progress = "text")
+      contengency %>% dplyr::mutate(Year_from = colnames(contengency)[1],
+                                    Year_to = colnames(contengency)[2]) %>%
+        dplyr::rename(
+          From = colnames(contengency)[1],
+          To = colnames(contengency)[2],
+          QtPixel = colnames(contengency)[3]
+        ) %>% dplyr::mutate(From = as.integer(From), To = as.integer(To))
+    }
 
-    table_one <- raster::crosstab(rList[[1]], rList[[raster::nlayers(rList)]], long = TRUE)
+
+    table_one <- table_cross(rList[[1]], rList[[raster::nlayers(rList)]])
 
     if (raster::nlayers(rList) == 2) {
       table_multi <- table_one
-    } else {
-      table_multi <- raster::crosstab(rList, long = TRUE)
-
+    }
+    else {
+      rList_multi <- raster::unstack(rList)
+      table_multi <- Reduce(rbind,
+                            mapply(function(x, y)
+                              table_cross(x, y), rList_multi[1:(length(rList_multi) - 1)],
+                              rList_multi[2:length(rList_multi)], SIMPLIFY = FALSE))
     }
 
-    table_cross <- function(w) {
-      Reduce(rbind,
-             lapply(seq_len(ncol(w) - 2), function(x) {
-               contengency <- w[c(x, x + 1, ncol(w))]
-               contengency %>%  dplyr::mutate(Year_from = colnames(contengency)[1],
-                                              Year_to = colnames(contengency)[2]) %>%
-                 dplyr::rename(
-                   From = colnames(contengency)[1],
-                   To = colnames(contengency)[2],
-                   QtPixel = colnames(contengency)[3]
-                 ) %>% dplyr::mutate(From = as.integer(From), To = as.integer(To))
-             }))}
 
-    lulc <- list("oneStep", "multiStep")
-
-
-    lulc[[1]] <- table_cross(table_one)
-
-    if (raster::nlayers(rList) == 2) {
-      lulc[[2]] <- lulc[[1]]
-    } else {
-      lulc[[2]] <- table_cross(table_multi) %>%
-        group_by(Year_to, Year_from, From, To) %>% summarise(QtPixel = sum(QtPixel)) %>%
-        select(From, To, QtPixel, Year_from, Year_to)
-    }
-
+    lulc <- list(oneStep = table_one, multiStep = table_multi)
 
     lulctable <-
       lapply(lulc, function(x)
@@ -149,7 +140,7 @@ contingencyTable <-
           dplyr::select(-strings01, -strings02) %>%
           dplyr::mutate(yearFrom = as.integer(yearFrom), yearTo = as.integer(yearTo),
                         Interval = yearTo - yearFrom) %>%
-          dplyr::mutate(km2 = QtPixel * (pixelresolution ^ 2) / 1000000) %>%
+          dplyr::mutate(km2 = QtPixel * (pixelresolution ^ 2) / 1e+06) %>%
           tidyr::unite("Period", c("yearFrom", "yearTo"), sep = "-", remove = FALSE) %>%
           dplyr::select(Period, From, To, km2, QtPixel, Interval, yearFrom, yearTo))
 

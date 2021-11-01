@@ -88,7 +88,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -114,7 +114,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/reginalexavier/OpenLand/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -140,7 +140,7 @@
     <p>Extracts LUC transitions for all input grids of the time series.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>contingencyTable</span>(<span class='no'>input_raster</span>, <span class='kw'>pixelresolution</span> <span class='kw'>=</span> <span class='fl'>30</span>)</pre>
+    <pre class="usage"><span class='fu'>contingencyTable</span><span class='op'>(</span><span class='va'>input_raster</span>, pixelresolution <span class='op'>=</span> <span class='fl'>30</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -193,12 +193,12 @@ supported file types.</p></td>
         and the <code>levels</code> should be put in the right order for legend
         plotting. Like:</p><pre>
 
-        <span class='no'>myobject</span>$<span class='no'>tb_legend</span>$<span class='no'>categoryName</span> <span class='kw'>&amp;</span><span class='no'>lt</span>;- <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"name1"</span>, <span class='st'>"name2"</span>, <span class='st'>"name3"</span>, <span class='st'>"name4"</span>),
-                                               <span class='kw'>levels</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"name3"</span>, <span class='st'>"name2"</span>, <span class='st'>"name1"</span>, <span class='st'>"name4"</span>))</pre></li>
+        <span class='va'>myobject</span><span class='op'>$</span><span class='va'>tb_legend</span><span class='op'>$</span><span class='va'>categoryName</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"name1"</span>, <span class='st'>"name2"</span>, <span class='st'>"name3"</span>, <span class='st'>"name4"</span><span class='op'>)</span>,
+                                               levels <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"name3"</span>, <span class='st'>"name2"</span>, <span class='st'>"name1"</span>, <span class='st'>"name4"</span><span class='op'>)</span><span class='op'>)</span></pre></li>
 <li><p>The colors have to in the same order as the values in the <code>categoryValue</code> column. Colors can be given by the
        color name (eg. "black") or an HEX value (eg. #FFFFFF). Like:</p><pre>
 
-       <span class='no'>myobject</span>$<span class='no'>tb_legend</span>$<span class='no'>color</span> <span class='kw'>&amp;</span><span class='no'>lt</span>;- <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"#CDB79E"</span>, <span class='st'>"red"</span>, <span class='st'>"#66CD00"</span>, <span class='st'>"yellow"</span>)</pre></li>
+       <span class='va'>myobject</span><span class='op'>$</span><span class='va'>tb_legend</span><span class='op'>$</span><span class='va'>color</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"#CDB79E"</span>, <span class='st'>"red"</span>, <span class='st'>"#66CD00"</span>, <span class='st'>"yellow"</span><span class='op'>)</span></pre></li>
 </ul></li>
 </ol></li>
 <li><p><code>totalArea</code>: <code>&lt;tibble&gt;</code>  A table with the total area of the
@@ -213,12 +213,13 @@ supported file types.</p></td>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
-<span class='no'>url</span> <span class='kw'>&lt;-</span> <span class='st'>"https://zenodo.org/record/3685230/files/SaoLourencoBasin.rda?download=1"</span>
-<span class='no'>temp</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span>()
-<span class='fu'><a href='https://rdrr.io/r/utils/download.file.html'>download.file</a></span>(<span class='no'>url</span>, <span class='no'>temp</span>, <span class='kw'>mode</span> <span class='kw'>=</span> <span class='st'>"wb"</span>) <span class='co'>#downloading the online dataset</span>
-<span class='fu'><a href='https://rdrr.io/r/base/load.html'>load</a></span>(<span class='no'>temp</span>)
+<span class='va'>url</span> <span class='op'>&lt;-</span> <span class='st'>"https://zenodo.org/record/3685230/files/SaoLourencoBasin.rda?download=1"</span>
+<span class='va'>temp</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span><span class='op'>(</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/utils/download.file.html'>download.file</a></span><span class='op'>(</span><span class='va'>url</span>, <span class='va'>temp</span>, mode <span class='op'>=</span> <span class='st'>"wb"</span><span class='op'>)</span> <span class='co'>#downloading the online dataset</span>
+<span class='fu'><a href='https://rdrr.io/r/base/load.html'>load</a></span><span class='op'>(</span><span class='va'>temp</span><span class='op'>)</span>
 <span class='co'># the contingencyTable() function, with the SaoLourencoBasin dataset</span>
-<span class='fu'>contingencyTable</span>(<span class='kw'>input_raster</span> <span class='kw'>=</span> <span class='no'>SaoLourencoBasin</span>, <span class='kw'>pixelresolution</span> <span class='kw'>=</span> <span class='fl'>30</span>)</div><div class='output co'>#&gt;   |                                                                              |                                                                      |   0%  |                                                                              |==========                                                            |  14%  |                                                                              |====================                                                  |  29%  |                                                                              |==============================                                        |  43%  |                                                                              |========================================                              |  57%  |                                                                              |==================================================                    |  71%  |                                                                              |============================================================          |  86%  |                                                                              |======================================================================| 100%
+<span class='fu'>contingencyTable</span><span class='op'>(</span>input_raster <span class='op'>=</span> <span class='va'>SaoLourencoBasin</span>, pixelresolution <span class='op'>=</span> <span class='fl'>30</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;   |                                                                              |                                                                      |   0%  |                                                                              |==========                                                            |  14%  |                                                                              |====================                                                  |  29%  |                                                                              |==============================                                        |  43%  |                                                                              |========================================                              |  57%  |                                                                              |==================================================                    |  71%  |                                                                              |============================================================          |  86%  |                                                                              |======================================================================| 100%
 #&gt; 
 #&gt;   |                                                                              |                                                                      |   0%  |                                                                              |==========                                                            |  14%  |                                                                              |====================                                                  |  29%  |                                                                              |==============================                                        |  43%  |                                                                              |========================================                              |  57%  |                                                                              |==================================================                    |  71%  |                                                                              |============================================================          |  86%  |                                                                              |======================================================================| 100%
 #&gt; 
@@ -228,62 +229,62 @@ supported file types.</p></td>
 #&gt; 
 #&gt;   |                                                                              |                                                                      |   0%  |                                                                              |==========                                                            |  14%  |                                                                              |====================                                                  |  29%  |                                                                              |==============================                                        |  43%  |                                                                              |========================================                              |  57%  |                                                                              |==================================================                    |  71%  |                                                                              |============================================================          |  86%  |                                                                              |======================================================================| 100%
 #&gt; </div><div class='output co'>#&gt; $lulc_Multistep
-#&gt; # A tibble: 130 x 8
+#&gt; <span style='color: #949494;'># A tibble: 130 × 8</span>
 #&gt;    Period     From    To      km2 QtPixel Interval yearFrom yearTo
-#&gt;    &lt;chr&gt;     &lt;int&gt; &lt;int&gt;    &lt;dbl&gt;   &lt;int&gt;    &lt;int&gt;    &lt;int&gt;  &lt;int&gt;
-#&gt;  1 2002-2008     2     2 6543.    7269961        6     2002   2008
-#&gt;  2 2002-2008     2    10    1.56     1736        6     2002   2008
-#&gt;  3 2002-2008     2    11   55.2     61320        6     2002   2008
-#&gt;  4 2002-2008     2    12   23.9     26609        6     2002   2008
-#&gt;  5 2002-2008     3     2   37.5     41649        6     2002   2008
-#&gt;  6 2002-2008     3     3 2133.    2370190        6     2002   2008
-#&gt;  7 2002-2008     3     7  155.     172718        6     2002   2008
-#&gt;  8 2002-2008     3    11    7.48     8307        6     2002   2008
-#&gt;  9 2002-2008     3    12    0.356     395        6     2002   2008
-#&gt; 10 2002-2008     3    13    0.081      90        6     2002   2008
-#&gt; # … with 120 more rows
+#&gt;    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>
+#&gt; <span style='color: #BCBCBC;'> 1</span> 2002-2008     2     2 <span style='text-decoration: underline;'>6</span>543.    7<span style='text-decoration: underline;'>269</span>961        6     <span style='text-decoration: underline;'>2</span>002   <span style='text-decoration: underline;'>2</span>008
+#&gt; <span style='color: #BCBCBC;'> 2</span> 2002-2008     2    10    1.56     <span style='text-decoration: underline;'>1</span>736        6     <span style='text-decoration: underline;'>2</span>002   <span style='text-decoration: underline;'>2</span>008
+#&gt; <span style='color: #BCBCBC;'> 3</span> 2002-2008     2    11   55.2     <span style='text-decoration: underline;'>61</span>320        6     <span style='text-decoration: underline;'>2</span>002   <span style='text-decoration: underline;'>2</span>008
+#&gt; <span style='color: #BCBCBC;'> 4</span> 2002-2008     2    12   23.9     <span style='text-decoration: underline;'>26</span>609        6     <span style='text-decoration: underline;'>2</span>002   <span style='text-decoration: underline;'>2</span>008
+#&gt; <span style='color: #BCBCBC;'> 5</span> 2002-2008     3     2   37.5     <span style='text-decoration: underline;'>41</span>649        6     <span style='text-decoration: underline;'>2</span>002   <span style='text-decoration: underline;'>2</span>008
+#&gt; <span style='color: #BCBCBC;'> 6</span> 2002-2008     3     3 <span style='text-decoration: underline;'>2</span>133.    2<span style='text-decoration: underline;'>370</span>190        6     <span style='text-decoration: underline;'>2</span>002   <span style='text-decoration: underline;'>2</span>008
+#&gt; <span style='color: #BCBCBC;'> 7</span> 2002-2008     3     7  155.     <span style='text-decoration: underline;'>172</span>718        6     <span style='text-decoration: underline;'>2</span>002   <span style='text-decoration: underline;'>2</span>008
+#&gt; <span style='color: #BCBCBC;'> 8</span> 2002-2008     3    11    7.48     <span style='text-decoration: underline;'>8</span>307        6     <span style='text-decoration: underline;'>2</span>002   <span style='text-decoration: underline;'>2</span>008
+#&gt; <span style='color: #BCBCBC;'> 9</span> 2002-2008     3    12    0.356     395        6     <span style='text-decoration: underline;'>2</span>002   <span style='text-decoration: underline;'>2</span>008
+#&gt; <span style='color: #BCBCBC;'>10</span> 2002-2008     3    13    0.081      90        6     <span style='text-decoration: underline;'>2</span>002   <span style='text-decoration: underline;'>2</span>008
+#&gt; <span style='color: #949494;'># … with 120 more rows</span>
 #&gt; 
 #&gt; $lulc_Onestep
-#&gt; # A tibble: 45 x 8
+#&gt; <span style='color: #949494;'># A tibble: 45 × 8</span>
 #&gt;    Period     From    To     km2 QtPixel Interval yearFrom yearTo
-#&gt;    &lt;chr&gt;     &lt;int&gt; &lt;int&gt;   &lt;dbl&gt;   &lt;int&gt;    &lt;int&gt;    &lt;int&gt;  &lt;int&gt;
-#&gt;  1 2002-2014     2     2 6169.   6854816       12     2002   2014
-#&gt;  2 2002-2014     2     9    2.39    2651       12     2002   2014
-#&gt;  3 2002-2014     2    10   10.4    11513       12     2002   2014
-#&gt;  4 2002-2014     2    11  412.    457631       12     2002   2014
-#&gt;  5 2002-2014     2    12   29.7    33015       12     2002   2014
-#&gt;  6 2002-2014     3     2  110.    121762       12     2002   2014
-#&gt;  7 2002-2014     3     3 2091.   2323665       12     2002   2014
-#&gt;  8 2002-2014     3     7  116.    129304       12     2002   2014
-#&gt;  9 2002-2014     3     9    7.00    7774       12     2002   2014
-#&gt; 10 2002-2014     3    11    9.32   10359       12     2002   2014
-#&gt; # … with 35 more rows
+#&gt;    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>
+#&gt; <span style='color: #BCBCBC;'> 1</span> 2002-2014     2     2 <span style='text-decoration: underline;'>6</span>169.   6<span style='text-decoration: underline;'>854</span>816       12     <span style='text-decoration: underline;'>2</span>002   <span style='text-decoration: underline;'>2</span>014
+#&gt; <span style='color: #BCBCBC;'> 2</span> 2002-2014     2     9    2.39    <span style='text-decoration: underline;'>2</span>651       12     <span style='text-decoration: underline;'>2</span>002   <span style='text-decoration: underline;'>2</span>014
+#&gt; <span style='color: #BCBCBC;'> 3</span> 2002-2014     2    10   10.4    <span style='text-decoration: underline;'>11</span>513       12     <span style='text-decoration: underline;'>2</span>002   <span style='text-decoration: underline;'>2</span>014
+#&gt; <span style='color: #BCBCBC;'> 4</span> 2002-2014     2    11  412.    <span style='text-decoration: underline;'>457</span>631       12     <span style='text-decoration: underline;'>2</span>002   <span style='text-decoration: underline;'>2</span>014
+#&gt; <span style='color: #BCBCBC;'> 5</span> 2002-2014     2    12   29.7    <span style='text-decoration: underline;'>33</span>015       12     <span style='text-decoration: underline;'>2</span>002   <span style='text-decoration: underline;'>2</span>014
+#&gt; <span style='color: #BCBCBC;'> 6</span> 2002-2014     3     2  110.    <span style='text-decoration: underline;'>121</span>762       12     <span style='text-decoration: underline;'>2</span>002   <span style='text-decoration: underline;'>2</span>014
+#&gt; <span style='color: #BCBCBC;'> 7</span> 2002-2014     3     3 <span style='text-decoration: underline;'>2</span>091.   2<span style='text-decoration: underline;'>323</span>665       12     <span style='text-decoration: underline;'>2</span>002   <span style='text-decoration: underline;'>2</span>014
+#&gt; <span style='color: #BCBCBC;'> 8</span> 2002-2014     3     7  116.    <span style='text-decoration: underline;'>129</span>304       12     <span style='text-decoration: underline;'>2</span>002   <span style='text-decoration: underline;'>2</span>014
+#&gt; <span style='color: #BCBCBC;'> 9</span> 2002-2014     3     9    7.00    <span style='text-decoration: underline;'>7</span>774       12     <span style='text-decoration: underline;'>2</span>002   <span style='text-decoration: underline;'>2</span>014
+#&gt; <span style='color: #BCBCBC;'>10</span> 2002-2014     3    11    9.32   <span style='text-decoration: underline;'>10</span>359       12     <span style='text-decoration: underline;'>2</span>002   <span style='text-decoration: underline;'>2</span>014
+#&gt; <span style='color: #949494;'># … with 35 more rows</span>
 #&gt; 
 #&gt; $tb_legend
-#&gt; # A tibble: 11 x 3
+#&gt; <span style='color: #949494;'># A tibble: 11 × 3</span>
 #&gt;    categoryValue categoryName color  
-#&gt;            &lt;int&gt; &lt;fct&gt;        &lt;chr&gt;  
-#&gt;  1             2 WKY          #DD9191
-#&gt;  2             3 EUL          #A13F3F
-#&gt;  3             4 BFD          #6F8DD2
-#&gt;  4             5 PBC          #C5CFF0
-#&gt;  5             7 YVK          #002F70
-#&gt;  6             8 GUF          #F9DCDC
-#&gt;  7             9 IVJ          #295EAE
-#&gt;  8            10 UBQ          #5F1415
-#&gt;  9            11 TXV          #F3C5C5
-#&gt; 10            12 AFB          #F9EFEF
-#&gt; 11            13 SNA          #EFF1F8
+#&gt;            <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  
+#&gt; <span style='color: #BCBCBC;'> 1</span>             2 IEY          #002F70
+#&gt; <span style='color: #BCBCBC;'> 2</span>             3 XOM          #8EA4DE
+#&gt; <span style='color: #BCBCBC;'> 3</span>             4 BWK          #0A468D
+#&gt; <span style='color: #BCBCBC;'> 4</span>             5 KEU          #EAACAC
+#&gt; <span style='color: #BCBCBC;'> 5</span>             7 LBF          #5F1415
+#&gt; <span style='color: #BCBCBC;'> 6</span>             8 DPB          #DCE2F6
+#&gt; <span style='color: #BCBCBC;'> 7</span>             9 CYV          #A13F3F
+#&gt; <span style='color: #BCBCBC;'> 8</span>            10 KGU          #6F8DD2
+#&gt; <span style='color: #BCBCBC;'> 9</span>            11 FIV          #C5CFF0
+#&gt; <span style='color: #BCBCBC;'>10</span>            12 JUB          #CE7575
+#&gt; <span style='color: #BCBCBC;'>11</span>            13 QTX          #295EAE
 #&gt; 
 #&gt; $totalArea
-#&gt; # A tibble: 1 x 2
+#&gt; <span style='color: #949494;'># A tibble: 1 × 2</span>
 #&gt;   area_km2  QtPixel
-#&gt;      &lt;dbl&gt;    &lt;int&gt;
-#&gt; 1   22418. 24908860
+#&gt;      <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>
+#&gt; <span style='color: #BCBCBC;'>1</span>   <span style='text-decoration: underline;'>22</span>418. 24<span style='text-decoration: underline;'>908</span>860
 #&gt; 
 #&gt; $totalInterval
 #&gt; [1] 12
-#&gt; </div><div class='input'># }
+#&gt; </div><div class='input'><span class='co'># }</span>
 
 
 </div></pre>
@@ -302,7 +303,7 @@ supported file types.</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

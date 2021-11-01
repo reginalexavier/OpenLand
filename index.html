@@ -53,7 +53,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -79,7 +79,7 @@
 <ul class="nav navbar-nav navbar-right">
 <li>
   <a href="https://github.com/reginalexavier/OpenLand/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -95,9 +95,9 @@
 
       </header><div class="row">
   <div class="contents col-md-9">
-<div id="openland" class="section level1">
+<div id="openland-" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
-<a href="#openland" class="anchor"></a>OpenLand <img src="reference/figures/logo.png" align="right" height="139">
+<a href="#openland-" class="anchor"></a>OpenLand <img src="reference/figures/logo.png" align="right" height="139">
 </h1></div>
 <!-- badges: start -->
 
@@ -106,18 +106,21 @@
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
 <p>Install the released version of OpenLand from CRAN:</p>
-<div class="sourceCode" id="cb1"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"OpenLand"</span>)</pre></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"OpenLand"</span><span class="op">)</span></code></pre></div>
 <p>Or install the development version from GitHub with:</p>
-<div class="sourceCode" id="cb2"><pre class="r"><span class="co"># install.packages("devtools")</span>
-<span class="kw pkg">devtools</span><span class="kw ns">::</span><span class="fu">install_github</span>(<span class="st">"reginalexavier/OpenLand"</span>)</pre></div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># install.packages("devtools")</span>
+<span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"reginalexavier/OpenLand"</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="illustrative-example" class="section level2">
 <h2 class="hasAnchor">
 <a href="#illustrative-example" class="anchor"></a>Illustrative Example</h2>
 <p>This is a basic example which shows how OpenLand works, for a more detailed illustration, please see our <a href="https://reginalexavier.github.io/OpenLand/articles/openland_vignette.html">vignettes</a>.</p>
 <p>The OpenLand functionality is illustrated for a LUC dataset of São Lourenço river basin, a major Pantanal wetland contribution area as provided by the 4<sup>th</sup> edition of the <a href="https://www.embrapa.br/pantanal/bacia-do-alto-paraguai">Monitoring of Changes in Land cover and Land Use in the Upper Paraguay River Basin - Brazilian portion - Review Period: 2012 to 2014</a> (Embrapa Pantanal, Instituto SOS Pantanal, and WWF-Brasil 2015). The time series is composed by five LUC maps (2002, 2008, 2010, 2012 and 2014). The study area of approximately 22,400 km<sup>2</sup> is located in the Cerrado Savannah biom in the southeast of the Brazilian state of Mato Grosso. For processing in the OpenLand package, the original multi-year shape file was transformed into rasters and then saved as a 5-layer <code>RasterStack</code> (<code>SaoLourencoBasin</code>), available from a public repository <a href="http://doi.org/10.5281/zenodo.3685230">(10.5281/zenodo.3685229)</a> as an <code>.RDA</code> file which can be loaded into <code>R</code>.</p>
-<div class="sourceCode" id="cb3"><pre class="r"><span class="co"># Loading the package</span>
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">OpenLand</span>)</pre></div>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Loading the package</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/reginalexavier/OpenLand">OpenLand</a></span><span class="op">)</span></code></pre></div>
 <div id="what-is-intensity-analysis" class="section level5">
 <h5 class="hasAnchor">
 <a href="#what-is-intensity-analysis" class="anchor"></a><strong>What is Intensity Analysis?</strong>
@@ -127,21 +130,22 @@
 <div id="outcomes-of-intensity-analysis" class="section level3">
 <h3 class="hasAnchor">
 <a href="#outcomes-of-intensity-analysis" class="anchor"></a>Outcomes of intensity analysis</h3>
-<p>The data is extracted from the rasters with the <a href="https://reginalexavier.github.io/OpenLand/reference/contingencyTable.html"><code><a href="reference/contingencyTable.html">contingencyTable()</a></code></a> function which returns a multiple grid information in tables for the next processing steps. Within the OpenLand package, the <a href="https://reginalexavier.github.io/OpenLand/reference/intensityAnalysis.html"><code><a href="reference/intensityAnalysis.html">intensityAnalysis()</a></code></a> function computes the three levels of analysis. It requires the object returned by the <code>contingenceTable()</code> function and that the user predefines two LUC categories <code>n</code> and <code>m</code>. Generally, <code>n</code> is a target category which experienced relevant gains and <code>m</code> a category with important losses.</p>
-<div class="sourceCode" id="cb4"><pre class="r"><span class="no">my_test</span> <span class="kw">&lt;-</span> <span class="fu"><a href="reference/intensityAnalysis.html">intensityAnalysis</a></span>(<span class="kw">dataset</span> <span class="kw">=</span> <span class="no">SL_2002_2014</span>, <span class="co"># here the outcome from the `contingenceTable()` function</span>
-                            <span class="kw">category_n</span> <span class="kw">=</span> <span class="st">"Ap"</span>, <span class="kw">category_m</span> <span class="kw">=</span> <span class="st">"SG"</span>)
+<p>The data is extracted from the rasters with the <a href="https://reginalexavier.github.io/OpenLand/reference/contingencyTable.html"><code>contingencyTable()</code></a> function which returns a multiple grid information in tables for the next processing steps. Within the OpenLand package, the <a href="https://reginalexavier.github.io/OpenLand/reference/intensityAnalysis.html"><code>intensityAnalysis()</code></a> function computes the three levels of analysis. It requires the object returned by the <code>contingenceTable()</code> function and that the user predefines two LUC categories <code>n</code> and <code>m</code>. Generally, <code>n</code> is a target category which experienced relevant gains and <code>m</code> a category with important losses.</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">my_test</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/intensityAnalysis.html">intensityAnalysis</a></span><span class="op">(</span>dataset <span class="op">=</span> <span class="va">SL_2002_2014</span>, <span class="co"># here the outcome from the `contingenceTable()` function</span>
+                            category_n <span class="op">=</span> <span class="st">"Ap"</span>, category_m <span class="op">=</span> <span class="st">"SG"</span><span class="op">)</span>
 
 <span class="co"># it returns a list with 6 objects</span>
-<span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span>(<span class="no">my_test</span>)
+<span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">my_test</span><span class="op">)</span>
 <span class="co">#&gt; [1] "lulc_table"           "interval_lvl"         "category_lvlGain"    </span>
-<span class="co">#&gt; [4] "category_lvlLoss"     "transition_lvlGain_n" "transition_lvlLoss_m"</span></pre></div>
+<span class="co">#&gt; [4] "category_lvlLoss"     "transition_lvlGain_n" "transition_lvlLoss_m"</span></code></pre></div>
 <p>The <code><a href="reference/intensityAnalysis.html">intensityAnalysis()</a></code> function returns 6 objects: lulc_table, interval_lvl, category_lvlGain, category_lvlLoss, transition_lvlGain_n, transition_lvlLoss_m. Here, we adopted an object-oriented approach that allows to set specific methods for plotting the intensity objects. Specifically, we used the S4 class, which requires the formal definition of classes and methods (Chambers 2008).</p>
 <div id="presentation-of-an-intensity-object" class="section level4">
 <h4 class="hasAnchor">
 <a href="#presentation-of-an-intensity-object" class="anchor"></a>Presentation of an intensity object</h4>
 <p>In this example we will show an object from <code>Category</code> class. A <code>Category</code> object contains three slots: the first contains the colors associated with the legend items as name attributes, the second slot contains a table of the <strong>category level</strong> result <em>(gain (G<sub>tj</sub>) or loss (L<sub>ti</sub>) values)</em> and the third slot contains a table storing the results of a stationarity test.</p>
-<div class="sourceCode" id="cb5"><pre class="r">
-<span class="no">my_test</span>$<span class="no">category_lvlGain</span>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">my_test</span><span class="op">$</span><span class="va">category_lvlGain</span>
 <span class="co">#&gt; An object of class "Category"</span>
 <span class="co">#&gt; Slot "lookupcolor":</span>
 <span class="co">#&gt;        Ap        FF        SA        SG        aa        SF      Agua        Iu </span>
@@ -150,7 +154,7 @@
 <span class="co">#&gt; "#FFA54F" "#68228B" "#636363" </span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; Slot "categoryData":</span>
-<span class="co">#&gt; # A tibble: 23 x 6</span>
+<span class="co">#&gt; # A tibble: 23 × 6</span>
 <span class="co">#&gt; # Groups:   Period, To [23]</span>
 <span class="co">#&gt;    Period    To    Interval  GG_km2   Gtj    St</span>
 <span class="co">#&gt;    &lt;fct&gt;     &lt;fct&gt;    &lt;int&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span>
@@ -164,10 +168,10 @@
 <span class="co">#&gt;  8 2010-2012 Ac           2 189.    2.00   2.12</span>
 <span class="co">#&gt;  9 2010-2012 Iu           2   1.90  0.792  2.12</span>
 <span class="co">#&gt; 10 2010-2012 R            2   2.76  0.951  2.12</span>
-<span class="co">#&gt; # ... with 13 more rows</span>
+<span class="co">#&gt; # … with 13 more rows</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; Slot "categoryStationarity":</span>
-<span class="co">#&gt; # A tibble: 12 x 5</span>
+<span class="co">#&gt; # A tibble: 12 × 5</span>
 <span class="co">#&gt;    To     Gain     N Stationarity Test </span>
 <span class="co">#&gt;    &lt;fct&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;        &lt;chr&gt;</span>
 <span class="co">#&gt;  1 aa        2     4 Active Gain  N    </span>
@@ -181,26 +185,20 @@
 <span class="co">#&gt;  9 Ac        3     4 Dormant Gain N    </span>
 <span class="co">#&gt; 10 Im        3     4 Dormant Gain N    </span>
 <span class="co">#&gt; 11 Iu        2     4 Dormant Gain N    </span>
-<span class="co">#&gt; 12 R         1     4 Dormant Gain N</span></pre></div>
+<span class="co">#&gt; 12 R         1     4 Dormant Gain N</span></code></pre></div>
 </div>
 <div id="plotting-an-intensity-object" class="section level4">
 <h4 class="hasAnchor">
 <a href="#plotting-an-intensity-object" class="anchor"></a>Plotting an intensity object</h4>
-<p>Visualizations of the IA results are obtained from the <code><a href="reference/plot.html">plot(intensity-object)</a></code> function. For more details on the function arguments, please see the documentation of the <a href="https://reginalexavier.github.io/OpenLand/reference/plot.html"><code><a href="reference/plot.html">plot()</a></code></a> method.</p>
-<div class="sourceCode" id="cb6"><pre class="r">
-<span class="fu"><a href="reference/plot.html">plot</a></span>(<span class="no">my_test</span>$<span class="no">category_lvlGain</span>,
-     <span class="kw">labels</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="kw">leftlabel</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/bquote.html">bquote</a></span>(<span class="st">"Gain Area ("</span> ~<span class="no">km</span>^<span class="fl">2</span>~ <span class="st">")"</span>),
-                <span class="kw">rightlabel</span> <span class="kw">=</span> <span class="st">"Intensity Gain (%)"</span>),
-     <span class="kw">marginplot</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">.3</span>, <span class="fl">.3</span>), <span class="kw">labs</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"Categories"</span>, <span class="st">"Uniform intensity"</span>),
-     <span class="kw">leg_curv</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="kw">x</span> <span class="kw">=</span> <span class="fl">1</span>, <span class="kw">y</span> <span class="kw">=</span> <span class="fl">.5</span>),
-     <span class="kw">fontsize_ui</span> <span class="kw">=</span> <span class="fl">8</span>)</pre></div>
-<div class="figure" style="text-align: center">
-<p><img src="reference/figures/README-cat_level-1.png" alt="Gain area outcome - Category level" width="80%"></p>
-<p class="caption">
-</p>
-<p>Gain area outcome - Category level</p>
-
-</div>
+<p>Visualizations of the IA results are obtained from the <code><a href="reference/plot.html">plot(intensity-object)</a></code> function. For more details on the function arguments, please see the documentation of the <a href="https://reginalexavier.github.io/OpenLand/reference/plot.html"><code>plot()</code></a> method.</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="reference/plot.html">plot</a></span><span class="op">(</span><span class="va">my_test</span><span class="op">$</span><span class="va">category_lvlGain</span>,
+     labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>leftlabel <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/bquote.html">bquote</a></span><span class="op">(</span><span class="st">"Gain Area ("</span> <span class="op">~</span><span class="va">km</span><span class="op">^</span><span class="fl">2</span><span class="op">~</span> <span class="st">")"</span><span class="op">)</span>,
+                rightlabel <span class="op">=</span> <span class="st">"Intensity Gain (%)"</span><span class="op">)</span>,
+     marginplot <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">.3</span>, <span class="fl">.3</span><span class="op">)</span>, labs <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Categories"</span>, <span class="st">"Uniform intensity"</span><span class="op">)</span>, 
+     leg_curv <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">1</span>, y <span class="op">=</span> <span class="fl">.5</span><span class="op">)</span>,
+     fontsize_ui <span class="op">=</span> <span class="fl">8</span><span class="op">)</span></code></pre></div>
+<p><img src="reference/figures/README-cat_level-1.png" title="Gain area outcome - Category level" alt="Gain area outcome - Category level" width="80%" style="display: block; margin: auto;"></p>
 </div>
 </div>
 <div id="miscellaneous-visualization-tools" class="section level3">
@@ -210,55 +208,37 @@
 <div id="net-and-gross-gain-and-loss" class="section level5">
 <h5 class="hasAnchor">
 <a href="#net-and-gross-gain-and-loss" class="anchor"></a>Net and Gross gain and loss</h5>
-<div class="sourceCode" id="cb7"><pre class="r">
-<span class="fu"><a href="reference/netgrossplot.html">netgrossplot</a></span>(<span class="kw">dataset</span> <span class="kw">=</span> <span class="no">SL_2002_2014</span>$<span class="no">lulc_Multistep</span>,
-             <span class="kw">legendtable</span> <span class="kw">=</span> <span class="no">SL_2002_2014</span>$<span class="no">tb_legend</span>,
-             <span class="kw">xlab</span> <span class="kw">=</span> <span class="st">"LUC Category"</span>,
-             <span class="kw">ylab</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/bquote.html">bquote</a></span>(<span class="st">"Area ("</span> ~ <span class="no">km</span>^<span class="fl">2</span> ~ <span class="st">")"</span>),
-             <span class="kw">changesLabel</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="kw">GC</span> <span class="kw">=</span> <span class="st">"Gross changes"</span>, <span class="kw">NG</span> <span class="kw">=</span> <span class="st">"Net Gain"</span>, <span class="kw">NL</span> <span class="kw">=</span> <span class="st">"Net Loss"</span>),
-             <span class="kw">color</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="kw">GC</span> <span class="kw">=</span> <span class="st">"gray70"</span>, <span class="kw">NG</span> <span class="kw">=</span> <span class="st">"#006400"</span>, <span class="kw">NL</span> <span class="kw">=</span> <span class="st">"#EE2C2C"</span>)
-             )</pre></div>
-<div class="figure" style="text-align: center">
-<p><img src="reference/figures/README-ng_plot-1.png" alt="Net Gross Changes 2002 - 2014" width="80%"></p>
-<p class="caption">
-</p>
-<p>Net Gross Changes 2002 - 2014</p>
-
-</div>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="reference/netgrossplot.html">netgrossplot</a></span><span class="op">(</span>dataset <span class="op">=</span> <span class="va">SL_2002_2014</span><span class="op">$</span><span class="va">lulc_Multistep</span>,
+             legendtable <span class="op">=</span> <span class="va">SL_2002_2014</span><span class="op">$</span><span class="va">tb_legend</span>,
+             xlab <span class="op">=</span> <span class="st">"LUC Category"</span>,
+             ylab <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/bquote.html">bquote</a></span><span class="op">(</span><span class="st">"Area ("</span> <span class="op">~</span> <span class="va">km</span><span class="op">^</span><span class="fl">2</span> <span class="op">~</span> <span class="st">")"</span><span class="op">)</span>,
+             changesLabel <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>GC <span class="op">=</span> <span class="st">"Gross changes"</span>, NG <span class="op">=</span> <span class="st">"Net Gain"</span>, NL <span class="op">=</span> <span class="st">"Net Loss"</span><span class="op">)</span>,
+             color <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>GC <span class="op">=</span> <span class="st">"gray70"</span>, NG <span class="op">=</span> <span class="st">"#006400"</span>, NL <span class="op">=</span> <span class="st">"#EE2C2C"</span><span class="op">)</span>
+             <span class="op">)</span></code></pre></div>
+<p><img src="reference/figures/README-ng_plot-1.png" title="Net Gross Changes 2002 - 2014" alt="Net Gross Changes 2002 - 2014" width="80%" style="display: block; margin: auto;"></p>
 </div>
 <div id="chord-diagram-2002---2014" class="section level5">
 <h5 class="hasAnchor">
 <a href="#chord-diagram-2002---2014" class="anchor"></a>Chord Diagram (2002 - 2014)</h5>
-<div class="sourceCode" id="cb8"><pre class="r">
-<span class="fu"><a href="reference/chordDiagramLand.html">chordDiagramLand</a></span>(<span class="kw">dataset</span> <span class="kw">=</span> <span class="no">SL_2002_2014</span>$<span class="no">lulc_Onestep</span>,
-                 <span class="kw">legendtable</span> <span class="kw">=</span> <span class="no">SL_2002_2014</span>$<span class="no">tb_legend</span>)</pre></div>
-<div class="figure" style="text-align: center">
-<p><img src="reference/figures/README-chordDiagram-1.png" alt="Chord Diagram 2002 - 2014 (area in km^2^)" width="100%"></p>
-<p class="caption">
-</p>
-<p>Chord Diagram 2002 - 2014 (area in km<sup>2</sup>)</p>
-
-</div>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="reference/chordDiagramLand.html">chordDiagramLand</a></span><span class="op">(</span>dataset <span class="op">=</span> <span class="va">SL_2002_2014</span><span class="op">$</span><span class="va">lulc_Onestep</span>,
+                 legendtable <span class="op">=</span> <span class="va">SL_2002_2014</span><span class="op">$</span><span class="va">tb_legend</span><span class="op">)</span></code></pre></div>
+<p><img src="reference/figures/README-chordDiagram-1.png" title="Chord Diagram 2002 - 2014 (area in km^2^)" alt="Chord Diagram 2002 - 2014 (area in km^2^)" width="100%" style="display: block; margin: auto;"></p>
 </div>
 <div id="sankey-multi-step-2002-2008-2010-2012-2014" class="section level5">
 <h5 class="hasAnchor">
 <a href="#sankey-multi-step-2002-2008-2010-2012-2014" class="anchor"></a>Sankey Multi Step (2002, 2008, 2010, 2012, 2014)</h5>
-<div class="sourceCode" id="cb9"><pre class="r">
-# sankeyLand(dataset = SL_2002_2014$lulc_Multistep,
-#            legendtable = SL_2002_2014$tb_legend)</pre></div>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># sankeyLand(dataset = SL_2002_2014$lulc_Multistep,</span>
+<span class="co">#            legendtable = SL_2002_2014$tb_legend)</span></code></pre></div>
 <p><img src="reference/figures/sankey_multi.png" width="80%" style="display: block; margin: auto;"></p>
 </div>
 <div id="other-functions" class="section level4">
 <h4 class="hasAnchor">
 <a href="#other-functions" class="anchor"></a>Other functions</h4>
-<p>OpenLand enables furthermore the spatial screening of LUCC frequencies for one or a series of raster layers with <a href="https://reginalexavier.github.io/OpenLand/reference/summary_map.html"><code><a href="reference/summary_map.html">summary_map()</a></code></a> and <a href="https://reginalexavier.github.io/OpenLand/reference/summary_dir.html"><code><a href="reference/summary_dir.html">summary_dir()</a></code></a>. The <a href="https://reginalexavier.github.io/OpenLand/reference/acc_changes.html"><code><a href="reference/acc_changes.html">acc_changes()</a></code></a> function returns for a LUC time series the number of times a pixel has changed during the analysed period, returning a grid layer and a table with the percentages of transition numbers in the study area. Here we use the <a href="https://github.com/mtennekes/tmap">tmap</a> package for plotting the outcomes of the <code><a href="reference/acc_changes.html">acc_changes()</a></code> function.</p>
-<div class="figure" style="text-align: center">
-<p><img src="reference/figures/acc_mymap.png" alt="Accumulated changes in pixels in the interval 2002 - 2014 at four time points (2002, 2008, 2010, 2012, 2014)" width="90%"></p>
-<p class="caption">
-</p>
-<p>Accumulated changes in pixels in the interval 2002 - 2014 at four time points (2002, 2008, 2010, 2012, 2014)</p>
-
-</div>
+<p>OpenLand enables furthermore the spatial screening of LUCC frequencies for one or a series of raster layers with <a href="https://reginalexavier.github.io/OpenLand/reference/summary_map.html"><code>summary_map()</code></a> and <a href="https://reginalexavier.github.io/OpenLand/reference/summary_dir.html"><code>summary_dir()</code></a>. The <a href="https://reginalexavier.github.io/OpenLand/reference/acc_changes.html"><code>acc_changes()</code></a> function returns for a LUC time series the number of times a pixel has changed during the analysed period, returning a grid layer and a table with the percentages of transition numbers in the study area. Here we use the <a href="https://github.com/mtennekes/tmap">tmap</a> package for plotting the outcomes of the <code><a href="reference/acc_changes.html">acc_changes()</a></code> function.</p>
+<p><img src="reference/figures/acc_mymap.png" title="Accumulated changes in pixels in the interval 2002 - 2014 at four time points (2002, 2008, 2010, 2012, 2014)" alt="Accumulated changes in pixels in the interval 2002 - 2014 at four time points (2002, 2008, 2010, 2012, 2014)" width="90%" style="display: block; margin: auto;"></p>
 </div>
 </div>
 </div>
@@ -304,9 +284,8 @@
   <div class="dev-status">
 <h2>Dev status</h2>
 <ul class="list-unstyled">
-<li><a href="https://travis-ci.org/reginalexavier/OpenLand"><img src="https://travis-ci.org/reginalexavier/OpenLand.svg?branch=master" alt="Travis build status"></a></li>
-<li><a href="https://ci.appveyor.com/project/reginalexavier/OpenLand"><img src="https://ci.appveyor.com/api/projects/status/github/reginalexavier/OpenLand?branch=master&amp;svg=true" alt="AppVeyor build status"></a></li>
-<li><a href="https://codecov.io/gh/reginalexavier/OpenLand?branch=master"><img src="https://codecov.io/gh/reginalexavier/OpenLand/branch/master/graph/badge.svg" alt="Codecov test coverage"></a></li>
+<li><a href="https://github.com/reginalexavier/OpenLand/actions"><img src="https://github.com/reginalexavier/OpenLand/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a></li>
+<li><a href="https://github.com/reginalexavier/OpenLand/actions"><img src="https://github.com/reginalexavier/OpenLand/workflows/test-coverage/badge.svg" alt="test-coverage"></a></li>
 <li><a href="https://www.gnu.org/licenses/gpl-3.0"><img src="https://img.shields.io/badge/License-GPLv3-blue.svg" alt="License: GPL v3"></a></li>
 <li><a href="https://CRAN.R-project.org/package=OpenLand"><img src="https://www.r-pkg.org/badges/version/OpenLand" alt="CRAN status"></a></li>
 </ul>
@@ -320,7 +299,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

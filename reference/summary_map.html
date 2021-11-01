@@ -89,7 +89,7 @@ present in a categorical raster." />
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -115,7 +115,7 @@ present in a categorical raster." />
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/reginalexavier/OpenLand/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -142,7 +142,7 @@ present in a categorical raster." />
 present in a categorical raster.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>summary_map</span>(<span class='no'>path</span>)</pre>
+    <pre class="usage"><span class='fu'>summary_map</span><span class='op'>(</span><span class='va'>path</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -160,24 +160,25 @@ raster only the first RasterLayer will be analysed.</p></td>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
-<span class='no'>url</span> <span class='kw'>&lt;-</span> <span class='st'>"https://zenodo.org/record/3685230/files/SaoLourencoBasin.rda?download=1"</span>
-<span class='no'>temp</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span>()
-<span class='fu'><a href='https://rdrr.io/r/utils/download.file.html'>download.file</a></span>(<span class='no'>url</span>, <span class='no'>temp</span>, <span class='kw'>mode</span> <span class='kw'>=</span> <span class='st'>"wb"</span>) <span class='co'># downloading the SaoLourencoBasin dataset</span>
-<span class='fu'><a href='https://rdrr.io/r/base/load.html'>load</a></span>(<span class='no'>temp</span>)
-<span class='fu'>summary_map</span>(<span class='no'>SaoLourencoBasin</span><span class='kw'>[[</span><span class='fl'>1</span>]])</div><div class='output co'>#&gt; # A tibble: 11 x 2
+<span class='va'>url</span> <span class='op'>&lt;-</span> <span class='st'>"https://zenodo.org/record/3685230/files/SaoLourencoBasin.rda?download=1"</span>
+<span class='va'>temp</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span><span class='op'>(</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/utils/download.file.html'>download.file</a></span><span class='op'>(</span><span class='va'>url</span>, <span class='va'>temp</span>, mode <span class='op'>=</span> <span class='st'>"wb"</span><span class='op'>)</span> <span class='co'># downloading the SaoLourencoBasin dataset</span>
+<span class='fu'><a href='https://rdrr.io/r/base/load.html'>load</a></span><span class='op'>(</span><span class='va'>temp</span><span class='op'>)</span>
+<span class='fu'>summary_map</span><span class='op'>(</span><span class='va'>SaoLourencoBasin</span><span class='op'>[[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>]</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 11 × 2</span>
 #&gt;    pixvalue      Qt
-#&gt;       &lt;dbl&gt;   &lt;dbl&gt;
-#&gt;  1        2 7359626
-#&gt;  2        3 2593349
-#&gt;  3        4 2006795
-#&gt;  4        5 4519210
-#&gt;  5        7 2365650
-#&gt;  6        8 1012738
-#&gt;  7        9   18895
-#&gt;  8       10  119314
-#&gt;  9       11 4784531
-#&gt; 10       12   97073
-#&gt; 11       13   31679</div><div class='input'># }
+#&gt;       <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
+#&gt; <span style='color: #BCBCBC;'> 1</span>        2 7<span style='text-decoration: underline;'>359</span>626
+#&gt; <span style='color: #BCBCBC;'> 2</span>        3 2<span style='text-decoration: underline;'>593</span>349
+#&gt; <span style='color: #BCBCBC;'> 3</span>        4 2<span style='text-decoration: underline;'>006</span>795
+#&gt; <span style='color: #BCBCBC;'> 4</span>        5 4<span style='text-decoration: underline;'>519</span>210
+#&gt; <span style='color: #BCBCBC;'> 5</span>        7 2<span style='text-decoration: underline;'>365</span>650
+#&gt; <span style='color: #BCBCBC;'> 6</span>        8 1<span style='text-decoration: underline;'>012</span>738
+#&gt; <span style='color: #BCBCBC;'> 7</span>        9   <span style='text-decoration: underline;'>18</span>895
+#&gt; <span style='color: #BCBCBC;'> 8</span>       10  <span style='text-decoration: underline;'>119</span>314
+#&gt; <span style='color: #BCBCBC;'> 9</span>       11 4<span style='text-decoration: underline;'>784</span>531
+#&gt; <span style='color: #BCBCBC;'>10</span>       12   <span style='text-decoration: underline;'>97</span>073
+#&gt; <span style='color: #BCBCBC;'>11</span>       13   <span style='text-decoration: underline;'>31</span>679</div><div class='input'><span class='co'># }</span>
 
 </div></pre>
   </div>
@@ -195,7 +196,7 @@ raster only the first RasterLayer will be analysed.</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

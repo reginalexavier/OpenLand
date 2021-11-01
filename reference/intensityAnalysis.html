@@ -93,7 +93,7 @@ transition step in time." />
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -119,7 +119,7 @@ transition step in time." />
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/reginalexavier/OpenLand/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -149,7 +149,7 @@ cover (LUC) maps.  For IA, a cross-tabulation matrix is composed for each LUC
 transition step in time.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>intensityAnalysis</span>(<span class='no'>dataset</span>, <span class='no'>category_n</span>, <span class='no'>category_m</span>, <span class='kw'>area_km2</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='fu'>intensityAnalysis</span><span class='op'>(</span><span class='va'>dataset</span>, <span class='va'>category_n</span>, <span class='va'>category_m</span>, area_km2 <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -239,42 +239,43 @@ Information Science. Taylor &amp; Francis, 27(9), pp. 1717–1739. doi: <a href=
     <pre class="examples"><div class='input'>
 <span class='co'># editing the category name</span>
 
-<span class='no'>SL_2002_2014</span>$<span class='no'>tb_legend</span>$<span class='no'>categoryName</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Ap"</span>, <span class='st'>"FF"</span>, <span class='st'>"SA"</span>, <span class='st'>"SG"</span>, <span class='st'>"aa"</span>, <span class='st'>"SF"</span>,
-                                             <span class='st'>"Agua"</span>, <span class='st'>"Iu"</span>, <span class='st'>"Ac"</span>, <span class='st'>"R"</span>, <span class='st'>"Im"</span>),
-                                  <span class='kw'>levels</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"FF"</span>, <span class='st'>"SF"</span>, <span class='st'>"SA"</span>, <span class='st'>"SG"</span>, <span class='st'>"aa"</span>, <span class='st'>"Ap"</span>,
-                                             <span class='st'>"Ac"</span>, <span class='st'>"Im"</span>, <span class='st'>"Iu"</span>, <span class='st'>"Agua"</span>, <span class='st'>"R"</span>))
+<span class='va'>SL_2002_2014</span><span class='op'>$</span><span class='va'>tb_legend</span><span class='op'>$</span><span class='va'>categoryName</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Ap"</span>, <span class='st'>"FF"</span>, <span class='st'>"SA"</span>, <span class='st'>"SG"</span>, <span class='st'>"aa"</span>, <span class='st'>"SF"</span>,
+                                             <span class='st'>"Agua"</span>, <span class='st'>"Iu"</span>, <span class='st'>"Ac"</span>, <span class='st'>"R"</span>, <span class='st'>"Im"</span><span class='op'>)</span>,
+                                  levels <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"FF"</span>, <span class='st'>"SF"</span>, <span class='st'>"SA"</span>, <span class='st'>"SG"</span>, <span class='st'>"aa"</span>, <span class='st'>"Ap"</span>,
+                                             <span class='st'>"Ac"</span>, <span class='st'>"Im"</span>, <span class='st'>"Iu"</span>, <span class='st'>"Agua"</span>, <span class='st'>"R"</span><span class='op'>)</span><span class='op'>)</span>
 
-<span class='no'>SL_2002_2014</span>$<span class='no'>tb_legend</span>$<span class='no'>color</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"#FFE4B5"</span>, <span class='st'>"#228B22"</span>, <span class='st'>"#00FF00"</span>, <span class='st'>"#CAFF70"</span>,
+<span class='va'>SL_2002_2014</span><span class='op'>$</span><span class='va'>tb_legend</span><span class='op'>$</span><span class='va'>color</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"#FFE4B5"</span>, <span class='st'>"#228B22"</span>, <span class='st'>"#00FF00"</span>, <span class='st'>"#CAFF70"</span>,
                                   <span class='st'>"#EE6363"</span>, <span class='st'>"#00CD00"</span>, <span class='st'>"#436EEE"</span>, <span class='st'>"#FFAEB9"</span>,
-                                  <span class='st'>"#FFA54F"</span>, <span class='st'>"#68228B"</span>, <span class='st'>"#636363"</span>)
+                                  <span class='st'>"#FFA54F"</span>, <span class='st'>"#68228B"</span>, <span class='st'>"#636363"</span><span class='op'>)</span>
 
-<span class='fu'>intensityAnalysis</span>(<span class='kw'>dataset</span> <span class='kw'>=</span> <span class='no'>SL_2002_2014</span>, <span class='kw'>category_n</span> <span class='kw'>=</span> <span class='st'>"Ap"</span>, <span class='kw'>category_m</span> <span class='kw'>=</span> <span class='st'>"SG"</span>, <span class='kw'>area_km2</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; $lulc_table
-#&gt; # A tibble: 130 x 6
+<span class='fu'>intensityAnalysis</span><span class='op'>(</span>dataset <span class='op'>=</span> <span class='va'>SL_2002_2014</span>, category_n <span class='op'>=</span> <span class='st'>"Ap"</span>, category_m <span class='op'>=</span> <span class='st'>"SG"</span>, area_km2 <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; $lulc_table
+#&gt; <span style='color: #949494;'># A tibble: 130 × 6</span>
 #&gt;    Period    From  To         km2 QtPixel Interval
-#&gt;    &lt;fct&gt;     &lt;fct&gt; &lt;fct&gt;    &lt;dbl&gt;   &lt;int&gt;    &lt;int&gt;
-#&gt;  1 2002-2008 Ap    Ap    6543.    7269961        6
-#&gt;  2 2002-2008 Ap    Iu       1.56     1736        6
-#&gt;  3 2002-2008 Ap    Ac      55.2     61320        6
-#&gt;  4 2002-2008 Ap    R       23.9     26609        6
-#&gt;  5 2002-2008 FF    Ap      37.5     41649        6
-#&gt;  6 2002-2008 FF    FF    2133.    2370190        6
-#&gt;  7 2002-2008 FF    aa     155.     172718        6
-#&gt;  8 2002-2008 FF    Ac       7.48     8307        6
-#&gt;  9 2002-2008 FF    R        0.356     395        6
-#&gt; 10 2002-2008 FF    Im       0.081      90        6
-#&gt; # … with 120 more rows
+#&gt;    <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>
+#&gt; <span style='color: #BCBCBC;'> 1</span> 2002-2008 Ap    Ap    <span style='text-decoration: underline;'>6</span>543.    7<span style='text-decoration: underline;'>269</span>961        6
+#&gt; <span style='color: #BCBCBC;'> 2</span> 2002-2008 Ap    Iu       1.56     <span style='text-decoration: underline;'>1</span>736        6
+#&gt; <span style='color: #BCBCBC;'> 3</span> 2002-2008 Ap    Ac      55.2     <span style='text-decoration: underline;'>61</span>320        6
+#&gt; <span style='color: #BCBCBC;'> 4</span> 2002-2008 Ap    R       23.9     <span style='text-decoration: underline;'>26</span>609        6
+#&gt; <span style='color: #BCBCBC;'> 5</span> 2002-2008 FF    Ap      37.5     <span style='text-decoration: underline;'>41</span>649        6
+#&gt; <span style='color: #BCBCBC;'> 6</span> 2002-2008 FF    FF    <span style='text-decoration: underline;'>2</span>133.    2<span style='text-decoration: underline;'>370</span>190        6
+#&gt; <span style='color: #BCBCBC;'> 7</span> 2002-2008 FF    aa     155.     <span style='text-decoration: underline;'>172</span>718        6
+#&gt; <span style='color: #BCBCBC;'> 8</span> 2002-2008 FF    Ac       7.48     <span style='text-decoration: underline;'>8</span>307        6
+#&gt; <span style='color: #BCBCBC;'> 9</span> 2002-2008 FF    R        0.356     395        6
+#&gt; <span style='color: #BCBCBC;'>10</span> 2002-2008 FF    Im       0.081      90        6
+#&gt; <span style='color: #949494;'># … with 120 more rows</span>
 #&gt; 
 #&gt; $interval_lvl
 #&gt; An object of class "Interval"
 #&gt; Slot "intervalData":
-#&gt; # A tibble: 4 x 4
-#&gt; # Groups:   Period [4]
+#&gt; <span style='color: #949494;'># A tibble: 4 × 4</span>
+#&gt; <span style='color: #949494;'># Groups:   Period [4]</span>
 #&gt;   Period    PercentChange    St     U
-#&gt;   &lt;fct&gt;             &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-#&gt; 1 2012-2014         3.32  1.66   1.13
-#&gt; 2 2010-2012         4.23  2.12   1.13
-#&gt; 3 2008-2010         0.880 0.440  1.13
-#&gt; 4 2002-2008         5.18  0.864  1.13
+#&gt;   <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span>             <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
+#&gt; <span style='color: #BCBCBC;'>1</span> 2012-2014         3.32  1.66   1.13
+#&gt; <span style='color: #BCBCBC;'>2</span> 2010-2012         4.23  2.12   1.13
+#&gt; <span style='color: #BCBCBC;'>3</span> 2008-2010         0.880 0.440  1.13
+#&gt; <span style='color: #BCBCBC;'>4</span> 2002-2008         5.18  0.864  1.13
 #&gt; 
 #&gt; 
 #&gt; $category_lvlGain
@@ -286,38 +287,38 @@ Information Science. Taylor &amp; Francis, 27(9), pp. 1717–1739. doi: <a href=
 #&gt; "#FFA54F" "#68228B" "#636363" 
 #&gt; 
 #&gt; Slot "categoryData":
-#&gt; # A tibble: 23 x 6
-#&gt; # Groups:   Period, To [23]
+#&gt; <span style='color: #949494;'># A tibble: 23 × 6</span>
+#&gt; <span style='color: #949494;'># Groups:   Period, To [23]</span>
 #&gt;    Period    To    Interval  GG_km2   Gtj    St
-#&gt;    &lt;fct&gt;     &lt;fct&gt;    &lt;int&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-#&gt;  1 2012-2014 aa           2  14.9   0.510  1.66
-#&gt;  2 2012-2014 Ap           2 612.    3.92   1.66
-#&gt;  3 2012-2014 Ac           2 110.    1.14   1.66
-#&gt;  4 2012-2014 Im           2   0.195 0.337  1.66
-#&gt;  5 2012-2014 Iu           2   6.79  2.67   1.66
-#&gt;  6 2010-2012 aa           2  47.0   1.18   2.12
-#&gt;  7 2010-2012 Ap           2 707.    4.84   2.12
-#&gt;  8 2010-2012 Ac           2 189.    2.00   2.12
-#&gt;  9 2010-2012 Iu           2   1.90  0.792  2.12
-#&gt; 10 2010-2012 R            2   2.76  0.951  2.12
-#&gt; # … with 13 more rows
+#&gt;    <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
+#&gt; <span style='color: #BCBCBC;'> 1</span> 2012-2014 aa           2  14.9   0.510  1.66
+#&gt; <span style='color: #BCBCBC;'> 2</span> 2012-2014 Ap           2 612.    3.92   1.66
+#&gt; <span style='color: #BCBCBC;'> 3</span> 2012-2014 Ac           2 110.    1.14   1.66
+#&gt; <span style='color: #BCBCBC;'> 4</span> 2012-2014 Im           2   0.195 0.337  1.66
+#&gt; <span style='color: #BCBCBC;'> 5</span> 2012-2014 Iu           2   6.79  2.67   1.66
+#&gt; <span style='color: #BCBCBC;'> 6</span> 2010-2012 aa           2  47.0   1.18   2.12
+#&gt; <span style='color: #BCBCBC;'> 7</span> 2010-2012 Ap           2 707.    4.84   2.12
+#&gt; <span style='color: #BCBCBC;'> 8</span> 2010-2012 Ac           2 189.    2.00   2.12
+#&gt; <span style='color: #BCBCBC;'> 9</span> 2010-2012 Iu           2   1.90  0.792  2.12
+#&gt; <span style='color: #BCBCBC;'>10</span> 2010-2012 R            2   2.76  0.951  2.12
+#&gt; <span style='color: #949494;'># … with 13 more rows</span>
 #&gt; 
 #&gt; Slot "categoryStationarity":
-#&gt; # A tibble: 12 x 5
+#&gt; <span style='color: #949494;'># A tibble: 12 × 5</span>
 #&gt;    To     Gain     N Stationarity Test 
-#&gt;    &lt;fct&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;        &lt;chr&gt;
-#&gt;  1 aa        2     4 Active Gain  N    
-#&gt;  2 Ap        2     4 Active Gain  N    
-#&gt;  3 Ac        1     4 Active Gain  N    
-#&gt;  4 Iu        2     4 Active Gain  N    
-#&gt;  5 Agua      1     4 Active Gain  N    
-#&gt;  6 R         2     4 Active Gain  N    
-#&gt;  7 aa        2     4 Dormant Gain N    
-#&gt;  8 Ap        2     4 Dormant Gain N    
-#&gt;  9 Ac        3     4 Dormant Gain N    
-#&gt; 10 Im        3     4 Dormant Gain N    
-#&gt; 11 Iu        2     4 Dormant Gain N    
-#&gt; 12 R         1     4 Dormant Gain N    
+#&gt;    <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>
+#&gt; <span style='color: #BCBCBC;'> 1</span> aa        2     4 Active Gain  N    
+#&gt; <span style='color: #BCBCBC;'> 2</span> Ap        2     4 Active Gain  N    
+#&gt; <span style='color: #BCBCBC;'> 3</span> Ac        1     4 Active Gain  N    
+#&gt; <span style='color: #BCBCBC;'> 4</span> Iu        2     4 Active Gain  N    
+#&gt; <span style='color: #BCBCBC;'> 5</span> Agua      1     4 Active Gain  N    
+#&gt; <span style='color: #BCBCBC;'> 6</span> R         2     4 Active Gain  N    
+#&gt; <span style='color: #BCBCBC;'> 7</span> aa        2     4 Dormant Gain N    
+#&gt; <span style='color: #BCBCBC;'> 8</span> Ap        2     4 Dormant Gain N    
+#&gt; <span style='color: #BCBCBC;'> 9</span> Ac        3     4 Dormant Gain N    
+#&gt; <span style='color: #BCBCBC;'>10</span> Im        3     4 Dormant Gain N    
+#&gt; <span style='color: #BCBCBC;'>11</span> Iu        2     4 Dormant Gain N    
+#&gt; <span style='color: #BCBCBC;'>12</span> R         1     4 Dormant Gain N    
 #&gt; 
 #&gt; 
 #&gt; $category_lvlLoss
@@ -329,40 +330,40 @@ Information Science. Taylor &amp; Francis, 27(9), pp. 1717–1739. doi: <a href=
 #&gt; "#FFA54F" "#68228B" "#636363" 
 #&gt; 
 #&gt; Slot "categoryData":
-#&gt; # A tibble: 29 x 6
-#&gt; # Groups:   Period, From [29]
+#&gt; <span style='color: #949494;'># A tibble: 29 × 6</span>
+#&gt; <span style='color: #949494;'># Groups:   Period, From [29]</span>
 #&gt;    Period    From  Interval GL_km2     Lti    St
-#&gt;    &lt;fct&gt;     &lt;fct&gt;    &lt;int&gt;  &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;
-#&gt;  1 2012-2014 FF           2  15.4   0.365   1.66
-#&gt;  2 2012-2014 SF           2   3.49  0.224   1.66
-#&gt;  3 2012-2014 SA           2  25.3   0.845   1.66
-#&gt;  4 2012-2014 SG           2  46.9   0.634   1.66
-#&gt;  5 2012-2014 aa           2 541.   13.6     1.66
-#&gt;  6 2012-2014 Ap           2 111.    0.759   1.66
-#&gt;  7 2012-2014 Ac           2   1.26  0.0133  1.66
-#&gt;  8 2010-2012 FF           2  11.1   0.263   2.12
-#&gt;  9 2010-2012 SF           2   4.44  0.283   2.12
-#&gt; 10 2010-2012 SA           2  29.7   0.974   2.12
-#&gt; # … with 19 more rows
+#&gt;    <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
+#&gt; <span style='color: #BCBCBC;'> 1</span> 2012-2014 FF           2  15.4   0.365   1.66
+#&gt; <span style='color: #BCBCBC;'> 2</span> 2012-2014 SF           2   3.49  0.224   1.66
+#&gt; <span style='color: #BCBCBC;'> 3</span> 2012-2014 SA           2  25.3   0.845   1.66
+#&gt; <span style='color: #BCBCBC;'> 4</span> 2012-2014 SG           2  46.9   0.634   1.66
+#&gt; <span style='color: #BCBCBC;'> 5</span> 2012-2014 aa           2 541.   13.6     1.66
+#&gt; <span style='color: #BCBCBC;'> 6</span> 2012-2014 Ap           2 111.    0.759   1.66
+#&gt; <span style='color: #BCBCBC;'> 7</span> 2012-2014 Ac           2   1.26  0.013<span style='text-decoration: underline;'>3</span>  1.66
+#&gt; <span style='color: #BCBCBC;'> 8</span> 2010-2012 FF           2  11.1   0.263   2.12
+#&gt; <span style='color: #BCBCBC;'> 9</span> 2010-2012 SF           2   4.44  0.283   2.12
+#&gt; <span style='color: #BCBCBC;'>10</span> 2010-2012 SA           2  29.7   0.974   2.12
+#&gt; <span style='color: #949494;'># … with 19 more rows</span>
 #&gt; 
 #&gt; Slot "categoryStationarity":
-#&gt; # A tibble: 14 x 5
+#&gt; <span style='color: #949494;'># A tibble: 14 × 5</span>
 #&gt;    From   Loss     N Stationarity Test 
-#&gt;    &lt;fct&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;        &lt;chr&gt;
-#&gt;  1 FF        1     4 Active Loss  N    
-#&gt;  2 SF        2     4 Active Loss  N    
-#&gt;  3 SA        2     4 Active Loss  N    
-#&gt;  4 SG        2     4 Active Loss  N    
-#&gt;  5 aa        3     4 Active Loss  N    
-#&gt;  6 Ap        1     4 Active Loss  N    
-#&gt;  7 R         1     4 Active Loss  N    
-#&gt;  8 FF        3     4 Dormant Loss N    
-#&gt;  9 SF        2     4 Dormant Loss N    
-#&gt; 10 SA        2     4 Dormant Loss N    
-#&gt; 11 SG        2     4 Dormant Loss N    
-#&gt; 12 aa        1     4 Dormant Loss N    
-#&gt; 13 Ap        3     4 Dormant Loss N    
-#&gt; 14 Ac        4     4 Dormant Loss Y    
+#&gt;    <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>
+#&gt; <span style='color: #BCBCBC;'> 1</span> FF        1     4 Active Loss  N    
+#&gt; <span style='color: #BCBCBC;'> 2</span> SF        2     4 Active Loss  N    
+#&gt; <span style='color: #BCBCBC;'> 3</span> SA        2     4 Active Loss  N    
+#&gt; <span style='color: #BCBCBC;'> 4</span> SG        2     4 Active Loss  N    
+#&gt; <span style='color: #BCBCBC;'> 5</span> aa        3     4 Active Loss  N    
+#&gt; <span style='color: #BCBCBC;'> 6</span> Ap        1     4 Active Loss  N    
+#&gt; <span style='color: #BCBCBC;'> 7</span> R         1     4 Active Loss  N    
+#&gt; <span style='color: #BCBCBC;'> 8</span> FF        3     4 Dormant Loss N    
+#&gt; <span style='color: #BCBCBC;'> 9</span> SF        2     4 Dormant Loss N    
+#&gt; <span style='color: #BCBCBC;'>10</span> SA        2     4 Dormant Loss N    
+#&gt; <span style='color: #BCBCBC;'>11</span> SG        2     4 Dormant Loss N    
+#&gt; <span style='color: #BCBCBC;'>12</span> aa        1     4 Dormant Loss N    
+#&gt; <span style='color: #BCBCBC;'>13</span> Ap        3     4 Dormant Loss N    
+#&gt; <span style='color: #BCBCBC;'>14</span> Ac        4     4 Dormant Loss Y    
 #&gt; 
 #&gt; 
 #&gt; $transition_lvlGain_n
@@ -374,42 +375,42 @@ Information Science. Taylor &amp; Francis, 27(9), pp. 1717–1739. doi: <a href=
 #&gt; "#FFA54F" "#68228B" "#636363" 
 #&gt; 
 #&gt; Slot "transitionData":
-#&gt; # A tibble: 20 x 7
-#&gt; # Groups:   Period, From [20]
+#&gt; <span style='color: #949494;'># A tibble: 20 × 7</span>
+#&gt; <span style='color: #949494;'># Groups:   Period, From [20]</span>
 #&gt;    Period    From  To    Interval T_i2n_km2    Rtin    Wtn
-#&gt;    &lt;fct&gt;     &lt;fct&gt; &lt;fct&gt;    &lt;int&gt;     &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;
-#&gt;  1 2012-2014 FF    Ap           2    12.9    0.307  2.03  
-#&gt;  2 2012-2014 SF    Ap           2     2.38   0.152  2.03  
-#&gt;  3 2012-2014 SA    Ap           2    18.1    0.605  2.03  
-#&gt;  4 2012-2014 SG    Ap           2    42.1    0.569  2.03  
-#&gt;  5 2012-2014 aa    Ap           2   537.    13.5    2.03  
-#&gt;  6 2010-2012 FF    Ap           2     3.63   0.0856 2.26  
-#&gt;  7 2010-2012 SF    Ap           2     1.08   0.0685 2.26  
-#&gt;  8 2010-2012 SA    Ap           2    12.3    0.403  2.26  
-#&gt;  9 2010-2012 SG    Ap           2     8.53   0.114  2.26  
-#&gt; 10 2010-2012 aa    Ap           2   682.    13.0    2.26  
-#&gt; 11 2008-2010 FF    Ap           2     0.968  0.0227 0.0610
-#&gt; 12 2008-2010 SF    Ap           2     1.10   0.0694 0.0610
-#&gt; 13 2008-2010 SA    Ap           2     0.971  0.0314 0.0610
-#&gt; 14 2008-2010 SG    Ap           2     3.94   0.0524 0.0610
-#&gt; 15 2008-2010 aa    Ap           2    12.0    0.233  0.0610
-#&gt; 16 2002-2008 FF    Ap           6    37.5    0.268  0.323 
-#&gt; 17 2002-2008 SF    Ap           6    24.8    0.453  0.323 
-#&gt; 18 2002-2008 SA    Ap           6    65.8    0.608  0.323 
-#&gt; 19 2002-2008 SG    Ap           6    48.3    0.198  0.323 
-#&gt; 20 2002-2008 aa    Ap           6   130.     1.02   0.323 
+#&gt;    <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
+#&gt; <span style='color: #BCBCBC;'> 1</span> 2012-2014 FF    Ap           2    12.9    0.307  2.03  
+#&gt; <span style='color: #BCBCBC;'> 2</span> 2012-2014 SF    Ap           2     2.38   0.152  2.03  
+#&gt; <span style='color: #BCBCBC;'> 3</span> 2012-2014 SA    Ap           2    18.1    0.605  2.03  
+#&gt; <span style='color: #BCBCBC;'> 4</span> 2012-2014 SG    Ap           2    42.1    0.569  2.03  
+#&gt; <span style='color: #BCBCBC;'> 5</span> 2012-2014 aa    Ap           2   537.    13.5    2.03  
+#&gt; <span style='color: #BCBCBC;'> 6</span> 2010-2012 FF    Ap           2     3.63   0.085<span style='text-decoration: underline;'>6</span> 2.26  
+#&gt; <span style='color: #BCBCBC;'> 7</span> 2010-2012 SF    Ap           2     1.08   0.068<span style='text-decoration: underline;'>5</span> 2.26  
+#&gt; <span style='color: #BCBCBC;'> 8</span> 2010-2012 SA    Ap           2    12.3    0.403  2.26  
+#&gt; <span style='color: #BCBCBC;'> 9</span> 2010-2012 SG    Ap           2     8.53   0.114  2.26  
+#&gt; <span style='color: #BCBCBC;'>10</span> 2010-2012 aa    Ap           2   682.    13.0    2.26  
+#&gt; <span style='color: #BCBCBC;'>11</span> 2008-2010 FF    Ap           2     0.968  0.022<span style='text-decoration: underline;'>7</span> 0.061<span style='text-decoration: underline;'>0</span>
+#&gt; <span style='color: #BCBCBC;'>12</span> 2008-2010 SF    Ap           2     1.10   0.069<span style='text-decoration: underline;'>4</span> 0.061<span style='text-decoration: underline;'>0</span>
+#&gt; <span style='color: #BCBCBC;'>13</span> 2008-2010 SA    Ap           2     0.971  0.031<span style='text-decoration: underline;'>4</span> 0.061<span style='text-decoration: underline;'>0</span>
+#&gt; <span style='color: #BCBCBC;'>14</span> 2008-2010 SG    Ap           2     3.94   0.052<span style='text-decoration: underline;'>4</span> 0.061<span style='text-decoration: underline;'>0</span>
+#&gt; <span style='color: #BCBCBC;'>15</span> 2008-2010 aa    Ap           2    12.0    0.233  0.061<span style='text-decoration: underline;'>0</span>
+#&gt; <span style='color: #BCBCBC;'>16</span> 2002-2008 FF    Ap           6    37.5    0.268  0.323 
+#&gt; <span style='color: #BCBCBC;'>17</span> 2002-2008 SF    Ap           6    24.8    0.453  0.323 
+#&gt; <span style='color: #BCBCBC;'>18</span> 2002-2008 SA    Ap           6    65.8    0.608  0.323 
+#&gt; <span style='color: #BCBCBC;'>19</span> 2002-2008 SG    Ap           6    48.3    0.198  0.323 
+#&gt; <span style='color: #BCBCBC;'>20</span> 2002-2008 aa    Ap           6   130.     1.02   0.323 
 #&gt; 
 #&gt; Slot "transitionStationarity":
-#&gt; # A tibble: 7 x 5
+#&gt; <span style='color: #949494;'># A tibble: 7 × 5</span>
 #&gt;   From   Loss     N Stationarity   Test 
-#&gt;   &lt;fct&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;          &lt;chr&gt;
-#&gt; 1 SF        2     4 targeted by Ap N    
-#&gt; 2 SA        1     4 targeted by Ap N    
-#&gt; 3 aa        4     4 targeted by Ap Y    
-#&gt; 4 FF        4     4 avoided by Ap  Y    
-#&gt; 5 SF        2     4 avoided by Ap  N    
-#&gt; 6 SA        3     4 avoided by Ap  N    
-#&gt; 7 SG        4     4 avoided by Ap  Y    
+#&gt;   <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>          <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>
+#&gt; <span style='color: #BCBCBC;'>1</span> SF        2     4 targeted by Ap N    
+#&gt; <span style='color: #BCBCBC;'>2</span> SA        1     4 targeted by Ap N    
+#&gt; <span style='color: #BCBCBC;'>3</span> aa        4     4 targeted by Ap Y    
+#&gt; <span style='color: #BCBCBC;'>4</span> FF        4     4 avoided by Ap  Y    
+#&gt; <span style='color: #BCBCBC;'>5</span> SF        2     4 avoided by Ap  N    
+#&gt; <span style='color: #BCBCBC;'>6</span> SA        3     4 avoided by Ap  N    
+#&gt; <span style='color: #BCBCBC;'>7</span> SG        4     4 avoided by Ap  Y    
 #&gt; 
 #&gt; 
 #&gt; $transition_lvlLoss_m
@@ -421,35 +422,35 @@ Information Science. Taylor &amp; Francis, 27(9), pp. 1717–1739. doi: <a href=
 #&gt; "#FFA54F" "#68228B" "#636363" 
 #&gt; 
 #&gt; Slot "transitionData":
-#&gt; # A tibble: 14 x 7
-#&gt; # Groups:   Period, To [14]
+#&gt; <span style='color: #949494;'># A tibble: 14 × 7</span>
+#&gt; <span style='color: #949494;'># Groups:   Period, To [14]</span>
 #&gt;    Period    To    From  Interval T_m2j_km2     Qtmj    Vtm
-#&gt;    &lt;fct&gt;     &lt;fct&gt; &lt;fct&gt;    &lt;int&gt;     &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;
-#&gt;  1 2012-2014 aa    SG           2    4.76   0.163    0.125 
-#&gt;  2 2012-2014 Ap    SG           2   42.1    0.270    0.125 
-#&gt;  3 2012-2014 Ac    SG           2    0.0621 0.000642 0.125 
-#&gt;  4 2010-2012 aa    SG           2   18.9    0.475    0.0749
-#&gt;  5 2010-2012 Ap    SG           2    8.53   0.0584   0.0749
-#&gt;  6 2010-2012 Ac    SG           2    0.632  0.00669  0.0749
-#&gt;  7 2008-2010 aa    SG           2   30.6    0.584    0.0929
-#&gt;  8 2008-2010 Ap    SG           2    3.94   0.0290   0.0929
-#&gt;  9 2008-2010 Ac    SG           2    0.0873 0.000962 0.0929
-#&gt; 10 2008-2010 Iu    SG           2    0.0504 0.0213   0.0929
-#&gt; 11 2002-2008 aa    SG           6  244.     1.58     0.273 
-#&gt; 12 2002-2008 Ap    SG           6   48.3    0.118    0.273 
-#&gt; 13 2002-2008 Ac    SG           6   13.1    0.0489   0.273 
-#&gt; 14 2002-2008 R     SG           6    0.0999 0.0129   0.273 
+#&gt;    <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
+#&gt; <span style='color: #BCBCBC;'> 1</span> 2012-2014 aa    SG           2    4.76   0.163    0.125 
+#&gt; <span style='color: #BCBCBC;'> 2</span> 2012-2014 Ap    SG           2   42.1    0.270    0.125 
+#&gt; <span style='color: #BCBCBC;'> 3</span> 2012-2014 Ac    SG           2    0.062<span style='text-decoration: underline;'>1</span> 0.000<span style='text-decoration: underline;'>642</span> 0.125 
+#&gt; <span style='color: #BCBCBC;'> 4</span> 2010-2012 aa    SG           2   18.9    0.475    0.074<span style='text-decoration: underline;'>9</span>
+#&gt; <span style='color: #BCBCBC;'> 5</span> 2010-2012 Ap    SG           2    8.53   0.058<span style='text-decoration: underline;'>4</span>   0.074<span style='text-decoration: underline;'>9</span>
+#&gt; <span style='color: #BCBCBC;'> 6</span> 2010-2012 Ac    SG           2    0.632  0.006<span style='text-decoration: underline;'>69</span>  0.074<span style='text-decoration: underline;'>9</span>
+#&gt; <span style='color: #BCBCBC;'> 7</span> 2008-2010 aa    SG           2   30.6    0.584    0.092<span style='text-decoration: underline;'>9</span>
+#&gt; <span style='color: #BCBCBC;'> 8</span> 2008-2010 Ap    SG           2    3.94   0.029<span style='text-decoration: underline;'>0</span>   0.092<span style='text-decoration: underline;'>9</span>
+#&gt; <span style='color: #BCBCBC;'> 9</span> 2008-2010 Ac    SG           2    0.087<span style='text-decoration: underline;'>3</span> 0.000<span style='text-decoration: underline;'>962</span> 0.092<span style='text-decoration: underline;'>9</span>
+#&gt; <span style='color: #BCBCBC;'>10</span> 2008-2010 Iu    SG           2    0.050<span style='text-decoration: underline;'>4</span> 0.021<span style='text-decoration: underline;'>3</span>   0.092<span style='text-decoration: underline;'>9</span>
+#&gt; <span style='color: #BCBCBC;'>11</span> 2002-2008 aa    SG           6  244.     1.58     0.273 
+#&gt; <span style='color: #BCBCBC;'>12</span> 2002-2008 Ap    SG           6   48.3    0.118    0.273 
+#&gt; <span style='color: #BCBCBC;'>13</span> 2002-2008 Ac    SG           6   13.1    0.048<span style='text-decoration: underline;'>9</span>   0.273 
+#&gt; <span style='color: #BCBCBC;'>14</span> 2002-2008 R     SG           6    0.099<span style='text-decoration: underline;'>9</span> 0.012<span style='text-decoration: underline;'>9</span>   0.273 
 #&gt; 
 #&gt; Slot "transitionStationarity":
-#&gt; # A tibble: 6 x 5
+#&gt; <span style='color: #949494;'># A tibble: 6 × 5</span>
 #&gt;   To     Gain     N Stationarity Test 
-#&gt;   &lt;fct&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;        &lt;chr&gt;
-#&gt; 1 aa        4     4 targeted SG  Y    
-#&gt; 2 Ap        1     4 targeted SG  N    
-#&gt; 3 Ap        3     4 avoided SG   N    
-#&gt; 4 Ac        4     4 avoided SG   Y    
-#&gt; 5 Iu        1     4 avoided SG   N    
-#&gt; 6 R         1     4 avoided SG   N    
+#&gt;   <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>
+#&gt; <span style='color: #BCBCBC;'>1</span> aa        4     4 targeted SG  Y    
+#&gt; <span style='color: #BCBCBC;'>2</span> Ap        1     4 targeted SG  N    
+#&gt; <span style='color: #BCBCBC;'>3</span> Ap        3     4 avoided SG   N    
+#&gt; <span style='color: #BCBCBC;'>4</span> Ac        4     4 avoided SG   Y    
+#&gt; <span style='color: #BCBCBC;'>5</span> Iu        1     4 avoided SG   N    
+#&gt; <span style='color: #BCBCBC;'>6</span> R         1     4 avoided SG   N    
 #&gt; 
 #&gt; </div><div class='input'>
 
@@ -469,7 +470,7 @@ Information Science. Taylor &amp; Francis, 27(9), pp. 1717–1739. doi: <a href=
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

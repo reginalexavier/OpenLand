@@ -91,7 +91,7 @@ pixel value and a table containing the areal percentage of every pixel value
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -117,7 +117,7 @@ pixel value and a table containing the areal percentage of every pixel value
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/reginalexavier/OpenLand/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -146,7 +146,7 @@ pixel value and a table containing the areal percentage of every pixel value
 (number of changes).</p>
     </div>
 
-    <pre class="usage"><span class='fu'>acc_changes</span>(<span class='no'>path</span>)</pre>
+    <pre class="usage"><span class='fu'>acc_changes</span><span class='op'>(</span><span class='va'>path</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -164,30 +164,31 @@ analysed.</p></td>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
-<span class='no'>url</span> <span class='kw'>&lt;-</span> <span class='st'>"https://zenodo.org/record/3685230/files/SaoLourencoBasin.rda?download=1"</span>
-<span class='no'>temp</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span>()
-<span class='fu'><a href='https://rdrr.io/r/utils/download.file.html'>download.file</a></span>(<span class='no'>url</span>, <span class='no'>temp</span>, <span class='kw'>mode</span> <span class='kw'>=</span> <span class='st'>"wb"</span>) <span class='co'># downloading the SaoLourencoBasin dataset</span>
-<span class='fu'><a href='https://rdrr.io/r/base/load.html'>load</a></span>(<span class='no'>temp</span>)
+<span class='va'>url</span> <span class='op'>&lt;-</span> <span class='st'>"https://zenodo.org/record/3685230/files/SaoLourencoBasin.rda?download=1"</span>
+<span class='va'>temp</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span><span class='op'>(</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/utils/download.file.html'>download.file</a></span><span class='op'>(</span><span class='va'>url</span>, <span class='va'>temp</span>, mode <span class='op'>=</span> <span class='st'>"wb"</span><span class='op'>)</span> <span class='co'># downloading the SaoLourencoBasin dataset</span>
+<span class='fu'><a href='https://rdrr.io/r/base/load.html'>load</a></span><span class='op'>(</span><span class='va'>temp</span><span class='op'>)</span>
 <span class='co'># the acc_changes() function, with the SaoLourencoBasin dataset</span>
-<span class='fu'>acc_changes</span>(<span class='no'>SaoLourencoBasin</span>)</div><div class='output co'>#&gt; [[1]]
+<span class='fu'>acc_changes</span><span class='op'>(</span><span class='va'>SaoLourencoBasin</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [[1]]
 #&gt; class      : RasterLayer 
 #&gt; dimensions : 6372, 6546, 41711112  (nrow, ncol, ncell)
 #&gt; resolution : 30, 30  (x, y)
 #&gt; extent     : 654007.5, 850387.5, 8099064, 8290224  (xmin, xmax, ymin, ymax)
 #&gt; crs        : +proj=utm +zone=21 +south +ellps=GRS80 +units=m +no_defs 
-#&gt; source     : /tmp/Rtmp5jeOow/raster/r_tmp_2020-04-29_080455_21332_84471.grd 
+#&gt; source     : r_tmp_2021-11-01_033806_13765_64535.grd 
 #&gt; names      : layer 
 #&gt; values     : 0, 2  (min, max)
 #&gt; 
 #&gt; 
 #&gt; [[2]]
-#&gt; # A tibble: 3 x 3
+#&gt; <span style='color: #949494;'># A tibble: 3 × 3</span>
 #&gt;   PxValue       Qt Percent
-#&gt;     &lt;int&gt;    &lt;int&gt;   &lt;dbl&gt;
-#&gt; 1       0 21819779   87.6 
-#&gt; 2       1  2787995   11.2 
-#&gt; 3       2   301086    1.21
-#&gt; </div><div class='input'># }
+#&gt;     <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
+#&gt; <span style='color: #BCBCBC;'>1</span>       0 21<span style='text-decoration: underline;'>819</span>779   87.6 
+#&gt; <span style='color: #BCBCBC;'>2</span>       1  2<span style='text-decoration: underline;'>787</span>995   11.2 
+#&gt; <span style='color: #BCBCBC;'>3</span>       2   <span style='text-decoration: underline;'>301</span>086    1.21
+#&gt; </div><div class='input'><span class='co'># }</span>
 
 </div></pre>
   </div>
@@ -205,7 +206,7 @@ analysed.</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

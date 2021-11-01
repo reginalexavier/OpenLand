@@ -89,7 +89,7 @@ entire analysed time period." />
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -115,7 +115,7 @@ entire analysed time period." />
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/reginalexavier/OpenLand/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -142,17 +142,17 @@ entire analysed time period." />
 entire analysed time period.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>netgrossplot</span>(
-  <span class='no'>dataset</span>,
-  <span class='no'>legendtable</span>,
-  <span class='kw'>title</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>xlab</span> <span class='kw'>=</span> <span class='st'>"LUC category"</span>,
-  <span class='kw'>ylab</span> <span class='kw'>=</span> <span class='st'>"Area (Km2)"</span>,
-  <span class='kw'>legend_title</span> <span class='kw'>=</span> <span class='st'>"Changes"</span>,
-  <span class='kw'>changesLabel</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>GC</span> <span class='kw'>=</span> <span class='st'>"Gross change"</span>, <span class='kw'>NG</span> <span class='kw'>=</span> <span class='st'>"Net gain"</span>, <span class='kw'>NL</span> <span class='kw'>=</span> <span class='st'>"Net loss"</span>),
-  <span class='kw'>color</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>GC</span> <span class='kw'>=</span> <span class='st'>"gray70"</span>, <span class='kw'>NG</span> <span class='kw'>=</span> <span class='st'>"#006400"</span>, <span class='kw'>NL</span> <span class='kw'>=</span> <span class='st'>"#EE2C2C"</span>),
-  <span class='kw'>area_km2</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
-)</pre>
+    <pre class="usage"><span class='fu'>netgrossplot</span><span class='op'>(</span>
+  <span class='va'>dataset</span>,
+  <span class='va'>legendtable</span>,
+  title <span class='op'>=</span> <span class='cn'>NULL</span>,
+  xlab <span class='op'>=</span> <span class='st'>"LUC category"</span>,
+  ylab <span class='op'>=</span> <span class='st'>"Area (Km2)"</span>,
+  legend_title <span class='op'>=</span> <span class='st'>"Changes"</span>,
+  changesLabel <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>GC <span class='op'>=</span> <span class='st'>"Gross change"</span>, NG <span class='op'>=</span> <span class='st'>"Net gain"</span>, NL <span class='op'>=</span> <span class='st'>"Net loss"</span><span class='op'>)</span>,
+  color <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>GC <span class='op'>=</span> <span class='st'>"gray70"</span>, NG <span class='op'>=</span> <span class='st'>"#006400"</span>, NL <span class='op'>=</span> <span class='st'>"#EE2C2C"</span><span class='op'>)</span>,
+  area_km2 <span class='op'>=</span> <span class='cn'>TRUE</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -208,18 +208,19 @@ pixel counts.</p></td>
     <pre class="examples"><div class='input'>
 <span class='co'># editing the category names</span>
 
-<span class='no'>SL_2002_2014</span>$<span class='no'>tb_legend</span>$<span class='no'>categoryName</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Ap"</span>, <span class='st'>"FF"</span>, <span class='st'>"SA"</span>, <span class='st'>"SG"</span>, <span class='st'>"aa"</span>, <span class='st'>"SF"</span>,
-                                             <span class='st'>"Agua"</span>, <span class='st'>"Iu"</span>, <span class='st'>"Ac"</span>, <span class='st'>"R"</span>, <span class='st'>"Im"</span>),
-                                     <span class='kw'>levels</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"FF"</span>, <span class='st'>"SF"</span>, <span class='st'>"SA"</span>, <span class='st'>"SG"</span>, <span class='st'>"aa"</span>, <span class='st'>"Ap"</span>,
-                                              <span class='st'>"Ac"</span>, <span class='st'>"Im"</span>, <span class='st'>"Iu"</span>, <span class='st'>"Agua"</span>, <span class='st'>"R"</span>))
+<span class='va'>SL_2002_2014</span><span class='op'>$</span><span class='va'>tb_legend</span><span class='op'>$</span><span class='va'>categoryName</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Ap"</span>, <span class='st'>"FF"</span>, <span class='st'>"SA"</span>, <span class='st'>"SG"</span>, <span class='st'>"aa"</span>, <span class='st'>"SF"</span>,
+                                             <span class='st'>"Agua"</span>, <span class='st'>"Iu"</span>, <span class='st'>"Ac"</span>, <span class='st'>"R"</span>, <span class='st'>"Im"</span><span class='op'>)</span>,
+                                     levels <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"FF"</span>, <span class='st'>"SF"</span>, <span class='st'>"SA"</span>, <span class='st'>"SG"</span>, <span class='st'>"aa"</span>, <span class='st'>"Ap"</span>,
+                                              <span class='st'>"Ac"</span>, <span class='st'>"Im"</span>, <span class='st'>"Iu"</span>, <span class='st'>"Agua"</span>, <span class='st'>"R"</span><span class='op'>)</span><span class='op'>)</span>
 
 <span class='co'># the plot</span>
-<span class='fu'>netgrossplot</span>(<span class='kw'>dataset</span> <span class='kw'>=</span> <span class='no'>SL_2002_2014</span>$<span class='no'>lulc_Multistep</span>,
-             <span class='kw'>legendtable</span> <span class='kw'>=</span> <span class='no'>SL_2002_2014</span>$<span class='no'>tb_legend</span>,
-             <span class='kw'>title</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-             <span class='kw'>xlab</span> <span class='kw'>=</span> <span class='st'>"LUC Category"</span>,
-             <span class='kw'>changes</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>GC</span> <span class='kw'>=</span> <span class='st'>"Gross changes"</span>, <span class='kw'>NG</span> <span class='kw'>=</span> <span class='st'>"Net Gain"</span>, <span class='kw'>NL</span> <span class='kw'>=</span> <span class='st'>"Net Loss"</span>),
-             <span class='kw'>color</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>GC</span> <span class='kw'>=</span> <span class='st'>"gray70"</span>, <span class='kw'>NG</span> <span class='kw'>=</span> <span class='st'>"#006400"</span>, <span class='kw'>NL</span> <span class='kw'>=</span> <span class='st'>"#EE2C2C"</span>))</div><div class='img'><img src='netgrossplot-1.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='fu'>netgrossplot</span><span class='op'>(</span>dataset <span class='op'>=</span> <span class='va'>SL_2002_2014</span><span class='op'>$</span><span class='va'>lulc_Multistep</span>,
+             legendtable <span class='op'>=</span> <span class='va'>SL_2002_2014</span><span class='op'>$</span><span class='va'>tb_legend</span>,
+             title <span class='op'>=</span> <span class='cn'>NULL</span>,
+             xlab <span class='op'>=</span> <span class='st'>"LUC Category"</span>,
+             changes <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>GC <span class='op'>=</span> <span class='st'>"Gross changes"</span>, NG <span class='op'>=</span> <span class='st'>"Net Gain"</span>, NL <span class='op'>=</span> <span class='st'>"Net Loss"</span><span class='op'>)</span>,
+             color <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>GC <span class='op'>=</span> <span class='st'>"gray70"</span>, NG <span class='op'>=</span> <span class='st'>"#006400"</span>, NL <span class='op'>=</span> <span class='st'>"#EE2C2C"</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='img'><img src='netgrossplot-1.png' alt='' width='700' height='433' /></div><div class='input'>
 
 </div></pre>
   </div>
@@ -237,7 +238,7 @@ pixel counts.</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

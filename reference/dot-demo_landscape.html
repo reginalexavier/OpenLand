@@ -214,76 +214,77 @@ category list.</p></td>
     <div class='dont-index'><p><code><a href='https://rdrr.io/pkg/raster/man/raster.html'>raster</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>.demo_landscape</span><span class='op'>(</span>year <span class='op'>=</span>  <span class='fl'>2000</span><span class='op'>:</span><span class='fl'>2005</span>,
-                res <span class='op'>=</span> <span class='fl'>1</span>,
-                crs <span class='op'>=</span> <span class='st'>"+proj=utm +zone=21 +south +ellps=GRS80 +units=m +no_defs"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; $landscape_2000
-#&gt; class      : RasterLayer 
-#&gt; dimensions : 100, 100, 10000  (nrow, ncol, ncell)
-#&gt; resolution : 1, 1  (x, y)
-#&gt; extent     : 0, 100, 0, 100  (xmin, xmax, ymin, ymax)
-#&gt; crs        : +proj=utm +zone=21 +south +ellps=GRS80 +units=m +no_defs 
-#&gt; source     : memory
-#&gt; names      : landscape_2000 
-#&gt; values     : 1, 5  (min, max)
-#&gt; 
-#&gt; 
-#&gt; $landscape_2001
-#&gt; class      : RasterLayer 
-#&gt; dimensions : 100, 100, 10000  (nrow, ncol, ncell)
-#&gt; resolution : 1, 1  (x, y)
-#&gt; extent     : 0, 100, 0, 100  (xmin, xmax, ymin, ymax)
-#&gt; crs        : +proj=utm +zone=21 +south +ellps=GRS80 +units=m +no_defs 
-#&gt; source     : memory
-#&gt; names      : landscape_2001 
-#&gt; values     : 1, 5  (min, max)
-#&gt; 
-#&gt; 
-#&gt; $landscape_2002
-#&gt; class      : RasterLayer 
-#&gt; dimensions : 100, 100, 10000  (nrow, ncol, ncell)
-#&gt; resolution : 1, 1  (x, y)
-#&gt; extent     : 0, 100, 0, 100  (xmin, xmax, ymin, ymax)
-#&gt; crs        : +proj=utm +zone=21 +south +ellps=GRS80 +units=m +no_defs 
-#&gt; source     : memory
-#&gt; names      : landscape_2002 
-#&gt; values     : 1, 5  (min, max)
-#&gt; 
-#&gt; 
-#&gt; $landscape_2003
-#&gt; class      : RasterLayer 
-#&gt; dimensions : 100, 100, 10000  (nrow, ncol, ncell)
-#&gt; resolution : 1, 1  (x, y)
-#&gt; extent     : 0, 100, 0, 100  (xmin, xmax, ymin, ymax)
-#&gt; crs        : +proj=utm +zone=21 +south +ellps=GRS80 +units=m +no_defs 
-#&gt; source     : memory
-#&gt; names      : landscape_2003 
-#&gt; values     : 1, 5  (min, max)
-#&gt; 
-#&gt; 
-#&gt; $landscape_2004
-#&gt; class      : RasterLayer 
-#&gt; dimensions : 100, 100, 10000  (nrow, ncol, ncell)
-#&gt; resolution : 1, 1  (x, y)
-#&gt; extent     : 0, 100, 0, 100  (xmin, xmax, ymin, ymax)
-#&gt; crs        : +proj=utm +zone=21 +south +ellps=GRS80 +units=m +no_defs 
-#&gt; source     : memory
-#&gt; names      : landscape_2004 
-#&gt; values     : 1, 5  (min, max)
-#&gt; 
-#&gt; 
-#&gt; $landscape_2005
-#&gt; class      : RasterLayer 
-#&gt; dimensions : 100, 100, 10000  (nrow, ncol, ncell)
-#&gt; resolution : 1, 1  (x, y)
-#&gt; extent     : 0, 100, 0, 100  (xmin, xmax, ymin, ymax)
-#&gt; crs        : +proj=utm +zone=21 +south +ellps=GRS80 +units=m +no_defs 
-#&gt; source     : memory
-#&gt; names      : landscape_2005 
-#&gt; values     : 1, 5  (min, max)
-#&gt; 
-#&gt; </div><div class='input'>
-</div></pre>
+    <pre class="examples"><span class='r-in'><span class='fu'>.demo_landscape</span><span class='op'>(</span>year <span class='op'>=</span>  <span class='fl'>2000</span><span class='op'>:</span><span class='fl'>2005</span>,</span>
+<span class='r-in'>                res <span class='op'>=</span> <span class='fl'>1</span>,</span>
+<span class='r-in'>                crs <span class='op'>=</span> <span class='st'>"+proj=utm +zone=21 +south +ellps=GRS80 +units=m +no_defs"</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> $landscape_2000</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> class      : RasterLayer </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> dimensions : 100, 100, 10000  (nrow, ncol, ncell)</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> resolution : 1, 1  (x, y)</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> extent     : 0, 100, 0, 100  (xmin, xmax, ymin, ymax)</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> crs        : +proj=utm +zone=21 +south +ellps=GRS80 +units=m +no_defs </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> source     : memory</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> names      : landscape_2000 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> values     : 1, 5  (min, max)</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> $landscape_2001</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> class      : RasterLayer </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> dimensions : 100, 100, 10000  (nrow, ncol, ncell)</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> resolution : 1, 1  (x, y)</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> extent     : 0, 100, 0, 100  (xmin, xmax, ymin, ymax)</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> crs        : +proj=utm +zone=21 +south +ellps=GRS80 +units=m +no_defs </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> source     : memory</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> names      : landscape_2001 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> values     : 1, 5  (min, max)</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> $landscape_2002</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> class      : RasterLayer </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> dimensions : 100, 100, 10000  (nrow, ncol, ncell)</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> resolution : 1, 1  (x, y)</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> extent     : 0, 100, 0, 100  (xmin, xmax, ymin, ymax)</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> crs        : +proj=utm +zone=21 +south +ellps=GRS80 +units=m +no_defs </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> source     : memory</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> names      : landscape_2002 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> values     : 1, 5  (min, max)</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> $landscape_2003</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> class      : RasterLayer </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> dimensions : 100, 100, 10000  (nrow, ncol, ncell)</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> resolution : 1, 1  (x, y)</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> extent     : 0, 100, 0, 100  (xmin, xmax, ymin, ymax)</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> crs        : +proj=utm +zone=21 +south +ellps=GRS80 +units=m +no_defs </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> source     : memory</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> names      : landscape_2003 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> values     : 1, 5  (min, max)</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> $landscape_2004</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> class      : RasterLayer </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> dimensions : 100, 100, 10000  (nrow, ncol, ncell)</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> resolution : 1, 1  (x, y)</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> extent     : 0, 100, 0, 100  (xmin, xmax, ymin, ymax)</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> crs        : +proj=utm +zone=21 +south +ellps=GRS80 +units=m +no_defs </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> source     : memory</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> names      : landscape_2004 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> values     : 1, 5  (min, max)</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> $landscape_2005</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> class      : RasterLayer </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> dimensions : 100, 100, 10000  (nrow, ncol, ncell)</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> resolution : 1, 1  (x, y)</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> extent     : 0, 100, 0, 100  (xmin, xmax, ymin, ymax)</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> crs        : +proj=utm +zone=21 +south +ellps=GRS80 +units=m +no_defs </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> source     : memory</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> names      : landscape_2005 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> values     : 1, 5  (min, max)</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-in'></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

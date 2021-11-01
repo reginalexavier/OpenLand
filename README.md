@@ -6,10 +6,7 @@
 <!-- badges: start -->
 
 [![R-CMD-check](https://github.com/reginalexavier/OpenLand/workflows/R-CMD-check/badge.svg)](https://github.com/reginalexavier/OpenLand/actions)
-[![AppVeyor build
-status](https://ci.appveyor.com/api/projects/status/github/reginalexavier/OpenLand?branch=master&svg=true)](https://ci.appveyor.com/project/reginalexavier/OpenLand)
-[![Codecov test
-coverage](https://codecov.io/gh/reginalexavier/OpenLand/branch/master/graph/badge.svg)](https://codecov.io/gh/reginalexavier/OpenLand?branch=master)
+[![test-coverage](https://github.com/reginalexavier/OpenLand/workflows/test-coverage/badge.svg)](https://github.com/reginalexavier/OpenLand/actions)
 [![License: GPL
 v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 [![CRAN

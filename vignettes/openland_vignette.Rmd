@@ -33,6 +33,23 @@ OpenLand is an open-source R package for the analysis of land use and cover (LUC
 The OpenLand functionality is illustrated for a LUC dataset of São Lourenço river basin, a major Pantanal wetland contribution area as provided by the 4^th^ edition of the [Monitoring of Changes in Land cover and Land Use in the Upper Paraguay River Basin - Brazilian portion - Review Period: 2012 to 2014](https://www.embrapa.br/pantanal/bacia-do-alto-paraguai) [@Embrapapantanalsite2015]. The time series is composed by five LUC maps (2002, 2008, 2010, 2012 and 2014). The study area of approximately 22,400 km^2^ is located in the Cerrado Savannah biom in the southeast of the Brazilian state of Mato Grosso, which has experienced a LUCC of about 12% of its extension during the 12-years period, including deforestation and intensification of existing agricultural uses.
 For processing in the OpenLand package, the original multi-year shape file was transformed into rasters and then saved as a 5-layer `RasterStack` (`SaoLourencoBasin`), available from a public repository [(10.5281/zenodo.3685229)](http://doi.org/10.5281/zenodo.3685230) as an `.RDA` file which can be loaded into `R`.
 
+```{r include=FALSE}
+dataset_available <- tryCatch({
+  # downloading the SaoLourencoBasin multi-layer raster and make it available into R
+  url <- "https://zenodo.org/record/3685230/files/SaoLourencoBasin.rda?download=1"
+  temp <- tempfile()
+  download.file(url, temp, mode = "wb") # downloading the SaoLourencoBasin dataset
+  load(temp)
+}, error = function(e) {
+  return(FALSE)
+})
+```
+
+```{r include=FALSE, eval=isFALSE(dataset_available)}
+knitr::knit_exit("## The complete rendering of this document depends on the availability of the dataset in zenodo. Please try at another time.")
+```
+
+
 ### Input data constraints
 The function `contingencyTable()` for data extraction demands as input a list of raster layers (`RasterBrick`, `RasterStack` or a path to a folder containing the rasters). The name of the rasters must be in the format ("some_text" `+` "underscore" `+` "the_year") like "landscape_2020". In our example we included the `SaoLourencoBasin` RasterStack:
 
@@ -40,13 +57,7 @@ The function `contingencyTable()` for data extraction demands as input a list of
 # first we load the OpenLand package
 library(OpenLand)
 
-# downloading the SaoLourencoBasin multi-layer raster and make it available into R
-url <- "https://zenodo.org/record/3685230/files/SaoLourencoBasin.rda?download=1"
-
-temp <- tempfile()
-download.file(url, temp, mode = "wb") # downloading the SaoLourencoBasin dataset
-load(temp)
-
+# The SaoLourencoBasin dataset
 SaoLourencoBasin
 
 ```
@@ -270,7 +281,7 @@ sankeyLand(dataset = SL_2002_2014$lulc_Multistep,
 
 
 ```
-           2002                 2008                2010                  2012                  2014
+         2002               2008               2010                2012                2014
 ```
 
 #### Sankey One Step
@@ -282,7 +293,7 @@ sankeyLand(dataset = SL_2002_2014$lulc_Onestep,
 
 ```
 ```
-                          2002                                                  2014
+                        2002                                              2014
 ```
 
 #### An Evolution Bar Plot

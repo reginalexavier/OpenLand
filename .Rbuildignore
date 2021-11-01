@@ -2,7 +2,6 @@
 ^\.Rproj\.user$
 ^LICENSE\.md$
 ^README\.Rmd$
-^\.travis\.yml$
 ^appveyor\.yml$
 ^codecov\.yml$
 ^_pkgdown\.yml$
@@ -12,3 +11,4 @@
 ^Meta$
 ^cran-comments\.md$
 ^CRAN-RELEASE$
+^\.github$

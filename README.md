@@ -5,8 +5,7 @@
 
 <!-- badges: start -->
 
-[![Travis build
-status](https://travis-ci.org/reginalexavier/OpenLand.svg?branch=master)](https://travis-ci.org/reginalexavier/OpenLand)
+[![R-CMD-check](https://github.com/reginalexavier/OpenLand/workflows/R-CMD-check/badge.svg)](https://github.com/reginalexavier/OpenLand/actions)
 [![AppVeyor build
 status](https://ci.appveyor.com/api/projects/status/github/reginalexavier/OpenLand?branch=master&svg=true)](https://ci.appveyor.com/project/reginalexavier/OpenLand)
 [![Codecov test
@@ -51,16 +50,15 @@ The OpenLand functionality is illustrated for a LUC dataset of São
 Lourenço river basin, a major Pantanal wetland contribution area as
 provided by the 4<sup>th</sup> edition of the [Monitoring of Changes in
 Land cover and Land Use in the Upper Paraguay River Basin - Brazilian
-portion - Review Period: 2012
-to 2014](https://www.embrapa.br/pantanal/bacia-do-alto-paraguai)
-(Embrapa Pantanal, Instituto SOS Pantanal, and WWF-Brasil 2015). The
-time series is composed by five LUC maps (2002, 2008, 2010, 2012 and
-2014). The study area of approximately 22,400 km<sup>2</sup> is located
-in the Cerrado Savannah biom in the southeast of the Brazilian state of
-Mato Grosso. For processing in the OpenLand package, the original
-multi-year shape file was transformed into rasters and then saved as a
-5-layer `RasterStack` (`SaoLourencoBasin`), available from a public
-repository
+portion - Review Period: 2012 to
+2014](https://www.embrapa.br/pantanal/bacia-do-alto-paraguai) (Embrapa
+Pantanal, Instituto SOS Pantanal, and WWF-Brasil 2015). The time series
+is composed by five LUC maps (2002, 2008, 2010, 2012 and 2014). The
+study area of approximately 22,400 km<sup>2</sup> is located in the
+Cerrado Savannah biom in the southeast of the Brazilian state of Mato
+Grosso. For processing in the OpenLand package, the original multi-year
+shape file was transformed into rasters and then saved as a 5-layer
+`RasterStack` (`SaoLourencoBasin`), available from a public repository
 [(10.5281/zenodo.3685229)](http://doi.org/10.5281/zenodo.3685230) as an
 `.RDA` file which can be loaded into `R`.
 
@@ -109,13 +107,12 @@ names(my_test)
 #> [4] "category_lvlLoss"     "transition_lvlGain_n" "transition_lvlLoss_m"
 ```
 
-The `intensityAnalysis()` function returns 6 objects: lulc\_table,
-interval\_lvl, category\_lvlGain, category\_lvlLoss,
-transition\_lvlGain\_n, transition\_lvlLoss\_m. Here, we adopted an
-object-oriented approach that allows to set specific methods for
-plotting the intensity objects. Specifically, we used the S4 class,
-which requires the formal definition of classes and methods (Chambers
-2008).
+The `intensityAnalysis()` function returns 6 objects: lulc_table,
+interval_lvl, category_lvlGain, category_lvlLoss, transition_lvlGain_n,
+transition_lvlLoss_m. Here, we adopted an object-oriented approach that
+allows to set specific methods for plotting the intensity objects.
+Specifically, we used the S4 class, which requires the formal definition
+of classes and methods (Chambers 2008).
 
 #### Presentation of an intensity object
 
@@ -127,7 +124,6 @@ contains a table of the **category level** result *(gain
 contains a table storing the results of a stationarity test.
 
 ``` r
-
 my_test$category_lvlGain
 #> An object of class "Category"
 #> Slot "lookupcolor":
@@ -137,7 +133,7 @@ my_test$category_lvlGain
 #> "#FFA54F" "#68228B" "#636363" 
 #> 
 #> Slot "categoryData":
-#> # A tibble: 23 x 6
+#> # A tibble: 23 × 6
 #> # Groups:   Period, To [23]
 #>    Period    To    Interval  GG_km2   Gtj    St
 #>    <fct>     <fct>    <int>   <dbl> <dbl> <dbl>
@@ -151,10 +147,10 @@ my_test$category_lvlGain
 #>  8 2010-2012 Ac           2 189.    2.00   2.12
 #>  9 2010-2012 Iu           2   1.90  0.792  2.12
 #> 10 2010-2012 R            2   2.76  0.951  2.12
-#> # ... with 13 more rows
+#> # … with 13 more rows
 #> 
 #> Slot "categoryStationarity":
-#> # A tibble: 12 x 5
+#> # A tibble: 12 × 5
 #>    To     Gain     N Stationarity Test 
 #>    <fct> <int> <int> <chr>        <chr>
 #>  1 aa        2     4 Active Gain  N    
@@ -180,7 +176,6 @@ arguments, please see the documentation of the
 method.
 
 ``` r
-
 plot(my_test$category_lvlGain,
      labels = c(leftlabel = bquote("Gain Area (" ~km^2~ ")"),
                 rightlabel = "Intensity Gain (%)"),
@@ -189,17 +184,7 @@ plot(my_test$category_lvlGain,
      fontsize_ui = 8)
 ```
 
-<div class="figure" style="text-align: center">
-
-<img src="man/figures/README-cat_level-1.png" alt="Gain area outcome - Category level" width="80%" />
-
-<p class="caption">
-
-Gain area outcome - Category level
-
-</p>
-
-</div>
+<img src="man/figures/README-cat_level-1.png" title="Gain area outcome - Category level" alt="Gain area outcome - Category level" width="80%" style="display: block; margin: auto;" />
 
 ### Miscellaneous visualization tools
 
@@ -216,7 +201,6 @@ be visualized by a grouped bar chart.
 ##### Net and Gross gain and loss
 
 ``` r
-
 netgrossplot(dataset = SL_2002_2014$lulc_Multistep,
              legendtable = SL_2002_2014$tb_legend,
              xlab = "LUC Category",
@@ -226,42 +210,20 @@ netgrossplot(dataset = SL_2002_2014$lulc_Multistep,
              )
 ```
 
-<div class="figure" style="text-align: center">
-
-<img src="man/figures/README-ng_plot-1.png" alt="Net Gross Changes 2002 - 2014" width="80%" />
-
-<p class="caption">
-
-Net Gross Changes 2002 - 2014
-
-</p>
-
-</div>
+<img src="man/figures/README-ng_plot-1.png" title="Net Gross Changes 2002 - 2014" alt="Net Gross Changes 2002 - 2014" width="80%" style="display: block; margin: auto;" />
 
 ##### Chord Diagram (2002 - 2014)
 
 ``` r
-
 chordDiagramLand(dataset = SL_2002_2014$lulc_Onestep,
                  legendtable = SL_2002_2014$tb_legend)
 ```
 
-<div class="figure" style="text-align: center">
-
-<img src="man/figures/README-chordDiagram-1.png" alt="Chord Diagram 2002 - 2014 (area in km^2^)" width="100%" />
-
-<p class="caption">
-
-Chord Diagram 2002 - 2014 (area in km<sup>2</sup>)
-
-</p>
-
-</div>
+<img src="man/figures/README-chordDiagram-1.png" title="Chord Diagram 2002 - 2014 (area in km^2^)" alt="Chord Diagram 2002 - 2014 (area in km^2^)" width="100%" style="display: block; margin: auto;" />
 
 ##### Sankey Multi Step (2002, 2008, 2010, 2012, 2014)
 
 ``` r
-
 # sankeyLand(dataset = SL_2002_2014$lulc_Multistep,
 #            legendtable = SL_2002_2014$tb_legend)
 ```
@@ -283,18 +245,7 @@ with the percentages of transition numbers in the study area. Here we
 use the [tmap](https://github.com/mtennekes/tmap) package for plotting
 the outcomes of the `acc_changes()` function.
 
-<div class="figure" style="text-align: center">
-
-<img src="man/figures/acc_mymap.png" alt="Accumulated changes in pixels in the interval 2002 - 2014 at four time points (2002, 2008, 2010, 2012, 2014)" width="90%" />
-
-<p class="caption">
-
-Accumulated changes in pixels in the interval 2002 - 2014 at four time
-points (2002, 2008, 2010, 2012, 2014)
-
-</p>
-
-</div>
+<img src="man/figures/acc_mymap.png" title="Accumulated changes in pixels in the interval 2002 - 2014 at four time points (2002, 2008, 2010, 2012, 2014)" alt="Accumulated changes in pixels in the interval 2002 - 2014 at four time points (2002, 2008, 2010, 2012, 2014)" width="90%" style="display: block; margin: auto;" />
 
 ## References
 

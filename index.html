@@ -45,7 +45,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">OpenLand</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.1.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.2</span>
       </span>
     </div>
 
@@ -117,7 +117,7 @@
 <h2 class="hasAnchor">
 <a href="#illustrative-example" class="anchor"></a>Illustrative Example</h2>
 <p>This is a basic example which shows how OpenLand works, for a more detailed illustration, please see our <a href="https://reginalexavier.github.io/OpenLand/articles/openland_vignette.html">vignettes</a>.</p>
-<p>The OpenLand functionality is illustrated for a LUC dataset of São Lourenço river basin, a major Pantanal wetland contribution area as provided by the 4<sup>th</sup> edition of the <a href="https://www.embrapa.br/pantanal/bacia-do-alto-paraguai">Monitoring of Changes in Land cover and Land Use in the Upper Paraguay River Basin - Brazilian portion - Review Period: 2012 to 2014</a> (Embrapa Pantanal, Instituto SOS Pantanal, and WWF-Brasil 2015). The time series is composed by five LUC maps (2002, 2008, 2010, 2012 and 2014). The study area of approximately 22,400 km<sup>2</sup> is located in the Cerrado Savannah biom in the southeast of the Brazilian state of Mato Grosso. For processing in the OpenLand package, the original multi-year shape file was transformed into rasters and then saved as a 5-layer <code>RasterStack</code> (<code>SaoLourencoBasin</code>), available from a public repository <a href="http://doi.org/10.5281/zenodo.3685230">(10.5281/zenodo.3685229)</a> as an <code>.RDA</code> file which can be loaded into <code>R</code>.</p>
+<p>The OpenLand functionality is illustrated for a LUC dataset of São Lourenço river basin, a major Pantanal wetland contribution area as provided by the 4<sup>th</sup> edition of the <a href="https://www.embrapa.br/pantanal/bacia-do-alto-paraguai">Monitoring of Changes in Land cover and Land Use in the Upper Paraguay River Basin - Brazilian portion - Review Period: 2012 to 2014</a> (Embrapa Pantanal, Instituto SOS Pantanal, and WWF-Brasil 2015). The time series is composed by five LUC maps (2002, 2008, 2010, 2012 and 2014). The study area of approximately 22,400 km<sup>2</sup> is located in the Cerrado Savannah biom in the southeast of the Brazilian state of Mato Grosso. For processing in the OpenLand package, the original multi-year shape file was transformed into rasters and then saved as a 5-layer <code>RasterStack</code> (<code>SaoLourencoBasin</code>), available from a public repository <a href="https://doi.org/10.5281/zenodo.3685230">(10.5281/zenodo.3685229)</a> as an <code>.RDA</code> file which can be loaded into <code>R</code>.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Loading the package</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/reginalexavier/OpenLand">OpenLand</a></span><span class="op">)</span></code></pre></div>
@@ -237,7 +237,7 @@
 <div id="other-functions" class="section level4">
 <h4 class="hasAnchor">
 <a href="#other-functions" class="anchor"></a>Other functions</h4>
-<p>OpenLand enables furthermore the spatial screening of LUCC frequencies for one or a series of raster layers with <a href="https://reginalexavier.github.io/OpenLand/reference/summary_map.html"><code>summary_map()</code></a> and <a href="https://reginalexavier.github.io/OpenLand/reference/summary_dir.html"><code>summary_dir()</code></a>. The <a href="https://reginalexavier.github.io/OpenLand/reference/acc_changes.html"><code>acc_changes()</code></a> function returns for a LUC time series the number of times a pixel has changed during the analysed period, returning a grid layer and a table with the percentages of transition numbers in the study area. Here we use the <a href="https://github.com/mtennekes/tmap">tmap</a> package for plotting the outcomes of the <code><a href="reference/acc_changes.html">acc_changes()</a></code> function.</p>
+<p>OpenLand enables furthermore the spatial screening of LUCC frequencies for one or a series of raster layers with <a href="https://reginalexavier.github.io/OpenLand/reference/summary_map.html"><code>summary_map()</code></a> and <a href="https://reginalexavier.github.io/OpenLand/reference/summary_dir.html"><code>summary_dir()</code></a>. The <a href="https://reginalexavier.github.io/OpenLand/reference/acc_changes.html"><code>acc_changes()</code></a> function returns for a LUC time series the number of times a pixel has changed during the analysed period, returning a grid layer and a table with the percentages of transition numbers in the study area. Here we use the <a href="https://github.com/r-tmap/tmap">tmap</a> package for plotting the outcomes of the <code><a href="reference/acc_changes.html">acc_changes()</a></code> function.</p>
 <p><img src="reference/figures/acc_mymap.png" title="Accumulated changes in pixels in the interval 2002 - 2014 at four time points (2002, 2008, 2010, 2012, 2014)" alt="Accumulated changes in pixels in the interval 2002 - 2014 at four time points (2002, 2008, 2010, 2012, 2014)" width="90%" style="display: block; margin: auto;"></p>
 </div>
 </div>
@@ -292,7 +292,7 @@
 <h2>Dev status</h2>
 <ul class="list-unstyled">
 <li><a href="https://github.com/reginalexavier/OpenLand/actions"><img src="https://github.com/reginalexavier/OpenLand/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a></li>
-<li><a href="https://codecov.io/gh/reginalexavier/OpenLand"><img src="https://codecov.io/gh/reginalexavier/OpenLand/branch/master/graph/badge.svg?token=9wGWKYH0X8" alt="codecov"></a></li>
+<li><a href="https://app.codecov.io/gh/reginalexavier/OpenLand"><img src="https://app.codecov.io/gh/reginalexavier/OpenLand/branch/master/graph/badge.svg?token=9wGWKYH0X8" alt="codecov"></a></li>
 <li><a href="https://www.gnu.org/licenses/gpl-3.0"><img src="https://img.shields.io/badge/License-GPLv3-blue.svg" alt="License: GPL v3"></a></li>
 <li><a href="https://CRAN.R-project.org/package=OpenLand"><img src="https://www.r-pkg.org/badges/version/OpenLand" alt="CRAN status"></a></li>
 </ul>

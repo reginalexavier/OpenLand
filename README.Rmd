@@ -22,7 +22,7 @@ knitr::opts_chunk$set(
 
 <!-- badges: start -->
 [![R-CMD-check](https://github.com/reginalexavier/OpenLand/workflows/R-CMD-check/badge.svg)](https://github.com/reginalexavier/OpenLand/actions)
-[![codecov](https://codecov.io/gh/reginalexavier/OpenLand/branch/master/graph/badge.svg?token=9wGWKYH0X8)](https://codecov.io/gh/reginalexavier/OpenLand)
+[![codecov](https://app.codecov.io/gh/reginalexavier/OpenLand/branch/master/graph/badge.svg?token=9wGWKYH0X8)](https://app.codecov.io/gh/reginalexavier/OpenLand)
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 [![CRAN status](https://www.r-pkg.org/badges/version/OpenLand)](https://CRAN.R-project.org/package=OpenLand)
 <!-- badges: end -->
@@ -51,7 +51,7 @@ devtools::install_github("reginalexavier/OpenLand")
 This is a basic example which shows how OpenLand works, for a more detailed illustration, please see our [vignettes](https://reginalexavier.github.io/OpenLand/articles/openland_vignette.html).
 
 The OpenLand functionality is illustrated for a LUC dataset of São Lourenço river basin, a major Pantanal wetland contribution area as provided by the 4^th^ edition of the [Monitoring of Changes in Land cover and Land Use in the Upper Paraguay River Basin - Brazilian portion - Review Period: 2012 to 2014](https://www.embrapa.br/pantanal/bacia-do-alto-paraguai) (Embrapa Pantanal, Instituto SOS Pantanal, and WWF-Brasil 2015). The time series is composed by five LUC maps (2002, 2008, 2010, 2012 and 2014). The study area of approximately 22,400 km^2^ is located in the Cerrado Savannah biom in the southeast of the Brazilian state of Mato Grosso.
-For processing in the OpenLand package, the original multi-year shape file was transformed into rasters and then saved as a 5-layer `RasterStack` (`SaoLourencoBasin`), available from a public repository [(10.5281/zenodo.3685229)](http://doi.org/10.5281/zenodo.3685230) as an `.RDA` file which can be loaded into `R`.
+For processing in the OpenLand package, the original multi-year shape file was transformed into rasters and then saved as a 5-layer `RasterStack` (`SaoLourencoBasin`), available from a public repository [(10.5281/zenodo.3685229)](https://doi.org/10.5281/zenodo.3685230) as an `.RDA` file which can be loaded into `R`.
 
 ```{r example}
 # Loading the package
@@ -178,7 +178,7 @@ knitr::include_graphics("man/figures/sankey_multi.png")
 
 #### Other functions
 
-OpenLand enables furthermore the spatial screening of LUCC frequencies for one or a series of raster layers with  [`summary_map()`](https://reginalexavier.github.io/OpenLand/reference/summary_map.html) and [`summary_dir()`](https://reginalexavier.github.io/OpenLand/reference/summary_dir.html). The [`acc_changes()`](https://reginalexavier.github.io/OpenLand/reference/acc_changes.html) function returns for a LUC time series the number of times a pixel has changed during the analysed period, returning a grid layer and a table with the percentages of transition numbers in the study area. Here we use the [tmap](https://github.com/mtennekes/tmap) package for plotting the outcomes of the `acc_changes()` function.
+OpenLand enables furthermore the spatial screening of LUCC frequencies for one or a series of raster layers with  [`summary_map()`](https://reginalexavier.github.io/OpenLand/reference/summary_map.html) and [`summary_dir()`](https://reginalexavier.github.io/OpenLand/reference/summary_dir.html). The [`acc_changes()`](https://reginalexavier.github.io/OpenLand/reference/acc_changes.html) function returns for a LUC time series the number of times a pixel has changed during the analysed period, returning a grid layer and a table with the percentages of transition numbers in the study area. Here we use the [tmap](https://github.com/r-tmap/tmap) package for plotting the outcomes of the `acc_changes()` function.
 
 ```{r mymap, echo=FALSE, fig.cap='Accumulated changes in pixels in the interval 2002 - 2014 at four time points (2002, 2008, 2010, 2012, 2014)', out.width='90%',fig.align='center'}
 

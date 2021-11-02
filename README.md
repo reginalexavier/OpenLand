@@ -6,7 +6,7 @@
 <!-- badges: start -->
 
 [![R-CMD-check](https://github.com/reginalexavier/OpenLand/workflows/R-CMD-check/badge.svg)](https://github.com/reginalexavier/OpenLand/actions)
-[![codecov](https://codecov.io/gh/reginalexavier/OpenLand/branch/master/graph/badge.svg?token=9wGWKYH0X8)](https://codecov.io/gh/reginalexavier/OpenLand)
+[![codecov](https://app.codecov.io/gh/reginalexavier/OpenLand/branch/master/graph/badge.svg?token=9wGWKYH0X8)](https://app.codecov.io/gh/reginalexavier/OpenLand)
 [![License: GPL
 v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 [![CRAN
@@ -56,7 +56,7 @@ Cerrado Savannah biom in the southeast of the Brazilian state of Mato
 Grosso. For processing in the OpenLand package, the original multi-year
 shape file was transformed into rasters and then saved as a 5-layer
 `RasterStack` (`SaoLourencoBasin`), available from a public repository
-[(10.5281/zenodo.3685229)](http://doi.org/10.5281/zenodo.3685230) as an
+[(10.5281/zenodo.3685229)](https://doi.org/10.5281/zenodo.3685230) as an
 `.RDA` file which can be loaded into `R`.
 
 ``` r
@@ -239,7 +239,7 @@ The
 function returns for a LUC time series the number of times a pixel has
 changed during the analysed period, returning a grid layer and a table
 with the percentages of transition numbers in the study area. Here we
-use the [tmap](https://github.com/mtennekes/tmap) package for plotting
+use the [tmap](https://github.com/r-tmap/tmap) package for plotting
 the outcomes of the `acc_changes()` function.
 
 <img src="man/figures/acc_mymap.png" title="Accumulated changes in pixels in the interval 2002 - 2014 at four time points (2002, 2008, 2010, 2012, 2014)" alt="Accumulated changes in pixels in the interval 2002 - 2014 at four time points (2002, 2008, 2010, 2012, 2014)" width="90%" style="display: block; margin: auto;" />

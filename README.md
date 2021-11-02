@@ -239,8 +239,8 @@ The
 function returns for a LUC time series the number of times a pixel has
 changed during the analysed period, returning a grid layer and a table
 with the percentages of transition numbers in the study area. Here we
-use the [tmap](https://github.com/r-tmap/tmap) package for plotting
-the outcomes of the `acc_changes()` function.
+use the [tmap](https://github.com/r-tmap/tmap) package for plotting the
+outcomes of the `acc_changes()` function.
 
 <img src="man/figures/acc_mymap.png" title="Accumulated changes in pixels in the interval 2002 - 2014 at four time points (2002, 2008, 2010, 2012, 2014)" alt="Accumulated changes in pixels in the interval 2002 - 2014 at four time points (2002, 2008, 2010, 2012, 2014)" width="90%" style="display: block; margin: auto;" />
 

@@ -29,10 +29,6 @@ jobs:
       R_KEEP_PKG_SOURCE: yes
 
     steps:
-      # - name: Install XQuarts macOS
-      #   if: runner.os == 'macOS'
-      #   run: brew install xquartz --cask
-
       - uses: actions/checkout@v2
 
       - uses: r-lib/actions/setup-pandoc@v1

@@ -1,4 +1,6 @@
-# OpenLand (development version)
+# OpenLand 1.0.2
+
+* if the dataset url is not accessible, the vignette fails gracefully with an informative message without an error
 
 # OpenLand 1.0.1
 

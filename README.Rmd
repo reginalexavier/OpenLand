@@ -203,5 +203,6 @@ Gu, Zuguang, Lei Gu, Roland Eils, Matthias Schlesner, and Benedikt Brors. 2014. 
 --------------------------------------------------------------------------------
 
 ### CITATION:
+
 Reginal Exavier and Peter Zeilhofer. OpenLand: Software for Quantitative Analysis and Visualization of Land Use and Cover Change. The R Journal, v. 12, n. 2, p. 359–371, 2021. [https://doi.org/10.32614/RJ-2021-021](https://journal.r-project.org/archive/2020/RJ-2021-021/index.html).
 

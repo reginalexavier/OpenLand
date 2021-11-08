@@ -1,5 +1,10 @@
 # OpenLand (development version)
 
+# OpenLand 1.0.2
+
+* if the dataset url is not accessible, the vignette fails gracefully with an informative message without an error
+* memory allocation error fixed in `contingencyTable()` function for when it is used on rasters containing many years/layers or large areas
+
 # OpenLand 1.0.1
 
 * fixed summary_map bug

@@ -31,7 +31,7 @@ OpenLand is an open-source R package for the analysis of land use and cover (LUC
 ## São Lourenço river Basin example dataset
 
 The OpenLand functionality is illustrated for a LUC dataset of São Lourenço river basin, a major Pantanal wetland contribution area as provided by the 4^th^ edition of the [Monitoring of Changes in Land cover and Land Use in the Upper Paraguay River Basin - Brazilian portion - Review Period: 2012 to 2014](https://www.embrapa.br/pantanal/bacia-do-alto-paraguai) [@Embrapapantanalsite2015]. The time series is composed by five LUC maps (2002, 2008, 2010, 2012 and 2014). The study area of approximately 22,400 km^2^ is located in the Cerrado Savannah biom in the southeast of the Brazilian state of Mato Grosso, which has experienced a LUCC of about 12% of its extension during the 12-years period, including deforestation and intensification of existing agricultural uses.
-For processing in the OpenLand package, the original multi-year shape file was transformed into rasters and then saved as a 5-layer `RasterStack` (`SaoLourencoBasin`), available from a public repository [(10.5281/zenodo.3685229)](http://doi.org/10.5281/zenodo.3685230) as an `.RDA` file which can be loaded into `R`.
+For processing in the OpenLand package, the original multi-year shape file was transformed into rasters and then saved as a 5-layer `RasterStack` (`SaoLourencoBasin`), available from a public repository [(10.5281/zenodo.3685229)](https://doi.org/10.5281/zenodo.3685230) as an `.RDA` file which can be loaded into `R`.
 
 ```{r include=FALSE}
 dataset_available <- tryCatch({

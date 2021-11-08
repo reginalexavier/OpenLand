@@ -2,6 +2,31 @@
 
 This is a resubmission. In this version I have:
 
+* fixed the error in the `openland_vignette.R` file, now fails gracefully with an informative message if url is not reachable
+
+
+## Test environments
+
+* ubuntu-latest (on GitHub Actions), R release, devel, oldrel-1
+* macOS, win-builder (on GitHub Actions), R release
+* local OS (ubuntu 20.04.3) install, R 4.1.1
+
+## R CMD check results
+
+0 errors | 0 warnings | 0 note
+
+## Downstream dependencies
+
+There are currently no downstream dependencies for this package
+
+
+## Previous cran-comments
+
+
+## Resubmission
+
+This is a resubmission. In this version I have:
+
 * fixed the invalid URL in the `README.md` file
 
 
@@ -20,8 +45,6 @@ This is a resubmission. In this version I have:
 
 There are currently no downstream dependencies for this package
 
-
-## Previous cran-comments
 
 ## Resubmission
 

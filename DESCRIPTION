@@ -1,6 +1,6 @@
 Package: OpenLand
 Title: Quantitative Analysis and Visualization of LUCC
-Version: 1.0.2
+Version: 1.0.2.9000
 Authors@R: c(
     person(given = "Reginal",
            family = "Exavier",

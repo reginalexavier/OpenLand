@@ -20,7 +20,7 @@ Description: Tools for the analysis of land use and cover (LUC) time series. It
     implemented, including tools for the generation of standardized multilevel 
     output graphics.
 License: GPL-3
-URL: https://github.com/reginalexavier/OpenLand
+URL: https://reginalexavier.github.io/OpenLand/, https://github.com/reginalexavier/OpenLand
 BugReports: https://github.com/reginalexavier/OpenLand/issues
 Encoding: UTF-8
 LazyData: true

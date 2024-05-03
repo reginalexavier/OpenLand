@@ -1,6 +1,6 @@
 #' Create Raster with Random pixel Value
 #'
-#' This function create a raster serie with some setup like the layer name and
+#' This function creates a raster series with some setup like the layer name and
 #' the sample value for the lulc
 #'
 #' @param year numeric. A vector of year, first and last included.
@@ -13,7 +13,7 @@
 #' @param ymx numeric. y maximum extent.
 #' @param crs character. the coordinate referencing system.
 #' @param category A numeric vector of the raster categories.
-#' @param prob A numreric vector of the probability of occurrence for the
+#' @param prob A numeric vector of the probability of occurrence for the
 #' category list.
 #'
 #'

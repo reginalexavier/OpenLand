@@ -3,7 +3,7 @@ title: "Quick introduction to the OpenLand package"
 output: rmarkdown::html_vignette
 bibliography: papers_OpenLand.bib
 vignette: >
-  %\VignetteIndexEntry{Quick Intro for OpenLand Package}
+  %\VignetteIndexEntry{Quick introduction to the OpenLand package}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -90,7 +90,7 @@ For our study area, `contingenceTable(input_raster = SaoLourencoBasin, pixelreso
 
 ```{r}
 
-# SL_2002_2014 <- contingenceTable(input_raster = SaoLourencoBasin, pixelresolution = 30)
+# SL_2002_2014 <- contingencyTable(input_raster = SaoLourencoBasin, pixelresolution = 30)
 
 SL_2002_2014
 

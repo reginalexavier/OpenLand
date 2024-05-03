@@ -1,7 +1,7 @@
 
 #' Summary of multiple parameters in a raster directory
 #'
-#' Listing major charateristics of raster inputs. Those characteristics are the
+#' Listing major characteristics of raster inputs. Those characteristics are the
 #' dimensions, the resolution, the extent, the values (min, max) and the
 #' coordinate reference system.
 #'
@@ -24,10 +24,10 @@
 #'
 summary_dir <- function(path) {
 
-  if ((class(path) == "list") &
-      (c(class(path[[1]])) == "RasterLayer")) {
+  if (inherits(path, "list") &
+      inherits(path[[1]], "RasterLayer")) {
     layer_list <- path
-  } else if (class(path) == "character") {
+  } else if (inherits(path, "character")) {
 
     raster_files <-
       list.files(path,
@@ -87,8 +87,8 @@ summary_dir <- function(path) {
 #'
 summary_map <- function(path) {
   rastermap <-
-    if (class(path) != "character") {
-      if (class(path) == "RasterLayer") {
+    if (!inherits(path, "character")) {
+      if (inherits(path, "RasterLayer")) {
         path
       } else {
         path[[1]]

@@ -1,3 +1,4 @@
+"_PACKAGE"
 #' OpenLand: land use and cover (LUC) time series analysis in R.
 #'
 #'
@@ -15,7 +16,7 @@
 #' \code{\link{contingencyTable}},
 #'
 #' @author Reginal Exavier \email{reginalexavier@@rocketmail.com}, Peter Zeilhofer \email{zeilhoferpeter@@gmail.com}
-#' @docType package
+# @docType package
 #' @name OpenLand-package
 #' @aliases OpenLand
 #'

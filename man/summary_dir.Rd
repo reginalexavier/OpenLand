@@ -14,7 +14,7 @@ analysed.}
 Table with the raster parameters in columns
 }
 \description{
-Listing major charateristics of raster inputs. Those characteristics are the
+Listing major characteristics of raster inputs. Those characteristics are the
 dimensions, the resolution, the extent, the values (min, max) and the
 coordinate reference system.
 }

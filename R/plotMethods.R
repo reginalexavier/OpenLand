@@ -79,8 +79,8 @@ methods::setMethod(
       ) +
       geom_hline(aes(yintercept = dataset[[4]], color = "U"),
                  linetype = 5,
-                 size = .5) +
-      geom_hline(aes(yintercept = 0), size = .01) +
+                 linewidth = .5) +
+      geom_hline(aes(yintercept = 0), linewidth = .01) +
       scale_fill_manual(values = c(color_bar[[1]], color_bar[[2]])) +
       ylab(NULL) +
       scale_color_manual(values = "black") +
@@ -97,7 +97,7 @@ methods::setMethod(
           xend = (length(unique(dataset[[1]])) / 2) + leg_curv[[2]],
           yend = dataset[[4]] + leg_curv[[1]]
         ),
-        size = .6,
+        linewidth = .6,
         curvature = .1,
         arrow = arrow(length = unit(2, "mm"), ends = "first")
       ) +
@@ -140,7 +140,7 @@ methods::setMethod(
       coord_flip() +
       xlab(expression(paste("Periodo de tempo [ ", Y[t], ",", Y[t + 1], "]"))) +
       ylab(NULL) +
-      geom_hline(aes(yintercept = 0), size = .01) +
+      geom_hline(aes(yintercept = 0), linewidth = .01) +
       scale_y_reverse(expand = expansion(mult = c(0.01, 0))) +
       scale_x_discrete(position = "top", expand = expansion(mult = c(0.06, 0.06))) +
       theme(
@@ -231,10 +231,10 @@ methods::setMethod(
                                                                   levels(dataset[[2]])))]])) +
       xlab(NULL) +
       ylab(NULL) +
-      geom_hline(aes(yintercept = 0), size = .3) +
+      geom_hline(aes(yintercept = 0), linewidth = .3) +
       geom_hline(aes(yintercept = dataset[[6]], color = names(dataset)[[6]]),
                  linetype = 5,
-                 size = .3) +
+                 linewidth = .3) +
       scale_color_manual(values = "black") +
       coord_flip() +
       labs(fill = labs[[1]], colour = labs[[2]]) +
@@ -290,7 +290,7 @@ methods::setMethod(
                                                                  levels(dataset[[2]])))]])) +
       xlab(NULL) +
       ylab(NULL) +
-      geom_hline(aes(yintercept = 0), size = .3) +
+      geom_hline(aes(yintercept = 0), linewidth = .3) +
       coord_flip() +
       labs(fill = "Categories") +
       scale_y_reverse(expand = expansion(mult = c(0.01, 0))) +
@@ -390,10 +390,10 @@ methods::setMethod(
                                                                  levels(dataset[[2]])))]])) +
       xlab(NULL) +
       ylab(NULL) +
-      geom_hline(aes(yintercept = 0), size = .3) +
+      geom_hline(aes(yintercept = 0), linewidth = .3) +
       geom_hline(aes(yintercept = dataset[[7]], color = names(dataset)[[7]]),
                  linetype = 5,
-                 size = .3) +
+                 linewidth = .3) +
       scale_color_manual(values = "black") +
       coord_flip() +
       labs(fill = labs[[1]], colour = labs[[2]]) +
@@ -448,7 +448,7 @@ methods::setMethod(
                                                                  levels(dataset[[2]])))]])) +
       xlab(NULL) +
       ylab(NULL) +
-      geom_hline(aes(yintercept = 0), size = .3) +
+      geom_hline(aes(yintercept = 0), linewidth = .3) +
       coord_flip() +
       labs(fill = "Categories") +
       scale_y_reverse(expand = expansion(mult = c(0.01, 0))) +

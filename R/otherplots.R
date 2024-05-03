@@ -410,7 +410,7 @@ netgrossplot <-
                    )) +
       scale_fill_manual(values = color) +
       labs(fill = legend_title) +
-      geom_hline(yintercept = 0, size = .3) +
+      geom_hline(yintercept = 0, linewidth = .3) +
       xlab(xlab) +
       ylab(ylab) +
       ggtitle(title) +

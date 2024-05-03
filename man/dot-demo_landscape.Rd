@@ -39,14 +39,14 @@
 
 \item{category}{A numeric vector of the raster categories.}
 
-\item{prob}{A numreric vector of the probability of occurrence for the
+\item{prob}{A numeric vector of the probability of occurrence for the
 category list.}
 }
 \value{
 list
 }
 \description{
-This function create a raster serie with some setup like the layer name and
+This function creates a raster series with some setup like the layer name and
 the sample value for the lulc
 }
 \examples{

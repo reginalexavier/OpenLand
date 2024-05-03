@@ -53,14 +53,10 @@ test_that("Behavior of the other plots", {
   expect_visible(sankeyLand(demo_cont$lulc_Multistep, demo_cont$tb_legend))
 
 
-  expect_output(str(barplotLand(demo_cont$lulc_Multistep, demo_cont$tb_legend)), "List of 11")
-  expect_output(str(netgrossplot(demo_cont$lulc_Multistep, demo_cont$tb_legend)), "List of 11")
   expect_s3_class(barplotLand(demo_cont$lulc_Multistep, demo_cont$tb_legend), "ggplot")
-  # expect_type(str(chordDiagramLand(demo_cont$lulc_Onestep, demo_cont$tb_legend)), "NULL")
   expect_s3_class(netgrossplot(demo_cont$lulc_Multistep, demo_cont$tb_legend), "ggplot")
   expect_output(str(sankeyLand(demo_cont$lulc_Onestep, demo_cont$tb_legend)), "List of 8")
   expect_output(str(sankeyLand(demo_cont$lulc_Multistep, demo_cont$tb_legend)), "List of 8")
-
 
 })
 

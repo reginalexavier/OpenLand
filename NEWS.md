@@ -1,3 +1,5 @@
+# OpenLand (development version)
+
 # OpenLand 1.0.3
 
 * fixed unit test related to the plot function depending on the ggplot package (@teunbrand, #9)

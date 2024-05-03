@@ -11,14 +11,14 @@
 #' \code{raster::\link[raster]{stack}}
 #'
 #' @keywords internal
-#' @name dot-input_rasters
+#' @rdname dot-input_rasters
 #' @exportMethod .input_rasters
 #'
 
-if (!isGeneric(".input_rasters")) {
-  setGeneric(".input_rasters", function(x, ...)
+
+setGeneric(".input_rasters", function(x, ...)
     standardGeneric(".input_rasters"))
-}
+
 
 
 # the methods character

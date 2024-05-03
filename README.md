@@ -6,7 +6,7 @@
 <!-- badges: start -->
 
 [![R-CMD-check](https://github.com/reginalexavier/OpenLand/workflows/R-CMD-check/badge.svg)](https://github.com/reginalexavier/OpenLand/actions)
-[![codecov](https://codecov.io/gh/reginalexavier/OpenLand/branch/master/graph/badge.svg?token=9wGWKYH0X8)](https://codecov.io/gh/reginalexavier/OpenLand)
+[![codecov](https://codecov.io/gh/reginalexavier/OpenLand/branch/master/graph/badge.svg?token=9wGWKYH0X8)](https://app.codecov.io/gh/reginalexavier/OpenLand)
 [![License: GPL
 v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 [![CRAN
@@ -121,6 +121,7 @@ contains a table of the **category level** result *(gain
 contains a table storing the results of a stationarity test.
 
 ``` r
+
 my_test$category_lvlGain
 #> An object of class "Category"
 #> Slot "lookupcolor":
@@ -144,7 +145,7 @@ my_test$category_lvlGain
 #>  8 2010-2012 Ac           2 189.    2.00   2.12
 #>  9 2010-2012 Iu           2   1.90  0.792  2.12
 #> 10 2010-2012 R            2   2.76  0.951  2.12
-#> # … with 13 more rows
+#> # ℹ 13 more rows
 #> 
 #> Slot "categoryStationarity":
 #> # A tibble: 12 × 5
@@ -173,6 +174,7 @@ arguments, please see the documentation of the
 method.
 
 ``` r
+
 plot(my_test$category_lvlGain,
      labels = c(leftlabel = bquote("Gain Area (" ~km^2~ ")"),
                 rightlabel = "Intensity Gain (%)"),
@@ -181,7 +183,14 @@ plot(my_test$category_lvlGain,
      fontsize_ui = 8)
 ```
 
-<img src="man/figures/README-cat_level-1.png" title="Gain area outcome - Category level" alt="Gain area outcome - Category level" width="80%" style="display: block; margin: auto;" />
+<div class="figure" style="text-align: center">
+
+<img src="man/figures/README-cat_level-1.png" alt="Gain area outcome - Category level" width="80%" />
+<p class="caption">
+Gain area outcome - Category level
+</p>
+
+</div>
 
 ### Miscellaneous visualization tools
 
@@ -198,6 +207,7 @@ be visualized by a grouped bar chart.
 ##### Net and Gross gain and loss
 
 ``` r
+
 netgrossplot(dataset = SL_2002_2014$lulc_Multistep,
              legendtable = SL_2002_2014$tb_legend,
              xlab = "LUC Category",
@@ -207,20 +217,36 @@ netgrossplot(dataset = SL_2002_2014$lulc_Multistep,
              )
 ```
 
-<img src="man/figures/README-ng_plot-1.png" title="Net Gross Changes 2002 - 2014" alt="Net Gross Changes 2002 - 2014" width="80%" style="display: block; margin: auto;" />
+<div class="figure" style="text-align: center">
+
+<img src="man/figures/README-ng_plot-1.png" alt="Net Gross Changes 2002 - 2014" width="80%" />
+<p class="caption">
+Net Gross Changes 2002 - 2014
+</p>
+
+</div>
 
 ##### Chord Diagram (2002 - 2014)
 
 ``` r
+
 chordDiagramLand(dataset = SL_2002_2014$lulc_Onestep,
                  legendtable = SL_2002_2014$tb_legend)
 ```
 
-<img src="man/figures/README-chordDiagram-1.png" title="Chord Diagram 2002 - 2014 (area in km^2^)" alt="Chord Diagram 2002 - 2014 (area in km^2^)" width="100%" style="display: block; margin: auto;" />
+<div class="figure" style="text-align: center">
+
+<img src="man/figures/README-chordDiagram-1.png" alt="Chord Diagram 2002 - 2014 (area in km^2^)" width="100%" />
+<p class="caption">
+Chord Diagram 2002 - 2014 (area in km<sup>2</sup>)
+</p>
+
+</div>
 
 ##### Sankey Multi Step (2002, 2008, 2010, 2012, 2014)
 
 ``` r
+
 # sankeyLand(dataset = SL_2002_2014$lulc_Multistep,
 #            legendtable = SL_2002_2014$tb_legend)
 ```
@@ -242,7 +268,15 @@ with the percentages of transition numbers in the study area. Here we
 use the [tmap](https://github.com/r-tmap/tmap) package for plotting the
 outcomes of the `acc_changes()` function.
 
-<img src="man/figures/acc_mymap.png" title="Accumulated changes in pixels in the interval 2002 - 2014 at four time points (2002, 2008, 2010, 2012, 2014)" alt="Accumulated changes in pixels in the interval 2002 - 2014 at four time points (2002, 2008, 2010, 2012, 2014)" width="90%" style="display: block; margin: auto;" />
+<div class="figure" style="text-align: center">
+
+<img src="man/figures/acc_mymap.png" alt="Accumulated changes in pixels in the interval 2002 - 2014 at four time points (2002, 2008, 2010, 2012, 2014)" width="90%" />
+<p class="caption">
+Accumulated changes in pixels in the interval 2002 - 2014 at four time
+points (2002, 2008, 2010, 2012, 2014)
+</p>
+
+</div>
 
 ## References
 

@@ -1,5 +1,5 @@
 utils::globalVariables(c("Interval", "Period", "Year_from",
-                         "Year_to", "strings01", "strings02"))
+                         "Year_to", "strings01", "strings02", "changes"))
 
 #' @include demolandscape.R rasters_input.R
 NULL

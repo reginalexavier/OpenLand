@@ -11,3 +11,16 @@
 ^CRAN-RELEASE$
 ^\.github$
 ^CRAN-SUBMISSION$
+^\.agentic-tools-mcp$
+^validacao.*\.R$
+^validation.*\.R$
+^diagnose.*\.R$
+^final_.*\.R$
+^update_docs\.R$
+^test_problems\.R$
+^quick_test\.R$
+^CORREÇÕES.*\.md$
+^VALIDACAO.*\.md$
+^Rplots\.pdf$
+^simple_plots_.*$
+^TESTE_.*$

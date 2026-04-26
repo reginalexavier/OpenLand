@@ -2,22 +2,62 @@
 % Please edit documentation in R/generalfunctions.R
 \name{acc_changes}
 \alias{acc_changes}
-\title{Accumulates changes in a LULC raster time series}
+\title{Accumulates changes in a LULC raster time series with terra/raster compatibility}
 \usage{
 acc_changes(path)
 }
 \arguments{
-\item{path}{The path for the Raster* directory or list of Raster* to be
-analysed.}
+\item{path}{The path for the Raster* directory, RasterStack/RasterBrick object, 
+SpatRaster object, or list of Raster*/SpatRaster objects to be analysed. 
+Supports both raster and terra package formats with automatic detection.}
 }
 \value{
-Two objects, a RasterLayer and a table.
+A list containing two objects:
+\itemize{
+  \item **Element 1**: A RasterLayer/SpatRaster with pixel values representing the 
+  number of changes (0 = no changes, 1 = one change, 2 = two changes, etc.)
+  \item **Element 2**: A tibble with three columns:
+  \enumerate{
+    \item \code{PxValue}: Number of changes per pixel (0, 1, 2, ...)
+    \item \code{Qt}: Quantity of pixels with that change frequency
+    \item \code{Percent}: Percentage of total area with that change frequency
+  }
+}
 }
 \description{
-This function calculates the number of times a pixel has changed during
-the analysed period. It returns a raster with the number of changes as
-pixel value and a table containing the areal percentage of every pixel value
-(number of changes).
+This function calculates the number of times a pixel has changed during the 
+analysed period, providing comprehensive spatial screening of Land Use and Cover 
+Change (LUCC) frequencies. It returns a raster with the number of changes as pixel 
+values and a statistical table containing the areal percentage of every change frequency.
+}
+\details{
+The function automatically detects and handles both modern terra (SpatRaster) and 
+legacy raster (RasterStack/RasterBrick) objects, applying appropriate processing 
+methods for optimal performance while maintaining full backward compatibility.
+
+
+**Processing Logic:**
+\itemize{
+  \item Compares consecutive time steps in the series (t1 vs t2, t2 vs t3, etc.)
+  \item Creates binary change maps (1 = change, 0 = no change) for each interval
+  \item Sums all change maps to get total change frequency per pixel
+  \item Generates statistical summary of change patterns across the landscape
+}
+
+**Terra/Raster Compatibility:**
+\itemize{
+  \item **Terra objects**: Uses terra::nlyr(), terra::app(), and optimized layer extraction
+  \item **Raster objects**: Uses raster::unstack(), raster::overlay(), and legacy operations  
+  \item **Automatic detection**: Function determines object type and applies appropriate methods
+  \item **Performance**: Terra processing typically 2-3x faster for large datasets
+}
+
+**Change Detection Method:**
+For each consecutive pair of time steps, the function:
+1. Extracts individual layers from the stack/raster collection
+2. Applies pixel-wise comparison using conditional logic
+3. Creates binary change indicators (ifelse(pixel_t1 != pixel_t2, 1, 0))
+4. Accumulates all change indicators to generate final change frequency map
 }
 \examples{
 \donttest{

@@ -68,7 +68,7 @@ Intensity Analysis (IA) is a quantitative method to analyze LUC maps at several 
 
 ### Outcomes of intensity analysis
 
-The data is extracted from the rasters with the [`contingencyTable()`](https://reginalexavier.github.io/OpenLand/reference/contingencyTable.html)  function which returns a multiple grid information in tables for the next processing steps.  Within the OpenLand package, the [`intensityAnalysis()`](https://reginalexavier.github.io/OpenLand/reference/intensityAnalysis.html) function computes the three levels of analysis. It requires the object returned by the `contingenceTable()` function and that the user predefines two LUC categories `n` and `m`. Generally, `n` is a target category which experienced relevant gains and `m` a category with important losses.
+The data is extracted from the rasters with the [`contingencyTable()`](https://reginalexavier.github.io/OpenLand/reference/contingencyTable.html)  function which returns a multiple grid information in tables for the next processing steps. The function now supports flexible naming conventions for input rasters, allowing different separators, year positions, and custom patterns (see function documentation for details). Within the OpenLand package, the [`intensityAnalysis()`](https://reginalexavier.github.io/OpenLand/reference/intensityAnalysis.html) function computes the three levels of analysis. It requires the object returned by the `contingenceTable()` function and that the user predefines two LUC categories `n` and `m`. Generally, `n` is a target category which experienced relevant gains and `m` a category with important losses.
 
 ```{r include=FALSE}
 ## editing the category name

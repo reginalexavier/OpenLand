@@ -40,6 +40,7 @@ dataset_available <- tryCatch({
   temp <- tempfile()
   download.file(url, temp, mode = "wb") # downloading the SaoLourencoBasin dataset
   load(temp)
+  TRUE  # Return TRUE on success
 }, error = function(e) {
   return(FALSE)
 })
@@ -51,7 +52,22 @@ knitr::knit_exit("## The complete rendering of this document depends on the avai
 
 
 ### Input data constraints
-The function `contingencyTable()` for data extraction demands as input a list of raster layers (`RasterBrick`, `RasterStack` or a path to a folder containing the rasters). The name of the rasters must be in the format ("some_text" `+` "underscore" `+` "the_year") like "landscape_2020". In our example we included the `SaoLourencoBasin` RasterStack:
+The function `contingencyTable()` for data extraction demands as input a list of raster layers (`RasterBrick`, `RasterStack` or a path to a folder containing the rasters). 
+
+**Flexible Naming Conventions:**
+By default, raster names should be in the format ("some_text" `+` "underscore" `+` "the_year") like "landscape_2020". However, the function now supports flexible naming conventions:
+
+- **Custom separators**: Use `name_separator` parameter for different separators (e.g., "-", ".")
+- **Different year positions**: Use `year_position` parameter to specify "first", "last", or a numeric position
+- **Custom patterns**: Use `name_pattern` parameter with regular expressions for complex naming schemes
+
+Examples of supported naming conventions:
+- Default: "landscape_2020", "data_2019"
+- Dash separator: "landscape-2020" (use `name_separator = "-"`)
+- Year first: "2020_landscape_data" (use `year_position = "first"`)
+- Custom pattern: "study_year2020_final" (use `name_pattern = "\\d{4}"`)
+
+In our example we included the `SaoLourencoBasin` RasterStack:
 
 ```{r}
 # first we load the OpenLand package

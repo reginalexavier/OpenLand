@@ -12,33 +12,40 @@
 \alias{RasterBrick}
 \alias{.input_rasters,RasterStack-method}
 \alias{RasterStack}
+\alias{.input_rasters,SpatRaster-method}
+\alias{SpatRaster}
 \title{input_rasters}
 \usage{
-.input_rasters(x, ...)
+.input_rasters(x, use_terra = TRUE, ...)
 
-\S4method{.input_rasters}{character}(x, ...)
+\S4method{.input_rasters}{character}(x, use_terra = TRUE, ...)
 
-\S4method{.input_rasters}{list}(x, ...)
+\S4method{.input_rasters}{list}(x, use_terra = TRUE, ...)
 
-\S4method{.input_rasters}{RasterLayer}(x, ...)
+\S4method{.input_rasters}{RasterLayer}(x, use_terra = TRUE, ...)
 
-\S4method{.input_rasters}{RasterBrick}(x, ...)
+\S4method{.input_rasters}{RasterBrick}(x, use_terra = TRUE, ...)
 
-\S4method{.input_rasters}{RasterStack}(x, ...)
+\S4method{.input_rasters}{RasterStack}(x, use_terra = TRUE, ...)
+
+\S4method{.input_rasters}{SpatRaster}(x, use_terra = TRUE, ...)
 }
 \arguments{
-\item{x}{path (character), Raster* object or list of Raster* objects.}
+\item{x}{path (character), Raster*/SpatRaster object or list of Raster*/SpatRaster objects.}
 
-\item{\dots}{additional arguments to \code{raster::\link[raster]{raster}}.}
+\item{use_terra}{logical. If TRUE, prefer terra package for better performance. Default is TRUE.}
+
+\item{\dots}{additional arguments to \code{raster::\link[raster]{raster}} or \code{terra::\link[terra]{rast}}.}
 }
 \value{
-A RasterStack
+A RasterStack or SpatRaster depending on use_terra parameter
 }
 \description{
-A methods for loading the raster into OpenLand
+A methods for loading the raster into OpenLand with support for both raster and terra packages
 }
 \seealso{
 \code{raster::\link[raster]{raster}},
-\code{raster::\link[raster]{stack}}
+\code{raster::\link[raster]{stack}},
+\code{terra::\link[terra]{rast}}
 }
 \keyword{internal}

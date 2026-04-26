@@ -306,7 +306,7 @@ chordDiagramLand <-
 #'
 #'
 #' A stacked barplot showing net and gross changes of LUC categories during the
-#' entire analysed time period.
+#' entire analysed time period. Supports faceting by variables for comparative analysis.
 #'
 #'
 #' @param dataset A table of the multi step transition (\code{lulc_Mulstistep})
@@ -323,9 +323,19 @@ chordDiagramLand <-
 #' @param color character. A vector defining the three bar colors.
 #' @param area_km2  logical. If TRUE the change is computed in km2, if FALSE in
 #' pixel counts.
+#' @param facet_var character. Name of the column to use for faceting. If NULL (default),
+#' no faceting is applied. The facet variable should be present in the dataset.
+#' @param facet_scales character. Should facet scales be "fixed" (default), "free", 
+#' "free_x", or "free_y"? See \code{\link[ggplot2]{facet_wrap}} for details.
+#' @param facet_ncol integer. Number of columns for facet layout. If NULL, ggplot2
+#' will determine the layout automatically.
+#' @param facet_nrow integer. Number of rows for facet layout. If NULL, ggplot2
+#' will determine the layout automatically.
+#' @param facet_labeller function. Labeller function for facet labels. Default is
+#' \code{ggplot2::label_value}. See \code{\link[ggplot2]{labellers}} for options.
 #'
 #'
-#' @return A bar plot
+#' @return A bar plot with optional faceting
 #' @export
 #'
 #' @examples
@@ -345,6 +355,14 @@ chordDiagramLand <-
 #'              changes = c(GC = "Gross changes", NG = "Net Gain", NL = "Net Loss"),
 #'              color = c(GC = "gray70", NG = "#006400", NL = "#EE2C2C"))
 #'
+#' # Example with faceting (if you have a grouping variable in your dataset):
+#' # netgrossplot(dataset = SL_2002_2014$lulc_Multistep,
+#' #              legendtable = SL_2002_2014$tb_legend,
+#' #              facet_var = "region",
+#' #              facet_ncol = 2,
+#' #              title = "Land Use Changes by Region")
+#'
+#'
 #'
 netgrossplot <-
   function(dataset,
@@ -355,7 +373,23 @@ netgrossplot <-
            legend_title = "Changes",
            changesLabel = c(GC = "Gross change", NG = "Net gain", NL = "Net loss"),
            color = c(GC = "gray70", NG = "#006400", NL = "#EE2C2C"),
-           area_km2 = TRUE) {
+           area_km2 = TRUE,
+           facet_var = NULL,
+           facet_scales = "fixed",
+           facet_ncol = NULL,
+           facet_nrow = NULL,
+           facet_labeller = ggplot2::label_value) {
+
+    # Validate facet_var parameter
+    if (!is.null(facet_var)) {
+      if (!is.character(facet_var) || length(facet_var) != 1) {
+        stop("facet_var must be a single character string specifying a column name")
+      }
+      if (!facet_var %in% names(dataset)) {
+        stop(paste("Column", facet_var, "not found in dataset. Available columns:", 
+                   paste(names(dataset), collapse = ", ")))
+      }
+    }
 
     datachange <- (dataset %>%
       left_join(legendtable, by = c("From" = "categoryValue")) %>%
@@ -365,22 +399,38 @@ netgrossplot <-
         "From" = "categoryName.x",
         "To" = "categoryName.y"))[c(1, 2, 3, 7, 9)]
 
-    areaif <- ifelse(isTRUE(area_km2), "km2", "QtPixel")
+    # If facet variable exists, preserve it in datachange
+    if (!is.null(facet_var)) {
+      if (facet_var %in% names(dataset)) {
+        facet_data <- dataset[[facet_var]]
+        datachange[[facet_var]] <- rep(facet_data, length.out = nrow(datachange))
+      }
+    }
 
+    areaif <- ifelse(isTRUE(area_km2), "km2", "QtPixel")
 
     lulc_gain <- datachange %>% dplyr::filter(From != To)
 
     lulc_loss <- lulc_gain %>% rename("To" = "From", "From" = "To") %>%
       mutate(km2 = -1 * km2, QtPixel = -1 * QtPixel)
 
-
     lulc_gainloss_gross <- rbind(lulc_gain, lulc_loss) %>%
       mutate(changes = ifelse(QtPixel > 0, "Gain", "Loss"))
 
-
-    lulc_gainLoss_net <-
-      lulc_gainloss_gross %>% group_by(To) %>% summarise(area = sum(!!as.name(areaif))) %>%
-      mutate(changes = ifelse(area > 0, changesLabel[[2]], changesLabel[[3]]))
+    # Group by facet variable if provided
+    if (!is.null(facet_var)) {
+      lulc_gainLoss_net <-
+        lulc_gainloss_gross %>% 
+        group_by(To, !!sym(facet_var)) %>% 
+        summarise(area = sum(!!as.name(areaif)), .groups = "drop") %>%
+        mutate(changes = ifelse(area > 0, changesLabel[[2]], changesLabel[[3]]))
+    } else {
+      lulc_gainLoss_net <-
+        lulc_gainloss_gross %>% 
+        group_by(To) %>% 
+        summarise(area = sum(!!as.name(areaif)), .groups = "drop") %>%
+        mutate(changes = ifelse(area > 0, changesLabel[[2]], changesLabel[[3]]))
+    }
 
     if (isTRUE(area_km2)) {
       lulc_gainloss_gross <- lulc_gainloss_gross[c(1, 2, 4, 5, 6)]
@@ -388,11 +438,20 @@ netgrossplot <-
       lulc_gainloss_gross <- lulc_gainloss_gross[c(1, 3, 4, 5, 6)]
     }
 
-    names(lulc_gainloss_gross) <- c("Period", "area_gross", "From", "To", "changes")
+    # Preserve facet variable in column selection
+    if (!is.null(facet_var) && facet_var %in% names(lulc_gainloss_gross)) {
+      # Keep facet variable column
+      col_indices <- c(1:5, which(names(lulc_gainloss_gross) == facet_var))
+      lulc_gainloss_gross <- lulc_gainloss_gross[col_indices]
+      names(lulc_gainloss_gross)[1:5] <- c("Period", "area_gross", "From", "To", "changes")
+    } else {
+      names(lulc_gainloss_gross) <- c("Period", "area_gross", "From", "To", "changes")
+    }
+
     names(color) <- unname(changesLabel[c("GC", "NG", "NL")]) # pairing the legend with the color
 
-
-    ggplot(data = lulc_gainloss_gross, aes(To, area_gross)) +
+    # Create the base plot
+    p <- ggplot(data = lulc_gainloss_gross, aes(To, area_gross)) +
       geom_bar(stat = "identity", width = 0.5, aes(fill = changesLabel[[1]])) +
       geom_bar(
         aes(x = To, y = area, fill = changes),
@@ -415,6 +474,19 @@ netgrossplot <-
       ylab(ylab) +
       ggtitle(title) +
       theme(plot.title = element_text(hjust = .5))
+
+    # Add faceting if specified
+    if (!is.null(facet_var)) {
+      p <- p + facet_wrap(
+        vars(!!sym(facet_var)), 
+        scales = facet_scales,
+        ncol = facet_ncol,
+        nrow = facet_nrow,
+        labeller = facet_labeller
+      )
+    }
+
+    return(p)
   }
 
 

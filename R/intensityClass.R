@@ -141,8 +141,8 @@ setClass(
     {
       stop("The `categoryStationarity` data has to be a `tibble` and must have 5 columns")
 
-    } else if (!is.character(object@lookupcolor) &
-               length(names(object@lookupcolor) == 0)) {
+    } else if (!is.character(object@lookupcolor) |
+               length(names(object@lookupcolor)) == 0) {
       stop("The `lookupcolor` has to be an object of type `character` with name attributes")
 
     }
@@ -265,8 +265,8 @@ setClass(
     {
       stop("The `categoryStationarity` data has to be a `tibble` and must have 5 columns")
 
-    } else if (!is.character(object@lookupcolor) &
-               length(names(object@lookupcolor) == 0)) {
+    } else if (!is.character(object@lookupcolor) |
+               length(names(object@lookupcolor)) == 0) {
       stop("The `lookupcolor` has to be an object of type `character` with name attributes")
 
     }

@@ -8,14 +8,16 @@ summary_map(path)
 }
 \arguments{
 \item{path}{The path for the raster to be analysed, if path is a multilayer
-raster only the first RasterLayer will be analysed.}
+raster only the first RasterLayer/SpatRaster will be analysed. Supports both
+raster package objects and terra package objects.}
 }
 \value{
 A table containing in columns the pixel counts for each pixel value
 }
 \description{
 This function presents a summary with the pixel quantity of each category
-present in a categorical raster.
+present in a categorical raster. Supports both raster and terra objects
+for improved performance.
 }
 \examples{
 \donttest{

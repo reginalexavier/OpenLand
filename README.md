@@ -102,7 +102,7 @@ my_test <- intensityAnalysis(
 
 # it returns a list with 6 objects
 names(my_test)
-#> [1] "lulc_table"           "interval_lvl"         "category_lvlGain"
+#> [1] "lulc_table"           "interval_lvl"         "category_lvlGain"    
 #> [4] "category_lvlLoss"     "transition_lvlGain_n" "transition_lvlLoss_m"
 ```
 
@@ -126,11 +126,11 @@ contains a table storing the results of a stationarity test.
 my_test$category_lvlGain
 #> An object of class "Category"
 #> Slot "lookupcolor":
-#>        Ap        FF        SA        SG        aa        SF      Agua        Iu
-#> "#FFE4B5" "#228B22" "#00FF00" "#CAFF70" "#EE6363" "#00CD00" "#436EEE" "#FFAEB9"
-#>        Ac         R        Im
-#> "#FFA54F" "#68228B" "#636363"
-#>
+#>        Ap        FF        SA        SG        aa        SF      Agua        Iu 
+#> "#FFE4B5" "#228B22" "#00FF00" "#CAFF70" "#EE6363" "#00CD00" "#436EEE" "#FFAEB9" 
+#>        Ac         R        Im 
+#> "#FFA54F" "#68228B" "#636363" 
+#> 
 #> Slot "categoryData":
 #> # A tibble: 23 × 6
 #> # Groups:   Period, To [23]
@@ -147,22 +147,22 @@ my_test$category_lvlGain
 #>  9 2010-2012 Iu           2   1.90  0.792  2.12
 #> 10 2010-2012 R            2   2.76  0.951  2.12
 #> # ℹ 13 more rows
-#>
+#> 
 #> Slot "categoryStationarity":
 #> # A tibble: 12 × 5
-#>    To     Gain     N Stationarity Test
+#>    To     Gain     N Stationarity Test 
 #>    <fct> <int> <int> <chr>        <chr>
-#>  1 aa        2     4 Active Gain  N
-#>  2 Ap        2     4 Active Gain  N
-#>  3 Ac        1     4 Active Gain  N
-#>  4 Iu        2     4 Active Gain  N
-#>  5 Agua      1     4 Active Gain  N
-#>  6 R         2     4 Active Gain  N
-#>  7 aa        2     4 Dormant Gain N
-#>  8 Ap        2     4 Dormant Gain N
-#>  9 Ac        3     4 Dormant Gain N
-#> 10 Im        3     4 Dormant Gain N
-#> 11 Iu        2     4 Dormant Gain N
+#>  1 aa        2     4 Active Gain  N    
+#>  2 Ap        2     4 Active Gain  N    
+#>  3 Ac        1     4 Active Gain  N    
+#>  4 Iu        2     4 Active Gain  N    
+#>  5 Agua      1     4 Active Gain  N    
+#>  6 R         2     4 Active Gain  N    
+#>  7 aa        2     4 Dormant Gain N    
+#>  8 Ap        2     4 Dormant Gain N    
+#>  9 Ac        3     4 Dormant Gain N    
+#> 10 Im        3     4 Dormant Gain N    
+#> 11 Iu        2     4 Dormant Gain N    
 #> 12 R         1     4 Dormant Gain N
 ```
 

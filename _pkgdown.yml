@@ -1,4 +1,6 @@
 url: https://reginalexavier.github.io/OpenLand/
+
 template:
   bootstrap: 5
-
+  includes:
+    in_header: pkgdown/extra.css

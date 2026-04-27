@@ -95,12 +95,14 @@ category which experienced relevant gains and `m` a category with
 important losses.
 
 ``` r
-my_test <- intensityAnalysis(dataset = SL_2002_2014, # here the outcome from the `contingenceTable()` function
-                            category_n = "Ap", category_m = "SG")
+my_test <- intensityAnalysis(
+  dataset = SL_2002_2014, # here the outcome from the `contingenceTable()` function
+  category_n = "Ap", category_m = "SG"
+)
 
 # it returns a list with 6 objects
 names(my_test)
-#> [1] "lulc_table"           "interval_lvl"         "category_lvlGain"    
+#> [1] "lulc_table"           "interval_lvl"         "category_lvlGain"
 #> [4] "category_lvlLoss"     "transition_lvlGain_n" "transition_lvlLoss_m"
 ```
 
@@ -121,15 +123,14 @@ contains a table of the **category level** result *(gain
 contains a table storing the results of a stationarity test.
 
 ``` r
-
 my_test$category_lvlGain
 #> An object of class "Category"
 #> Slot "lookupcolor":
-#>        Ap        FF        SA        SG        aa        SF      Agua        Iu 
-#> "#FFE4B5" "#228B22" "#00FF00" "#CAFF70" "#EE6363" "#00CD00" "#436EEE" "#FFAEB9" 
-#>        Ac         R        Im 
-#> "#FFA54F" "#68228B" "#636363" 
-#> 
+#>        Ap        FF        SA        SG        aa        SF      Agua        Iu
+#> "#FFE4B5" "#228B22" "#00FF00" "#CAFF70" "#EE6363" "#00CD00" "#436EEE" "#FFAEB9"
+#>        Ac         R        Im
+#> "#FFA54F" "#68228B" "#636363"
+#>
 #> Slot "categoryData":
 #> # A tibble: 23 × 6
 #> # Groups:   Period, To [23]
@@ -146,22 +147,22 @@ my_test$category_lvlGain
 #>  9 2010-2012 Iu           2   1.90  0.792  2.12
 #> 10 2010-2012 R            2   2.76  0.951  2.12
 #> # ℹ 13 more rows
-#> 
+#>
 #> Slot "categoryStationarity":
 #> # A tibble: 12 × 5
-#>    To     Gain     N Stationarity Test 
+#>    To     Gain     N Stationarity Test
 #>    <fct> <int> <int> <chr>        <chr>
-#>  1 aa        2     4 Active Gain  N    
-#>  2 Ap        2     4 Active Gain  N    
-#>  3 Ac        1     4 Active Gain  N    
-#>  4 Iu        2     4 Active Gain  N    
-#>  5 Agua      1     4 Active Gain  N    
-#>  6 R         2     4 Active Gain  N    
-#>  7 aa        2     4 Dormant Gain N    
-#>  8 Ap        2     4 Dormant Gain N    
-#>  9 Ac        3     4 Dormant Gain N    
-#> 10 Im        3     4 Dormant Gain N    
-#> 11 Iu        2     4 Dormant Gain N    
+#>  1 aa        2     4 Active Gain  N
+#>  2 Ap        2     4 Active Gain  N
+#>  3 Ac        1     4 Active Gain  N
+#>  4 Iu        2     4 Active Gain  N
+#>  5 Agua      1     4 Active Gain  N
+#>  6 R         2     4 Active Gain  N
+#>  7 aa        2     4 Dormant Gain N
+#>  8 Ap        2     4 Dormant Gain N
+#>  9 Ac        3     4 Dormant Gain N
+#> 10 Im        3     4 Dormant Gain N
+#> 11 Iu        2     4 Dormant Gain N
 #> 12 R         1     4 Dormant Gain N
 ```
 
@@ -174,19 +175,22 @@ arguments, please see the documentation of the
 method.
 
 ``` r
-
 plot(my_test$category_lvlGain,
-     labels = c(leftlabel = bquote("Gain Area (" ~km^2~ ")"),
-                rightlabel = "Intensity Gain (%)"),
-     marginplot = c(.3, .3), labs = c("Categories", "Uniform intensity"), 
-     leg_curv = c(x = 1, y = .5),
-     fontsize_ui = 8)
+  labels = c(
+    leftlabel = bquote("Gain Area (" ~ km^2 ~ ")"),
+    rightlabel = "Intensity Gain (%)"
+  ),
+  marginplot = c(.3, .3), labs = c("Categories", "Uniform intensity"),
+  leg_curv = c(x = 1, y = .5),
+  fontsize_ui = 8
+)
 ```
 
 <div class="figure" style="text-align: center">
 
 <img src="man/figures/README-cat_level-1.png" alt="Gain area outcome - Category level" width="80%" />
 <p class="caption">
+
 Gain area outcome - Category level
 </p>
 
@@ -207,20 +211,21 @@ be visualized by a grouped bar chart.
 ##### Net and Gross gain and loss
 
 ``` r
-
-netgrossplot(dataset = SL_2002_2014$lulc_Multistep,
-             legendtable = SL_2002_2014$tb_legend,
-             xlab = "LUC Category",
-             ylab = bquote("Area (" ~ km^2 ~ ")"),
-             changesLabel = c(GC = "Gross changes", NG = "Net Gain", NL = "Net Loss"),
-             color = c(GC = "gray70", NG = "#006400", NL = "#EE2C2C")
-             )
+netgrossplot(
+  dataset = SL_2002_2014$lulc_Multistep,
+  legendtable = SL_2002_2014$tb_legend,
+  xlab = "LUC Category",
+  ylab = bquote("Area (" ~ km^2 ~ ")"),
+  changesLabel = c(GC = "Gross changes", NG = "Net Gain", NL = "Net Loss"),
+  color = c(GC = "gray70", NG = "#006400", NL = "#EE2C2C")
+)
 ```
 
 <div class="figure" style="text-align: center">
 
 <img src="man/figures/README-ng_plot-1.png" alt="Net Gross Changes 2002 - 2014" width="80%" />
 <p class="caption">
+
 Net Gross Changes 2002 - 2014
 </p>
 
@@ -229,15 +234,17 @@ Net Gross Changes 2002 - 2014
 ##### Chord Diagram (2002 - 2014)
 
 ``` r
-
-chordDiagramLand(dataset = SL_2002_2014$lulc_Onestep,
-                 legendtable = SL_2002_2014$tb_legend)
+chordDiagramLand(
+  dataset = SL_2002_2014$lulc_Onestep,
+  legendtable = SL_2002_2014$tb_legend
+)
 ```
 
 <div class="figure" style="text-align: center">
 
 <img src="man/figures/README-chordDiagram-1.png" alt="Chord Diagram 2002 - 2014 (area in km^2^)" width="100%" />
 <p class="caption">
+
 Chord Diagram 2002 - 2014 (area in km<sup>2</sup>)
 </p>
 
@@ -246,12 +253,11 @@ Chord Diagram 2002 - 2014 (area in km<sup>2</sup>)
 ##### Sankey Multi Step (2002, 2008, 2010, 2012, 2014)
 
 ``` r
-
 # sankeyLand(dataset = SL_2002_2014$lulc_Multistep,
 #            legendtable = SL_2002_2014$tb_legend)
 ```
 
-<img src="man/figures/sankey_multi.png" width="80%" style="display: block; margin: auto;" />
+<img src="man/figures/sankey_multi.png" alt="" width="80%" style="display: block; margin: auto;" />
 
 #### Other functions
 
@@ -272,6 +278,7 @@ outcomes of the `acc_changes()` function.
 
 <img src="man/figures/acc_mymap.png" alt="Accumulated changes in pixels in the interval 2002 - 2014 at four time points (2002, 2008, 2010, 2012, 2014)" width="90%" />
 <p class="caption">
+
 Accumulated changes in pixels in the interval 2002 - 2014 at four time
 points (2002, 2008, 2010, 2012, 2014)
 </p>

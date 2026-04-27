@@ -56,7 +56,6 @@ For processing in the OpenLand package, the original multi-year shape file was t
 ```{r example}
 # Loading the package
 library(OpenLand)
-
 ```
 
 
@@ -72,29 +71,37 @@ The data is extracted from the rasters with the [`contingencyTable()`](https://r
 
 ```{r include=FALSE}
 ## editing the category name
-SL_2002_2014$tb_legend$categoryName <- factor(c("Ap", "FF", "SA", "SG", "aa", "SF", 
-                                          "Agua", "Iu", "Ac", "R", "Im"),
-                                  levels = c("FF", "SF", "SA", "SG", "aa", "Ap", 
-                                         "Ac", "Im", "Iu", "Agua", "R"))
+SL_2002_2014$tb_legend$categoryName <- factor(
+  c(
+    "Ap", "FF", "SA", "SG", "aa", "SF",
+    "Agua", "Iu", "Ac", "R", "Im"
+  ),
+  levels = c(
+    "FF", "SF", "SA", "SG", "aa", "Ap",
+    "Ac", "Im", "Iu", "Agua", "R"
+  )
+)
 
 ## add the color by the same order of the legend,
 ## it can be the colour name (eg. "black") or the HEX value (eg. #000000)
-SL_2002_2014$tb_legend$color <- c("#FFE4B5", "#228B22", "#00FF00", "#CAFF70", 
-                                  "#EE6363", "#00CD00", "#436EEE", "#FFAEB9", 
-                                  "#FFA54F", "#68228B", "#636363")
+SL_2002_2014$tb_legend$color <- c(
+  "#FFE4B5", "#228B22", "#00FF00", "#CAFF70",
+  "#EE6363", "#00CD00", "#436EEE", "#FFAEB9",
+  "#FFA54F", "#68228B", "#636363"
+)
 
 ## now we have
 SL_2002_2014$tb_legend
-
 ```
 
 ```{r}
-my_test <- intensityAnalysis(dataset = SL_2002_2014, # here the outcome from the `contingenceTable()` function
-                            category_n = "Ap", category_m = "SG")
+my_test <- intensityAnalysis(
+  dataset = SL_2002_2014, # here the outcome from the `contingenceTable()` function
+  category_n = "Ap", category_m = "SG"
+)
 
 # it returns a list with 6 objects
 names(my_test)
-
 ```
 
 
@@ -110,9 +117,7 @@ Here, we adopted an object-oriented approach that allows to set specific methods
 In this example we will show an object from ``r class(my_test[[4]])`` class. A ``r class(my_test[[4]])`` object contains three slots: the first contains the colors associated with the legend items as name attributes, the second slot contains a table of the **category level** result _(gain (G~tj~) or loss (L~ti~) values)_  and the third slot contains a table storing the results of a stationarity test.
 
 ```{r}
-
 my_test$category_lvlGain
-
 ```
 
 
@@ -121,14 +126,15 @@ my_test$category_lvlGain
 Visualizations of the IA results are obtained from the `plot(intensity-object)` function. For more details on the function arguments, please see the documentation of the [`plot()`](https://reginalexavier.github.io/OpenLand/reference/plot.html) method.
 
 ```{r cat_level, echo=TRUE, fig.align='center', fig.cap="Gain area outcome - Category level", out.width="80%", dev.args=list(pointsize=10), dpi=150, warning=FALSE}
-
 plot(my_test$category_lvlGain,
-     labels = c(leftlabel = bquote("Gain Area (" ~km^2~ ")"),
-                rightlabel = "Intensity Gain (%)"),
-     marginplot = c(.3, .3), labs = c("Categories", "Uniform intensity"), 
-     leg_curv = c(x = 1, y = .5),
-     fontsize_ui = 8)
-
+  labels = c(
+    leftlabel = bquote("Gain Area (" ~ km^2 ~ ")"),
+    rightlabel = "Intensity Gain (%)"
+  ),
+  marginplot = c(.3, .3), labs = c("Categories", "Uniform intensity"),
+  leg_curv = c(x = 1, y = .5),
+  fontsize_ui = 8
+)
 ```
 
 
@@ -140,35 +146,31 @@ OpenLand provides a bench of visualization tools of LUCC metrics. One-step trans
 ##### Net and Gross gain and loss
 
 ```{r ng_plot, echo=TRUE, fig.align='center', fig.cap="Net Gross Changes 2002 - 2014", out.width="80%", dev.args=list(pointsize=10), dpi=150}
-
-netgrossplot(dataset = SL_2002_2014$lulc_Multistep,
-             legendtable = SL_2002_2014$tb_legend,
-             xlab = "LUC Category",
-             ylab = bquote("Area (" ~ km^2 ~ ")"),
-             changesLabel = c(GC = "Gross changes", NG = "Net Gain", NL = "Net Loss"),
-             color = c(GC = "gray70", NG = "#006400", NL = "#EE2C2C")
-             )
-
+netgrossplot(
+  dataset = SL_2002_2014$lulc_Multistep,
+  legendtable = SL_2002_2014$tb_legend,
+  xlab = "LUC Category",
+  ylab = bquote("Area (" ~ km^2 ~ ")"),
+  changesLabel = c(GC = "Gross changes", NG = "Net Gain", NL = "Net Loss"),
+  color = c(GC = "gray70", NG = "#006400", NL = "#EE2C2C")
+)
 ```
 
 
 ##### Chord Diagram (2002 - 2014)
 
 ```{r chordDiagram, echo=TRUE, fig.align='center', fig.cap="Chord Diagram 2002 - 2014 (area in km^2^)", dev.args=list(pointsize=9.5), dpi=400}
-
-chordDiagramLand(dataset = SL_2002_2014$lulc_Onestep,
-                 legendtable = SL_2002_2014$tb_legend)
-
+chordDiagramLand(
+  dataset = SL_2002_2014$lulc_Onestep,
+  legendtable = SL_2002_2014$tb_legend
+)
 ```
 
 ##### Sankey Multi Step (2002, 2008, 2010, 2012, 2014)
 
 ```{r fig.width=7, fig.height=4}
-
 # sankeyLand(dataset = SL_2002_2014$lulc_Multistep,
 #            legendtable = SL_2002_2014$tb_legend)
-
-
 ```
 
 ```{r sankey_multi, out.width='80%',echo=FALSE,fig.align='center', dpi=300}
@@ -181,9 +183,7 @@ knitr::include_graphics("man/figures/sankey_multi.png")
 OpenLand enables furthermore the spatial screening of LUCC frequencies for one or a series of raster layers with  [`summary_map()`](https://reginalexavier.github.io/OpenLand/reference/summary_map.html) and [`summary_dir()`](https://reginalexavier.github.io/OpenLand/reference/summary_dir.html). The [`acc_changes()`](https://reginalexavier.github.io/OpenLand/reference/acc_changes.html) function returns for a LUC time series the number of times a pixel has changed during the analysed period, returning a grid layer and a table with the percentages of transition numbers in the study area. Here we use the [tmap](https://github.com/r-tmap/tmap) package for plotting the outcomes of the `acc_changes()` function.
 
 ```{r mymap, echo=FALSE, fig.cap='Accumulated changes in pixels in the interval 2002 - 2014 at four time points (2002, 2008, 2010, 2012, 2014)', out.width='90%',fig.align='center'}
-
 knitr::include_graphics("man/figures/acc_mymap.png")
-
 ```
 
 

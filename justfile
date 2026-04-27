@@ -64,7 +64,7 @@ clean:
 # Run CI pipeline (deps, lint, check, test, coverage)
 ci: deps lint check test coverage
 
-# Prepare package for release
+# Prepare package for release (clean, deps, doc, build, check, test)
 release: clean deps doc build check test
     @echo "Package ready for release"
 
@@ -78,5 +78,5 @@ pkgdown-build:
     Rscript -e "pkgdown::build_site_github_pages(new_process = FALSE, install = FALSE)"
 
 # Check pkgdown
-pkgdown:
+pkgdown-check:
     Rscript -e "pkgdown::check_pkgdown()"

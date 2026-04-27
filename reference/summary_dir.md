@@ -26,12 +26,11 @@ Table with the raster parameters in columns
 ``` r
 # \donttest{
 url <- "https://zenodo.org/record/3685230/files/SaoLourencoBasin.rda?download=1"
-temp <- tempfile()
-download.file(url, temp, mode = "wb") # downloading the SaoLourencoBasin dataset
-load(temp)
-# the acc_changes() function, with the SaoLourencoBasin dataset
-
-summary_dir(raster::unstack(SaoLourencoBasin))
+if (OpenLand:::.openland_try_download_and_load_rda(url,
+  object = "SaoLourencoBasin", timeout = 10
+)) {
+  summary_dir(raster::unstack(SaoLourencoBasin))
+}
 #> # A tibble: 5 × 12
 #>   file_name    xmin   xmax   ymin   ymax res_x res_y  nrow  ncol min_val max_val
 #>   <chr>       <dbl>  <dbl>  <dbl>  <dbl> <dbl> <dbl> <int> <int>   <int>   <int>

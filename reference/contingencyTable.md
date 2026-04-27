@@ -92,11 +92,12 @@ A list that contains 5 objects.
 ``` r
 # \donttest{
 url <- "https://zenodo.org/record/3685230/files/SaoLourencoBasin.rda?download=1"
-temp <- tempfile()
-download.file(url, temp, mode = "wb") # downloading the online dataset
-load(temp)
-# the contingencyTable() function, with the SaoLourencoBasin dataset
-contingencyTable(input_raster = SaoLourencoBasin, pixelresolution = 30)
+if (OpenLand:::.openland_try_download_and_load_rda(url,
+  object = "SaoLourencoBasin", timeout = 10
+)) {
+  # the contingencyTable() function, with the SaoLourencoBasin dataset
+  contingencyTable(input_raster = SaoLourencoBasin, pixelresolution = 30)
+}
 #> $lulc_Multistep
 #> # A tibble: 130 × 8
 #>    Period     From    To      km2 QtPixel Interval yearFrom yearTo

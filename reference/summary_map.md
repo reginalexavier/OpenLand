@@ -25,10 +25,11 @@ A table containing in columns the pixel counts for each pixel value
 ``` r
 # \donttest{
 url <- "https://zenodo.org/record/3685230/files/SaoLourencoBasin.rda?download=1"
-temp <- tempfile()
-download.file(url, temp, mode = "wb") # downloading the SaoLourencoBasin dataset
-load(temp)
-summary_map(SaoLourencoBasin[[1]])
+if (OpenLand:::.openland_try_download_and_load_rda(url,
+  object = "SaoLourencoBasin", timeout = 10
+)) {
+  summary_map(SaoLourencoBasin[[1]])
+}
 #> # A tibble: 11 × 2
 #>    pixvalue      Qt
 #>       <dbl>   <dbl>

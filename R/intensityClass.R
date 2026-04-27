@@ -27,20 +27,12 @@ setClass(
   Class = "Interval",
   slots = c(intervalData = "tbl_df"),
   validity = function(object) {
-    if (!("tbl_df" %in% class(object@intervalData) &
-          (ncol(object@intervalData) == 4)))
-    {
+    if (!("tbl_df" %in% class(object@intervalData) & (ncol(object@intervalData) == 4))) {
       stop("The data has to be a `tibble` and must have 4 columns")
     }
-    return(TRUE)
+    TRUE
   }
 )
-
-
-
-
-
-
 
 
 #' Class Category
@@ -129,30 +121,18 @@ setClass(
     categoryData = "tbl_df",
     categoryStationarity = "tbl_df"
   ),
-
   validity = function(object) {
-    if (!("tbl_df" %in% class(object@categoryData) &
-          (ncol(object@categoryData) == 6))) {
+    if (!("tbl_df" %in% class(object@categoryData) & (ncol(object@categoryData) == 6))) {
       stop("The `categoryData` data has to be a `tibble` and must have 5 columns")
-
-    } else if (!("tbl_df" %in% class(object@categoryStationarity) &
-                 (ncol(object@categoryStationarity) == 5)))
-
-    {
+    } else if (!("tbl_df" %in% class(object@categoryStationarity) & (ncol(object@categoryStationarity) == 5))) {
       stop("The `categoryStationarity` data has to be a `tibble` and must have 5 columns")
-
-    } else if (!is.character(object@lookupcolor) &
-               length(names(object@lookupcolor) == 0)) {
+    } else if (!is.character(object@lookupcolor) & length(names(object@lookupcolor) == 0)) {
       stop("The `lookupcolor` has to be an object of type `character` with name attributes")
-
     }
 
-    return(TRUE)
+    TRUE
   }
 )
-
-
-
 
 
 #' Class Transition
@@ -257,20 +237,13 @@ setClass(
     transitionStationarity = "tbl_df"
   ),
   validity = function(object) {
-    if (!("tbl_df" %in% class(object@transitionData) &
-          (ncol(object@transitionData) == 7))) {
+    if (!("tbl_df" %in% class(object@transitionData) & (ncol(object@transitionData) == 7))) {
       stop("The `transitionData` data has to be a `tibble` and must have 7 columns")
-    } else if (!("tbl_df" %in% class(object@transitionStationarity) &
-                 (ncol(object@transitionStationarity) == 5)))
-    {
+    } else if (!("tbl_df" %in% class(object@transitionStationarity) & (ncol(object@transitionStationarity) == 5))) {
       stop("The `categoryStationarity` data has to be a `tibble` and must have 5 columns")
-
-    } else if (!is.character(object@lookupcolor) &
-               length(names(object@lookupcolor) == 0)) {
+    } else if (!is.character(object@lookupcolor) & length(names(object@lookupcolor) == 0)) {
       stop("The `lookupcolor` has to be an object of type `character` with name attributes")
-
     }
-    return(TRUE)
+    TRUE
   }
 )
-

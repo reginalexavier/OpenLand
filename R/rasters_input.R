@@ -16,64 +16,75 @@
 #'
 
 
-setGeneric(".input_rasters", function(x, ...)
-    standardGeneric(".input_rasters"))
-
+setGeneric(".input_rasters", function(x, ...) {
+  standardGeneric(".input_rasters")
+})
 
 
 # the methods character
 #' @rdname dot-input_rasters
 #' @aliases character
-setMethod(".input_rasters", signature(x = "character"),
-          function(x, ...) {
-            files <- list.files(path = x,
-                                pattern = ".tif$",
-                                full.names = FALSE)
-            if (length(files) > 0) {
-              sorted_files <- sort(files)
-              paths <- file.path(x, sorted_files)
-              maps <- raster::stack(paths)
-              maps
-            } else {
-              stop("maps not found")
-            }
-          })
+setMethod(
+  ".input_rasters", signature(x = "character"),
+  function(x, ...) {
+    files <- list.files(
+      path = x,
+      pattern = ".tif$",
+      full.names = FALSE
+    )
+    if (length(files) > 0) {
+      sorted_files <- sort(files)
+      paths <- file.path(x, sorted_files)
+      maps <- raster::stack(paths)
+      maps
+    } else {
+      stop("maps not found")
+    }
+  }
+)
 
 #' @rdname dot-input_rasters
 #' @aliases list
-setMethod(".input_rasters", signature(x = "list"),
-          function(x, ...) {
-            list.names <- names(x)
-            if (is.null(list.names))
-              stop("list elements must be named")
-            files <- list.names
-            sorted_files <- sort(files)
-            maps <- raster::stack(x[sorted_files])
-            maps
-          })
+setMethod(
+  ".input_rasters", signature(x = "list"),
+  function(x, ...) {
+    list.names <- names(x)
+    if (is.null(list.names)) {
+      stop("list elements must be named")
+    }
+    files <- list.names
+    sorted_files <- sort(files)
+    maps <- raster::stack(x[sorted_files])
+    maps
+  }
+)
 
 #' @rdname dot-input_rasters
 #' @aliases RasterLayer
-setMethod(".input_rasters", signature(x = "RasterLayer"),
-          function(x, ...) {
-            maps <- raster::stack(x)
-            maps
-          })
+setMethod(
+  ".input_rasters", signature(x = "RasterLayer"),
+  function(x, ...) {
+    maps <- raster::stack(x)
+    maps
+  }
+)
 
 #' @rdname dot-input_rasters
 #' @aliases RasterBrick
-setMethod(".input_rasters", signature(x = "RasterBrick"),
-          function(x, ...) {
-            maps <- x
-            maps
-          })
+setMethod(
+  ".input_rasters", signature(x = "RasterBrick"),
+  function(x, ...) {
+    maps <- x
+    maps
+  }
+)
 
 #' @rdname dot-input_rasters
 #' @aliases RasterStack
-setMethod(".input_rasters", signature(x = "RasterStack"),
-          function(x, ...) {
-            maps <- x
-            maps
-          })
-
-
+setMethod(
+  ".input_rasters", signature(x = "RasterStack"),
+  function(x, ...) {
+    maps <- x
+    maps
+  }
+)

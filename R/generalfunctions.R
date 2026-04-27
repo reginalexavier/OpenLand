@@ -1,4 +1,3 @@
-
 #' Summary of multiple parameters in a raster directory
 #'
 #' Listing major characteristics of raster inputs. Those characteristics are the
@@ -23,16 +22,14 @@
 #' }
 #'
 summary_dir <- function(path) {
-
-  if (inherits(path, "list") &
-      inherits(path[[1]], "RasterLayer")) {
+  if (inherits(path, "list") && inherits(path[[1]], "RasterLayer")) {
     layer_list <- path
   } else if (inherits(path, "character")) {
-
     raster_files <-
       list.files(path,
-                 pattern = ".tif$",
-                 full.names = TRUE)
+        pattern = ".tif$",
+        full.names = TRUE
+      )
 
     layer_list <- vector("list", length = length(raster_files))
 
@@ -42,24 +39,26 @@ summary_dir <- function(path) {
     }
   }
 
-  Reduce(rbind,
-         lapply(layer_list, function(x) {
-           layermap <- x
-           tibble(
-             file_name = base::names(x),
-             xmin = raster::xmin(layermap),
-             xmax = raster::xmax(layermap),
-             ymin = raster::ymin(layermap),
-             ymax = raster::ymax(layermap),
-             res_x = raster::res(layermap)[1],
-             res_y = raster::res(layermap)[2],
-             nrow = raster::nrow(layermap),
-             ncol = raster::ncol(layermap),
-             min_val = raster::minValue(layermap),
-             max_val = raster::maxValue(layermap),
-             crs = as.character(raster::crs(layermap))
-           )
-         }))
+  Reduce(
+    rbind,
+    lapply(layer_list, function(x) {
+      layermap <- x
+      tibble(
+        file_name = base::names(x),
+        xmin = raster::xmin(layermap),
+        xmax = raster::xmax(layermap),
+        ymin = raster::ymin(layermap),
+        ymax = raster::ymax(layermap),
+        res_x = raster::res(layermap)[1],
+        res_y = raster::res(layermap)[2],
+        nrow = raster::nrow(layermap),
+        ncol = raster::ncol(layermap),
+        min_val = raster::minValue(layermap),
+        max_val = raster::maxValue(layermap),
+        crs = as.character(raster::crs(layermap))
+      )
+    })
+  )
 }
 
 
@@ -98,16 +97,17 @@ summary_map <- function(path) {
     }
   value_map <- table(raster::values(rastermap))
 
-  tbfinal <- dplyr::tibble(pixvalue = numeric(length(value_map)),
-                           Qt = numeric(length(value_map)))
+  tbfinal <- dplyr::tibble(
+    pixvalue = numeric(length(value_map)),
+    Qt = numeric(length(value_map))
+  )
 
   for (i in seq_along(value_map)) {
     tbfinal[i, c(1:2)] <-
       list(as.numeric(names(value_map)[i]), value_map[[i]])
   }
-  return(tbfinal)
+  tbfinal
 }
-
 
 
 #' Accumulates changes in a LULC raster time series
@@ -137,9 +137,7 @@ summary_map <- function(path) {
 #' acc_changes(SaoLourencoBasin)
 #' }
 #'
-
 acc_changes <- function(path) {
-
   rList <- .input_rasters(path)
 
   rList <- raster::unstack(rList)
@@ -147,17 +145,19 @@ acc_changes <- function(path) {
   n_raster <- length(rList)
 
   if (n_raster < 2) {
-    stop('acc_changes needs at least 2 rasters')
+    stop("acc_changes needs at least 2 rasters")
   }
 
   difflist <- mapply(
-    function(x, y)
+    function(x, y) {
       raster::overlay(
         x,
         y,
-        fun = function(x1, x2)
+        fun = function(x1, x2) {
           ifelse((x1 != x2), 1, 0)
-      ),
+        }
+      )
+    },
     x = rList[1:(length(rList) - 1)],
     y = rList[2:length(rList)],
     SIMPLIFY = FALSE
@@ -170,14 +170,14 @@ acc_changes <- function(path) {
   df01_values <- table(matrix(sumraster))
 
   df_values <- dplyr::mutate(data.frame(df01_values),
-                             Var1 = as.character(Var1),
-                             Var1 = as.integer(Var1),
-                             Percent = Freq/sum(Freq)*100)
+    Var1 = as.character(Var1),
+    Var1 = as.integer(Var1),
+    Percent = Freq / sum(Freq) * 100
+  )
 
   df_values <- dplyr::as_tibble(df_values)
 
   names(df_values) <- c("PxValue", "Qt", "Percent")
 
   list(sumraster, df_values)
-
 }

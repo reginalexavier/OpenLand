@@ -1,8 +1,10 @@
-utils::globalVariables(c("From", "To", "target", "km2", "Year",
-                         "QtPixel", "yearFrom", "yearTo", "name",
-                         "colorFrom", "colorTo", "lulc", "area",
-                         "Category", "Years", "flow_id",
-                         "geom_flow", "geom_stratum", "area_gross"))
+utils::globalVariables(c(
+  "From", "To", "target", "km2", "Year",
+  "QtPixel", "yearFrom", "yearTo", "name",
+  "colorFrom", "colorTo", "lulc", "area",
+  "Category", "Years", "flow_id",
+  "geom_flow", "geom_stratum", "area_gross"
+))
 #' @include plotMethods.R
 NULL
 
@@ -36,20 +38,29 @@ NULL
 #'
 #' # editing the category names
 #'
-#' SL_2002_2014$tb_legend$categoryName <- factor(c("Ap", "FF", "SA", "SG", "aa", "SF",
-#'                                              "Agua", "Iu", "Ac", "R", "Im"),
-#'                                   levels = c("FF", "SF", "SA", "SG", "aa", "Ap",
-#'                                              "Ac", "Im", "Iu", "Agua", "R"))
+#' SL_2002_2014$tb_legend$categoryName <- factor(
+#'   c(
+#'     "Ap", "FF", "SA", "SG", "aa", "SF",
+#'     "Agua", "Iu", "Ac", "R", "Im"
+#'   ),
+#'   levels = c(
+#'     "FF", "SF", "SA", "SG", "aa", "Ap",
+#'     "Ac", "Im", "Iu", "Agua", "R"
+#'   )
+#' )
 #'
 #  # add the color by the same order of the legend factor
-#' SL_2002_2014$tb_legend$color <- c("#FFE4B5", "#228B22", "#00FF00", "#CAFF70",
-#'                                   "#EE6363", "#00CD00", "#436EEE", "#FFAEB9",
-#'                                   "#FFA54F", "#68228B", "#636363")
+#' SL_2002_2014$tb_legend$color <- c(
+#'   "#FFE4B5", "#228B22", "#00FF00", "#CAFF70",
+#'   "#EE6363", "#00CD00", "#436EEE", "#FFAEB9",
+#'   "#FFA54F", "#68228B", "#636363"
+#' )
 #' # the plot
-#' barplotLand(dataset = SL_2002_2014$lulc_Multistep,
-#'             legendtable = SL_2002_2014$tb_legend,
-#'             area_km2 = TRUE)
-#'
+#' barplotLand(
+#'   dataset = SL_2002_2014$lulc_Multistep,
+#'   legendtable = SL_2002_2014$tb_legend,
+#'   area_km2 = TRUE
+#' )
 #'
 barplotLand <-
   function(dataset,
@@ -59,8 +70,6 @@ barplotLand <-
            xlab = "Year",
            ylab = "Area (km2 or pixel)",
            area_km2 = TRUE, ...) {
-
-
     datachange <- dataset %>%
       left_join(legendtable, by = c("From" = "categoryValue")) %>%
       left_join(legendtable, by = c("To" = "categoryValue")) %>%
@@ -75,13 +84,16 @@ barplotLand <-
     areaif <- ifelse(isTRUE(area_km2), "km2", "QtPixel")
 
     datanual <-
-      datachange %>% group_by(yearTo, To) %>%
+      datachange %>%
+      group_by(yearTo, To) %>%
       summarise(area = sum(!!as.name(areaif))) %>%
-      rename("Year" = "yearTo", "lulc" = "To") %>% rbind(
-        datachange[datachange$yearFrom == first(datachange$yearFrom),] %>%
+      rename("Year" = "yearTo", "lulc" = "To") %>%
+      rbind(
+        datachange[datachange$yearFrom == first(datachange$yearFrom), ] %>%
           group_by(yearFrom, From) %>% # capturing the first year change
           summarise(area = sum(!!as.name(areaif))) %>%
-          rename("Year" = "yearFrom", "lulc" = "From"))
+          rename("Year" = "yearFrom", "lulc" = "From")
+      )
 
     ggplot(data = datanual, aes(as.character(Year), area)) +
       geom_bar(aes(fill = lulc), stat = "identity", position = "dodge") +
@@ -90,12 +102,11 @@ barplotLand <-
       xlab(xlab) +
       ylab(ylab) +
       ggtitle(title) +
-      theme(plot.title = element_text(hjust = .5),
-            ...)
-
+      theme(
+        plot.title = element_text(hjust = .5),
+        ...
+      )
   }
-
-
 
 
 #' One step transitions (Chord diagram)
@@ -129,19 +140,29 @@ barplotLand <-
 #'
 #' # editing the category names
 #'
-#' SL_2002_2014$tb_legend$categoryName <- factor(c("Ap", "FF", "SA", "SG", "aa", "SF",
-#'                                                "Agua", "Iu", "Ac", "R", "Im"),
-#'                                      levels = c("FF", "SF", "SA", "SG", "aa", "Ap",
-#'                                               "Ac", "Im", "Iu", "Agua", "R"))
+#' SL_2002_2014$tb_legend$categoryName <- factor(
+#'   c(
+#'     "Ap", "FF", "SA", "SG", "aa", "SF",
+#'     "Agua", "Iu", "Ac", "R", "Im"
+#'   ),
+#'   levels = c(
+#'     "FF", "SF", "SA", "SG", "aa", "Ap",
+#'     "Ac", "Im", "Iu", "Agua", "R"
+#'   )
+#' )
 #'
 #  # add the color by the same order of the legend factor
-#' SL_2002_2014$tb_legend$color <- c("#FFE4B5", "#228B22", "#00FF00", "#CAFF70",
-#'                                   "#EE6363", "#00CD00", "#436EEE", "#FFAEB9",
-#'                                   "#FFA54F", "#68228B", "#636363")
+#' SL_2002_2014$tb_legend$color <- c(
+#'   "#FFE4B5", "#228B22", "#00FF00", "#CAFF70",
+#'   "#EE6363", "#00CD00", "#436EEE", "#FFAEB9",
+#'   "#FFA54F", "#68228B", "#636363"
+#' )
 #'
 #' # the plot
-#' chordDiagramLand(dataset = SL_2002_2014$lulc_Onestep,
-#'                  legendtable = SL_2002_2014$tb_legend)
+#' chordDiagramLand(
+#'   dataset = SL_2002_2014$lulc_Onestep,
+#'   legendtable = SL_2002_2014$tb_legend
+#' )
 #'
 chordDiagramLand <-
   function(dataset,
@@ -153,8 +174,6 @@ chordDiagramLand <-
            legendsize = 1,
            y.intersp = 1,
            x.margin = c(-1, 1)) {
-
-
     circle_data <- dataset %>%
       left_join(legendtable, by = c("From" = "categoryValue")) %>%
       left_join(legendtable, by = c("To" = "categoryValue")) %>%
@@ -164,24 +183,29 @@ chordDiagramLand <-
         "To" = "categoryName.y",
         "colorFrom" = "color.x",
         "colorTo" = "color.y"
-      ) %>% tidyr::unite("source",
-                         c("From", "yearFrom"),
-                         sep = "-",
-                         remove = FALSE) %>%
+      ) %>%
+      tidyr::unite("source",
+        c("From", "yearFrom"),
+        sep = "-",
+        remove = FALSE
+      ) %>%
       tidyr::unite("target",
-                   c("To", "yearTo"),
-                   sep = "-",
-                   remove = FALSE) %>%
-      dplyr::select(source,
-                    target,
-                    From,
-                    To,
-                    km2,
-                    QtPixel,
-                    yearFrom,
-                    yearTo,
-                    colorFrom,
-                    colorTo)
+        c("To", "yearTo"),
+        sep = "-",
+        remove = FALSE
+      ) %>%
+      dplyr::select(
+        source,
+        target,
+        From,
+        To,
+        km2,
+        QtPixel,
+        yearFrom,
+        yearTo,
+        colorFrom,
+        colorTo
+      )
 
     # input for the circlize function
     onestepcircle <-
@@ -204,9 +228,10 @@ chordDiagramLand <-
 
     # km2 or pixel
     if (isTRUE(area_km2)) {
-      onestepcircle <- onestepcircle[c(1,2,3)]} else {
-        onestepcircle <- onestepcircle[c(1,2,4)]
-      }
+      onestepcircle <- onestepcircle[c(1, 2, 3)]
+    } else {
+      onestepcircle <- onestepcircle[c(1, 2, 4)]
+    }
 
     old.par <- graphics::par(no.readonly = TRUE)
     on.exit(graphics::par(old.par))
@@ -219,7 +244,7 @@ chordDiagramLand <-
       track.margin = c(-0.01, 0.015),
       points.overflow.warning = TRUE,
       "canvas.xlim" = c(x.margin[[1]], x.margin[[2]])
-      )
+    )
 
     graphics::par(mar = rep(0, 4)) # outer part
 
@@ -230,7 +255,7 @@ chordDiagramLand <-
       transparency = 0.25,
       directional = 1,
       direction.type = c("arrows", "diffHeight"),
-      diffHeight  = -0.02,
+      diffHeight = -0.02,
       annotationTrack = c("name", "grid")[2],
       annotationTrackHeight = c(0.05, 0.1),
       link.arr.type = "big.arrow",
@@ -280,7 +305,7 @@ chordDiagramLand <-
       legend = levels(circle_data$From),
       pt.cex = 0,
       cex = legendsize,
-      bty = 'n',
+      bty = "n",
       y.intersp = y.intersp,
       fill = legendtable$color[order(legendtable$categoryName)]
     )
@@ -298,8 +323,6 @@ chordDiagramLand <-
 
     circlize::circos.clear()
   }
-
-
 
 
 #' Net and gross changes of LUC categories
@@ -332,19 +355,26 @@ chordDiagramLand <-
 #'
 #' # editing the category names
 #'
-#' SL_2002_2014$tb_legend$categoryName <- factor(c("Ap", "FF", "SA", "SG", "aa", "SF",
-#'                                              "Agua", "Iu", "Ac", "R", "Im"),
-#'                                      levels = c("FF", "SF", "SA", "SG", "aa", "Ap",
-#'                                               "Ac", "Im", "Iu", "Agua", "R"))
+#' SL_2002_2014$tb_legend$categoryName <- factor(
+#'   c(
+#'     "Ap", "FF", "SA", "SG", "aa", "SF",
+#'     "Agua", "Iu", "Ac", "R", "Im"
+#'   ),
+#'   levels = c(
+#'     "FF", "SF", "SA", "SG", "aa", "Ap",
+#'     "Ac", "Im", "Iu", "Agua", "R"
+#'   )
+#' )
 #'
 #' # the plot
-#' netgrossplot(dataset = SL_2002_2014$lulc_Multistep,
-#'              legendtable = SL_2002_2014$tb_legend,
-#'              title = NULL,
-#'              xlab = "LUC Category",
-#'              changes = c(GC = "Gross changes", NG = "Net Gain", NL = "Net Loss"),
-#'              color = c(GC = "gray70", NG = "#006400", NL = "#EE2C2C"))
-#'
+#' netgrossplot(
+#'   dataset = SL_2002_2014$lulc_Multistep,
+#'   legendtable = SL_2002_2014$tb_legend,
+#'   title = NULL,
+#'   xlab = "LUC Category",
+#'   changes = c(GC = "Gross changes", NG = "Net Gain", NL = "Net Loss"),
+#'   color = c(GC = "gray70", NG = "#006400", NL = "#EE2C2C")
+#' )
 #'
 netgrossplot <-
   function(dataset,
@@ -356,21 +386,22 @@ netgrossplot <-
            changesLabel = c(GC = "Gross change", NG = "Net gain", NL = "Net loss"),
            color = c(GC = "gray70", NG = "#006400", NL = "#EE2C2C"),
            area_km2 = TRUE) {
-
     datachange <- (dataset %>%
       left_join(legendtable, by = c("From" = "categoryValue")) %>%
       left_join(legendtable, by = c("To" = "categoryValue")) %>%
       dplyr::select(-c(From, To)) %>%
       rename(
         "From" = "categoryName.x",
-        "To" = "categoryName.y"))[c(1, 2, 3, 7, 9)]
+        "To" = "categoryName.y"
+      ))[c(1, 2, 3, 7, 9)]
 
     areaif <- ifelse(isTRUE(area_km2), "km2", "QtPixel")
 
 
     lulc_gain <- datachange %>% dplyr::filter(From != To)
 
-    lulc_loss <- lulc_gain %>% rename("To" = "From", "From" = "To") %>%
+    lulc_loss <- lulc_gain %>%
+      rename("To" = "From", "From" = "To") %>%
       mutate(km2 = -1 * km2, QtPixel = -1 * QtPixel)
 
 
@@ -379,7 +410,9 @@ netgrossplot <-
 
 
     lulc_gainLoss_net <-
-      lulc_gainloss_gross %>% group_by(To) %>% summarise(area = sum(!!as.name(areaif))) %>%
+      lulc_gainloss_gross %>%
+      group_by(To) %>%
+      summarise(area = sum(!!as.name(areaif))) %>%
       mutate(changes = ifelse(area > 0, changesLabel[[2]], changesLabel[[3]]))
 
     if (isTRUE(area_km2)) {
@@ -401,13 +434,15 @@ netgrossplot <-
         width = 0.4,
         inherit.aes = FALSE
       ) +
-      geom_segment(data = lulc_gainLoss_net,
-                   aes(
-                     x = as.numeric(To) - 0.3,
-                     y = area,
-                     xend = as.numeric(To) + 0.3,
-                     yend = area
-                   )) +
+      geom_segment(
+        data = lulc_gainLoss_net,
+        aes(
+          x = as.numeric(To) - 0.3,
+          y = area,
+          xend = as.numeric(To) + 0.3,
+          yend = area
+        )
+      ) +
       scale_fill_manual(values = color) +
       labs(fill = legend_title) +
       geom_hline(yintercept = 0, linewidth = .3) +
@@ -416,7 +451,6 @@ netgrossplot <-
       ggtitle(title) +
       theme(plot.title = element_text(hjust = .5))
   }
-
 
 
 #' Sankey diagram of LUC transitions (one or multistep)
@@ -440,24 +474,35 @@ netgrossplot <-
 #'
 #' # editing the category names
 #'
-#' SL_2002_2014$tb_legend$categoryName <- factor(c("Ap", "FF", "SA", "SG", "aa", "SF",
-#'                                              "Agua", "Iu", "Ac", "R", "Im"),
-#'                                      levels = c("FF", "SF", "SA", "SG", "aa", "Ap",
-#'                                               "Ac", "Im", "Iu", "Agua", "R"))
+#' SL_2002_2014$tb_legend$categoryName <- factor(
+#'   c(
+#'     "Ap", "FF", "SA", "SG", "aa", "SF",
+#'     "Agua", "Iu", "Ac", "R", "Im"
+#'   ),
+#'   levels = c(
+#'     "FF", "SF", "SA", "SG", "aa", "Ap",
+#'     "Ac", "Im", "Iu", "Agua", "R"
+#'   )
+#' )
 #'
 #  # add the color by the same order of the legend factor
-#' SL_2002_2014$tb_legend$color <- c("#FFE4B5", "#228B22", "#00FF00", "#CAFF70",
-#'                                   "#EE6363", "#00CD00", "#436EEE", "#FFAEB9",
-#'                                   "#FFA54F", "#68228B", "#636363")
+#' SL_2002_2014$tb_legend$color <- c(
+#'   "#FFE4B5", "#228B22", "#00FF00", "#CAFF70",
+#'   "#EE6363", "#00CD00", "#436EEE", "#FFAEB9",
+#'   "#FFA54F", "#68228B", "#636363"
+#' )
 #'
 #' # onestep sankey
-#' sankeyLand(dataset = SL_2002_2014$lulc_Onestep,
-#'            legendtable = SL_2002_2014$tb_legend)
+#' sankeyLand(
+#'   dataset = SL_2002_2014$lulc_Onestep,
+#'   legendtable = SL_2002_2014$tb_legend
+#' )
 #'
 #' # multistep sankey
-#' sankeyLand(dataset = SL_2002_2014$lulc_Multistep,
-#'            legendtable = SL_2002_2014$tb_legend)
-#'
+#' sankeyLand(
+#'   dataset = SL_2002_2014$lulc_Multistep,
+#'   legendtable = SL_2002_2014$tb_legend
+#' )
 #'
 sankeyLand <- function(dataset, legendtable, iterations = 0) {
   linkMultistep <- dataset %>%
@@ -469,23 +514,34 @@ sankeyLand <- function(dataset, legendtable, iterations = 0) {
       "To" = "categoryName.y",
       "colorFrom" = "color.x",
       "colorTo" = "color.y"
-    ) %>% tidyr::unite("source",
-                c("From", "yearFrom"),
-                sep = "-",
-                remove = FALSE) %>%
+    ) %>%
+    tidyr::unite("source",
+      c("From", "yearFrom"),
+      sep = "-",
+      remove = FALSE
+    ) %>%
     tidyr::unite("target",
-          c("To", "yearTo"),
-          sep = "-",
-          remove = FALSE) %>%
+      c("To", "yearTo"),
+      sep = "-",
+      remove = FALSE
+    ) %>%
     dplyr::select(source, target, From, To, km2, yearFrom, yearTo)
   # defining the color scale
-  domain <- paste(paste0("'",
-                         as.character(levels(legendtable$categoryName)), "'"),
-                  collapse = ", ")
+  domain <- paste(
+    paste0(
+      "'",
+      as.character(levels(legendtable$categoryName)), "'"
+    ),
+    collapse = ", "
+  )
 
-  range <- paste(paste0("'",
-                        as.character(legendtable$color[order(legendtable$categoryName)]), "'"),
-                 collapse = ", ")
+  range <- paste(
+    paste0(
+      "'",
+      as.character(legendtable$color[order(legendtable$categoryName)]), "'"
+    ),
+    collapse = ", "
+  )
 
   colorScale <-
     paste0(
@@ -498,10 +554,12 @@ sankeyLand <- function(dataset, legendtable, iterations = 0) {
 
 
   nodeMultistep <-
-    data.frame(name = c(
-      as.character(linkMultistep[order(linkMultistep$From), ]$source),
-      as.character(linkMultistep[order(linkMultistep$To), ]$target)
-    ) %>% unique()) %>%
+    data.frame(
+      name = unique(c(
+        as.character(linkMultistep[order(linkMultistep$From), ]$source),
+        as.character(linkMultistep[order(linkMultistep$To), ]$target)
+      ))
+    ) %>%
     tidyr::separate(name, c("name02", "year"), sep = "-", remove = FALSE)
 
   linkMultistep$IDsource <-
@@ -526,4 +584,3 @@ sankeyLand <- function(dataset, legendtable, iterations = 0) {
     sinksRight = FALSE
   )
 }
-

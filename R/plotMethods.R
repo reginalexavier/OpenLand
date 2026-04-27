@@ -35,9 +35,9 @@ NULL
 #' @export
 #'
 #'
-methods::setGeneric(name = "plot", def = function(x, y, ...)
-  standardGeneric("plot"))
-
+methods::setGeneric(name = "plot", def = function(x, y, ...) {
+  standardGeneric("plot")
+})
 
 
 #' @param Interval The class.
@@ -54,18 +54,20 @@ methods::setMethod(
                         y,
                         labels = c(
                           leftlabel = "Interval Change Area (percent of map)",
-                          rightlabel = "Annual Change Area (percent of map)"),
+                          rightlabel = "Annual Change Area (percent of map)"
+                        ),
                         title = NA,
                         labs = c(type = "Changes", ur = "Uniform Intensity"),
                         marginplot = c(lh = -10, rh = 0),
                         leg_curv = c(x = 0.1, y = 0.1),
-                        color_bar = c(fast = "#B22222",
-                                      slow = "#006400",
-                                      area = "gray40"),
+                        color_bar = c(
+                          fast = "#B22222",
+                          slow = "#006400",
+                          area = "gray40"
+                        ),
                         fontsize_ui = 10,
                         ...) {
-
-        dataset <-
+    dataset <-
       x$intervalData %>% dplyr::mutate(Type = ifelse(St > U, "Fast", "Slow"))
 
 
@@ -78,8 +80,9 @@ methods::setMethod(
         width = .5
       ) +
       geom_hline(aes(yintercept = dataset[[4]], color = "U"),
-                 linetype = 5,
-                 linewidth = .5) +
+        linetype = 5,
+        linewidth = .5
+      ) +
       geom_hline(aes(yintercept = 0), linewidth = .01) +
       scale_fill_manual(values = c(color_bar[[1]], color_bar[[2]])) +
       ylab(NULL) +
@@ -87,8 +90,10 @@ methods::setMethod(
       labs(fill = labs[[1]], color = labs[[2]]) +
       scale_y_continuous(expand = expansion(mult = c(0, .01))) +
       scale_x_discrete(expand = expansion(mult = c(0.06, 0.06))) +
-      guides(fill = guide_legend(order = 1),
-             color = guide_legend(order = 2)) +
+      guides(
+        fill = guide_legend(order = 1),
+        color = guide_legend(order = 2)
+      ) +
       coord_flip() +
       geom_curve(
         aes(
@@ -102,10 +107,12 @@ methods::setMethod(
         arrow = arrow(length = unit(2, "mm"), ends = "first")
       ) +
       geom_text(
-        aes(x = (length(unique(
-          dataset[[1]]
-        )) / 2) + leg_curv[[2]],
-        y = dataset[[4]] + leg_curv[[1]]),
+        aes(
+          x = (length(unique(
+            dataset[[1]]
+          )) / 2) + leg_curv[[2]],
+          y = dataset[[4]] + leg_curv[[1]]
+        ),
         label = paste(round(dataset[[4]], 2), "%"),
         colour = "black",
         fontface = c("plain", "bold", "italic", "bold.italic")[1],
@@ -128,7 +135,7 @@ methods::setMethod(
         ), "pt"), ...
       )
 
-    #Area---------------
+    # Area---------------
     GL01_area <-
       dataset %>% ggplot(aes(factor(dataset[[1]], levels = rev(levels(dataset[[1]]))), dataset[[2]])) +
       geom_bar(
@@ -166,37 +173,40 @@ methods::setMethod(
       right_lab <- format_lab(labels[[2]])
 
       my_layout <-
-        matrix(c(rep(1, 6), NA, rep(rep(2:3, c(
-          3, 4
-        )), 20), rep(4:5, c(3, 3)), NA),
-        ncol = 7,
-        byrow = TRUE)
+        matrix(
+          c(rep(1, 6), NA, rep(rep(2:3, c(
+            3, 4
+          )), 20), rep(4:5, c(3, 3)), NA),
+          ncol = 7,
+          byrow = TRUE
+        )
 
       gridExtra::grid.arrange(title_lab,
-                              GL01_area,
-                              GL01_taxa,
-                              left_lab,
-                              right_lab,
-                              layout_matrix = my_layout)
+        GL01_area,
+        GL01_taxa,
+        left_lab,
+        right_lab,
+        layout_matrix = my_layout
+      )
     } else {
       left_lab <- format_lab(labels[[1]])
       right_lab <- format_lab(labels[[2]])
 
       my_layout <-
-        matrix(c(rep(rep(2:3, c(
-          3, 5
-        )), 20), rep(c(4, 5, NA), c(3, 4, 1))),
-        ncol = 8, byrow = TRUE)
+        matrix(
+          c(rep(rep(2:3, c(
+            3, 5
+          )), 20), rep(c(4, 5, NA), c(3, 4, 1))),
+          ncol = 8, byrow = TRUE
+        )
 
       gridExtra::grid.arrange(GL01_area, GL01_taxa,
-                              left_lab, right_lab,
-                              layout_matrix = my_layout)
-
+        left_lab, right_lab,
+        layout_matrix = my_layout
+      )
     }
-
   }
 )
-
 
 
 #' @param Category The class.
@@ -212,7 +222,8 @@ methods::setMethod(
                         y,
                         labels = c(
                           leftlabel = "Annual Change Area (km2 or pixels)",
-                          rightlabel = "Annual Change Intensity (percent of category)"),
+                          rightlabel = "Annual Change Intensity (percent of category)"
+                        ),
                         title = NA,
                         labs = c(type = "Categories", ur = "Uniform Intensity"),
                         marginplot = c(lh = 0.5, rh = 0.5),
@@ -221,27 +232,29 @@ methods::setMethod(
                         ...) {
     dataset <- x$categoryData
     lookupcolor <- x$lookupcolor
+    category_unique <- as.character(unique(dataset[[2]]))
+    fill_values <- unname(lookupcolor[category_unique[order(match(category_unique, levels(dataset[[2]])))]])
 
     GL02_ganho_taxa <-
       dataset %>% ggplot(aes(factor(dataset[[2]], levels = rev(levels(dataset[[2]]))), dataset[[5]])) +
       geom_bar(aes(fill = dataset[[2]]), stat = "identity", position = "dodge") +
       facet_wrap(~ dataset[[1]], ncol = 1) +
-      scale_fill_manual(values =  unname(lookupcolor[as.character(unique(dataset[[2]]))
-                                                     [order(match(as.character(unique(dataset[[2]])),
-                                                                  levels(dataset[[2]])))]])) +
+      scale_fill_manual(values = fill_values) +
       xlab(NULL) +
       ylab(NULL) +
       geom_hline(aes(yintercept = 0), linewidth = .3) +
       geom_hline(aes(yintercept = dataset[[6]], color = names(dataset)[[6]]),
-                 linetype = 5,
-                 linewidth = .3) +
+        linetype = 5,
+        linewidth = .3
+      ) +
       scale_color_manual(values = "black") +
       coord_flip() +
       labs(fill = labs[[1]], colour = labs[[2]]) +
       scale_y_continuous(expand = expansion(mult = c(0, .01))) +
-      guides(fill = guide_legend(order = 1),
-             color = guide_legend(order = 2)) +
-
+      guides(
+        fill = guide_legend(order = 1),
+        color = guide_legend(order = 2)
+      ) +
       geom_curve(
         aes(
           x = length(unique(dataset[[2]])) / 2,
@@ -252,12 +265,13 @@ methods::setMethod(
         curvature = .1,
         arrow = arrow(length = unit(2, "mm"), ends = "first")
       ) +
-
       geom_text(
-        aes(x = (length(unique(
-          dataset[[2]]
-        )) / 2) + leg_curv[[2]],
-        y = dataset[[6]] + leg_curv[[1]]),
+        aes(
+          x = (length(unique(
+            dataset[[2]]
+          )) / 2) + leg_curv[[2]],
+          y = dataset[[6]] + leg_curv[[1]]
+        ),
         label = paste(round(dataset[[6]], 2), "%"),
         colour = "black",
         fontface = c("plain", "bold", "italic", "bold.italic")[1],
@@ -280,14 +294,12 @@ methods::setMethod(
         ), "pt"), ...
       )
 
-    #Area ----
+    # Area ----
     GL02_ganho_area <-
       dataset %>% ggplot(aes(factor(dataset[[2]], levels = rev(levels(dataset[[2]]))), dataset[[4]])) +
       geom_bar(aes(fill = dataset[[2]]), stat = "identity", position = "dodge") +
       facet_wrap(~ dataset[[1]], ncol = 1) +
-      scale_fill_manual(values = unname(lookupcolor[as.character(unique(dataset[[2]]))
-                                                    [order(match(as.character(unique(dataset[[2]])),
-                                                                 levels(dataset[[2]])))]])) +
+      scale_fill_manual(values = fill_values) +
       xlab(NULL) +
       ylab(NULL) +
       geom_hline(aes(yintercept = 0), linewidth = .3) +
@@ -306,7 +318,6 @@ methods::setMethod(
           b = 0,
           l = 0
         ), "pt"), ...
-
       )
 
     format_lab <- function(x, font = 1, size = 11) {
@@ -319,11 +330,13 @@ methods::setMethod(
       right_lab <- format_lab(labels[[2]])
 
       my_layout <-
-        matrix(c(rep(1, 6), NA, rep(rep(2:3, c(
-          3, 4
-        )), 20), rep(4:5, c(3, 3)), NA),
-        ncol = 7,
-        byrow = TRUE)
+        matrix(
+          c(rep(1, 6), NA, rep(rep(2:3, c(
+            3, 4
+          )), 20), rep(4:5, c(3, 3)), NA),
+          ncol = 7,
+          byrow = TRUE
+        )
 
       gridExtra::grid.arrange(
         title_lab,
@@ -338,24 +351,22 @@ methods::setMethod(
       right_lab <- format_lab(labels[[2]])
 
       my_layout <-
-        matrix(c(rep(rep(2:3, c(
-          3, 4
-        )), 20), rep(c(4, 5, NA), c(3, 3, 1))),
-        ncol = 7, byrow = TRUE)
+        matrix(
+          c(rep(rep(2:3, c(
+            3, 4
+          )), 20), rep(c(4, 5, NA), c(3, 3, 1))),
+          ncol = 7, byrow = TRUE
+        )
 
       gridExtra::grid.arrange(GL02_ganho_area,
-                              GL02_ganho_taxa,
-                              left_lab,
-                              right_lab,
-                              layout_matrix = my_layout)
-
+        GL02_ganho_taxa,
+        left_lab,
+        right_lab,
+        layout_matrix = my_layout
+      )
     }
-
   }
 )
-
-
-
 
 
 #' @param Transition The class.
@@ -371,7 +382,8 @@ methods::setMethod(
                         y,
                         labels = c(
                           leftlabel = "Annual Transition Area (km2 or pixels)",
-                          rightlabel = "Annual Transition Intensity (percent of category)"),
+                          rightlabel = "Annual Transition Intensity (percent of category)"
+                        ),
                         title = NA,
                         labs = c(type = "Categories", ur = "Uniform Intensity"),
                         marginplot = c(lh = 0.5, rh = 0.5),
@@ -380,26 +392,29 @@ methods::setMethod(
                         ...) {
     dataset <- x$transitionData
     lookupcolor <- x$lookupcolor
+    category_unique <- as.character(unique(dataset[[2]]))
+    fill_values <- unname(lookupcolor[category_unique[order(match(category_unique, levels(dataset[[2]])))]])
 
     GL03_ganho_taxa <-
       dataset %>% ggplot(aes(factor(dataset[[2]], levels = rev(levels(dataset[[2]]))), dataset[[6]])) +
       geom_bar(aes(fill = dataset[[2]]), stat = "identity", position = "dodge") +
       facet_wrap(~ dataset[[1]], ncol = 1) +
-      scale_fill_manual(values = unname(lookupcolor[as.character(unique(dataset[[2]]))
-                                                    [order(match(as.character(unique(dataset[[2]])),
-                                                                 levels(dataset[[2]])))]])) +
+      scale_fill_manual(values = fill_values) +
       xlab(NULL) +
       ylab(NULL) +
       geom_hline(aes(yintercept = 0), linewidth = .3) +
       geom_hline(aes(yintercept = dataset[[7]], color = names(dataset)[[7]]),
-                 linetype = 5,
-                 linewidth = .3) +
+        linetype = 5,
+        linewidth = .3
+      ) +
       scale_color_manual(values = "black") +
       coord_flip() +
       labs(fill = labs[[1]], colour = labs[[2]]) +
       scale_y_continuous(expand = expansion(mult = c(0, .01))) +
-      guides(fill = guide_legend(order = 1),
-             color = guide_legend(order = 2)) +
+      guides(
+        fill = guide_legend(order = 1),
+        color = guide_legend(order = 2)
+      ) +
       geom_curve(
         aes(
           x = length(unique(dataset[[2]])) / 2,
@@ -410,12 +425,13 @@ methods::setMethod(
         curvature = .1,
         arrow = arrow(length = unit(2, "mm"), ends = "first")
       ) +
-
       geom_text(
-        aes(x = (length(unique(
-          dataset[[2]]
-        )) / 2) + leg_curv[[2]],
-        y = dataset[[7]] + leg_curv[[1]]),
+        aes(
+          x = (length(unique(
+            dataset[[2]]
+          )) / 2) + leg_curv[[2]],
+          y = dataset[[7]] + leg_curv[[1]]
+        ),
         label = paste(round(dataset[[7]], 2), "%"),
         colour = "black",
         fontface = c("plain", "bold", "italic", "bold.italic")[1],
@@ -443,9 +459,7 @@ methods::setMethod(
       ggplot(aes(factor(dataset[[2]], levels = rev(levels(dataset[[2]]))), dataset[[5]])) +
       geom_bar(aes(fill = dataset[[2]]), stat = "identity", position = "dodge") +
       facet_wrap(~ dataset[[1]], ncol = 1) +
-      scale_fill_manual(values = unname(lookupcolor[as.character(unique(dataset[[2]]))
-                                                    [order(match(as.character(unique(dataset[[2]])),
-                                                                 levels(dataset[[2]])))]])) +
+      scale_fill_manual(values = fill_values) +
       xlab(NULL) +
       ylab(NULL) +
       geom_hline(aes(yintercept = 0), linewidth = .3) +
@@ -477,11 +491,13 @@ methods::setMethod(
       right_lab <- format_lab(labels[[2]])
 
       my_layout <-
-        matrix(c(rep(1, 6), NA, rep(rep(2:3, c(
-          3, 4
-        )), 20), rep(4:5, c(3, 3)), NA),
-        ncol = 7,
-        byrow = TRUE)
+        matrix(
+          c(rep(1, 6), NA, rep(rep(2:3, c(
+            3, 4
+          )), 20), rep(4:5, c(3, 3)), NA),
+          ncol = 7,
+          byrow = TRUE
+        )
 
       gridExtra::grid.arrange(
         title_lab,
@@ -496,17 +512,19 @@ methods::setMethod(
       right_lab <- format_lab(labels[[2]])
 
       my_layout <-
-        matrix(c(rep(rep(2:3, c(
-          3, 4
-        )), 20), rep(c(4, 5, NA), c(3, 3, 1))),
-        ncol = 7, byrow = TRUE)
+        matrix(
+          c(rep(rep(2:3, c(
+            3, 4
+          )), 20), rep(c(4, 5, NA), c(3, 3, 1))),
+          ncol = 7, byrow = TRUE
+        )
 
       gridExtra::grid.arrange(GL03_ganho_area,
-                              GL03_ganho_taxa,
-                              left_lab,
-                              right_lab,
-                              layout_matrix = my_layout)
-
+        GL03_ganho_taxa,
+        left_lab,
+        right_lab,
+        layout_matrix = my_layout
+      )
     }
   }
 )

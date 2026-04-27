@@ -79,9 +79,11 @@ list
 ## Examples
 
 ``` r
-.demo_landscape(year =  2000:2005,
-                res = 1,
-                crs = "+proj=utm +zone=21 +south +ellps=GRS80 +units=m +no_defs")
+.demo_landscape(
+  year = 2000:2005,
+  res = 1,
+  crs = "+proj=utm +zone=21 +south +ellps=GRS80 +units=m +no_defs"
+)
 #> $landscape_2000
 #> class      : RasterLayer 
 #> dimensions : 100, 100, 10000  (nrow, ncol, ncell)

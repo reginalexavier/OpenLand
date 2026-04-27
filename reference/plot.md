@@ -7,7 +7,7 @@ Plot `Intensity` objects based on Intensity Analysis output.
 ``` r
 plot(x, y, ...)
 
-# S4 method for class 'Interval,ANY'
+# S4 method for class 'Interval'
 plot(
   x,
   y,
@@ -22,7 +22,7 @@ plot(
   ...
 )
 
-# S4 method for class 'Category,ANY'
+# S4 method for class 'Category'
 plot(
   x,
   y,
@@ -36,7 +36,7 @@ plot(
   ...
 )
 
-# S4 method for class 'Transition,ANY'
+# S4 method for class 'Transition'
 plot(
   x,
   y,

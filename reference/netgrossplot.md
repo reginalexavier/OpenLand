@@ -70,18 +70,25 @@ A bar plot
 ``` r
 # editing the category names
 
-SL_2002_2014$tb_legend$categoryName <- factor(c("Ap", "FF", "SA", "SG", "aa", "SF",
-                                             "Agua", "Iu", "Ac", "R", "Im"),
-                                     levels = c("FF", "SF", "SA", "SG", "aa", "Ap",
-                                              "Ac", "Im", "Iu", "Agua", "R"))
+SL_2002_2014$tb_legend$categoryName <- factor(
+  c(
+    "Ap", "FF", "SA", "SG", "aa", "SF",
+    "Agua", "Iu", "Ac", "R", "Im"
+  ),
+  levels = c(
+    "FF", "SF", "SA", "SG", "aa", "Ap",
+    "Ac", "Im", "Iu", "Agua", "R"
+  )
+)
 
 # the plot
-netgrossplot(dataset = SL_2002_2014$lulc_Multistep,
-             legendtable = SL_2002_2014$tb_legend,
-             title = NULL,
-             xlab = "LUC Category",
-             changes = c(GC = "Gross changes", NG = "Net Gain", NL = "Net Loss"),
-             color = c(GC = "gray70", NG = "#006400", NL = "#EE2C2C"))
-
+netgrossplot(
+  dataset = SL_2002_2014$lulc_Multistep,
+  legendtable = SL_2002_2014$tb_legend,
+  title = NULL,
+  xlab = "LUC Category",
+  changes = c(GC = "Gross changes", NG = "Net Gain", NL = "Net Loss"),
+  color = c(GC = "gray70", NG = "#006400", NL = "#EE2C2C")
+)
 
 ```

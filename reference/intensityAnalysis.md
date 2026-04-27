@@ -118,14 +118,22 @@ pp. 1717–1739.
 ``` r
 # editing the category name
 
-SL_2002_2014$tb_legend$categoryName <- factor(c("Ap", "FF", "SA", "SG", "aa", "SF",
-                                             "Agua", "Iu", "Ac", "R", "Im"),
-                                  levels = c("FF", "SF", "SA", "SG", "aa", "Ap",
-                                             "Ac", "Im", "Iu", "Agua", "R"))
+SL_2002_2014$tb_legend$categoryName <- factor(
+  c(
+    "Ap", "FF", "SA", "SG", "aa", "SF",
+    "Agua", "Iu", "Ac", "R", "Im"
+  ),
+  levels = c(
+    "FF", "SF", "SA", "SG", "aa", "Ap",
+    "Ac", "Im", "Iu", "Agua", "R"
+  )
+)
 
-SL_2002_2014$tb_legend$color <- c("#FFE4B5", "#228B22", "#00FF00", "#CAFF70",
-                                  "#EE6363", "#00CD00", "#436EEE", "#FFAEB9",
-                                  "#FFA54F", "#68228B", "#636363")
+SL_2002_2014$tb_legend$color <- c(
+  "#FFE4B5", "#228B22", "#00FF00", "#CAFF70",
+  "#EE6363", "#00CD00", "#436EEE", "#FFAEB9",
+  "#FFA54F", "#68228B", "#636363"
+)
 
 intensityAnalysis(dataset = SL_2002_2014, category_n = "Ap", category_m = "SG", area_km2 = TRUE)
 #> $lulc_table
@@ -332,5 +340,4 @@ intensityAnalysis(dataset = SL_2002_2014, category_n = "Ap", category_m = "SG", 
 #> 6 R         1     4 avoided SG   N    
 #> 
 #> 
-
 ```

@@ -82,8 +82,10 @@ category which experienced relevant gains and `m` a category with
 important losses.
 
 ``` r
-my_test <- intensityAnalysis(dataset = SL_2002_2014, # here the outcome from the `contingenceTable()` function
-                            category_n = "Ap", category_m = "SG")
+my_test <- intensityAnalysis(
+  dataset = SL_2002_2014, # here the outcome from the `contingenceTable()` function
+  category_n = "Ap", category_m = "SG"
+)
 
 # it returns a list with 6 objects
 names(my_test)
@@ -110,7 +112,6 @@ loss (L_(ti)) values)* and the third slot contains a table storing the
 results of a stationarity test.
 
 ``` r
-
 my_test$category_lvlGain
 #> An object of class "Category"
 #> Slot "lookupcolor":
@@ -163,13 +164,15 @@ arguments, please see the documentation of the
 method.
 
 ``` r
-
 plot(my_test$category_lvlGain,
-     labels = c(leftlabel = bquote("Gain Area (" ~km^2~ ")"),
-                rightlabel = "Intensity Gain (%)"),
-     marginplot = c(.3, .3), labs = c("Categories", "Uniform intensity"), 
-     leg_curv = c(x = 1, y = .5),
-     fontsize_ui = 8)
+  labels = c(
+    leftlabel = bquote("Gain Area (" ~ km^2 ~ ")"),
+    rightlabel = "Intensity Gain (%)"
+  ),
+  marginplot = c(.3, .3), labs = c("Categories", "Uniform intensity"),
+  leg_curv = c(x = 1, y = .5),
+  fontsize_ui = 8
+)
 ```
 
 ![Gain area outcome - Category
@@ -192,14 +195,14 @@ be visualized by a grouped bar chart.
 ##### Net and Gross gain and loss
 
 ``` r
-
-netgrossplot(dataset = SL_2002_2014$lulc_Multistep,
-             legendtable = SL_2002_2014$tb_legend,
-             xlab = "LUC Category",
-             ylab = bquote("Area (" ~ km^2 ~ ")"),
-             changesLabel = c(GC = "Gross changes", NG = "Net Gain", NL = "Net Loss"),
-             color = c(GC = "gray70", NG = "#006400", NL = "#EE2C2C")
-             )
+netgrossplot(
+  dataset = SL_2002_2014$lulc_Multistep,
+  legendtable = SL_2002_2014$tb_legend,
+  xlab = "LUC Category",
+  ylab = bquote("Area (" ~ km^2 ~ ")"),
+  changesLabel = c(GC = "Gross changes", NG = "Net Gain", NL = "Net Loss"),
+  color = c(GC = "gray70", NG = "#006400", NL = "#EE2C2C")
+)
 ```
 
 ![Net Gross Changes 2002 - 2014](reference/figures/README-ng_plot-1.png)
@@ -209,9 +212,10 @@ Net Gross Changes 2002 - 2014
 ##### Chord Diagram (2002 - 2014)
 
 ``` r
-
-chordDiagramLand(dataset = SL_2002_2014$lulc_Onestep,
-                 legendtable = SL_2002_2014$tb_legend)
+chordDiagramLand(
+  dataset = SL_2002_2014$lulc_Onestep,
+  legendtable = SL_2002_2014$tb_legend
+)
 ```
 
 ![Chord Diagram 2002 - 2014 (area in
@@ -222,7 +226,6 @@ Chord Diagram 2002 - 2014 (area in km²)
 ##### Sankey Multi Step (2002, 2008, 2010, 2012, 2014)
 
 ``` r
-
 # sankeyLand(dataset = SL_2002_2014$lulc_Multistep,
 #            legendtable = SL_2002_2014$tb_legend)
 ```

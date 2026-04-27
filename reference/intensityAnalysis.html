@@ -151,14 +151,22 @@ Information Science. Taylor &amp; Francis, 27(9), pp. 1717–1739. <a href="http
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># editing the category name</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">SL_2002_2014</span><span class="op">$</span><span class="va">tb_legend</span><span class="op">$</span><span class="va">categoryName</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Ap"</span>, <span class="st">"FF"</span>, <span class="st">"SA"</span>, <span class="st">"SG"</span>, <span class="st">"aa"</span>, <span class="st">"SF"</span>,</span></span>
-<span class="r-in"><span>                                             <span class="st">"Agua"</span>, <span class="st">"Iu"</span>, <span class="st">"Ac"</span>, <span class="st">"R"</span>, <span class="st">"Im"</span><span class="op">)</span>,</span></span>
-<span class="r-in"><span>                                  levels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"FF"</span>, <span class="st">"SF"</span>, <span class="st">"SA"</span>, <span class="st">"SG"</span>, <span class="st">"aa"</span>, <span class="st">"Ap"</span>,</span></span>
-<span class="r-in"><span>                                             <span class="st">"Ac"</span>, <span class="st">"Im"</span>, <span class="st">"Iu"</span>, <span class="st">"Agua"</span>, <span class="st">"R"</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">SL_2002_2014</span><span class="op">$</span><span class="va">tb_legend</span><span class="op">$</span><span class="va">categoryName</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>    <span class="st">"Ap"</span>, <span class="st">"FF"</span>, <span class="st">"SA"</span>, <span class="st">"SG"</span>, <span class="st">"aa"</span>, <span class="st">"SF"</span>,</span></span>
+<span class="r-in"><span>    <span class="st">"Agua"</span>, <span class="st">"Iu"</span>, <span class="st">"Ac"</span>, <span class="st">"R"</span>, <span class="st">"Im"</span></span></span>
+<span class="r-in"><span>  <span class="op">)</span>,</span></span>
+<span class="r-in"><span>  levels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>    <span class="st">"FF"</span>, <span class="st">"SF"</span>, <span class="st">"SA"</span>, <span class="st">"SG"</span>, <span class="st">"aa"</span>, <span class="st">"Ap"</span>,</span></span>
+<span class="r-in"><span>    <span class="st">"Ac"</span>, <span class="st">"Im"</span>, <span class="st">"Iu"</span>, <span class="st">"Agua"</span>, <span class="st">"R"</span></span></span>
+<span class="r-in"><span>  <span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">SL_2002_2014</span><span class="op">$</span><span class="va">tb_legend</span><span class="op">$</span><span class="va">color</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"#FFE4B5"</span>, <span class="st">"#228B22"</span>, <span class="st">"#00FF00"</span>, <span class="st">"#CAFF70"</span>,</span></span>
-<span class="r-in"><span>                                  <span class="st">"#EE6363"</span>, <span class="st">"#00CD00"</span>, <span class="st">"#436EEE"</span>, <span class="st">"#FFAEB9"</span>,</span></span>
-<span class="r-in"><span>                                  <span class="st">"#FFA54F"</span>, <span class="st">"#68228B"</span>, <span class="st">"#636363"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">SL_2002_2014</span><span class="op">$</span><span class="va">tb_legend</span><span class="op">$</span><span class="va">color</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>  <span class="st">"#FFE4B5"</span>, <span class="st">"#228B22"</span>, <span class="st">"#00FF00"</span>, <span class="st">"#CAFF70"</span>,</span></span>
+<span class="r-in"><span>  <span class="st">"#EE6363"</span>, <span class="st">"#00CD00"</span>, <span class="st">"#436EEE"</span>, <span class="st">"#FFAEB9"</span>,</span></span>
+<span class="r-in"><span>  <span class="st">"#FFA54F"</span>, <span class="st">"#68228B"</span>, <span class="st">"#636363"</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">intensityAnalysis</span><span class="op">(</span>dataset <span class="op">=</span> <span class="va">SL_2002_2014</span>, category_n <span class="op">=</span> <span class="st">"Ap"</span>, category_m <span class="op">=</span> <span class="st">"SG"</span>, area_km2 <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $lulc_table</span>
@@ -365,7 +373,6 @@ Information Science. Taylor &amp; Francis, 27(9), pp. 1717–1739. <a href="http
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span> R         1     4 avoided SG   N    </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

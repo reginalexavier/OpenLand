@@ -107,8 +107,9 @@ supported file types.</p></dd>
 <span></span>
 <span>        <span class="va">myobject</span><span class="op">$</span><span class="va">tb_legend</span><span class="op">$</span><span class="va">categoryName</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"name1"</span>, <span class="st">"name2"</span>, <span class="st">"name3"</span>, <span class="st">"name4"</span><span class="op">)</span>,</span>
 <span>                                               levels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"name3"</span>, <span class="st">"name2"</span>, <span class="st">"name1"</span>, <span class="st">"name4"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div></li>
-<li><p>The colors have to in the same order as the values in the <code>categoryValue</code> column. Colors can be given by the
-       color name (eg. "black") or an HEX value (eg. #FFFFFF). Like:</p><div class="sourceCode"><pre><code><span></span>
+<li><p>The colors have to in the same order as the values in the
+         <code>categoryValue</code> column. Colors can be given by the color name
+         (eg. "black") or an HEX value (eg. #FFFFFF). Like:</p><div class="sourceCode"><pre><code><span></span>
 <span></span>
 <span>       <span class="va">myobject</span><span class="op">$</span><span class="va">tb_legend</span><span class="op">$</span><span class="va">color</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"#CDB79E"</span>, <span class="st">"red"</span>, <span class="st">"#66CD00"</span>, <span class="st">"yellow"</span><span class="op">)</span></span></code></pre></div></li>
 </ul></li>
@@ -126,7 +127,7 @@ supported file types.</p></dd>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># \donttest{</span></span></span>
 <span class="r-in"><span><span class="va">url</span> <span class="op">&lt;-</span> <span class="st">"https://zenodo.org/record/3685230/files/SaoLourencoBasin.rda?download=1"</span></span></span>
 <span class="r-in"><span><span class="va">temp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempfile</a></span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/download.file.html" class="external-link">download.file</a></span><span class="op">(</span><span class="va">url</span>, <span class="va">temp</span>, mode <span class="op">=</span> <span class="st">"wb"</span><span class="op">)</span> <span class="co">#downloading the online dataset</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/download.file.html" class="external-link">download.file</a></span><span class="op">(</span><span class="va">url</span>, <span class="va">temp</span>, mode <span class="op">=</span> <span class="st">"wb"</span><span class="op">)</span> <span class="co"># downloading the online dataset</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/load.html" class="external-link">load</a></span><span class="op">(</span><span class="va">temp</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="co"># the contingencyTable() function, with the SaoLourencoBasin dataset</span></span></span>
 <span class="r-in"><span><span class="fu">contingencyTable</span><span class="op">(</span>input_raster <span class="op">=</span> <span class="va">SaoLourencoBasin</span>, pixelresolution <span class="op">=</span> <span class="fl">30</span><span class="op">)</span></span></span>
@@ -188,7 +189,6 @@ supported file types.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 12</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span><span class="co"># }</span></span></span>
-<span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

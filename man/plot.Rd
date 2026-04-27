@@ -7,11 +7,14 @@
 \alias{plot,Interval,ANY-method}
 \alias{plot,Category,ANY-method}
 \alias{plot,Transition,ANY-method}
+\alias{plot,Interval-method}
+\alias{plot,Category-method}
+\alias{plot,Transition-method}
 \title{Methods for function \code{plot} in package \pkg{OpenLand}}
 \usage{
 plot(x, y, ...)
 
-\S4method{plot}{Interval,ANY}(
+\S4method{plot}{Interval}(
   x,
   y,
   labels = c(leftlabel = "Interval Change Area (percent of map)", rightlabel =
@@ -25,7 +28,7 @@ plot(x, y, ...)
   ...
 )
 
-\S4method{plot}{Category,ANY}(
+\S4method{plot}{Category}(
   x,
   y,
   labels = c(leftlabel = "Annual Change Area (km2 or pixels)", rightlabel =
@@ -38,7 +41,7 @@ plot(x, y, ...)
   ...
 )
 
-\S4method{plot}{Transition,ANY}(
+\S4method{plot}{Transition}(
   x,
   y,
   labels = c(leftlabel = "Annual Transition Area (km2 or pixels)", rightlabel =

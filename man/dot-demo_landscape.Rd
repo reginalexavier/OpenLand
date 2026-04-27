@@ -50,9 +50,11 @@ This function creates a raster series with some setup like the layer name and
 the sample value for the lulc
 }
 \examples{
-.demo_landscape(year =  2000:2005,
-                res = 1,
-                crs = "+proj=utm +zone=21 +south +ellps=GRS80 +units=m +no_defs")
+.demo_landscape(
+  year = 2000:2005,
+  res = 1,
+  crs = "+proj=utm +zone=21 +south +ellps=GRS80 +units=m +no_defs"
+)
 
 }
 \seealso{

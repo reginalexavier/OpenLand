@@ -55,8 +55,9 @@ A list that contains 5 objects.
 
         myobject$tb_legend$categoryName <- factor(c("name1", "name2", "name3", "name4"),
                                                levels = c("name3", "name2", "name1", "name4"))}
-        \item The colors have to in the same order as the values in the \code{categoryValue} column. Colors can be given by the
-       color name (eg. "black") or an HEX value (eg. #FFFFFF). Like:
+        \item The colors have to in the same order as the values in the
+         \code{categoryValue} column. Colors can be given by the color name
+         (eg. "black") or an HEX value (eg. #FFFFFF). Like:
        \preformatted{
 
        myobject$tb_legend$color <- c("#CDB79E", "red", "#66CD00", "yellow")}}}
@@ -77,11 +78,10 @@ Extracts LUC transitions for all input grids of the time series.
 \donttest{
 url <- "https://zenodo.org/record/3685230/files/SaoLourencoBasin.rda?download=1"
 temp <- tempfile()
-download.file(url, temp, mode = "wb") #downloading the online dataset
+download.file(url, temp, mode = "wb") # downloading the online dataset
 load(temp)
 # the contingencyTable() function, with the SaoLourencoBasin dataset
 contingencyTable(input_raster = SaoLourencoBasin, pixelresolution = 30)
 }
-
 
 }

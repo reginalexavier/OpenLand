@@ -26,23 +26,34 @@ A sankey showing the one or multi step LUC transitions during the analysed perio
 
 # editing the category names
 
-SL_2002_2014$tb_legend$categoryName <- factor(c("Ap", "FF", "SA", "SG", "aa", "SF",
-                                             "Agua", "Iu", "Ac", "R", "Im"),
-                                     levels = c("FF", "SF", "SA", "SG", "aa", "Ap",
-                                              "Ac", "Im", "Iu", "Agua", "R"))
+SL_2002_2014$tb_legend$categoryName <- factor(
+  c(
+    "Ap", "FF", "SA", "SG", "aa", "SF",
+    "Agua", "Iu", "Ac", "R", "Im"
+  ),
+  levels = c(
+    "FF", "SF", "SA", "SG", "aa", "Ap",
+    "Ac", "Im", "Iu", "Agua", "R"
+  )
+)
 
-SL_2002_2014$tb_legend$color <- c("#FFE4B5", "#228B22", "#00FF00", "#CAFF70",
-                                  "#EE6363", "#00CD00", "#436EEE", "#FFAEB9",
-                                  "#FFA54F", "#68228B", "#636363")
+SL_2002_2014$tb_legend$color <- c(
+  "#FFE4B5", "#228B22", "#00FF00", "#CAFF70",
+  "#EE6363", "#00CD00", "#436EEE", "#FFAEB9",
+  "#FFA54F", "#68228B", "#636363"
+)
 
 # onestep sankey
-sankeyLand(dataset = SL_2002_2014$lulc_Onestep,
-           legendtable = SL_2002_2014$tb_legend)
+sankeyLand(
+  dataset = SL_2002_2014$lulc_Onestep,
+  legendtable = SL_2002_2014$tb_legend
+)
 
 # multistep sankey
-sankeyLand(dataset = SL_2002_2014$lulc_Multistep,
-           legendtable = SL_2002_2014$tb_legend)
-
+sankeyLand(
+  dataset = SL_2002_2014$lulc_Multistep,
+  legendtable = SL_2002_2014$tb_legend
+)
 
 }
 \seealso{

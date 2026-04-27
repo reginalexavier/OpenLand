@@ -20,10 +20,11 @@ present in a categorical raster.
 \examples{
 \donttest{
 url <- "https://zenodo.org/record/3685230/files/SaoLourencoBasin.rda?download=1"
-temp <- tempfile()
-download.file(url, temp, mode = "wb") # downloading the SaoLourencoBasin dataset
-load(temp)
-summary_map(SaoLourencoBasin[[1]])
+if (OpenLand:::.openland_try_download_and_load_rda(url,
+  object = "SaoLourencoBasin", timeout = 10
+)) {
+  summary_map(SaoLourencoBasin[[1]])
+}
 }
 
 }

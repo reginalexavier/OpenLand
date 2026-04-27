@@ -34,18 +34,11 @@ The OpenLand functionality is illustrated for a LUC dataset of São Lourenço ri
 For processing in the OpenLand package, the original multi-year shape file was transformed into rasters and then saved as a 5-layer `RasterStack` (`SaoLourencoBasin`), available from a public repository [(10.5281/zenodo.3685229)](https://doi.org/10.5281/zenodo.3685230) as an `.RDA` file which can be loaded into `R`.
 
 ```{r include=FALSE}
-dataset_available <- tryCatch(
-  {
-    # downloading the SaoLourencoBasin multi-layer raster and make it available into R
-    url <- "https://zenodo.org/record/3685230/files/SaoLourencoBasin.rda?download=1"
-    temp <- tempfile()
-    download.file(url, temp, mode = "wb") # downloading the SaoLourencoBasin dataset
-    load(temp)
-    TRUE
-  },
-  error = function(e) {
-    FALSE
-  }
+url <- "https://zenodo.org/record/3685230/files/SaoLourencoBasin.rda?download=1"
+dataset_available <- OpenLand:::.openland_try_download_and_load_rda(url,
+  object = "SaoLourencoBasin",
+  timeout = 10,
+  quiet = TRUE
 )
 ```
 

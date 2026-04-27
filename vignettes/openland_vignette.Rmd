@@ -40,8 +40,9 @@ dataset_available <- tryCatch({
   temp <- tempfile()
   download.file(url, temp, mode = "wb") # downloading the SaoLourencoBasin dataset
   load(temp)
+  TRUE
 }, error = function(e) {
-  return(FALSE)
+  FALSE
 })
 ```
 
@@ -53,7 +54,7 @@ knitr::knit_exit("## The complete rendering of this document depends on the avai
 ### Input data constraints
 The function `contingencyTable()` for data extraction demands as input a list of raster layers (`RasterBrick`, `RasterStack` or a path to a folder containing the rasters). The name of the rasters must be in the format ("some_text" `+` "underscore" `+` "the_year") like "landscape_2020". In our example we included the `SaoLourencoBasin` RasterStack:
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 # first we load the OpenLand package
 library(OpenLand)
 
@@ -84,15 +85,23 @@ Fields, format, description and labeling of a **`r names(SL_2002_2014)[1]`** tab
 
 In the **`r names(SL_2002_2014)[2]`** table,  the Y~_t+1_~ terms are replaced by Y~_T_~, where T is the number of time steps, i.e., Y~_T_~ is the last year of the series.
 
-For our study area, `contingenceTable(input_raster = SaoLourencoBasin, pixelresolution = 30)` returns the following outputs:
+For our study area, `contingencyTable(input_raster = SaoLourencoBasin, pixelresolution = 30)` returns the following outputs:
 
+```{r
+SL_2002_2014 <- contingencyTable(input_raster = SaoLourencoBasin, pixelresolution = 30)
+```
 
 
 ```{r}
+SL_2002_2014$lulc_Multistep[1:10, ]
 
-# SL_2002_2014 <- contingencyTable(input_raster = SaoLourencoBasin, pixelresolution = 30)
+SL_2002_2014$lulc_Onestep[1:10, ]
 
-SL_2002_2014
+SL_2002_2014$tb_legend
+
+SL_2002_2014$totalArea
+
+SL_2002_2014$totalInterval
 
 ```
 
@@ -137,7 +146,7 @@ SL_2002_2014$tb_legend
 
 ```{r eval=FALSE, include=FALSE}
 knitr::kable(
-caseStudy$lulc_Mulstistep[1:10, ]
+SL_2002_2014$lulc_Multistep[1:10, ]
 )
 ```
 
@@ -148,7 +157,7 @@ At this point, one can choose to run the Intensity Analysis or create a series o
 ## Intensity Analysis
 Intensity Analysis (IA) is a quantitative method to analyze LUC maps at several time steps, using cross-tabulation matrices, where each matrix summarizes the LUC change at each time interval. IA evaluates in three levels the deviation between observed change intensity and hypothesized uniform change intensity. Hereby, each level details information given by the previous analysis level. First, the **interval level** indicates how size and rate of change varies across time intervals. Second, the **category level** examines for each time interval how the size and intensity of gross losses and gross gains in each category vary across categories for each time interval. Third, the **transition level** determines for each category how the size and intensity of a category’s transitions vary across the other categories that are available for that transition. At each level, the method tests for stationarity of patterns across time intervals [@Aldwaik2012].
 
-Within the OpenLand package, the `intensityAnalysis()` function computes the three levels of analysis. It requires the object returned by the `contingenceTable()` function and that the user predefines two LUC categories `n` and `m`. Generally, `n` is a target category which experienced relevant gains and `m` a category with important losses.
+Within the OpenLand package, the `intensityAnalysis()` function computes the three levels of analysis. It requires the object returned by the `contingencyTable()` function and that the user predefines two LUC categories `n` and `m`. Generally, `n` is a target category which experienced relevant gains and `m` a category with important losses.
 
 ```{r}
 testSL <- intensityAnalysis(dataset = SL_2002_2014,
@@ -167,7 +176,7 @@ The second object _**`r names(testSL[2])`**_ is an ``r class(testSL[[2]])`` obje
 An ``r class(testSL[[2]])`` object contains one slot containing a table of  **interval level** result _(S~t~ and U values)_. A ``r class(testSL[[4]])`` object contains three slots: the first contains the colors associated with the legend items as name attributes, the second slot contains a table of the **category level** result _(gain (G~tj~) or loss (L~ti~) values)_  and the third slot contains a table storing the results of a stationarity test. A ``r class(testSL[[6]])`` object contains three slots: the first contains the color associated with the respective legend item defined as name attribute, the second slot contains a table of the **transition level** result _(gain n (R~tin~ and W~tn~) or loss m (Q~tmj~ and V~tm~) values)_. The third slot contains a table storing the results of a stationarity test. Hereby, @Aldwaik2012 consider a stationary case only when the intensities for all time intervals reside on one side of the uniform intensity, i.e. that they are always smaller or larger than the uniform rate over the whole period.
 
 
-```{r }
+```{r eval=FALSE, include=FALSE}
 # showing the objects from the intensity analysis for our illustrative case
 testSL
 
@@ -313,71 +322,71 @@ Two auxiliary functions allow users to check for consistency in the input gridde
 OpenLand enables furthermore the spatial screening of LUCC frequencies for one or a series of raster layers. The `acc_changes()` returns for LUC time series the number of times a pixel has changed during the analysed period, returning a grid layer and a table with the percentages of transition numbers in the study area.
 
 
-```{r}
+```{r eval=FALSE, include=TRUE}
 
-# testacc <- acc_changes(SaoLourencoBasin)
-# 
-# testacc
+testacc <- acc_changes(SaoLourencoBasin)
+
+testacc
 
 ```
 
 Plotting the map with the `tmap` function:
 
-```{r fig.height=7, fig.width=7}
+```{r eval=FALSE, fig.height=7, fig.width=7, include=TRUE}
 
-# tmap_options(max.raster = c(plot = 41711112, view = 41711112))
+tmap_options(max.raster = c(plot = 41711112, view = 41711112))
 
-# acc_map <- tmap::tm_shape(testacc[[1]]) +
-#   tmap::tm_raster(
-#     style = "cat",
-#     labels = c(
-#       paste0(testacc[[2]]$PxValue[1], " Change", " (", round(testacc[[2]]$Percent[1], 2), "%", ")"),
-#       paste0(testacc[[2]]$PxValue[2], " Change", " (", round(testacc[[2]]$Percent[2], 2), "%", ")"),
-#       paste0(testacc[[2]]$PxValue[3], " Changes", " (", round(testacc[[2]]$Percent[3], 2), "%", ")")
-#     ),
-#     palette = c("#757575", "#FFD700", "#CD0000"),
-#     title = "Changes in the interval \n2002 - 2014"
-#   ) +
-#   tmap::tm_legend(
-#     position = c(0.01, 0.2),
-#     legend.title.size = 1.2,
-#     legend.title.fontface = "bold",
-#     legend.text.size = 0.8
-#   ) +
-#   tmap::tm_compass(type = "arrow",
-#                    position = c("right", "top"),
-#                    size = 3) +
-#   tmap::tm_scale_bar(
-#     breaks = c(seq(0, 40, 10)),
-#     position = c(0.76, 0.001),
-#     text.size = 0.6
-#   ) +
-#   tmap::tm_credits(
-#     paste0(
-#       "Case of Study site",
-#       "\nAccumulate changes from 2002 to 2014",
-#       "\nData create with OpenLand package",
-#       "\nLULC derived from Embrapa Pantanal, Instituto SOS Pantanal, and WWF-Brasil 2015."
-#     ),
-#     size = 0.7,
-#     position = c(0.01, -0, 01)
-#   ) +
-#   tmap::tm_graticules(
-#     n.x = 6,
-#     n.y = 6,
-#     lines = FALSE,
-#     #alpha = 0.1
-#     labels.rot = c(0, 90)
-#   ) +
-#   tmap::tm_layout(inner.margins = c(0.02, 0.02, 0.02, 0.02))
-#
-#
-#
-#
-# tmap::tmap_save(acc_map,
-#                 filename = "vignettes/acc_mymap.png",
-#                 width = 7,
-#                 height = 7)
+acc_map <- tmap::tm_shape(testacc[[1]]) +
+  tmap::tm_raster(
+    style = "cat",
+    labels = c(
+      paste0(testacc[[2]]$PxValue[1], " Change", " (", round(testacc[[2]]$Percent[1], 2), "%", ")"),
+      paste0(testacc[[2]]$PxValue[2], " Change", " (", round(testacc[[2]]$Percent[2], 2), "%", ")"),
+      paste0(testacc[[2]]$PxValue[3], " Changes", " (", round(testacc[[2]]$Percent[3], 2), "%", ")")
+    ),
+    palette = c("#757575", "#FFD700", "#CD0000"),
+    title = "Changes in the interval \n2002 - 2014"
+  ) +
+  tmap::tm_legend(
+    position = c(0.01, 0.2),
+    legend.title.size = 1.2,
+    legend.title.fontface = "bold",
+    legend.text.size = 0.8
+  ) +
+  tmap::tm_compass(type = "arrow",
+                   position = c("right", "top"),
+                   size = 3) +
+  tmap::tm_scale_bar(
+    breaks = c(seq(0, 40, 10)),
+    position = c(0.76, 0.001),
+    text.size = 0.6
+  ) +
+  tmap::tm_credits(
+    paste0(
+      "Case of Study site",
+      "\nAccumulate changes from 2002 to 2014",
+      "\nData create with OpenLand package",
+      "\nLULC derived from Embrapa Pantanal, Instituto SOS Pantanal, and WWF-Brasil 2015."
+    ),
+    size = 0.7,
+    position = c(0.01, -0, 01)
+  ) +
+  tmap::tm_graticules(
+    n.x = 6,
+    n.y = 6,
+    lines = FALSE,
+    #alpha = 0.1
+    labels.rot = c(0, 90)
+  ) +
+  tmap::tm_layout(inner.margins = c(0.02, 0.02, 0.02, 0.02))
+
+
+
+
+tmap::tmap_save(acc_map,
+                filename = "vignettes/acc_mymap.png",
+                width = 7,
+                height = 7)
 
 
 ```

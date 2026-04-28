@@ -13,13 +13,13 @@ Source:
 [`DESCRIPTION`](https://github.com/reginalexavier/OpenLand/blob/main/DESCRIPTION)
 
 Exavier R, Zeilhofer P (2026). *OpenLand: Quantitative Analysis and
-Visualization of LUCC*. R package version 1.0.3.9000,
+Visualization of LUCC*. R package version 1.0.4,
 <https://reginalexavier.github.io/OpenLand/>.
 
     @Manual{,
       title = {OpenLand: Quantitative Analysis and Visualization of LUCC},
       author = {Reginal Exavier and Peter Zeilhofer},
       year = {2026},
-      note = {R package version 1.0.3.9000},
+      note = {R package version 1.0.4},
       url = {https://reginalexavier.github.io/OpenLand/},
     }

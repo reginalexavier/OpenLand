@@ -21,7 +21,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">OpenLand</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.3.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.4</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -50,7 +50,17 @@
     </div>
 
     <div class="section level2">
-<h2 class="pkg-version" data-toc-text="development version" id="openland-development-version">OpenLand (development version)<a class="anchor" aria-label="anchor" href="#openland-development-version"></a></h2>
+<h2 class="pkg-version" data-toc-text="1.0.4" id="openland-104">OpenLand 1.0.4<a class="anchor" aria-label="anchor" href="#openland-104"></a></h2>
+<div class="section level3">
+<h3 id="bug-fixes-1-0-4">Bug Fixes<a class="anchor" aria-label="anchor" href="#bug-fixes-1-0-4"></a></h3>
+<ul><li>
+<strong>fixed global variable binding issue</strong>: resolved CRAN NOTE “no visible binding for global variable ‘changes’” by properly declaring <code>changes</code> as a global variable used in dplyr operations. This ensures compatibility with current dplyr releases where the deprecated <code>dplyr::changes()</code> function is completely removed (<a href="https://github.com/DavisVaughan" class="external-link">@DavisVaughan</a>, <a href="https://github.com/reginalexavier/OpenLand/issues/13" class="external-link">#13</a>)</li>
+</ul></div>
+<div class="section level3">
+<h3 id="new-features-1-0-4">New Features<a class="anchor" aria-label="anchor" href="#new-features-1-0-4"></a></h3>
+<ul><li>implemented <code><a href="../reference/dot-openland_try_download_and_load_rda.html">.openland_try_download_and_load_rda()</a></code> function for graceful dataset loading with informative error messages</li>
+<li>enhanced dataset availability checks in vignette and examples with automatic error recovery</li>
+</ul></div>
 </div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.0.3" id="openland-103">OpenLand 1.0.3<a class="anchor" aria-label="anchor" href="#openland-103"></a></h2><p class="text-muted">CRAN release: 2024-05-03</p>

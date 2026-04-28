@@ -1,6 +1,24 @@
 # Changelog
 
-## OpenLand (development version)
+## OpenLand 1.0.4
+
+### Bug Fixes
+
+- **fixed global variable binding issue**: resolved CRAN NOTE “no
+  visible binding for global variable ‘changes’” by properly declaring
+  `changes` as a global variable used in dplyr operations. This ensures
+  compatibility with current dplyr releases where the deprecated
+  `dplyr::changes()` function is completely removed
+  ([@DavisVaughan](https://github.com/DavisVaughan),
+  [\#13](https://github.com/reginalexavier/OpenLand/issues/13))
+
+### New Features
+
+- implemented
+  [`.openland_try_download_and_load_rda()`](https://reginalexavier.github.io/OpenLand/reference/dot-openland_try_download_and_load_rda.md)
+  function for graceful dataset loading with informative error messages
+- enhanced dataset availability checks in vignette and examples with
+  automatic error recovery
 
 ## OpenLand 1.0.3
 

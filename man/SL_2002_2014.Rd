@@ -45,7 +45,7 @@ A data list with 5 objects:
   }
 }
 \source{
-\url{https://www.embrapa.br/pantanal/bacia-do-alto-paraguai}
+Embrapa Pantanal, Instituto SOS Pantanal, WWF-Brasil (2015).
 }
 \usage{
 data(SL_2002_2014)

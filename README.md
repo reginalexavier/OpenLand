@@ -45,17 +45,16 @@ detailed illustration, please see our
 
 The OpenLand functionality is illustrated for a LUC dataset of São
 Lourenço river basin, a major Pantanal wetland contribution area as
-provided by the 4<sup>th</sup> edition of the [Monitoring of Changes in
+provided by the 4<sup>th</sup> edition of the Monitoring of Changes in
 Land cover and Land Use in the Upper Paraguay River Basin - Brazilian
-portion - Review Period: 2012 to
-2014](https://www.embrapa.br/pantanal/bacia-do-alto-paraguai) (Embrapa
-Pantanal, Instituto SOS Pantanal, and WWF-Brasil 2015). The time series
-is composed by five LUC maps (2002, 2008, 2010, 2012 and 2014). The
-study area of approximately 22,400 km<sup>2</sup> is located in the
-Cerrado Savannah biom in the southeast of the Brazilian state of Mato
-Grosso. For processing in the OpenLand package, the original multi-year
-shape file was transformed into rasters and then saved as a 5-layer
-`RasterStack` (`SaoLourencoBasin`), available from a public repository
+portion - Review Period: 2012 to 2014 (Embrapa Pantanal, Instituto SOS
+Pantanal, and WWF-Brasil 2015). The time series is composed by five LUC
+maps (2002, 2008, 2010, 2012 and 2014). The study area of approximately
+22,400 km<sup>2</sup> is located in the Cerrado Savannah biom in the
+southeast of the Brazilian state of Mato Grosso. For processing in the
+OpenLand package, the original multi-year shape file was transformed
+into rasters and then saved as a 5-layer `RasterStack`
+(`SaoLourencoBasin`), available from a public repository
 [(10.5281/zenodo.3685229)](https://doi.org/10.5281/zenodo.3685230) as an
 `.RDA` file which can be loaded into `R`.
 
@@ -190,7 +189,6 @@ plot(my_test$category_lvlGain,
 
 <img src="man/figures/README-cat_level-1.png" alt="Gain area outcome - Category level" width="80%" />
 <p class="caption">
-
 Gain area outcome - Category level
 </p>
 
@@ -225,7 +223,6 @@ netgrossplot(
 
 <img src="man/figures/README-ng_plot-1.png" alt="Net Gross Changes 2002 - 2014" width="80%" />
 <p class="caption">
-
 Net Gross Changes 2002 - 2014
 </p>
 
@@ -244,7 +241,6 @@ chordDiagramLand(
 
 <img src="man/figures/README-chordDiagram-1.png" alt="Chord Diagram 2002 - 2014 (area in km^2^)" width="100%" />
 <p class="caption">
-
 Chord Diagram 2002 - 2014 (area in km<sup>2</sup>)
 </p>
 
@@ -278,7 +274,6 @@ outcomes of the `acc_changes()` function.
 
 <img src="man/figures/acc_mymap.png" alt="Accumulated changes in pixels in the interval 2002 - 2014 at four time points (2002, 2008, 2010, 2012, 2014)" width="90%" />
 <p class="caption">
-
 Accumulated changes in pixels in the interval 2002 - 2014 at four time
 points (2002, 2008, 2010, 2012, 2014)
 </p>
@@ -302,7 +297,6 @@ Computing. New York, NY: Springer New York.
 
 Embrapa Pantanal, Instituto SOS Pantanal, and WWF-Brasil. 2015.
 “Mapeamento da Bacia do Alto Paraguai.”
-<https://www.embrapa.br/pantanal/bacia-do-alto-paraguai>.
 
 Gu, Zuguang, Lei Gu, Roland Eils, Matthias Schlesner, and Benedikt
 Brors. 2014. “circlize implements and enhances circular visualization in
@@ -315,4 +309,4 @@ R.” Bioinformatics 30 (19): 2811–2.
 Reginal Exavier and Peter Zeilhofer. OpenLand: Software for Quantitative
 Analysis and Visualization of Land Use and Cover Change. The R Journal,
 v. 12, n. 2, p. 359–371, 2021.
-[https://doi.org/10.32614/RJ-2021-021](https://journal.r-project.org/archive/2020/RJ-2021-021/index.html).
+[https://doi.org/10.32614/RJ-2021-021](https://journal.r-project.org/articles/RJ-2021-021/index.html).

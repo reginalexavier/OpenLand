@@ -51,5 +51,5 @@
 #' @keywords datasets
 #'
 #'
-#' @source \url{https://www.embrapa.br/pantanal/bacia-do-alto-paraguai}
+#' @source Embrapa Pantanal, Instituto SOS Pantanal, WWF-Brasil (2015).
 "SL_2002_2014"

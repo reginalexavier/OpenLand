@@ -30,7 +30,7 @@ OpenLand is an open-source R package for the analysis of land use and cover (LUC
 
 ## São Lourenço river Basin example dataset
 
-The OpenLand functionality is illustrated for a LUC dataset of São Lourenço river basin, a major Pantanal wetland contribution area as provided by the 4^th^ edition of the [Monitoring of Changes in Land cover and Land Use in the Upper Paraguay River Basin - Brazilian portion - Review Period: 2012 to 2014](https://www.embrapa.br/pantanal/bacia-do-alto-paraguai) [@Embrapapantanalsite2015]. The time series is composed by five LUC maps (2002, 2008, 2010, 2012 and 2014). The study area of approximately 22,400 km^2^ is located in the Cerrado Savannah biom in the southeast of the Brazilian state of Mato Grosso, which has experienced a LUCC of about 12% of its extension during the 12-years period, including deforestation and intensification of existing agricultural uses.
+The OpenLand functionality is illustrated for a LUC dataset of São Lourenço river basin, a major Pantanal wetland contribution area as provided by the 4^th^ edition of the Monitoring of Changes in Land cover and Land Use in the Upper Paraguay River Basin - Brazilian portion - Review Period: 2012 to 2014 [@Embrapapantanalsite2015]. The time series is composed by five LUC maps (2002, 2008, 2010, 2012 and 2014). The study area of approximately 22,400 km^2^ is located in the Cerrado Savannah biom in the southeast of the Brazilian state of Mato Grosso, which has experienced a LUCC of about 12% of its extension during the 12-years period, including deforestation and intensification of existing agricultural uses.
 For processing in the OpenLand package, the original multi-year shape file was transformed into rasters and then saved as a 5-layer `RasterStack` (`SaoLourencoBasin`), available from a public repository [(10.5281/zenodo.3685229)](https://doi.org/10.5281/zenodo.3685230) as an `.RDA` file which can be loaded into `R`.
 
 ```{r include=FALSE}
@@ -75,11 +75,11 @@ The first two objects are contingency tables. The first one (**`r names(SL_2002_
 
 Fields, format, description and labeling of a **`r names(SL_2002_2014)[1]`** table created by the `contingencyTable` are given in the following:
 
-|[Y~_t_~, Y~_t+1_~] | Category~_i_~ | Category~_j_~ |C~_tij_~(km^2^)|C~_tij_~(pixel)|Y~_t+1_~ - Y~_t_~|Y~_t_~|Y~_t+1_~|
-|:------------:|:----------:|:----------:|:--------------:|:--------------:|:------------:|:----:|:----:|
-|`chr`|`int`|`int`|`dbl`|`int`|`int`|`int`|`int`|
-|Period of analysis from time point _t_ to time point _t+1_|A category at interval’s initial time point|A category at  interval’s final time point|Number of elements in km^2^ that transits from category _i_ to category _j_|Number of elements in pixel that transits from category _i_ to category _j_|Interval in years between time point _t_ and time point _t+1_|Initial Year of the interval| Final Year of the interval|
-|**Period**|**From**|**To**|**km2**|**QtPixel**|**Interval**|**yearFrom**|**yearTo**|
+|                     [Y~_t_~, Y~_t+1_~]                     |                Category~_i_~                |               Category~_j_~                |                               C~_tij_~(km^2^)                               |                               C~_tij_~(pixel)                               |                       Y~_t+1_~ - Y~_t_~                       |            Y~_t_~            |          Y~_t+1_~          |
+| :--------------------------------------------------------: | :-----------------------------------------: | :----------------------------------------: | :-------------------------------------------------------------------------: | :-------------------------------------------------------------------------: | :-----------------------------------------------------------: | :--------------------------: | :------------------------: |
+|                           `chr`                            |                    `int`                    |                   `int`                    |                                    `dbl`                                    |                                    `int`                                    |                             `int`                             |            `int`             |           `int`            |
+| Period of analysis from time point _t_ to time point _t+1_ | A category at interval’s initial time point | A category at  interval’s final time point | Number of elements in km^2^ that transits from category _i_ to category _j_ | Number of elements in pixel that transits from category _i_ to category _j_ | Interval in years between time point _t_ and time point _t+1_ | Initial Year of the interval | Final Year of the interval |
+|                         **Period**                         |                  **From**                   |                   **To**                   |                                   **km2**                                   |                                 **QtPixel**                                 |                         **Interval**                          |         **yearFrom**         |         **yearTo**         |
 
 In the **`r names(SL_2002_2014)[2]`** table,  the Y~_t+1_~ terms are replaced by Y~_T_~, where T is the number of time steps, i.e., Y~_T_~ is the last year of the series.
 
@@ -103,21 +103,21 @@ SL_2002_2014$totalInterval
 ```
 
 ### Editing the values in the ``r names(SL_2002_2014$tb_legend[2])`` and ``r names(SL_2002_2014$tb_legend[3])`` columns
-As mentioned before, the **`r names(SL_2002_2014[3])`** object must be edited with the real category name and colors associated with the category values. In our case, the category names and colors follow the conventions given by  @sospantanal2015 [(access document here, page 17)](https://www.embrapa.br/documents/1354999/1529097/BAP+-+Mapeamento+da+Bacia+do+Alto+Paraguai+-+estudo+completo/e66e3afb-2334-4511-96a0-af5642a56283). The Portuguese legend acronyms were maintained as defined in the original dataset.
+As mentioned before, the **`r names(SL_2002_2014[3])`** object must be edited with the real category name and colors associated with the category values. In our case, the category names and colors follow the conventions given by  @sospantanal2015. The Portuguese legend acronyms were maintained as defined in the original dataset.
 
-|Pixel Value|Legend|Class|Use|Category|color|
-|:---|:-----:|:-----------------|:-------------------|:------------------------------|:------|
-|2        | Ap     | Anthropic | Anthropic Use | Pasture                             |#FFE4B5|
-|3        | FF     | Natural   | NA            | Forest                              |#228B22|
-|4        | SA     | Natural   | NA            | Park Savannah                       |#00FF00|
-|5        | SG     | Natural   | NA            | Gramineous Savannah                 |#CAFF70|
-|7        | aa     | Anthropic | NA            | Anthropized Vegetation              |#EE6363|
-|8        | SF     | Natural   | NA            | Wooded Savannah                     |#00CD00|
-|9        | Agua   | Natural   | NA            | Water body                          |#436EEE|
-|10       | Iu     | Anthropic | Anthropic Use | Urban                               |#FFAEB9|
-|11       | Ac     | Anthropic | Anthropic Use | Crop farming                        |#FFA54F|
-|12       | R      | Anthropic | Anthropic Use | Reforestation                       |#68228B|
-|13       | Im     | Anthropic | Anthropic Use | Mining                              |#636363|
+| Pixel Value | Legend | Class     | Use           | Category               | color   |
+| :---------- | :----: | :-------- | :------------ | :--------------------- | :------ |
+| 2           |   Ap   | Anthropic | Anthropic Use | Pasture                | #FFE4B5 |
+| 3           |   FF   | Natural   | NA            | Forest                 | #228B22 |
+| 4           |   SA   | Natural   | NA            | Park Savannah          | #00FF00 |
+| 5           |   SG   | Natural   | NA            | Gramineous Savannah    | #CAFF70 |
+| 7           |   aa   | Anthropic | NA            | Anthropized Vegetation | #EE6363 |
+| 8           |   SF   | Natural   | NA            | Wooded Savannah        | #00CD00 |
+| 9           |  Agua  | Natural   | NA            | Water body             | #436EEE |
+| 10          |   Iu   | Anthropic | Anthropic Use | Urban                  | #FFAEB9 |
+| 11          |   Ac   | Anthropic | Anthropic Use | Crop farming           | #FFA54F |
+| 12          |   R    | Anthropic | Anthropic Use | Reforestation          | #68228B |
+| 13          |   Im   | Anthropic | Anthropic Use | Mining                 | #636363 |
 
 
 
@@ -187,7 +187,7 @@ testSL
 ```
 
 
-## The Graphs 
+## The Graphs
 ### Outcomes of intensity analysis
 Visualizations of the IA results are obtained from the `plot(intensity-object)` function. For more details on the function arguments, please see the documentation of the `plot()` method.
 
@@ -259,7 +259,7 @@ plot(testSL$transition_lvlLoss_m,
 
 ### Miscellaneous visualization tools
 
-OpenLand provides a bench of visualization tools of LUCC metrics. One-step transitions can be balanced by net and gross changes of all categories through a combined bar chart.  Transitions between LUC categories can be detailed by a circular chord chart, based on the Circlize package [@Gu2014]. An implementation of  Sankey diagram based on the networkD3 package [@Allaire2017] allow the representation of one- and multistep LUCC between categories. Areal development of all LUC categories throughout the observation period can be visualized by a grouped bar chart. 
+OpenLand provides a bench of visualization tools of LUCC metrics. One-step transitions can be balanced by net and gross changes of all categories through a combined bar chart.  Transitions between LUC categories can be detailed by a circular chord chart, based on the Circlize package [@Gu2014]. An implementation of  Sankey diagram based on the networkD3 package [@Allaire2017] allow the representation of one- and multistep LUCC between categories. Areal development of all LUC categories throughout the observation period can be visualized by a grouped bar chart.
 
 #### Net and Gross gain and loss
 
@@ -323,7 +323,7 @@ barplotLand(
 ```
 
 ## Other functions
-Two auxiliary functions allow users to check for consistency in the input gridded LUC time series, including extent, projection, cell resolution and categories. The `summary_map()` function returns the number of pixel by category of a single raster layer, whereas `summary_dir()` lists the spatial extension, spatial resolution, cartographic projection and the category range for the LUC maps. 
+Two auxiliary functions allow users to check for consistency in the input gridded LUC time series, including extent, projection, cell resolution and categories. The `summary_map()` function returns the number of pixel by category of a single raster layer, whereas `summary_dir()` lists the spatial extension, spatial resolution, cartographic projection and the category range for the LUC maps.
 OpenLand enables furthermore the spatial screening of LUCC frequencies for one or a series of raster layers. The `acc_changes()` returns for LUC time series the number of times a pixel has changed during the analysed period, returning a grid layer and a table with the percentages of transition numbers in the study area.
 
 

@@ -1,15 +1,14 @@
 ## OpenLand 1.0.4 — CRAN Submission
 
-This patch release addresses a CRAN NOTE regarding undefined global variable
-binding in dplyr operations and includes additional improvements.
+This is a resubmission of a previously archived package.
 
-### Primary Changes
+### Changes since last submission
 
-* **Fixed CRAN NOTE**: Resolved "no visible binding for global variable 'changes'"
+* Removed or replaced problematic external URLs that failed CRAN checks (SSL/redirect issues)
+
+* Resolved "no visible binding for global variable 'changes'"
   by properly declaring `changes` as a global variable in accordance with dplyr's
-  removal of the deprecated `dplyr::changes()` function. This ensures compatibility
-  with current dplyr releases and resolves reverse dependency flagging
-  (see dplyr issue #7763).
+  removal of the deprecated `dplyr::changes()` function.
 
 ### Additional Enhancements
 

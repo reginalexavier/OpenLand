@@ -1,17 +1,25 @@
-This is a patch release in response to a 2024-03-11 email from Kurt Hornik 
-regarding 2 test failures related to unit testing the plot function depending 
-on the ggplot package. Tests have been adjusted for the most up-to-date version 
-of ggplot.
+## OpenLand 1.0.4 — CRAN Submission
 
-## Test environments
+This patch release addresses a CRAN NOTE regarding undefined global variable
+binding in dplyr operations and includes additional improvements.
 
-* ubuntu-latest (on GitHub Actions), R release, devel, oldrel-1
-* macos, win-builder (on GitHub Actions), R release
-* local OS (ubuntu 22.04.4 LTS) install, R 4.4.0
+### Primary Changes
+
+* **Fixed CRAN NOTE**: Resolved "no visible binding for global variable 'changes'"
+  by properly declaring `changes` as a global variable in accordance with dplyr's
+  removal of the deprecated `dplyr::changes()` function. This ensures compatibility
+  with current dplyr releases and resolves reverse dependency flagging
+  (see dplyr issue #7763).
+
+### Additional Enhancements
+
+* Implemented `.openland_try_download_and_load_rda()` function for graceful
+  dataset loading with informative error messages
+* Enhanced vignette and examples dataset availability checks
 
 ## R CMD check results
 
-0 errors | 0 warnings | 0 note
+0 errors | 0 warnings | 0 notes
 
 ## Downstream dependencies
 

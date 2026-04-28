@@ -11,3 +11,7 @@
 ^CRAN-RELEASE$
 ^\.github$
 ^CRAN-SUBMISSION$
+^justfile$
+^README\.html$
+^\.lintr$
+^\.Rhistory$

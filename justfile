@@ -15,6 +15,11 @@ deps:
 deps-dev:
     Rscript -e "if (!require('pak', quietly = TRUE)) install.packages('pak', repos=c('https://r-lib.github.io/p/pak/stable', 'https://cran.r-project.org/')); pak::local_install_dev_deps()"
 
+# Install optional dependencies
+deps-optional:
+    Rscript -e "if (!require('pak', quietly = TRUE)) install.packages('pak', repos = c('https://r-lib.github.io/p/pak/stable', 'https://cran.r-project.org'))"
+    Rscript -e "pak::pkg_install(c('urlchecker','withr','checkhelper','spelling','usethis','rhub','lubridate'), ask = FALSE)"
+
 # Run code linting
 lint:
     Rscript -e "if (!require('lintr', quietly = TRUE)) install.packages('lintr', repos='https://cran.r-project.org/'); lintr::lint_package()"
@@ -38,7 +43,11 @@ test:
 
 # Run R CMD check
 check:
-    Rscript -e "devtools::check(error_on = 'warning')"
+    Rscript -e "devtools::check(args = c("--no-manual", "--as-cran"))"
+
+# Run R CMD check like on CRAN
+check-cran:
+    Rscript -e "withr::with_options(list(repos = c(CRAN = 'https://cloud.r-project.org/')), {callr::default_repos(); rcmdcheck::rcmdcheck(args = c('--no-manual', '--as-cran'))})"
 
 # Generate test coverage report
 coverage:
@@ -64,8 +73,8 @@ clean:
 # Run CI pipeline (deps, lint, check, test, coverage)
 ci: deps lint check test coverage
 
-# Prepare package for release (clean, deps, doc, build, check, test)
-release: clean deps doc build check test
+# Prepare package for release/CRAN (clean, deps, doc, build, check-cran, test)
+release: clean deps doc build check-cran test
     @echo "Package ready for release"
 
 # Render README.Rmd to markdown

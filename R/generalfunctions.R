@@ -23,7 +23,7 @@
 #'   in cache) and loaded into `envir`; `FALSE` otherwise.
 #'
 #' @keywords internal
-.openland_try_download_and_load_rda <- function(url,
+.openland_try_download_and_load_rda <- function(url, # nolint: object_length_linter
                                                 object = NULL,
                                                 envir = parent.frame(),
                                                 timeout = 10,
@@ -66,31 +66,40 @@
   try_load_into <- function(path) {
     tmp_env <- new.env(parent = emptyenv())
     nm <- load(path, envir = tmp_env)
-    if (!is.null(object) && !(object %in% nm)) return(FALSE)
+    if (!is.null(object) && !(object %in% nm)) {
+      return(FALSE)
+    }
     list2env(as.list(tmp_env, all.names = TRUE), envir = envir)
     TRUE
   }
 
-  ok <- tryCatch({
-    if (isTRUE(cache) && file.exists(cached_path) && isTRUE(file.info(cached_path)$size > 0)) {
-      if (isTRUE(try_load_into(cached_path))) return(TRUE)
-      unlink(cached_path, force = TRUE)
-    }
-
-    status <- suppressWarnings(utils::download.file(url, destfile = tmp_path, mode = "wb", quiet = quiet))
-    if (!identical(status, 0L)) return(FALSE)
-
-    if (isTRUE(cache)) {
-      ok_copy <- file.copy(tmp_path, cached_path, overwrite = TRUE)
-      if (isTRUE(ok_copy)) {
-        return(isTRUE(try_load_into(cached_path)))
+  ok <- tryCatch(
+    {
+      if (isTRUE(cache) && file.exists(cached_path) && isTRUE(file.info(cached_path)$size > 0)) {
+        if (isTRUE(try_load_into(cached_path))) {
+          return(TRUE)
+        }
+        unlink(cached_path, force = TRUE)
       }
-    }
 
-    isTRUE(try_load_into(tmp_path))
-  }, error = function(e) {
-    FALSE
-  })
+      status <- suppressWarnings(utils::download.file(url, destfile = tmp_path, mode = "wb", quiet = quiet))
+      if (!identical(status, 0L)) {
+        return(FALSE)
+      }
+
+      if (isTRUE(cache)) {
+        ok_copy <- file.copy(tmp_path, cached_path, overwrite = TRUE)
+        if (isTRUE(ok_copy)) {
+          return(isTRUE(try_load_into(cached_path)))
+        }
+      }
+
+      isTRUE(try_load_into(tmp_path))
+    },
+    error = function(e) {
+      FALSE
+    }
+  )
 
   isTRUE(ok)
 }

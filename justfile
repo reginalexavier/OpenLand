@@ -43,7 +43,7 @@ test:
 
 # Run R CMD check
 check:
-    Rscript -e "devtools::check(args = c("--no-manual", "--as-cran"))"
+    Rscript -e "devtools::check(args = c('--no-manual', '--as-cran'))"
 
 # Run R CMD check like on CRAN
 check-cran:

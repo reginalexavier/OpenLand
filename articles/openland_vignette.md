@@ -20,20 +20,18 @@ standardized multilevel output graphics.
 
 The OpenLand functionality is illustrated for a LUC dataset of São
 Lourenço river basin, a major Pantanal wetland contribution area as
-provided by the 4^(th) edition of the [Monitoring of Changes in Land
+provided by the 4^(th) edition of the Monitoring of Changes in Land
 cover and Land Use in the Upper Paraguay River Basin - Brazilian
-portion - Review Period: 2012 to
-2014](https://www.embrapa.br/pantanal/bacia-do-alto-paraguai) (Embrapa
-Pantanal, Instituto SOS Pantanal, and WWF-Brasil 2015). The time series
-is composed by five LUC maps (2002, 2008, 2010, 2012 and 2014). The
-study area of approximately 22,400 km² is located in the Cerrado
-Savannah biom in the southeast of the Brazilian state of Mato Grosso,
-which has experienced a LUCC of about 12% of its extension during the
-12-years period, including deforestation and intensification of existing
-agricultural uses. For processing in the OpenLand package, the original
-multi-year shape file was transformed into rasters and then saved as a
-5-layer `RasterStack` (`SaoLourencoBasin`), available from a public
-repository
+portion - Review Period: 2012 to 2014 (Embrapa Pantanal, Instituto SOS
+Pantanal, and WWF-Brasil 2015). The time series is composed by five LUC
+maps (2002, 2008, 2010, 2012 and 2014). The study area of approximately
+22,400 km² is located in the Cerrado Savannah biom in the southeast of
+the Brazilian state of Mato Grosso, which has experienced a LUCC of
+about 12% of its extension during the 12-years period, including
+deforestation and intensification of existing agricultural uses. For
+processing in the OpenLand package, the original multi-year shape file
+was transformed into rasters and then saved as a 5-layer `RasterStack`
+(`SaoLourencoBasin`), available from a public repository
 [(10.5281/zenodo.3685229)](https://doi.org/10.5281/zenodo.3685230) as an
 `.RDA` file which can be loaded into `R`.
 
@@ -166,11 +164,8 @@ SL_2002_2014$totalInterval
 As mentioned before, the **tb_legend** object must be edited with the
 real category name and colors associated with the category values. In
 our case, the category names and colors follow the conventions given by
-Instituto SOS Pantanal and WWF-Brasil (2015) [(access document here,
-page
-17)](https://www.embrapa.br/documents/1354999/1529097/BAP+-+Mapeamento+da+Bacia+do+Alto+Paraguai+-+estudo+completo/e66e3afb-2334-4511-96a0-af5642a56283).
-The Portuguese legend acronyms were maintained as defined in the
-original dataset.
+Instituto SOS Pantanal and WWF-Brasil (2015). The Portuguese legend
+acronyms were maintained as defined in the original dataset.
 
 | Pixel Value | Legend | Class     | Use           | Category               | color    |
 |:------------|:------:|:----------|:--------------|:-----------------------|:---------|
@@ -575,7 +570,6 @@ Computing. New York, NY: Springer New York.
 
 Embrapa Pantanal, Instituto SOS Pantanal, and WWF-Brasil. 2015.
 “Mapeamento da Bacia do Alto Paraguai.”
-<https://www.embrapa.br/pantanal/bacia-do-alto-paraguai>.
 
 Gu, Zuguang, Lei Gu, Roland Eils, Matthias Schlesner, and Benedikt
 Brors. 2014. “circlize implements and enhances circular visualization in

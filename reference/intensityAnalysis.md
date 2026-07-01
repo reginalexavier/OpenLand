@@ -116,6 +116,7 @@ pp. 1717–1739.
 ## Examples
 
 ``` r
+
 # editing the category name
 
 SL_2002_2014$tb_legend$categoryName <- factor(

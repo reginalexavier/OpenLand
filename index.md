@@ -14,12 +14,14 @@ standardized multilevel output graphics.
 Install the released version of OpenLand from CRAN:
 
 ``` r
+
 install.packages("OpenLand")
 ```
 
 Or install the development version from GitHub with:
 
 ``` r
+
 # install.packages("devtools")
 devtools::install_github("reginalexavier/OpenLand")
 ```
@@ -46,6 +48,7 @@ available from a public repository
 `.RDA` file which can be loaded into `R`.
 
 ``` r
+
 # Loading the package
 library(OpenLand)
 ```
@@ -81,6 +84,7 @@ category which experienced relevant gains and `m` a category with
 important losses.
 
 ``` r
+
 my_test <- intensityAnalysis(
   dataset = SL_2002_2014, # here the outcome from the `contingenceTable()` function
   category_n = "Ap", category_m = "SG"
@@ -111,6 +115,7 @@ loss (L_(ti)) values)* and the third slot contains a table storing the
 results of a stationarity test.
 
 ``` r
+
 my_test$category_lvlGain
 #> An object of class "Category"
 #> Slot "lookupcolor":
@@ -163,6 +168,7 @@ arguments, please see the documentation of the
 method.
 
 ``` r
+
 plot(my_test$category_lvlGain,
   labels = c(
     leftlabel = bquote("Gain Area (" ~ km^2 ~ ")"),
@@ -194,6 +200,7 @@ be visualized by a grouped bar chart.
 ##### Net and Gross gain and loss
 
 ``` r
+
 netgrossplot(
   dataset = SL_2002_2014$lulc_Multistep,
   legendtable = SL_2002_2014$tb_legend,
@@ -211,6 +218,7 @@ Net Gross Changes 2002 - 2014
 ##### Chord Diagram (2002 - 2014)
 
 ``` r
+
 chordDiagramLand(
   dataset = SL_2002_2014$lulc_Onestep,
   legendtable = SL_2002_2014$tb_legend
@@ -225,6 +233,7 @@ Chord Diagram 2002 - 2014 (area in km²)
 ##### Sankey Multi Step (2002, 2008, 2010, 2012, 2014)
 
 ``` r
+
 # sankeyLand(dataset = SL_2002_2014$lulc_Multistep,
 #            legendtable = SL_2002_2014$tb_legend)
 ```

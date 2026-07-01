@@ -68,6 +68,7 @@ A bar plot
 ## Examples
 
 ``` r
+
 # editing the category names
 
 SL_2002_2014$tb_legend$categoryName <- factor(

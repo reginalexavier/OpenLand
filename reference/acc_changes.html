@@ -52,7 +52,7 @@ pixel value and a table containing the areal percentage of every pixel value
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>Accumulates changes in a LULC raster time series</h1>
-      <small class="dont-index">Source: <a href="https://github.com/reginalexavier/OpenLand/blob/main/R/generalfunctions.R" class="external-link"><code>R/generalfunctions.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/reginalexavier/OpenLand/blob/v1.0.4/R/generalfunctions.R" class="external-link"><code>R/generalfunctions.R</code></a></small>
       <div class="d-none name"><code>acc_changes.Rd</code></div>
     </div>
 
@@ -91,6 +91,25 @@ analysed.</p></dd>
 <span class="r-in"><span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
 <span class="r-in"><span>  <span class="fu">acc_changes</span><span class="op">(</span><span class="va">SaoLourencoBasin</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [[1]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> class      : RasterLayer </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> dimensions : 6372, 6546, 41711112  (nrow, ncol, ncell)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> resolution : 30, 30  (x, y)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> extent     : 654007.5, 850387.5, 8099064, 8290224  (xmin, xmax, ymin, ymax)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> crs        : +proj=utm +zone=21 +south +ellps=GRS80 +units=m +no_defs </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> source     : r_tmp_2026-07-02_002209.04152_7744_64535.grd </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> names      : layer </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> values     : 0, 2  (min, max)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [[2]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 3 × 3</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   PxValue       Qt Percent</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>       0 21<span style="text-decoration: underline;">819</span>779   87.6 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span>       1  2<span style="text-decoration: underline;">787</span>995   11.2 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span>       2   <span style="text-decoration: underline;">301</span>086    1.21</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span><span class="co"># }</span></span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>

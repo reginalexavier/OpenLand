@@ -10,7 +10,7 @@
 ## Citation
 
 Source:
-[`DESCRIPTION`](https://github.com/reginalexavier/OpenLand/blob/main/DESCRIPTION)
+[`DESCRIPTION`](https://github.com/reginalexavier/OpenLand/blob/v1.0.4/DESCRIPTION)
 
 Exavier R, Zeilhofer P (2026). *OpenLand: Quantitative Analysis and
 Visualization of LUCC*. R package version 1.0.4,

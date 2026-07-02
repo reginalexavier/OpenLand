@@ -46,7 +46,7 @@
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>Contingency table</h1>
-      <small class="dont-index">Source: <a href="https://github.com/reginalexavier/OpenLand/blob/main/R/contingencyTable.R" class="external-link"><code>R/contingencyTable.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/reginalexavier/OpenLand/blob/v1.0.4/R/contingencyTable.R" class="external-link"><code>R/contingencyTable.R</code></a></small>
       <div class="d-none name"><code>contingencyTable.Rd</code></div>
     </div>
 
@@ -132,6 +132,63 @@ supported file types.</p></dd>
 <span class="r-in"><span>  <span class="co"># the contingencyTable() function, with the SaoLourencoBasin dataset</span></span></span>
 <span class="r-in"><span>  <span class="fu">contingencyTable</span><span class="op">(</span>input_raster <span class="op">=</span> <span class="va">SaoLourencoBasin</span>, pixelresolution <span class="op">=</span> <span class="fl">30</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $lulc_Multistep</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 130 × 8</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    Period     From    To      km2 QtPixel Interval yearFrom yearTo</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> 2002-2008     2     2 <span style="text-decoration: underline;">6</span>543.    7<span style="text-decoration: underline;">269</span>961        6     <span style="text-decoration: underline;">2</span>002   <span style="text-decoration: underline;">2</span>008</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> 2002-2008     2    10    1.56     <span style="text-decoration: underline;">1</span>736        6     <span style="text-decoration: underline;">2</span>002   <span style="text-decoration: underline;">2</span>008</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> 2002-2008     2    11   55.2     <span style="text-decoration: underline;">61</span>320        6     <span style="text-decoration: underline;">2</span>002   <span style="text-decoration: underline;">2</span>008</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> 2002-2008     2    12   23.9     <span style="text-decoration: underline;">26</span>609        6     <span style="text-decoration: underline;">2</span>002   <span style="text-decoration: underline;">2</span>008</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> 2002-2008     3     2   37.5     <span style="text-decoration: underline;">41</span>649        6     <span style="text-decoration: underline;">2</span>002   <span style="text-decoration: underline;">2</span>008</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> 2002-2008     3     3 <span style="text-decoration: underline;">2</span>133.    2<span style="text-decoration: underline;">370</span>190        6     <span style="text-decoration: underline;">2</span>002   <span style="text-decoration: underline;">2</span>008</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> 2002-2008     3     7  155.     <span style="text-decoration: underline;">172</span>718        6     <span style="text-decoration: underline;">2</span>002   <span style="text-decoration: underline;">2</span>008</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> 2002-2008     3    11    7.48     <span style="text-decoration: underline;">8</span>307        6     <span style="text-decoration: underline;">2</span>002   <span style="text-decoration: underline;">2</span>008</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> 2002-2008     3    12    0.356     395        6     <span style="text-decoration: underline;">2</span>002   <span style="text-decoration: underline;">2</span>008</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 2002-2008     3    13    0.081      90        6     <span style="text-decoration: underline;">2</span>002   <span style="text-decoration: underline;">2</span>008</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 120 more rows</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $lulc_Onestep</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 45 × 8</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    Period     From    To     km2 QtPixel Interval yearFrom yearTo</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> 2002-2014     2     2 <span style="text-decoration: underline;">6</span>169.   6<span style="text-decoration: underline;">854</span>816       12     <span style="text-decoration: underline;">2</span>002   <span style="text-decoration: underline;">2</span>014</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> 2002-2014     2     9    2.39    <span style="text-decoration: underline;">2</span>651       12     <span style="text-decoration: underline;">2</span>002   <span style="text-decoration: underline;">2</span>014</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> 2002-2014     2    10   10.4    <span style="text-decoration: underline;">11</span>513       12     <span style="text-decoration: underline;">2</span>002   <span style="text-decoration: underline;">2</span>014</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> 2002-2014     2    11  412.    <span style="text-decoration: underline;">457</span>631       12     <span style="text-decoration: underline;">2</span>002   <span style="text-decoration: underline;">2</span>014</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> 2002-2014     2    12   29.7    <span style="text-decoration: underline;">33</span>015       12     <span style="text-decoration: underline;">2</span>002   <span style="text-decoration: underline;">2</span>014</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> 2002-2014     3     2  110.    <span style="text-decoration: underline;">121</span>762       12     <span style="text-decoration: underline;">2</span>002   <span style="text-decoration: underline;">2</span>014</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> 2002-2014     3     3 <span style="text-decoration: underline;">2</span>091.   2<span style="text-decoration: underline;">323</span>665       12     <span style="text-decoration: underline;">2</span>002   <span style="text-decoration: underline;">2</span>014</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> 2002-2014     3     7  116.    <span style="text-decoration: underline;">129</span>304       12     <span style="text-decoration: underline;">2</span>002   <span style="text-decoration: underline;">2</span>014</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> 2002-2014     3     9    7.00    <span style="text-decoration: underline;">7</span>774       12     <span style="text-decoration: underline;">2</span>002   <span style="text-decoration: underline;">2</span>014</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 2002-2014     3    11    9.32   <span style="text-decoration: underline;">10</span>359       12     <span style="text-decoration: underline;">2</span>002   <span style="text-decoration: underline;">2</span>014</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 35 more rows</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $tb_legend</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 11 × 3</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    categoryValue categoryName color  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span>             2 IEY          #002F70</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span>             3 XOM          #8EA4DE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span>             4 BWK          #0A468D</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span>             5 KEU          #EAACAC</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span>             7 LBF          #5F1415</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span>             8 DPB          #DCE2F6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span>             9 CYV          #A13F3F</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span>            10 KGU          #6F8DD2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span>            11 FIV          #C5CFF0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span>            12 JUB          #CE7575</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">11</span>            13 QTX          #295EAE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $totalArea</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1 × 2</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   area_km2  QtPixel</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>   <span style="text-decoration: underline;">22</span>418. 24<span style="text-decoration: underline;">908</span>860</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $totalInterval</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 12</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span><span class="co"># }</span></span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>

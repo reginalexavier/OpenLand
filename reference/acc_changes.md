@@ -38,7 +38,7 @@ if (OpenLand:::.openland_try_download_and_load_rda(url,
 #> resolution : 30, 30  (x, y)
 #> extent     : 654007.5, 850387.5, 8099064, 8290224  (xmin, xmax, ymin, ymax)
 #> crs        : +proj=utm +zone=21 +south +ellps=GRS80 +units=m +no_defs 
-#> source     : r_tmp_2026-07-02_002209.04152_7744_64535.grd 
+#> source     : r_tmp_2026-07-02_003527.926413_7812_64535.grd 
 #> names      : layer 
 #> values     : 0, 2  (min, max)
 #> 

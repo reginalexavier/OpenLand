@@ -1,6 +1,10 @@
 # Changelog
 
+## OpenLand (development version)
+
 ## OpenLand 1.0.5
+
+CRAN release: 2026-07-10
 
 ### Bug Fixes
 

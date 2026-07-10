@@ -40,7 +40,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">OpenLand</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.5</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.5.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -72,8 +72,8 @@
 
 
 
-
-<div class="row">
+<link href="openland_vignette_files/htmltools-fill-0.5.9/fill.css" rel="stylesheet">
+<script src="openland_vignette_files/htmlwidgets-1.6.4/htmlwidgets.js"></script><script src="openland_vignette_files/d3-4.9.1/d3.min.js"></script><script src="openland_vignette_files/sankey-1/sankey.js"></script><script src="openland_vignette_files/sankeyNetwork-binding-0.4.1/sankeyNetwork.js"></script><div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>Quick introduction to the OpenLand package</h1>
             
@@ -92,9 +92,9 @@ text-align: justify}
 <p><strong>This is a Vignette on how to use the OpenLand package for
 exploratory analysis of Land Use and Cover (LUC) time
 series.</strong></p>
-<div class="section level2">
-<h2 id="description-of-the-tool">Description of the tool<a class="anchor" aria-label="anchor" href="#description-of-the-tool"></a>
-</h2>
+<div class="section level3">
+<h3 id="description-of-the-tool">Description of the tool<a class="anchor" aria-label="anchor" href="#description-of-the-tool"></a>
+</h3>
 <p>OpenLand is an open-source R package for the analysis of land use and
 cover (LUC) time series. It includes support for consistency check and
 loading spatiotemporal raster data and synthesized spatial plotting.
@@ -104,9 +104,9 @@ chord diagrams. A complete intensity analysis according to <span class="citation
 including tools for the generation of standardized multilevel output
 graphics.</p>
 </div>
-<div class="section level2">
-<h2 id="são-lourenço-river-basin-example-dataset">São Lourenço river Basin example dataset<a class="anchor" aria-label="anchor" href="#s%C3%A3o-louren%C3%A7o-river-basin-example-dataset"></a>
-</h2>
+<div class="section level3">
+<h3 id="são-lourenço-river-basin-example-dataset">São Lourenço river Basin example dataset<a class="anchor" aria-label="anchor" href="#s%C3%A3o-louren%C3%A7o-river-basin-example-dataset"></a>
+</h3>
 <p>The OpenLand functionality is illustrated for a LUC dataset of São
 Lourenço river basin, a major Pantanal wetland contribution area as
 provided by the 4<sup>th</sup> edition of the Monitoring of Changes in
@@ -124,11 +124,665 @@ was transformed into rasters and then saved as a 5-layer
 a public repository <a href="https://doi.org/10.5281/zenodo.3685230" class="external-link">(10.5281/zenodo.3685229)</a>
 as an <code>.RDA</code> file which can be loaded into
 <code>R</code>.</p>
+<div class="section level4">
+<h4 id="input-data-constraints">Input data constraints<a class="anchor" aria-label="anchor" href="#input-data-constraints"></a>
+</h4>
+<p>The function <code><a href="../reference/contingencyTable.html">contingencyTable()</a></code> for data extraction
+demands as input a list of raster layers (<code>RasterBrick</code>,
+<code>RasterStack</code> or a path to a folder containing the rasters).
+The name of the rasters must be in the format (“some_text”
+<code>+</code> “underscore” <code>+</code> “the_year”) like
+“landscape_2020”. In our example we included the
+<code>SaoLourencoBasin</code> RasterStack:</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># first we load the OpenLand package</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://reginalexavier.github.io/OpenLand/">OpenLand</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># The SaoLourencoBasin dataset</span></span>
+<span><span class="va">SaoLourencoBasin</span></span>
+<span><span class="co">#&gt; class      : RasterStack </span></span>
+<span><span class="co">#&gt; dimensions : 6372, 6546, 41711112, 5  (nrow, ncol, ncell, nlayers)</span></span>
+<span><span class="co">#&gt; resolution : 30, 30  (x, y)</span></span>
+<span><span class="co">#&gt; extent     : 654007.5, 850387.5, 8099064, 8290224  (xmin, xmax, ymin, ymax)</span></span>
+<span><span class="co">#&gt; crs        : +proj=utm +zone=21 +south +ellps=GRS80 +units=m +no_defs </span></span>
+<span><span class="co">#&gt; names      : landscape_2002, landscape_2008, landscape_2010, landscape_2012, landscape_2014 </span></span>
+<span><span class="co">#&gt; min values :              2,              2,              2,              2,              2 </span></span>
+<span><span class="co">#&gt; max values :             13,             13,             13,             13,             13</span></span></code></pre></div>
 </div>
-<div class="section level2 unnumbered">
-<h2 class="unnumbered" id="the-complete-rendering-of-this-document-depends-on-the-availability-of-the-dataset-in-zenodo--please-try-at-another-time-">The complete rendering of this document depends
-on the availability of the dataset in zenodo. Please try at another
-time.<a class="anchor" aria-label="anchor" href="#the-complete-rendering-of-this-document-depends-on-the-availability-of-the-dataset-in-zenodo--please-try-at-another-time-"></a>
+<div class="section level4">
+<h4 id="extracting-the-data-from-raster-time-series">Extracting the data from raster time series<a class="anchor" aria-label="anchor" href="#extracting-the-data-from-raster-time-series"></a>
+</h4>
+<p>After data extraction <code><a href="../reference/contingencyTable.html">contingencyTable()</a></code> saves multiple
+grid information in tables for the next processing steps. The function
+returns 5 objects: lulc_Multistep, lulc_Onestep, tb_legend, totalArea,
+totalInterval.</p>
+<p>The first two objects are contingency tables. The first one
+(<strong>lulc_Multistep</strong>) takes into account grid cells of the
+entire time series, whereas the second (<strong>lulc_Onestep</strong>)
+calculates LUC transitions only between the first and last year of the
+series. The third object (<strong>tb_legend</strong>) is a table
+containing the category name associated with a pixel value and a
+respective color used for plotting. Category values and colors are
+created randomly by <code><a href="../reference/contingencyTable.html">contingencyTable()</a></code>. Their values must
+be edited to produce meaningful plot legends and color schemes. The
+fourth object (<strong>totalArea</strong>) is a table containing the
+extension of the study area in km<sup>2</sup> and in pixel units. The
+fifth table (<strong>totalInterval</strong>) stores the range between
+the first (Y<sub>t=1</sub>) and the last year(Y<sub>T</sub>) of the
+series.</p>
+<p>Fields, format, description and labeling of a
+<strong>lulc_Multistep</strong> table created by the
+<code>contingencyTable</code> are given in the following:</p>
+<table class="table">
+<colgroup>
+<col width="14%">
+<col width="10%">
+<col width="10%">
+<col width="18%">
+<col width="18%">
+<col width="14%">
+<col width="6%">
+<col width="6%">
+</colgroup>
+<thead><tr class="header">
+<th align="center">[Y<sub><em>t</em></sub>,
+Y<sub><em>t+1</em></sub>]</th>
+<th align="center">Category<sub><em>i</em></sub>
+</th>
+<th align="center">Category<sub><em>j</em></sub>
+</th>
+<th align="center">C<sub><em>tij</em></sub>(km<sup>2</sup>)</th>
+<th align="center">C<sub><em>tij</em></sub>(pixel)</th>
+<th align="center">Y<sub><em>t+1</em></sub> -
+Y<sub><em>t</em></sub>
+</th>
+<th align="center">Y<sub><em>t</em></sub>
+</th>
+<th align="center">Y<sub><em>t+1</em></sub>
+</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="center"><code>chr</code></td>
+<td align="center"><code>int</code></td>
+<td align="center"><code>int</code></td>
+<td align="center"><code>dbl</code></td>
+<td align="center"><code>int</code></td>
+<td align="center"><code>int</code></td>
+<td align="center"><code>int</code></td>
+<td align="center"><code>int</code></td>
+</tr>
+<tr class="even">
+<td align="center">Period of analysis from time point <em>t</em> to time
+point <em>t+1</em>
+</td>
+<td align="center">A category at interval’s initial time point</td>
+<td align="center">A category at interval’s final time point</td>
+<td align="center">Number of elements in km<sup>2</sup> that transits
+from category <em>i</em> to category <em>j</em>
+</td>
+<td align="center">Number of elements in pixel that transits from
+category <em>i</em> to category <em>j</em>
+</td>
+<td align="center">Interval in years between time point <em>t</em> and
+time point <em>t+1</em>
+</td>
+<td align="center">Initial Year of the interval</td>
+<td align="center">Final Year of the interval</td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>Period</strong></td>
+<td align="center"><strong>From</strong></td>
+<td align="center"><strong>To</strong></td>
+<td align="center"><strong>km2</strong></td>
+<td align="center"><strong>QtPixel</strong></td>
+<td align="center"><strong>Interval</strong></td>
+<td align="center"><strong>yearFrom</strong></td>
+<td align="center"><strong>yearTo</strong></td>
+</tr>
+</tbody>
+</table>
+<p>In the <strong>lulc_Onestep</strong> table, the
+Y<sub><em>t+1</em></sub> terms are replaced by Y<sub><em>T</em></sub>,
+where T is the number of time steps, i.e., Y<sub><em>T</em></sub> is the
+last year of the series.</p>
+<p>For our study area,
+<code>contingencyTable(input_raster = SaoLourencoBasin, pixelresolution = 30)</code>
+returns the following outputs:</p>
+<p><code>{r SL_2002_2014 &lt;- contingencyTable(input_raster = SaoLourencoBasin, pixelresolution = 30)</code></p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">SL_2002_2014</span><span class="op">$</span><span class="va">lulc_Multistep</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, <span class="op">]</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 10 × 8</span></span></span>
+<span><span class="co">#&gt;    Period     From    To      km2 QtPixel Interval yearFrom yearTo</span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> 2002-2008     2     2 <span style="text-decoration: underline;">6</span>543.    7<span style="text-decoration: underline;">269</span>961        6     <span style="text-decoration: underline;">2</span>002   <span style="text-decoration: underline;">2</span>008</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> 2002-2008     2    10    1.56     <span style="text-decoration: underline;">1</span>736        6     <span style="text-decoration: underline;">2</span>002   <span style="text-decoration: underline;">2</span>008</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> 2002-2008     2    11   55.2     <span style="text-decoration: underline;">61</span>320        6     <span style="text-decoration: underline;">2</span>002   <span style="text-decoration: underline;">2</span>008</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> 2002-2008     2    12   23.9     <span style="text-decoration: underline;">26</span>609        6     <span style="text-decoration: underline;">2</span>002   <span style="text-decoration: underline;">2</span>008</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> 2002-2008     3     2   37.5     <span style="text-decoration: underline;">41</span>649        6     <span style="text-decoration: underline;">2</span>002   <span style="text-decoration: underline;">2</span>008</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> 2002-2008     3     3 <span style="text-decoration: underline;">2</span>133.    2<span style="text-decoration: underline;">370</span>190        6     <span style="text-decoration: underline;">2</span>002   <span style="text-decoration: underline;">2</span>008</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> 2002-2008     3     7  155.     <span style="text-decoration: underline;">172</span>718        6     <span style="text-decoration: underline;">2</span>002   <span style="text-decoration: underline;">2</span>008</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> 2002-2008     3    11    7.48     <span style="text-decoration: underline;">8</span>307        6     <span style="text-decoration: underline;">2</span>002   <span style="text-decoration: underline;">2</span>008</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> 2002-2008     3    12    0.356     395        6     <span style="text-decoration: underline;">2</span>002   <span style="text-decoration: underline;">2</span>008</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> 2002-2008     3    13    0.081      90        6     <span style="text-decoration: underline;">2</span>002   <span style="text-decoration: underline;">2</span>008</span></span>
+<span></span>
+<span><span class="va">SL_2002_2014</span><span class="op">$</span><span class="va">lulc_Onestep</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, <span class="op">]</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 10 × 8</span></span></span>
+<span><span class="co">#&gt;    Period     From    To     km2 QtPixel Interval yearFrom yearTo</span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> 2002-2014     2     2 <span style="text-decoration: underline;">6</span>169.   6<span style="text-decoration: underline;">854</span>816       12     <span style="text-decoration: underline;">2</span>002   <span style="text-decoration: underline;">2</span>014</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> 2002-2014     2     9    2.39    <span style="text-decoration: underline;">2</span>651       12     <span style="text-decoration: underline;">2</span>002   <span style="text-decoration: underline;">2</span>014</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> 2002-2014     2    10   10.4    <span style="text-decoration: underline;">11</span>513       12     <span style="text-decoration: underline;">2</span>002   <span style="text-decoration: underline;">2</span>014</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> 2002-2014     2    11  412.    <span style="text-decoration: underline;">457</span>631       12     <span style="text-decoration: underline;">2</span>002   <span style="text-decoration: underline;">2</span>014</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> 2002-2014     2    12   29.7    <span style="text-decoration: underline;">33</span>015       12     <span style="text-decoration: underline;">2</span>002   <span style="text-decoration: underline;">2</span>014</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> 2002-2014     3     2  110.    <span style="text-decoration: underline;">121</span>762       12     <span style="text-decoration: underline;">2</span>002   <span style="text-decoration: underline;">2</span>014</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> 2002-2014     3     3 <span style="text-decoration: underline;">2</span>091.   2<span style="text-decoration: underline;">323</span>665       12     <span style="text-decoration: underline;">2</span>002   <span style="text-decoration: underline;">2</span>014</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> 2002-2014     3     7  116.    <span style="text-decoration: underline;">129</span>304       12     <span style="text-decoration: underline;">2</span>002   <span style="text-decoration: underline;">2</span>014</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> 2002-2014     3     9    7.00    <span style="text-decoration: underline;">7</span>774       12     <span style="text-decoration: underline;">2</span>002   <span style="text-decoration: underline;">2</span>014</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> 2002-2014     3    11    9.32   <span style="text-decoration: underline;">10</span>359       12     <span style="text-decoration: underline;">2</span>002   <span style="text-decoration: underline;">2</span>014</span></span>
+<span></span>
+<span><span class="va">SL_2002_2014</span><span class="op">$</span><span class="va">tb_legend</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 11 × 3</span></span></span>
+<span><span class="co">#&gt;    categoryValue categoryName color  </span></span>
+<span><span class="co">#&gt;            <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>             2 DUL          #ABBBE8</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>             3 XSE          #A13F3F</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>             4 LKC          #EAACAC</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>             5 MTO          #002F70</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>             7 VRE          #8EA4DE</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>             8 FNR          #F3C5C5</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>             9 ZCN          #5F1415</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>            10 EIF          #DCE2F6</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>            11 FHX          #F9DCDC</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>            12 SZE          #EFF1F8</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">11</span>            13 HGF          #F9EFEF</span></span>
+<span></span>
+<span><span class="va">SL_2002_2014</span><span class="op">$</span><span class="va">totalArea</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 2</span></span></span>
+<span><span class="co">#&gt;   area_km2  QtPixel</span></span>
+<span><span class="co">#&gt;      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>   <span style="text-decoration: underline;">22</span>418. 24<span style="text-decoration: underline;">908</span>860</span></span>
+<span></span>
+<span><span class="va">SL_2002_2014</span><span class="op">$</span><span class="va">totalInterval</span></span>
+<span><span class="co">#&gt; [1] 12</span></span></code></pre></div>
+</div>
+<div class="section level4">
+<h4 id="editing-the-values-in-the-categoryname-and-color-columns">Editing the values in the <code>categoryName</code> and
+<code>color</code> columns<a class="anchor" aria-label="anchor" href="#editing-the-values-in-the-categoryname-and-color-columns"></a>
+</h4>
+<p>As mentioned before, the <strong>tb_legend</strong> object must be
+edited with the real category name and colors associated with the
+category values. In our case, the category names and colors follow the
+conventions given by <span class="citation">Instituto SOS Pantanal and
+WWF-Brasil (2015)</span>. The Portuguese legend acronyms were maintained
+as defined in the original dataset.</p>
+<table style="width:100%;" class="table">
+<colgroup>
+<col width="16%">
+<col width="8%">
+<col width="13%">
+<col width="19%">
+<col width="32%">
+<col width="10%">
+</colgroup>
+<thead><tr class="header">
+<th align="left">Pixel Value</th>
+<th align="center">Legend</th>
+<th align="left">Class</th>
+<th align="left">Use</th>
+<th align="left">Category</th>
+<th align="left">color</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">2</td>
+<td align="center">Ap</td>
+<td align="left">Anthropic</td>
+<td align="left">Anthropic Use</td>
+<td align="left">Pasture</td>
+<td align="left">#FFE4B5</td>
+</tr>
+<tr class="even">
+<td align="left">3</td>
+<td align="center">FF</td>
+<td align="left">Natural</td>
+<td align="left">NA</td>
+<td align="left">Forest</td>
+<td align="left">#228B22</td>
+</tr>
+<tr class="odd">
+<td align="left">4</td>
+<td align="center">SA</td>
+<td align="left">Natural</td>
+<td align="left">NA</td>
+<td align="left">Park Savannah</td>
+<td align="left">#00FF00</td>
+</tr>
+<tr class="even">
+<td align="left">5</td>
+<td align="center">SG</td>
+<td align="left">Natural</td>
+<td align="left">NA</td>
+<td align="left">Gramineous Savannah</td>
+<td align="left">#CAFF70</td>
+</tr>
+<tr class="odd">
+<td align="left">7</td>
+<td align="center">aa</td>
+<td align="left">Anthropic</td>
+<td align="left">NA</td>
+<td align="left">Anthropized Vegetation</td>
+<td align="left">#EE6363</td>
+</tr>
+<tr class="even">
+<td align="left">8</td>
+<td align="center">SF</td>
+<td align="left">Natural</td>
+<td align="left">NA</td>
+<td align="left">Wooded Savannah</td>
+<td align="left">#00CD00</td>
+</tr>
+<tr class="odd">
+<td align="left">9</td>
+<td align="center">Agua</td>
+<td align="left">Natural</td>
+<td align="left">NA</td>
+<td align="left">Water body</td>
+<td align="left">#436EEE</td>
+</tr>
+<tr class="even">
+<td align="left">10</td>
+<td align="center">Iu</td>
+<td align="left">Anthropic</td>
+<td align="left">Anthropic Use</td>
+<td align="left">Urban</td>
+<td align="left">#FFAEB9</td>
+</tr>
+<tr class="odd">
+<td align="left">11</td>
+<td align="center">Ac</td>
+<td align="left">Anthropic</td>
+<td align="left">Anthropic Use</td>
+<td align="left">Crop farming</td>
+<td align="left">#FFA54F</td>
+</tr>
+<tr class="even">
+<td align="left">12</td>
+<td align="center">R</td>
+<td align="left">Anthropic</td>
+<td align="left">Anthropic Use</td>
+<td align="left">Reforestation</td>
+<td align="left">#68228B</td>
+</tr>
+<tr class="odd">
+<td align="left">13</td>
+<td align="center">Im</td>
+<td align="left">Anthropic</td>
+<td align="left">Anthropic Use</td>
+<td align="left">Mining</td>
+<td align="left">#636363</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">## editing the category name</span></span>
+<span><span class="va">SL_2002_2014</span><span class="op">$</span><span class="va">tb_legend</span><span class="op">$</span><span class="va">categoryName</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
+<span>    <span class="st">"Ap"</span>, <span class="st">"FF"</span>, <span class="st">"SA"</span>, <span class="st">"SG"</span>, <span class="st">"aa"</span>, <span class="st">"SF"</span>,</span>
+<span>    <span class="st">"Agua"</span>, <span class="st">"Iu"</span>, <span class="st">"Ac"</span>, <span class="st">"R"</span>, <span class="st">"Im"</span></span>
+<span>  <span class="op">)</span>,</span>
+<span>  levels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
+<span>    <span class="st">"FF"</span>, <span class="st">"SF"</span>, <span class="st">"SA"</span>, <span class="st">"SG"</span>, <span class="st">"aa"</span>, <span class="st">"Ap"</span>,</span>
+<span>    <span class="st">"Ac"</span>, <span class="st">"Im"</span>, <span class="st">"Iu"</span>, <span class="st">"Agua"</span>, <span class="st">"R"</span></span>
+<span>  <span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">## add the color by the same order of the legend,</span></span>
+<span><span class="co">## it can be the color name (eg. "black") or the HEX value (eg. #000000)</span></span>
+<span><span class="va">SL_2002_2014</span><span class="op">$</span><span class="va">tb_legend</span><span class="op">$</span><span class="va">color</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
+<span>  <span class="st">"#FFE4B5"</span>, <span class="st">"#228B22"</span>, <span class="st">"#00FF00"</span>, <span class="st">"#CAFF70"</span>,</span>
+<span>  <span class="st">"#EE6363"</span>, <span class="st">"#00CD00"</span>, <span class="st">"#436EEE"</span>, <span class="st">"#FFAEB9"</span>,</span>
+<span>  <span class="st">"#FFA54F"</span>, <span class="st">"#68228B"</span>, <span class="st">"#636363"</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">## now we have</span></span>
+<span><span class="va">SL_2002_2014</span><span class="op">$</span><span class="va">tb_legend</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 11 × 3</span></span></span>
+<span><span class="co">#&gt;    categoryValue categoryName color  </span></span>
+<span><span class="co">#&gt;            <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>             2 Ap           #FFE4B5</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>             3 FF           #228B22</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>             4 SA           #00FF00</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>             5 SG           #CAFF70</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>             7 aa           #EE6363</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>             8 SF           #00CD00</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>             9 Agua         #436EEE</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>            10 Iu           #FFAEB9</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>            11 Ac           #FFA54F</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>            12 R            #68228B</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">11</span>            13 Im           #636363</span></span></code></pre></div>
+<p>At this point, one can choose to run the Intensity Analysis or create
+a series of non-spatial representations of LUCC, such like sankey
+diagrams with the <code><a href="../reference/sankeyLand.html">sankeyLand()</a></code> function, chord diagrams
+using the <code><a href="../reference/chordDiagramLand.html">chordDiagramLand()</a></code> function or bar plots showing
+LUC evolution trough the years using the <code><a href="../reference/barplotLand.html">barplotLand()</a></code>
+function, since they do not depend on the output of Intensity
+Analysis.</p>
+</div>
+</div>
+<div class="section level3">
+<h3 id="intensity-analysis">Intensity Analysis<a class="anchor" aria-label="anchor" href="#intensity-analysis"></a>
+</h3>
+<p>Intensity Analysis (IA) is a quantitative method to analyze LUC maps
+at several time steps, using cross-tabulation matrices, where each
+matrix summarizes the LUC change at each time interval. IA evaluates in
+three levels the deviation between observed change intensity and
+hypothesized uniform change intensity. Hereby, each level details
+information given by the previous analysis level. First, the
+<strong>interval level</strong> indicates how size and rate of change
+varies across time intervals. Second, the <strong>category
+level</strong> examines for each time interval how the size and
+intensity of gross losses and gross gains in each category vary across
+categories for each time interval. Third, the <strong>transition
+level</strong> determines for each category how the size and intensity
+of a category’s transitions vary across the other categories that are
+available for that transition. At each level, the method tests for
+stationarity of patterns across time intervals <span class="citation">(Aldwaik and Pontius 2012)</span>.</p>
+<p>Within the OpenLand package, the <code><a href="../reference/intensityAnalysis.html">intensityAnalysis()</a></code>
+function computes the three levels of analysis. It requires the object
+returned by the <code><a href="../reference/contingencyTable.html">contingencyTable()</a></code> function and that the
+user predefines two LUC categories <code>n</code> and <code>m</code>.
+Generally, <code>n</code> is a target category which experienced
+relevant gains and <code>m</code> a category with important losses.</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">testSL</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/intensityAnalysis.html">intensityAnalysis</a></span><span class="op">(</span></span>
+<span>  dataset <span class="op">=</span> <span class="va">SL_2002_2014</span>,</span>
+<span>  category_n <span class="op">=</span> <span class="st">"Ap"</span>, category_m <span class="op">=</span> <span class="st">"SG"</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># it returns a list with 6 objects</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">testSL</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "lulc_table"           "interval_lvl"         "category_lvlGain"    </span></span>
+<span><span class="co">#&gt; [4] "category_lvlLoss"     "transition_lvlGain_n" "transition_lvlLoss_m"</span></span></code></pre></div>
+<p>The <code><a href="../reference/intensityAnalysis.html">intensityAnalysis()</a></code> function returns 6 objects:
+lulc_table, interval_lvl, category_lvlGain, category_lvlLoss,
+transition_lvlGain_n, transition_lvlLoss_m. Here, we adopted an
+object-oriented approach that allows to set specific methods for
+plotting the intensity objects. Specifically, we used the S4 class,
+which requires the formal definition of classes and methods <span class="citation">(Chambers 2008)</span>. The first object is a
+contingency table similar to the lulc_Multistep object with the unique
+difference that the columns <code>From</code> and <code>To</code> are
+replaced by their appropriate denominations according to the LUC
+legend.</p>
+<p>The second object <em><strong>interval_lvl</strong></em> is an
+<code>Interval</code> object, the third
+<em><strong>category_lvlGain</strong></em> and the fourth
+<em><strong>category_lvlLoss</strong></em> are <code>Category</code>
+objects, whereas the fifth
+<em><strong>transition_lvlGain_n</strong></em> and the sixth
+<em><strong>transition_lvlLoss_m</strong></em> are
+<code>Transition</code> objects.</p>
+<p>An <code>Interval</code> object contains one slot containing a table
+of <strong>interval level</strong> result <em>(S<sub>t</sub> and U
+values)</em>. A <code>Category</code> object contains three slots: the
+first contains the colors associated with the legend items as name
+attributes, the second slot contains a table of the <strong>category
+level</strong> result <em>(gain (G<sub>tj</sub>) or loss
+(L<sub>ti</sub>) values)</em> and the third slot contains a table
+storing the results of a stationarity test. A <code>Transition</code>
+object contains three slots: the first contains the color associated
+with the respective legend item defined as name attribute, the second
+slot contains a table of the <strong>transition level</strong> result
+<em>(gain n (R<sub>tin</sub> and W<sub>tn</sub>) or loss m
+(Q<sub>tmj</sub> and V<sub>tm</sub>) values)</em>. The third slot
+contains a table storing the results of a stationarity test. Hereby,
+<span class="citation">Aldwaik and Pontius (2012)</span> consider a
+stationary case only when the intensities for all time intervals reside
+on one side of the uniform intensity, i.e. that they are always smaller
+or larger than the uniform rate over the whole period.</p>
+</div>
+<div class="section level3">
+<h3 id="the-graphs">The Graphs<a class="anchor" aria-label="anchor" href="#the-graphs"></a>
+</h3>
+<div class="section level4">
+<h4 id="outcomes-of-intensity-analysis">Outcomes of intensity analysis<a class="anchor" aria-label="anchor" href="#outcomes-of-intensity-analysis"></a>
+</h4>
+<p>Visualizations of the IA results are obtained from the
+<code>plot(intensity-object)</code> function. For more details on the
+function arguments, please see the documentation of the
+<code><a href="../reference/plot.html">plot()</a></code> method.</p>
+<div class="section level5">
+<h5 id="interval-level">Interval Level<a class="anchor" aria-label="anchor" href="#interval-level"></a>
+</h5>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/plot.html">plot</a></span><span class="op">(</span><span class="va">testSL</span><span class="op">$</span><span class="va">interval_lvl</span>,</span>
+<span>  labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
+<span>    leftlabel <span class="op">=</span> <span class="st">"Interval Change Area (%)"</span>,</span>
+<span>    rightlabel <span class="op">=</span> <span class="st">"Annual Change Area (%)"</span></span>
+<span>  <span class="op">)</span>,</span>
+<span>  marginplot <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">8</span>, <span class="fl">0</span><span class="op">)</span>, labs <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Changes"</span>, <span class="st">"Uniform Rate"</span><span class="op">)</span>,</span>
+<span>  leg_curv <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">2</span> <span class="op">/</span> <span class="fl">10</span>, y <span class="op">=</span> <span class="fl">3</span> <span class="op">/</span> <span class="fl">10</span><span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<p><img src="openland_vignette_files/figure-html/unnamed-chunk-10-1.png" class="r-plt" alt="" width="672"></p>
+</div>
+<div class="section level5">
+<h5 id="category-level">Category Level<a class="anchor" aria-label="anchor" href="#category-level"></a>
+</h5>
+<ul>
+<li>Gain Area</li>
+</ul>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/plot.html">plot</a></span><span class="op">(</span><span class="va">testSL</span><span class="op">$</span><span class="va">category_lvlGain</span>,</span>
+<span>  labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
+<span>    leftlabel <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/bquote.html" class="external-link">bquote</a></span><span class="op">(</span><span class="st">"Gain Area ("</span> <span class="op">~</span> <span class="va">km</span><span class="op">^</span><span class="fl">2</span> <span class="op">~</span> <span class="st">")"</span><span class="op">)</span>,</span>
+<span>    rightlabel <span class="op">=</span> <span class="st">"Intensity Gain (%)"</span></span>
+<span>  <span class="op">)</span>,</span>
+<span>  marginplot <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">.3</span>, <span class="fl">.3</span><span class="op">)</span>, labs <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Categories"</span>, <span class="st">"Uniform Rate"</span><span class="op">)</span>,</span>
+<span>  leg_curv <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">5</span> <span class="op">/</span> <span class="fl">10</span>, y <span class="op">=</span> <span class="fl">5</span> <span class="op">/</span> <span class="fl">10</span><span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<p><img src="openland_vignette_files/figure-html/unnamed-chunk-11-1.png" class="r-plt" alt="" width="672"></p>
+<ul>
+<li>Loss Area</li>
+</ul>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/plot.html">plot</a></span><span class="op">(</span><span class="va">testSL</span><span class="op">$</span><span class="va">category_lvlLoss</span>,</span>
+<span>  labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
+<span>    leftlabel <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/bquote.html" class="external-link">bquote</a></span><span class="op">(</span><span class="st">"Loss Area ("</span> <span class="op">~</span> <span class="va">km</span><span class="op">^</span><span class="fl">2</span> <span class="op">~</span> <span class="st">")"</span><span class="op">)</span>,</span>
+<span>    rightlabel <span class="op">=</span> <span class="st">"Loss Intensity (%)"</span></span>
+<span>  <span class="op">)</span>,</span>
+<span>  marginplot <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">.3</span>, <span class="fl">.3</span><span class="op">)</span>, labs <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Categories"</span>, <span class="st">"Uniform Rate"</span><span class="op">)</span>,</span>
+<span>  leg_curv <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">5</span> <span class="op">/</span> <span class="fl">10</span>, y <span class="op">=</span> <span class="fl">5</span> <span class="op">/</span> <span class="fl">10</span><span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<p><img src="openland_vignette_files/figure-html/unnamed-chunk-12-1.png" class="r-plt" alt="" width="672"></p>
+</div>
+<div class="section level5">
+<h5 id="transition-level">Transition Level<a class="anchor" aria-label="anchor" href="#transition-level"></a>
+</h5>
+<ul>
+<li>Gain of the <code>n</code> category (“Ap”)</li>
+</ul>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/plot.html">plot</a></span><span class="op">(</span><span class="va">testSL</span><span class="op">$</span><span class="va">transition_lvlGain_n</span>,</span>
+<span>  labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
+<span>    leftlabel <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/bquote.html" class="external-link">bquote</a></span><span class="op">(</span><span class="st">"Gain of Ap ("</span> <span class="op">~</span> <span class="va">km</span><span class="op">^</span><span class="fl">2</span> <span class="op">~</span> <span class="st">")"</span><span class="op">)</span>,</span>
+<span>    rightlabel <span class="op">=</span> <span class="st">"Intensity Gain of Ap (%)"</span></span>
+<span>  <span class="op">)</span>,</span>
+<span>  marginplot <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">.3</span>, <span class="fl">.3</span><span class="op">)</span>, labs <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Categories"</span>, <span class="st">"Uniform Rate"</span><span class="op">)</span>,</span>
+<span>  leg_curv <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">5</span> <span class="op">/</span> <span class="fl">10</span>, y <span class="op">=</span> <span class="fl">5</span> <span class="op">/</span> <span class="fl">10</span><span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<p><img src="openland_vignette_files/figure-html/unnamed-chunk-13-1.png" class="r-plt" alt="" width="672"></p>
+<ul>
+<li>Loss of the <code>m</code> category (“SG”)</li>
+</ul>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/plot.html">plot</a></span><span class="op">(</span><span class="va">testSL</span><span class="op">$</span><span class="va">transition_lvlLoss_m</span>,</span>
+<span>  labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
+<span>    leftlabel <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/bquote.html" class="external-link">bquote</a></span><span class="op">(</span><span class="st">"Loss of SG ("</span> <span class="op">~</span> <span class="va">km</span><span class="op">^</span><span class="fl">2</span> <span class="op">~</span> <span class="st">")"</span><span class="op">)</span>,</span>
+<span>    rightlabel <span class="op">=</span> <span class="st">"Intensity Loss of SG (%)"</span></span>
+<span>  <span class="op">)</span>,</span>
+<span>  marginplot <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">.3</span>, <span class="fl">.3</span><span class="op">)</span>, labs <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Categories"</span>, <span class="st">"Uniform Rate"</span><span class="op">)</span>,</span>
+<span>  leg_curv <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">1</span> <span class="op">/</span> <span class="fl">10</span>, y <span class="op">=</span> <span class="fl">5</span> <span class="op">/</span> <span class="fl">10</span><span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<p><img src="openland_vignette_files/figure-html/unnamed-chunk-14-1.png" class="r-plt" alt="" width="672"></p>
+</div>
+</div>
+<div class="section level4">
+<h4 id="miscellaneous-visualization-tools">Miscellaneous visualization tools<a class="anchor" aria-label="anchor" href="#miscellaneous-visualization-tools"></a>
+</h4>
+<p>OpenLand provides a bench of visualization tools of LUCC metrics.
+One-step transitions can be balanced by net and gross changes of all
+categories through a combined bar chart. Transitions between LUC
+categories can be detailed by a circular chord chart, based on the
+Circlize package <span class="citation">(Gu et al. 2014)</span>. An
+implementation of Sankey diagram based on the networkD3 package <span class="citation">(Allaire et al. 2017)</span> allow the representation
+of one- and multistep LUCC between categories. Areal development of all
+LUC categories throughout the observation period can be visualized by a
+grouped bar chart.</p>
+<div class="section level5">
+<h5 id="net-and-gross-gain-and-loss">Net and Gross gain and loss<a class="anchor" aria-label="anchor" href="#net-and-gross-gain-and-loss"></a>
+</h5>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/netgrossplot.html">netgrossplot</a></span><span class="op">(</span></span>
+<span>  dataset <span class="op">=</span> <span class="va">SL_2002_2014</span><span class="op">$</span><span class="va">lulc_Multistep</span>,</span>
+<span>  legendtable <span class="op">=</span> <span class="va">SL_2002_2014</span><span class="op">$</span><span class="va">tb_legend</span>,</span>
+<span>  xlab <span class="op">=</span> <span class="st">"LUC Category"</span>,</span>
+<span>  ylab <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/bquote.html" class="external-link">bquote</a></span><span class="op">(</span><span class="st">"Area ("</span> <span class="op">~</span> <span class="va">km</span><span class="op">^</span><span class="fl">2</span> <span class="op">~</span> <span class="st">")"</span><span class="op">)</span>,</span>
+<span>  changesLabel <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>GC <span class="op">=</span> <span class="st">"Gross changes"</span>, NG <span class="op">=</span> <span class="st">"Net Gain"</span>, NL <span class="op">=</span> <span class="st">"Net Loss"</span><span class="op">)</span>,</span>
+<span>  color <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>GC <span class="op">=</span> <span class="st">"gray70"</span>, NG <span class="op">=</span> <span class="st">"#006400"</span>, NL <span class="op">=</span> <span class="st">"#EE2C2C"</span><span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<p><img src="openland_vignette_files/figure-html/unnamed-chunk-15-1.png" class="r-plt" alt="" width="672"></p>
+</div>
+<div class="section level5">
+<h5 id="chord-diagram-2002---2014">Chord Diagram (2002 - 2014)<a class="anchor" aria-label="anchor" href="#chord-diagram-2002---2014"></a>
+</h5>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/chordDiagramLand.html">chordDiagramLand</a></span><span class="op">(</span></span>
+<span>  dataset <span class="op">=</span> <span class="va">SL_2002_2014</span><span class="op">$</span><span class="va">lulc_Onestep</span>,</span>
+<span>  legendtable <span class="op">=</span> <span class="va">SL_2002_2014</span><span class="op">$</span><span class="va">tb_legend</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<p><img src="openland_vignette_files/figure-html/unnamed-chunk-16-1.png" class="r-plt" alt="" width="672"></p>
+</div>
+<div class="section level5">
+<h5 id="sankey-multi-step">Sankey Multi Step<a class="anchor" aria-label="anchor" href="#sankey-multi-step"></a>
+</h5>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/sankeyLand.html">sankeyLand</a></span><span class="op">(</span></span>
+<span>  dataset <span class="op">=</span> <span class="va">SL_2002_2014</span><span class="op">$</span><span class="va">lulc_Multistep</span>,</span>
+<span>  legendtable <span class="op">=</span> <span class="va">SL_2002_2014</span><span class="op">$</span><span class="va">tb_legend</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<div class="sankeyNetwork html-widget html-fill-item" id="htmlwidget-ac96cb3ee4656e2e9ec3" style="width:768px;height:384px;"></div>
+<script type="application/json" data-for="htmlwidget-ac96cb3ee4656e2e9ec3">{"x":{"links":{"source":[20,20,20,20,0,0,0,0,0,0,8,8,8,8,8,8,8,12,12,12,12,12,16,16,16,16,16,4,4,4,4,36,32,24,24,24,40,40,28,21,21,21,21,21,1,1,1,1,9,9,9,9,9,13,13,13,13,13,17,17,17,17,17,5,5,5,5,37,33,25,25,41,29,22,22,22,2,2,2,2,10,10,10,14,14,14,14,18,18,18,18,6,6,6,38,34,26,26,26,42,30,23,23,23,3,3,3,11,11,11,11,11,11,15,15,15,15,19,19,19,19,7,7,7,39,35,27,27,43,31],"target":[21,33,25,41,21,1,17,25,41,29,21,9,17,33,25,41,29,21,13,17,25,41,21,17,33,25,41,21,17,5,25,37,33,33,25,41,25,41,29,22,38,34,26,42,22,2,18,38,22,10,18,26,30,22,14,18,34,26,22,18,38,26,42,22,18,6,26,38,34,26,42,42,30,23,27,43,23,3,19,27,23,11,19,23,15,19,27,23,19,35,27,23,19,7,39,35,35,27,43,43,31,49,52,50,49,44,48,49,46,48,52,50,51,49,47,48,50,49,48,52,50,49,48,45,53,52,52,50,54,51],"value":[6542.9649,1.5624,55.188,23.9481,37.4841,2133.171,155.4462,7.4763,0.3555,0.081,65.83499999999999,1547.0847,107.5077,2.025,66.0483,17.4726,0.1422,48.3111,3761.5176,244.2501,13.1103,0.0999,130.0581,1987.5051,0.4518,9.599399999999999,1.4706,24.759,79.5303,793.755,13.4199,17.0055,107.3826,1.0719,4278.3363,26.6697,28.224,59.1417,28.5111,6762.8016,2.3859,5.7222,72.8199,5.6826,0.9684,2117.7981,13.1733,1.2312,0.9711,1524.5676,21.4299,0.0711,0.045,3.9384,3726.7974,30.6441,0.0504,0.0873,12.0204,2551.7007,9.5976,0.7002,0.2205,1.1025,5.58,785.3904,1.6821,17.0055,112.4937,4464.2556,7.1469,129.1581,28.7343,6595.4547,186.0795,0.2682,3.6252,2106.6714,7.3971,0.1044,12.2994,1494.8811,17.3871,8.5329,3698.757,18.8757,0.6318,681.885,1938.1518,0.0675,2.4237,1.0755,3.3642,780.9507,30.2202,118.2663,1.8369,4535.2917,2.4876,142.2081,28.7793,7192.0503,3.0771,107.7453,12.9276,2091.2985,2.4453,18.0801,1469.6289,6.5772,0.3456,0.054,0.1953,42.0948,3651.8409,4.7592,0.0621,536.7276000000001,1444.3551,2.1042,1.989,2.3805,1.1133,777.4569,30.2202,120.1707,1.2609,4723.2702,144.9639,28.7793]},"nodes":{"name":["FF","FF","FF","FF","SF","SF","SF","SF","SA","SA","SA","SA","SG","SG","SG","SG","aa","aa","aa","aa","Ap","Ap","Ap","Ap","Ac","Ac","Ac","Ac","Im","Im","Im","Im","Iu","Iu","Iu","Iu","Agua","Agua","Agua","Agua","R","R","R","R","FF","SF","SA","SG","aa","Ap","Ac","Im","Iu","Agua","R"],"group":["FF","FF","FF","FF","SF","SF","SF","SF","SA","SA","SA","SA","SG","SG","SG","SG","aa","aa","aa","aa","Ap","Ap","Ap","Ap","Ac","Ac","Ac","Ac","Im","Im","Im","Im","Iu","Iu","Iu","Iu","Agua","Agua","Agua","Agua","R","R","R","R","FF","SF","SA","SG","aa","Ap","Ac","Im","Iu","Agua","R"]},"options":{"NodeID":"name02","NodeGroup":"name02","LinkGroup":null,"colourScale":"d3.scaleOrdinal().domain(['FF', 'SF', 'SA', 'SG', 'aa', 'Ap', 'Ac', 'Im', 'Iu', 'Agua', 'R']).range(['#228B22', '#00CD00', '#00FF00', '#CAFF70', '#EE6363', '#FFE4B5', '#FFA54F', '#636363', '#FFAEB9', '#436EEE', '#68228B']).unknown(['grey']);","fontSize":13,"fontFamily":"sans-serif","nodeWidth":20,"nodePadding":20,"units":"","margin":{"top":null,"right":null,"bottom":null,"left":null},"iterations":0,"sinksRight":false}},"evals":[],"jsHooks":[]}</script><pre><code>         2002               2008               2010                2012                2014</code></pre>
+</div>
+<div class="section level5">
+<h5 id="sankey-one-step">Sankey One Step<a class="anchor" aria-label="anchor" href="#sankey-one-step"></a>
+</h5>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/sankeyLand.html">sankeyLand</a></span><span class="op">(</span></span>
+<span>  dataset <span class="op">=</span> <span class="va">SL_2002_2014</span><span class="op">$</span><span class="va">lulc_Onestep</span>,</span>
+<span>  legendtable <span class="op">=</span> <span class="va">SL_2002_2014</span><span class="op">$</span><span class="va">tb_legend</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<div class="sankeyNetwork html-widget html-fill-item" id="htmlwidget-e5c8c404fe174e4c81bd" style="width:768px;height:384px;"></div>
+<script type="application/json" data-for="htmlwidget-e5c8c404fe174e4c81bd">{"x":{"links":{"source":[5,5,5,5,5,0,0,0,0,0,0,0,2,2,2,2,2,2,2,3,3,3,3,3,3,3,4,4,4,4,4,4,1,1,1,1,1,9,8,6,6,6,10,10,7],"target":[16,20,19,17,21,16,11,15,20,17,21,18,16,13,15,19,17,21,18,16,14,15,20,19,17,21,16,15,20,19,17,21,16,15,12,20,17,20,19,19,17,21,17,21,18],"value":[6169.3344,2.3859,10.3617,411.8679,29.7135,109.5858,2091.2985,116.3736,6.9966,9.3231,0.3555,0.081,161.3277,1469.6289,83.4669,3.3849,70.452,17.4726,0.3825,196.1613,3651.8409,199.7901,1.7154,0.0504,17.4456,0.2853,1109.0241,1000.5966,1.6011,1.6092,14.5629,1.6911,58.8276,59.0229,777.4569,0.5157,15.6411,17.0055,107.3826,4.1697,4265.604,36.3042,28.224,59.1417,28.5111]},"nodes":{"name":["FF","SF","SA","SG","aa","Ap","Ac","Im","Iu","Agua","R","FF","SF","SA","SG","aa","Ap","Ac","Im","Iu","Agua","R"],"group":["FF","SF","SA","SG","aa","Ap","Ac","Im","Iu","Agua","R","FF","SF","SA","SG","aa","Ap","Ac","Im","Iu","Agua","R"]},"options":{"NodeID":"name02","NodeGroup":"name02","LinkGroup":null,"colourScale":"d3.scaleOrdinal().domain(['FF', 'SF', 'SA', 'SG', 'aa', 'Ap', 'Ac', 'Im', 'Iu', 'Agua', 'R']).range(['#228B22', '#00CD00', '#00FF00', '#CAFF70', '#EE6363', '#FFE4B5', '#FFA54F', '#636363', '#FFAEB9', '#436EEE', '#68228B']).unknown(['grey']);","fontSize":13,"fontFamily":"sans-serif","nodeWidth":20,"nodePadding":20,"units":"","margin":{"top":null,"right":null,"bottom":null,"left":null},"iterations":0,"sinksRight":false}},"evals":[],"jsHooks":[]}</script><pre><code>                        2002                                              2014</code></pre>
+</div>
+<div class="section level5">
+<h5 id="an-evolution-bar-plot">An Evolution Bar Plot<a class="anchor" aria-label="anchor" href="#an-evolution-bar-plot"></a>
+</h5>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/barplotLand.html">barplotLand</a></span><span class="op">(</span></span>
+<span>  dataset <span class="op">=</span> <span class="va">SL_2002_2014</span><span class="op">$</span><span class="va">lulc_Multistep</span>,</span>
+<span>  legendtable <span class="op">=</span> <span class="va">SL_2002_2014</span><span class="op">$</span><span class="va">tb_legend</span>,</span>
+<span>  xlab <span class="op">=</span> <span class="st">"Year"</span>,</span>
+<span>  ylab <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/bquote.html" class="external-link">bquote</a></span><span class="op">(</span><span class="st">"Area ("</span> <span class="op">~</span> <span class="va">km</span><span class="op">^</span><span class="fl">2</span> <span class="op">~</span> <span class="st">")"</span><span class="op">)</span>,</span>
+<span>  area_km2 <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<p><img src="openland_vignette_files/figure-html/unnamed-chunk-19-1.png" class="r-plt" alt="" width="672"></p>
+</div>
+</div>
+</div>
+<div class="section level3">
+<h3 id="other-functions">Other functions<a class="anchor" aria-label="anchor" href="#other-functions"></a>
+</h3>
+<p>Two auxiliary functions allow users to check for consistency in the
+input gridded LUC time series, including extent, projection, cell
+resolution and categories. The <code><a href="../reference/summary_map.html">summary_map()</a></code> function
+returns the number of pixel by category of a single raster layer,
+whereas <code><a href="../reference/summary_dir.html">summary_dir()</a></code> lists the spatial extension, spatial
+resolution, cartographic projection and the category range for the LUC
+maps. OpenLand enables furthermore the spatial screening of LUCC
+frequencies for one or a series of raster layers. The
+<code><a href="../reference/acc_changes.html">acc_changes()</a></code> returns for LUC time series the number of
+times a pixel has changed during the analysed period, returning a grid
+layer and a table with the percentages of transition numbers in the
+study area.</p>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">testacc</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/acc_changes.html">acc_changes</a></span><span class="op">(</span><span class="va">SaoLourencoBasin</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">testacc</span></span></code></pre></div>
+<p>Plotting the map with the <code>tmap</code> function:</p>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">tmap_options</span><span class="op">(</span>max.raster <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>plot <span class="op">=</span> <span class="fl">41711112</span>, view <span class="op">=</span> <span class="fl">41711112</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">acc_map</span> <span class="op">&lt;-</span> <span class="fu">tmap</span><span class="fu">::</span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html" class="external-link">tm_shape</a></span><span class="op">(</span><span class="va">testacc</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">tmap</span><span class="fu">::</span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_raster.html" class="external-link">tm_raster</a></span><span class="op">(</span></span>
+<span>    style <span class="op">=</span> <span class="st">"cat"</span>,</span>
+<span>    labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
+<span>      <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="va">testacc</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span><span class="op">$</span><span class="va">PxValue</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, <span class="st">" Change"</span>, <span class="st">" ("</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span><span class="va">testacc</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span><span class="op">$</span><span class="va">Percent</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, <span class="fl">2</span><span class="op">)</span>, <span class="st">"%"</span>, <span class="st">")"</span><span class="op">)</span>,</span>
+<span>      <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="va">testacc</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span><span class="op">$</span><span class="va">PxValue</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span>, <span class="st">" Change"</span>, <span class="st">" ("</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span><span class="va">testacc</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span><span class="op">$</span><span class="va">Percent</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span>, <span class="fl">2</span><span class="op">)</span>, <span class="st">"%"</span>, <span class="st">")"</span><span class="op">)</span>,</span>
+<span>      <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="va">testacc</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span><span class="op">$</span><span class="va">PxValue</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span>, <span class="st">" Changes"</span>, <span class="st">" ("</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span><span class="va">testacc</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span><span class="op">$</span><span class="va">Percent</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span>, <span class="fl">2</span><span class="op">)</span>, <span class="st">"%"</span>, <span class="st">")"</span><span class="op">)</span></span>
+<span>    <span class="op">)</span>,</span>
+<span>    palette <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"#757575"</span>, <span class="st">"#FFD700"</span>, <span class="st">"#CD0000"</span><span class="op">)</span>,</span>
+<span>    title <span class="op">=</span> <span class="st">"Changes in the interval \n2002 - 2014"</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">tmap</span><span class="fu">::</span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_legend.html" class="external-link">tm_legend</a></span><span class="op">(</span></span>
+<span>    position <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.01</span>, <span class="fl">0.2</span><span class="op">)</span>,</span>
+<span>    legend.title.size <span class="op">=</span> <span class="fl">1.2</span>,</span>
+<span>    legend.title.fontface <span class="op">=</span> <span class="st">"bold"</span>,</span>
+<span>    legend.text.size <span class="op">=</span> <span class="fl">0.8</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">tmap</span><span class="fu">::</span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_compass.html" class="external-link">tm_compass</a></span><span class="op">(</span></span>
+<span>    type <span class="op">=</span> <span class="st">"arrow"</span>,</span>
+<span>    position <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"right"</span>, <span class="st">"top"</span><span class="op">)</span>,</span>
+<span>    size <span class="op">=</span> <span class="fl">3</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">tmap</span><span class="fu">::</span><span class="fu">tm_scale_bar</span><span class="op">(</span></span>
+<span>    breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">40</span>, <span class="fl">10</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>    position <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.76</span>, <span class="fl">0.001</span><span class="op">)</span>,</span>
+<span>    text.size <span class="op">=</span> <span class="fl">0.6</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">tmap</span><span class="fu">::</span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_credits.html" class="external-link">tm_credits</a></span><span class="op">(</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span></span>
+<span>      <span class="st">"Case of Study site"</span>,</span>
+<span>      <span class="st">"\nAccumulate changes from 2002 to 2014"</span>,</span>
+<span>      <span class="st">"\nData create with OpenLand package"</span>,</span>
+<span>      <span class="st">"\nLULC derived from Embrapa Pantanal, Instituto SOS Pantanal, and WWF-Brasil 2015."</span></span>
+<span>    <span class="op">)</span>,</span>
+<span>    size <span class="op">=</span> <span class="fl">0.7</span>,</span>
+<span>    position <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.01</span>, <span class="op">-</span><span class="fl">0</span>, <span class="fl">01</span><span class="op">)</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">tmap</span><span class="fu">::</span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_grid.html" class="external-link">tm_graticules</a></span><span class="op">(</span></span>
+<span>    n.x <span class="op">=</span> <span class="fl">6</span>,</span>
+<span>    n.y <span class="op">=</span> <span class="fl">6</span>,</span>
+<span>    lines <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>    <span class="co"># alpha = 0.1</span></span>
+<span>    labels.rot <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">90</span><span class="op">)</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">tmap</span><span class="fu">::</span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_layout.html" class="external-link">tm_layout</a></span><span class="op">(</span>inner.margins <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.02</span>, <span class="fl">0.02</span>, <span class="fl">0.02</span>, <span class="fl">0.02</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span></span>
+<span><span class="fu">tmap</span><span class="fu">::</span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tmap_save.html" class="external-link">tmap_save</a></span><span class="op">(</span><span class="va">acc_map</span>,</span>
+<span>  filename <span class="op">=</span> <span class="st">"vignettes/acc_mymap.png"</span>,</span>
+<span>  width <span class="op">=</span> <span class="fl">7</span>,</span>
+<span>  height <span class="op">=</span> <span class="fl">7</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<div class="figure">
+<img src="acc_mymap.png" class="r-plt" alt="Accumulated changes in pixels in the interval 2002 - 2014 at four time points (2002, 2008, 2010, 2012, 2014)" width="100%"><p class="caption">
+Accumulated changes in pixels in the interval 2002 - 2014 at four time
+points (2002, 2008, 2010, 2012, 2014)
+</p>
+</div>
+</div>
+<div class="section level2">
+<h2 class="unnumbered" id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
 </h2>
 <div id="refs" class="references csl-bib-body hanging-indent">
 <div id="ref-Aldwaik2012" class="csl-entry">
@@ -137,10 +791,31 @@ stationarity of land changes by interval, category, and
 transition</span>.”</span> <em>Landsc. Urban Plan.</em> 106 (1): 103–14.
 <a href="https://doi.org/10.1016/j.landurbplan.2012.02.010" class="external-link">https://doi.org/10.1016/j.landurbplan.2012.02.010</a>.
 </div>
+<div id="ref-Allaire2017" class="csl-entry">
+Allaire, J J, Christopher Gandrud, Kenton Russell, and C J Yetman. 2017.
+<em><span class="nocase">networkD3: D3 JavaScript Network Graphs from
+R</span></em>. <a href="https://cran.r-project.org/package=networkD3" class="external-link">https://cran.r-project.org/package=networkD3</a>.
+</div>
+<div id="ref-Chambers2008" class="csl-entry">
+Chambers, John. 2008. <em><span class="nocase">Software for Data
+Analysis</span></em>. Statistics and Computing. Springer New York. <a href="https://doi.org/10.1007/978-0-387-75936-4" class="external-link">https://doi.org/10.1007/978-0-387-75936-4</a>.
+</div>
 <div id="ref-Embrapapantanalsite2015" class="csl-entry">
 Embrapa Pantanal, Instituto SOS Pantanal, and WWF-Brasil. 2015.
 <em><span class="nocase">Mapeamento da Bacia do Alto
 Paraguai</span></em>.
+</div>
+<div id="ref-Gu2014" class="csl-entry">
+Gu, Zuguang, Lei Gu, Roland Eils, Matthias Schlesner, and Benedikt
+Brors. 2014. <span>“<span class="nocase">circlize implements and
+enhances circular visualization in R</span>.”</span>
+<em>Bioinformatics</em> 30 (19): 2811–12.
+</div>
+<div id="ref-sospantanal2015" class="csl-entry">
+Instituto SOS Pantanal, and WWF-Brasil. 2015. <em><span class="nocase">Monitoramento das altera<span class="nocase">ç</span><span class="nocase">õ</span>es da cobertura
+vegetal e uso do Solo na Bacia do Alto Paraguai – Por<span class="nocase">ç</span><span class="nocase">ã</span>o Brasileira –
+Per<span class="nocase">í</span>odo de An<span class="nocase">á</span>lise: 2012 a 2014</span></em>. 4th ed. Brasilia.
+<a href="https://d3nehc6yl9qzo4.cloudfront.net/downloads/publicacao_bap_relatorio_2012_2014_web.pdf" class="external-link">https://d3nehc6yl9qzo4.cloudfront.net/downloads/publicacao_bap_relatorio_2012_2014_web.pdf</a>.
 </div>
 </div>
 </div>

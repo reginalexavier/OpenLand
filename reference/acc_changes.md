@@ -28,7 +28,8 @@ Two objects, a RasterLayer and a table.
 # \donttest{
 url <- "https://zenodo.org/record/3685230/files/SaoLourencoBasin.rda?download=1"
 if (OpenLand:::.openland_try_download_and_load_rda(url,
-  object = "SaoLourencoBasin", timeout = 10
+  object = "SaoLourencoBasin", timeout = 10,
+  cache = FALSE
 )) {
   acc_changes(SaoLourencoBasin)
 }
@@ -38,7 +39,7 @@ if (OpenLand:::.openland_try_download_and_load_rda(url,
 #> resolution : 30, 30  (x, y)
 #> extent     : 654007.5, 850387.5, 8099064, 8290224  (xmin, xmax, ymin, ymax)
 #> crs        : +proj=utm +zone=21 +south +ellps=GRS80 +units=m +no_defs 
-#> source     : r_tmp_2026-07-02_003527.926413_7812_64535.grd 
+#> source     : r_tmp_2026-07-10_015607.63674_7813_64535.grd 
 #> names      : layer 
 #> values     : 0, 2  (min, max)
 #> 

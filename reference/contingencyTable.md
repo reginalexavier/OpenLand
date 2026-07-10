@@ -95,7 +95,8 @@ A list that contains 5 objects.
 # \donttest{
 url <- "https://zenodo.org/record/3685230/files/SaoLourencoBasin.rda?download=1"
 if (OpenLand:::.openland_try_download_and_load_rda(url,
-  object = "SaoLourencoBasin", timeout = 10
+  object = "SaoLourencoBasin", timeout = 10,
+  cache = FALSE
 )) {
   # the contingencyTable() function, with the SaoLourencoBasin dataset
   contingencyTable(input_raster = SaoLourencoBasin, pixelresolution = 30)

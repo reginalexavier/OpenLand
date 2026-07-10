@@ -25,7 +25,7 @@ coordinate reference system."><meta property="og:image" content="https://reginal
 
     <a class="navbar-brand me-2" href="../index.html">OpenLand</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.5.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.5</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -50,7 +50,7 @@ coordinate reference system."><meta property="og:image" content="https://reginal
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>Summary of multiple parameters in a raster directory</h1>
-      <small class="dont-index">Source: <a href="https://github.com/reginalexavier/OpenLand/blob/main/R/generalfunctions.R" class="external-link"><code>R/generalfunctions.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/reginalexavier/OpenLand/blob/v1.0.5/R/generalfunctions.R" class="external-link"><code>R/generalfunctions.R</code></a></small>
       <div class="d-none name"><code>summary_dir.Rd</code></div>
     </div>
 
@@ -89,6 +89,15 @@ analysed.</p></dd>
 <span class="r-in"><span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
 <span class="r-in"><span>  <span class="fu">summary_dir</span><span class="op">(</span><span class="fu">raster</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/raster/man/unstack.html" class="external-link">unstack</a></span><span class="op">(</span><span class="va">SaoLourencoBasin</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 5 × 12</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   file_name    xmin   xmax   ymin   ymax res_x res_y  nrow  ncol min_val max_val</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> landscape… 6.54<span style="color: #949494;">e</span>5 8.50<span style="color: #949494;">e</span>5 8.10<span style="color: #949494;">e</span>6 8.29<span style="color: #949494;">e</span>6    30    30  <span style="text-decoration: underline;">6</span>372  <span style="text-decoration: underline;">6</span>546       2      13</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> landscape… 6.54<span style="color: #949494;">e</span>5 8.50<span style="color: #949494;">e</span>5 8.10<span style="color: #949494;">e</span>6 8.29<span style="color: #949494;">e</span>6    30    30  <span style="text-decoration: underline;">6</span>372  <span style="text-decoration: underline;">6</span>546       2      13</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> landscape… 6.54<span style="color: #949494;">e</span>5 8.50<span style="color: #949494;">e</span>5 8.10<span style="color: #949494;">e</span>6 8.29<span style="color: #949494;">e</span>6    30    30  <span style="text-decoration: underline;">6</span>372  <span style="text-decoration: underline;">6</span>546       2      13</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> landscape… 6.54<span style="color: #949494;">e</span>5 8.50<span style="color: #949494;">e</span>5 8.10<span style="color: #949494;">e</span>6 8.29<span style="color: #949494;">e</span>6    30    30  <span style="text-decoration: underline;">6</span>372  <span style="text-decoration: underline;">6</span>546       2      13</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> landscape… 6.54<span style="color: #949494;">e</span>5 8.50<span style="color: #949494;">e</span>5 8.10<span style="color: #949494;">e</span>6 8.29<span style="color: #949494;">e</span>6    30    30  <span style="text-decoration: underline;">6</span>372  <span style="text-decoration: underline;">6</span>546       2      13</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 1 more variable: crs &lt;chr&gt;</span></span>
 <span class="r-in"><span><span class="co"># }</span></span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>

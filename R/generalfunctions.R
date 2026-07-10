@@ -6,7 +6,9 @@
 #'
 #' The function is defensive by design: it should not error if the remote host is
 #' unavailable, if the download fails, or if the `.rda` cannot be loaded. It can
-#' optionally cache the downloaded file in a persistent user cache directory.
+#' optionally cache the downloaded file in a persistent user cache directory. When
+#' `cache = FALSE`, the file is downloaded to a temporary path and removed at the
+#' end of the call.
 #'
 #' @param url character. Remote `.rda` URL.
 #' @param object character or NULL. If provided, requires that this object name
@@ -15,8 +17,9 @@
 #'   will be loaded.
 #' @param timeout integer. Download timeout (seconds) set via `options(timeout)`.
 #' @param cache logical. Whether to cache the downloaded file.
-#' @param cache_dir character or NULL. Cache directory. When `NULL`, uses
-#'   `tools::R_user_dir("OpenLand", which = "cache")` when available.
+#' @param cache_dir character or NULL. Cache directory used only when
+#'   `cache = TRUE`. When `NULL`, uses `tools::R_user_dir("OpenLand",
+#'   which = "cache")` when available.
 #' @param quiet logical. Passed to `utils::download.file()`.
 #'
 #' @return logical. `TRUE` if the `.rda` was successfully downloaded (or found
@@ -37,25 +40,31 @@
   timeout <- suppressWarnings(as.integer(timeout))
   if (is.na(timeout) || timeout < 1L) timeout <- 1L
 
-  if (is.null(cache_dir)) {
-    cache_dir <- if (exists("R_user_dir", envir = asNamespace("tools"), inherits = FALSE)) {
-      tools::R_user_dir("OpenLand", which = "cache")
-    } else {
-      file.path(tempdir(), "OpenLand-cache")
-    }
-  }
-
-  if (!is.character(cache_dir) || length(cache_dir) != 1L || is.na(cache_dir) || !nzchar(cache_dir)) {
-    cache_dir <- tempdir()
-  }
-
   base_name <- basename(sub("\\?.*$", "", url))
   if (!nzchar(base_name)) base_name <- "OpenLand_zenodo_dataset.rda"
   if (!grepl("\\.[Rr][Dd][Aa]$", base_name)) base_name <- paste0(base_name, ".rda")
 
-  dir.create(cache_dir, recursive = TRUE, showWarnings = FALSE)
+  use_cache <- isTRUE(cache)
 
-  cached_path <- file.path(cache_dir, base_name)
+  if (use_cache) {
+    if (is.null(cache_dir)) {
+      cache_dir <- if (exists("R_user_dir", envir = asNamespace("tools"), inherits = FALSE)) {
+        tools::R_user_dir("OpenLand", which = "cache")
+      } else {
+        file.path(tempdir(), "OpenLand-cache")
+      }
+    }
+
+    if (!is.character(cache_dir) || length(cache_dir) != 1L || is.na(cache_dir) || !nzchar(cache_dir)) {
+      cache_dir <- tempdir()
+    }
+
+    dir.create(cache_dir, recursive = TRUE, showWarnings = FALSE)
+    cached_path <- file.path(cache_dir, base_name)
+  } else {
+    cached_path <- NULL
+  }
+
   tmp_path <- tempfile(pattern = "OpenLand-", fileext = ".rda")
   on.exit(unlink(tmp_path, force = TRUE), add = TRUE)
 
@@ -75,7 +84,7 @@
 
   ok <- tryCatch(
     {
-      if (isTRUE(cache) && file.exists(cached_path) && isTRUE(file.info(cached_path)$size > 0)) {
+      if (use_cache && file.exists(cached_path) && isTRUE(file.info(cached_path)$size > 0)) {
         if (isTRUE(try_load_into(cached_path))) {
           return(TRUE)
         }
@@ -87,7 +96,7 @@
         return(FALSE)
       }
 
-      if (isTRUE(cache)) {
+      if (use_cache) {
         ok_copy <- file.copy(tmp_path, cached_path, overwrite = TRUE)
         if (isTRUE(ok_copy)) {
           return(isTRUE(try_load_into(cached_path)))
@@ -120,7 +129,8 @@
 #' \donttest{
 #' url <- "https://zenodo.org/record/3685230/files/SaoLourencoBasin.rda?download=1"
 #' if (OpenLand:::.openland_try_download_and_load_rda(url,
-#'   object = "SaoLourencoBasin", timeout = 10
+#'   object = "SaoLourencoBasin", timeout = 10,
+#'   cache = FALSE
 #' )) {
 #'   summary_dir(raster::unstack(SaoLourencoBasin))
 #' }
@@ -184,7 +194,8 @@ summary_dir <- function(path) {
 #' \donttest{
 #' url <- "https://zenodo.org/record/3685230/files/SaoLourencoBasin.rda?download=1"
 #' if (OpenLand:::.openland_try_download_and_load_rda(url,
-#'   object = "SaoLourencoBasin", timeout = 10
+#'   object = "SaoLourencoBasin", timeout = 10,
+#'   cache = FALSE
 #' )) {
 #'   summary_map(SaoLourencoBasin[[1]])
 #' }
@@ -237,7 +248,8 @@ summary_map <- function(path) {
 #' \donttest{
 #' url <- "https://zenodo.org/record/3685230/files/SaoLourencoBasin.rda?download=1"
 #' if (OpenLand:::.openland_try_download_and_load_rda(url,
-#'   object = "SaoLourencoBasin", timeout = 10
+#'   object = "SaoLourencoBasin", timeout = 10,
+#'   cache = FALSE
 #' )) {
 #'   acc_changes(SaoLourencoBasin)
 #' }

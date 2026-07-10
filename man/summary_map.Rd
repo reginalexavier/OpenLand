@@ -21,7 +21,8 @@ present in a categorical raster.
 \donttest{
 url <- "https://zenodo.org/record/3685230/files/SaoLourencoBasin.rda?download=1"
 if (OpenLand:::.openland_try_download_and_load_rda(url,
-  object = "SaoLourencoBasin", timeout = 10
+  object = "SaoLourencoBasin", timeout = 10,
+  cache = FALSE
 )) {
   summary_map(SaoLourencoBasin[[1]])
 }

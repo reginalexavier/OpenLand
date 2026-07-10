@@ -27,8 +27,9 @@ will be loaded.}
 
 \item{cache}{logical. Whether to cache the downloaded file.}
 
-\item{cache_dir}{character or NULL. Cache directory. When `NULL`, uses
-`tools::R_user_dir("OpenLand", which = "cache")` when available.}
+\item{cache_dir}{character or NULL. Cache directory used only when
+`cache = TRUE`. When `NULL`, uses `tools::R_user_dir("OpenLand",
+which = "cache")` when available.}
 
 \item{quiet}{logical. Passed to `utils::download.file()`.}
 }
@@ -44,6 +45,8 @@ dataset is available.
 \details{
 The function is defensive by design: it should not error if the remote host is
 unavailable, if the download fails, or if the `.rda` cannot be loaded. It can
-optionally cache the downloaded file in a persistent user cache directory.
+optionally cache the downloaded file in a persistent user cache directory. When
+`cache = FALSE`, the file is downloaded to a temporary path and removed at the
+end of the call.
 }
 \keyword{internal}

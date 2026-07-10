@@ -23,7 +23,8 @@ pixel value and a table containing the areal percentage of every pixel value
 \donttest{
 url <- "https://zenodo.org/record/3685230/files/SaoLourencoBasin.rda?download=1"
 if (OpenLand:::.openland_try_download_and_load_rda(url,
-  object = "SaoLourencoBasin", timeout = 10
+  object = "SaoLourencoBasin", timeout = 10,
+  cache = FALSE
 )) {
   acc_changes(SaoLourencoBasin)
 }

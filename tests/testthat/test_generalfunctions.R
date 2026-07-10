@@ -192,7 +192,6 @@ test_that(".openland_try_download_and_load_rda cache=FALSE still loads from file
   url <- as_file_url(src)
 
   cache_dir <- tempfile(pattern = "OpenLand-cache-")
-  dir.create(cache_dir)
 
   env <- new.env(parent = emptyenv())
   ok <- OpenLand:::.openland_try_download_and_load_rda(url,
@@ -209,6 +208,7 @@ test_that(".openland_try_download_and_load_rda cache=FALSE still loads from file
   expect_identical(env$c_obj, "ok")
 
   cached_path <- file.path(cache_dir, basename(sub("\\?.*$", "", url)))
+  expect_false(dir.exists(cache_dir))
   expect_false(file.exists(cached_path))
 })
 

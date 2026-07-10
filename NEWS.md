@@ -1,4 +1,10 @@
-# OpenLand (development version)
+# OpenLand 1.0.5
+
+## Bug Fixes
+* Fixed CRAN additional `donttest` issue caused by examples and the vignette
+  leaving downloaded Zenodo data in the persistent user cache directory. The
+  examples still try to download and load `SaoLourencoBasin` when the link is
+  available, but use temporary files so no files are left under `~/.cache`.
 
 # OpenLand 1.0.4
 
